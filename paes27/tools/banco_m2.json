@@ -1798,5 +1798,1265 @@
   ],
   "correcta": 1,
   "explicacion": "2 + 4 + x = 12 → x = 6. Desviaciones −2, 0, 2. Varianza (4 + 0 + 4)/3 = 8/3."
+ },
+ {
+  "id": "m2-esf-b1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el volumen de una esfera de radio 3 cm?",
+  "opciones": [
+   {
+    "texto": "36π cm³",
+    "trampa": ""
+   },
+   {
+    "texto": "12π cm³",
+    "trampa": "Elevaste el radio al cuadrado en vez de al cubo: (4/3)π·3²."
+   },
+   {
+    "texto": "108π cm³",
+    "trampa": "Olvidaste el 1/3 de la fórmula: 4π·27."
+   },
+   {
+    "texto": "27π cm³",
+    "trampa": "Usaste πr³ sin el factor 4/3."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "V = (4/3)π·3³ = (4/3)π·27 = 36π cm³."
+ },
+ {
+  "id": "m2-esf-b2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el área de una esfera de diámetro 10 cm?",
+  "opciones": [
+   {
+    "texto": "400π cm²",
+    "trampa": "Usaste el diámetro (10) como si fuera el radio."
+   },
+   {
+    "texto": "25π cm²",
+    "trampa": "πr² es el área de un círculo, no de la esfera (que tiene 4 círculos máximos)."
+   },
+   {
+    "texto": "100π cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "500π/3 cm²",
+    "trampa": "Calculaste el volumen: (4/3)π·5³."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "r = 5. A = 4π·5² = 100π cm²."
+ },
+ {
+  "id": "m2-esf-b3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "basico",
+  "enunciado": "Si el radio de una esfera se duplica, ¿qué ocurre con su volumen?",
+  "opciones": [
+   {
+    "texto": "Se multiplica por 8",
+    "trampa": ""
+   },
+   {
+    "texto": "Se duplica",
+    "trampa": "El volumen no es proporcional al radio: depende de r³."
+   },
+   {
+    "texto": "Se multiplica por 4",
+    "trampa": "Eso le pasa al área (2² = 4). El volumen usa r³."
+   },
+   {
+    "texto": "Se multiplica por 6",
+    "trampa": "Multiplicaste 2·3 en vez de calcular 2³."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "V depende de r³: (2r)³ = 8r³. El volumen se multiplica por 8."
+ },
+ {
+  "id": "m2-esf-p1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "paes",
+  "enunciado": "Una esfera tiene un área de 64π cm². ¿Cuál es su volumen?",
+  "opciones": [
+   {
+    "texto": "256π cm³",
+    "trampa": "Olvidaste el 1/3: calculaste 4π·4³."
+   },
+   {
+    "texto": "2048π/3 cm³",
+    "trampa": "Olvidaste dividir 64 por 4: tomaste r² = 64, r = 8."
+   },
+   {
+    "texto": "64π/3 cm³",
+    "trampa": "Usaste r² = 16 en lugar de r³ = 64: (4/3)π·16."
+   },
+   {
+    "texto": "256π/3 cm³",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "4πr² = 64π → r² = 16 → r = 4. V = (4/3)π·64 = 256π/3 cm³."
+ },
+ {
+  "id": "m2-esf-p2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "paes",
+  "enunciado": "Una pelota de radio 6 cm cabe justo en una caja cúbica (toca las 6 caras por dentro). ¿Qué volumen de la caja queda vacío?",
+  "opciones": [
+   {
+    "texto": "1728 − 864π cm³",
+    "trampa": "Olvidaste el 1/3 del volumen de la esfera: 4π·216 = 864π."
+   },
+   {
+    "texto": "1728 − 288π cm³",
+    "trampa": ""
+   },
+   {
+    "texto": "1728 − 216π cm³",
+    "trampa": "Usaste πr³ sin el factor 4/3."
+   },
+   {
+    "texto": "1728 − 144π cm³",
+    "trampa": "Restaste el área de la esfera (4π·36) en vez de su volumen."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Arista del cubo = diámetro = 12 → 12³ = 1728. Esfera: (4/3)π·216 = 288π. Vacío: 1728 − 288π cm³."
+ },
+ {
+  "id": "m2-esf-p3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "paes",
+  "enunciado": "Una esfera de metal de radio 3 cm se funde para hacer esferitas de radio 1 cm. ¿Cuántas esferitas se obtienen?",
+  "opciones": [
+   {
+    "texto": "9",
+    "trampa": "Usaste la razón de áreas (3² = 9). Al fundir se conserva el volumen: razón 3³."
+   },
+   {
+    "texto": "3",
+    "trampa": "Usaste la razón de los radios. El volumen crece con r³."
+   },
+   {
+    "texto": "36",
+    "trampa": "Tomaste el volumen grande (36π) como si fuera la cantidad de esferitas; falta dividir por (4/3)π."
+   },
+   {
+    "texto": "27",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Volúmenes: (4/3)π·27 ÷ (4/3)π·1 = 27 esferitas."
+ },
+ {
+  "id": "m2-esf-d1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es el área total de una semiesfera sólida de radio 3 cm (superficie curva más la base plana)?",
+  "opciones": [
+   {
+    "texto": "18π cm²",
+    "trampa": "Calculaste solo la parte curva (2πr²). Una semiesfera sólida también tiene la base plana."
+   },
+   {
+    "texto": "36π cm²",
+    "trampa": "Ese es el área de la esfera completa."
+   },
+   {
+    "texto": "27π cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "45π cm²",
+    "trampa": "Sumaste la esfera completa más la base: la parte curva es solo la mitad."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Curva: 2π·9 = 18π. Base: π·9 = 9π. Total 27π cm²."
+ },
+ {
+  "id": "m2-esf-d2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "dificil",
+  "enunciado": "Un cilindro y una esfera tienen el mismo radio r, y la altura del cilindro es 2r. ¿Qué fracción del volumen del cilindro ocupa la esfera?",
+  "opciones": [
+   {
+    "texto": "2/3",
+    "trampa": ""
+   },
+   {
+    "texto": "3/2",
+    "trampa": "Dividiste al revés: volumen del cilindro sobre el de la esfera."
+   },
+   {
+    "texto": "4/3",
+    "trampa": "Comparaste con un cilindro de altura r (πr³), no de altura 2r."
+   },
+   {
+    "texto": "π/6",
+    "trampa": "Comparaste con el cubo que envuelve la esfera (8r³), no con el cilindro."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(4/3)πr³ ÷ (πr²·2r) = (4/3)/2 = 2/3. Es el resultado de Arquímedes."
+ },
+ {
+  "id": "m2-esf-d3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.esfera",
+  "nivel": "dificil",
+  "enunciado": "Una esfera tiene el mismo valor numérico para su volumen (en cm³) que para su área (en cm²). ¿Cuál es su radio?",
+  "opciones": [
+   {
+    "texto": "1/3 cm",
+    "trampa": "Despejaste mal r/3 = 1: el 3 que divide pasa multiplicando, no dividiendo."
+   },
+   {
+    "texto": "3/4 cm",
+    "trampa": "Al simplificar olvidaste el 4 del área: (4/3)·r = 1 → r = 3/4."
+   },
+   {
+    "texto": "3 cm",
+    "trampa": ""
+   },
+   {
+    "texto": "√3 cm",
+    "trampa": "Simplificaste mal r³/r²: queda r, no r²."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(4/3)πr³ = 4πr² → divido por 4πr²: r/3 = 1 → r = 3 cm."
+ },
+ {
+  "id": "m2-hom-b1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "basico",
+  "enunciado": "Una homotecia de razón 3 transforma un segmento de 4 cm. ¿Cuánto mide el segmento imagen?",
+  "opciones": [
+   {
+    "texto": "12 cm",
+    "trampa": ""
+   },
+   {
+    "texto": "7 cm",
+    "trampa": "Sumaste 4 + 3. La homotecia multiplica las longitudes por |k|."
+   },
+   {
+    "texto": "4/3 cm",
+    "trampa": "Dividiste por la razón en vez de multiplicar."
+   },
+   {
+    "texto": "36 cm",
+    "trampa": "Multiplicaste por k² = 9. Eso le pasa al área, no a los lados."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Longitud imagen = |k|·4 = 12 cm."
+ },
+ {
+  "id": "m2-hom-b2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "basico",
+  "enunciado": "Se aplica una homotecia de centro en el origen y razón 1/2 al punto P(6, −4). ¿Cuál es su imagen?",
+  "opciones": [
+   {
+    "texto": "(12, −8)",
+    "trampa": "Multiplicaste por 2 en vez de por 1/2."
+   },
+   {
+    "texto": "(13/2, −7/2)",
+    "trampa": "Sumaste 1/2 a cada coordenada. La homotecia multiplica."
+   },
+   {
+    "texto": "(3, −2)",
+    "trampa": ""
+   },
+   {
+    "texto": "(−3, 2)",
+    "trampa": "Cambiaste los signos como si la razón fuera negativa."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Con centro en el origen: P' = k·P = (6/2, −4/2) = (3, −2)."
+ },
+ {
+  "id": "m2-hom-b3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "basico",
+  "enunciado": "Si una figura se transforma con una homotecia de razón −1, ¿cómo es la figura imagen?",
+  "opciones": [
+   {
+    "texto": "Es congruente y queda girada en 180° respecto del centro.",
+    "trampa": ""
+   },
+   {
+    "texto": "Es la mitad de grande y queda al otro lado del centro.",
+    "trampa": "Eso sería k = −1/2. Con |k| = 1 el tamaño no cambia."
+   },
+   {
+    "texto": "Es igual y queda en el mismo lugar.",
+    "trampa": "Eso es k = 1. El signo negativo la manda al otro lado del centro."
+   },
+   {
+    "texto": "Es su reflejo respecto de una recta.",
+    "trampa": "k = −1 es una simetría respecto de un PUNTO (giro de 180°), no de una recta."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "|k| = 1 conserva el tamaño; el signo negativo lleva cada punto al lado opuesto de O: es un giro de 180°."
+ },
+ {
+  "id": "m2-hom-p1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "paes",
+  "enunciado": "Un triángulo de área 10 cm² se transforma con una homotecia de razón −3. ¿Cuál es el área del triángulo imagen?",
+  "opciones": [
+   {
+    "texto": "30 cm²",
+    "trampa": "Multiplicaste por |k|. Las áreas se multiplican por k²."
+   },
+   {
+    "texto": "270 cm²",
+    "trampa": "Multiplicaste por k² y además por |k|: 10·9·3."
+   },
+   {
+    "texto": "13 cm²",
+    "trampa": "Sumaste |k| al área (10 + 3). Las áreas se multiplican por k²."
+   },
+   {
+    "texto": "90 cm²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Área imagen = k²·10 = 9·10 = 90 cm²."
+ },
+ {
+  "id": "m2-hom-p2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "paes",
+  "enunciado": "Se aplica una homotecia de centro O(1, 2) y razón 2 al punto P(4, 3). ¿Cuál es su imagen?",
+  "opciones": [
+   {
+    "texto": "(8, 6)",
+    "trampa": "Multiplicaste P por 2 como si el centro fuera el origen."
+   },
+   {
+    "texto": "(7, 4)",
+    "trampa": ""
+   },
+   {
+    "texto": "(6, 2)",
+    "trampa": "Calculaste 2·(P − O) y olvidaste sumar el centro."
+   },
+   {
+    "texto": "(3, 1)",
+    "trampa": "Calculaste solo P − O: falta multiplicar por k y sumar el centro."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "P' = O + 2·(P − O) = (1, 2) + 2·(3, 1) = (7, 4)."
+ },
+ {
+  "id": "m2-hom-p3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "paes",
+  "enunciado": "Con una homotecia, el segmento AB de 6 cm se transforma en A'B' de 15 cm, y la imagen queda al otro lado del centro. ¿Cuál es la razón de homotecia?",
+  "opciones": [
+   {
+    "texto": "5/2",
+    "trampa": "Olvidaste el signo: si la imagen queda al otro lado del centro, k es negativa."
+   },
+   {
+    "texto": "−2/5",
+    "trampa": "Invertiste la razón: es imagen/original = 15/6."
+   },
+   {
+    "texto": "9",
+    "trampa": "Restaste 15 − 6. La razón es un cociente, no una diferencia."
+   },
+   {
+    "texto": "−5/2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "|k| = 15/6 = 5/2, y al otro lado del centro: k = −5/2."
+ },
+ {
+  "id": "m2-hom-d1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "dificil",
+  "enunciado": "En una homotecia de centro O, el punto A está a 4 cm de O y su imagen A' está a 10 cm de A, en la semirrecta OA, más lejos de O que A. ¿Cuál es la razón?",
+  "opciones": [
+   {
+    "texto": "5/2",
+    "trampa": "Usaste AA' = 10 como si fuera OA'. La distancia desde el centro es OA' = 4 + 10 = 14."
+   },
+   {
+    "texto": "3/2",
+    "trampa": "Restaste 10 − 4 = 6, como si A' estuviera entre O y A."
+   },
+   {
+    "texto": "7/2",
+    "trampa": ""
+   },
+   {
+    "texto": "2/7",
+    "trampa": "Invertiste el cociente: calculaste OA/OA' = 4/14 en vez de OA'/OA."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "OA' = 4 + 10 = 14 → k = 14/4 = 7/2."
+ },
+ {
+  "id": "m2-hom-d2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "dificil",
+  "enunciado": "Un cuadrado de lado 2 se transforma con una homotecia de razón k y el área de la imagen es 18. ¿Qué valores puede tener k?",
+  "opciones": [
+   {
+    "texto": "k = 3√2/2 o k = −3√2/2",
+    "trampa": ""
+   },
+   {
+    "texto": "k = 9/2",
+    "trampa": "Ese es k²: falta sacar la raíz."
+   },
+   {
+    "texto": "k = 3√2/2 solamente",
+    "trampa": "Olvidaste el valor negativo: con k = −3√2/2 el área también queda 18."
+   },
+   {
+    "texto": "k = 3 o k = −3",
+    "trampa": "Dividiste 18 por el lado (2) en vez de por el área original (4)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Área original 4. k² = 18/4 = 9/2 → k = ±3/√2 = ±3√2/2."
+ },
+ {
+  "id": "m2-hom-d3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.homotecia",
+  "nivel": "dificil",
+  "enunciado": "Un rectángulo se transforma con una homotecia de razón 2 y, luego, la imagen se transforma con otra homotecia de razón −1/2 y el mismo centro. ¿Cómo es la figura final respecto de la original?",
+  "opciones": [
+   {
+    "texto": "Idéntica y en el mismo lugar.",
+    "trampa": "Ignoraste el signo: 2·(−1/2) = −1, no 1."
+   },
+   {
+    "texto": "El doble de grande.",
+    "trampa": "Aplicaste solo la primera homotecia."
+   },
+   {
+    "texto": "Congruente, girada en 180° respecto del centro.",
+    "trampa": ""
+   },
+   {
+    "texto": "La mitad de grande.",
+    "trampa": "Aplicaste solo la segunda homotecia."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Dos homotecias con el mismo centro equivalen a una de razón 2·(−1/2) = −1: giro de 180°, mismo tamaño."
+ },
+ {
+  "id": "m2-cir-b1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "basico",
+  "enunciado": "En una circunferencia de centro O, el ángulo del centro ∠AOB mide 80°. Si C está en el arco mayor AB, ¿cuánto mide ∠ACB?",
+  "opciones": [
+   {
+    "texto": "80°",
+    "trampa": "El inscrito no es igual al del centro: mide la mitad."
+   },
+   {
+    "texto": "160°",
+    "trampa": "Duplicaste en vez de dividir por 2."
+   },
+   {
+    "texto": "40°",
+    "trampa": ""
+   },
+   {
+    "texto": "140°",
+    "trampa": "Ese sería el ángulo si C estuviera en el arco menor (180° − 40°)."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Inscrito = ángulo del centro/2 = 40°."
+ },
+ {
+  "id": "m2-cir-b2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "basico",
+  "enunciado": "Un ángulo inscrito subtiende un diámetro de la circunferencia. ¿Cuánto mide?",
+  "opciones": [
+   {
+    "texto": "90°",
+    "trampa": ""
+   },
+   {
+    "texto": "180°",
+    "trampa": "El arco mide 180°, pero el inscrito mide la mitad."
+   },
+   {
+    "texto": "45°",
+    "trampa": "Dividiste 180° por 4."
+   },
+   {
+    "texto": "60°",
+    "trampa": "Dividiste 180° por 3, como si fuera un ángulo de un triángulo equilátero."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El diámetro subtiende un arco de 180°; el inscrito mide 180°/2 = 90°."
+ },
+ {
+  "id": "m2-cir-b3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "basico",
+  "enunciado": "Dos cuerdas AB y CD se cortan en un punto P. Si AP = 4, PB = 6 y CP = 3, ¿cuánto mide PD?",
+  "opciones": [
+   {
+    "texto": "4,5",
+    "trampa": "Planteaste la proporción AP/PB = CP/PD. El teorema dice PRODUCTOS iguales: AP·PB = CP·PD."
+   },
+   {
+    "texto": "7",
+    "trampa": "Sumaste y restaste: 4 + 6 − 3."
+   },
+   {
+    "texto": "8",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Usaste solo PB: 3·PD = 6."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "AP·PB = CP·PD → 4·6 = 3·PD → PD = 8."
+ },
+ {
+  "id": "m2-cir-p1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "paes",
+  "enunciado": "Desde un punto P exterior se trazan dos secantes. En la primera, PA = 4 y PB = 9 (A está entre P y B). En la segunda, PC = 3 (C está entre P y D). ¿Cuánto mide PD?",
+  "opciones": [
+   {
+    "texto": "20/3",
+    "trampa": "Usaste la cuerda AB = 5 en vez del segmento completo PB = 9."
+   },
+   {
+    "texto": "12",
+    "trampa": ""
+   },
+   {
+    "texto": "27/4",
+    "trampa": "Planteaste una proporción (PA/PB = PC/PD). Lo que se iguala son los productos."
+   },
+   {
+    "texto": "36",
+    "trampa": "Calculaste PA·PB y no dividiste por PC."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "PA·PB = PC·PD → 4·9 = 3·PD → PD = 12."
+ },
+ {
+  "id": "m2-cir-p2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "paes",
+  "enunciado": "ABCD es un cuadrilátero inscrito en una circunferencia. Si ∠A = 70°, ¿cuánto mide ∠C?",
+  "opciones": [
+   {
+    "texto": "70°",
+    "trampa": "En un cuadrilátero inscrito, los ángulos opuestos no son iguales: suman 180°."
+   },
+   {
+    "texto": "290°",
+    "trampa": "Restaste de 360°, como si ∠A y ∠C formaran una vuelta completa."
+   },
+   {
+    "texto": "140°",
+    "trampa": "Duplicaste el ángulo, como si fuera inscrito contra ángulo del centro."
+   },
+   {
+    "texto": "110°",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Opuestos suman 180°: ∠C = 180° − 70° = 110°."
+ },
+ {
+  "id": "m2-cir-p3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "paes",
+  "enunciado": "En una circunferencia de radio 6 cm, ¿cuánto mide un arco de 60°?",
+  "opciones": [
+   {
+    "texto": "π cm",
+    "trampa": "Usaste πr en vez de 2πr: πr es media circunferencia."
+   },
+   {
+    "texto": "2π cm",
+    "trampa": ""
+   },
+   {
+    "texto": "6π cm",
+    "trampa": "Calculaste el área del sector (πr²·60/360), no la longitud del arco."
+   },
+   {
+    "texto": "12π cm",
+    "trampa": "Esa es la circunferencia completa; el arco es solo 60/360 de ella."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Longitud = 2π·6·60/360 = 12π/6 = 2π cm."
+ },
+ {
+  "id": "m2-cir-d1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "dificil",
+  "enunciado": "Un triángulo ABC está inscrito en una circunferencia, con ∠BAC = 35° y ∠ABC = 65°. ¿Cuánto mide el arco AB que no contiene a C?",
+  "opciones": [
+   {
+    "texto": "160°",
+    "trampa": ""
+   },
+   {
+    "texto": "80°",
+    "trampa": "80° es el ángulo inscrito ∠ACB. El arco que mira mide el doble."
+   },
+   {
+    "texto": "130°",
+    "trampa": "Duplicaste ∠ABC, pero ese ángulo mira el arco AC, no el AB."
+   },
+   {
+    "texto": "70°",
+    "trampa": "Duplicaste ∠BAC, que mira el arco BC."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "∠ACB = 180° − 35° − 65° = 80°. Mira el arco AB: 2·80° = 160°."
+ },
+ {
+  "id": "m2-cir-d2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "dificil",
+  "enunciado": "AB es un diámetro de una circunferencia y C es un punto de ella, con AC = 6 cm y BC = 8 cm. ¿Cuál es el radio?",
+  "opciones": [
+   {
+    "texto": "10 cm",
+    "trampa": "10 es el diámetro AB; el radio es la mitad."
+   },
+   {
+    "texto": "7 cm",
+    "trampa": "Promediaste 6 y 8. El triángulo es rectángulo en C: usa Pitágoras."
+   },
+   {
+    "texto": "5 cm",
+    "trampa": ""
+   },
+   {
+    "texto": "24 cm",
+    "trampa": "Calculaste el área del triángulo (6·8/2)."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Inscrito en un diámetro → ∠C = 90°. AB = √(36 + 64) = 10 → r = 5 cm."
+ },
+ {
+  "id": "m2-cir-d3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.circunferencia",
+  "nivel": "dificil",
+  "enunciado": "Dos cuerdas se cortan en P. En una, AP = x y PB = x + 5; en la otra, CP = 4 y PD = 9. ¿Cuánto vale x?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "−9 y 4",
+    "trampa": "No descartaste la solución negativa: un largo no puede ser negativo."
+   },
+   {
+    "texto": "9",
+    "trampa": "Tomaste el valor absoluto de la raíz negativa (−9). Con x = 9: 9·14 = 126 ≠ 36."
+   },
+   {
+    "texto": "15,5",
+    "trampa": "Sumaste en vez de multiplicar: x + (x + 5) = 36."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "x(x + 5) = 4·9 = 36 → x² + 5x − 36 = 0 → (x + 9)(x − 4) = 0 → x = 4."
+ },
+ {
+  "id": "m2-bin-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "basico",
+  "enunciado": "Se lanza una moneda equilibrada 3 veces. ¿Cuál es la probabilidad de obtener exactamente 2 caras?",
+  "opciones": [
+   {
+    "texto": "3/8",
+    "trampa": ""
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Calculaste (1/2)² y olvidaste el tercer lanzamiento y las 3 formas de ordenar."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "2 de 3 lanzamientos no es una probabilidad: hay que contar casos."
+   },
+   {
+    "texto": "1/8",
+    "trampa": "Esa es la probabilidad de UNA secuencia (por ejemplo CCS). Hay 3."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "C(3, 2)·(1/2)³ = 3/8."
+ },
+ {
+  "id": "m2-bin-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "basico",
+  "enunciado": "Si X sigue una distribución binomial con n = 20 y p = 0,3, ¿cuál es su valor esperado?",
+  "opciones": [
+   {
+    "texto": "4,2",
+    "trampa": "Esa es la varianza n·p·(1 − p)."
+   },
+   {
+    "texto": "0,3",
+    "trampa": "Esa es la probabilidad de éxito de un intento."
+   },
+   {
+    "texto": "6",
+    "trampa": ""
+   },
+   {
+    "texto": "14",
+    "trampa": "Calculaste n·(1 − p): son los fracasos esperados."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "E(X) = n·p = 20·0,3 = 6."
+ },
+ {
+  "id": "m2-bin-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "basico",
+  "enunciado": "En una distribución normal, ¿aproximadamente qué porcentaje de los datos está entre μ − σ y μ + σ?",
+  "opciones": [
+   {
+    "texto": "68 %",
+    "trampa": ""
+   },
+   {
+    "texto": "95 %",
+    "trampa": "Eso es entre μ − 2σ y μ + 2σ."
+   },
+   {
+    "texto": "50 %",
+    "trampa": "50 % es lo que queda bajo la media, no entre μ ± σ."
+   },
+   {
+    "texto": "99,7 %",
+    "trampa": "Eso es entre μ − 3σ y μ + 3σ."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Regla 68–95–99,7: entre μ ± σ queda ≈ 68 %."
+ },
+ {
+  "id": "m2-bin-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "paes",
+  "enunciado": "Un examen tiene 5 preguntas de verdadero o falso. Si se responde todo al azar, ¿cuál es la probabilidad de acertar al menos una?",
+  "opciones": [
+   {
+    "texto": "5/32",
+    "trampa": "Esa es la probabilidad de acertar EXACTAMENTE una."
+   },
+   {
+    "texto": "1/32",
+    "trampa": "Esa es la probabilidad de no acertar ninguna (o de acertarlas todas). Falta restarla de 1."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "Usaste la probabilidad de una sola pregunta."
+   },
+   {
+    "texto": "31/32",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(al menos una) = 1 − P(ninguna) = 1 − (1/2)⁵ = 31/32."
+ },
+ {
+  "id": "m2-bin-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "paes",
+  "enunciado": "Las estaturas de un grupo siguen una distribución normal con μ = 170 cm y σ = 8 cm. ¿Cuál es el valor z de una estatura de 182 cm?",
+  "opciones": [
+   {
+    "texto": "12",
+    "trampa": "Calculaste x − μ y no dividiste por σ."
+   },
+   {
+    "texto": "1,5",
+    "trampa": ""
+   },
+   {
+    "texto": "−1,5",
+    "trampa": "Restaste al revés: z = (x − μ)/σ."
+   },
+   {
+    "texto": "22,75",
+    "trampa": "Dividiste 182 por 8 sin restar la media."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "z = (182 − 170)/8 = 12/8 = 1,5."
+ },
+ {
+  "id": "m2-bin-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "paes",
+  "enunciado": "Una variable sigue una distribución normal con μ = 50 y σ = 10. Usando la regla 68–95–99,7, ¿aproximadamente qué porcentaje de los datos es mayor que 70?",
+  "opciones": [
+   {
+    "texto": "5 %",
+    "trampa": "5 % es lo que queda fuera de μ ± 2σ por ambos lados. Mayor que 70 es solo una cola: la mitad."
+   },
+   {
+    "texto": "95 %",
+    "trampa": "95 % es lo que queda entre 30 y 70."
+   },
+   {
+    "texto": "47,5 %",
+    "trampa": "47,5 % es lo que hay entre 50 y 70 (la mitad de 95 %)."
+   },
+   {
+    "texto": "2,5 %",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "70 = μ + 2σ. Fuera de μ ± 2σ queda 5 %, repartido en dos colas: 2,5 % sobre 70."
+ },
+ {
+  "id": "m2-bin-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "dificil",
+  "enunciado": "Si X sigue una distribución binomial con n = 4 y p = 1/3, ¿cuánto es P(X = 2)?",
+  "opciones": [
+   {
+    "texto": "4/81",
+    "trampa": "Calculaste una sola secuencia: falta multiplicar por C(4, 2) = 6."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Olvidaste el factor (2/3)² de los dos fracasos: 6·(1/3)²."
+   },
+   {
+    "texto": "8/27",
+    "trampa": ""
+   },
+   {
+    "texto": "1/2",
+    "trampa": "2 de 4 no es una probabilidad: hay que usar la fórmula binomial."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "C(4, 2)·(1/3)²·(2/3)² = 6·(1/9)·(4/9) = 24/81 = 8/27."
+ },
+ {
+  "id": "m2-bin-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "dificil",
+  "enunciado": "En una prueba (notas normales con μ = 5,0 y σ = 0,8), Ana sacó 6,2. En otra prueba (μ = 60 y σ = 10), Beto sacó 72. ¿Quién tuvo mejor desempeño respecto de su grupo?",
+  "opciones": [
+   {
+    "texto": "Ana, porque su valor z es mayor.",
+    "trampa": ""
+   },
+   {
+    "texto": "Beto, porque 72 es mayor que 6,2.",
+    "trampa": "Comparaste puntajes de escalas distintas. Hay que estandarizar."
+   },
+   {
+    "texto": "Ambos igual, porque los dos superan la media.",
+    "trampa": "Superar la media no basta: importa por cuántas σ la superan."
+   },
+   {
+    "texto": "Beto, porque su desviación estándar es mayor.",
+    "trampa": "Una σ mayor no mejora el desempeño: al contrario, hace que el mismo puntaje valga menos."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "z de Ana = (6,2 − 5,0)/0,8 = 1,5. z de Beto = (72 − 60)/10 = 1,2. Ana está más arriba en su grupo."
+ },
+ {
+  "id": "m2-bin-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.binomial-normal",
+  "nivel": "dificil",
+  "enunciado": "Una variable binomial tiene media 8 y varianza 4,8. ¿Cuáles son n y p?",
+  "opciones": [
+   {
+    "texto": "n = 20, p = 0,6",
+    "trampa": "Confundiste p con 1 − p: 4,8/8 = 0,6 es la probabilidad de FRACASO."
+   },
+   {
+    "texto": "n = 8, p = 0,6",
+    "trampa": "Tomaste la media como si fuera n."
+   },
+   {
+    "texto": "n = 20, p = 0,4",
+    "trampa": ""
+   },
+   {
+    "texto": "n = 16, p = 0,5",
+    "trampa": "Supusiste p = 0,5 sin usar la varianza."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "n·p·(1 − p) / (n·p) = 1 − p = 4,8/8 = 0,6 → p = 0,4. n = 8/0,4 = 20."
+ },
+ {
+  "id": "m2-fin-b1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "basico",
+  "enunciado": "Se invierten $500.000 a un interés simple del 3 % mensual durante 4 meses. ¿Cuánto interés se gana?",
+  "opciones": [
+   {
+    "texto": "$15.000",
+    "trampa": "Calculaste el interés de un solo mes."
+   },
+   {
+    "texto": "$560.000",
+    "trampa": "Ese es el monto final (capital + interés), no el interés."
+   },
+   {
+    "texto": "$60.000",
+    "trampa": ""
+   },
+   {
+    "texto": "$62.754",
+    "trampa": "Calculaste interés compuesto; acá es simple."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Interés = 500.000·0,03·4 = 60.000."
+ },
+ {
+  "id": "m2-fin-b2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "basico",
+  "enunciado": "Suponga que de un sueldo imponible de $900.000 se descuenta para la AFP el 10 % obligatorio más una comisión del 1,5 % del sueldo. ¿Cuánto se descuenta en total?",
+  "opciones": [
+   {
+    "texto": "$103.500",
+    "trampa": ""
+   },
+   {
+    "texto": "$90.000",
+    "trampa": "Calculaste solo el 10 % obligatorio, sin la comisión."
+   },
+   {
+    "texto": "$13.500",
+    "trampa": "Calculaste solo la comisión."
+   },
+   {
+    "texto": "$91.500",
+    "trampa": "Sumaste 1,5 como si fueran $1.500, en vez de calcular el 1,5 % de 900.000."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(10 % + 1,5 %)·900.000 = 0,115·900.000 = 103.500."
+ },
+ {
+  "id": "m2-fin-b3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "basico",
+  "enunciado": "Un crédito de $1.000.000 se paga en 12 cuotas de $95.000. ¿Cuál es el costo del crédito (lo que se paga por sobre lo pedido)?",
+  "opciones": [
+   {
+    "texto": "$1.140.000",
+    "trampa": "Ese es el total pagado, no el costo."
+   },
+   {
+    "texto": "$95.000",
+    "trampa": "Esa es una cuota."
+   },
+   {
+    "texto": "$140.000",
+    "trampa": ""
+   },
+   {
+    "texto": "$11.667",
+    "trampa": "Dividiste el costo por 12: eso es lo que pagas de más en cada cuota."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Total = 12·95.000 = 1.140.000. Costo = 1.140.000 − 1.000.000 = 140.000."
+ },
+ {
+  "id": "m2-fin-p1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "paes",
+  "enunciado": "Se depositan $2.000.000 a un interés compuesto del 0,5 % mensual. ¿Cuánto hay, aproximadamente, después de 12 meses?",
+  "opciones": [
+   {
+    "texto": "$2.120.000",
+    "trampa": "Calculaste interés simple: 2.000.000·(1 + 0,005·12)."
+   },
+   {
+    "texto": "$2.123.356",
+    "trampa": ""
+   },
+   {
+    "texto": "$2.010.000",
+    "trampa": "Calculaste un solo mes."
+   },
+   {
+    "texto": "$3.591.713",
+    "trampa": "Usaste 5 % en vez de 0,5 %: 1,05¹²."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "2.000.000·1,005¹² ≈ 2.000.000·1,0616778 ≈ 2.123.356."
+ },
+ {
+  "id": "m2-fin-p2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "paes",
+  "enunciado": "Un fondo de AFP de $10.000.000 rinde 5 % un año y pierde 5 % el año siguiente. ¿Cuál es el saldo final?",
+  "opciones": [
+   {
+    "texto": "$10.000.000",
+    "trampa": "Ganar 5 % y perder 5 % no se compensa: el 5 % que se pierde es sobre un monto mayor."
+   },
+   {
+    "texto": "$10.025.000",
+    "trampa": "Calculaste (1 + 0,05)(1 − 0,05) como 1 + 0,05² = 1,0025: el término 0,05² se resta, no se suma."
+   },
+   {
+    "texto": "$9.500.000",
+    "trampa": "Aplicaste solo la pérdida."
+   },
+   {
+    "texto": "$9.975.000",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "10.000.000·1,05·0,95 = 10.000.000·0,9975 = 9.975.000."
+ },
+ {
+  "id": "m2-fin-p3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "paes",
+  "enunciado": "Un crédito hipotecario tiene un dividendo de UF 15 mensuales durante 20 años. ¿Cuántas UF se pagan en total?",
+  "opciones": [
+   {
+    "texto": "300 UF",
+    "trampa": "Multiplicaste 15·20: olvidaste que son 12 dividendos por año."
+   },
+   {
+    "texto": "3600 UF",
+    "trampa": ""
+   },
+   {
+    "texto": "180 UF",
+    "trampa": "Calculaste un solo año: 15·12."
+   },
+   {
+    "texto": "240 UF",
+    "trampa": "Esa es la cantidad de dividendos (20·12), no las UF pagadas."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "20 años = 240 meses. Total = 15·240 = 3600 UF."
+ },
+ {
+  "id": "m2-fin-d1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "dificil",
+  "enunciado": "¿En cuántos años, aproximadamente, se duplica un capital a un interés compuesto del 8 % anual? Usa log 2 ≈ 0,301 y log 1,08 ≈ 0,0334.",
+  "opciones": [
+   {
+    "texto": "9 años",
+    "trampa": ""
+   },
+   {
+    "texto": "12,5 años",
+    "trampa": "Calculaste con interés simple: 100 %/8 %."
+   },
+   {
+    "texto": "25 años",
+    "trampa": "Dividiste 2 entre 0,08, sin logaritmos."
+   },
+   {
+    "texto": "0,11 años",
+    "trampa": "Invertiste el cociente: 0,0334/0,301."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "1,08ᵗ = 2 → t = log 2 / log 1,08 ≈ 0,301/0,0334 ≈ 9 años."
+ },
+ {
+  "id": "m2-fin-d2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "dificil",
+  "enunciado": "Se invierten $1.000.000 por un año. La opción A paga 1 % mensual compuesto; la opción B paga 12 % anual (una sola vez al final). ¿Cuánto más paga A que B, aproximadamente?",
+  "opciones": [
+   {
+    "texto": "$0",
+    "trampa": "Crees que 1 % mensual es lo mismo que 12 % anual. Al componerse, 1,01¹² ≈ 1,1268."
+   },
+   {
+    "texto": "$120.000",
+    "trampa": "Ese es el interés de B, no la diferencia."
+   },
+   {
+    "texto": "$6.825",
+    "trampa": ""
+   },
+   {
+    "texto": "$126.825",
+    "trampa": "Ese es el interés de A, no la diferencia."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "A: 1.000.000·1,01¹² ≈ 1.126.825. B: 1.120.000. Diferencia ≈ 6.825."
+ },
+ {
+  "id": "m2-fin-d3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.financiera",
+  "nivel": "dificil",
+  "enunciado": "Un auto cuesta $8.000.000 al contado. A crédito se paga un pie del 20 % y 36 cuotas de $230.000. ¿Cuánto más se paga a crédito que al contado?",
+  "opciones": [
+   {
+    "texto": "$1.880.000",
+    "trampa": ""
+   },
+   {
+    "texto": "$280.000",
+    "trampa": "Olvidaste el pie: comparaste solo las cuotas (8.280.000) con el precio."
+   },
+   {
+    "texto": "$9.880.000",
+    "trampa": "Ese es el total pagado a crédito, no la diferencia."
+   },
+   {
+    "texto": "$1.600.000",
+    "trampa": "Ese es solo el pie."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Pie: 1.600.000. Cuotas: 36·230.000 = 8.280.000. Total 9.880.000 − 8.000.000 = 1.880.000."
  }
 ]

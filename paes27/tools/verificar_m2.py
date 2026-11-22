@@ -258,3 +258,116 @@ def _ejemplos_2a():
 
 
 _ejemplos_2a()
+
+
+# ===== Fase 2c · esfera
+VE = lambda r: Fraction(4, 3) * r ** 3  # volumen / π  # noqa: E731
+AE = lambda r: 4 * r ** 2               # área / π     # noqa: E731
+chk("m2-esf-b1")(lambda q: idx_num(q, float(VE(3)) * math.pi))
+chk("m2-esf-b2")(lambda q: idx_num(q, AE(10 / 2) * math.pi))
+chk("m2-esf-b3")(lambda q: idx_texto(q, f"Se multiplica por {float(VE(2) / VE(1)):g}"))
+chk("m2-esf-p1")(lambda q: idx_num(q, float(VE(math.isqrt(64 // 4))) * math.pi))
+chk("m2-esf-p2")(lambda q: idx_num(q, (2 * 6) ** 3 - float(VE(6)) * math.pi))
+chk("m2-esf-p3")(lambda q: idx_num(q, VE(3) / VE(1)))
+chk("m2-esf-d1")(lambda q: idx_num(q, (AE(3) / 2 + 3 ** 2) * math.pi))
+chk("m2-esf-d2")(lambda q: idx_num(q, (4 / 3 * math.pi) / (math.pi * 2)))   # r = 1
+chk("m2-esf-d3")(lambda q: idx_num(q, 3 * 4 / 4))                           # (4/3)πr³ = 4πr² → r = 3·4π/(4π)
+
+# ===== Fase 2c · homotecia
+homo_pt = lambda O, k, P: (O[0] + k * (P[0] - O[0]), O[1] + k * (P[1] - O[1]))  # noqa: E731
+chk("m2-hom-b1")(lambda q: idx_num(q, abs(3) * 4))
+chk("m2-hom-b2")(lambda q: idx_num(q, homo_pt((0, 0), 0.5, (6, -4))))
+chk("m2-hom-p1")(lambda q: idx_num(q, (-3) ** 2 * 10))
+chk("m2-hom-p2")(lambda q: idx_num(q, homo_pt((1, 2), 2, (4, 3))))
+chk("m2-hom-p3")(lambda q: idx_num(q, -Fraction(15, 6)))
+chk("m2-hom-d1")(lambda q: idx_num(q, Fraction(4 + 10, 4)))
+
+
+@chk("m2-hom-d2")
+def _(q):
+    k = math.sqrt(Fraction(18, 2 ** 2))           # k² = área nueva / área original
+    def ok(t):
+        vals = [valor(x) for x in re.findall(r"k = ([^ ]+)", t)]
+        return len(vals) == 2 and None not in vals and cerca(tuple(sorted(vals)), (-k, k))
+    return unico(q, ok, "k = ±3√2/2")
+
+
+@chk("m2-hom-d3")
+def _(q):
+    assert 2 * Fraction(-1, 2) == -1
+    return idx_texto(q, "Congruente, girada en 180° respecto del centro.")
+
+
+# ===== Fase 2c · circunferencia
+chk("m2-cir-b1")(lambda q: idx_num(q, 80 / 2))
+chk("m2-cir-b2")(lambda q: idx_num(q, 180 / 2))
+chk("m2-cir-b3")(lambda q: idx_num(q, 4 * 6 / 3))
+chk("m2-cir-p1")(lambda q: idx_num(q, 4 * 9 / 3))
+chk("m2-cir-p2")(lambda q: idx_num(q, 180 - 70))
+chk("m2-cir-p3")(lambda q: idx_num(q, 2 * math.pi * 6 * 60 / 360))
+chk("m2-cir-d1")(lambda q: idx_num(q, 2 * (180 - 35 - 65)))
+chk("m2-cir-d2")(lambda q: idx_num(q, math.hypot(6, 8) / 2))
+
+
+@chk("m2-cir-d3")
+def _(q):
+    raices = [(-5 + s * math.sqrt(25 + 4 * 36)) / 2 for s in (1, -1)]
+    validas = [r for r in raices if r > 0]
+    assert len(validas) == 1
+    return idx_num(q, validas[0])
+
+
+# ===== Fase 2c · binomial y normal
+def Phi(z):
+    return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+
+bpmf = lambda n, k, p: math.comb(n, k) * p ** k * (1 - p) ** (n - k)  # noqa: E731
+chk("m2-bin-b1")(lambda q: idx_num(q, bpmf(3, 2, Fraction(1, 2))))
+chk("m2-bin-b2")(lambda q: idx_num(q, 20 * 0.3))
+chk("m2-bin-b3")(lambda q: idx_num(q, round(100 * (Phi(1) - Phi(-1)))))
+chk("m2-bin-p1")(lambda q: idx_num(q, 1 - bpmf(5, 0, Fraction(1, 2))))
+chk("m2-bin-p2")(lambda q: idx_num(q, (182 - 170) / 8))
+chk("m2-bin-p3")(lambda q: idx_num(q, (100 - 95) / 2))   # regla 68–95–99,7: 70 = μ + 2σ
+chk("m2-bin-d1")(lambda q: idx_num(q, bpmf(4, 2, Fraction(1, 3))))
+
+
+@chk("m2-bin-d2")
+def _(q):
+    za, zb = (6.2 - 5.0) / 0.8, (72 - 60) / 10
+    assert za > zb
+    return idx_texto(q, "Ana, porque su valor z es mayor.")
+
+
+@chk("m2-bin-d3")
+def _(q):
+    p = 1 - 4.8 / 8
+    n = 8 / p
+    def ok(t):
+        m = re.match(r"n = (\S+), p = (\S+)$", t)
+        return bool(m) and cerca(valor(m.group(1)), n) and cerca(valor(m.group(2)), p)
+    return unico(q, ok, f"n = {n:g}, p = {p:g}")
+
+
+# ===== Fase 2c · matemática financiera
+chk("m2-fin-b1")(lambda q: idx_num(q, 500_000 * 0.03 * 4))
+chk("m2-fin-b2")(lambda q: idx_num(q, 900_000 * (0.10 + 0.015)))
+chk("m2-fin-b3")(lambda q: idx_num(q, 12 * 95_000 - 1_000_000))
+chk("m2-fin-p1")(lambda q: idx_num(q, 2_000_000 * 1.005 ** 12))
+chk("m2-fin-p2")(lambda q: idx_num(q, 10_000_000 * 1.05 * 0.95))
+chk("m2-fin-p3")(lambda q: idx_num(q, 15 * 12 * 20))
+chk("m2-fin-d1")(lambda q: idx_num(q, 0.301 / 0.0334, tol=0.01))
+chk("m2-fin-d2")(lambda q: idx_num(q, 1_000_000 * (1.01 ** 12 - 1.12), tol=1e-3))
+chk("m2-fin-d3")(lambda q: idx_num(q, 0.2 * 8_000_000 + 36 * 230_000 - 8_000_000))
+CONCEPTUALES["m2-hom-b3"] = "homotecia k = −1: descripción cualitativa"
+
+
+def _ejemplos_2c():
+    assert 28 + 90 + 62 == 180
+    assert homo_pt((1, 1), -2, (3, 4)) == (-3, -5) and 5 * (-2) ** 2 == 20
+    assert VE(6) == 288 and Fraction(288, 36) == 8
+    assert abs(bpmf(3, 2, 0.7) - 0.441) < 1e-12 and abs(0.7 ** 3 - 0.343) < 1e-12
+    assert round(1_000_000 * 1.02 ** 3) == 1_061_208 and 1_000_000 * (1 + 0.02 * 3) == 1_060_000
+
+
+_ejemplos_2c()

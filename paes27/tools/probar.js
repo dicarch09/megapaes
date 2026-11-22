@@ -11,7 +11,12 @@ const SHOTS = process.env.SHOTS || '';
   const page = await ctx.newPage();
   const errores = [];
   const externos = [];
-  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errores.push(`[${m.type()}] ${m.text()}`); });
+  let avisosDriver = 0; // avisos de rendimiento del GL por software de Chromium headless (no son de la app)
+  page.on('console', (m) => {
+    if (m.type() !== 'error' && m.type() !== 'warning') return;
+    if (m.type() === 'warning' && /GL Driver Message .*GPU stall due to ReadPixels/.test(m.text())) { avisosDriver++; return; }
+    errores.push(`[${m.type()}] ${m.text()}`);
+  });
   page.on('pageerror', (e) => errores.push(`[pageerror] ${e.message}`));
   page.on('request', (r) => { if (!r.url().startsWith(BASE) && !r.url().startsWith('blob:') && !r.url().startsWith('data:')) externos.push(r.url()); });
   page.on('dialog', (d) => d.accept());
@@ -139,7 +144,18 @@ const SHOTS = process.env.SHOTS || '';
         if (!(await s.isVisible())) continue;
         await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
       }
-      ok(n + selects >= 2, `${id}: ${n} sliders, ${selects} selectores`);
+      const arrastre = await sec.locator('canvas[style*="touch-action"]').count();
+      ok(n + selects + arrastre >= 2, `${id}: ${n} sliders, ${selects} selectores, ${arrastre} lienzos con arrastre`);
+      if (arrastre) {
+        const cv = sec.locator('canvas[style*="touch-action"]').first();
+        await cv.scrollIntoViewIfNeeded();
+        const antes = await sec.locator('.formula').first().innerText();
+        const b = await cv.boundingBox();
+        const x0 = b.x + b.width * (8 / 21), y0 = b.y + b.height / 2; // centro O = (2, 2) en la vista −6..15
+        await page.mouse.move(x0, y0); await page.mouse.down(); await page.mouse.move(x0 + 60, y0 - 40, { steps: 5 }); await page.mouse.up();
+        const despues = await sec.locator('.formula').first().innerText();
+        ok(antes !== despues, `${id}: arrastrar el centro actualiza la fórmula`);
+      }
       const pasos = sec.locator('button', { hasText: 'Siguiente paso' });
       while (await pasos.isVisible()) await pasos.click();
       for (const nivel of ['Básico', 'PAES', 'Difícil']) {
@@ -182,6 +198,7 @@ const SHOTS = process.env.SHOTS || '';
 
   console.log('\nErrores/avisos de consola:', errores.length ? '\n' + errores.join('\n') : 0);
   console.log('Pedidos fuera de localhost:', externos.length ? '\n' + externos.join('\n') : 0);
+  console.log('Avisos del driver GL por software (ignorados):', avisosDriver);
   await browser.close();
   process.exit(errores.length || externos.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });
