@@ -470,11 +470,13 @@ const NOMBRE_PASO = [[/^ver\b/i, 'Ver'], [/manipular/i, 'Manipular'], [/porqu/i,
 function montarPasos() {
 document.querySelectorAll('.leccion > .lec-body').forEach((body) => {
   const esPaso = (n) => n.matches('.paso, details.acc');
+  // «2b», «2c»…: continúan el paso anterior (misma pestaña, con su subtítulo visible)
+  const esSub = (n) => n.matches('.paso') && /^\d+[a-z]$/i.test(((n.querySelector('h3 .n') || {}).textContent || '').trim());
   const hijos = [...body.children];
   const k0 = hijos.findIndex(esPaso);
   if (k0 < 0) return;
   const grupos = [];
-  for (const n of hijos.slice(k0)) { if (esPaso(n) || !grupos.length) grupos.push([n]); else grupos[grupos.length - 1].push(n); }
+  for (const n of hijos.slice(k0)) { if ((esPaso(n) && !esSub(n)) || !grupos.length) grupos.push([n]); else grupos[grupos.length - 1].push(n); }
   if (grupos.length < 2) return;
   body.classList.add('con-pasos');
   const barra = el('div', 'pasos'); barra.setAttribute('role', 'tablist');
@@ -483,7 +485,7 @@ document.querySelectorAll('.leccion > .lec-body').forEach((body) => {
     const txt = (cab ? cab.textContent : '').replace(/^\s*\d+\s*/, '').trim();
     const nombre = (NOMBRE_PASO.find(([re]) => re.test(txt)) || [0, txt.split(/[·(:]/)[0].trim()])[1];
     if (g[0].matches('details')) { g[0].open = true; g[0].classList.add('porque'); }
-    const pane = el('div', 'paso-pane'); pane.setAttribute('role', 'tabpanel');
+    const pane = el('div', 'paso-pane' + (g.some(esSub) ? ' multi' : '')); pane.setAttribute('role', 'tabpanel');
     g[0].before(pane); g.forEach((n) => pane.appendChild(n));
     const b = el('button', '', `${i + 1} ${nombre}`); b.type = 'button'; b.setAttribute('role', 'tab');
     b.addEventListener('click', () => mostrar(i));
