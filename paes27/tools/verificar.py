@@ -124,7 +124,7 @@ def idx_texto(q, esperado):
 def idx_partes(q, objetivo, sep):
     """Alternativas con varias magnitudes separadas por `sep` (p. ej. '1,4 m/s y 0,2 m/s')."""
     def ok(t):
-        partes = re.split(sep, re.sub(r"<[^>]+>", "", t))
+        partes = [p for p in re.split(sep, re.sub(r"<[^>]+>", "", t)) if p.strip()]
         return cerca(tuple(valor(p) for p in partes), objetivo)
     return unico(q, ok, repr(objetivo))
 

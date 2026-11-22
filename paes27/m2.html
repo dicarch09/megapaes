@@ -1,0 +1,2206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAES 2027 · M2</title>
+<style>
+/* == paes27-css v1 == */
+:root{--bg:#0d111c;--panel:#151b2b;--panel2:#1c2438;--line:#2a3450;--ink:#e7ecf6;--muted:#93a0bb;--acc:#8b7cf6;--acc2:#5ec8e5;--ok:#43c59e;--mal:#f0697a;--warn:#f2b84b;--m2:#8b7cf6;--cie:#5ec8e5;--m1:#7fd17a;--len:#f2a65a;--r:12px;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc2)}
+h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
+h2{font-size:1.3rem}h3{font-size:1.08rem}
+.wrap{max-width:1040px;margin:0 auto;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0}
+.muted{color:var(--muted)}.small{font-size:.88rem}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:9px;padding:.55em 1em;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:default}
+.btn.sec{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+.btn.mini{padding:.3em .7em;font-size:.88rem}
+kbd{font:600 .72em ui-monospace,monospace;background:rgba(255,255,255,.14);border-radius:4px;padding:.05em .35em;margin-left:.3em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:8px 0 4px}
+.tabs button{background:none;border:0;color:var(--muted);font:inherit;padding:.6em .9em;cursor:pointer;border-bottom:3px solid transparent}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+.pane{display:none}.pane.on{display:block}
+details.acc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;margin:10px 0}
+details.acc>summary{cursor:pointer;padding:.7em 1em;font-weight:600;list-style:none}
+details.acc>summary::before{content:"▸ ";color:var(--acc)}details.acc[open]>summary::before{content:"▾ "}
+details.acc>.in{padding:0 1em 1em}
+.chip{display:inline-block;padding:.1em .55em;border-radius:99px;font-size:.78rem;font-weight:700;background:var(--panel2);border:1px solid var(--line)}
+.chip.A{color:#ffb4bd;border-color:#6b2f3a}.chip.B{color:#ffd98c;border-color:#6b5524}.chip.C{color:#a9b7d4}.chip.R{color:#9fe3c9;border-color:#245c4a}
+.bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
+.q{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.q-meta{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.q-enun{font-size:1.04rem;margin-bottom:12px}
+.q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+.q-ops{display:grid;gap:8px}
+.q-op{display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.6em .8em;font:inherit;cursor:pointer}
+.q-op:hover:not(:disabled){border-color:var(--acc)}
+.q-op:disabled{cursor:default}
+.q-op.ok{border-color:var(--ok);background:rgba(67,197,158,.13)}.q-op.mal{border-color:var(--mal);background:rgba(240,105,122,.13)}
+.q-l{font-weight:800;color:var(--acc);min-width:1.2em}
+.q-fb{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
+.q-trampa{margin:6px 0;padding:6px 10px;border-left:3px solid var(--mal);background:rgba(240,105,122,.08)}
+.q-exp{margin-top:6px}
+.q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+input[type=range]{accent-color:var(--acc);width:100%}
+@media (max-width:600px){.wrap{padding:10px}.card{padding:12px}}
+/* == fin paes27-css v1 == */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.top h1{font-size:1.5rem;margin:0}
+.paginas{display:flex;gap:6px;flex-wrap:wrap}
+.paginas a,.paginas span{padding:.35em .75em;border-radius:99px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:.9rem}
+.paginas a.on{background:var(--m2);border-color:var(--m2)}
+.paginas span{color:var(--muted);border-style:dashed}
+.leccion{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
+.lec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lec-head h2{margin:0 8px 0 0}
+.chip.nuevo{color:#9fe3c9;border-color:#245c4a}
+.dom{margin-left:auto;font-size:.9rem;font-weight:700}
+.idea{background:var(--panel2);border-left:3px solid var(--acc);padding:10px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+.paso{margin:18px 0}
+.paso>h3{display:flex;align-items:center;gap:8px}
+.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;background:var(--acc);color:#fff;font-size:.85rem}
+.cv{position:relative;min-width:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#0f1524}
+.cv canvas{display:block;width:100%}
+.manip{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:820px){.manip{grid-template-columns:minmax(0,1fr)}}
+.ctrl{display:grid;gap:8px}
+.sl{display:grid;gap:2px;font-size:.92rem}
+.sl b{color:var(--acc2);font-variant-numeric:tabular-nums}
+.formula{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-variant-numeric:tabular-nums;line-height:1.7}
+.formula .res{font-weight:700}
+.formula .hl{color:var(--warn);font-weight:700}
+.cap{margin:6px 0 0;min-height:1.5em}
+.ejemplo .enun{font-weight:600;margin-bottom:8px}
+.ejemplo ol{margin:0;padding-left:1.4em}
+.ejemplo li{margin:6px 0;animation:apar .35s ease}
+@keyframes apar{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+.ejemplo .trampa-ej{margin-top:8px;padding:6px 10px;border-left:3px solid var(--warn);background:rgba(242,184,75,.08)}
+.niveles{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.niveles button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.resumen-nivel{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+table.t2{border-collapse:collapse;margin:4px 0;font-variant-numeric:tabular-nums}
+table.t2 td,table.t2 th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+table.t2 .hl{background:rgba(242,184,75,.22)}table.t2 .hl2{background:rgba(94,200,229,.18)}
+.pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.pend .card{margin:0;border-style:dashed}
+.ley{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.ley i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:.3em .5em;font:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Matemática 2</h1>
+      <div class="muted small">Lun 30 nov, 15:00 · 55 preguntas en 2 h 20 min · M2 evalúa todo M1 más estos temas</div>
+    </div>
+    <nav class="paginas">
+      <a href="index.html">Hub</a>
+      <a href="m2.html" class="on">M2</a>
+      <span title="Llega en la Fase 3">Física</span>
+      <span title="Llega en la Fase 4">Bio/Quím</span>
+      <span title="Llega en la Fase 4">M1</span>
+      <span title="Llega en la Fase 5">Lectora</span>
+    </nav>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="alg">Álgebra y funciones</button>
+    <button data-tab="num">Números</button>
+    <button data-tab="geo">Geometría</button>
+    <button data-tab="pro">Probabilidad</button>
+    <button data-tab="sd">Suficiencia de datos</button>
+  </nav>
+  <p class="small muted">Cada lección: <b>1 ver</b> → <b>2 manipular</b> → <b>3 el porqué</b> → <b>4 ejemplo</b> → <b>5 práctica</b>. Atajos en la práctica: 1–4 para responder, Enter para seguir.</p>
+
+  <!-- ===================== ÁLGEBRA ===================== -->
+  <div class="pane" id="p-alg">
+  <section class="leccion" id="m2.alg.sistemas-rectas" data-tab="alg">
+    <div class="lec-head"><h2>Rectas en el plano + sistemas 2×2</h2><span class="chip A">A</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="m2.alg.sistemas-rectas"></span></div>
+    <p class="idea">Cada ecuación es una recta. Resolver el sistema es buscar <b>dónde se cruzan</b>. Se cortan → <b>1 solución</b>. Paralelas → <b>0</b>. Coinciden → <b>infinitas</b>.</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="rec-ver" role="img" aria-label="Dos rectas: una gira hasta quedar paralela y luego se superpone a la otra"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="rec-ver">⏸ Pausa</button><span id="rec-ver-txt"></span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="rec-man" role="img" aria-label="Dos rectas que puedes mover con los controles"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>m₁ · pendiente de L₁ <b id="rec-m1-v"></b></span><input type="range" id="rec-m1" min="-4" max="4" step="0.5" value="2"></label>
+          <label class="sl"><span>n₁ · donde L₁ corta al eje Y <b id="rec-n1-v"></b></span><input type="range" id="rec-n1" min="-5" max="5" step="0.5" value="1"></label>
+          <label class="sl"><span>m₂ · pendiente de L₂ <b id="rec-m2-v"></b></span><input type="range" id="rec-m2" min="-4" max="4" step="0.5" value="-1"></label>
+          <label class="sl"><span>n₂ · donde L₂ corta al eje Y <b id="rec-n2-v"></b></span><input type="range" id="rec-n2" min="-5" max="5" step="0.5" value="4"></label>
+          <div class="fila"><span class="small muted">Prueba:</span>
+            <button class="btn sec mini" data-rec="2,1,-1,4">se cortan</button>
+            <button class="btn sec mini" data-rec="1,2,1,-2">paralelas</button>
+            <button class="btn sec mini" data-rec="0.5,1,0.5,1">coinciden</button>
+            <button class="btn sec mini" data-rec="2,0,-0.5,3">perpendiculares</button></div>
+          <div class="formula" id="rec-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li><b>Pendiente:</b> cuánto sube y al avanzar 1 en x. Entre dos puntos: m = (y₂ − y₁)/(x₂ − x₁), con el mismo orden arriba y abajo.</li>
+      <li>Toda recta no vertical se escribe <b>y = mx + n</b>: m es la pendiente y n es donde corta al eje Y (porque si x = 0, y = n).</li>
+      <li>Un punto (x, y) es solución de una ecuación si está sobre su recta. Solución del <b>sistema</b> = punto que está sobre las <b>dos</b> rectas.</li>
+      <li>Igualando: m₁x + n₁ = m₂x + n₂ → <b>x = (n₂ − n₁)/(m₁ − m₂)</b>. Si m₁ ≠ m₂, hay un solo x: <b>1 solución</b>.</li>
+      <li>Si m₁ = m₂ el denominador es 0: con n₁ ≠ n₂ son <b>paralelas</b> (0 soluciones); con n₁ = n₂ son la <b>misma recta</b> (infinitas). Extra: perpendiculares ⇔ m₁·m₂ = −1.</li>
+    </ol>
+    <p class="small muted">En forma general ax + by = c: paralelas si a₁/a₂ = b₁/b₂ ≠ c₁/c₂; coinciden si a₁/a₂ = b₁/b₂ = c₁/c₂. (Si hay ceros, compara a₁·b₂ = a₂·b₁.)</p></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="rec"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.alg.sistemas-rectas"></div></div>
+  </section>
+  </div>
+
+  <!-- ===================== NÚMEROS ===================== -->
+  <div class="pane" id="p-num">
+  <section class="leccion" id="m2.num.log-exp" data-tab="num">
+    <div class="lec-head"><h2>Logaritmos + función exponencial y logarítmica</h2><span class="chip A">A</span><span class="dom" data-tema="m2.num.log-exp"></span></div>
+    <p class="idea">Un logaritmo es <b>un exponente</b>: log<sub>b</sub> N responde «¿a qué número elevo b para obtener N?». Por eso la función logarítmica es la exponencial <b>al revés</b>: intercambia x e y.</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="log-ver" role="img" aria-label="Curvas y = 2 elevado a x e y = log en base 2 de x, reflejadas en la recta y = x"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="log-ver">⏸ Pausa</button><span id="log-ver-txt"></span></div>
+      <div class="ley"><span><i style="background:var(--acc)"></i>y = 2ˣ</span><span><i style="background:var(--acc2)"></i>y = log₂ x</span><span><i style="background:var(--muted)"></i>y = x (espejo)</span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="log-man" role="img" aria-label="Exponencial y logarítmica con base ajustable"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Base b <b id="log-b-v"></b></span><input type="range" id="log-b" min="0.2" max="5" step="0.1" value="2"></label>
+          <label class="sl"><span>Un valor de x <b id="log-x-v"></b></span><input type="range" id="log-x" min="-3" max="6" step="0.5" value="3"></label>
+          <div class="formula" id="log-form"></div>
+          <label class="sl"><span>Exponente p (para M = bᵖ) <b id="log-p-v"></b></span><input type="range" id="log-p" min="-2" max="4" step="1" value="3"></label>
+          <label class="sl"><span>Exponente q (para N = b<sup>q</sup>) <b id="log-q-v"></b></span><input type="range" id="log-q" min="-2" max="4" step="1" value="2"></label>
+          <div class="formula" id="log-form2"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Definición: <b>log<sub>b</sub> N = k ⇔ b<sup>k</sup> = N</b>, con b &gt; 0, b ≠ 1 y N &gt; 0. Por eso log<sub>b</sub> 1 = 0 y log<sub>b</sub> b = 1.</li>
+      <li>Producto: si M = b<sup>p</sup> y N = b<sup>q</sup>, entonces M·N = b<sup>p+q</sup>. Luego <b>log<sub>b</sub>(M·N) = log<sub>b</sub> M + log<sub>b</sub> N</b> (vale en cualquier base).</li>
+      <li>Cociente: M/N = b<sup>p−q</sup>, así que <b>log<sub>b</sub>(M/N) = log<sub>b</sub> M − log<sub>b</sub> N</b>.</li>
+      <li>Potencia: M<sup>k</sup> = b<sup>pk</sup>, así que <b>log<sub>b</sub>(M<sup>k</sup>) = k·log<sub>b</sub> M</b>. Ojo: (log M)<sup>k</sup> es otra cosa.</li>
+      <li>Cambio de base: si b<sup>k</sup> = N, aplico log a ambos lados: k·log b = log N → <b>log<sub>b</sub> N = log N / log b</b>. Gráfico: como x ↔ y se intercambian, y = log<sub>b</sub> x es el reflejo de y = b<sup>x</sup> en la recta y = x. Dominio del log: x &gt; 0.</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="log"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.num.log-exp"></div></div>
+  </section>
+  </div>
+
+  <!-- ===================== GEOMETRÍA ===================== -->
+  <div class="pane" id="p-geo">
+  <section class="leccion" id="m2.geo.trig-razones" data-tab="geo">
+    <div class="lec-head"><h2>Trigonometría: del triángulo a la onda</h2><span class="chip A">A</span><span class="chip B">B · seno y coseno</span><span class="dom" data-tema="m2.geo.trig-razones"></span><span class="dom" data-tema="m2.alg.trig-funciones" style="margin-left:8px"></span></div>
+    <p class="idea">En un triángulo rectángulo, las razones entre lados dependen <b>solo del ángulo</b>. En una circunferencia de radio 1, <b>cos θ es la x</b> y <b>sen θ es la y</b> del punto. Al girar, esa y sube y baja: eso es la gráfica del seno.</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="tri-ver" role="img" aria-label="Un punto gira en la circunferencia unitaria y su altura dibuja la curva seno"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="tri-ver">⏸ Pausa</button><span id="tri-ver-txt"></span></div>
+      <div class="ley"><span><i style="background:var(--warn)"></i>sen θ (altura)</span><span><i style="background:var(--acc2)"></i>cos θ (avance)</span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular · el triángulo</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="tri-man" role="img" aria-label="Triángulo rectángulo con ángulo e hipotenusa ajustables"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Ángulo α <b id="tri-a-v"></b></span><input type="range" id="tri-a" min="5" max="85" step="1" value="30"></label>
+          <label class="sl"><span>Hipotenusa <b id="tri-h-v"></b></span><input type="range" id="tri-h" min="2" max="10" step="0.5" value="6"></label>
+          <div class="formula" id="tri-form"></div>
+        </div>
+      </div>
+    </div>
+    <div class="paso"><h3><span class="n">2b</span> Manipular · la función</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="fun-man" role="img" aria-label="Gráfico de A por seno de B x más C"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Función <select id="fun-tipo"><option value="sen">seno</option><option value="cos">coseno</option></select></span></label>
+          <label class="sl"><span>A · amplitud (estira vertical) <b id="fun-A-v"></b></span><input type="range" id="fun-A" min="-3" max="3" step="0.5" value="2"></label>
+          <label class="sl"><span>B · comprime horizontal <b id="fun-B-v"></b></span><input type="range" id="fun-B" min="0.5" max="4" step="0.5" value="1"></label>
+          <label class="sl"><span>C · sube o baja <b id="fun-C-v"></b></span><input type="range" id="fun-C" min="-2" max="2" step="0.5" value="0"></label>
+          <div class="formula" id="fun-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Dos triángulos rectángulos con el mismo ángulo agudo α son <b>semejantes</b> (tienen los tres ángulos iguales).</li>
+      <li>En triángulos semejantes los lados son proporcionales, así que las razones dependen solo de α: <b>sen α = opuesto/hipotenusa</b>, <b>cos α = adyacente/hipotenusa</b>, <b>tan α = opuesto/adyacente = sen α/cos α</b>.</li>
+      <li>Si la hipotenusa mide 1 (circunferencia de radio 1), el punto del ángulo θ (medido desde el eje X positivo, en contra del reloj) es <b>(cos θ, sen θ)</b>. Así se definen también para ángulos mayores que 90°.</li>
+      <li>Pitágoras en ese triángulo: <b>sen²θ + cos²θ = 1</b>. Valores clave: sen 30° = 1/2, sen 45° = √2/2, sen 60° = √3/2; cos 30° = √3/2, cos 45° = √2/2, cos 60° = 1/2.</li>
+      <li>Al dar la vuelta, sen θ oscila entre −1 y 1 y se repite cada 360° = 2π. En <b>f(x) = A·sen(Bx) + C</b>: amplitud |A|, período <b>2π/B</b> (con B &gt; 0), línea central y = C, máximo C + |A|, mínimo C − |A|.</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="tri"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.geo.trig-razones,m2.alg.trig-funciones"></div></div>
+  </section>
+  </div>
+
+  <!-- ===================== PROBABILIDAD ===================== -->
+  <div class="pane" id="p-pro">
+  <section class="leccion" id="m2.pro.condicional" data-tab="pro">
+    <div class="lec-head"><h2>Probabilidad condicional</h2><span class="chip A">A</span><span class="dom" data-tema="m2.pro.condicional"></span></div>
+    <p class="idea">«Dado que pasó B» significa: <b>el universo se achica a B</b>. P(A | B) = casos de A dentro de B / casos de B. La trampa clásica es dividir por el total, o condicionar al revés.</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="con-ver" role="img" aria-label="100 personas; al saber que ocurrió B, las demás se apagan y el universo se achica"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="con-ver">⏸ Pausa</button><span id="con-ver-txt"></span></div>
+      <div class="ley"><span><i style="background:var(--warn)"></i>A: usa lentes</span><span><i style="border:2px solid var(--acc2);background:none"></i>B: es mujer</span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular · tabla y árbol con los mismos datos</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="con-man" role="img" aria-label="Diagrama de árbol que se actualiza con la tabla"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>A y B <b id="con-a-v"></b></span><input type="range" id="con-a" min="0" max="60" step="1" value="18"></label>
+          <label class="sl"><span>A y no B <b id="con-b-v"></b></span><input type="range" id="con-b" min="0" max="60" step="1" value="12"></label>
+          <label class="sl"><span>no A y B <b id="con-c-v"></b></span><input type="range" id="con-c" min="0" max="60" step="1" value="22"></label>
+          <label class="sl"><span>no A y no B <b id="con-d-v"></b></span><input type="range" id="con-d" min="0" max="60" step="1" value="48"></label>
+          <div class="fila"><span class="small muted">Calcular:</span>
+            <select id="con-que"><option value="AB">P(A | B)</option><option value="BA">P(B | A)</option><option value="AyB">P(A ∩ B)</option><option value="A">P(A)</option></select></div>
+          <div class="formula" id="con-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Saber que ocurrió B descarta todo lo que no es B: el nuevo total es <b>n(B)</b>.</li>
+      <li>De esos casos, los favorables a A son los que están en A y en B: <b>n(A ∩ B)</b>.</li>
+      <li>Laplace en el universo achicado: <b>P(A | B) = n(A ∩ B) / n(B)</b>.</li>
+      <li>Dividiendo arriba y abajo por el total: <b>P(A | B) = P(A ∩ B) / P(B)</b>. Ojo: P(A | B) y P(B | A) tienen el mismo numerador pero distinto denominador.</li>
+      <li>Despejando: <b>P(A ∩ B) = P(B)·P(A | B)</b>: es multiplicar por las ramas del árbol. Sumando las ramas que llegan a A sale P(A) (probabilidad total). Si P(A | B) = P(A), A y B son <b>independientes</b>.</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="con"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.pro.condicional"></div></div>
+  </section>
+  </div>
+
+  <div class="pane" id="p-sd"></div>
+</div>
+
+<script type="application/json" id="banco-m2">
+[
+ {
+  "id": "m2-rec-b1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la pendiente de la recta 4x + 2y = 6?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Leíste el coeficiente de x sin despejar y. La pendiente se lee en la forma y = mx + n."
+   },
+   {
+    "texto": "2",
+    "trampa": "Olvidaste el signo al pasar 4x al otro lado: 2y = −4x + 6."
+   },
+   {
+    "texto": "3",
+    "trampa": "3 es el coeficiente de posición (donde corta al eje Y), no la pendiente."
+   },
+   {
+    "texto": "−2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "2y = −4x + 6 → y = −2x + 3. La pendiente es −2."
+ },
+ {
+  "id": "m2-rec-b2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la pendiente de la recta que pasa por los puntos (2, 1) y (4, 7)?",
+  "opciones": [
+   {
+    "texto": "1/3",
+    "trampa": "Invertiste la fórmula: es Δy/Δx, no Δx/Δy."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "4",
+    "trampa": "Sumaste las coordenadas: (7 + 1)/2. La pendiente usa diferencias."
+   },
+   {
+    "texto": "−3",
+    "trampa": "Restaste en distinto orden arriba y abajo: (7 − 1)/(2 − 4)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "m = (7 − 1)/(4 − 2) = 6/2 = 3."
+ },
+ {
+  "id": "m2-rec-b3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la solución del sistema x + y = 10 ; x − y = 4?",
+  "opciones": [
+   {
+    "texto": "(3, 7)",
+    "trampa": "Intercambiaste x e y: 3 − 7 = −4, no 4."
+   },
+   {
+    "texto": "(14, −4)",
+    "trampa": "Al sumar las ecuaciones quedó 2x = 14 y olvidaste dividir por 2; luego y = 10 − 14."
+   },
+   {
+    "texto": "(7, −3)",
+    "trampa": "Despejaste mal: de x − y = 4 sale y = x − 4, no y = 4 − x."
+   },
+   {
+    "texto": "(7, 3)",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sumando las ecuaciones: 2x = 14 → x = 7. Luego y = 10 − 7 = 3. Comprueba: 7 − 3 = 4 ✔."
+ },
+ {
+  "id": "m2-rec-p1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la ecuación de la recta que pasa por (0, −2) y es perpendicular a y = 3x + 1?",
+  "opciones": [
+   {
+    "texto": "y = −(1/3)x − 2",
+    "trampa": ""
+   },
+   {
+    "texto": "y = 3x − 2",
+    "trampa": "Esa es paralela (misma pendiente), no perpendicular."
+   },
+   {
+    "texto": "y = (1/3)x − 2",
+    "trampa": "Invertiste la pendiente pero olvidaste cambiarle el signo."
+   },
+   {
+    "texto": "y = −3x − 2",
+    "trampa": "Cambiaste el signo pero olvidaste invertir la pendiente."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Perpendicular: m<sub>1</sub>·m<sub>2</sub> = −1, así que m = −1/3. Pasa por (0, −2), entonces n = −2."
+ },
+ {
+  "id": "m2-rec-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "¿Para qué valor de m las rectas y = mx + 2 y 2x − 4y = 8 son paralelas?",
+  "opciones": [
+   {
+    "texto": "2",
+    "trampa": "Tomaste el coeficiente de x sin despejar y."
+   },
+   {
+    "texto": "−1/2",
+    "trampa": "Al dividir −2x por −4 dejaste el signo menos. Menos dividido por menos da más: y = x/2 − 2."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   },
+   {
+    "texto": "−2",
+    "trampa": "−2 hace que las rectas sean perpendiculares (−2 · 1/2 = −1), no paralelas."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "2x − 4y = 8 → y = (1/2)x − 2. Paralelas: misma pendiente, m = 1/2."
+ },
+ {
+  "id": "m2-rec-p3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "En una librería, 2 cuadernos y 3 lápices cuestan $3.400, y 1 cuaderno y 2 lápices cuestan $2.000. ¿Cuánto cuesta un cuaderno?",
+  "opciones": [
+   {
+    "texto": "$800",
+    "trampa": ""
+   },
+   {
+    "texto": "$600",
+    "trampa": "Ese es el precio del lápiz. Lee bien qué incógnita te piden."
+   },
+   {
+    "texto": "$1.400",
+    "trampa": "Hallaste l = 600 y lo reemplazaste en c + 2l = 2000, pero olvidaste el 2: c = 2000 − 600."
+   },
+   {
+    "texto": "$1.600",
+    "trampa": "Reemplazaste l = 600 en la primera ecuación (2c = 1.600) y olvidaste dividir por 2."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "2c + 3l = 3400 y c + 2l = 2000. De la segunda, c = 2000 − 2l. Reemplazando: 4000 − 4l + 3l = 3400 → l = 600, c = 800."
+ },
+ {
+  "id": "m2-rec-d1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "¿Qué valor debe tener k para que el sistema 2x + ky = 5 ; 4x + 6y = 7 NO tenga solución?",
+  "opciones": [
+   {
+    "texto": "−3",
+    "trampa": "Crees que paralelas exige pendientes opuestas. Exige pendientes IGUALES."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "12",
+    "trampa": "Despejaste mal la proporción 2/4 = k/6: k = 6·2/4 = 3, no 6·4/2."
+   },
+   {
+    "texto": "Ningún valor de k",
+    "trampa": "Crees que dos rectas siempre se cortan. Si son paralelas y distintas, no hay solución."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Sin solución = rectas paralelas distintas: 2/4 = k/6 ≠ 5/7. Entonces k = 3, y como 5/7 ≠ 1/2, no coinciden."
+ },
+ {
+  "id": "m2-rec-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "Las rectas y = 2x − 1 e y = −x + 5 forman, junto con el eje Y, un triángulo. ¿Cuál es su área?",
+  "opciones": [
+   {
+    "texto": "12",
+    "trampa": "Olvidaste dividir por 2 en la fórmula del área del triángulo."
+   },
+   {
+    "texto": "9",
+    "trampa": "Usaste como altura la coordenada y del punto de corte (3). La altura hacia el eje Y es la distancia horizontal: x = 2."
+   },
+   {
+    "texto": "4",
+    "trampa": "Calculaste la base como 5 − 1 ignorando el signo de −1. La base va de −1 a 5: mide 6."
+   },
+   {
+    "texto": "6",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Se cortan en 2x − 1 = −x + 5 → x = 2, y = 3. En el eje Y cortan en −1 y en 5: base 6. Altura = 2. Área = 6·2/2 = 6."
+ },
+ {
+  "id": "m2-rec-d3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "La recta que pasa por (−1, 4) y (3, −4), ¿en qué punto corta al eje X?",
+  "opciones": [
+   {
+    "texto": "(0, 2)",
+    "trampa": "Ese es el corte con el eje Y."
+   },
+   {
+    "texto": "(1, 0)",
+    "trampa": ""
+   },
+   {
+    "texto": "(2, 0)",
+    "trampa": "Usaste el coeficiente de posición (2) como si fuera el corte con X."
+   },
+   {
+    "texto": "(−1, 0)",
+    "trampa": "Error de signo al resolver −2x + 2 = 0."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "m = (−4 − 4)/(3 − (−1)) = −2. y − 4 = −2(x + 1) → y = −2x + 2. Corta al eje X cuando y = 0: x = 1."
+ },
+ {
+  "id": "m2-log-b1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de log<sub>5</sub> 125?",
+  "opciones": [
+   {
+    "texto": "25",
+    "trampa": "Dividiste 125 entre 5. El logaritmo es un exponente: ¿a qué se eleva 5 para dar 125?"
+   },
+   {
+    "texto": "1/3",
+    "trampa": "Confundiste con la raíz cúbica: 125<sup>1/3</sup> = 5. Se pide el exponente de 5."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Escribiste 125 = 5·25 = 5·5² y contaste solo el exponente de 25. En realidad 125 = 5³."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "5<sup>3</sup> = 125, entonces log<sub>5</sub> 125 = 3."
+ },
+ {
+  "id": "m2-log-b2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de log 1000 + log 0,1? (log = logaritmo en base 10)",
+  "opciones": [
+   {
+    "texto": "2",
+    "trampa": ""
+   },
+   {
+    "texto": "4",
+    "trampa": "Tomaste log 0,1 = 1. Pero 10<sup>−1</sup> = 0,1: vale −1."
+   },
+   {
+    "texto": "3",
+    "trampa": "Tomaste log 0,1 = 0. Es log 1 el que vale 0."
+   },
+   {
+    "texto": "100",
+    "trampa": "1000·0,1 = 100 es el argumento: falta sacarle el logaritmo (log 100 = 2)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "log 1000 = 3 y log 0,1 = −1. Suma: 2. (También: log(1000·0,1) = log 100 = 2.)"
+ },
+ {
+  "id": "m2-log-b3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el dominio de f(x) = log<sub>2</sub>(x − 3)?",
+  "opciones": [
+   {
+    "texto": "x ≥ 3",
+    "trampa": "Incluiste el 3, pero log<sub>2</sub>(0) no existe: el argumento debe ser mayor que 0."
+   },
+   {
+    "texto": "x > 0",
+    "trampa": "Ese es el dominio de log<sub>2</sub> x. Acá el argumento es x − 3."
+   },
+   {
+    "texto": "x > 3",
+    "trampa": ""
+   },
+   {
+    "texto": "x > −3",
+    "trampa": "Error de signo: x − 3 > 0 → x > 3."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El argumento de un logaritmo debe ser positivo: x − 3 > 0 → x > 3."
+ },
+ {
+  "id": "m2-log-p1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "Si log 2 = a y log 3 = b, ¿a qué es igual log 18?",
+  "opciones": [
+   {
+    "texto": "2a + b",
+    "trampa": "Factorizaste 18 como 2<sup>2</sup>·3 = 12. En realidad 18 = 2·3<sup>2</sup>."
+   },
+   {
+    "texto": "a + 2b",
+    "trampa": ""
+   },
+   {
+    "texto": "2ab",
+    "trampa": "Multiplicaste los logaritmos: log 2 · log 9 = a·2b. El logaritmo de un producto es la SUMA."
+   },
+   {
+    "texto": "a + b²",
+    "trampa": "log(3<sup>2</sup>) = 2·log 3, no (log 3)<sup>2</sup>."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "18 = 2·3<sup>2</sup> → log 18 = log 2 + 2·log 3 = a + 2b."
+ },
+ {
+  "id": "m2-log-p2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la solución de 3<sup>2x − 1</sup> = 27?",
+  "opciones": [
+   {
+    "texto": "5",
+    "trampa": "Dividiste 27 entre 3 en vez de escribir 27 como potencia de 3 (27 = 3<sup>3</sup>)."
+   },
+   {
+    "texto": "3/2",
+    "trampa": "Olvidaste el −1: resolviste 2x = 3."
+   },
+   {
+    "texto": "1",
+    "trampa": "Al despejar restaste 1 en vez de sumarlo: 2x = 3 − 1 = 2, y así x = 1."
+   },
+   {
+    "texto": "2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "27 = 3<sup>3</sup>, así que 2x − 1 = 3 → 2x = 4 → x = 2."
+ },
+ {
+  "id": "m2-log-p3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre f(x) = (1/2)<sup>x</sup> es verdadera?",
+  "opciones": [
+   {
+    "texto": "Es creciente y corta al eje Y en (0, 1).",
+    "trampa": "No toda exponencial crece: si la base está entre 0 y 1, decrece."
+   },
+   {
+    "texto": "Es decreciente y corta al eje Y en (0, 1).",
+    "trampa": ""
+   },
+   {
+    "texto": "Es decreciente y corta al eje Y en (0, 1/2).",
+    "trampa": "Evaluaste en x = 1. El corte con el eje Y es en x = 0, y (1/2)<sup>0</sup> = 1."
+   },
+   {
+    "texto": "Corta al eje X en (1, 0).",
+    "trampa": "Confundiste con la logarítmica. Una exponencial nunca vale 0: no corta al eje X."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Base 1/2 (entre 0 y 1): decreciente. f(0) = (1/2)<sup>0</sup> = 1, así que corta al eje Y en (0, 1)."
+ },
+ {
+  "id": "m2-log-d1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "Si log<sub>a</sub> 2 = 0,4, ¿cuál es el valor de log<sub>a</sub> 8 − log<sub>a</sub> 4?",
+  "opciones": [
+   {
+    "texto": "0,4",
+    "trampa": ""
+   },
+   {
+    "texto": "0,8",
+    "trampa": "Restaste los argumentos: log<sub>a</sub>(8 − 4). La resta de logaritmos es el logaritmo de la DIVISIÓN."
+   },
+   {
+    "texto": "1,5",
+    "trampa": "Dividiste los logaritmos (1,2/0,8). Lo que se divide son los argumentos."
+   },
+   {
+    "texto": "2",
+    "trampa": "8/4 = 2 es el argumento: falta sacarle el logaritmo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "log<sub>a</sub> 8 − log<sub>a</sub> 4 = log<sub>a</sub>(8/4) = log<sub>a</sub> 2 = 0,4."
+ },
+ {
+  "id": "m2-log-d2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es la solución de log<sub>3</sub>(x) + log<sub>3</sub>(x − 8) = 2?",
+  "opciones": [
+   {
+    "texto": "−1 y 9",
+    "trampa": "No revisaste el dominio: con x = −1, log<sub>3</sub>(−1) no existe."
+   },
+   {
+    "texto": "−1",
+    "trampa": "Te quedaste con la raíz que NO cumple el dominio."
+   },
+   {
+    "texto": "9",
+    "trampa": ""
+   },
+   {
+    "texto": "17/2",
+    "trampa": "Sumaste los argumentos (2x − 8 = 9). La suma de logaritmos es el logaritmo del PRODUCTO."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "x(x − 8) = 3<sup>2</sup> = 9 → x<sup>2</sup> − 8x − 9 = 0 → (x − 9)(x + 1) = 0. Solo x = 9 cumple x > 8."
+ },
+ {
+  "id": "m2-log-d3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "Un capital crece según C(t) = 1000·(1,1)<sup>t</sup>, con t en años. ¿En cuántos años se duplica? Usa log 2 ≈ 0,30 y log 1,1 ≈ 0,04.",
+  "opciones": [
+   {
+    "texto": "7,5 años",
+    "trampa": ""
+   },
+   {
+    "texto": "50 años",
+    "trampa": "Calculaste 2/0,04: olvidaste sacarle el logaritmo al 2."
+   },
+   {
+    "texto": "10 años",
+    "trampa": "Pensaste en interés simple (10 % por año, 10 años para sumar 100 %). Acá es compuesto."
+   },
+   {
+    "texto": "0,13 años",
+    "trampa": "Invertiste el cociente: 0,04/0,30."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "2000 = 1000·1,1<sup>t</sup> → 1,1<sup>t</sup> = 2 → t·log 1,1 = log 2 → t = 0,30/0,04 = 7,5."
+ },
+ {
+  "id": "m2-con-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "La tabla muestra a 40 personas según sexo y uso de lentes.<table><tr><th></th><th>Con lentes</th><th>Sin lentes</th><th>Total</th></tr><tr><th>Hombres</th><td>8</td><td>12</td><td>20</td></tr><tr><th>Mujeres</th><td>6</td><td>14</td><td>20</td></tr><tr><th>Total</th><td>14</td><td>26</td><td>40</td></tr></table>Se elige una persona que usa lentes. ¿Cuál es la probabilidad de que sea mujer?",
+  "opciones": [
+   {
+    "texto": "3/10",
+    "trampa": "6/20 es la probabilidad de usar lentes DADO que es mujer: condicionaste al revés."
+   },
+   {
+    "texto": "3/7",
+    "trampa": ""
+   },
+   {
+    "texto": "3/20",
+    "trampa": "6/40 es la probabilidad de ser mujer Y usar lentes. Ya sabes que usa lentes: el total es 14."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "20/40 es la probabilidad de ser mujer sin usar la condición."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "La condición «usa lentes» deja 14 personas; 6 son mujeres: 6/14 = 3/7."
+ },
+ {
+  "id": "m2-con-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "Si P(A) = 0,5, P(B) = 0,4 y P(A ∩ B) = 0,2, ¿cuánto es P(A | B)?",
+  "opciones": [
+   {
+    "texto": "0,4",
+    "trampa": "Dividiste por P(A): eso es P(B | A)."
+   },
+   {
+    "texto": "0,08",
+    "trampa": "Multiplicaste 0,2·0,4. La condicional DIVIDE por la probabilidad de la condición."
+   },
+   {
+    "texto": "0,2",
+    "trampa": "Esa es la intersección, sin dividir por P(B)."
+   },
+   {
+    "texto": "0,5",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(A | B) = P(A ∩ B)/P(B) = 0,2/0,4 = 0,5."
+ },
+ {
+  "id": "m2-con-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "Una bolsa tiene 4 bolitas rojas y 6 azules. Se sacan 2, una tras otra, sin reposición. ¿Cuál es la probabilidad de que ambas sean rojas?",
+  "opciones": [
+   {
+    "texto": "4/25",
+    "trampa": "Calculaste con reposición (4/10·4/10). Al no reponer, quedan 3 rojas de 9."
+   },
+   {
+    "texto": "2/15",
+    "trampa": ""
+   },
+   {
+    "texto": "2/5",
+    "trampa": "Calculaste solo la primera extracción."
+   },
+   {
+    "texto": "11/15",
+    "trampa": "Sumaste las ramas (4/10 + 3/9). En un mismo camino del árbol se multiplica."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "P = 4/10 · 3/9 = 12/90 = 2/15."
+ },
+ {
+  "id": "m2-con-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "En un colegio, el 40 % de los estudiantes juega fútbol y el 25 % juega fútbol y básquetbol. Si un estudiante juega fútbol, ¿cuál es la probabilidad de que también juegue básquetbol?",
+  "opciones": [
+   {
+    "texto": "1/10",
+    "trampa": "Multiplicaste 0,40·0,25. Hay que dividir por la condición."
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Esa es la intersección (25 %), sin condicionar."
+   },
+   {
+    "texto": "5/8",
+    "trampa": ""
+   },
+   {
+    "texto": "3/20",
+    "trampa": "Restaste 0,40 − 0,25. Eso es «fútbol y NO básquetbol»."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "P(B | F) = P(F ∩ B)/P(F) = 0,25/0,40 = 5/8."
+ },
+ {
+  "id": "m2-con-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "Una fábrica tiene dos máquinas: A hace el 70 % de las piezas y B el 30 %. El 2 % de las piezas de A y el 5 % de las de B salen defectuosas. ¿Cuál es la probabilidad de que una pieza elegida al azar sea defectuosa?",
+  "opciones": [
+   {
+    "texto": "2,9 %",
+    "trampa": ""
+   },
+   {
+    "texto": "7 %",
+    "trampa": "Sumaste 2 % + 5 % sin ponderar por cuántas piezas hace cada máquina."
+   },
+   {
+    "texto": "3,5 %",
+    "trampa": "Promediaste 2 % y 5 % como si cada máquina hiciera la mitad."
+   },
+   {
+    "texto": "1,4 %",
+    "trampa": "Calculaste solo la rama de la máquina A."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Probabilidad total: 0,7·0,02 + 0,3·0,05 = 0,014 + 0,015 = 0,029 = 2,9 %."
+ },
+ {
+  "id": "m2-con-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "Se lanzan dos monedas. Si se sabe que salió al menos una cara, ¿cuál es la probabilidad de que hayan salido dos caras?",
+  "opciones": [
+   {
+    "texto": "1/2",
+    "trampa": "Pensaste «la otra moneda es cara o sello». Pero no sabes CUÁL salió cara: quedan 3 casos (CC, CS, SC)."
+   },
+   {
+    "texto": "1/4",
+    "trampa": "No achicaste el universo: usaste los 4 casos, incluido SS, que ya está descartado."
+   },
+   {
+    "texto": "1/3",
+    "trampa": ""
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Contaste los casos con una sola cara (CS y SC) en vez del caso pedido (CC)."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Con «al menos una cara» quedan CC, CS y SC. Solo CC tiene dos caras: 1/3."
+ },
+ {
+  "id": "m2-con-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "dificil",
+  "enunciado": "El 10 % de una población tiene cierta enfermedad. Un test da positivo en el 90 % de los enfermos y en el 20 % de los sanos. Si una persona dio positivo, ¿cuál es la probabilidad de que esté enferma?",
+  "opciones": [
+   {
+    "texto": "9/10",
+    "trampa": "Confundiste P(positivo | enfermo) con P(enfermo | positivo): es la trampa más famosa."
+   },
+   {
+    "texto": "9/100",
+    "trampa": "0,1·0,9 es la probabilidad de estar enfermo Y dar positivo. Falta dividir por P(positivo)."
+   },
+   {
+    "texto": "27/100",
+    "trampa": "0,27 es la probabilidad total de dar positivo, no la condicional."
+   },
+   {
+    "texto": "1/3",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(+) = 0,1·0,9 + 0,9·0,2 = 0,09 + 0,18 = 0,27. P(E | +) = 0,09/0,27 = 1/3."
+ },
+ {
+  "id": "m2-con-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "A y B son eventos independientes, con P(A) = 0,3 y P(B) = 0,5. ¿Cuánto es P(A ∪ B)?",
+  "opciones": [
+   {
+    "texto": "0,8",
+    "trampa": "Sumaste sin restar la intersección. Solo se suman directo si son excluyentes."
+   },
+   {
+    "texto": "0,65",
+    "trampa": ""
+   },
+   {
+    "texto": "0,15",
+    "trampa": "0,3·0,5 es la intersección P(A ∩ B), no la unión."
+   },
+   {
+    "texto": "0,85",
+    "trampa": "Usaste 1 − P(A)·P(B). El complemento correcto es 1 − P(no A)·P(no B) = 1 − 0,7·0,5."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Independientes: P(A ∩ B) = 0,3·0,5 = 0,15. P(A ∪ B) = 0,3 + 0,5 − 0,15 = 0,65."
+ },
+ {
+  "id": "m2-con-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "dificil",
+  "enunciado": "En un curso, 3/5 son mujeres. Usan lentes la mitad de las mujeres y 1/4 de los hombres. Si se elige al azar a alguien que usa lentes, ¿cuál es la probabilidad de que sea hombre?",
+  "opciones": [
+   {
+    "texto": "1/10",
+    "trampa": "2/5·1/4 = 1/10 es la probabilidad de ser hombre Y usar lentes. Falta dividir por P(lentes)."
+   },
+   {
+    "texto": "2/5",
+    "trampa": "Esa es la probabilidad de ser hombre sin la condición (y también P(lentes))."
+   },
+   {
+    "texto": "3/4",
+    "trampa": "Esa es la probabilidad de ser MUJER dado que usa lentes: respondiste al revés."
+   },
+   {
+    "texto": "1/4",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(L) = 3/5·1/2 + 2/5·1/4 = 3/10 + 1/10 = 2/5. P(H | L) = (1/10)/(2/5) = 1/4."
+ },
+ {
+  "id": "m2-tri-b1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "basico",
+  "enunciado": "En un triángulo rectángulo, sen α = 5/13. ¿Cuánto vale cos α?",
+  "opciones": [
+   {
+    "texto": "12/13",
+    "trampa": ""
+   },
+   {
+    "texto": "13/5",
+    "trampa": "Invertiste el seno. El coseno es adyacente/hipotenusa."
+   },
+   {
+    "texto": "5/12",
+    "trampa": "Esa es tan α (opuesto/adyacente)."
+   },
+   {
+    "texto": "8/13",
+    "trampa": "Restaste 13 − 5 = 8. El cateto adyacente sale por Pitágoras: √(169 − 25) = 12."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Opuesto 5, hipotenusa 13. Adyacente = √(13² − 5²) = 12. cos α = 12/13."
+ },
+ {
+  "id": "m2-tri-b2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de sen 30° + cos 60°?",
+  "opciones": [
+   {
+    "texto": "√3",
+    "trampa": "Usaste √3/2 para ambos. Ese es el valor de sen 60° y de cos 30°."
+   },
+   {
+    "texto": "(1 + √3)/2",
+    "trampa": "Confundiste cos 60° con cos 30°."
+   },
+   {
+    "texto": "1",
+    "trampa": ""
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Multiplicaste 1/2·1/2 en vez de sumar."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "sen 30° = 1/2 y cos 60° = 1/2. Suma: 1."
+ },
+ {
+  "id": "m2-tri-b3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la amplitud de f(x) = −4·cos(x) + 1?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "−4",
+    "trampa": "La amplitud es una distancia: siempre positiva. El signo solo refleja la curva."
+   },
+   {
+    "texto": "5",
+    "trampa": "Sumaste el desplazamiento vertical. El +1 sube la curva, no cambia su amplitud."
+   },
+   {
+    "texto": "1",
+    "trampa": "1 es el desplazamiento vertical (la línea central), no la amplitud."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "En A·cos(x) + C, la amplitud es |A| = |−4| = 4."
+ },
+ {
+  "id": "m2-tri-p1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Desde un punto del suelo, a 20 m de la base de un edificio, se ve la parte más alta con un ángulo de elevación de 30°. ¿Cuál es la altura del edificio?",
+  "opciones": [
+   {
+    "texto": "10 m",
+    "trampa": "Usaste sen 30°. Tienes el cateto adyacente (20 m) y buscas el opuesto: es tangente."
+   },
+   {
+    "texto": "20√3 m",
+    "trampa": "Usaste tan 60°: tomaste el ángulo del otro vértice."
+   },
+   {
+    "texto": "10√3 m",
+    "trampa": "Usaste cos 30°: 20·√3/2."
+   },
+   {
+    "texto": "20√3/3 m",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "tan 30° = h/20 → h = 20·(√3/3) = 20√3/3 ≈ 11,5 m."
+ },
+ {
+  "id": "m2-tri-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el período de f(x) = sen(3x)?",
+  "opciones": [
+   {
+    "texto": "6π",
+    "trampa": "Multiplicaste 2π por 3. El 3 comprime la curva: el período se DIVIDE."
+   },
+   {
+    "texto": "2π/3",
+    "trampa": ""
+   },
+   {
+    "texto": "3",
+    "trampa": "Leíste el 3 como período. El período es 2π/3."
+   },
+   {
+    "texto": "π/3",
+    "trampa": "Usaste π como período básico. El seno se repite cada 2π."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Período = 2π/B = 2π/3."
+ },
+ {
+  "id": "m2-tri-p3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Si α es un ángulo agudo y tan α = 1, ¿cuál es el valor de sen α · cos α?",
+  "opciones": [
+   {
+    "texto": "1",
+    "trampa": "Supusiste que sen α · cos α = tan α. La tangente es el COCIENTE sen/cos."
+   },
+   {
+    "texto": "√2/2",
+    "trampa": "Ese es solo sen α (o cos α). Falta multiplicarlos."
+   },
+   {
+    "texto": "2",
+    "trampa": "Usaste sen α = cos α = √2, olvidando dividir por 2."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "tan α = 1 con α agudo → α = 45°. sen 45° · cos 45° = (√2/2)·(√2/2) = 2/4 = 1/2."
+ },
+ {
+  "id": "m2-tri-d1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Un avión despega en línea recta con un ángulo de 30° respecto del suelo. Después de recorrer 2 km por su trayectoria, ¿a qué altura está y cuánto avanzó en horizontal?",
+  "opciones": [
+   {
+    "texto": "√3 km de altura y 1 km en horizontal",
+    "trampa": "Intercambiaste seno y coseno: la altura es el lado OPUESTO al ángulo de 30°."
+   },
+   {
+    "texto": "1 km de altura y 2 km en horizontal",
+    "trampa": "Tomaste la trayectoria (hipotenusa) como si fuera el avance horizontal."
+   },
+   {
+    "texto": "1 km de altura y √3 km en horizontal",
+    "trampa": ""
+   },
+   {
+    "texto": "1/2 km de altura y √3/2 km en horizontal",
+    "trampa": "Usaste sen 30° y cos 30° pero olvidaste multiplicar por los 2 km."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Altura = 2·sen 30° = 2·1/2 = 1 km. Horizontal = 2·cos 30° = 2·√3/2 = √3 km."
+ },
+ {
+  "id": "m2-tri-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál de las siguientes funciones tiene valor máximo 5, valor mínimo 1 y período π?",
+  "opciones": [
+   {
+    "texto": "f(x) = 2·sen(2x) + 3",
+    "trampa": ""
+   },
+   {
+    "texto": "f(x) = 5·sen(2x) + 1",
+    "trampa": "Tomaste el máximo como amplitud y el mínimo como desplazamiento. Su máximo es 6 y su mínimo −4."
+   },
+   {
+    "texto": "f(x) = 2·sen(x/2) + 3",
+    "trampa": "Con B = 1/2 el período es 2π/(1/2) = 4π, no π."
+   },
+   {
+    "texto": "f(x) = 3·sen(2x) + 2",
+    "trampa": "Intercambiaste amplitud y desplazamiento. El máximo calza (5), pero el mínimo es −1."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Amplitud = (5 − 1)/2 = 2. Línea central = (5 + 1)/2 = 3. Período π → B = 2π/π = 2. f(x) = 2·sen(2x) + 3."
+ },
+ {
+  "id": "m2-tri-d3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "dificil",
+  "enunciado": "En el triángulo ABC, rectángulo en C, la hipotenusa AB mide 10 y sen A = 0,6. ¿Cuál es el área del triángulo?",
+  "opciones": [
+   {
+    "texto": "48",
+    "trampa": "Olvidaste dividir por 2."
+   },
+   {
+    "texto": "30",
+    "trampa": "Usaste la hipotenusa como si fuera un cateto: 10·6/2."
+   },
+   {
+    "texto": "24",
+    "trampa": ""
+   },
+   {
+    "texto": "18",
+    "trampa": "Tomaste los dos catetos iguales a 6. El otro sale por Pitágoras: 8."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "BC = 10·0,6 = 6 (opuesto a A). AC = √(100 − 36) = 8. Área = 6·8/2 = 24."
+ }
+]
+</script>
+<script>
+// == paes27-core v1 ==
+// Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
+// No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
+const P27 = (() => {
+  'use strict';
+  const VERSION = 1;
+  const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
+
+  const PRUEBAS = {
+    M2:  { id: 'M2',  corto: 'M2',      nombre: 'Matemática 2 (M2)',     fecha: '2026-11-30', hora: '15:00', prior: 30, peso: 1.2 },
+    LEN: { id: 'LEN', corto: 'Lectora', nombre: 'Competencia Lectora',   fecha: '2026-12-01', hora: '09:00', prior: 50, peso: 0.6 },
+    CIE: { id: 'CIE', corto: 'Física',  nombre: 'Ciencias Física',       fecha: '2026-12-01', hora: '15:00', prior: 30, peso: 1.0 },
+    M1:  { id: 'M1',  corto: 'M1',      nombre: 'Matemática 1 (M1)',     fecha: '2026-12-02', hora: '09:00', prior: 60, peso: 0.7 },
+  };
+
+  // [id, prueba, eje, prio, nombre, lección (página#ancla) o null]
+  const LISTA = [
+    ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
+    ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
+    ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', null],
+    ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', null],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', null],
+    ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', null],
+    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', null],
+    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', null],
+    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', null],
+    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', null],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+
+    ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
+    ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
+    ['fis.mec.newton', 'CIE', 'Mecánica', 'A', 'Leyes de Newton + diagrama de cuerpo libre', null],
+    ['fis.mec.fuerzas', 'CIE', 'Mecánica', 'A', 'Peso, normal, tensión, Hooke, roce', null],
+    ['fis.ond.elementos', 'CIE', 'Ondas', 'A', 'Ondas: v = λ·f, período, amplitud', null],
+    ['fis.ond.espejos-lentes', 'CIE', 'Ondas', 'A', 'Espejos y lentes', null],
+    ['fis.ele.ohm', 'CIE', 'Electricidad', 'A', 'Ley de Ohm: serie, paralelo, mixto', null],
+    ['fis.ele.potencia', 'CIE', 'Electricidad', 'A', 'Potencia y energía eléctrica (kWh)', null],
+    ['fis.ond.reflexion-refraccion', 'CIE', 'Ondas', 'B', 'Reflexión, refracción, absorción', null],
+    ['fis.ond.espectro-color', 'CIE', 'Ondas', 'B', 'Espectro EM, color y dispersión', null],
+    ['fis.ond.doppler-interferencia', 'CIE', 'Ondas', 'B', 'Doppler, interferencia, difracción', null],
+    ['fis.mec.galileo', 'CIE', 'Mecánica', 'B', 'Relatividad de Galileo', null],
+    ['fis.tie.tectonica', 'CIE', 'Tierra y Universo', 'B', 'Tectónica de placas, sismos, interior', null],
+    ['fis.mec.cosmos', 'CIE', 'Tierra y Universo', 'C', 'Sistema solar + origen del universo', null],
+    ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', null],
+    ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', null],
+
+    ['bio.celular', 'CIE', 'Biología', 'R', 'Organización y actividad celular', null],
+    ['bio.procesos', 'CIE', 'Biología', 'R', 'Procesos y funciones (incl. sistema nervioso)', null],
+    ['bio.herencia', 'CIE', 'Biología', 'R', 'Herencia y evolución', null],
+    ['bio.ambiente', 'CIE', 'Biología', 'R', 'Organismo y ambiente', null],
+    ['qui.atomica', 'CIE', 'Química', 'R', 'Estructura atómica', null],
+    ['qui.organica', 'CIE', 'Química', 'R', 'Química orgánica', null],
+    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Reacciones y estequiometría', null],
+
+    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', null],
+    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', null],
+    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', null],
+    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', null],
+    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', null],
+    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', null],
+    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', null],
+    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', null],
+    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', null],
+    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', null],
+    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', null],
+    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', null],
+
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+  ];
+  const TEMAS = {};
+  for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
+  const PESO_PRIO = { A: 3, B: 2, C: 1, R: 1.5 };
+
+  // ---------- almacenamiento ----------
+  function cargar(k, def) {
+    try { const s = localStorage.getItem(K[k]); return s ? JSON.parse(s) : def; } catch (e) { return def; }
+  }
+  function guardar(k, v) {
+    try { localStorage.setItem(K[k], JSON.stringify(v)); } catch (e) { console.warn('No se pudo guardar', k); }
+    window.dispatchEvent(new CustomEvent('p27:cambio', { detail: k }));
+  }
+
+  // ---------- fechas (locales) ----------
+  const pad = (n) => String(n).padStart(2, '0');
+  const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const hoy = () => iso(new Date());
+  function aFecha(s) { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); }
+  const sumarDias = (s, n) => { const d = aFecha(s); d.setDate(d.getDate() + n); return iso(d); };
+  const difDias = (a, b) => Math.round((aFecha(b) - aFecha(a)) / 86400000);
+  const DIAS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const fechaCorta = (s) => { const d = aFecha(s); return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; };
+
+  // ---------- dominio ----------
+  function prior(tema) { const t = TEMAS[tema]; return t ? PRUEBAS[t.prueba].prior : 30; }
+  function dominio(tema) { const d = cargar('dominio', {}); return tema in d ? d[tema] : null; }
+  function dominioEf(tema) { const v = dominio(tema); return v === null ? prior(tema) : v; }
+  // Correcta en difícil sube más; incorrecta en básico baja más.
+  const PESO_NIVEL = { basico: [0.7, 1.4], paes: [1, 1], dificil: [1.4, 0.7] };
+  function registrar(tema, nivel, ok, opts = {}) {
+    const d = cargar('dominio', {});
+    let v = tema in d ? d[tema] : prior(tema);
+    const base = opts.diag ? 0.35 : 0.15;
+    const [sube, baja] = PESO_NIVEL[nivel] || PESO_NIVEL.paes;
+    v = ok ? v + (100 - v) * base * sube : v - v * base * baja;
+    d[tema] = Math.max(0, Math.min(100, Math.round(v)));
+    guardar('dominio', d);
+    if (!ok) programarRepaso(tema); else cumplirRepaso(tema);
+    return d[tema];
+  }
+
+  // ---------- repaso espaciado: un fallo vuelve en +1 y +3 días ----------
+  function programarRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    for (const n of [1, 3]) {
+      const due = sumarDias(h, n);
+      if (!r.some((x) => x.tema === tema && x.due === due && !x.hecho)) r.push({ tema, due, hecho: false, creado: h });
+    }
+    guardar('repaso', r);
+  }
+  function cumplirRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    let cambio = false;
+    for (const x of r) if (x.tema === tema && !x.hecho && x.due <= h) { x.hecho = true; x.cumplido = h; cambio = true; }
+    if (cambio) guardar('repaso', r);
+  }
+  function repasoPendiente(fecha = hoy()) {
+    const r = cargar('repaso', []);
+    return [...new Set(r.filter((x) => !x.hecho && x.due <= fecha).map((x) => x.tema))];
+  }
+
+  // ---------- exportar / importar ----------
+  function exportar() {
+    const datos = {};
+    for (const k of Object.keys(K)) datos[k] = cargar(k, null);
+    return { app: 'paes27', version: VERSION, exportado: new Date().toISOString(), datos };
+  }
+  function importar(obj) {
+    if (!obj || obj.app !== 'paes27' || typeof obj.datos !== 'object') throw new Error('No es un respaldo de esta app.');
+    for (const k of Object.keys(K)) if (obj.datos[k] !== null && obj.datos[k] !== undefined) guardar(k, obj.datos[k]);
+  }
+
+  // ---------- widget de pregunta (atajos 1–5, N = no sé, Enter = seguir) ----------
+  const LETRAS = 'ABCDE';
+  let activa = null;
+  const NIVEL_TXT = { basico: 'Básico', paes: 'PAES', dificil: 'Difícil' };
+  function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+
+  // opts: { onRespuesta({ok, elegida}), onSiguiente(), noSe: bool, mezclar: bool, registrar: bool, meta: string, textoSiguiente }
+  function pregunta(cont, q, opts = {}) {
+    cont.innerHTML = '';
+    const caja = el('div', 'q');
+    const meta = opts.meta !== undefined ? opts.meta : `${NIVEL_TXT[q.nivel] || ''} · ${(TEMAS[q.tema] || {}).nombre || q.tema}`;
+    if (meta) caja.appendChild(el('div', 'q-meta', meta));
+    caja.appendChild(el('div', 'q-enun', q.enunciado));
+    const orden = q.opciones.map((_, i) => i);
+    if (opts.mezclar && q.tema !== 'm2.sd') for (let i = orden.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [orden[i], orden[j]] = [orden[j], orden[i]]; }
+    const lista = el('div', 'q-ops');
+    const botones = [];
+    orden.forEach((oi, pos) => {
+      const b = el('button', 'q-op', `<span class="q-l">${LETRAS[pos]}</span><span class="q-t">${q.opciones[oi].texto}</span>`);
+      b.type = 'button'; b.dataset.oi = oi;
+      b.addEventListener('click', () => responder(oi));
+      botones.push(b); lista.appendChild(b);
+    });
+    caja.appendChild(lista);
+    const fb = el('div', 'q-fb'); fb.hidden = true; caja.appendChild(fb);
+    const acc = el('div', 'q-acc');
+    let bNoSe = null;
+    if (opts.noSe) { bNoSe = el('button', 'btn sec', 'No sé <kbd>N</kbd>'); bNoSe.type = 'button'; bNoSe.addEventListener('click', () => responder(-1)); acc.appendChild(bNoSe); }
+    const bSig = el('button', 'btn', `${opts.textoSiguiente || 'Siguiente'} <kbd>Enter</kbd>`); bSig.type = 'button'; bSig.hidden = true;
+    bSig.addEventListener('click', () => { if (opts.onSiguiente) opts.onSiguiente(); });
+    acc.appendChild(bSig); caja.appendChild(acc);
+    cont.appendChild(caja);
+
+    let respondida = false;
+    function responder(oi) {
+      if (respondida) return;
+      respondida = true;
+      const ok = oi === q.correcta;
+      botones.forEach((b) => {
+        b.disabled = true;
+        const i = Number(b.dataset.oi);
+        if (i === q.correcta) b.classList.add('ok');
+        else if (i === oi) b.classList.add('mal');
+      });
+      let h = ok ? '<b class="txt-ok">¡Correcta!</b> ' : (oi === -1 ? '<b class="txt-mal">Sin responder.</b> ' : '<b class="txt-mal">Incorrecta.</b> ');
+      if (!ok && oi >= 0 && q.opciones[oi].trampa) h += `<div class="q-trampa"><b>La trampa:</b> ${q.opciones[oi].trampa}</div>`;
+      h += `<div class="q-exp"><b>Correcta: ${LETRAS[orden.indexOf(q.correcta)]}.</b> ${q.explicacion}</div>`;
+      fb.innerHTML = h; fb.hidden = false;
+      if (bNoSe) bNoSe.hidden = true;
+      bSig.hidden = !opts.onSiguiente;
+      if (opts.registrar) registrar(q.tema, q.nivel, ok);
+      if (opts.onRespuesta) opts.onRespuesta({ ok, elegida: oi });
+      if (!bSig.hidden) bSig.focus({ preventScroll: true });
+    }
+    const api = { caja, responder: (pos) => { if (pos < botones.length) responder(Number(botones[pos].dataset.oi)); }, noSe: () => { if (opts.noSe) responder(-1); }, siguiente: () => { if (respondida && !bSig.hidden) bSig.click(); }, get respondida() { return respondida; } };
+    caja.addEventListener('pointerdown', () => { activa = api; });
+    activa = api;
+    return api;
+  }
+  document.addEventListener('keydown', (ev) => {
+    if (!activa || !document.body.contains(activa.caja)) return;
+    const t = ev.target;
+    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (ev.key >= '1' && ev.key <= '5' && !activa.respondida) { activa.responder(Number(ev.key) - 1); ev.preventDefault(); }
+    else if ((ev.key === 'n' || ev.key === 'N') && !activa.respondida) { activa.noSe(); }
+    else if (ev.key === 'Enter' && activa.respondida) { ev.preventDefault(); activa.siguiente(); }
+  });
+
+  // ---------- acordeones y pestañas ----------
+  function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
+
+  return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
+})();
+// == fin paes27-core v1 ==
+
+(() => {
+'use strict';
+const { TEMAS, el } = P27;
+const BANCO = JSON.parse(document.getElementById('banco-m2').textContent);
+const $ = (s) => document.querySelector(s);
+const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const COL = {};
+for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line', 'panel2']) COL[k] = cssv('--' + k);
+const REDUCIR = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------------- formato ----------------
+function fmt(x, d = 2) {
+  if (!Number.isFinite(x)) return '—';
+  let r = Number(x.toFixed(d));
+  if (Object.is(r, -0) || Math.abs(r) < 1e-12) r = 0;
+  return String(r).replace('.', ',').replace('-', '−');
+}
+const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+function frac(n, d) { if (d === 0) return '—'; const g = gcd(n, d); n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? fmt(n) : `${fmt(n)}/${d}`; }
+// "y = 2x − 3"
+function recta(m, n) {
+  let s = 'y = ';
+  if (m === 0) return s + fmt(n);
+  s += m === 1 ? 'x' : m === -1 ? '−x' : `${fmt(m)}x`;
+  if (n > 0) s += ` + ${fmt(n)}`; else if (n < 0) s += ` − ${fmt(-n)}`;
+  return s;
+}
+const par = (x) => (x < 0 ? `(${fmt(x)})` : fmt(x));
+
+// ---------------- lienzo 2D ----------------
+class Lienzo {
+  constructor(canvas, o) {
+    this.c = canvas; this.ctx = canvas.getContext('2d');
+    this.o = { aspecto: 0.62, maxH: 420, ...o };
+    this.dibujar = o.dibujar || (() => {});
+    this.w = 0; this.h = 0;
+    this.ajustar(true);
+    new ResizeObserver(() => this.ajustar()).observe(canvas.parentElement);
+  }
+  ajustar(forzar) {
+    const w = Math.max(220, this.c.parentElement.clientWidth);
+    const h = Math.min(this.o.maxH, Math.round(w * this.o.aspecto));
+    if (!forzar && w === this.w && h === this.h) return;
+    const dpr = window.devicePixelRatio || 1;
+    this.c.width = Math.round(w * dpr); this.c.height = Math.round(h * dpr);
+    this.c.style.height = h + 'px';
+    this.w = w; this.h = h;
+    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    this.fijarVista();
+    this.redibujar();
+  }
+  fijarVista() {
+    const v = this.o.vista;
+    if (!v) return;
+    this.x0 = v.x0; this.x1 = v.x1;
+    if (v.igual) { // unidades iguales en x e y
+      const alto = (v.x1 - v.x0) * (this.h / this.w);
+      this.y0 = v.yc - alto / 2; this.y1 = v.yc + alto / 2;
+    } else { this.y0 = v.y0; this.y1 = v.y1; }
+  }
+  redibujar() { if (this.w) this.dibujar(this); }
+  X(x) { return ((x - this.x0) / (this.x1 - this.x0)) * this.w; }
+  Y(y) { return this.h - ((y - this.y0) / (this.y1 - this.y0)) * this.h; }
+  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = '#0f1524'; c.fillRect(0, 0, this.w, this.h); }
+  grilla(paso = 1, etiquetas = true, pasoEt = paso * 2) {
+    const c = this.ctx;
+    c.lineWidth = 1; c.strokeStyle = 'rgba(147,160,187,.12)';
+    c.beginPath();
+    for (let x = Math.ceil(this.x0 / paso) * paso; x <= this.x1; x += paso) { c.moveTo(this.X(x), 0); c.lineTo(this.X(x), this.h); }
+    for (let y = Math.ceil(this.y0 / paso) * paso; y <= this.y1; y += paso) { c.moveTo(0, this.Y(y)); c.lineTo(this.w, this.Y(y)); }
+    c.stroke();
+    c.strokeStyle = 'rgba(147,160,187,.55)'; c.lineWidth = 1.3;
+    c.beginPath(); c.moveTo(0, this.Y(0)); c.lineTo(this.w, this.Y(0)); c.moveTo(this.X(0), 0); c.lineTo(this.X(0), this.h); c.stroke();
+    if (!etiquetas) return;
+    c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
+    for (let x = Math.ceil(this.x0 / pasoEt) * pasoEt; x <= this.x1; x += pasoEt) if (Math.abs(x) > 1e-9) c.fillText(fmt(x), this.X(x), this.Y(0) + 3);
+    c.textAlign = 'right'; c.textBaseline = 'middle';
+    for (let y = Math.ceil(this.y0 / pasoEt) * pasoEt; y <= this.y1; y += pasoEt) if (Math.abs(y) > 1e-9) c.fillText(fmt(y), this.X(0) - 4, this.Y(y));
+  }
+  fn(f, color, ancho = 2.5, xa = this.x0, xb = this.x1, dash) {
+    const c = this.ctx; c.strokeStyle = color; c.lineWidth = ancho; c.setLineDash(dash || []);
+    c.beginPath();
+    let pen = false; let py = 0;
+    const N = Math.max(200, this.w);
+    for (let i = 0; i <= N; i++) {
+      const x = xa + ((xb - xa) * i) / N; const y = f(x);
+      const Y = this.Y(y);
+      if (!Number.isFinite(y) || Y < -2000 || Y > this.h + 2000 || (pen && Math.abs(Y - py) > this.h * 2)) { pen = false; continue; }
+      if (pen) c.lineTo(this.X(x), Y); else c.moveTo(this.X(x), Y);
+      pen = true; py = Y;
+    }
+    c.stroke(); c.setLineDash([]);
+  }
+  seg(x1, y1, x2, y2, color, ancho = 2, dash) {
+    const c = this.ctx; c.strokeStyle = color; c.lineWidth = ancho; c.setLineDash(dash || []);
+    c.beginPath(); c.moveTo(this.X(x1), this.Y(y1)); c.lineTo(this.X(x2), this.Y(y2)); c.stroke(); c.setLineDash([]);
+  }
+  punto(x, y, color, r = 5) { const c = this.ctx; c.fillStyle = color; c.beginPath(); c.arc(this.X(x), this.Y(y), r, 0, 7); c.fill(); }
+  texto(t, x, y, color, o = {}) {
+    const c = this.ctx; c.fillStyle = color || COL.ink; c.font = `${o.peso || 600} ${o.tam || 13}px system-ui`;
+    c.textAlign = o.align || 'left'; c.textBaseline = o.base || 'bottom';
+    const px = o.px ? x : this.X(x) + (o.dx || 0); const py = o.px ? y : this.Y(y) + (o.dy || 0);
+    if (o.fondo) {
+      const m = c.measureText(t); const w = m.width + 8; const th = (o.tam || 13) + 6;
+      const ax = o.align === 'center' ? px - w / 2 : o.align === 'right' ? px - w + 4 : px - 4;
+      const ay = o.base === 'top' ? py - 2 : o.base === 'middle' ? py - th / 2 : py - th + 2;
+      c.fillStyle = 'rgba(13,17,28,.82)'; c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
+    }
+    c.fillText(t, px, py);
+  }
+}
+
+// ---------------- animaciones (solo corren si se ven) ----------------
+const ANIMS = {};
+function animar(id, lienzo, cuadro) {
+  const a = { t: 0, corre: !REDUCIR, visible: false, lienzo, cuadro };
+  lienzo.dibujar = () => cuadro(a.t);
+  ANIMS[id] = a;
+  new IntersectionObserver((es) => { a.visible = es[0].isIntersecting; }).observe(lienzo.c);
+  lienzo.redibujar();
+  return a;
+}
+let tPrev = null;
+function bucle(ts) {
+  const dt = tPrev === null ? 0 : Math.min(0.05, (ts - tPrev) / 1000);
+  tPrev = ts;
+  for (const a of Object.values(ANIMS)) if (a.corre && a.visible) { a.t += dt; a.lienzo.redibujar(); }
+  requestAnimationFrame(bucle);
+}
+requestAnimationFrame(bucle);
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-pausa]'); if (!b) return;
+  const a = ANIMS[b.dataset.pausa]; if (!a) return;
+  a.corre = !a.corre; b.textContent = a.corre ? '⏸ Pausa' : '▶ Reproducir';
+});
+if (REDUCIR) document.querySelectorAll('[data-pausa]').forEach((b) => { b.textContent = '▶ Reproducir'; });
+
+function sliders(ids, alCambiar, fmtV = {}) {
+  const val = {};
+  const leer = () => {
+    for (const id of ids) {
+      const inp = document.getElementById(id); val[id] = Number(inp.value);
+      const o = document.getElementById(id + '-v'); if (o) o.textContent = fmtV[id] ? fmtV[id](val[id]) : fmt(val[id]);
+    }
+    alCambiar(val);
+  };
+  ids.forEach((id) => document.getElementById(id).addEventListener('input', leer));
+  leer();
+  return { val, leer };
+}
+const lerp = (a, b, t) => a + (b - a) * t;
+const suave = (t) => t * t * (3 - 2 * t);
+
+// =====================================================================
+// LECCIÓN 1 · rectas + sistemas
+// =====================================================================
+function casoRectas(m1, n1, m2, n2) {
+  if (Math.abs(m1 - m2) < 1e-9) return Math.abs(n1 - n2) < 1e-9 ? 'coinciden' : 'paralelas';
+  const x = (n2 - n1) / (m1 - m2);
+  return { x, y: m1 * x + n1 };
+}
+function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
+  L.limpiar(); L.grilla(1, true, 2);
+  const caso = casoRectas(m1, n1, m2, n2);
+  if (caso === 'coinciden') { L.fn((x) => m1 * x + n1, COL.ok, 7); L.fn((x) => m2 * x + n2, COL.acc, 2.5, undefined, undefined, [8, 6]); }
+  else { L.fn((x) => m1 * x + n1, COL.acc, 3); L.fn((x) => m2 * x + n2, COL.acc2, 3); }
+  if (triangulo) {
+    const xa = 1, ya = m1 * xa + n1;
+    L.seg(xa, ya, xa + 1, ya, COL.warn, 2, [4, 4]); L.seg(xa + 1, ya, xa + 1, ya + m1, COL.warn, 2, [4, 4]);
+    L.texto('1', xa + 0.5, ya, COL.warn, { align: 'center', base: m1 >= 0 ? 'top' : 'bottom', dy: m1 >= 0 ? 3 : -3 });
+    L.texto(`m₁ = ${fmt(m1)}`, xa + 1, ya + m1 / 2, COL.warn, { dx: 6, base: 'middle' });
+  }
+  if (typeof caso === 'object' && caso.x > L.x0 && caso.x < L.x1 && caso.y > L.y0 && caso.y < L.y1) {
+    L.punto(caso.x, caso.y, COL.warn, 6);
+    L.texto(`(${fmt(caso.x)}, ${fmt(caso.y)})`, caso.x, caso.y, COL.warn, { dx: 8, dy: -6, fondo: true });
+  }
+  return caso;
+}
+{
+  const L = new Lienzo($('#rec-ver'), { vista: { x0: -8, x1: 8, yc: 1, igual: true }, aspecto: 0.6 });
+  const T = 14;
+  animar('rec-ver', L, (t) => {
+    const u = (t % T) / T;
+    const m1 = 0.5, n1 = 1;
+    let m2, n2;
+    if (u < 0.45) { m2 = lerp(-2.5, 0.5, suave(u / 0.45)); n2 = 3; }
+    else if (u < 0.58) { m2 = 0.5; n2 = 3; }
+    else if (u < 0.72) { m2 = 0.5; n2 = lerp(3, 1, suave((u - 0.58) / 0.14)); }
+    else if (u < 0.9) { m2 = 0.5; n2 = 1; }
+    else { const k = suave((u - 0.9) / 0.1); m2 = lerp(0.5, -2.5, k); n2 = lerp(1, 3, k); }
+    if (u >= 0.45 && u < 0.9) m2 = 0.5; // exactamente paralelas
+    const caso = dibujarRectas(L, m1, n1, m2, n2, false);
+    let txt;
+    if (caso === 'coinciden') txt = '<b class="txt-ok">Coinciden:</b> son la misma recta → <b>infinitas soluciones</b>.';
+    else if (caso === 'paralelas') txt = '<b class="txt-mal">Paralelas:</b> misma pendiente, distinto corte con el eje Y → <b>0 soluciones</b>.';
+    else txt = `<b class="txt-warn">Se cortan</b> en (${fmt(caso.x, 1)}; ${fmt(caso.y, 1)}) → <b>1 solución</b>. Pendiente de la recta celeste: ${fmt(m2, 1)}.`;
+    L.texto('L₁: y = 0,5x + 1', 10, 10, COL.acc, { px: true, base: 'top' });
+    $('#rec-ver-txt').innerHTML = txt;
+  });
+}
+{
+  const L = new Lienzo($('#rec-man'), { vista: { x0: -8, x1: 8, yc: 0, igual: true }, aspecto: 0.75 });
+  let v = {};
+  L.dibujar = () => dibujarRectas(L, v['rec-m1'], v['rec-n1'], v['rec-m2'], v['rec-n2'], true);
+  const s = sliders(['rec-m1', 'rec-n1', 'rec-m2', 'rec-n2'], (val) => {
+    v = val; L.redibujar();
+    const m1 = val['rec-m1'], n1 = val['rec-n1'], m2 = val['rec-m2'], n2 = val['rec-n2'];
+    const caso = casoRectas(m1, n1, m2, n2);
+    let h = `<div><span style="color:${COL.acc}">L₁:</span> ${recta(m1, n1)}</div><div><span style="color:${COL.acc2}">L₂:</span> ${recta(m2, n2)}</div>`;
+    h += `<div>Igualo: ${recta(m1, n1).slice(4)} = ${recta(m2, n2).slice(4)}</div>`;
+    if (typeof caso === 'object') {
+      h += `<div>x = (n₂ − n₁)/(m₁ − m₂) = (${fmt(n2)} − ${par(n1)})/(${fmt(m1)} − ${par(m2)}) = ${fmt(n2 - n1)}/${fmt(m1 - m2)} = <span class="hl">${fmt(caso.x)}</span></div>`;
+      h += `<div>y = ${fmt(m1)}·${par(caso.x)} + ${par(n1)} = <span class="hl">${fmt(caso.y)}</span></div>`;
+      h += `<div class="res txt-warn">Se cortan en (${fmt(caso.x)}, ${fmt(caso.y)}): 1 solución</div>`;
+      if (Math.abs(m1 * m2 + 1) < 1e-9) h += `<div class="txt-ok">Además son perpendiculares: ${fmt(m1)}·${par(m2)} = −1</div>`;
+    } else if (caso === 'paralelas') h += `<div>m₁ − m₂ = 0 → no hay x que sirva.</div><div class="res txt-mal">Paralelas: 0 soluciones</div>`;
+    else h += `<div>Las dos ecuaciones son la misma recta.</div><div class="res txt-ok">Coinciden: infinitas soluciones</div>`;
+    $('#rec-form').innerHTML = h;
+  });
+  document.querySelectorAll('[data-rec]').forEach((b) => b.addEventListener('click', () => {
+    const [a, bb, c, d] = b.dataset.rec.split(',');
+    $('#rec-m1').value = a; $('#rec-n1').value = bb; $('#rec-m2').value = c; $('#rec-n2').value = d; s.leer();
+  }));
+}
+
+// =====================================================================
+// LECCIÓN 2 · logaritmos
+// =====================================================================
+{
+  const L = new Lienzo($('#log-ver'), { vista: { x0: -4, x1: 9, yc: 2, igual: true }, aspecto: 0.6 });
+  animar('log-ver', L, (t) => {
+    L.limpiar(); L.grilla(1, true, 2);
+    L.fn((x) => x, COL.muted, 1.5, undefined, undefined, [6, 6]);
+    L.fn((x) => 2 ** x, COL.acc, 3);
+    L.fn((x) => Math.log2(x), COL.acc2, 3, 0.001, L.x1);
+    const u = (Math.sin(t * 0.6) + 1) / 2; // va y vuelve
+    const x = lerp(-2, 3, u); const y = 2 ** x;
+    L.seg(x, y, y, x, COL.warn, 1.5, [4, 4]);
+    L.punto(x, y, COL.acc, 6); L.punto(y, x, COL.acc2, 6);
+    L.texto(`(${fmt(x, 1)}; ${fmt(y, 1)})`, x, y, COL.acc, { dx: -8, dy: -6, align: 'right', fondo: true });
+    L.texto(`(${fmt(y, 1)}; ${fmt(x, 1)})`, y, x, COL.acc2, { dx: 8, dy: 18, fondo: true });
+    $('#log-ver-txt').innerHTML = `2<sup>${fmt(x, 1)}</sup> = ${fmt(y, 2)} &nbsp;⇔&nbsp; log₂ ${fmt(y, 2)} = ${fmt(x, 1)} · el punto y su reflejo intercambian x e y.`;
+  });
+}
+{
+  const L = new Lienzo($('#log-man'), { vista: { x0: -4, x1: 8, yc: 1.5, igual: true }, aspecto: 0.75 });
+  let v = {};
+  const sub = (b) => (Number.isInteger(b) ? String(b) : fmt(b, 1)).replace(/[0-9,−]/g, (c) => '₀₁₂₃₄₅₆₇₈₉'[c] || (c === ',' ? '‚' : '₋'));
+  L.dibujar = () => {
+    const b = v['log-b'], x = v['log-x'];
+    L.limpiar(); L.grilla(1, true, 2);
+    L.fn((t) => t, COL.muted, 1.5, undefined, undefined, [6, 6]);
+    L.fn((t) => b ** t, COL.acc, 3);
+    const base1 = Math.abs(b - 1) < 0.05;
+    if (!base1) L.fn((t) => Math.log(t) / Math.log(b), COL.acc2, 3, 0.001, L.x1);
+    const y = b ** x;
+    if (y < L.y1 + 50) { L.punto(x, y, COL.acc, 6); L.seg(x, 0, x, y, COL.acc, 1, [3, 4]); }
+    if (!base1 && x > 0) { const ly = Math.log(x) / Math.log(b); L.punto(x, ly, COL.acc2, 6); }
+    L.punto(0, 1, COL.ink, 3.5); if (!base1) L.punto(1, 0, COL.ink, 3.5);
+  };
+  sliders(['log-b', 'log-x', 'log-p', 'log-q'], (val) => {
+    v = val; L.redibujar();
+    const b = val['log-b'], x = val['log-x'], p = val['log-p'], q = val['log-q'];
+    const base1 = Math.abs(b - 1) < 0.05;
+    let h = `<div>b = ${fmt(b, 1)} → la exponencial es <b>${b > 1 ? 'creciente' : b < 1 ? 'decreciente' : 'constante'}</b>${b > 1 ? ' (b > 1)' : b < 1 ? ' (0 < b < 1)' : ''}.</div>`;
+    if (base1) h += '<div class="txt-mal">Con base 1 no hay logaritmo: 1 elevado a lo que sea da 1.</div>';
+    else {
+      const y = b ** x;
+      h += `<div><span style="color:${COL.acc}">${fmt(b, 1)}<sup>${fmt(x, 1)}</sup> = ${fmt(y, 3)}</span> &nbsp;⇔&nbsp; <span style="color:${COL.acc2}">log${sub(b)} ${fmt(y, 3)} = ${fmt(x, 1)}</span></div>`;
+      h += x > 0 ? `<div>log${sub(b)} ${fmt(x, 1)} = log ${fmt(x, 1)} / log ${fmt(b, 1)} = <span class="hl">${fmt(Math.log(x) / Math.log(b), 3)}</span></div>` : `<div class="txt-mal">log${sub(b)} ${fmt(x, 1)} no existe: el argumento debe ser mayor que 0.</div>`;
+      h += '<div class="small muted">Siempre: b<sup>x</sup> pasa por (0, 1) y log<sub>b</sub> x pasa por (1, 0).</div>';
+    }
+    $('#log-form').innerHTML = h;
+    if (base1) { $('#log-form2').innerHTML = '<div class="muted">Elige una base distinta de 1.</div>'; return; }
+    const M = b ** p, N = b ** q;
+    $('#log-form2').innerHTML = `<div>M = ${fmt(b, 1)}<sup>${p}</sup> = ${fmt(M, 3)} · N = ${fmt(b, 1)}<sup>${q}</sup> = ${fmt(N, 3)}</div>`
+      + `<div>M·N = ${fmt(b, 1)}<sup>${p}</sup>·${fmt(b, 1)}<sup>${q}</sup> = ${fmt(b, 1)}<sup>${p + q}</sup> = ${fmt(M * N, 3)}</div>`
+      + `<div class="res">log${sub(b)}(M·N) = <span class="hl">${p + q}</span> = ${p} + ${par(q)} = log${sub(b)} M + log${sub(b)} N</div>`
+      + `<div>log${sub(b)}(M/N) = ${p} − ${par(q)} = <span class="hl">${p - q}</span></div>`;
+  }, { 'log-b': (b) => fmt(b, 1), 'log-x': (x) => fmt(x, 1) });
+}
+
+// =====================================================================
+// LECCIÓN 3 · probabilidad condicional
+// =====================================================================
+{
+  const L = new Lienzo($('#con-ver'), { aspecto: 0.5, maxH: 360 });
+  // 100 personas en grilla 20×5: B = columnas 0..7 (40); A dentro de B: 18; A fuera: 12
+  const enB = (i) => i % 20 < 8;
+  // reparto fijo pero desordenado (semilla), con exactamente 18 A dentro de B y 12 A fuera de B
+  let semilla = 7;
+  const azar = () => { semilla = (semilla * 16807) % 2147483647; return semilla / 2147483647; };
+  const mezclar = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(azar() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+  const idxB = [], idxNoB = [];
+  for (let i = 0; i < 100; i++) (enB(i) ? idxB : idxNoB).push(i);
+  const conA = new Set([...mezclar(idxB).slice(0, 18), ...mezclar(idxNoB).slice(0, 12)]);
+  const personas = Array.from({ length: 100 }, (_, i) => ({ b: enB(i), a: conA.has(i) }));
+  const T = 9;
+  animar('con-ver', L, (t) => {
+    const c = L.ctx; L.limpiar();
+    const u = (t % T) / T;
+    const k = u < 0.4 ? 0 : u < 0.5 ? suave((u - 0.4) / 0.1) : u < 0.9 ? 1 : 1 - suave((u - 0.9) / 0.1);
+    const cols = 20, filas = 5, pad = 18;
+    const cw = (L.w - 2 * pad) / cols, ch = (L.h - 2 * pad - 24) / filas;
+    const r = Math.max(3, Math.min(cw, ch) * 0.32);
+    personas.forEach((p, i) => {
+      const cx = pad + (i % cols + 0.5) * cw, cy = pad + 24 + (Math.floor(i / cols) + 0.5) * ch;
+      c.globalAlpha = p.b ? 1 : 1 - 0.85 * k;
+      c.fillStyle = p.a ? COL.warn : '#3a4566';
+      c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill();
+      if (p.b) { c.strokeStyle = COL.acc2; c.lineWidth = 2; c.beginPath(); c.arc(cx, cy, r + 3, 0, 7); c.stroke(); }
+    });
+    c.globalAlpha = 1;
+    if (k > 0.02) { c.strokeStyle = COL.acc2; c.lineWidth = 2; c.setLineDash([6, 5]); c.strokeRect(pad - 4, pad + 20, cw * 8 + 8, ch * 5 + 8); c.setLineDash([]); }
+    const txt = k < 0.5 ? 'Universo: 100 personas · P(A) = 30/100 = 0,3' : 'Dado B: el universo son las 40 mujeres · P(A | B) = 18/40 = 0,45';
+    L.texto(txt, L.w / 2, 6, k < 0.5 ? COL.ink : COL.acc2, { px: true, align: 'center', base: 'top', tam: 14 });
+    $('#con-ver-txt').innerHTML = k < 0.5 ? 'Sin información: 30 de las 100 personas usan lentes.' : '<b>Sabemos que es mujer:</b> las demás desaparecen. Ahora se divide por 40, no por 100.';
+  });
+}
+{
+  const L = new Lienzo($('#con-man'), { aspecto: 0.78, maxH: 400 });
+  let d = null;
+  L.dibujar = () => {
+    if (!d) return;
+    const c = L.ctx; L.limpiar();
+    const W = L.w, H = L.h;
+    const raiz = [24, H / 2];
+    const nB = [W * 0.36, H * 0.27], nNB = [W * 0.36, H * 0.73];
+    const hojas = [[W * 0.7, H * 0.13, 'A', d.a, d.nB], [W * 0.7, H * 0.39, 'no A', d.c, d.nB], [W * 0.7, H * 0.61, 'A', d.b, d.nNB], [W * 0.7, H * 0.87, 'no A', d.d, d.nNB]];
+    const que = d.que;
+    const resalta = (rama) => ({ AB: ['B', 'B-A'], BA: ['B-A', 'NB-A', 'B'], AyB: ['B', 'B-A'], A: ['B', 'B-A', 'NB', 'NB-A'] }[que].includes(rama));
+    const linea = (p, q, etiq, rama) => {
+      c.strokeStyle = resalta(rama) ? COL.warn : 'rgba(147,160,187,.5)'; c.lineWidth = resalta(rama) ? 3 : 1.6;
+      c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(q[0], q[1]); c.stroke();
+      L.texto(etiq, (p[0] + q[0]) / 2, (p[1] + q[1]) / 2 - 4, resalta(rama) ? COL.warn : COL.muted, { px: true, align: 'center', tam: 12, fondo: true });
+    };
+    linea(raiz, nB, `P(B) = ${frac(d.nB, d.n)}`, 'B');
+    linea(raiz, nNB, `P(no B) = ${frac(d.nNB, d.n)}`, 'NB');
+    linea(nB, hojas[0], `P(A|B) = ${frac(d.a, d.nB)}`, 'B-A');
+    linea(nB, hojas[1], `${frac(d.c, d.nB)}`, 'B-noA');
+    linea(nNB, hojas[2], `P(A|no B) = ${frac(d.b, d.nNB)}`, 'NB-A');
+    linea(nNB, hojas[3], `${frac(d.d, d.nNB)}`, 'NB-noA');
+    L.texto('B', nB[0], nB[1], COL.acc2, { px: true, align: 'center', base: 'middle', tam: 15, fondo: true });
+    L.texto('no B', nNB[0], nNB[1], COL.muted, { px: true, align: 'center', base: 'middle', tam: 14, fondo: true });
+    hojas.forEach(([x, y, et, num, den], i) => {
+      L.texto(et, x, y, i % 2 === 0 ? COL.warn : COL.muted, { px: true, align: 'center', base: 'middle', tam: 14, fondo: true });
+      L.texto(`→ ${frac(num, d.n)}`, x + 22, y, COL.ink, { px: true, base: 'middle', tam: 12 });
+    });
+    c.fillStyle = COL.muted; c.beginPath(); c.arc(raiz[0], raiz[1], 5, 0, 7); c.fill();
+  };
+  const tabla = el('div');
+  $('#con-form').before(tabla);
+  const actualizar = (val) => {
+    const a = val['con-a'], b = val['con-b'], cc = val['con-c'], dd = val['con-d'];
+    const n = a + b + cc + dd, nB = a + cc, nNB = b + dd, nA = a + b;
+    const que = $('#con-que').value;
+    d = { a, b, c: cc, d: dd, n, nB, nNB, que };
+    const hl = (celda) => ({ AB: { num: ['AB'], den: ['B'] }, BA: { num: ['AB'], den: ['A'] }, AyB: { num: ['AB'], den: ['N'] }, A: { num: ['A'], den: ['N'] } }[que]);
+    const H = hl(); const cls = (k) => (H.num.includes(k) ? 'hl' : H.den.includes(k) ? 'hl2' : '');
+    tabla.innerHTML = `<table class="t2"><tr><th></th><th>B</th><th>no B</th><th>Total</th></tr>
+      <tr><th>A</th><td class="${cls('AB')}">${a}</td><td>${b}</td><td class="${cls('A')}">${nA}</td></tr>
+      <tr><th>no A</th><td>${cc}</td><td>${dd}</td><td>${cc + dd}</td></tr>
+      <tr><th>Total</th><td class="${cls('B')}">${nB}</td><td>${nNB}</td><td class="${cls('N')}">${n}</td></tr></table>
+      <div class="small muted">Amarillo = casos favorables · celeste = nuevo total (la condición).</div>`;
+    let h = '';
+    if (n === 0) h = '<div class="muted">Pon al menos una persona.</div>';
+    else {
+      const linea = (nombre, num, den, extra = '') => `<div class="${que === nombre ? 'res' : ''}">${{ AB: 'P(A | B)', BA: 'P(B | A)', AyB: 'P(A ∩ B)', A: 'P(A)' }[nombre]} = ${num}/${den} = ${den ? `<span class="${que === nombre ? 'hl' : ''}">${frac(num, den)}</span> ≈ ${fmt(num / den, 3)}` : '—'}${extra}</div>`;
+      h += linea('AB', a, nB, ' <span class="small muted">÷ total de B</span>');
+      h += linea('BA', a, nA, ' <span class="small muted">÷ total de A</span>');
+      h += linea('AyB', a, n);
+      h += linea('A', nA, n);
+      if (nB && n) {
+        const ind = Math.abs(a / nB - nA / n) < 1e-9;
+        h += `<div class="small ${ind ? 'txt-ok' : 'muted'}">${ind ? 'P(A | B) = P(A): A y B son independientes (saber B no cambia nada).' : 'P(A | B) ≠ P(A): saber B sí cambia la probabilidad de A.'}</div>`;
+      }
+    }
+    $('#con-form').innerHTML = h;
+    L.redibujar();
+  };
+  const s = sliders(['con-a', 'con-b', 'con-c', 'con-d'], actualizar, { 'con-a': String, 'con-b': String, 'con-c': String, 'con-d': String });
+  $('#con-que').addEventListener('change', () => s.leer());
+}
+
+// =====================================================================
+// LECCIÓN 4 · trigonometría
+// =====================================================================
+{
+  const L = new Lienzo($('#tri-ver'), { aspecto: 0.42, maxH: 380 });
+  const T = 10;
+  animar('tri-ver', L, (t) => {
+    const c = L.ctx; L.limpiar();
+    const th = ((t % T) / T) * 2 * Math.PI;
+    const R = Math.min(L.h * 0.38, L.w * 0.16);
+    const cx = R + 26, cy = L.h / 2;
+    const gx0 = cx + R + 40, gx1 = L.w - 16;
+    const gX = (a) => gx0 + (a / (2 * Math.PI)) * (gx1 - gx0);
+    c.strokeStyle = 'rgba(147,160,187,.45)'; c.lineWidth = 1.2;
+    c.beginPath(); c.moveTo(cx - R - 12, cy); c.lineTo(gx1, cy); c.moveTo(cx, cy - R - 12); c.lineTo(cx, cy + R + 12); c.moveTo(gx0, cy - R - 8); c.lineTo(gx0, cy + R + 8); c.stroke();
+    c.beginPath(); c.arc(cx, cy, R, 0, 7); c.stroke();
+    c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
+    [['π/2', Math.PI / 2], ['π', Math.PI], ['3π/2', 1.5 * Math.PI], ['2π', 2 * Math.PI]].forEach(([s, a]) => c.fillText(s, gX(a), cy + 4));
+    c.textAlign = 'right'; c.textBaseline = 'middle'; c.fillText('1', gx0 - 4, cy - R); c.fillText('−1', gx0 - 4, cy + R);
+    const px = cx + R * Math.cos(th), py = cy - R * Math.sin(th);
+    // curva hasta θ
+    c.strokeStyle = COL.warn; c.lineWidth = 3; c.beginPath();
+    for (let a = 0; a <= th; a += 0.02) { const X = gX(a), Y = cy - R * Math.sin(a); if (a === 0) c.moveTo(X, Y); else c.lineTo(X, Y); }
+    c.stroke();
+    c.strokeStyle = 'rgba(147,160,187,.25)'; c.lineWidth = 1; c.beginPath();
+    for (let a = 0; a <= 2 * Math.PI; a += 0.03) { const X = gX(a), Y = cy - R * Math.sin(a); if (a === 0) c.moveTo(X, Y); else c.lineTo(X, Y); }
+    c.stroke();
+    // triángulo
+    c.strokeStyle = COL.ink; c.lineWidth = 2; c.beginPath(); c.moveTo(cx, cy); c.lineTo(px, py); c.stroke();
+    c.strokeStyle = COL.acc2; c.lineWidth = 4; c.beginPath(); c.moveTo(cx, cy); c.lineTo(px, cy); c.stroke();
+    c.strokeStyle = COL.warn; c.lineWidth = 4; c.beginPath(); c.moveTo(px, cy); c.lineTo(px, py); c.stroke();
+    c.strokeStyle = COL.warn; c.lineWidth = 1; c.setLineDash([4, 4]); c.beginPath(); c.moveTo(px, py); c.lineTo(gX(th), py); c.stroke(); c.setLineDash([]);
+    c.strokeStyle = COL.acc; c.lineWidth = 2; c.beginPath(); c.arc(cx, cy, 16, 0, -th, true); c.stroke();
+    c.fillStyle = COL.ink; c.beginPath(); c.arc(px, py, 5, 0, 7); c.fill();
+    c.fillStyle = COL.warn; c.beginPath(); c.arc(gX(th), py, 5, 0, 7); c.fill();
+    const g = Math.round((th * 180) / Math.PI);
+    L.texto(`θ = ${g}°`, 10, 10, COL.acc, { px: true, base: 'top' });
+    $('#tri-ver-txt').innerHTML = `θ = ${g}° · <span style="color:${COL.warn}">sen θ = ${fmt(Math.sin(th))}</span> · <span style="color:${COL.acc2}">cos θ = ${fmt(Math.cos(th))}</span> · el punto es (cos θ, sen θ)`;
+  });
+}
+{
+  const L = new Lienzo($('#tri-man'), { aspecto: 0.7, maxH: 400 });
+  let v = {};
+  const NOT = { 30: ['1/2', '√3/2', '√3/3'], 45: ['√2/2', '√2/2', '1'], 60: ['√3/2', '1/2', '√3'] };
+  L.dibujar = () => {
+    const a = (v['tri-a'] * Math.PI) / 180, h = v['tri-h'];
+    const ad = h * Math.cos(a), op = h * Math.sin(a);
+    const esc = Math.min((L.w - 120) / ad, (L.h - 70) / op);
+    const ox = 50, oy = L.h - 36;
+    const A = [ox, oy], C = [ox + ad * esc, oy], B = [ox + ad * esc, oy - op * esc];
+    const c = L.ctx; L.limpiar();
+    c.lineWidth = 4;
+    c.strokeStyle = COL.acc2; c.beginPath(); c.moveTo(...A); c.lineTo(...C); c.stroke();
+    c.strokeStyle = COL.warn; c.beginPath(); c.moveTo(...C); c.lineTo(...B); c.stroke();
+    c.strokeStyle = COL.ink; c.beginPath(); c.moveTo(...B); c.lineTo(...A); c.stroke();
+    c.strokeStyle = COL.muted; c.lineWidth = 1.5; c.strokeRect(C[0] - 14, C[1] - 14, 14, 14);
+    c.strokeStyle = COL.acc; c.lineWidth = 2; c.beginPath(); c.arc(A[0], A[1], 34, -a, 0); c.stroke();
+    L.texto(`α = ${v['tri-a']}°`, A[0] + 40, A[1] - 6, COL.acc, { px: true });
+    L.texto(`adyacente = ${fmt(ad)}`, (A[0] + C[0]) / 2, A[1] + 6, COL.acc2, { px: true, align: 'center', base: 'top' });
+    L.texto(`opuesto = ${fmt(op)}`, C[0] + 8, (C[1] + B[1]) / 2, COL.warn, { px: true, base: 'middle', fondo: true });
+    L.texto(`hipotenusa = ${fmt(h)}`, (A[0] + B[0]) / 2 - 8, (A[1] + B[1]) / 2 - 8, COL.ink, { px: true, align: 'right', fondo: true });
+  };
+  sliders(['tri-a', 'tri-h'], (val) => {
+    v = val; L.redibujar();
+    const g = val['tri-a'], a = (g * Math.PI) / 180, h = val['tri-h'];
+    const ad = h * Math.cos(a), op = h * Math.sin(a);
+    let s = `<div><span style="color:${COL.warn}">sen ${g}°</span> = opuesto/hipotenusa = ${fmt(op)}/${fmt(h)} = <span class="hl">${fmt(Math.sin(a), 3)}</span></div>`;
+    s += `<div><span style="color:${COL.acc2}">cos ${g}°</span> = adyacente/hipotenusa = ${fmt(ad)}/${fmt(h)} = <span class="hl">${fmt(Math.cos(a), 3)}</span></div>`;
+    s += `<div>tan ${g}° = opuesto/adyacente = ${fmt(op)}/${fmt(ad)} = <span class="hl">${fmt(Math.tan(a), 3)}</span></div>`;
+    s += `<div class="small muted">Cambia la hipotenusa: los lados cambian, las razones <b>no</b>. Solo dependen del ángulo.</div>`;
+    s += `<div>sen² + cos² = ${fmt(Math.sin(a) ** 2, 3)} + ${fmt(Math.cos(a) ** 2, 3)} = 1</div>`;
+    if (NOT[g]) s += `<div class="res txt-ok">Ángulo notable: sen ${g}° = ${NOT[g][0]} · cos ${g}° = ${NOT[g][1]} · tan ${g}° = ${NOT[g][2]}</div>`;
+    else s += '<div class="small muted">Prueba 30°, 45° y 60°: son los que salen en la PAES.</div>';
+    $('#tri-form').innerHTML = s;
+  }, { 'tri-a': (x) => x + '°', 'tri-h': (x) => fmt(x) });
+}
+{
+  const L = new Lienzo($('#fun-man'), { aspecto: 0.62, maxH: 400 });
+  let v = {};
+  const piTxt = (num, den) => { const g = gcd(num, den); num /= g; den /= g; const n = num === 1 ? 'π' : `${num}π`; return den === 1 ? n : `${n}/${den}`; };
+  L.dibujar = () => {
+    const A = v['fun-A'], B = v['fun-B'], C = v['fun-C'], cos = $('#fun-tipo').value === 'cos';
+    const f = (x) => A * (cos ? Math.cos(B * x) : Math.sin(B * x)) + C;
+    L.x0 = -0.3; L.x1 = 4 * Math.PI + 0.3; L.y0 = -5.5; L.y1 = 5.5;
+    const c = L.ctx; L.limpiar();
+    c.strokeStyle = 'rgba(147,160,187,.12)'; c.lineWidth = 1; c.beginPath();
+    for (let k = 1; k <= 8; k++) { const X = L.X((k * Math.PI) / 2); c.moveTo(X, 0); c.lineTo(X, L.h); }
+    for (let y = -5; y <= 5; y++) { c.moveTo(0, L.Y(y)); c.lineTo(L.w, L.Y(y)); }
+    c.stroke();
+    c.strokeStyle = 'rgba(147,160,187,.55)'; c.beginPath(); c.moveTo(0, L.Y(0)); c.lineTo(L.w, L.Y(0)); c.moveTo(L.X(0), 0); c.lineTo(L.X(0), L.h); c.stroke();
+    c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
+    ['π/2', 'π', '3π/2', '2π', '5π/2', '3π', '7π/2', '4π'].forEach((s, i) => c.fillText(s, L.X(((i + 1) * Math.PI) / 2), L.Y(0) + 3));
+    c.textAlign = 'right'; c.textBaseline = 'middle'; for (const y of [-4, -2, 2, 4]) c.fillText(String(y).replace('-', '−'), L.X(0) - 4, L.Y(y));
+    L.fn((x) => (cos ? Math.cos(x) : Math.sin(x)), 'rgba(147,160,187,.45)', 1.5);
+    L.seg(L.x0, C + Math.abs(A), L.x1, C + Math.abs(A), COL.ok, 1, [5, 5]);
+    L.seg(L.x0, C - Math.abs(A), L.x1, C - Math.abs(A), COL.mal, 1, [5, 5]);
+    L.seg(L.x0, C, L.x1, C, COL.muted, 1, [2, 4]);
+    L.fn(f, COL.acc, 3);
+    // un período marcado
+    const P = (2 * Math.PI) / B;
+    if (P < L.x1) { const yb = C - Math.abs(A) - 0.5; L.seg(0, yb, P, yb, COL.warn, 2.5); L.texto('1 período', P / 2, yb, COL.warn, { align: 'center', base: 'top', dy: 3 }); }
+  };
+  const s = sliders(['fun-A', 'fun-B', 'fun-C'], (val) => {
+    v = val; L.redibujar();
+    const A = val['fun-A'], B = val['fun-B'], C = val['fun-C'];
+    const nom = $('#fun-tipo').value;
+    const perTxt = piTxt(4, Math.round(2 * B)); // 2π/B con B en medios
+    let h = `<div class="res">f(x) = ${fmt(A)}·${nom}(${fmt(B)}x) ${C < 0 ? '−' : '+'} ${fmt(Math.abs(C))}</div>`;
+    h += `<div>Amplitud = |A| = <span class="hl">${fmt(Math.abs(A))}</span>${A < 0 ? ' <span class="small muted">(A negativo: la curva se refleja, la amplitud sigue positiva)</span>' : ''}</div>`;
+    h += `<div>Período = 2π/B = 2π/${fmt(B)} = <span class="hl">${perTxt}</span></div>`;
+    h += `<div><span style="color:${COL.ok}">Máximo</span> = C + |A| = ${fmt(C + Math.abs(A))} · <span style="color:${COL.mal}">mínimo</span> = C − |A| = ${fmt(C - Math.abs(A))}</div>`;
+    h += `<div class="small muted">Gris: ${nom}(x) original. B más grande → más ondas en el mismo espacio.</div>`;
+    $('#fun-form').innerHTML = h;
+  });
+  $('#fun-tipo').addEventListener('change', () => s.leer());
+}
+
+// =====================================================================
+// EJEMPLOS RESUELTOS (un paso a la vez) · números verificados en tools/verificar_m2.py
+// =====================================================================
+const EJEMPLOS = {
+  rec: {
+    enun: 'La recta L pasa por A(1, 3) y B(3, 7). ¿En qué punto corta a la recta y = −x + 7?',
+    pasos: [
+      'Pendiente de L: m = (7 − 3)/(3 − 1) = 4/2 = <b>2</b>.',
+      'Coeficiente de posición con A(1, 3): 3 = 2·1 + n → n = 1. Entonces <b>L: y = 2x + 1</b>.',
+      'El punto de corte cumple las dos ecuaciones: igualo <b>2x + 1 = −x + 7</b>.',
+      '3x = 6 → <b>x = 2</b>. Reemplazo en L: y = 2·2 + 1 = <b>5</b>.',
+      'Compruebo en la otra recta: −2 + 7 = 5 ✔. <b>Respuesta: (2, 5).</b>',
+    ],
+    trampa: 'Al calcular la pendiente, resta en el MISMO orden arriba y abajo: (y₂ − y₁)/(x₂ − x₁).',
+  },
+  log: {
+    enun: 'Una población de bacterias se modela con N(t) = 500·2<sup>t</sup>, con t en horas. ¿En cuántas horas llega a 16.000 bacterias?',
+    pasos: [
+      'Planteo: 500·2<sup>t</sup> = 16.000.',
+      'Aíslo la potencia: 2<sup>t</sup> = 16.000/500 = <b>32</b>.',
+      'Escribo 32 como potencia de 2: 32 = 2<sup>5</sup>.',
+      'Igualo exponentes: <b>t = 5</b>. (Con logaritmos: t = log₂ 32 = 5.)',
+      'Compruebo: 500·2<sup>5</sup> = 500·32 = 16.000 ✔. <b>Respuesta: 5 horas.</b>',
+    ],
+    trampa: 'No juntes el 500 con la base: 500·2<sup>t</sup> no es 1000<sup>t</sup>. Primero aísla 2<sup>t</sup> dividiendo por 500.',
+  },
+  con: {
+    enun: 'El 60 % de los estudiantes llega en bus y, de ellos, el 30 % llega tarde. De los que no usan bus, el 10 % llega tarde. Si un estudiante llegó tarde, ¿cuál es la probabilidad de que haya venido en bus?',
+    pasos: [
+      'Árbol: bus 0,6 → tarde 0,3 · no bus 0,4 → tarde 0,1.',
+      'Rama «bus y tarde»: 0,6·0,3 = <b>0,18</b>.',
+      'Rama «no bus y tarde»: 0,4·0,1 = <b>0,04</b>.',
+      'Probabilidad total de llegar tarde: 0,18 + 0,04 = <b>0,22</b>. Este es el nuevo universo.',
+      'P(bus | tarde) = 0,18/0,22 = <b>9/11 ≈ 0,82</b>.',
+    ],
+    trampa: 'No respondas 0,3: esa es P(tarde | bus), la condición al revés.',
+  },
+  tri: {
+    enun: 'Una escalera de 6 m está apoyada en un muro y forma un ángulo de 60° con el suelo. ¿A qué altura del muro llega?',
+    pasos: [
+      'Dibujo: la escalera es la <b>hipotenusa</b> (6 m). La altura es el cateto <b>opuesto</b> al ángulo de 60°.',
+      'Opuesto e hipotenusa → <b>seno</b>: sen 60° = h/6.',
+      'Valor notable: sen 60° = √3/2.',
+      'h = 6·√3/2 = <b>3√3 m ≈ 5,2 m</b>.',
+      'Control: menos de 6 m ✔ y más de 3 m, porque el ángulo es mayor que 30° ✔.',
+    ],
+    trampa: 'Con cos 60° = 1/2 te da 3 m: esa es la distancia del pie de la escalera al muro, no la altura.',
+  },
+};
+document.querySelectorAll('.ejemplo').forEach((box) => {
+  const ej = EJEMPLOS[box.dataset.ej];
+  box.innerHTML = `<div class="enun">${ej.enun}</div><ol></ol>`;
+  const ol = box.querySelector('ol');
+  const fila = el('div', 'fila'); fila.style.marginTop = '8px';
+  const b = el('button', 'btn mini', 'Siguiente paso (1/' + ej.pasos.length + ')');
+  const todo = el('button', 'btn sec mini', 'Ver todo');
+  let i = 0;
+  const mostrar = () => {
+    ol.appendChild(el('li', '', ej.pasos[i++]));
+    if (i < ej.pasos.length) b.textContent = `Siguiente paso (${i + 1}/${ej.pasos.length})`;
+    else { b.hidden = true; todo.hidden = true; box.appendChild(el('div', 'trampa-ej', `<b>Trampa típica:</b> ${ej.trampa}`)); }
+  };
+  b.onclick = mostrar; todo.onclick = () => { while (i < ej.pasos.length) mostrar(); };
+  fila.append(b, todo); box.appendChild(fila);
+  box.appendChild(el('p', 'small muted', 'Antes de cada paso, intenta adivinar qué viene.'));
+});
+
+// =====================================================================
+// PRÁCTICA en 3 niveles
+// =====================================================================
+const NIVELES = [['basico', 'Básico'], ['paes', 'PAES'], ['dificil', 'Difícil']];
+document.querySelectorAll('.practica').forEach((box) => {
+  const temas = box.dataset.temas.split(',');
+  const bar = el('div', 'niveles');
+  const quiz = el('div', 'quiz');
+  const dom = P27.dominio(temas[0]);
+  quiz.innerHTML = `<p class="muted small">Elige un nivel. ${dom === null || dom < 40 ? 'Te conviene partir por <b>Básico</b>.' : dom < 70 ? 'Te conviene el nivel <b>PAES</b>.' : 'Prueba el nivel <b>Difícil</b>.'} Cada alternativa incorrecta te explica su trampa.</p>`;
+  const botones = {};
+  NIVELES.forEach(([n, nombre]) => {
+    const b = el('button', 'btn sec mini', nombre);
+    const cant = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === n).length;
+    b.title = `${cant} preguntas`;
+    b.onclick = () => empezar(n);
+    botones[n] = b; bar.appendChild(b);
+  });
+  box.append(bar, quiz);
+  function empezar(nivel) {
+    Object.entries(botones).forEach(([n, b]) => b.classList.toggle('on', n === nivel));
+    const qs = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === nivel).sort(() => Math.random() - 0.5);
+    let i = 0, aciertos = 0;
+    const sig = () => {
+      if (i >= qs.length) return resumen();
+      const q = qs[i++];
+      P27.pregunta(quiz, q, {
+        registrar: true, mezclar: true,
+        meta: `${NIVELES.find((x) => x[0] === nivel)[1]} · pregunta ${i} de ${qs.length} · ${TEMAS[q.tema].nombre}`,
+        textoSiguiente: i < qs.length ? 'Siguiente' : 'Ver resultado',
+        onRespuesta: ({ ok }) => { if (ok) aciertos++; },
+        onSiguiente: sig,
+      });
+    };
+    const resumen = () => {
+      const idx = NIVELES.findIndex((x) => x[0] === nivel);
+      const r = el('div', 'resumen-nivel');
+      const bien = aciertos === qs.length, mal = aciertos <= qs.length / 3;
+      r.innerHTML = `<h3>${aciertos}/${qs.length} en ${NIVELES[idx][1]}</h3><p>${bien ? (idx < 2 ? '¡Listo! Sube de nivel.' : '¡Dominado! Este tema queda para el repaso espaciado.') : mal ? 'Vuelve a «Manipular» y al ejemplo antes de repetir. Los temas fallados vuelven mañana y en 3 días.' : 'Casi. Revisa las trampas que te pillaron y repite.'}</p>`;
+      const f = el('div', 'fila');
+      const rep = el('button', 'btn sec mini', 'Repetir nivel'); rep.onclick = () => empezar(nivel); f.appendChild(rep);
+      if (idx < 2) { const s2 = el('button', 'btn mini', `Nivel ${NIVELES[idx + 1][1]}`); s2.onclick = () => empezar(NIVELES[idx + 1][0]); f.appendChild(s2); }
+      const dom2 = P27.dominio(temas[0]);
+      f.appendChild(el('span', 'small muted', `Dominio ahora: ${dom2 === null ? '—' : dom2 + ' %'}`));
+      r.appendChild(f);
+      quiz.innerHTML = ''; quiz.appendChild(r);
+    };
+    sig();
+  }
+});
+
+// ---------------- dominio en vivo ----------------
+function pintarDominio() {
+  document.querySelectorAll('.dom[data-tema]').forEach((s) => {
+    const v = P27.dominio(s.dataset.tema);
+    s.style.color = P27.colorDominio(v);
+    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'}: ${v === null ? 'sin dato' : v + ' %'}`;
+  });
+}
+window.addEventListener('p27:cambio', pintarDominio);
+window.addEventListener('storage', pintarDominio);
+pintarDominio();
+
+// ---------------- temas pendientes por pestaña ----------------
+const EJES = { alg: 'Álgebra y funciones', num: 'Números', geo: 'Geometría', pro: 'Probabilidad y estadística', sd: 'Transversal' };
+const FASE2 = new Set(['m2.sd', 'm2.pro.combinatoria']);
+for (const [tab, eje] of Object.entries(EJES)) {
+  const pane = $('#p-' + tab);
+  const otros = Object.values(TEMAS).filter((t) => t.prueba === 'M2' && t.eje === eje && !pane.querySelector(`section[id="${t.id}"]`));
+  if (!otros.length) continue;
+  const box = el('div', 'card'); box.innerHTML = '<h3>Otros temas de este eje</h3>';
+  const g = el('div', 'pend');
+  otros.forEach((t) => {
+    const c = el('div', 'card');
+    if (t.leccion) c.innerHTML = `<b>${t.nombre}</b> <span class="chip ${t.prio}">${t.prio}</span><p class="small">Está dentro de otra lección: <a href="${t.leccion}">ir a la lección</a>.</p>`;
+    else c.innerHTML = `<b>${t.nombre}</b> <span class="chip ${t.prio}">${t.prio}</span><p class="small muted">Lección en la Fase 2${FASE2.has(t.id) ? ' (va primero)' : ''}.</p>`;
+    g.appendChild(c);
+  });
+  box.appendChild(g); pane.appendChild(box);
+}
+
+// ---------------- pestañas + enlaces directos a una lección ----------------
+function ir(hash) {
+  const id = decodeURIComponent(hash || '');
+  const sec = id && document.getElementById(id);
+  let tab = 'alg';
+  if (sec && sec.classList.contains('leccion')) tab = sec.dataset.tab;
+  else if (EJES[id]) tab = id;
+  document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+  document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + tab));
+  // los lienzos se miden al hacerse visibles
+  requestAnimationFrame(() => {
+    document.querySelectorAll('#p-' + tab + ' canvas').forEach((cv) => cv.dispatchEvent(new Event('p27:medir')));
+    if (sec && sec.classList.contains('leccion')) sec.scrollIntoView({ block: 'start' });
+  });
+}
+document.getElementById('tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) location.hash = b.dataset.tab; });
+window.addEventListener('hashchange', () => ir(location.hash.slice(1)));
+ir(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>

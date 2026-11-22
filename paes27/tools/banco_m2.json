@@ -68,8 +68,8 @@
     "trampa": "Intercambiaste x e y: 3 − 7 = −4, no 4."
    },
    {
-    "texto": "(6, 4)",
-    "trampa": "Solo verificaste la primera ecuación: 6 + 4 = 10, pero 6 − 4 = 2."
+    "texto": "(14, −4)",
+    "trampa": "Al sumar las ecuaciones quedó 2x = 14 y olvidaste dividir por 2; luego y = 10 − 14."
    },
    {
     "texto": "(7, −3)",
@@ -125,7 +125,7 @@
    },
    {
     "texto": "−1/2",
-    "trampa": "Error de signo al despejar: −4y = −2x + 8 → y = x/2 − 2."
+    "trampa": "Al dividir −2x por −4 dejaste el signo menos. Menos dividido por menos da más: y = x/2 − 2."
    },
    {
     "texto": "1/2",
@@ -157,11 +157,11 @@
    },
    {
     "texto": "$1.400",
-    "trampa": "Es lo que cuestan un cuaderno y un lápiz juntos."
+    "trampa": "Hallaste l = 600 y lo reemplazaste en c + 2l = 2000, pero olvidaste el 2: c = 2000 − 600."
    },
    {
-    "texto": "$1.000",
-    "trampa": "Supusiste que el cuaderno y el lápiz cuestan lo mismo (2.000/2)."
+    "texto": "$1.600",
+    "trampa": "Reemplazaste l = 600 en la primera ecuación (2c = 1.600) y olvidaste dividir por 2."
    }
   ],
   "correcta": 0,
@@ -272,8 +272,8 @@
     "trampa": ""
    },
    {
-    "texto": "−3",
-    "trampa": "Ese sería log<sub>5</sub>(1/125)."
+    "texto": "2",
+    "trampa": "Escribiste 125 = 5·25 = 5·5² y contaste solo el exponente de 25. En realidad 125 = 5³."
    }
   ],
   "correcta": 2,
@@ -352,8 +352,8 @@
     "trampa": ""
    },
    {
-    "texto": "a·b²",
-    "trampa": "El logaritmo de un producto es la SUMA, no el producto."
+    "texto": "2ab",
+    "trampa": "Multiplicaste los logaritmos: log 2 · log 9 = a·2b. El logaritmo de un producto es la SUMA."
    },
    {
     "texto": "a + b²",
@@ -381,7 +381,7 @@
    },
    {
     "texto": "1",
-    "trampa": "Al despejar restaste 1 en vez de sumarlo: 2x = 3 + 1."
+    "trampa": "Al despejar restaste 1 en vez de sumarlo: 2x = 3 − 1 = 2, y así x = 1."
    },
    {
     "texto": "2",
@@ -665,7 +665,7 @@
    },
    {
     "texto": "2/3",
-    "trampa": "Esa es la probabilidad de exactamente una cara dentro de la condición."
+    "trampa": "Contaste los casos con una sola cara (CS y SC) en vez del caso pedido (CC)."
    }
   ],
   "correcta": 2,
@@ -704,7 +704,7 @@
   "prueba": "M2",
   "eje": "Probabilidad y estadística",
   "tema": "m2.pro.condicional",
-  "nivel": "dificil",
+  "nivel": "paes",
   "enunciado": "A y B son eventos independientes, con P(A) = 0,3 y P(B) = 0,5. ¿Cuánto es P(A ∪ B)?",
   "opciones": [
    {
@@ -928,7 +928,7 @@
   "prueba": "M2",
   "eje": "Geometría",
   "tema": "m2.geo.trig-razones",
-  "nivel": "dificil",
+  "nivel": "paes",
   "enunciado": "Un avión despega en línea recta con un ángulo de 30° respecto del suelo. Después de recorrer 2 km por su trayectoria, ¿a qué altura está y cuánto avanzó en horizontal?",
   "opciones": [
    {
