@@ -135,386 +135,1310 @@ select,input[type=time],input[type=number]{background:var(--panel2);color:var(--
 
 <script type="application/json" id="banco-diag">
 {
-"M2": [
-{"id":"d-m2-01","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.sistemas-rectas","nivel":"paes",
- "enunciado":"Las rectas L<sub>1</sub>: y = 2x + 3 y L<sub>2</sub>: ax − y = 5 son paralelas. ¿Cuál es el valor de a?",
- "opciones":[
-  {"texto":"2","trampa":""},
-  {"texto":"−2","trampa":"Error de signo al despejar y: de ax − y = 5 sale y = ax − 5, no y = −ax + 5."},
-  {"texto":"−1/2","trampa":"Esa es la condición de perpendicularidad (m<sub>1</sub>·m<sub>2</sub> = −1), no de paralelismo."},
-  {"texto":"3","trampa":"Comparaste coeficientes de posición. Paralelas = misma pendiente, no mismo intercepto."}],
- "correcta":0,"explicacion":"Despeja L<sub>2</sub>: y = ax − 5, su pendiente es a. Paralelas tienen la misma pendiente: a = 2."},
-{"id":"d-m2-02","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.sistemas-rectas","nivel":"dificil",
- "enunciado":"¿Para qué valor de k el sistema kx + 2y = 4 ; 3x + 6y = 12 tiene infinitas soluciones?",
- "opciones":[
-  {"texto":"1","trampa":""},
-  {"texto":"3","trampa":"Igualaste los coeficientes de x sin escalar. La segunda ecuación es la primera multiplicada por 3, así que hay que comparar k·3 con 3."},
-  {"texto":"−1","trampa":"Error de signo: la proporción k/3 = 2/6 da k positivo."},
-  {"texto":"Para ningún valor de k","trampa":"Crees que dos ecuaciones distintas no pueden ser la misma recta. Si una es múltiplo de la otra, coinciden."}],
- "correcta":0,"explicacion":"Infinitas soluciones = rectas coincidentes: los coeficientes son proporcionales. k/3 = 2/6 = 4/12 = 1/3, así que k = 1."},
-{"id":"d-m2-03","prueba":"M2","eje":"Números","tema":"m2.num.log-exp","nivel":"basico",
- "enunciado":"¿Cuál es el valor de log<sub>2</sub> 32 − log<sub>3</sub> (1/9)?",
- "opciones":[
-  {"texto":"7","trampa":""},
-  {"texto":"3","trampa":"Tomaste log<sub>3</sub>(1/9) = 2. Pero 3<sup>−2</sup> = 1/9, así que vale −2."},
-  {"texto":"−7","trampa":"Restaste en el orden contrario: log<sub>3</sub>(1/9) − log<sub>2</sub> 32."},
-  {"texto":"−3","trampa":"Dos errores juntos: tomaste log<sub>3</sub>(1/9) = 2 y además restaste al revés."}],
- "correcta":0,"explicacion":"2<sup>5</sup> = 32, así que log<sub>2</sub> 32 = 5. 3<sup>−2</sup> = 1/9, así que log<sub>3</sub>(1/9) = −2. Entonces 5 − (−2) = 7."},
-{"id":"d-m2-04","prueba":"M2","eje":"Números","tema":"m2.num.log-exp","nivel":"paes",
- "enunciado":"Si log 2 ≈ 0,3 y log 3 ≈ 0,48, ¿cuál es el valor aproximado de log 12?",
- "opciones":[
-  {"texto":"1,08","trampa":""},
-  {"texto":"0,288","trampa":"Usaste log(a·b) = log a · log b. El logaritmo de un producto es la SUMA de los logaritmos."},
-  {"texto":"0,57","trampa":"Usaste log(2<sup>2</sup>) = (log 2)<sup>2</sup>. Lo correcto es log(2<sup>2</sup>) = 2·log 2."},
-  {"texto":"0,78","trampa":"Factorizaste mal: 2·3 = 6, no 12. Falta un 2 más: 12 = 2·2·3."}],
- "correcta":0,"explicacion":"12 = 2<sup>2</sup>·3, entonces log 12 = 2·log 2 + log 3 ≈ 0,6 + 0,48 = 1,08."},
-{"id":"d-m2-05","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.condicional","nivel":"paes",
- "enunciado":"En un curso de 40 estudiantes hay 22 mujeres. 18 estudiantes practican deporte y, de ellos, 12 son mujeres. Si se elige al azar una mujer del curso, ¿cuál es la probabilidad de que practique deporte?",
- "opciones":[
-  {"texto":"6/11","trampa":""},
-  {"texto":"2/3","trampa":"Condicionaste al revés: 12/18 es la probabilidad de ser mujer dado que practica deporte."},
-  {"texto":"3/10","trampa":"12/40 es la probabilidad de ser mujer Y practicar deporte. Pero ya sabes que es mujer: el total es 22."},
-  {"texto":"9/20","trampa":"18/40 es la probabilidad de practicar deporte sin la condición «es mujer»."}],
- "correcta":0,"explicacion":"La condición «es mujer» achica el universo a 22. De ellas, 12 practican deporte: 12/22 = 6/11."},
-{"id":"d-m2-06","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.binomial-normal","nivel":"paes",
- "enunciado":"Se lanza una moneda equilibrada 4 veces. ¿Cuál es la probabilidad de obtener exactamente 2 caras?",
- "opciones":[
-  {"texto":"3/8","trampa":""},
-  {"texto":"1/2","trampa":"«2 de 4 es la mitad» no es una probabilidad. Hay que contar los casos."},
-  {"texto":"1/4","trampa":"Calculaste (1/2)·(1/2) solo para las dos caras y olvidaste los sellos y el orden."},
-  {"texto":"1/16","trampa":"Esa es la probabilidad de UNA secuencia (por ejemplo CCSS). Hay C(4,2) = 6 secuencias así."}],
- "correcta":0,"explicacion":"Binomial: C(4,2)·(1/2)<sup>2</sup>·(1/2)<sup>2</sup> = 6/16 = 3/8."},
-{"id":"d-m2-07","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.combinatoria","nivel":"basico",
- "enunciado":"¿De cuántas formas se puede elegir un presidente, un secretario y un tesorero entre 6 personas, si nadie puede tener dos cargos?",
- "opciones":[
-  {"texto":"120","trampa":""},
-  {"texto":"20","trampa":"C(6,3) = 20 sirve cuando el orden no importa. Acá los cargos son distintos: el orden sí importa."},
-  {"texto":"216","trampa":"6<sup>3</sup> permite que una persona tenga varios cargos. Sin repetición es 6·5·4."},
-  {"texto":"18","trampa":"Sumaste 6 + 6 + 6. Las elecciones sucesivas se multiplican, no se suman."}],
- "correcta":0,"explicacion":"Presidente: 6 opciones, secretario: 5, tesorero: 4. Total 6·5·4 = 120 (permutación de 6 tomados de a 3)."},
-{"id":"d-m2-08","prueba":"M2","eje":"Geometría","tema":"m2.geo.trig-razones","nivel":"basico",
- "enunciado":"En un triángulo rectángulo, un cateto mide 6 cm y la hipotenusa mide 10 cm. Si α es el ángulo opuesto al cateto de 6 cm, ¿cuánto vale tan α?",
- "opciones":[
-  {"texto":"3/4","trampa":""},
-  {"texto":"3/5","trampa":"6/10 es sen α (opuesto/hipotenusa), no tan α."},
-  {"texto":"4/3","trampa":"Invertiste la razón: tan α = opuesto/adyacente, no adyacente/opuesto."},
-  {"texto":"4/5","trampa":"8/10 es cos α (adyacente/hipotenusa)."}],
- "correcta":0,"explicacion":"Por Pitágoras el otro cateto mide √(100 − 36) = 8. tan α = opuesto/adyacente = 6/8 = 3/4."},
-{"id":"d-m2-09","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.trig-funciones","nivel":"paes",
- "enunciado":"¿Cuáles son la amplitud y el período de f(x) = 3·sen(2x)?",
- "opciones":[
-  {"texto":"Amplitud 3, período π","trampa":""},
-  {"texto":"Amplitud 3, período 4π","trampa":"Multiplicaste 2π por 2. El período es 2π dividido por el número que acompaña a x."},
-  {"texto":"Amplitud 3, período 2π","trampa":"Crees que el período no cambia. El 2 dentro del seno lo comprime a la mitad."},
-  {"texto":"Amplitud 6, período π","trampa":"6 es la distancia entre el máximo y el mínimo. La amplitud es la mitad: 3."}],
- "correcta":0,"explicacion":"En A·sen(Bx): amplitud = |A| = 3, período = 2π/B = 2π/2 = π."},
-{"id":"d-m2-10","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.dispersion","nivel":"paes",
- "enunciado":"¿Cuál es la varianza del conjunto de datos 2, 4, 6, 8, 10?",
- "opciones":[
-  {"texto":"8","trampa":""},
-  {"texto":"2√2","trampa":"√8 = 2√2 es la desviación estándar. La varianza es el valor antes de sacar la raíz."},
-  {"texto":"0","trampa":"Sumaste las desviaciones sin elevarlas al cuadrado: −4, −2, 0, 2, 4 se cancelan."},
-  {"texto":"12/5","trampa":"Promediaste las desviaciones en valor absoluto (12/5). La varianza usa los cuadrados."}],
- "correcta":0,"explicacion":"Media = 6. Desviaciones: −4, −2, 0, 2, 4. Cuadrados: 16, 4, 0, 4, 16. Suma 40, dividido por 5 = 8."},
-{"id":"d-m2-11","prueba":"M2","eje":"Transversal","tema":"m2.sd","nivel":"paes",
- "enunciado":"Se puede determinar el valor de x + y si:<br>(1) x − y = 4<br>(2) 2x + 2y = 18",
- "opciones":[
-  {"texto":"(1) por sí sola","trampa":"Con x − y = 4 hay infinitos pares (5 y 1, 10 y 6...) con sumas distintas."},
-  {"texto":"(2) por sí sola","trampa":""},
-  {"texto":"Ambas juntas, (1) y (2)","trampa":"Buscaste x e y por separado. La pregunta pide solo x + y, y (2) ya la da."},
-  {"texto":"Cada una por sí sola, (1) ó (2)","trampa":"(1) sola no alcanza: da la diferencia, no la suma."},
-  {"texto":"Se requiere información adicional","trampa":"(2) dividida por 2 ya entrega x + y = 9."}],
- "correcta":1,"explicacion":"(2): 2(x + y) = 18, entonces x + y = 9. Alcanza sola. (1) sola no determina la suma. Respuesta: (2) por sí sola."},
-{"id":"d-m2-12","prueba":"M2","eje":"Geometría","tema":"m2.geo.circunferencia","nivel":"paes",
- "enunciado":"En una circunferencia de centro O, el ángulo del centro ∠AOB mide 110°. El punto C está en el arco mayor AB. ¿Cuánto mide el ángulo inscrito ∠ACB?",
- "opciones":[
-  {"texto":"55°","trampa":""},
-  {"texto":"110°","trampa":"El ángulo inscrito NO es igual al del centro: mide la mitad del arco que subtiende."},
-  {"texto":"220°","trampa":"Duplicaste en vez de dividir por 2."},
-  {"texto":"125°","trampa":"Ese sería el ángulo si C estuviera en el arco menor (180° − 55°)."}],
- "correcta":0,"explicacion":"El ángulo inscrito mide la mitad del ángulo del centro que subtiende el mismo arco: 110°/2 = 55°."},
-{"id":"d-m2-13","prueba":"M2","eje":"Geometría","tema":"m2.geo.homotecia","nivel":"paes",
- "enunciado":"Se aplica una homotecia de centro en el origen y razón k = −2 al punto P(3, −1). ¿Cuáles son las coordenadas de su imagen?",
- "opciones":[
-  {"texto":"(−6, 2)","trampa":""},
-  {"texto":"(6, −2)","trampa":"Ignoraste el signo de k. Razón negativa = la imagen queda al otro lado del centro."},
-  {"texto":"(1, −3)","trampa":"Sumaste k a cada coordenada. La homotecia con centro en el origen multiplica."},
-  {"texto":"(−3/2, 1/2)","trampa":"Dividiste por k en vez de multiplicar."}],
- "correcta":0,"explicacion":"Con centro en el origen, P' = k·P = (−2·3, −2·(−1)) = (−6, 2)."},
-{"id":"d-m2-14","prueba":"M2","eje":"Números","tema":"m2.num.financiera","nivel":"paes",
- "enunciado":"Se invierten $1.000.000 a interés compuesto del 2 % mensual durante 2 meses. ¿Cuánto dinero hay al final?",
- "opciones":[
-  {"texto":"$1.040.400","trampa":""},
-  {"texto":"$1.040.000","trampa":"Eso es interés simple (2 % + 2 % sobre el capital inicial). En el compuesto, el segundo mes gana interés sobre lo ganado."},
-  {"texto":"$1.000.400","trampa":"Elevaste solo la tasa: 0,02<sup>2</sup>. Lo que se eleva es el factor (1 + 0,02)."},
-  {"texto":"$1.020.000","trampa":"Calculaste solo un mes."}],
- "correcta":0,"explicacion":"C = 1.000.000·(1,02)<sup>2</sup> = 1.000.000·1,0404 = 1.040.400."},
-{"id":"d-m2-15","prueba":"M2","eje":"Geometría","tema":"m2.geo.esfera","nivel":"paes",
- "enunciado":"Una esfera tiene un volumen de 36π cm<sup>3</sup>. ¿Cuál es su área?",
- "opciones":[
-  {"texto":"36π cm²","trampa":""},
-  {"texto":"9π cm²","trampa":"πr<sup>2</sup> es el área de un círculo máximo. La esfera tiene 4πr<sup>2</sup>."},
-  {"texto":"12π cm²","trampa":"Calculaste 4πr sin elevar r al cuadrado."},
-  {"texto":"108π cm²","trampa":"Usaste r<sup>3</sup> = 27 en vez de r<sup>2</sup> = 9 en la fórmula del área."}],
- "correcta":0,"explicacion":"(4/3)πr<sup>3</sup> = 36π, entonces r<sup>3</sup> = 27 y r = 3. Área = 4πr<sup>2</sup> = 4π·9 = 36π cm<sup>2</sup>."}
-],
-"CIE": [
-{"id":"d-cie-01","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.cinematica","nivel":"paes",
- "enunciado":"Una persona camina 30 m hacia el norte y luego 40 m hacia el sur, en un total de 50 s. ¿Cuáles son su rapidez media y el módulo de su velocidad media?",
- "opciones":[
-  {"texto":"1,4 m/s y 0,2 m/s","trampa":""},
-  {"texto":"0,2 m/s y 1,4 m/s","trampa":"Los invertiste. Rapidez usa la distancia recorrida (70 m); velocidad usa el desplazamiento (10 m)."},
-  {"texto":"1,4 m/s y 1,4 m/s","trampa":"Crees que rapidez y velocidad son lo mismo. Si hay cambio de sentido, difieren."},
-  {"texto":"1,0 m/s y 0,2 m/s","trampa":"Usaste Pitágoras (√(30² + 40²) = 50 m), pero norte y sur están en la misma línea, no son perpendiculares."}],
- "correcta":0,"explicacion":"Distancia = 30 + 40 = 70 m, rapidez = 70/50 = 1,4 m/s. Desplazamiento = 10 m al sur, velocidad = 10/50 = 0,2 m/s."},
-{"id":"d-cie-02","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.mru-mrua","nivel":"basico",
- "enunciado":"Un auto parte del reposo con aceleración constante de 2 m/s<sup>2</sup>. ¿Qué distancia recorre en los primeros 5 s?",
- "opciones":[
-  {"texto":"25 m","trampa":""},
-  {"texto":"50 m","trampa":"Olvidaste el ½ de la ecuación de itinerario: d = ½·a·t<sup>2</sup>."},
-  {"texto":"10 m","trampa":"Calculaste a·t = 10, que es la velocidad final en m/s, no la distancia."},
-  {"texto":"5 m","trampa":"No elevaste el tiempo al cuadrado: ½·2·5 = 5."}],
- "correcta":0,"explicacion":"Parte del reposo: d = ½·a·t<sup>2</sup> = ½·2·25 = 25 m."},
-{"id":"d-cie-03","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.newton","nivel":"basico",
- "enunciado":"Sobre un bloque de 4 kg, en una superficie sin roce, actúan dos fuerzas horizontales: 20 N hacia la derecha y 8 N hacia la izquierda. ¿Cuál es el módulo de la aceleración del bloque?",
- "opciones":[
-  {"texto":"3 m/s²","trampa":""},
-  {"texto":"7 m/s²","trampa":"Sumaste las fuerzas (28 N). Tienen sentidos opuestos: se restan."},
-  {"texto":"12 m/s²","trampa":"12 N es la fuerza neta. Falta dividir por la masa."},
-  {"texto":"5 m/s²","trampa":"Usaste solo la fuerza de 20 N y olvidaste la de 8 N."}],
- "correcta":0,"explicacion":"Fuerza neta = 20 − 8 = 12 N hacia la derecha. a = F/m = 12/4 = 3 m/s<sup>2</sup>."},
-{"id":"d-cie-04","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.fuerzas","nivel":"basico",
- "enunciado":"Un resorte de constante elástica 200 N/m se estira 5 cm desde su largo natural. ¿Qué fuerza elástica ejerce?",
- "opciones":[
-  {"texto":"10 N","trampa":""},
-  {"texto":"1000 N","trampa":"No convertiste 5 cm a metros. La constante está en N/m."},
-  {"texto":"40 N","trampa":"Dividiste 200 entre 5. La ley de Hooke multiplica: F = k·x."},
-  {"texto":"100 N","trampa":"Convertiste mal: 5 cm = 0,05 m, no 0,5 m."}],
- "correcta":0,"explicacion":"Ley de Hooke: F = k·x = 200 N/m · 0,05 m = 10 N."},
-{"id":"d-cie-05","prueba":"CIE","eje":"Ondas","tema":"fis.ond.elementos","nivel":"paes",
- "enunciado":"Una onda electromagnética de frecuencia 6·10<sup>14</sup> Hz se propaga en el vacío, donde c = 3·10<sup>8</sup> m/s. ¿Cuál es su longitud de onda?",
- "opciones":[
-  {"texto":"5·10⁻⁷ m","trampa":""},
-  {"texto":"2·10⁶ m","trampa":"Calculaste f/c. De v = λ·f se despeja λ = v/f."},
-  {"texto":"1,8·10²³ m","trampa":"Multiplicaste c·f. Eso no tiene unidades de longitud."},
-  {"texto":"5·10⁻⁶ m","trampa":"3/6 = 0,5 y 0,5·10<sup>−6</sup> = 5·10<sup>−7</sup>. Moviste la coma sin ajustar el exponente."}],
- "correcta":0,"explicacion":"λ = c/f = 3·10<sup>8</sup> / 6·10<sup>14</sup> = 0,5·10<sup>−6</sup> = 5·10<sup>−7</sup> m (luz visible)."},
-{"id":"d-cie-06","prueba":"CIE","eje":"Ondas","tema":"fis.ond.espejos-lentes","nivel":"paes",
- "enunciado":"Un objeto se ubica a 30 cm de una lente convergente cuya distancia focal es 10 cm. ¿Cómo es la imagen que se forma?",
- "opciones":[
-  {"texto":"Real, invertida y de menor tamaño","trampa":""},
-  {"texto":"Virtual, derecha y de mayor tamaño","trampa":"Eso pasa cuando el objeto está entre el foco y la lente (lupa). Acá está más allá de 2f."},
-  {"texto":"Real, invertida y de mayor tamaño","trampa":"Eso pasa cuando el objeto está entre f y 2f (entre 10 y 20 cm)."},
-  {"texto":"Real, invertida y del mismo tamaño","trampa":"Eso pasa solo si el objeto está justo en 2f = 20 cm."}],
- "correcta":0,"explicacion":"El objeto está más allá de 2f (30 > 20 cm). 1/d<sub>i</sub> = 1/10 − 1/30 = 1/15, d<sub>i</sub> = 15 cm: imagen real, invertida y de la mitad del tamaño."},
-{"id":"d-cie-07","prueba":"CIE","eje":"Electricidad","tema":"fis.ele.ohm","nivel":"paes",
- "enunciado":"Dos resistencias de 6 Ω y 3 Ω se conectan en paralelo a una fuente de 12 V. ¿Cuál es la corriente total que entrega la fuente?",
- "opciones":[
-  {"texto":"6 A","trampa":""},
-  {"texto":"4/3 A","trampa":"Las sumaste como si estuvieran en serie (9 Ω)."},
-  {"texto":"2 A","trampa":"Calculaste solo la corriente de la resistencia de 6 Ω."},
-  {"texto":"4 A","trampa":"Calculaste solo la corriente de la resistencia de 3 Ω."}],
- "correcta":0,"explicacion":"En paralelo: 1/R = 1/6 + 1/3 = 1/2, R = 2 Ω. I = V/R = 12/2 = 6 A (2 A + 4 A)."},
-{"id":"d-cie-08","prueba":"CIE","eje":"Electricidad","tema":"fis.ele.potencia","nivel":"paes",
- "enunciado":"Un hervidor de 2000 W se usa 15 minutos al día durante 30 días. Si 1 kWh cuesta $200, ¿cuánto cuesta esa energía?",
- "opciones":[
-  {"texto":"$3.000","trampa":""},
-  {"texto":"$180.000","trampa":"Usaste 15 horas en vez de 15 minutos (0,25 h)."},
-  {"texto":"$3.000.000","trampa":"Usaste 2000 W como si fueran kW. 2000 W = 2 kW."},
-  {"texto":"$100","trampa":"Calculaste un solo día. Son 30 días."}],
- "correcta":0,"explicacion":"E = 2 kW · 0,25 h · 30 = 15 kWh. Costo = 15 · $200 = $3.000."},
-{"id":"d-cie-09","prueba":"CIE","eje":"Ondas","tema":"fis.ond.reflexion-refraccion","nivel":"basico",
- "enunciado":"Un rayo de luz pasa del aire al agua (el agua tiene mayor índice de refracción). ¿Qué ocurre con la luz?",
- "opciones":[
-  {"texto":"Disminuye su rapidez y se acerca a la normal","trampa":""},
-  {"texto":"Aumenta su rapidez y se aleja de la normal","trampa":"Es al revés: mayor índice = medio más lento, y el rayo se acerca a la normal."},
-  {"texto":"Disminuye su rapidez y cambia su frecuencia","trampa":"Al refractarse, la frecuencia NO cambia. Cambian la rapidez y la longitud de onda."},
-  {"texto":"Mantiene su rapidez y solo cambia de dirección","trampa":"La desviación ocurre justamente porque cambia la rapidez."}],
- "correcta":0,"explicacion":"Mayor índice de refracción = menor rapidez. Al frenarse, el rayo se acerca a la normal. La frecuencia se mantiene."},
-{"id":"d-cie-10","prueba":"CIE","eje":"Ondas","tema":"fis.ond.espectro-color","nivel":"basico",
- "enunciado":"¿Cuál de las siguientes ondas electromagnéticas tiene MAYOR frecuencia?",
- "opciones":[
-  {"texto":"Rayos X","trampa":""},
-  {"texto":"Ondas de radio","trampa":"Tienen la MAYOR longitud de onda, y por eso la menor frecuencia (λ y f son inversas)."},
-  {"texto":"Luz violeta","trampa":"Es la de mayor frecuencia dentro de la luz visible, pero el ultravioleta y los rayos X están más arriba."},
-  {"texto":"Infrarrojo","trampa":"Lo asocias con calor, pero está bajo el rojo: menos frecuencia que la luz visible."}],
- "correcta":0,"explicacion":"Orden por frecuencia creciente: radio, microondas, infrarrojo, visible (rojo → violeta), ultravioleta, rayos X, rayos gamma."},
-{"id":"d-cie-11","prueba":"CIE","eje":"Tierra y Universo","tema":"fis.tie.tectonica","nivel":"basico",
- "enunciado":"Frente a Chile, la placa de Nazca (oceánica) converge con la placa Sudamericana (continental). ¿Qué ocurre en ese límite?",
- "opciones":[
-  {"texto":"La placa oceánica, más densa, se hunde bajo la continental (subducción)","trampa":""},
-  {"texto":"La placa continental se hunde bajo la oceánica","trampa":"Invertiste las densidades: la oceánica es más densa y es la que se hunde."},
-  {"texto":"Las placas se separan y se forma corteza nueva","trampa":"Eso es un límite divergente (como una dorsal oceánica)."},
-  {"texto":"Las placas se deslizan de lado sin crear ni destruir corteza","trampa":"Eso es un límite transformante (como la falla de San Andrés)."}],
- "correcta":0,"explicacion":"Límite convergente océano–continente: la placa oceánica, más densa, subducta. Eso genera sismos, la fosa y volcanes."},
-{"id":"d-cie-12","prueba":"CIE","eje":"Biología","tema":"bio.procesos","nivel":"basico",
- "enunciado":"En una sinapsis química, ¿qué estructura libera los neurotransmisores?",
- "opciones":[
-  {"texto":"El terminal del axón de la neurona presináptica","trampa":""},
-  {"texto":"Las dendritas de la neurona postsináptica","trampa":"Invertiste el sentido: las dendritas de la postsináptica RECIBEN los neurotransmisores."},
-  {"texto":"La vaina de mielina","trampa":"La mielina aísla el axón y acelera el impulso; no libera neurotransmisores."},
-  {"texto":"El núcleo de la neurona postsináptica","trampa":"El núcleo guarda el ADN; la liberación ocurre en el terminal del axón de la otra neurona."}],
- "correcta":0,"explicacion":"El impulso llega al terminal del axón presináptico, las vesículas liberan neurotransmisores al espacio sináptico y estos se unen a receptores de la postsináptica."},
-{"id":"d-cie-13","prueba":"CIE","eje":"Biología","tema":"bio.herencia","nivel":"basico",
- "enunciado":"Se cruzan dos plantas heterocigotas Aa, donde A es dominante sobre a. ¿Qué proporción de la descendencia se espera con el fenotipo recesivo?",
- "opciones":[
-  {"texto":"1/4","trampa":""},
-  {"texto":"3/4","trampa":"Esa es la proporción del fenotipo DOMINANTE (AA + Aa)."},
-  {"texto":"1/2","trampa":"Esa es la proporción de heterocigotos (Aa), que muestran el fenotipo dominante."},
-  {"texto":"0","trampa":"Los padres no muestran el rasgo recesivo, pero lo portan: pueden tener hijos aa."}],
- "correcta":0,"explicacion":"Cuadro de Punnett Aa × Aa: AA, Aa, Aa, aa. Solo aa (1 de 4) muestra el fenotipo recesivo."},
-{"id":"d-cie-14","prueba":"CIE","eje":"Química","tema":"qui.atomica","nivel":"basico",
- "enunciado":"Un átomo neutro tiene número atómico Z = 17 y número másico A = 35. ¿Cuántos neutrones tiene?",
- "opciones":[
-  {"texto":"18","trampa":""},
-  {"texto":"17","trampa":"17 son los protones (Z), y también los electrones por ser neutro."},
-  {"texto":"35","trampa":"35 es el número másico: protones + neutrones."},
-  {"texto":"52","trampa":"Sumaste A + Z. Los neutrones son A − Z."}],
- "correcta":0,"explicacion":"Neutrones = A − Z = 35 − 17 = 18."},
-{"id":"d-cie-15","prueba":"CIE","eje":"Química","tema":"qui.estequiometria","nivel":"basico",
- "enunciado":"Según la ecuación 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O, ¿cuántos moles de agua se forman a partir de 3 moles de O<sub>2</sub>, con H<sub>2</sub> en exceso?",
- "opciones":[
-  {"texto":"6","trampa":""},
-  {"texto":"3","trampa":"Copiaste los moles de O<sub>2</sub> sin usar la proporción 1 : 2 de la ecuación."},
-  {"texto":"1,5","trampa":"Dividiste por 2 en vez de multiplicar: por cada mol de O<sub>2</sub> salen 2 de agua."},
-  {"texto":"2","trampa":"Copiaste el coeficiente de la ecuación, sin escalarlo a 3 moles."}],
- "correcta":0,"explicacion":"1 mol de O<sub>2</sub> produce 2 moles de H<sub>2</sub>O. Con 3 moles de O<sub>2</sub>: 3·2 = 6 moles."}
-],
-"M1": [
-{"id":"d-m1-01","prueba":"M1","eje":"Números","tema":"m1.num.enteros-racionales","nivel":"paes",
- "enunciado":"¿Cuál es el valor de (−3)<sup>2</sup> − 2·(−4) + 6 : (−2)?",
- "opciones":[
-  {"texto":"14","trampa":""},
-  {"texto":"−4","trampa":"Tomaste (−3)<sup>2</sup> = −9. Con paréntesis, el cuadrado de un negativo es positivo: 9."},
-  {"texto":"−2","trampa":"Tomaste −2·(−4) = −8. Menos por menos da más: +8."},
-  {"texto":"11","trampa":"Operaste de izquierda a derecha sin respetar la prioridad: primero multiplicaciones y divisiones."}],
- "correcta":0,"explicacion":"(−3)<sup>2</sup> = 9; −2·(−4) = +8; 6 : (−2) = −3. Total: 9 + 8 − 3 = 14."},
-{"id":"d-m1-02","prueba":"M1","eje":"Números","tema":"m1.num.porcentaje","nivel":"paes",
- "enunciado":"El precio de un producto sube un 20 % y luego baja un 20 %. Respecto del precio original, el precio final:",
- "opciones":[
-  {"texto":"Es 4 % menor","trampa":""},
-  {"texto":"Es igual","trampa":"Los porcentajes no se cancelan: el 20 % que baja se calcula sobre un precio mayor."},
-  {"texto":"Es 4 % mayor","trampa":"Error de signo: 1,2·0,8 = 0,96, que es menos que 1."},
-  {"texto":"Es 20 % menor","trampa":"Solo consideraste la última variación."}],
- "correcta":0,"explicacion":"Precio final = P·1,2·0,8 = 0,96·P. Es un 4 % menor que el original."},
-{"id":"d-m1-03","prueba":"M1","eje":"Números","tema":"m1.num.potencias-raices","nivel":"paes",
- "enunciado":"¿Cuál es el valor de √50 − √18?",
- "opciones":[
-  {"texto":"2√2","trampa":""},
-  {"texto":"√32","trampa":"Restaste los números de adentro: √a − √b no es √(a − b)."},
-  {"texto":"2","trampa":"Restaste los coeficientes 5 − 3 y olvidaste el √2."},
-  {"texto":"8√2","trampa":"Sumaste en vez de restar."}],
- "correcta":0,"explicacion":"√50 = 5√2 y √18 = 3√2. Entonces 5√2 − 3√2 = 2√2."},
-{"id":"d-m1-04","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.expresiones","nivel":"basico",
- "enunciado":"¿Cuál es el desarrollo de (2x − 3)<sup>2</sup>?",
- "opciones":[
-  {"texto":"4x² − 12x + 9","trampa":""},
-  {"texto":"4x² − 9","trampa":"Olvidaste el doble producto. (a − b)<sup>2</sup> = a<sup>2</sup> − 2ab + b<sup>2</sup>."},
-  {"texto":"4x² − 6x + 9","trampa":"Te faltó el 2 del doble producto: 2·(2x)·3 = 12x."},
-  {"texto":"2x² − 12x + 9","trampa":"No elevaste el 2: (2x)<sup>2</sup> = 4x<sup>2</sup>."}],
- "correcta":0,"explicacion":"(2x)<sup>2</sup> − 2·(2x)·3 + 3<sup>2</sup> = 4x<sup>2</sup> − 12x + 9."},
-{"id":"d-m1-05","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.ecuaciones","nivel":"basico",
- "enunciado":"Si 3(x − 2) = x + 4, ¿cuál es el valor de x?",
- "opciones":[
-  {"texto":"5","trampa":""},
-  {"texto":"3","trampa":"Distribuiste mal: 3(x − 2) = 3x − 6, no 3x − 2."},
-  {"texto":"2,5","trampa":"Pasaste x sumando en vez de restando: 3x + x = 10."},
-  {"texto":"−1","trampa":"Pasaste el −6 sin cambiarle el signo: 2x = 4 − 6."}],
- "correcta":0,"explicacion":"3x − 6 = x + 4 → 2x = 10 → x = 5."},
-{"id":"d-m1-06","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.funciones","nivel":"paes",
- "enunciado":"¿Cuáles son las coordenadas del vértice de la parábola f(x) = x<sup>2</sup> − 6x + 5?",
- "opciones":[
-  {"texto":"(3, −4)","trampa":""},
-  {"texto":"(−3, 32)","trampa":"Usaste x = b/(2a) sin el signo menos. El vértice está en x = −b/(2a) = 3."},
-  {"texto":"(3, 5)","trampa":"5 es donde la parábola corta al eje Y, no la altura del vértice."},
-  {"texto":"(−3, −4)","trampa":"Error de signo en la coordenada x: −(−6)/2 = +3."}],
- "correcta":0,"explicacion":"x<sub>v</sub> = −b/(2a) = 6/2 = 3. y<sub>v</sub> = f(3) = 9 − 18 + 5 = −4."},
-{"id":"d-m1-07","prueba":"M1","eje":"Geometría","tema":"m1.geo.areas-volumenes","nivel":"basico",
- "enunciado":"Un cilindro tiene radio 3 cm y altura 10 cm. ¿Cuál es su volumen?",
- "opciones":[
-  {"texto":"90π cm³","trampa":""},
-  {"texto":"30π cm³","trampa":"Usaste r en vez de r<sup>2</sup> en el área de la base."},
-  {"texto":"60π cm³","trampa":"2πrh = 60π es el área lateral, no el volumen."},
-  {"texto":"360π cm³","trampa":"Usaste el diámetro (6) como si fuera el radio."}],
- "correcta":0,"explicacion":"V = área de la base · altura = π·3<sup>2</sup>·10 = 90π cm<sup>3</sup>."},
-{"id":"d-m1-08","prueba":"M1","eje":"Geometría","tema":"m1.geo.semejanza-pitagoras","nivel":"basico",
- "enunciado":"Un poste de 4 m proyecta una sombra de 3 m. A la misma hora, un edificio proyecta una sombra de 15 m. ¿Cuánto mide el edificio?",
- "opciones":[
-  {"texto":"20 m","trampa":""},
-  {"texto":"11,25 m","trampa":"Invertiste la razón: altura/sombra = 4/3, no 3/4."},
-  {"texto":"16 m","trampa":"Sumaste la diferencia de sombras (12 m) al poste. La semejanza es multiplicativa, no aditiva."},
-  {"texto":"5 m","trampa":"Calculaste la hipotenusa del triángulo 3–4–5. Eso no responde la altura del edificio."}],
- "correcta":0,"explicacion":"Triángulos semejantes: 4/3 = h/15, entonces h = 15·4/3 = 20 m."},
-{"id":"d-m1-09","prueba":"M1","eje":"Probabilidad y estadística","tema":"m1.pro.datos","nivel":"basico",
- "enunciado":"Las notas de un estudiante son 5,0 · 6,0 · 4,0 · 6,0 · 7,0. ¿Cuál es la mediana?",
- "opciones":[
-  {"texto":"6,0","trampa":""},
-  {"texto":"4,0","trampa":"Tomaste el dato del medio sin ordenar. Primero se ordena: 4, 5, 6, 6, 7."},
-  {"texto":"5,6","trampa":"Ese es el promedio (media aritmética), no la mediana."},
-  {"texto":"5,5","trampa":"Promediaste 5 y 6 como si hubiera una cantidad par de datos. Con 5 datos, la mediana es el 3.º."}],
- "correcta":0,"explicacion":"Ordenados: 4,0 · 5,0 · 6,0 · 6,0 · 7,0. El dato central (3.º de 5) es 6,0."},
-{"id":"d-m1-10","prueba":"M1","eje":"Probabilidad y estadística","tema":"m1.pro.probabilidad","nivel":"paes",
- "enunciado":"Se lanzan dos dados comunes. ¿Cuál es la probabilidad de que la suma sea 7?",
- "opciones":[
-  {"texto":"1/6","trampa":""},
-  {"texto":"1/11","trampa":"Las 11 sumas posibles (2 a 12) no son igualmente probables."},
-  {"texto":"7/36","trampa":"Supusiste 7 casos favorables porque la suma es 7. Son 6: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)."},
-  {"texto":"1/12","trampa":"Contaste (1,6) y (6,1) como un solo caso. El orden cuenta: son dos dados distintos."}],
- "correcta":0,"explicacion":"Hay 36 resultados igual de probables y 6 suman 7: 6/36 = 1/6."}
-],
-"LEN": {
-"titulo":"El valor de aburrirse",
-"texto":"<p><b>1</b> Durante siglos, el aburrimiento tuvo mala fama. Se lo asociaba con la pereza y, a veces, con un defecto del carácter. Sin embargo, en las últimas décadas varios investigadores empezaron a mirarlo de otra forma: no como una falla, sino como una señal.</p><p><b>2</b> Según esta idea, el aburrimiento funciona de un modo parecido al hambre. Así como el hambre avisa que el cuerpo necesita energía, el aburrimiento avisaría que lo que estamos haciendo ya no nos aporta nada y que conviene buscar otra cosa. En un experimento, un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico. Ese grupo propuso más ideas, y más variadas, que otro grupo que pasó directo a la tarea creativa.</p><p><b>3</b> El problema, advierten los mismos especialistas, es que hoy casi nunca dejamos que esa señal haga su trabajo. Basta un minuto de espera para que saquemos el teléfono. Llenamos cada hueco del día con estímulos breves y, así, la incomodidad desaparece antes de empujarnos hacia algo nuevo.</p><p><b>4</b> Nada de esto significa que el aburrimiento sea siempre bueno. Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo. La clave, dicen, no está en buscarlo ni en huir de él, sino en escucharlo: preguntarse qué nos está pidiendo antes de taparlo con lo primero que tengamos a mano.</p>",
-"preguntas":[
-{"id":"d-len-01","prueba":"LEN","eje":"Habilidades","tema":"len.localizar","nivel":"basico",
- "enunciado":"Según el texto, ¿qué hizo el grupo que propuso más ideas ANTES de la tarea creativa?",
- "opciones":[
-  {"texto":"Copió números de una lista durante quince minutos.","trampa":""},
-  {"texto":"Usó el teléfono durante un minuto de espera.","trampa":"Mezcla un dato del párrafo 3 con el experimento del párrafo 2."},
-  {"texto":"Inventó usos para un vaso plástico.","trampa":"Esa ERA la tarea creativa, no lo que hizo antes."},
-  {"texto":"Descansó sin hacer nada durante quince minutos.","trampa":"El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite."}],
- "correcta":0,"explicacion":"Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico»."},
-{"id":"d-len-02","prueba":"LEN","eje":"Habilidades","tema":"len.localizar","nivel":"basico",
- "enunciado":"De acuerdo con el párrafo 4, ¿con qué se relaciona el aburrimiento crónico?",
- "opciones":[
-  {"texto":"Con el desánimo y con conductas de riesgo.","trampa":""},
-  {"texto":"Con la pereza y con un defecto del carácter.","trampa":"Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4."},
-  {"texto":"Con una mayor creatividad.","trampa":"Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico."},
-  {"texto":"Con el uso excesivo del teléfono.","trampa":"El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico."}],
- "correcta":0,"explicacion":"Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo»."},
-{"id":"d-len-03","prueba":"LEN","eje":"Habilidades","tema":"len.interpretar","nivel":"paes",
- "enunciado":"¿Qué función cumple la comparación con el hambre en el párrafo 2?",
- "opciones":[
-  {"texto":"Explicar que el aburrimiento es una señal que empuja a cambiar de actividad.","trampa":""},
-  {"texto":"Demostrar que el aburrimiento produce un malestar físico.","trampa":"Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas."},
-  {"texto":"Mostrar que el aburrimiento es tan necesario como comer.","trampa":"Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es."},
-  {"texto":"Criticar la idea antigua de que el aburrimiento es pereza.","trampa":"Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua."}],
- "correcta":0,"explicacion":"El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal."},
-{"id":"d-len-04","prueba":"LEN","eje":"Habilidades","tema":"len.interpretar","nivel":"paes",
- "enunciado":"¿Cuál es la idea principal del texto?",
- "opciones":[
-  {"texto":"El aburrimiento es una señal útil que hoy solemos tapar antes de escucharla.","trampa":""},
-  {"texto":"El aburrimiento siempre es bueno para la creatividad.","trampa":"Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca»."},
-  {"texto":"El teléfono celular es la causa del aburrimiento moderno.","trampa":"Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa."},
-  {"texto":"Antes, el aburrimiento se consideraba pereza.","trampa":"Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal."}],
- "correcta":0,"explicacion":"La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4)."},
-{"id":"d-len-05","prueba":"LEN","eje":"Habilidades","tema":"len.evaluar","nivel":"paes",
- "enunciado":"¿Qué propósito cumple el experimento mencionado en el párrafo 2?",
- "opciones":[
-  {"texto":"Respaldar con evidencia la idea de que el aburrimiento puede impulsar ideas nuevas.","trampa":""},
-  {"texto":"Explicar cómo se realiza un experimento científico.","trampa":"Confunde el ejemplo con el tema. El texto no trata sobre el método científico."},
-  {"texto":"Contradecir la idea de que el aburrimiento es una señal.","trampa":"Invierte su función: el experimento apoya esa idea."},
-  {"texto":"Entretener al lector con una anécdota curiosa.","trampa":"Puede ser curioso, pero en el argumento su función es dar evidencia."}],
- "correcta":0,"explicacion":"El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis."},
-{"id":"d-len-06","prueba":"LEN","eje":"Habilidades","tema":"len.evaluar","nivel":"dificil",
- "enunciado":"¿Con cuál de las siguientes afirmaciones estaría de acuerdo el autor del texto?",
- "opciones":[
-  {"texto":"Antes de llenar un momento de espera, vale la pena preguntarse qué necesitamos.","trampa":""},
-  {"texto":"Hay que buscar el aburrimiento todos los días para ser más creativos.","trampa":"El párrafo 4 dice que la clave NO está en buscarlo."},
-  {"texto":"El aburrimiento debe evitarse porque lleva a conductas de riesgo.","trampa":"Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él."},
-  {"texto":"Los teléfonos deberían prohibirse en las salas de espera.","trampa":"El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice."}],
- "correcta":0,"explicacion":"Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo»."}
-]}
+ "M2": [
+  {
+   "id": "d-m2-01",
+   "prueba": "M2",
+   "eje": "Álgebra y funciones",
+   "tema": "m2.alg.sistemas-rectas",
+   "nivel": "paes",
+   "enunciado": "Las rectas L<sub>1</sub>: y = 2x + 3 y L<sub>2</sub>: ax − y = 5 son paralelas. ¿Cuál es el valor de a?",
+   "opciones": [
+    {
+     "texto": "2",
+     "trampa": ""
+    },
+    {
+     "texto": "−2",
+     "trampa": "Error de signo al despejar y: de ax − y = 5 sale y = ax − 5, no y = −ax + 5."
+    },
+    {
+     "texto": "−1/2",
+     "trampa": "Esa es la condición de perpendicularidad (m<sub>1</sub>·m<sub>2</sub> = −1), no de paralelismo."
+    },
+    {
+     "texto": "3",
+     "trampa": "Tomaste el coeficiente de posición de L<sub>1</sub> (3) como si fuera su pendiente."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Despeja L<sub>2</sub>: y = ax − 5, su pendiente es a. Paralelas tienen la misma pendiente: a = 2."
+  },
+  {
+   "id": "d-m2-02",
+   "prueba": "M2",
+   "eje": "Álgebra y funciones",
+   "tema": "m2.alg.sistemas-rectas",
+   "nivel": "dificil",
+   "enunciado": "¿Para qué valor de k el sistema kx + 2y = 4 ; 3x + 6y = 12 tiene infinitas soluciones?",
+   "opciones": [
+    {
+     "texto": "3",
+     "trampa": "Igualaste los coeficientes de x sin escalar. La segunda ecuación es la primera multiplicada por 3, así que hay que comparar k·3 con 3."
+    },
+    {
+     "texto": "4",
+     "trampa": "Igualaste k al término libre de su propia ecuación (4). Hay que comparar k con el coeficiente de x de la OTRA ecuación, escalado."
+    },
+    {
+     "texto": "1",
+     "trampa": ""
+    },
+    {
+     "texto": "Para ningún valor de k",
+     "trampa": "Crees que dos ecuaciones distintas no pueden ser la misma recta. Si una es múltiplo de la otra, coinciden."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "Infinitas soluciones = rectas coincidentes: los coeficientes son proporcionales. k/3 = 2/6 = 4/12 = 1/3, así que k = 1."
+  },
+  {
+   "id": "d-m2-03",
+   "prueba": "M2",
+   "eje": "Números",
+   "tema": "m2.num.log-exp",
+   "nivel": "basico",
+   "enunciado": "¿Cuál es el valor de log<sub>2</sub> 32 − log<sub>3</sub> (1/9)?",
+   "opciones": [
+    {
+     "texto": "7",
+     "trampa": ""
+    },
+    {
+     "texto": "3",
+     "trampa": "Tomaste log<sub>3</sub>(1/9) = 2. Pero 3<sup>−2</sup> = 1/9, así que vale −2."
+    },
+    {
+     "texto": "−7",
+     "trampa": "Restaste en el orden contrario: log<sub>3</sub>(1/9) − log<sub>2</sub> 32."
+    },
+    {
+     "texto": "−3",
+     "trampa": "Dos errores juntos: tomaste log<sub>3</sub>(1/9) = 2 y además restaste al revés."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "2<sup>5</sup> = 32, así que log<sub>2</sub> 32 = 5. 3<sup>−2</sup> = 1/9, así que log<sub>3</sub>(1/9) = −2. Entonces 5 − (−2) = 7."
+  },
+  {
+   "id": "d-m2-04",
+   "prueba": "M2",
+   "eje": "Números",
+   "tema": "m2.num.log-exp",
+   "nivel": "paes",
+   "enunciado": "Si log 2 ≈ 0,3 y log 3 ≈ 0,48, ¿cuál es el valor aproximado de log 12?",
+   "opciones": [
+    {
+     "texto": "0,288",
+     "trampa": "Usaste log(a·b) = log a · log b. El logaritmo de un producto es la SUMA de los logaritmos."
+    },
+    {
+     "texto": "0,57",
+     "trampa": "Usaste log(2<sup>2</sup>) = (log 2)<sup>2</sup>. Lo correcto es log(2<sup>2</sup>) = 2·log 2."
+    },
+    {
+     "texto": "0,78",
+     "trampa": "Factorizaste mal: 2·3 = 6, no 12. Falta un 2 más: 12 = 2·2·3."
+    },
+    {
+     "texto": "1,08",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "12 = 2<sup>2</sup>·3, entonces log 12 = 2·log 2 + log 3 ≈ 0,6 + 0,48 = 1,08."
+  },
+  {
+   "id": "d-m2-05",
+   "prueba": "M2",
+   "eje": "Probabilidad y estadística",
+   "tema": "m2.pro.condicional",
+   "nivel": "paes",
+   "enunciado": "En un curso de 40 estudiantes hay 22 mujeres. 18 estudiantes practican deporte y, de ellos, 12 son mujeres. Si se elige al azar una mujer del curso, ¿cuál es la probabilidad de que practique deporte?",
+   "opciones": [
+    {
+     "texto": "2/3",
+     "trampa": "Condicionaste al revés: 12/18 es la probabilidad de ser mujer dado que practica deporte."
+    },
+    {
+     "texto": "6/11",
+     "trampa": ""
+    },
+    {
+     "texto": "3/10",
+     "trampa": "12/40 es la probabilidad de ser mujer Y practicar deporte. Pero ya sabes que es mujer: el total es 22."
+    },
+    {
+     "texto": "9/20",
+     "trampa": "18/40 es la probabilidad de practicar deporte sin la condición «es mujer»."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "La condición «es mujer» achica el universo a 22. De ellas, 12 practican deporte: 12/22 = 6/11."
+  },
+  {
+   "id": "d-m2-06",
+   "prueba": "M2",
+   "eje": "Probabilidad y estadística",
+   "tema": "m2.pro.binomial-normal",
+   "nivel": "paes",
+   "enunciado": "Se lanza una moneda equilibrada 4 veces. ¿Cuál es la probabilidad de obtener exactamente 2 caras?",
+   "opciones": [
+    {
+     "texto": "1/2",
+     "trampa": "«2 de 4 es la mitad» no es una probabilidad. Hay que contar los casos."
+    },
+    {
+     "texto": "1/4",
+     "trampa": "Calculaste (1/2)·(1/2) solo para las dos caras y olvidaste los sellos y el orden."
+    },
+    {
+     "texto": "1/16",
+     "trampa": "Esa es la probabilidad de UNA secuencia (por ejemplo CCSS). Hay C(4,2) = 6 secuencias así."
+    },
+    {
+     "texto": "3/8",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "Binomial: C(4,2)·(1/2)<sup>2</sup>·(1/2)<sup>2</sup> = 6/16 = 3/8."
+  },
+  {
+   "id": "d-m2-07",
+   "prueba": "M2",
+   "eje": "Probabilidad y estadística",
+   "tema": "m2.pro.combinatoria",
+   "nivel": "basico",
+   "enunciado": "¿De cuántas formas se puede elegir un presidente, un secretario y un tesorero entre 6 personas, si nadie puede tener dos cargos?",
+   "opciones": [
+    {
+     "texto": "20",
+     "trampa": "C(6,3) = 20 sirve cuando el orden no importa. Acá los cargos son distintos: el orden sí importa."
+    },
+    {
+     "texto": "120",
+     "trampa": ""
+    },
+    {
+     "texto": "216",
+     "trampa": "6<sup>3</sup> permite que una persona tenga varios cargos. Sin repetición es 6·5·4."
+    },
+    {
+     "texto": "18",
+     "trampa": "Sumaste 6 + 6 + 6. Las elecciones sucesivas se multiplican, no se suman."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Presidente: 6 opciones, secretario: 5, tesorero: 4. Total 6·5·4 = 120 (permutación de 6 tomados de a 3)."
+  },
+  {
+   "id": "d-m2-08",
+   "prueba": "M2",
+   "eje": "Geometría",
+   "tema": "m2.geo.trig-razones",
+   "nivel": "basico",
+   "enunciado": "En un triángulo rectángulo, un cateto mide 6 cm y la hipotenusa mide 10 cm. Si α es el ángulo opuesto al cateto de 6 cm, ¿cuánto vale tan α?",
+   "opciones": [
+    {
+     "texto": "3/4",
+     "trampa": ""
+    },
+    {
+     "texto": "3/5",
+     "trampa": "6/10 es sen α (opuesto/hipotenusa), no tan α."
+    },
+    {
+     "texto": "4/3",
+     "trampa": "Invertiste la razón: tan α = opuesto/adyacente, no adyacente/opuesto."
+    },
+    {
+     "texto": "4/5",
+     "trampa": "8/10 es cos α (adyacente/hipotenusa)."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Por Pitágoras el otro cateto mide √(100 − 36) = 8. tan α = opuesto/adyacente = 6/8 = 3/4."
+  },
+  {
+   "id": "d-m2-09",
+   "prueba": "M2",
+   "eje": "Álgebra y funciones",
+   "tema": "m2.alg.trig-funciones",
+   "nivel": "paes",
+   "enunciado": "¿Cuáles son la amplitud y el período de f(x) = 3·sen(2x)?",
+   "opciones": [
+    {
+     "texto": "Amplitud 3, período 4π",
+     "trampa": "Multiplicaste 2π por 2. El período es 2π dividido por el número que acompaña a x."
+    },
+    {
+     "texto": "Amplitud 3, período 2π",
+     "trampa": "Crees que el período no cambia. El 2 dentro del seno lo comprime a la mitad."
+    },
+    {
+     "texto": "Amplitud 3, período π",
+     "trampa": ""
+    },
+    {
+     "texto": "Amplitud 6, período π",
+     "trampa": "6 es la distancia entre el máximo y el mínimo. La amplitud es la mitad: 3."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "En A·sen(Bx): amplitud = |A| = 3, período = 2π/B = 2π/2 = π."
+  },
+  {
+   "id": "d-m2-10",
+   "prueba": "M2",
+   "eje": "Probabilidad y estadística",
+   "tema": "m2.pro.dispersion",
+   "nivel": "paes",
+   "enunciado": "¿Cuál es la varianza del conjunto de datos 2, 4, 6, 8, 10?",
+   "opciones": [
+    {
+     "texto": "2√2",
+     "trampa": "√8 = 2√2 es la desviación estándar. La varianza es el valor antes de sacar la raíz."
+    },
+    {
+     "texto": "0",
+     "trampa": "Sumaste las desviaciones sin elevarlas al cuadrado: −4, −2, 0, 2, 4 se cancelan."
+    },
+    {
+     "texto": "12/5",
+     "trampa": "Promediaste las desviaciones en valor absoluto (12/5). La varianza usa los cuadrados."
+    },
+    {
+     "texto": "8",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "Media = 6. Desviaciones: −4, −2, 0, 2, 4. Cuadrados: 16, 4, 0, 4, 16. Suma 40, dividido por 5 = 8."
+  },
+  {
+   "id": "d-m2-11",
+   "prueba": "M2",
+   "eje": "Transversal",
+   "tema": "m2.sd",
+   "nivel": "paes",
+   "enunciado": "Se puede determinar el valor de x + y si:<br>(1) x − y = 4<br>(2) 2x + 2y = 18",
+   "opciones": [
+    {
+     "texto": "(1) por sí sola",
+     "trampa": "Con x − y = 4 hay infinitos pares (5 y 1, 10 y 6...) con sumas distintas."
+    },
+    {
+     "texto": "(2) por sí sola",
+     "trampa": ""
+    },
+    {
+     "texto": "Ambas juntas, (1) y (2)",
+     "trampa": "Buscaste x e y por separado. La pregunta pide solo x + y, y (2) ya la da."
+    },
+    {
+     "texto": "Cada una por sí sola, (1) ó (2)",
+     "trampa": "(1) sola no alcanza: da la diferencia, no la suma."
+    },
+    {
+     "texto": "Se requiere información adicional",
+     "trampa": "Creíste que para saber x + y hay que conocer x e y por separado. (2) dividida por 2 ya da x + y."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "(2): 2(x + y) = 18, entonces x + y = 9. Alcanza sola. (1) sola no determina la suma. Respuesta: (2) por sí sola."
+  },
+  {
+   "id": "d-m2-12",
+   "prueba": "M2",
+   "eje": "Geometría",
+   "tema": "m2.geo.circunferencia",
+   "nivel": "paes",
+   "enunciado": "En una circunferencia de centro O, el ángulo del centro ∠AOB mide 110°. El punto C está en el arco mayor AB. ¿Cuánto mide el ángulo inscrito ∠ACB?",
+   "opciones": [
+    {
+     "texto": "110°",
+     "trampa": "El ángulo inscrito NO es igual al del centro: mide la mitad del arco que subtiende."
+    },
+    {
+     "texto": "220°",
+     "trampa": "Duplicaste en vez de dividir por 2."
+    },
+    {
+     "texto": "125°",
+     "trampa": "Ese sería el ángulo si C estuviera en el arco menor (180° − 55°)."
+    },
+    {
+     "texto": "55°",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "El ángulo inscrito mide la mitad del ángulo del centro que subtiende el mismo arco: 110°/2 = 55°."
+  },
+  {
+   "id": "d-m2-13",
+   "prueba": "M2",
+   "eje": "Geometría",
+   "tema": "m2.geo.homotecia",
+   "nivel": "paes",
+   "enunciado": "Se aplica una homotecia de centro en el origen y razón k = −2 al punto P(3, −1). ¿Cuáles son las coordenadas de su imagen?",
+   "opciones": [
+    {
+     "texto": "(6, −2)",
+     "trampa": "Ignoraste el signo de k. Razón negativa = la imagen queda al otro lado del centro."
+    },
+    {
+     "texto": "(−6, 2)",
+     "trampa": ""
+    },
+    {
+     "texto": "(1, −3)",
+     "trampa": "Sumaste k a cada coordenada. La homotecia con centro en el origen multiplica."
+    },
+    {
+     "texto": "(−3/2, 1/2)",
+     "trampa": "Dividiste por k en vez de multiplicar."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Con centro en el origen, P' = k·P = (−2·3, −2·(−1)) = (−6, 2)."
+  },
+  {
+   "id": "d-m2-14",
+   "prueba": "M2",
+   "eje": "Números",
+   "tema": "m2.num.financiera",
+   "nivel": "paes",
+   "enunciado": "Se invierten $1.000.000 a interés compuesto del 2 % mensual durante 2 meses. ¿Cuánto dinero hay al final?",
+   "opciones": [
+    {
+     "texto": "$1.040.000",
+     "trampa": "Eso es interés simple (2 % + 2 % sobre el capital inicial). En el compuesto, el segundo mes gana interés sobre lo ganado."
+    },
+    {
+     "texto": "$1.000.400",
+     "trampa": "Elevaste solo la tasa: 0,02<sup>2</sup>. Lo que se eleva es el factor (1 + 0,02)."
+    },
+    {
+     "texto": "$1.040.400",
+     "trampa": ""
+    },
+    {
+     "texto": "$1.020.000",
+     "trampa": "Calculaste solo un mes."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "C = 1.000.000·(1,02)<sup>2</sup> = 1.000.000·1,0404 = 1.040.400."
+  },
+  {
+   "id": "d-m2-15",
+   "prueba": "M2",
+   "eje": "Geometría",
+   "tema": "m2.geo.esfera",
+   "nivel": "paes",
+   "enunciado": "Una esfera tiene un volumen de 36π cm<sup>3</sup>. ¿Cuál es su área?",
+   "opciones": [
+    {
+     "texto": "36π cm²",
+     "trampa": ""
+    },
+    {
+     "texto": "9π cm²",
+     "trampa": "πr<sup>2</sup> es el área de un círculo máximo. La esfera tiene 4πr<sup>2</sup>."
+    },
+    {
+     "texto": "12π cm²",
+     "trampa": "Calculaste 4πr sin elevar r al cuadrado."
+    },
+    {
+     "texto": "108π cm²",
+     "trampa": "Usaste r<sup>3</sup> = 27 en vez de r<sup>2</sup> = 9 en la fórmula del área."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "(4/3)πr<sup>3</sup> = 36π, entonces r<sup>3</sup> = 27 y r = 3. Área = 4πr<sup>2</sup> = 4π·9 = 36π cm<sup>2</sup>."
+  }
+ ],
+ "CIE": [
+  {
+   "id": "d-cie-01",
+   "prueba": "CIE",
+   "eje": "Mecánica",
+   "tema": "fis.mec.cinematica",
+   "nivel": "paes",
+   "enunciado": "Una persona camina 30 m hacia el norte y luego 40 m hacia el sur, en un total de 50 s. ¿Cuáles son su rapidez media y el módulo de su velocidad media?",
+   "opciones": [
+    {
+     "texto": "0,2 m/s y 1,4 m/s",
+     "trampa": "Los invertiste. Rapidez usa la distancia recorrida (70 m); velocidad usa el desplazamiento (10 m)."
+    },
+    {
+     "texto": "1,4 m/s y 1,4 m/s",
+     "trampa": "Crees que rapidez y velocidad son lo mismo. Si hay cambio de sentido, difieren."
+    },
+    {
+     "texto": "1,4 m/s y 1,0 m/s",
+     "trampa": "Usaste Pitágoras (√(30² + 40²) = 50 m), pero norte y sur están en la misma línea, no son perpendiculares."
+    },
+    {
+     "texto": "1,4 m/s y 0,2 m/s",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "Distancia = 30 + 40 = 70 m, rapidez = 70/50 = 1,4 m/s. Desplazamiento = 10 m al sur, velocidad = 10/50 = 0,2 m/s."
+  },
+  {
+   "id": "d-cie-02",
+   "prueba": "CIE",
+   "eje": "Mecánica",
+   "tema": "fis.mec.mru-mrua",
+   "nivel": "basico",
+   "enunciado": "Un auto parte del reposo con aceleración constante de 2 m/s<sup>2</sup>. ¿Qué distancia recorre en los primeros 5 s?",
+   "opciones": [
+    {
+     "texto": "50 m",
+     "trampa": "Olvidaste el ½ de la ecuación de itinerario: d = ½·a·t<sup>2</sup>."
+    },
+    {
+     "texto": "25 m",
+     "trampa": ""
+    },
+    {
+     "texto": "10 m",
+     "trampa": "Calculaste a·t = 10, que es la velocidad final en m/s, no la distancia."
+    },
+    {
+     "texto": "5 m",
+     "trampa": "No elevaste el tiempo al cuadrado: ½·2·5 = 5."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Parte del reposo: d = ½·a·t<sup>2</sup> = ½·2·25 = 25 m."
+  },
+  {
+   "id": "d-cie-03",
+   "prueba": "CIE",
+   "eje": "Mecánica",
+   "tema": "fis.mec.newton",
+   "nivel": "basico",
+   "enunciado": "Sobre un bloque de 4 kg, en una superficie sin roce, actúan dos fuerzas horizontales: 20 N hacia la derecha y 8 N hacia la izquierda. ¿Cuál es el módulo de la aceleración del bloque?",
+   "opciones": [
+    {
+     "texto": "7 m/s²",
+     "trampa": "Sumaste las fuerzas (28 N). Tienen sentidos opuestos: se restan."
+    },
+    {
+     "texto": "12 m/s²",
+     "trampa": "12 N es la fuerza neta. Falta dividir por la masa."
+    },
+    {
+     "texto": "5 m/s²",
+     "trampa": "Usaste solo la fuerza de 20 N y olvidaste la de 8 N."
+    },
+    {
+     "texto": "3 m/s²",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "Fuerza neta = 20 − 8 = 12 N hacia la derecha. a = F/m = 12/4 = 3 m/s<sup>2</sup>."
+  },
+  {
+   "id": "d-cie-04",
+   "prueba": "CIE",
+   "eje": "Mecánica",
+   "tema": "fis.mec.fuerzas",
+   "nivel": "basico",
+   "enunciado": "Un resorte de constante elástica 200 N/m se estira 5 cm desde su largo natural. ¿Qué fuerza elástica ejerce?",
+   "opciones": [
+    {
+     "texto": "10 N",
+     "trampa": ""
+    },
+    {
+     "texto": "1000 N",
+     "trampa": "No convertiste 5 cm a metros. La constante está en N/m."
+    },
+    {
+     "texto": "40 N",
+     "trampa": "Dividiste 200 entre 5. La ley de Hooke multiplica: F = k·x."
+    },
+    {
+     "texto": "100 N",
+     "trampa": "Convertiste mal: 5 cm = 0,05 m, no 0,5 m."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Ley de Hooke: F = k·x = 200 N/m · 0,05 m = 10 N."
+  },
+  {
+   "id": "d-cie-05",
+   "prueba": "CIE",
+   "eje": "Ondas",
+   "tema": "fis.ond.elementos",
+   "nivel": "paes",
+   "enunciado": "Una onda electromagnética de frecuencia 6·10<sup>14</sup> Hz se propaga en el vacío, donde c = 3·10<sup>8</sup> m/s. ¿Cuál es su longitud de onda?",
+   "opciones": [
+    {
+     "texto": "2·10⁶ m",
+     "trampa": "Calculaste f/c. De v = λ·f se despeja λ = v/f."
+    },
+    {
+     "texto": "1,8·10²³ m",
+     "trampa": "Multiplicaste c·f. Eso no tiene unidades de longitud."
+    },
+    {
+     "texto": "5·10⁻⁷ m",
+     "trampa": ""
+    },
+    {
+     "texto": "5·10⁻⁶ m",
+     "trampa": "Al pasar 0,5·10<sup>−6</sup> a notación científica moviste la coma pero no le restaste 1 al exponente."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "λ = c/f = 3·10<sup>8</sup> / 6·10<sup>14</sup> = 0,5·10<sup>−6</sup> = 5·10<sup>−7</sup> m (luz visible)."
+  },
+  {
+   "id": "d-cie-06",
+   "prueba": "CIE",
+   "eje": "Ondas",
+   "tema": "fis.ond.espejos-lentes",
+   "nivel": "paes",
+   "enunciado": "Un objeto se ubica a 30 cm de una lente convergente cuya distancia focal es 10 cm. ¿Cómo es la imagen que se forma?",
+   "opciones": [
+    {
+     "texto": "Real, invertida y de menor tamaño",
+     "trampa": ""
+    },
+    {
+     "texto": "Virtual, derecha y de mayor tamaño",
+     "trampa": "Eso pasa cuando el objeto está entre el foco y la lente (lupa). Acá está más allá de 2f."
+    },
+    {
+     "texto": "Real, invertida y de mayor tamaño",
+     "trampa": "Eso pasa cuando el objeto está entre f y 2f (entre 10 y 20 cm)."
+    },
+    {
+     "texto": "Real, invertida y del mismo tamaño",
+     "trampa": "Eso pasa solo si el objeto está justo en 2f = 20 cm."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "El objeto está más allá de 2f (30 > 20 cm). 1/d<sub>i</sub> = 1/10 − 1/30 = 1/15, d<sub>i</sub> = 15 cm: imagen real, invertida y de la mitad del tamaño."
+  },
+  {
+   "id": "d-cie-07",
+   "prueba": "CIE",
+   "eje": "Electricidad",
+   "tema": "fis.ele.ohm",
+   "nivel": "paes",
+   "enunciado": "Dos resistencias de 6 Ω y 3 Ω se conectan en paralelo a una fuente de 12 V. ¿Cuál es la corriente total que entrega la fuente?",
+   "opciones": [
+    {
+     "texto": "4/3 A",
+     "trampa": "Las sumaste como si estuvieran en serie (9 Ω)."
+    },
+    {
+     "texto": "2 A",
+     "trampa": "Calculaste solo la corriente de la resistencia de 6 Ω."
+    },
+    {
+     "texto": "6 A",
+     "trampa": ""
+    },
+    {
+     "texto": "4 A",
+     "trampa": "Calculaste solo la corriente de la resistencia de 3 Ω."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "En paralelo: 1/R = 1/6 + 1/3 = 1/2, R = 2 Ω. I = V/R = 12/2 = 6 A (2 A + 4 A)."
+  },
+  {
+   "id": "d-cie-08",
+   "prueba": "CIE",
+   "eje": "Electricidad",
+   "tema": "fis.ele.potencia",
+   "nivel": "paes",
+   "enunciado": "Un hervidor de 2000 W se usa 15 minutos al día durante 30 días. Si 1 kWh cuesta $200, ¿cuánto cuesta esa energía?",
+   "opciones": [
+    {
+     "texto": "$180.000",
+     "trampa": "Usaste 15 horas en vez de 15 minutos (0,25 h)."
+    },
+    {
+     "texto": "$3.000.000",
+     "trampa": "Usaste 2000 W como si fueran kW. 2000 W = 2 kW."
+    },
+    {
+     "texto": "$100",
+     "trampa": "Calculaste un solo día. Son 30 días."
+    },
+    {
+     "texto": "$3.000",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "E = 2 kW · 0,25 h · 30 = 15 kWh. Costo = 15 · $200 = $3.000."
+  },
+  {
+   "id": "d-cie-09",
+   "prueba": "CIE",
+   "eje": "Ondas",
+   "tema": "fis.ond.reflexion-refraccion",
+   "nivel": "basico",
+   "enunciado": "Un rayo de luz incide <b>oblicuamente</b> desde el aire al agua (el agua tiene mayor índice de refracción). ¿Qué ocurre con la luz?",
+   "opciones": [
+    {
+     "texto": "Aumenta su rapidez y se aleja de la normal",
+     "trampa": "Es al revés: mayor índice = medio más lento, y el rayo se acerca a la normal."
+    },
+    {
+     "texto": "Disminuye su rapidez y se acerca a la normal",
+     "trampa": ""
+    },
+    {
+     "texto": "Disminuye su rapidez y cambia su frecuencia",
+     "trampa": "Al refractarse, la frecuencia NO cambia. Cambian la rapidez y la longitud de onda."
+    },
+    {
+     "texto": "Mantiene su rapidez y solo cambia de dirección",
+     "trampa": "La desviación ocurre justamente porque cambia la rapidez."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Mayor índice de refracción = menor rapidez. Al frenarse, el rayo se acerca a la normal. La frecuencia se mantiene."
+  },
+  {
+   "id": "d-cie-10",
+   "prueba": "CIE",
+   "eje": "Ondas",
+   "tema": "fis.ond.espectro-color",
+   "nivel": "basico",
+   "enunciado": "¿Cuál de las siguientes ondas electromagnéticas tiene MAYOR frecuencia?",
+   "opciones": [
+    {
+     "texto": "Rayos X",
+     "trampa": ""
+    },
+    {
+     "texto": "Ondas de radio",
+     "trampa": "Tienen la MAYOR longitud de onda, y por eso la menor frecuencia (λ y f son inversas)."
+    },
+    {
+     "texto": "Luz violeta",
+     "trampa": "Es la de mayor frecuencia dentro de la luz visible, pero el ultravioleta y los rayos X están más arriba."
+    },
+    {
+     "texto": "Infrarrojo",
+     "trampa": "Lo asocias con calor, pero está bajo el rojo: menos frecuencia que la luz visible."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Orden por frecuencia creciente: radio, microondas, infrarrojo, visible (rojo → violeta), ultravioleta, rayos X, rayos gamma."
+  },
+  {
+   "id": "d-cie-11",
+   "prueba": "CIE",
+   "eje": "Tierra y Universo",
+   "tema": "fis.tie.tectonica",
+   "nivel": "basico",
+   "enunciado": "Frente a Chile, la placa de Nazca (oceánica) converge con la placa Sudamericana (continental). ¿Qué ocurre en ese límite?",
+   "opciones": [
+    {
+     "texto": "La placa continental se hunde bajo la oceánica",
+     "trampa": "Invertiste las densidades: la oceánica es más densa y es la que se hunde."
+    },
+    {
+     "texto": "Las placas se separan y se forma corteza nueva",
+     "trampa": "Eso es un límite divergente (como una dorsal oceánica)."
+    },
+    {
+     "texto": "La placa oceánica, más densa, se hunde bajo la continental (subducción)",
+     "trampa": ""
+    },
+    {
+     "texto": "Las placas se deslizan de lado sin crear ni destruir corteza",
+     "trampa": "Eso es un límite transformante (como la falla de San Andrés)."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "Límite convergente océano–continente: la placa oceánica, más densa, se hunde (subducción). Eso genera sismos, la fosa y volcanes."
+  },
+  {
+   "id": "d-cie-12",
+   "prueba": "CIE",
+   "eje": "Biología",
+   "tema": "bio.procesos",
+   "nivel": "basico",
+   "enunciado": "En una sinapsis química, ¿qué estructura libera los neurotransmisores?",
+   "opciones": [
+    {
+     "texto": "El terminal del axón de la neurona presináptica",
+     "trampa": ""
+    },
+    {
+     "texto": "Las dendritas de la neurona postsináptica",
+     "trampa": "Invertiste el sentido: las dendritas de la postsináptica RECIBEN los neurotransmisores."
+    },
+    {
+     "texto": "La vaina de mielina",
+     "trampa": "La mielina aísla el axón y acelera el impulso; no libera neurotransmisores."
+    },
+    {
+     "texto": "El núcleo de la neurona postsináptica",
+     "trampa": "El núcleo guarda el ADN; la liberación ocurre en el terminal del axón de la otra neurona."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "El impulso llega al terminal del axón presináptico, las vesículas liberan neurotransmisores al espacio sináptico y estos se unen a receptores de la postsináptica."
+  },
+  {
+   "id": "d-cie-13",
+   "prueba": "CIE",
+   "eje": "Biología",
+   "tema": "bio.herencia",
+   "nivel": "basico",
+   "enunciado": "Se cruzan dos plantas heterocigotas Aa, donde A es dominante sobre a. ¿Qué proporción de la descendencia se espera con el fenotipo recesivo?",
+   "opciones": [
+    {
+     "texto": "3/4",
+     "trampa": "Esa es la proporción del fenotipo DOMINANTE (AA + Aa)."
+    },
+    {
+     "texto": "1/2",
+     "trampa": "Esa es la proporción de heterocigotos (Aa), que muestran el fenotipo dominante."
+    },
+    {
+     "texto": "1/4",
+     "trampa": ""
+    },
+    {
+     "texto": "0",
+     "trampa": "Los padres no muestran el rasgo recesivo, pero lo portan: pueden tener hijos aa."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "Cuadro de Punnett Aa × Aa: AA, Aa, Aa, aa. Solo aa (1 de 4) muestra el fenotipo recesivo."
+  },
+  {
+   "id": "d-cie-14",
+   "prueba": "CIE",
+   "eje": "Química",
+   "tema": "qui.atomica",
+   "nivel": "basico",
+   "enunciado": "Un átomo neutro tiene número atómico Z = 17 y número másico A = 35. ¿Cuántos neutrones tiene?",
+   "opciones": [
+    {
+     "texto": "17",
+     "trampa": "17 son los protones (Z), y también los electrones por ser neutro."
+    },
+    {
+     "texto": "18",
+     "trampa": ""
+    },
+    {
+     "texto": "35",
+     "trampa": "35 es el número másico: protones + neutrones."
+    },
+    {
+     "texto": "52",
+     "trampa": "Sumaste A + Z. Los neutrones son A − Z."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Neutrones = A − Z = 35 − 17 = 18."
+  },
+  {
+   "id": "d-cie-15",
+   "prueba": "CIE",
+   "eje": "Química",
+   "tema": "qui.estequiometria",
+   "nivel": "basico",
+   "enunciado": "Según la ecuación 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O, ¿cuántos moles de agua se forman a partir de 3 moles de O<sub>2</sub>, con H<sub>2</sub> en exceso?",
+   "opciones": [
+    {
+     "texto": "3",
+     "trampa": "Copiaste los moles de O<sub>2</sub> sin usar la proporción 1 : 2 de la ecuación."
+    },
+    {
+     "texto": "1,5",
+     "trampa": "Dividiste por 2 en vez de multiplicar: por cada mol de O<sub>2</sub> salen 2 de agua."
+    },
+    {
+     "texto": "2",
+     "trampa": "Copiaste el coeficiente de la ecuación, sin escalarlo a 3 moles."
+    },
+    {
+     "texto": "6",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "1 mol de O<sub>2</sub> produce 2 moles de H<sub>2</sub>O. Con 3 moles de O<sub>2</sub>: 3·2 = 6 moles."
+  }
+ ],
+ "M1": [
+  {
+   "id": "d-m1-01",
+   "prueba": "M1",
+   "eje": "Números",
+   "tema": "m1.num.enteros-racionales",
+   "nivel": "paes",
+   "enunciado": "¿Cuál es el valor de (−3)<sup>2</sup> − 2·(−4) + 6 : (−2)?",
+   "opciones": [
+    {
+     "texto": "−4",
+     "trampa": "Tomaste (−3)<sup>2</sup> = −9. Con paréntesis, el cuadrado de un negativo es positivo: 9."
+    },
+    {
+     "texto": "−2",
+     "trampa": "Tomaste −2·(−4) = −8. Menos por menos da más: +8."
+    },
+    {
+     "texto": "14",
+     "trampa": ""
+    },
+    {
+     "texto": "11",
+     "trampa": "Operaste de izquierda a derecha sin respetar la prioridad: primero multiplicaciones y divisiones."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "(−3)<sup>2</sup> = 9; −2·(−4) = +8; 6 : (−2) = −3. Total: 9 + 8 − 3 = 14."
+  },
+  {
+   "id": "d-m1-02",
+   "prueba": "M1",
+   "eje": "Números",
+   "tema": "m1.num.porcentaje",
+   "nivel": "paes",
+   "enunciado": "El precio de un producto sube un 20 % y luego baja un 20 %. Respecto del precio original, el precio final:",
+   "opciones": [
+    {
+     "texto": "Es 4 % menor",
+     "trampa": ""
+    },
+    {
+     "texto": "Es igual",
+     "trampa": "Los porcentajes no se cancelan: el 20 % que baja se calcula sobre un precio mayor."
+    },
+    {
+     "texto": "Es 4 % mayor",
+     "trampa": "Error de signo: 1,2·0,8 = 0,96, que es menos que 1."
+    },
+    {
+     "texto": "Es 20 % menor",
+     "trampa": "Solo consideraste la última variación."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Precio final = P·1,2·0,8 = 0,96·P. Es un 4 % menor que el original."
+  },
+  {
+   "id": "d-m1-03",
+   "prueba": "M1",
+   "eje": "Números",
+   "tema": "m1.num.potencias-raices",
+   "nivel": "paes",
+   "enunciado": "¿Cuál es el valor de √50 − √18?",
+   "opciones": [
+    {
+     "texto": "√32",
+     "trampa": "Restaste los números de adentro: √a − √b no es √(a − b)."
+    },
+    {
+     "texto": "2",
+     "trampa": "Restaste los coeficientes 5 − 3 y olvidaste el √2."
+    },
+    {
+     "texto": "2√2",
+     "trampa": ""
+    },
+    {
+     "texto": "8√2",
+     "trampa": "Sumaste en vez de restar."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "√50 = 5√2 y √18 = 3√2. Entonces 5√2 − 3√2 = 2√2."
+  },
+  {
+   "id": "d-m1-04",
+   "prueba": "M1",
+   "eje": "Álgebra y funciones",
+   "tema": "m1.alg.expresiones",
+   "nivel": "basico",
+   "enunciado": "¿Cuál es el desarrollo de (2x − 3)<sup>2</sup>?",
+   "opciones": [
+    {
+     "texto": "4x² − 9",
+     "trampa": "Olvidaste el doble producto. (a − b)<sup>2</sup> = a<sup>2</sup> − 2ab + b<sup>2</sup>."
+    },
+    {
+     "texto": "4x² − 12x + 9",
+     "trampa": ""
+    },
+    {
+     "texto": "4x² − 6x + 9",
+     "trampa": "Te faltó el 2 del doble producto: 2·(2x)·3 = 12x."
+    },
+    {
+     "texto": "2x² − 12x + 9",
+     "trampa": "No elevaste el 2: (2x)<sup>2</sup> = 4x<sup>2</sup>."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "(2x)<sup>2</sup> − 2·(2x)·3 + 3<sup>2</sup> = 4x<sup>2</sup> − 12x + 9."
+  },
+  {
+   "id": "d-m1-05",
+   "prueba": "M1",
+   "eje": "Álgebra y funciones",
+   "tema": "m1.alg.ecuaciones",
+   "nivel": "basico",
+   "enunciado": "Si 3(x − 2) = x + 4, ¿cuál es el valor de x?",
+   "opciones": [
+    {
+     "texto": "3",
+     "trampa": "Distribuiste mal: 3(x − 2) = 3x − 6, no 3x − 2."
+    },
+    {
+     "texto": "2,5",
+     "trampa": "Pasaste x sumando en vez de restando: 3x + x = 10."
+    },
+    {
+     "texto": "−1",
+     "trampa": "Pasaste el −6 sin cambiarle el signo: 2x = 4 − 6."
+    },
+    {
+     "texto": "5",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "3x − 6 = x + 4 → 2x = 10 → x = 5."
+  },
+  {
+   "id": "d-m1-06",
+   "prueba": "M1",
+   "eje": "Álgebra y funciones",
+   "tema": "m1.alg.funciones",
+   "nivel": "paes",
+   "enunciado": "¿Cuáles son las coordenadas del vértice de la parábola f(x) = x<sup>2</sup> − 6x + 5?",
+   "opciones": [
+    {
+     "texto": "(−3, 32)",
+     "trampa": "Usaste x = b/(2a) sin el signo menos. El vértice está en x = −b/(2a) = 3."
+    },
+    {
+     "texto": "(3, −4)",
+     "trampa": ""
+    },
+    {
+     "texto": "(3, 5)",
+     "trampa": "5 es donde la parábola corta al eje Y, no la altura del vértice."
+    },
+    {
+     "texto": "(6, 5)",
+     "trampa": "Tomaste x = −b = 6 sin dividir por 2a. El vértice está en x = −b/(2a) = 3."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "x<sub>v</sub> = −b/(2a) = 6/2 = 3. y<sub>v</sub> = f(3) = 9 − 18 + 5 = −4."
+  },
+  {
+   "id": "d-m1-07",
+   "prueba": "M1",
+   "eje": "Geometría",
+   "tema": "m1.geo.areas-volumenes",
+   "nivel": "basico",
+   "enunciado": "Un cilindro tiene radio 3 cm y altura 10 cm. ¿Cuál es su volumen?",
+   "opciones": [
+    {
+     "texto": "30π cm³",
+     "trampa": "Usaste r en vez de r<sup>2</sup> en el área de la base."
+    },
+    {
+     "texto": "60π cm³",
+     "trampa": "2πrh = 60π es el área lateral, no el volumen."
+    },
+    {
+     "texto": "360π cm³",
+     "trampa": "Usaste el diámetro (6) como si fuera el radio."
+    },
+    {
+     "texto": "90π cm³",
+     "trampa": ""
+    }
+   ],
+   "correcta": 3,
+   "explicacion": "V = área de la base · altura = π·3<sup>2</sup>·10 = 90π cm<sup>3</sup>."
+  },
+  {
+   "id": "d-m1-08",
+   "prueba": "M1",
+   "eje": "Geometría",
+   "tema": "m1.geo.semejanza-pitagoras",
+   "nivel": "basico",
+   "enunciado": "Un poste de 4 m proyecta una sombra de 3 m. A la misma hora, un edificio proyecta una sombra de 15 m. ¿Cuánto mide el edificio?",
+   "opciones": [
+    {
+     "texto": "11,25 m",
+     "trampa": "Invertiste la razón: altura/sombra = 4/3, no 3/4."
+    },
+    {
+     "texto": "16 m",
+     "trampa": "Sumaste la diferencia de sombras (12 m) al poste. La semejanza es multiplicativa, no aditiva."
+    },
+    {
+     "texto": "20 m",
+     "trampa": ""
+    },
+    {
+     "texto": "5 m",
+     "trampa": "Calculaste la hipotenusa del triángulo 3–4–5. Eso no responde la altura del edificio."
+    }
+   ],
+   "correcta": 2,
+   "explicacion": "Triángulos semejantes: 4/3 = h/15, entonces h = 15·4/3 = 20 m."
+  },
+  {
+   "id": "d-m1-09",
+   "prueba": "M1",
+   "eje": "Probabilidad y estadística",
+   "tema": "m1.pro.datos",
+   "nivel": "basico",
+   "enunciado": "Las notas de un estudiante son 5,0 · 6,0 · 4,0 · 6,0 · 7,0. ¿Cuál es la mediana?",
+   "opciones": [
+    {
+     "texto": "6,0",
+     "trampa": ""
+    },
+    {
+     "texto": "4,0",
+     "trampa": "Tomaste el dato del medio sin ordenar. Primero se ordena: 4, 5, 6, 6, 7."
+    },
+    {
+     "texto": "5,6",
+     "trampa": "Ese es el promedio (media aritmética), no la mediana."
+    },
+    {
+     "texto": "5,5",
+     "trampa": "Promediaste 5 y 6 como si hubiera una cantidad par de datos. Con 5 datos, la mediana es el 3.º."
+    }
+   ],
+   "correcta": 0,
+   "explicacion": "Ordenados: 4,0 · 5,0 · 6,0 · 6,0 · 7,0. El dato central (3.º de 5) es 6,0."
+  },
+  {
+   "id": "d-m1-10",
+   "prueba": "M1",
+   "eje": "Probabilidad y estadística",
+   "tema": "m1.pro.probabilidad",
+   "nivel": "paes",
+   "enunciado": "Se lanzan dos dados comunes. ¿Cuál es la probabilidad de que la suma sea 7?",
+   "opciones": [
+    {
+     "texto": "1/11",
+     "trampa": "Las 11 sumas posibles (2 a 12) no son igualmente probables."
+    },
+    {
+     "texto": "1/6",
+     "trampa": ""
+    },
+    {
+     "texto": "7/36",
+     "trampa": "Supusiste 7 casos favorables porque la suma es 7. Son 6: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)."
+    },
+    {
+     "texto": "1/12",
+     "trampa": "Contaste (1,6) y (6,1) como un solo caso. El orden cuenta: son dos dados distintos."
+    }
+   ],
+   "correcta": 1,
+   "explicacion": "Hay 36 resultados igual de probables y 6 suman 7: 6/36 = 1/6."
+  }
+ ],
+ "LEN": {
+  "titulo": "El valor de aburrirse",
+  "texto": "<p><b>1</b> Durante siglos, el aburrimiento tuvo mala fama. Se lo asociaba con la pereza y, a veces, con un defecto del carácter. Sin embargo, en las últimas décadas varios investigadores empezaron a mirarlo de otra forma: no como una falla, sino como una señal.</p><p><b>2</b> Según esta idea, el aburrimiento funciona de un modo parecido al hambre. Así como el hambre avisa que el cuerpo necesita energía, el aburrimiento avisaría que lo que estamos haciendo ya no nos aporta nada y que conviene buscar otra cosa. En un experimento, un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico. Ese grupo propuso más ideas, y más variadas, que otro grupo que pasó directo a la tarea creativa.</p><p><b>3</b> El problema, advierten los mismos especialistas, es que hoy casi nunca dejamos que esa señal haga su trabajo. Basta un minuto de espera para que saquemos el teléfono. Llenamos cada hueco del día con estímulos breves y, así, la incomodidad desaparece antes de empujarnos hacia algo nuevo.</p><p><b>4</b> Nada de esto significa que el aburrimiento sea siempre bueno. Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo. La clave, dicen, no está en buscarlo ni en huir de él, sino en escucharlo: preguntarse qué nos está pidiendo antes de taparlo con lo primero que tengamos a mano.</p>",
+  "preguntas": [
+   {
+    "id": "d-len-01",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.localizar",
+    "nivel": "basico",
+    "enunciado": "Según el texto, ¿qué hizo el grupo que propuso más ideas ANTES de la tarea creativa?",
+    "opciones": [
+     {
+      "texto": "Usó el teléfono durante un minuto de espera.",
+      "trampa": "Mezcla un dato del párrafo 3 con el experimento del párrafo 2."
+     },
+     {
+      "texto": "Inventó usos para un vaso plástico.",
+      "trampa": "Esa ERA la tarea creativa, no lo que hizo antes."
+     },
+     {
+      "texto": "Copió números de una lista durante quince minutos.",
+      "trampa": ""
+     },
+     {
+      "texto": "Descansó sin hacer nada durante quince minutos.",
+      "trampa": "El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite."
+     }
+    ],
+    "correcta": 2,
+    "explicacion": "Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico»."
+   },
+   {
+    "id": "d-len-02",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.localizar",
+    "nivel": "basico",
+    "enunciado": "De acuerdo con el párrafo 4, ¿con qué se relaciona el aburrimiento crónico?",
+    "opciones": [
+     {
+      "texto": "Con el desánimo y con conductas de riesgo.",
+      "trampa": ""
+     },
+     {
+      "texto": "Con la pereza y con un defecto del carácter.",
+      "trampa": "Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4."
+     },
+     {
+      "texto": "Con una mayor creatividad.",
+      "trampa": "Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico."
+     },
+     {
+      "texto": "Con el uso excesivo del teléfono.",
+      "trampa": "El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico."
+     }
+    ],
+    "correcta": 0,
+    "explicacion": "Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo»."
+   },
+   {
+    "id": "d-len-03",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.interpretar",
+    "nivel": "paes",
+    "enunciado": "¿Qué función cumple la comparación con el hambre en el párrafo 2?",
+    "opciones": [
+     {
+      "texto": "Demostrar que el aburrimiento produce un malestar físico.",
+      "trampa": "Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas."
+     },
+     {
+      "texto": "Mostrar que el aburrimiento es tan necesario como comer.",
+      "trampa": "Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es."
+     },
+     {
+      "texto": "Explicar que el aburrimiento es una señal que empuja a cambiar de actividad.",
+      "trampa": ""
+     },
+     {
+      "texto": "Criticar la idea antigua de que el aburrimiento es pereza.",
+      "trampa": "Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua."
+     }
+    ],
+    "correcta": 2,
+    "explicacion": "El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal."
+   },
+   {
+    "id": "d-len-04",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.interpretar",
+    "nivel": "paes",
+    "enunciado": "¿Cuál es la idea principal del texto?",
+    "opciones": [
+     {
+      "texto": "El aburrimiento siempre es bueno para la creatividad.",
+      "trampa": "Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca»."
+     },
+     {
+      "texto": "El aburrimiento es una señal útil que hoy solemos tapar antes de escucharla.",
+      "trampa": ""
+     },
+     {
+      "texto": "El teléfono celular es la causa del aburrimiento moderno.",
+      "trampa": "Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa."
+     },
+     {
+      "texto": "Antes, el aburrimiento se consideraba pereza.",
+      "trampa": "Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal."
+     }
+    ],
+    "correcta": 1,
+    "explicacion": "La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4)."
+   },
+   {
+    "id": "d-len-05",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.evaluar",
+    "nivel": "paes",
+    "enunciado": "¿Qué propósito cumple el experimento mencionado en el párrafo 2?",
+    "opciones": [
+     {
+      "texto": "Explicar cómo se realiza un experimento científico.",
+      "trampa": "Confunde el ejemplo con el tema. El texto no trata sobre el método científico."
+     },
+     {
+      "texto": "Contradecir la idea de que el aburrimiento es una señal.",
+      "trampa": "Invierte su función: el experimento apoya esa idea."
+     },
+     {
+      "texto": "Entretener al lector con una anécdota curiosa.",
+      "trampa": "Puede ser curioso, pero en el argumento su función es dar evidencia."
+     },
+     {
+      "texto": "Respaldar con evidencia la idea de que el aburrimiento puede impulsar ideas nuevas.",
+      "trampa": ""
+     }
+    ],
+    "correcta": 3,
+    "explicacion": "El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis."
+   },
+   {
+    "id": "d-len-06",
+    "prueba": "LEN",
+    "eje": "Habilidades",
+    "tema": "len.evaluar",
+    "nivel": "dificil",
+    "enunciado": "¿Con cuál de las siguientes afirmaciones estaría de acuerdo el autor del texto?",
+    "opciones": [
+     {
+      "texto": "Hay que buscar el aburrimiento todos los días para ser más creativos.",
+      "trampa": "El párrafo 4 dice que la clave NO está en buscarlo."
+     },
+     {
+      "texto": "Antes de llenar un momento de espera, vale la pena preguntarse qué necesitamos.",
+      "trampa": ""
+     },
+     {
+      "texto": "El aburrimiento debe evitarse porque lleva a conductas de riesgo.",
+      "trampa": "Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él."
+     },
+     {
+      "texto": "Los teléfonos deberían prohibirse en las salas de espera.",
+      "trampa": "El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice."
+     }
+    ],
+    "correcta": 1,
+    "explicacion": "Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo»."
+   }
+  ]
+ }
 }
 </script>
 <script>
@@ -1117,6 +2041,7 @@ function pintarPregunta() {
   let tResp = null;
   P27.pregunta(cont, q, {
     noSe: true,
+    mezclar: true, // la suficiencia de datos mantiene sus 5 alternativas fijas (lo resuelve el core)
     meta: `${esc(q.eje)} · ${esc(TEMAS[q.tema]?.nombre || q.tema)}`,
     textoSiguiente: runner.i + 1 < qs.length ? 'Siguiente' : 'Ver resultado',
     onRespuesta: ({ ok, elegida }) => {
