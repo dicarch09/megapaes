@@ -13,6 +13,10 @@ BLOQUES = [
     (RAIZ / "tools" / "core.js", r"// == paes27-core v\d+ ==", r"// == fin paes27-core v\d+ =="),
     (RAIZ / "tools" / "core.css", r"/\* == paes27-css v\d+ == \*/", r"/\* == fin paes27-css v\d+ == \*/"),
 ]
+# Bloques opcionales: solo se sincronizan en las páginas que tienen sus marcadores.
+OPCIONALES = [
+    (RAIZ / "tools" / "lecciones.js", r"// == paes27-lecciones v\d+ ==", r"// == fin paes27-lecciones v\d+ =="),
+]
 
 
 def main() -> int:
@@ -28,6 +32,11 @@ def main() -> int:
                 malos.append(f"{html.name}: falta el bloque {fuente.name}")
                 continue
             nuevo = pat.sub(lambda _m: bloque, nuevo, count=1)
+        for fuente, ini, fin in OPCIONALES:
+            pat = re.compile(ini + r".*?" + fin, re.S)
+            if pat.search(nuevo):
+                bloque = fuente.read_text(encoding="utf-8").strip()
+                nuevo = pat.sub(lambda _m: bloque, nuevo, count=1)
         # bancos JSON: <script type="application/json" id="banco-X"> <- tools/banco_X.json
         def _banco(m):
             fuente = RAIZ / "tools" / ("banco_" + m.group(2) + ".json")

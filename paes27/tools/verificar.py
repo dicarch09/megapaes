@@ -61,7 +61,7 @@ def preguntas():
 
 # ---------------------------------------------------------------- evaluación de alternativas
 SUPER = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
-UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km|m|N|A|Ω|V|W|kWh|UF|años|horas|%|°)"
+UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km/h|km|N/m|kWh|kg|Hz|UF|mA|m|N|A|Ω|V|W|J|s|años|horas|%|°)"
 
 
 def a_python(t):
@@ -248,10 +248,6 @@ def _(q):
     return idx_texto(q, max(presentes, key=espectro.index))
 
 
-@chk("d-cie-13")
-def _(q):
-    hijos = [a + b for a in "Aa" for b in "Aa"]
-    return idx_num(q, Fraction(sum(h == "aa" for h in hijos), len(hijos)))
 
 
 chk("d-cie-14")(lambda q: idx_num(q, 35 - 17))
@@ -281,6 +277,7 @@ CONCEPTUALES = {
     "d-cie-09": "refracción: cualitativa",
     "d-cie-11": "tectónica: cualitativa",
     "d-cie-12": "sinapsis: cualitativa",
+    "d-cie-13": "mitosis: etapas (cualitativa)",
     **{f"d-len-0{i}": "comprensión lectora" for i in range(1, 7)},
 }
 
