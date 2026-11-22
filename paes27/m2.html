@@ -94,6 +94,10 @@ details.acc>.in{padding:0 1em 1em}
 .chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
 .bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
 .txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+/* nombre del color --warn según el tema: naranjo en claro, amarillo en oscuro */
+.n-warn{color:var(--warn);font-weight:700}.n-warn::before{content:"naranjo"}.n-warn.f::before{content:"naranja"}.n-warn.may{text-transform:capitalize}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .n-warn::before{content:"amarillo"}:root:not([data-theme=light]) .n-warn.f::before{content:"amarilla"}}
+:root[data-theme=dark] .n-warn::before{content:"amarillo"}:root[data-theme=dark] .n-warn.f::before{content:"amarilla"}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 input[type=range]{accent-color:var(--acc);width:100%;height:24px}
@@ -6624,7 +6628,7 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
       <tr><th>A</th><td class="${cls('AB')}">${a}</td><td>${b}</td><td class="${cls('A')}">${nA}</td></tr>
       <tr><th>no A</th><td>${cc}</td><td>${dd}</td><td>${cc + dd}</td></tr>
       <tr><th>Total</th><td class="${cls('B')}">${nB}</td><td>${nNB}</td><td class="${cls('N')}">${n}</td></tr></table>
-      <div class="small muted">Amarillo = casos favorables · celeste = nuevo total (la condición).</div>`;
+      <div class="small muted"><span class="n-warn may"></span> = casos favorables · celeste = nuevo total (la condición).</div>`;
     let h = '';
     if (n === 0) h = '<div class="muted">Pon al menos una persona.</div>';
     else {
@@ -7316,7 +7320,7 @@ const dnorm = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s)) / (s * Math.s
     const m = val['nor-m'], s = val['nor-s'], x = val['nor-x'];
     const z = (x - m) / s, P = Phi(z);
     $('#nor-form').innerHTML = `<div>z = (x − μ)/σ = (${x} − ${m})/${s} = <span class="hl">${fmt(z, 2)}</span> → ${x} está a ${fmt(Math.abs(z), 2)} σ ${z >= 0 ? 'sobre' : 'bajo'} la media.</div>
-      <div class="res">P(X ≤ ${x}) ≈ <span class="hl">${fmt(P * 100, 1)} %</span> (área amarilla) · P(X &gt; ${x}) ≈ ${fmt((1 - P) * 100, 1)} %</div>
+      <div class="res">P(X ≤ ${x}) ≈ <span class="hl">${fmt(P * 100, 1)} %</span> (área <span class="n-warn f"></span>) · P(X &gt; ${x}) ≈ ${fmt((1 - P) * 100, 1)} %</div>
       <div class="small muted">Regla 68–95–99,7: entre ${m - s} y ${m + s} queda ≈ 68 %; entre ${m - 2 * s} y ${m + 2 * s}, ≈ 95 %.</div>`;
   });
 }

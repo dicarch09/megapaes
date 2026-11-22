@@ -86,6 +86,10 @@ details.acc>.in{padding:0 1em 1em}
 .chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
 .bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
 .txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+/* nombre del color --warn según el tema: naranjo en claro, amarillo en oscuro */
+.n-warn{color:var(--warn);font-weight:700}.n-warn::before{content:"naranjo"}.n-warn.f::before{content:"naranja"}.n-warn.may{text-transform:capitalize}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .n-warn::before{content:"amarillo"}:root:not([data-theme=light]) .n-warn.f::before{content:"amarilla"}}
+:root[data-theme=dark] .n-warn::before{content:"amarillo"}:root[data-theme=dark] .n-warn.f::before{content:"amarilla"}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 input[type=range]{accent-color:var(--acc);width:100%;height:24px}

@@ -94,6 +94,10 @@ details.acc>.in{padding:0 1em 1em}
 .chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
 .bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
 .txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+/* nombre del color --warn según el tema: naranjo en claro, amarillo en oscuro */
+.n-warn{color:var(--warn);font-weight:700}.n-warn::before{content:"naranjo"}.n-warn.f::before{content:"naranja"}.n-warn.may{text-transform:capitalize}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .n-warn::before{content:"amarillo"}:root:not([data-theme=light]) .n-warn.f::before{content:"amarilla"}}
+:root[data-theme=dark] .n-warn::before{content:"amarillo"}:root[data-theme=dark] .n-warn.f::before{content:"amarilla"}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 input[type=range]{accent-color:var(--acc);width:100%;height:24px}
@@ -396,7 +400,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <p class="idea">Una onda transporta <b>energía</b>, no materia. En una foto se ve la <b>longitud de onda λ</b> (distancia entre crestas) y la <b>amplitud A</b>. En un punto se mide el <b>período T</b> (tiempo de una oscilación) y la <b>frecuencia f = 1/T</b>. En un período la onda avanza un λ: <b>v = λ·f</b>. La luz es una onda electromagnética: en el vacío va a <b>c = 3·10⁸ m/s</b>.</p>
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
       <div class="cv tres" id="ond-ver" role="img" aria-label="Onda electromagnética: campo eléctrico vertical y campo magnético horizontal avanzando juntos"></div>
-      <div class="fila cap"><button class="btn sec mini" data-pausa="ond-ver">⏸ Pausa</button><span>Onda electromagnética: el campo eléctrico (amarillo) y el magnético (celeste) oscilan perpendiculares entre sí y a la dirección en que avanza. No necesita un medio: viaja por el vacío.</span></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="ond-ver">⏸ Pausa</button><span>Onda electromagnética: el campo eléctrico (<span class="n-warn"></span>) y el magnético (celeste) oscilan perpendiculares entre sí y a la dirección en que avanza. No necesita un medio: viaja por el vacío.</span></div>
     </div>
     <div class="paso"><h3><span class="n">2</span> Manipular</h3>
       <div class="manip">
@@ -6168,7 +6172,7 @@ function cinTexto(t) {
     const x = x0 + v0 * t + 0.5 * a * t * t, vt = v0 + a * t;
     let h = `<div>${a === 0 ? '<b>MRU</b> (a = 0)' : '<b>MRUA</b>'}: x(t) = ${fmt(x0)} + ${par(v0)}·t${a ? ` + ½·${par(a)}·t²` : ''}</div>`;
     h += `<div>x(${fmt(t)}) = ${fmt(x0)} + ${par(v0)}·${fmt(t)}${a ? ` + ½·${par(a)}·${fmt(t)}²` : ''} = <span class="hl">${fmt(x, 2)} m</span></div>`;
-    h += `<div>v(${fmt(t)}) = ${fmt(v0)} + ${par(a)}·${fmt(t)} = <span class="hl">${fmt(vt, 2)} m/s</span> <span class="small muted">(pendiente amarilla del gráfico x–t)</span></div>`;
+    h += `<div>v(${fmt(t)}) = ${fmt(v0)} + ${par(a)}·${fmt(t)} = <span class="hl">${fmt(vt, 2)} m/s</span> <span class="small muted">(pendiente <span class="n-warn f"></span> del gráfico x–t)</span></div>`;
     h += `<div class="res">Área celeste bajo v–t = desplazamiento = ${fmt(x - x0, 2)} m</div>`;
     if (a !== 0 && v0 * a < 0) { const ts = -v0 / a; h += `<div class="small txt-warn">v y a tienen signos opuestos: frena y se detiene en t = ${fmt(ts, 2)} s.</div>`; }
     $('#mru-form').innerHTML = h;
@@ -6541,7 +6545,7 @@ function describirImagen(r) {
     let h = `<div><b>${nombre[tipo]}</b> · objeto a ${d} cm${tipo === 'plano' ? '' : ` · f = ${r.fs > 0 ? '' : '−'}${val['len-f']} cm`}</div>`;
     h += `<div class="res">Imagen: <span class="hl">${describirImagen(r)}</span></div>`;
     if (Number.isFinite(r.di)) h += `<div>${tipo === 'plano' ? 'Espejo plano: la imagen está tan lejos detrás como el objeto delante.' : `1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub> → d<sub>i</sub> = ${fmt(r.di, 1)} cm`} · aumento = ${fmt(r.m, 2)}</div>`;
-    h += '<div class="small muted">Amarillo: rayo paralelo al eje. Verde: rayo al centro. Línea punteada: prolongación (imagen virtual).</div>';
+    h += '<div class="small muted"><span class="n-warn may"></span>: rayo paralelo al eje. Verde: rayo al centro. Línea punteada: prolongación (imagen virtual).</div>';
     $('#len-form').innerHTML = h;
   }, { 'len-d': String, 'len-f': String });
   $('#len-tipo').addEventListener('change', () => s.leer());
