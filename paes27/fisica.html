@@ -6,14 +6,15 @@
 <script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>PAES 2027 · Física</title>
 <style>
-/* == paes27-css v2 == */
-/* Sistema de diseño PAES·27 · dicarch. Claro: «azulejos vivos». Oscuro: «Riso noche» (Numeria).
+/* == paes27-css v3 == */
+/* Sistema de diseño PAES·27 · dicarch (prototipo C). Claro: «azulejos vivos». Oscuro: «Riso noche» (Numeria).
+   Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
    Se copia IDÉNTICO en cada página con tools/sync_core.py: edita tools/core.css. */
 @font-face{font-family:"Nunito Sans";src:url(lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(lib/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
 :root{
   --bg:#F4F6FB;--panel:#FFFFFF;--panel2:#EEF1F8;--line:#DDE3EE;--ink:#14162B;--muted:#5D6478;
-  --acc:#2563EB;--acc2:#0E9DB4;--ok:#0B8F55;--mal:#D4145A;--warn:#C46A00;
+  --acc:#2563EB;--acc2:#0E9DB4;--ok:#0B8F55;--mal:#D4145A;--warn:#C46A00;--okf:#18D98B;--malf:#E5157A;
   --cv:#FFFFFF;--cv-panel:#E4E9F3;--cv-panel2:#CBD3E2;
   --m2:#0E8BD8;--cie:#0BAE6A;--m1:#F08A00;--len:#E5157A;
   --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
@@ -25,7 +26,7 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
-  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
   --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
   --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
   --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
@@ -34,7 +35,7 @@
   --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}}
 :root[data-theme=dark]{
   --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
-  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
   --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
   --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
   --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
@@ -94,13 +95,9 @@ details.acc>.in{padding:0 1em 1em}
 .chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
 .bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
 .txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
-/* nombre del color --warn según el tema: naranjo en claro, amarillo en oscuro */
-.n-warn{color:var(--warn);font-weight:700}.n-warn::before{content:"naranjo"}.n-warn.f::before{content:"naranja"}.n-warn.may{text-transform:capitalize}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .n-warn::before{content:"amarillo"}:root:not([data-theme=light]) .n-warn.f::before{content:"amarilla"}}
-:root[data-theme=dark] .n-warn::before{content:"amarillo"}:root[data-theme=dark] .n-warn.f::before{content:"amarilla"}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input[type=range]{accent-color:var(--acc);width:100%;height:24px}
+input[type=range]{accent-color:var(--pag-solo,var(--m2));width:100%;height:24px}
 select,input[type=time],input[type=number],textarea{background:var(--panel2);color:var(--ink);border:var(--borde);border-radius:10px;padding:.35em .55em;font:inherit}
 code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92em}
 /* pregunta (práctica, diagnóstico, ensayo) */
@@ -109,16 +106,16 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .q-enun{font-size:1.05rem;font-weight:600;margin-bottom:12px}
 .q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
 .q-ops{display:grid;gap:9px}
-.q-op{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);color:var(--ink);border:2px solid transparent;border-radius:var(--r-sm);padding:.6em .8em;font:inherit;font-weight:700;cursor:pointer;transition:transform .06s,border-color .1s}
+.q-op{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);color:var(--ink);border:2px solid transparent;border-radius:14px;padding:.7em .9em;font:inherit;font-weight:700;cursor:pointer;transition:transform .06s,border-color .1s}
 .q-op:hover:not(:disabled){border-color:var(--acc);transform:translateY(-1px)}
 .q-op:disabled{cursor:default}
 .q-l{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:800 .95rem/1 "Bricolage Grotesque",sans-serif;background:var(--panel);color:var(--ink)}
-.q-op.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--panel))}.q-op.ok .q-l{background:var(--ok);color:var(--sobre)}
-.q-op.mal{border-color:var(--mal);background:color-mix(in srgb,var(--mal) 12%,var(--panel))}.q-op.mal .q-l{background:var(--mal);color:#fff}
+.q-op.ok{border-color:var(--okf);background:color-mix(in srgb,var(--okf) 16%,var(--panel))}.q-op.ok .q-l{background:var(--okf);color:#0F1923}
+.q-op.mal{border-color:var(--malf);background:color-mix(in srgb,var(--malf) 14%,var(--panel))}.q-op.mal .q-l{background:var(--malf);color:#fff}
 .q-op.sel{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,var(--panel))}.q-op.sel .q-l{background:var(--acc);color:var(--sobre)}
-.q-fb{margin-top:12px;padding:10px 12px;border-radius:var(--r-sm);background:var(--panel2)}
-.q-trampa{margin:6px 0;padding:8px 12px;border-left:5px solid var(--mal);border-radius:10px;background:color-mix(in srgb,var(--mal) 10%,var(--panel))}
-.q-exp{margin-top:6px}
+.q-fb{margin-top:10px}
+.q-trampa{margin:8px 0;padding:10px 12px;border-left:5px solid var(--malf);border-radius:12px;background:color-mix(in srgb,var(--malf) 12%,var(--panel))}
+.q-exp{margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--panel2)}
 .q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
 /* lecciones */
 .leccion{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:18px;margin:16px 0}
@@ -128,20 +125,34 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .leccion.cerrada .lec-head::before{transform:rotate(-45deg)}
 .leccion.cerrada .lec-body{display:none}
 .leccion.cerrada{padding:13px 18px}
-.dom{margin-left:auto;font-size:.88rem;font-weight:800}
+.dom{margin-left:auto;font-size:.74rem;font-weight:900;padding:.2em .65em;border-radius:99px;background:var(--panel2)}
 .idea{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px;margin:12px 0;font-weight:600}
 .paso{margin:20px 0}
+.pasos{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
+.pasos button{border:0;border-radius:99px;padding:.45em .85em;background:var(--panel2);color:var(--muted);font:800 .86rem/1.1 "Bricolage Grotesque","Nunito Sans",sans-serif;cursor:pointer;transition:background .12s,color .12s}
+.pasos button:hover{color:var(--ink)}
+.pasos button.on{background:var(--pag,var(--m2-g));color:var(--sobre)}
+.paso-pane{display:none}.paso-pane.on{display:block;animation:apar .25s ease}
+.con-pasos .paso{margin:14px 0 8px}.con-pasos .paso>h3{display:none}
+.con-pasos details.acc.porque{background:none;margin:14px 0 8px}.con-pasos details.acc.porque>summary{display:none}.con-pasos details.acc.porque>.in{padding:0}
+.paso-sig{display:flex;justify-content:flex-end;margin-top:14px}
 .paso>h3{display:flex;align-items:center;gap:9px}
 .paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
-.cv{position:relative;min-width:0;border-radius:var(--r-sm);overflow:hidden;border:var(--borde);background:var(--cv)}
+.cv,.formula,.sd-demo,.cv+.cap,.sd-demo+.cap{
+  --ink:#DBDEE1;--muted:#9AA3B2;--line:#35406A;--panel:#1F2747;--panel2:#2A3359;--sobre:#0F1923;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;--borde:1px solid rgba(147,160,187,.16);color:var(--ink)}
+.cv{position:relative;min-width:0;border-radius:14px;overflow:hidden;border:0;background:var(--cv)}
+.cv:has(+.cap),.sd-demo:has(+.cap){border-bottom-left-radius:0;border-bottom-right-radius:0}
+.cv+.cap,.sd-demo+.cap{margin:0;background:var(--cv);border-top:1px solid rgba(147,160,187,.12);border-radius:0 0 14px 14px;padding:8px 12px;font-weight:600;font-size:.93rem}
 .cv canvas{display:block;width:100%}
 .cv.tres{height:340px}.cv.tres canvas{height:100%!important}
 .manip{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
 @media (max-width:820px){.manip{grid-template-columns:minmax(0,1fr)}}
 .ctrl{display:grid;gap:8px}
 .sl{display:grid;gap:2px;font-size:.92rem;font-weight:700}
-.sl b{color:var(--acc);font-variant-numeric:tabular-nums}
-.formula{background:var(--cv);border:var(--borde);border-radius:var(--r-sm);padding:10px 14px;font-variant-numeric:tabular-nums;line-height:1.75}
+.sl b{color:var(--pag-solo,var(--m2));font-variant-numeric:tabular-nums}
+.formula{background:var(--cv);border-radius:14px;padding:12px 14px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.8}
 .formula .res{font-weight:800}
 .formula .hl{color:var(--warn);font-weight:800}
 .cap{margin:8px 0 0;min-height:1.5em}
@@ -172,7 +183,7 @@ table.t2 td,table.t2 th{border:1px solid var(--line);padding:4px 10px;text-align
 table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 .hl2{background:color-mix(in srgb,var(--acc2) 20%,transparent)}
 .pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
 .pend .card{margin:0;box-shadow:none;border-style:dashed}
-.sd-demo{background:var(--cv);border:var(--borde);border-radius:var(--r-sm);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
+.sd-demo{background:var(--cv);border-radius:14px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
 .sd-caso>div{margin:4px 0}
 .sd-lista{margin:0;padding:0;list-style:none}.sd-lista li{padding:3px 8px;border-radius:8px;transition:opacity .3s}
 .sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-weight:800}
@@ -194,11 +205,11 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .ens-ley{padding:0 6px;border-radius:5px}.ens-ley.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-ley.m{border:2px solid var(--warn)}
 @media (max-width:600px){.wrap{padding:12px 12px 24px}.card,.leccion{padding:13px}.marca b{font-size:1.25rem}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-/* == fin paes27-css v2 == */
+/* == fin paes27-css v3 == */
 
 </style>
 </head>
-<body>
+<body style="--pag:var(--cie-g);--pag-solo:var(--cie)">
 <div class="wrap">
   <header class="top">
     <a class="marca" href="index.html"><span data-logo></span><span><b>PAES·27</b><small>estudio express · dicarch</small></span></a>
@@ -400,7 +411,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <p class="idea">Una onda transporta <b>energía</b>, no materia. En una foto se ve la <b>longitud de onda λ</b> (distancia entre crestas) y la <b>amplitud A</b>. En un punto se mide el <b>período T</b> (tiempo de una oscilación) y la <b>frecuencia f = 1/T</b>. En un período la onda avanza un λ: <b>v = λ·f</b>. La luz es una onda electromagnética: en el vacío va a <b>c = 3·10⁸ m/s</b>.</p>
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
       <div class="cv tres" id="ond-ver" role="img" aria-label="Onda electromagnética: campo eléctrico vertical y campo magnético horizontal avanzando juntos"></div>
-      <div class="fila cap"><button class="btn sec mini" data-pausa="ond-ver">⏸ Pausa</button><span>Onda electromagnética: el campo eléctrico (<span class="n-warn"></span>) y el magnético (celeste) oscilan perpendiculares entre sí y a la dirección en que avanza. No necesita un medio: viaja por el vacío.</span></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="ond-ver">⏸ Pausa</button><span>Onda electromagnética: el campo eléctrico (amarillo) y el magnético (celeste) oscilan perpendiculares entre sí y a la dirección en que avanza. No necesita un medio: viaja por el vacío.</span></div>
     </div>
     <div class="paso"><h3><span class="n">2</span> Manipular</h3>
       <div class="manip">
@@ -5533,12 +5544,14 @@ const P27 = (() => {
 (() => {
 'use strict';
 const BANCO = JSON.parse(document.getElementById('banco-fis').textContent);
-// == paes27-lecciones v1 ==
+// == paes27-lecciones v2 ==
 // Utilidades de las páginas de lecciones. Se copia IDÉNTICO con tools/sync_core.py: edita tools/lecciones.js.
 const { TEMAS, el } = P27;
 const $ = (s) => document.querySelector(s);
-const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-// Colores de las pizarras: siguen el tema (claro/oscuro) y se leen al cargar la página.
+// Las pizarras son siempre oscuras y tienen su propia paleta (core.css, regla .cv):
+// los colores se leen desde un elemento .cv de muestra, no desde la raíz de la página.
+const SONDA_CV = document.createElement('div'); SONDA_CV.className = 'cv'; SONDA_CV.hidden = true; document.body.appendChild(SONDA_CV);
+const cssv = (v) => getComputedStyle(SONDA_CV).getPropertyValue(v).trim();
 const COL = {};
 for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line']) COL[k] = cssv('--' + k);
 COL.bg = cssv('--cv'); COL.panel = cssv('--cv-panel'); COL.panel2 = cssv('--cv-panel2');
@@ -5977,7 +5990,8 @@ function pintarDominio() {
   document.querySelectorAll('.dom[data-tema]').forEach((s) => {
     const v = P27.dominio(s.dataset.tema);
     s.style.color = P27.colorDominio(v);
-    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'}: ${v === null ? 'sin dato' : v + ' %'}`;
+    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'} ${v === null ? '—' : v + ' %'}`;
+    s.title = v === null ? 'Aún sin datos: practica para medirlo' : 'Tu dominio de este tema (0–100 %)';
   });
 }
 window.addEventListener('p27:cambio', pintarDominio);
@@ -5990,6 +6004,49 @@ function montarAcordeon() {
 document.querySelectorAll('.leccion').forEach((l) => {
   l.classList.add('cerrada');
   l.querySelector('.lec-head').addEventListener('click', (e) => { if (e.target.closest('a,button,select,input')) return; l.classList.toggle('cerrada'); });
+  const prio = l.querySelector('.lec-head .chip.A,.lec-head .chip.B,.lec-head .chip.C');
+  if (prio && prio.textContent.length === 1) prio.textContent = 'Prioridad ' + prio.textContent;
+});
+montarPasos();
+}
+
+// Los 5 pasos de cada lección como pestañas (pills): se ve un paso a la vez.
+// Lo que va antes del primer paso (la idea, tarjetas, avisos) queda siempre visible.
+const NOMBRE_PASO = [[/^ver\b/i, 'Ver'], [/manipular/i, 'Manipular'], [/porqu/i, 'El porqué'], [/ejemplo/i, 'Ejemplo'], [/pr[aá]ctica/i, 'Práctica']];
+function montarPasos() {
+document.querySelectorAll('.leccion > .lec-body').forEach((body) => {
+  const esPaso = (n) => n.matches('.paso, details.acc');
+  const hijos = [...body.children];
+  const k0 = hijos.findIndex(esPaso);
+  if (k0 < 0) return;
+  const grupos = [];
+  for (const n of hijos.slice(k0)) { if (esPaso(n) || !grupos.length) grupos.push([n]); else grupos[grupos.length - 1].push(n); }
+  if (grupos.length < 2) return;
+  body.classList.add('con-pasos');
+  const barra = el('div', 'pasos'); barra.setAttribute('role', 'tablist');
+  const pasos = grupos.map((g, i) => {
+    const cab = g[0].matches('details') ? g[0].querySelector('summary') : g[0].querySelector('h3');
+    const txt = (cab ? cab.textContent : '').replace(/^\s*\d+\s*/, '').trim();
+    const nombre = (NOMBRE_PASO.find(([re]) => re.test(txt)) || [0, txt.split(/[·(:]/)[0].trim()])[1];
+    if (g[0].matches('details')) { g[0].open = true; g[0].classList.add('porque'); }
+    const pane = el('div', 'paso-pane'); pane.setAttribute('role', 'tabpanel');
+    g[0].before(pane); g.forEach((n) => pane.appendChild(n));
+    const b = el('button', '', `${i + 1} ${nombre}`); b.type = 'button'; b.setAttribute('role', 'tab');
+    b.addEventListener('click', () => mostrar(i));
+    barra.appendChild(b);
+    return { pane, b, nombre };
+  });
+  pasos.forEach((p, i) => {
+    if (i === pasos.length - 1) return;
+    const s = el('button', 'btn sec mini', `Sigue: ${i + 2} ${pasos[i + 1].nombre} →`); s.type = 'button';
+    s.addEventListener('click', () => { mostrar(i + 1); const r = barra.getBoundingClientRect(); if (r.top < 0) barra.scrollIntoView({ block: 'start', behavior: REDUCIR ? 'auto' : 'smooth' }); });
+    const w = el('div', 'paso-sig'); w.appendChild(s); p.pane.appendChild(w);
+  });
+  body.insertBefore(barra, body.firstChild);
+  function mostrar(i) {
+    pasos.forEach((p, k) => { p.pane.classList.toggle('on', k === i); p.b.classList.toggle('on', k === i); p.b.setAttribute('aria-selected', String(k === i)); });
+  }
+  mostrar(0);
 });
 }
 
@@ -6022,7 +6079,7 @@ function respaldo2D(cont, dibujar) {
   const cv = document.createElement('canvas'); cont.appendChild(cv);
   return new Lienzo(cv, { aspecto: 0.55, maxH: 340, dibujar });
 }
-// == fin paes27-lecciones v1 ==
+// == fin paes27-lecciones v2 ==
 
 // =====================================================================
 // utilidades de Física
@@ -6172,7 +6229,7 @@ function cinTexto(t) {
     const x = x0 + v0 * t + 0.5 * a * t * t, vt = v0 + a * t;
     let h = `<div>${a === 0 ? '<b>MRU</b> (a = 0)' : '<b>MRUA</b>'}: x(t) = ${fmt(x0)} + ${par(v0)}·t${a ? ` + ½·${par(a)}·t²` : ''}</div>`;
     h += `<div>x(${fmt(t)}) = ${fmt(x0)} + ${par(v0)}·${fmt(t)}${a ? ` + ½·${par(a)}·${fmt(t)}²` : ''} = <span class="hl">${fmt(x, 2)} m</span></div>`;
-    h += `<div>v(${fmt(t)}) = ${fmt(v0)} + ${par(a)}·${fmt(t)} = <span class="hl">${fmt(vt, 2)} m/s</span> <span class="small muted">(pendiente <span class="n-warn f"></span> del gráfico x–t)</span></div>`;
+    h += `<div>v(${fmt(t)}) = ${fmt(v0)} + ${par(a)}·${fmt(t)} = <span class="hl">${fmt(vt, 2)} m/s</span> <span class="small muted">(pendiente amarilla del gráfico x–t)</span></div>`;
     h += `<div class="res">Área celeste bajo v–t = desplazamiento = ${fmt(x - x0, 2)} m</div>`;
     if (a !== 0 && v0 * a < 0) { const ts = -v0 / a; h += `<div class="small txt-warn">v y a tienen signos opuestos: frena y se detiene en t = ${fmt(ts, 2)} s.</div>`; }
     $('#mru-form').innerHTML = h;
@@ -6545,7 +6602,7 @@ function describirImagen(r) {
     let h = `<div><b>${nombre[tipo]}</b> · objeto a ${d} cm${tipo === 'plano' ? '' : ` · f = ${r.fs > 0 ? '' : '−'}${val['len-f']} cm`}</div>`;
     h += `<div class="res">Imagen: <span class="hl">${describirImagen(r)}</span></div>`;
     if (Number.isFinite(r.di)) h += `<div>${tipo === 'plano' ? 'Espejo plano: la imagen está tan lejos detrás como el objeto delante.' : `1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub> → d<sub>i</sub> = ${fmt(r.di, 1)} cm`} · aumento = ${fmt(r.m, 2)}</div>`;
-    h += '<div class="small muted"><span class="n-warn may"></span>: rayo paralelo al eje. Verde: rayo al centro. Línea punteada: prolongación (imagen virtual).</div>';
+    h += '<div class="small muted">Amarillo: rayo paralelo al eje. Verde: rayo al centro. Línea punteada: prolongación (imagen virtual).</div>';
     $('#len-form').innerHTML = h;
   }, { 'len-d': String, 'len-f': String });
   $('#len-tipo').addEventListener('change', () => s.leer());

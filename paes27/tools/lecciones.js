@@ -1,9 +1,11 @@
-// == paes27-lecciones v1 ==
+// == paes27-lecciones v2 ==
 // Utilidades de las páginas de lecciones. Se copia IDÉNTICO con tools/sync_core.py: edita tools/lecciones.js.
 const { TEMAS, el } = P27;
 const $ = (s) => document.querySelector(s);
-const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-// Colores de las pizarras: siguen el tema (claro/oscuro) y se leen al cargar la página.
+// Las pizarras son siempre oscuras y tienen su propia paleta (core.css, regla .cv):
+// los colores se leen desde un elemento .cv de muestra, no desde la raíz de la página.
+const SONDA_CV = document.createElement('div'); SONDA_CV.className = 'cv'; SONDA_CV.hidden = true; document.body.appendChild(SONDA_CV);
+const cssv = (v) => getComputedStyle(SONDA_CV).getPropertyValue(v).trim();
 const COL = {};
 for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line']) COL[k] = cssv('--' + k);
 COL.bg = cssv('--cv'); COL.panel = cssv('--cv-panel'); COL.panel2 = cssv('--cv-panel2');
@@ -442,7 +444,8 @@ function pintarDominio() {
   document.querySelectorAll('.dom[data-tema]').forEach((s) => {
     const v = P27.dominio(s.dataset.tema);
     s.style.color = P27.colorDominio(v);
-    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'}: ${v === null ? 'sin dato' : v + ' %'}`;
+    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'} ${v === null ? '—' : v + ' %'}`;
+    s.title = v === null ? 'Aún sin datos: practica para medirlo' : 'Tu dominio de este tema (0–100 %)';
   });
 }
 window.addEventListener('p27:cambio', pintarDominio);
@@ -455,6 +458,49 @@ function montarAcordeon() {
 document.querySelectorAll('.leccion').forEach((l) => {
   l.classList.add('cerrada');
   l.querySelector('.lec-head').addEventListener('click', (e) => { if (e.target.closest('a,button,select,input')) return; l.classList.toggle('cerrada'); });
+  const prio = l.querySelector('.lec-head .chip.A,.lec-head .chip.B,.lec-head .chip.C');
+  if (prio && prio.textContent.length === 1) prio.textContent = 'Prioridad ' + prio.textContent;
+});
+montarPasos();
+}
+
+// Los 5 pasos de cada lección como pestañas (pills): se ve un paso a la vez.
+// Lo que va antes del primer paso (la idea, tarjetas, avisos) queda siempre visible.
+const NOMBRE_PASO = [[/^ver\b/i, 'Ver'], [/manipular/i, 'Manipular'], [/porqu/i, 'El porqué'], [/ejemplo/i, 'Ejemplo'], [/pr[aá]ctica/i, 'Práctica']];
+function montarPasos() {
+document.querySelectorAll('.leccion > .lec-body').forEach((body) => {
+  const esPaso = (n) => n.matches('.paso, details.acc');
+  const hijos = [...body.children];
+  const k0 = hijos.findIndex(esPaso);
+  if (k0 < 0) return;
+  const grupos = [];
+  for (const n of hijos.slice(k0)) { if (esPaso(n) || !grupos.length) grupos.push([n]); else grupos[grupos.length - 1].push(n); }
+  if (grupos.length < 2) return;
+  body.classList.add('con-pasos');
+  const barra = el('div', 'pasos'); barra.setAttribute('role', 'tablist');
+  const pasos = grupos.map((g, i) => {
+    const cab = g[0].matches('details') ? g[0].querySelector('summary') : g[0].querySelector('h3');
+    const txt = (cab ? cab.textContent : '').replace(/^\s*\d+\s*/, '').trim();
+    const nombre = (NOMBRE_PASO.find(([re]) => re.test(txt)) || [0, txt.split(/[·(:]/)[0].trim()])[1];
+    if (g[0].matches('details')) { g[0].open = true; g[0].classList.add('porque'); }
+    const pane = el('div', 'paso-pane'); pane.setAttribute('role', 'tabpanel');
+    g[0].before(pane); g.forEach((n) => pane.appendChild(n));
+    const b = el('button', '', `${i + 1} ${nombre}`); b.type = 'button'; b.setAttribute('role', 'tab');
+    b.addEventListener('click', () => mostrar(i));
+    barra.appendChild(b);
+    return { pane, b, nombre };
+  });
+  pasos.forEach((p, i) => {
+    if (i === pasos.length - 1) return;
+    const s = el('button', 'btn sec mini', `Sigue: ${i + 2} ${pasos[i + 1].nombre} →`); s.type = 'button';
+    s.addEventListener('click', () => { mostrar(i + 1); const r = barra.getBoundingClientRect(); if (r.top < 0) barra.scrollIntoView({ block: 'start', behavior: REDUCIR ? 'auto' : 'smooth' }); });
+    const w = el('div', 'paso-sig'); w.appendChild(s); p.pane.appendChild(w);
+  });
+  body.insertBefore(barra, body.firstChild);
+  function mostrar(i) {
+    pasos.forEach((p, k) => { p.pane.classList.toggle('on', k === i); p.b.classList.toggle('on', k === i); p.b.setAttribute('aria-selected', String(k === i)); });
+  }
+  mostrar(0);
 });
 }
 
@@ -487,4 +533,4 @@ function respaldo2D(cont, dibujar) {
   const cv = document.createElement('canvas'); cont.appendChild(cv);
   return new Lienzo(cv, { aspecto: 0.55, maxH: 340, dibujar });
 }
-// == fin paes27-lecciones v1 ==
+// == fin paes27-lecciones v2 ==
