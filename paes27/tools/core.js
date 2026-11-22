@@ -1,9 +1,9 @@
-// == paes27-core v2 ==
+// == paes27-core v3 ==
 // Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 2;
+  const VERSION = 3;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -221,6 +221,32 @@ const P27 = (() => {
   // ---------- acordeones y pestañas ----------
   function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
 
-  return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
+  // ---------- tema (claro/oscuro), logo y firma dicarch ----------
+  const TEMA_K = 'paes27:tema';
+  const tema = () => document.documentElement.dataset.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  // Las pizarras leen los colores al cargar: al cambiar de tema se recarga (el progreso está guardado).
+  function alternarTema() { try { localStorage.setItem(TEMA_K, tema() === 'dark' ? 'light' : 'dark'); } catch (e) { /* sin almacenamiento: solo esta vez */ } location.reload(); }
+  const LOGO = '<svg viewBox="0 0 64 64" role="img" aria-label="PAES·27"><defs>'
+    + '<linearGradient id="p27t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14C1CF"/><stop offset="1" stop-color="#0E9FD8"/></linearGradient>'
+    + '<linearGradient id="p27v" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1FE39A"/><stop offset="1" stop-color="#0BC46E"/></linearGradient>'
+    + '<linearGradient id="p27m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9127A"/><stop offset="1" stop-color="#F2295F"/></linearGradient>'
+    + '<linearGradient id="p27o" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A1F"/><stop offset="1" stop-color="#FFC53A"/></linearGradient></defs>'
+    + '<rect x="32" y="4" width="28" height="28" rx="6" fill="url(#p27v)"/><rect x="4" y="4" width="30" height="30" rx="6" fill="url(#p27t)"/>'
+    + '<rect x="31" y="31" width="29" height="29" rx="6" fill="url(#p27o)"/><rect x="4" y="32" width="29" height="28" rx="6" fill="url(#p27m)"/>'
+    + '<g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M19 12v14M12 19h14"/><path d="M41 13l10 10M51 13L41 23"/><path d="M12 46h14"/><path d="M38 42h15M38 50h15"/></g>'
+    + '<g fill="#fff"><circle cx="19" cy="40" r="2.4"/><circle cx="19" cy="52" r="2.4"/></g></svg>';
+  const ICONO_TEMA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>';
+  function montarMarca() {
+    document.querySelectorAll('[data-logo]').forEach((e) => { e.innerHTML = LOGO; });
+    document.querySelectorAll('[data-tema-btn]').forEach((b) => {
+      b.innerHTML = ICONO_TEMA; b.type = 'button';
+      b.title = tema() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'; b.setAttribute('aria-label', b.title);
+      b.addEventListener('click', alternarTema);
+    });
+    document.querySelectorAll('[data-firma]').forEach((e) => { e.innerHTML = '<img src="lib/dicarch.webp" alt="" width="30" height="30"><span>PAES·27 · hecho por <b>dicarch</b></span>'; });
+  }
+  montarMarca();
+
+  return { VERSION, K, PRUEBAS, tema, alternarTema, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
 })();
-// == fin paes27-core v2 ==
+// == fin paes27-core v3 ==

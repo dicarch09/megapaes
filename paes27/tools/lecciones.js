@@ -3,8 +3,11 @@
 const { TEMAS, el } = P27;
 const $ = (s) => document.querySelector(s);
 const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+// Colores de las pizarras: siguen el tema (claro/oscuro) y se leen al cargar la página.
 const COL = {};
-for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line', 'panel2']) COL[k] = cssv('--' + k);
+for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line']) COL[k] = cssv('--' + k);
+COL.bg = cssv('--cv'); COL.panel = cssv('--cv-panel'); COL.panel2 = cssv('--cv-panel2');
+const tono = (c, a) => { let h = (c || '#888888').replace('#', ''); if (h.length === 3) h = h.split('').map((x) => x + x).join(''); const n = parseInt(h, 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
 const REDUCIR = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------------- formato ----------------
@@ -60,15 +63,15 @@ class Lienzo {
   redibujar() { if (this.w) this.dibujar(this); }
   X(x) { return ((x - this.x0) / (this.x1 - this.x0)) * this.w; }
   Y(y) { return this.h - ((y - this.y0) / (this.y1 - this.y0)) * this.h; }
-  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = '#0f1524'; c.fillRect(0, 0, this.w, this.h); }
+  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = COL.bg; c.fillRect(0, 0, this.w, this.h); }
   grilla(paso = 1, etiquetas = true, pasoEt = paso * 2) {
     const c = this.ctx;
-    c.lineWidth = 1; c.strokeStyle = 'rgba(147,160,187,.12)';
+    c.lineWidth = 1; c.strokeStyle = tono(COL.muted, .16);
     c.beginPath();
     for (let x = Math.ceil(this.x0 / paso) * paso; x <= this.x1; x += paso) { c.moveTo(this.X(x), 0); c.lineTo(this.X(x), this.h); }
     for (let y = Math.ceil(this.y0 / paso) * paso; y <= this.y1; y += paso) { c.moveTo(0, this.Y(y)); c.lineTo(this.w, this.Y(y)); }
     c.stroke();
-    c.strokeStyle = 'rgba(147,160,187,.55)'; c.lineWidth = 1.3;
+    c.strokeStyle = tono(COL.muted, .6); c.lineWidth = 1.3;
     c.beginPath(); c.moveTo(0, this.Y(0)); c.lineTo(this.w, this.Y(0)); c.moveTo(this.X(0), 0); c.lineTo(this.X(0), this.h); c.stroke();
     if (!etiquetas) return;
     c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
@@ -103,7 +106,7 @@ class Lienzo {
       const m = c.measureText(t); const w = m.width + 8; const th = (o.tam || 13) + 6;
       const ax = o.align === 'center' ? px - w / 2 : o.align === 'right' ? px - w + 4 : px - 4;
       const ay = o.base === 'top' ? py - 2 : o.base === 'middle' ? py - th / 2 : py - th + 2;
-      c.fillStyle = 'rgba(13,17,28,.82)'; c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
+      c.fillStyle = tono(COL.bg, .85); c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
     }
     c.fillText(t, px, py);
   }
@@ -461,7 +464,7 @@ async function escena3D(cont, armar) {
   try { T = await cargarThree(); } catch (e) { return null; }
   const renderer = new T.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
-  renderer.setClearColor(0x0f1524);
+  renderer.setClearColor(COL.bg);
   cont.appendChild(renderer.domElement);
   const escena = new T.Scene();
   const camara = new T.PerspectiveCamera(38, 1.6, 0.1, 200);

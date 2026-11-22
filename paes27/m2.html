@@ -3,134 +3,205 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>PAES 2027 · M2</title>
 <style>
-/* == paes27-css v1 == */
-:root{--bg:#0d111c;--panel:#151b2b;--panel2:#1c2438;--line:#2a3450;--ink:#e7ecf6;--muted:#93a0bb;--acc:#8b7cf6;--acc2:#5ec8e5;--ok:#43c59e;--mal:#f0697a;--warn:#f2b84b;--m2:#8b7cf6;--cie:#5ec8e5;--m1:#7fd17a;--len:#f2a65a;--r:12px;color-scheme:dark}
+/* == paes27-css v2 == */
+/* Sistema de diseño PAES·27 · dicarch. Claro: «azulejos vivos». Oscuro: «Riso noche» (Numeria).
+   Se copia IDÉNTICO en cada página con tools/sync_core.py: edita tools/core.css. */
+@font-face{font-family:"Nunito Sans";src:url(lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(lib/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+:root{
+  --bg:#F4F6FB;--panel:#FFFFFF;--panel2:#EEF1F8;--line:#DDE3EE;--ink:#14162B;--muted:#5D6478;
+  --acc:#2563EB;--acc2:#0E9DB4;--ok:#0B8F55;--mal:#D4145A;--warn:#C46A00;
+  --cv:#FFFFFF;--cv-panel:#E4E9F3;--cv-panel2:#CBD3E2;
+  --m2:#0E8BD8;--cie:#0BAE6A;--m1:#F08A00;--len:#E5157A;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(20,22,43,.07);--sombra:0 10px 30px -14px rgba(20,22,43,.28);--sombra-sm:0 4px 14px -8px rgba(20,22,43,.3);--sombra-btn:0 6px 16px -8px rgba(229,21,122,.6);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.14),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.10),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.10),transparent 70%);
+  color-scheme:light
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;
+  --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
+  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
+  --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
+  --sobre:#0F1923;--btn:#5B8CFF;--btn-ink:#0F1923;
+  --borde:2px solid rgba(219,222,225,.12);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--sombra-btn:0 4px 0 0 #0C0C0E;
+  --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}}
+:root[data-theme=dark]{
+  --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;
+  --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
+  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
+  --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
+  --sobre:#0F1923;--btn:#5B8CFF;--btn-ink:#0F1923;
+  --borde:2px solid rgba(219,222,225,.12);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--sombra-btn:0 4px 0 0 #0C0C0E;
+  --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}
+
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--acc2)}
+html,body{margin:0;background:var(--fondo),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.55 "Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,summary,.disp{font-family:"Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;letter-spacing:-.01em}
 h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
 h2{font-size:1.3rem}h3{font-size:1.08rem}
-.wrap{max-width:1040px;margin:0 auto;padding:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 32px}
+.card{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:16px;margin:14px 0}
 .muted{color:var(--muted)}.small{font-size:.88rem}
-.btn{background:var(--acc);color:#fff;border:0;border-radius:9px;padding:.55em 1em;font:inherit;font-weight:600;cursor:pointer}
-.btn:hover{filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:default}
-.btn.sec{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
-.btn.mini{padding:.3em .7em;font-size:.88rem}
-kbd{font:600 .72em ui-monospace,monospace;background:rgba(255,255,255,.14);border-radius:4px;padding:.05em .35em;margin-left:.3em}
-.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:8px 0 4px}
-.tabs button{background:none;border:0;color:var(--muted);font:inherit;padding:.6em .9em;cursor:pointer;border-bottom:3px solid transparent}
-.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:.3em;background:var(--btn);color:var(--btn-ink);border:0;border-radius:var(--r-sm);padding:.6em 1.1em;font:800 1rem/1.1 "Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;cursor:pointer;box-shadow:var(--sombra-btn);transition:transform .08s,box-shadow .08s,filter .1s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.btn:disabled{opacity:.5;cursor:default;transform:none}
+.btn.sec{background:var(--panel);color:var(--ink);border:var(--borde);box-shadow:var(--sombra-sm)}
+.btn.mini{padding:.4em .8em;font-size:.88rem}
+kbd{font:700 .7em ui-monospace,monospace;background:rgba(127,127,127,.22);border-radius:5px;padding:.1em .35em;margin-left:.3em}
+/* encabezado, marca y pie */
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.marca svg{width:44px;height:44px;flex:none}
+.marca b{display:block;font:800 1.45rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.marca small{display:block;color:var(--muted);font-weight:800;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+.paginas{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.paginas a,.paginas span{padding:.4em .85em;border-radius:999px;font-weight:800;font-size:.88rem;text-decoration:none;color:var(--ink);background:var(--panel);border:var(--borde);box-shadow:var(--sombra-sm)}
+.paginas a.on{background:var(--c,var(--m2-g));color:var(--sobre);border-color:transparent}
+.paginas span{color:var(--muted);box-shadow:none;border-style:dashed}
+.tema-btn{width:40px;height:40px;border-radius:12px;border:var(--borde);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:var(--sombra-sm)}
+.firma{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.85rem;font-weight:700;padding:18px 0 6px}
+.firma img{width:30px;height:30px;border-radius:8px}
+.firma b{font-family:"Bricolage Grotesque",sans-serif;color:var(--ink)}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:8px 0 6px}
+.hero h1{font-size:clamp(1.6rem,1.15rem + 1.7vw,2.4rem);margin:0}
+/* pestañas, paneles y acordeones */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px;padding:5px;background:var(--panel2);border-radius:var(--r-sm)}
+.tabs button{background:none;border:0;color:var(--muted);font:800 .92rem/1 "Bricolage Grotesque",sans-serif;padding:.65em .9em;cursor:pointer;border-radius:10px}
+.tabs button.on{background:var(--panel);color:var(--ink);box-shadow:var(--sombra-sm)}
 .pane{display:none}.pane.on{display:block}
-details.acc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;margin:10px 0}
-details.acc>summary{cursor:pointer;padding:.7em 1em;font-weight:600;list-style:none}
-details.acc>summary::before{content:"▸ ";color:var(--acc)}details.acc[open]>summary::before{content:"▾ "}
+details.acc{background:var(--panel2);border-radius:var(--r-sm);margin:12px 0}
+details.acc>summary{cursor:pointer;padding:.75em 1em;font-weight:800;list-style:none;display:flex;align-items:center;gap:8px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"▸";margin-left:auto;color:var(--muted);transition:transform .15s}details.acc[open]>summary::after{transform:rotate(90deg)}
 details.acc>.in{padding:0 1em 1em}
-.chip{display:inline-block;padding:.1em .55em;border-radius:99px;font-size:.78rem;font-weight:700;background:var(--panel2);border:1px solid var(--line)}
-.chip.A{color:#ffb4bd;border-color:#6b2f3a}.chip.B{color:#ffd98c;border-color:#6b5524}.chip.C{color:#a9b7d4}.chip.R{color:#9fe3c9;border-color:#245c4a}
-.bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
-.q{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.q-meta{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
-.q-enun{font-size:1.04rem;margin-bottom:12px}
-.q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
-.q-ops{display:grid;gap:8px}
-.q-op{display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.6em .8em;font:inherit;cursor:pointer}
-.q-op:hover:not(:disabled){border-color:var(--acc)}
-.q-op:disabled{cursor:default}
-.q-op.ok{border-color:var(--ok);background:rgba(67,197,158,.13)}.q-op.mal{border-color:var(--mal);background:rgba(240,105,122,.13)}
-.q-l{font-weight:800;color:var(--acc);min-width:1.2em}
-.q-fb{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
-.q-trampa{margin:6px 0;padding:6px 10px;border-left:3px solid var(--mal);background:rgba(240,105,122,.08)}
-.q-exp{margin-top:6px}
-.q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.chip{display:inline-block;padding:.15em .6em;border-radius:99px;font-size:.74rem;font-weight:900;background:var(--panel2);color:var(--muted)}
+.chip.A{background:color-mix(in srgb,var(--mal) 16%,transparent);color:var(--mal)}
+.chip.B{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.chip.C{color:var(--muted)}
+.chip.R{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
+.bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
 .txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-input[type=range]{accent-color:var(--acc);width:100%}
-@media (max-width:600px){.wrap{padding:10px}.card{padding:12px}}
-/* == fin paes27-css v1 == */
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.top h1{font-size:1.5rem;margin:0}
-.paginas{display:flex;gap:6px;flex-wrap:wrap}
-.paginas a,.paginas span{padding:.35em .75em;border-radius:99px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:.9rem}
-.paginas a.on{background:var(--m2);border-color:var(--m2)}
-.paginas span{color:var(--muted);border-style:dashed}
-.leccion{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
-.lec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.lec-head h2{margin:0 8px 0 0;font-size:1.2rem}
-.lec-head{cursor:pointer;user-select:none}
-.lec-head::before{content:"▾";color:var(--acc);font-size:1.1rem}
-.leccion.cerrada .lec-head::before{content:"▸"}
+.fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input[type=range]{accent-color:var(--acc);width:100%;height:24px}
+select,input[type=time],input[type=number],textarea{background:var(--panel2);color:var(--ink);border:var(--borde);border-radius:10px;padding:.35em .55em;font:inherit}
+code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92em}
+/* pregunta (práctica, diagnóstico, ensayo) */
+.q{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:16px}
+.q-meta{font-size:.74rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.q-enun{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+.q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+.q-ops{display:grid;gap:9px}
+.q-op{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);color:var(--ink);border:2px solid transparent;border-radius:var(--r-sm);padding:.6em .8em;font:inherit;font-weight:700;cursor:pointer;transition:transform .06s,border-color .1s}
+.q-op:hover:not(:disabled){border-color:var(--acc);transform:translateY(-1px)}
+.q-op:disabled{cursor:default}
+.q-l{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:800 .95rem/1 "Bricolage Grotesque",sans-serif;background:var(--panel);color:var(--ink)}
+.q-op.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--panel))}.q-op.ok .q-l{background:var(--ok);color:var(--sobre)}
+.q-op.mal{border-color:var(--mal);background:color-mix(in srgb,var(--mal) 12%,var(--panel))}.q-op.mal .q-l{background:var(--mal);color:#fff}
+.q-op.sel{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,var(--panel))}.q-op.sel .q-l{background:var(--acc);color:var(--sobre)}
+.q-fb{margin-top:12px;padding:10px 12px;border-radius:var(--r-sm);background:var(--panel2)}
+.q-trampa{margin:6px 0;padding:8px 12px;border-left:5px solid var(--mal);border-radius:10px;background:color-mix(in srgb,var(--mal) 10%,var(--panel))}
+.q-exp{margin-top:6px}
+.q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+/* lecciones */
+.leccion{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:18px;margin:16px 0}
+.lec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;cursor:pointer;user-select:none}
+.lec-head h2{margin:0 6px 0 0;font-size:1.22rem}
+.lec-head::before{content:"";width:12px;height:12px;flex:none;border-right:3px solid var(--acc);border-bottom:3px solid var(--acc);transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+.leccion.cerrada .lec-head::before{transform:rotate(-45deg)}
 .leccion.cerrada .lec-body{display:none}
-.leccion.cerrada{padding:12px 18px}
-.chip.nuevo{color:#9fe3c9;border-color:#245c4a}
-.dom{margin-left:auto;font-size:.9rem;font-weight:700}
-.idea{background:var(--panel2);border-left:3px solid var(--acc);padding:10px 12px;border-radius:0 8px 8px 0;margin:12px 0}
-.paso{margin:18px 0}
-.paso>h3{display:flex;align-items:center;gap:8px}
-.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;background:var(--acc);color:#fff;font-size:.85rem}
-.cv{position:relative;min-width:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#0f1524}
+.leccion.cerrada{padding:13px 18px}
+.dom{margin-left:auto;font-size:.88rem;font-weight:800}
+.idea{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px;margin:12px 0;font-weight:600}
+.paso{margin:20px 0}
+.paso>h3{display:flex;align-items:center;gap:9px}
+.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
+.cv{position:relative;min-width:0;border-radius:var(--r-sm);overflow:hidden;border:var(--borde);background:var(--cv)}
 .cv canvas{display:block;width:100%}
+.cv.tres{height:340px}.cv.tres canvas{height:100%!important}
 .manip{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
 @media (max-width:820px){.manip{grid-template-columns:minmax(0,1fr)}}
 .ctrl{display:grid;gap:8px}
-.sl{display:grid;gap:2px;font-size:.92rem}
-.sl b{color:var(--acc2);font-variant-numeric:tabular-nums}
-.formula{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-variant-numeric:tabular-nums;line-height:1.7}
-.formula .res{font-weight:700}
-.formula .hl{color:var(--warn);font-weight:700}
-.cap{margin:6px 0 0;min-height:1.5em}
-.ejemplo .enun{font-weight:600;margin-bottom:8px}
+.sl{display:grid;gap:2px;font-size:.92rem;font-weight:700}
+.sl b{color:var(--acc);font-variant-numeric:tabular-nums}
+.formula{background:var(--cv);border:var(--borde);border-radius:var(--r-sm);padding:10px 14px;font-variant-numeric:tabular-nums;line-height:1.75}
+.formula .res{font-weight:800}
+.formula .hl{color:var(--warn);font-weight:800}
+.cap{margin:8px 0 0;min-height:1.5em}
+.ley{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);font-weight:700;margin-top:4px}
+.ley i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+/* «el porqué» como viñetas visuales */
+details.acc>.in>ol{counter-reset:v;list-style:none;padding:0;margin:4px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px}
+details.acc>.in>ol>li{counter-increment:v;position:relative;background:var(--panel);border:var(--borde);border-radius:var(--r-sm);box-shadow:var(--sombra-sm);padding:40px 12px 12px;font-size:.95rem;line-height:1.5}
+details.acc>.in>ol>li::before{content:counter(v);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:var(--btn);color:var(--btn-ink);font:800 .85rem/1 "Bricolage Grotesque",sans-serif}
+details.acc>.in>ol>li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:8px;color:var(--muted);font-weight:900;font-size:1.1rem}
+details.acc>.in>ol>li b{display:inline-block;background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--ink);border-radius:8px;padding:.05em .4em;margin:.1em 0;font-weight:800}
+details.acc>.in>ol>li .esq{display:block;width:100%;height:auto;max-height:110px;margin:-2px 0 8px;overflow:visible;color:var(--ink)}
+details.acc>.in>ol>li .esq .a{stroke:var(--acc);fill:none}details.acc>.in>ol>li .esq .b{stroke:var(--acc2);fill:none}
+details.acc>.in>ol>li .esq .w{stroke:var(--warn);fill:none}details.acc>.in>ol>li .esq .r{stroke:var(--mal);fill:none}details.acc>.in>ol>li .esq .g{stroke:var(--ok);fill:none}
+details.acc>.in>ol>li .esq .m{stroke:var(--muted);fill:none}details.acc>.in>ol>li .esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
+details.acc>.in>ol>li .esq .fa{fill:var(--acc);stroke:none}details.acc>.in>ol>li .esq .fr{fill:var(--mal);stroke:none}details.acc>.in>ol>li .esq .fg{fill:var(--ok);stroke:none}details.acc>.in>ol>li .esq .fm{fill:var(--muted);stroke:none}details.acc>.in>ol>li .esq .fw{fill:var(--warn);stroke:none}details.acc>.in>ol>li .esq .fb{fill:var(--acc2);stroke:none}
+/* ejemplo resuelto y práctica */
+.ejemplo .enun{font-weight:700;margin-bottom:8px}
 .ejemplo ol{margin:0;padding-left:1.4em}
-.ejemplo li{margin:6px 0;animation:apar .35s ease}
+.ejemplo li{margin:7px 0;animation:apar .35s ease}
 @keyframes apar{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
-.ejemplo .trampa-ej{margin-top:8px;padding:6px 10px;border-left:3px solid var(--warn);background:rgba(242,184,75,.08)}
+.ejemplo .trampa-ej{margin-top:10px;padding:8px 12px;border-left:5px solid var(--warn);border-radius:10px;background:color-mix(in srgb,var(--warn) 10%,var(--panel))}
 .niveles{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.niveles button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
-.resumen-nivel{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.niveles button.on{background:var(--btn);color:var(--btn-ink);border-color:transparent}
+.resumen-nivel{background:var(--panel2);border-radius:var(--r);padding:14px}
 table.t2{border-collapse:collapse;margin:4px 0;font-variant-numeric:tabular-nums}
 table.t2 td,table.t2 th{border:1px solid var(--line);padding:4px 10px;text-align:center}
-table.t2 .hl{background:rgba(242,184,75,.22)}table.t2 .hl2{background:rgba(94,200,229,.18)}
+table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 .hl2{background:color-mix(in srgb,var(--acc2) 20%,transparent)}
 .pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.pend .card{margin:0;border-style:dashed}
-.ley{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
-.ley i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-.sd-demo{background:#0f1524;border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
+.pend .card{margin:0;box-shadow:none;border-style:dashed}
+.sd-demo{background:var(--cv);border:var(--borde);border-radius:var(--r-sm);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
 .sd-caso>div{margin:4px 0}
-.sd-lista{margin:0;padding:0;list-style:none}.sd-lista li{padding:3px 8px;border-radius:6px;transition:opacity .3s}
-.sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:rgba(67,197,158,.18);color:var(--ok);font-weight:700}
+.sd-lista{margin:0;padding:0;list-style:none}.sd-lista li{padding:3px 8px;border-radius:8px;transition:opacity .3s}
+.sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-weight:800}
 .sd-opciones{margin:-4px 0 8px}
 @media (max-width:700px){.sd-demo{grid-template-columns:1fr}}
+/* ensayo */
 .ens-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
-.ens-reloj{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums}
-.q-op.sel{border-color:var(--acc);background:rgba(139,124,246,.18)}
-.ens-grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:5px;margin-top:8px}
-.ens-grilla button{background:var(--panel2);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:5px 0;font:inherit;font-size:.85rem;cursor:pointer}
-.ens-grilla button.r{background:rgba(139,124,246,.25);color:var(--ink)}.ens-grilla button.m{border-color:var(--warn);box-shadow:inset 0 0 0 1px var(--warn)}
-.ens-grilla button.a{outline:2px solid var(--acc2)}
-.ens-ley{padding:0 6px;border-radius:4px}.ens-ley.r{background:rgba(139,124,246,.25);color:var(--ink)}.ens-ley.m{border:1px solid var(--warn)}
-.cv.tres{height:340px}
-.cv.tres canvas{height:100%!important}
-select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:.3em .5em;font:inherit}
+.ens-reloj{font:800 1.35rem/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
+.ens-grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:8px}
+.ens-grilla button{background:var(--panel2);color:var(--muted);border:2px solid transparent;border-radius:9px;padding:5px 0;font:800 .85rem/1.2 "Nunito Sans",sans-serif;cursor:pointer}
+.ens-grilla button.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-grilla button.m{border-color:var(--warn)}
+.ens-grilla button.a{outline:3px solid var(--acc2)}
+.ens-ley{padding:0 6px;border-radius:5px}.ens-ley.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-ley.m{border:2px solid var(--warn)}
+@media (max-width:600px){.wrap{padding:12px 12px 24px}.card,.leccion{padding:13px}.marca b{font-size:1.25rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+/* == fin paes27-css v2 == */
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div>
-      <h1>Matemática 2</h1>
-      <div class="muted small">Lun 30 nov, 15:00 · 55 preguntas en 2 h 20 min · M2 evalúa todo M1 más estos temas</div>
-    </div>
+    <a class="marca" href="index.html"><span data-logo></span><span><b>PAES·27</b><small>estudio express · dicarch</small></span></a>
     <nav class="paginas">
-      <a href="index.html">Hub</a>
-      <a href="m2.html" class="on">M2</a>
-      <span title="Llega en la Fase 3">Física</span>
+      <a href="index.html" style="--c:var(--btn)">Hub</a>
+      <a href="m2.html" class="on" style="--c:var(--m2-g)">M2</a>
+      <a href="fisica.html" style="--c:var(--cie-g)">Física</a>
       <span title="Llega en la Fase 4">Bio/Quím</span>
       <span title="Llega en la Fase 4">M1</span>
       <span title="Llega en la Fase 5">Lectora</span>
     </nav>
+    <button class="tema-btn" data-tema-btn></button>
   </header>
+  <div class="hero"><div><h1 id="heroTit">Matemática 2</h1><div class="muted small" id="hoyTxt">Lun 30 nov, 15:00 · 55 preguntas en 2 h 20 min · M2 evalúa todo M1 más estos temas</div></div></div>
 
   <nav class="tabs" id="tabs">
     <button data-tab="alg">Álgebra y funciones</button>
@@ -709,6 +780,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   </div>
 
   <div class="pane" id="p-ensayo"></div>
+  <footer class="firma" data-firma></footer>
 </div>
 
 <script type="application/json" id="banco-diag">
@@ -5588,12 +5660,12 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 ]
 </script>
 <script>
-// == paes27-core v2 ==
+// == paes27-core v3 ==
 // Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 2;
+  const VERSION = 3;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -5811,9 +5883,35 @@ const P27 = (() => {
   // ---------- acordeones y pestañas ----------
   function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
 
-  return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
+  // ---------- tema (claro/oscuro), logo y firma dicarch ----------
+  const TEMA_K = 'paes27:tema';
+  const tema = () => document.documentElement.dataset.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  // Las pizarras leen los colores al cargar: al cambiar de tema se recarga (el progreso está guardado).
+  function alternarTema() { try { localStorage.setItem(TEMA_K, tema() === 'dark' ? 'light' : 'dark'); } catch (e) { /* sin almacenamiento: solo esta vez */ } location.reload(); }
+  const LOGO = '<svg viewBox="0 0 64 64" role="img" aria-label="PAES·27"><defs>'
+    + '<linearGradient id="p27t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14C1CF"/><stop offset="1" stop-color="#0E9FD8"/></linearGradient>'
+    + '<linearGradient id="p27v" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1FE39A"/><stop offset="1" stop-color="#0BC46E"/></linearGradient>'
+    + '<linearGradient id="p27m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9127A"/><stop offset="1" stop-color="#F2295F"/></linearGradient>'
+    + '<linearGradient id="p27o" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A1F"/><stop offset="1" stop-color="#FFC53A"/></linearGradient></defs>'
+    + '<rect x="32" y="4" width="28" height="28" rx="6" fill="url(#p27v)"/><rect x="4" y="4" width="30" height="30" rx="6" fill="url(#p27t)"/>'
+    + '<rect x="31" y="31" width="29" height="29" rx="6" fill="url(#p27o)"/><rect x="4" y="32" width="29" height="28" rx="6" fill="url(#p27m)"/>'
+    + '<g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M19 12v14M12 19h14"/><path d="M41 13l10 10M51 13L41 23"/><path d="M12 46h14"/><path d="M38 42h15M38 50h15"/></g>'
+    + '<g fill="#fff"><circle cx="19" cy="40" r="2.4"/><circle cx="19" cy="52" r="2.4"/></g></svg>';
+  const ICONO_TEMA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>';
+  function montarMarca() {
+    document.querySelectorAll('[data-logo]').forEach((e) => { e.innerHTML = LOGO; });
+    document.querySelectorAll('[data-tema-btn]').forEach((b) => {
+      b.innerHTML = ICONO_TEMA; b.type = 'button';
+      b.title = tema() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'; b.setAttribute('aria-label', b.title);
+      b.addEventListener('click', alternarTema);
+    });
+    document.querySelectorAll('[data-firma]').forEach((e) => { e.innerHTML = '<img src="lib/dicarch.webp" alt="" width="30" height="30"><span>PAES·27 · hecho por <b>dicarch</b></span>'; });
+  }
+  montarMarca();
+
+  return { VERSION, K, PRUEBAS, tema, alternarTema, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
 })();
-// == fin paes27-core v2 ==
+// == fin paes27-core v3 ==
 
 (() => {
 'use strict';
@@ -5823,8 +5921,11 @@ const BANCO = JSON.parse(document.getElementById('banco-m2').textContent);
 const { TEMAS, el } = P27;
 const $ = (s) => document.querySelector(s);
 const cssv = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+// Colores de las pizarras: siguen el tema (claro/oscuro) y se leen al cargar la página.
 const COL = {};
-for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line', 'panel2']) COL[k] = cssv('--' + k);
+for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line']) COL[k] = cssv('--' + k);
+COL.bg = cssv('--cv'); COL.panel = cssv('--cv-panel'); COL.panel2 = cssv('--cv-panel2');
+const tono = (c, a) => { let h = (c || '#888888').replace('#', ''); if (h.length === 3) h = h.split('').map((x) => x + x).join(''); const n = parseInt(h, 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
 const REDUCIR = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------------- formato ----------------
@@ -5880,15 +5981,15 @@ class Lienzo {
   redibujar() { if (this.w) this.dibujar(this); }
   X(x) { return ((x - this.x0) / (this.x1 - this.x0)) * this.w; }
   Y(y) { return this.h - ((y - this.y0) / (this.y1 - this.y0)) * this.h; }
-  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = '#0f1524'; c.fillRect(0, 0, this.w, this.h); }
+  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = COL.bg; c.fillRect(0, 0, this.w, this.h); }
   grilla(paso = 1, etiquetas = true, pasoEt = paso * 2) {
     const c = this.ctx;
-    c.lineWidth = 1; c.strokeStyle = 'rgba(147,160,187,.12)';
+    c.lineWidth = 1; c.strokeStyle = tono(COL.muted, .16);
     c.beginPath();
     for (let x = Math.ceil(this.x0 / paso) * paso; x <= this.x1; x += paso) { c.moveTo(this.X(x), 0); c.lineTo(this.X(x), this.h); }
     for (let y = Math.ceil(this.y0 / paso) * paso; y <= this.y1; y += paso) { c.moveTo(0, this.Y(y)); c.lineTo(this.w, this.Y(y)); }
     c.stroke();
-    c.strokeStyle = 'rgba(147,160,187,.55)'; c.lineWidth = 1.3;
+    c.strokeStyle = tono(COL.muted, .6); c.lineWidth = 1.3;
     c.beginPath(); c.moveTo(0, this.Y(0)); c.lineTo(this.w, this.Y(0)); c.moveTo(this.X(0), 0); c.lineTo(this.X(0), this.h); c.stroke();
     if (!etiquetas) return;
     c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
@@ -5923,7 +6024,7 @@ class Lienzo {
       const m = c.measureText(t); const w = m.width + 8; const th = (o.tam || 13) + 6;
       const ax = o.align === 'center' ? px - w / 2 : o.align === 'right' ? px - w + 4 : px - 4;
       const ay = o.base === 'top' ? py - 2 : o.base === 'middle' ? py - th / 2 : py - th + 2;
-      c.fillStyle = 'rgba(13,17,28,.82)'; c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
+      c.fillStyle = tono(COL.bg, .85); c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
     }
     c.fillText(t, px, py);
   }
@@ -6281,7 +6382,7 @@ async function escena3D(cont, armar) {
   try { T = await cargarThree(); } catch (e) { return null; }
   const renderer = new T.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
-  renderer.setClearColor(0x0f1524);
+  renderer.setClearColor(COL.bg);
   cont.appendChild(renderer.domElement);
   const escena = new T.Scene();
   const camara = new T.PerspectiveCamera(38, 1.6, 0.1, 200);
@@ -6460,7 +6561,7 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
     personas.forEach((p, i) => {
       const cx = pad + (i % cols + 0.5) * cw, cy = pad + 24 + (Math.floor(i / cols) + 0.5) * ch;
       c.globalAlpha = p.b ? 1 : 1 - 0.85 * k;
-      c.fillStyle = p.a ? COL.warn : '#3a4566';
+      c.fillStyle = p.a ? COL.warn : COL.panel2;
       c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill();
       if (p.b) { c.strokeStyle = COL.acc2; c.lineWidth = 2; c.beginPath(); c.arc(cx, cy, r + 3, 0, 7); c.stroke(); }
     });
@@ -6484,7 +6585,7 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
     const que = d.que;
     const resalta = (rama) => ({ AB: ['B', 'B-A'], BA: ['B-A', 'NB-A', 'B'], AyB: ['B', 'B-A'], A: ['B', 'B-A', 'NB', 'NB-A'] }[que].includes(rama));
     const linea = (p, q, etiq, rama) => {
-      c.strokeStyle = resalta(rama) ? COL.warn : 'rgba(147,160,187,.5)'; c.lineWidth = resalta(rama) ? 3 : 1.6;
+      c.strokeStyle = resalta(rama) ? COL.warn : tono(COL.muted, .5); c.lineWidth = resalta(rama) ? 3 : 1.6;
       c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(q[0], q[1]); c.stroke();
       L.texto(etiq, (p[0] + q[0]) / 2, (p[1] + q[1]) / 2 - 4, resalta(rama) ? COL.warn : COL.muted, { px: true, align: 'center', tam: 12, fondo: true });
     };
@@ -6549,7 +6650,7 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
     const cx = R + 26, cy = L.h / 2;
     const gx0 = cx + R + 40, gx1 = L.w - 16;
     const gX = (a) => gx0 + (a / (2 * Math.PI)) * (gx1 - gx0);
-    c.strokeStyle = 'rgba(147,160,187,.45)'; c.lineWidth = 1.2;
+    c.strokeStyle = tono(COL.muted, .45); c.lineWidth = 1.2;
     c.beginPath(); c.moveTo(cx - R - 12, cy); c.lineTo(gx1, cy); c.moveTo(cx, cy - R - 12); c.lineTo(cx, cy + R + 12); c.moveTo(gx0, cy - R - 8); c.lineTo(gx0, cy + R + 8); c.stroke();
     c.beginPath(); c.arc(cx, cy, R, 0, 7); c.stroke();
     c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
@@ -6560,7 +6661,7 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
     c.strokeStyle = COL.warn; c.lineWidth = 3; c.beginPath();
     for (let a = 0; a <= th; a += 0.02) { const X = gX(a), Y = cy - R * Math.sin(a); if (a === 0) c.moveTo(X, Y); else c.lineTo(X, Y); }
     c.stroke();
-    c.strokeStyle = 'rgba(147,160,187,.25)'; c.lineWidth = 1; c.beginPath();
+    c.strokeStyle = tono(COL.muted, .25); c.lineWidth = 1; c.beginPath();
     for (let a = 0; a <= 2 * Math.PI; a += 0.03) { const X = gX(a), Y = cy - R * Math.sin(a); if (a === 0) c.moveTo(X, Y); else c.lineTo(X, Y); }
     c.stroke();
     // triángulo
@@ -6621,15 +6722,15 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
     const f = (x) => A * (cos ? Math.cos(B * x) : Math.sin(B * x)) + C;
     L.x0 = -0.3; L.x1 = 4 * Math.PI + 0.3; L.y0 = -5.5; L.y1 = 5.5;
     const c = L.ctx; L.limpiar();
-    c.strokeStyle = 'rgba(147,160,187,.12)'; c.lineWidth = 1; c.beginPath();
+    c.strokeStyle = tono(COL.muted, .12); c.lineWidth = 1; c.beginPath();
     for (let k = 1; k <= 8; k++) { const X = L.X((k * Math.PI) / 2); c.moveTo(X, 0); c.lineTo(X, L.h); }
     for (let y = -5; y <= 5; y++) { c.moveTo(0, L.Y(y)); c.lineTo(L.w, L.Y(y)); }
     c.stroke();
-    c.strokeStyle = 'rgba(147,160,187,.55)'; c.beginPath(); c.moveTo(0, L.Y(0)); c.lineTo(L.w, L.Y(0)); c.moveTo(L.X(0), 0); c.lineTo(L.X(0), L.h); c.stroke();
+    c.strokeStyle = tono(COL.muted, .55); c.beginPath(); c.moveTo(0, L.Y(0)); c.lineTo(L.w, L.Y(0)); c.moveTo(L.X(0), 0); c.lineTo(L.X(0), L.h); c.stroke();
     c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
     ['π/2', 'π', '3π/2', '2π', '5π/2', '3π', '7π/2', '4π'].forEach((s, i) => c.fillText(s, L.X(((i + 1) * Math.PI) / 2), L.Y(0) + 3));
     c.textAlign = 'right'; c.textBaseline = 'middle'; for (const y of [-4, -2, 2, 4]) c.fillText(String(y).replace('-', '−'), L.X(0) - 4, L.Y(y));
-    L.fn((x) => (cos ? Math.cos(x) : Math.sin(x)), 'rgba(147,160,187,.45)', 1.5);
+    L.fn((x) => (cos ? Math.cos(x) : Math.sin(x)), tono(COL.muted, .45), 1.5);
     L.seg(L.x0, C + Math.abs(A), L.x1, C + Math.abs(A), COL.ok, 1, [5, 5]);
     L.seg(L.x0, C - Math.abs(A), L.x1, C - Math.abs(A), COL.mal, 1, [5, 5]);
     L.seg(L.x0, C, L.x1, C, COL.muted, 1, [2, 4]);
@@ -6749,7 +6850,7 @@ const miles = (n) => n.toLocaleString('es-CL');
   const ficha = (x, y, txt, color, alfa = 1) => {
     const c = L.ctx; c.globalAlpha = alfa;
     c.fillStyle = color; c.beginPath(); c.roundRect(x - 24, y - 15, 48, 30, 8); c.fill();
-    c.fillStyle = '#0d111c'; c.font = '700 15px system-ui'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(txt, x, y + 1);
+    c.fillStyle = color === COL.panel2 ? COL.ink : '#0F1923'; c.font = '700 15px system-ui'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(txt, x, y + 1);
     c.globalAlpha = 1;
   };
   animar('com-ver', L, (t) => {
@@ -6763,7 +6864,7 @@ const miles = (n) => n.toLocaleString('es-CL');
     const visibles = Math.min(12, Math.floor(u / 0.3) + 1);
     const color = u > 4.5;
     const mov = u < 6.5 ? 0 : u < 9.5 ? suave((u - 6.5) / 3) : 1;
-    if (mov > 0) { const c = L.ctx; c.strokeStyle = 'rgba(147,160,187,.35)'; c.setLineDash([5, 5]); c.strokeRect(rx0 - 4, top - 4, L.w - rx0 - pad + 8, L.h - top - pad + 8); c.setLineDash([]); }
+    if (mov > 0) { const c = L.ctx; c.strokeStyle = tono(COL.muted, .35); c.setLineDash([5, 5]); c.strokeRect(rx0 - 4, top - 4, L.w - rx0 - pad + 8, L.h - top - pad + 8); c.setLineDash([]); }
     pares.forEach((pr, idx) => {
       if (idx >= visibles) return;
       const g = grupos.indexOf(clave(pr));
@@ -6771,7 +6872,7 @@ const miles = (n) => n.toLocaleString('es-CL');
       const primero = pr[0] < pr[1];
       const x = lerp(x0, x1, mov), y = lerp(y0, y1, mov);
       const txt = mov >= 1 && primero ? `${LET[pr[0]]}${LET[pr[1]]}` : `${LET[pr[0]]}${LET[pr[1]]}`;
-      ficha(x, y, txt, color ? COL6[g] : '#3a4566', primero ? 1 : 1 - 0.85 * mov);
+      ficha(x, y, txt, color ? COL6[g] : COL.panel2, primero ? 1 : 1 - 0.85 * mov);
     });
     const tit = u < 4.5 ? 'Orden importa: 4 opciones · 3 opciones = 12 parejas' : u < 6.5 ? 'AB y BA tienen el mismo color: son el mismo grupo' : 'Orden NO importa: 12 / 2! = 6 grupos';
     L.texto(tit, L.w / 2, 10, mov > 0 ? COL.acc2 : COL.ink, { px: true, align: 'center', base: 'top', tam: 14 });
@@ -6794,7 +6895,7 @@ const miles = (n) => n.toLocaleString('es-CL');
     c.font = `700 ${Math.max(10, Math.min(14, ch - 10))}px system-ui`; c.textAlign = 'center'; c.textBaseline = 'middle';
     lista.forEach((it, i) => {
       const x = 8 + (i % cols) * (txtW + 6), y = 10 + Math.floor(i / cols) * ch;
-      c.fillStyle = '#26304a'; c.beginPath(); c.roundRect(x, y, txtW, ch - 4, 5); c.fill();
+      c.fillStyle = COL.panel; c.beginPath(); c.roundRect(x, y, txtW, ch - 4, 5); c.fill();
       c.fillStyle = COL.ink; c.fillText(it.map((k) => LET[k]).join('') || '∅', x + txtW / 2, y + (ch - 4) / 2);
     });
     if (total > n) L.texto(`… y ${miles(total - n)} más (total ${miles(total)})`, L.w / 2, L.h - 8, COL.muted, { px: true, align: 'center' });
@@ -6845,7 +6946,7 @@ function dibujarDatos(L, datos, opts = {}) {
   const m = media(datos);
   L.limpiar();
   const c = L.ctx; const yBase = L.h - 34;
-  c.strokeStyle = 'rgba(147,160,187,.55)'; c.lineWidth = 1.3; c.beginPath(); c.moveTo(0, yBase); c.lineTo(L.w, yBase); c.stroke();
+  c.strokeStyle = tono(COL.muted, .55); c.lineWidth = 1.3; c.beginPath(); c.moveTo(0, yBase); c.lineTo(L.w, yBase); c.stroke();
   c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
   for (let x = Math.ceil(L.x0); x <= L.x1; x++) { const X = L.X(x); c.beginPath(); c.moveTo(X, yBase - 4); c.lineTo(X, yBase + 4); c.stroke(); if (x % (opts.paso || 1) === 0) c.fillText(String(x), X, yBase + 6); }
   const filaH = (yBase - 30) / (datos.length + 1);
@@ -6970,7 +7071,7 @@ function dibujarDatos(L, datos, opts = {}) {
       const col = i ? COL.acc2 : COL.warn;
       const th = v[i ? 'pot-t2' : 'pot-t1'];
       const u = [Math.cos((th * Math.PI) / 180), Math.sin((th * Math.PI) / 180)];
-      L.seg(P[0] - 5 * u[0], P[1] - 5 * u[1], P[0] + 5 * u[0], P[1] + 5 * u[1], 'rgba(147,160,187,.3)', 1);
+      L.seg(P[0] - 5 * u[0], P[1] - 5 * u[1], P[0] + 5 * u[0], P[1] + 5 * u[1], tono(COL.muted, .3), 1);
       if (!r) return;
       r.pts.forEach((Q, j) => { L.seg(...P, ...Q, col, 3.5); L.punto(...Q, col, 5); etiqueta(L, i ? 'CD'[j] : 'AB'[j], Q, col); });
     });
@@ -7004,10 +7105,10 @@ function dibujarHomotecia(L, O, tri, k) {
   const img = tri.map((P) => homo(O, k, P));
   L.limpiar(); L.grilla(1, true, 2);
   const c = L.ctx;
-  tri.forEach((P, i) => { const Q = img[i]; const ext = Math.abs(k) >= 1 ? Q : P; const lejos = { x: O.x + 1.15 * (ext.x - O.x), y: O.y + 1.15 * (ext.y - O.y) }; L.seg(O.x, O.y, lejos.x, lejos.y, 'rgba(147,160,187,.45)', 1, [4, 5]); if (k < 0) L.seg(O.x, O.y, P.x, P.y, 'rgba(147,160,187,.45)', 1, [4, 5]); });
+  tri.forEach((P, i) => { const Q = img[i]; const ext = Math.abs(k) >= 1 ? Q : P; const lejos = { x: O.x + 1.15 * (ext.x - O.x), y: O.y + 1.15 * (ext.y - O.y) }; L.seg(O.x, O.y, lejos.x, lejos.y, tono(COL.muted, .45), 1, [4, 5]); if (k < 0) L.seg(O.x, O.y, P.x, P.y, tono(COL.muted, .45), 1, [4, 5]); });
   const poli = (pts, fill, stroke) => { c.fillStyle = fill; c.strokeStyle = stroke; c.lineWidth = 2.5; c.beginPath(); pts.forEach((P, i) => (i ? c.lineTo(L.X(P.x), L.Y(P.y)) : c.moveTo(L.X(P.x), L.Y(P.y)))); c.closePath(); c.fill(); c.stroke(); };
-  poli(tri, 'rgba(139,124,246,.25)', COL.acc);
-  poli(img, 'rgba(242,184,75,.22)', COL.warn);
+  poli(tri, tono(COL.acc, .25), COL.acc);
+  poli(img, tono(COL.warn, .22), COL.warn);
   tri.forEach((P, i) => { L.punto(P.x, P.y, COL.acc, 6); etiqueta(L, 'ABC'[i], [P.x, P.y], COL.acc); });
   img.forEach((P, i) => { L.punto(P.x, P.y, COL.warn, 4.5); etiqueta(L, "ABC"[i] + "'", [P.x, P.y], COL.warn); });
   L.punto(O.x, O.y, COL.ink, 6.5); etiqueta(L, 'O', [O.x, O.y], COL.ink, 8, 16);
@@ -7133,7 +7234,7 @@ const dnorm = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s)) / (s * Math.s
     void dt;
     L.limpiar(); const c = L.ctx;
     const topY = 20, dy = (L.h * 0.5) / N, dx = Math.min(32, (L.w - 40) / (N + 1)), cx = L.w / 2;
-    c.fillStyle = 'rgba(147,160,187,.6)';
+    c.fillStyle = tono(COL.muted, .6);
     for (let r = 0; r < N; r++) for (let j = 0; j <= r; j++) { c.beginPath(); c.arc(cx + (j - r / 2) * dx, topY + (r + 1) * dy, 2.5, 0, 7); c.fill(); }
     const baseY = L.h - 22, alto = L.h - (topY + (N + 1) * dy) - 30;
     const max = Math.max(4, ...bins);
@@ -7193,11 +7294,11 @@ const dnorm = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s)) / (s * Math.s
     const m = v['nor-m'], s = v['nor-s'], x = v['nor-x'];
     L.y1 = dnorm(m, m, s) * 1.25; L.y0 = -L.y1 * 0.12;
     L.limpiar(); const c = L.ctx;
-    c.fillStyle = 'rgba(242,184,75,.35)'; c.beginPath(); c.moveTo(L.X(L.x0), L.Y(0));
+    c.fillStyle = tono(COL.warn, .35); c.beginPath(); c.moveTo(L.X(L.x0), L.Y(0));
     for (let xv = L.x0; xv <= Math.min(x, L.x1); xv += 0.25) c.lineTo(L.X(xv), L.Y(dnorm(xv, m, s)));
     c.lineTo(L.X(Math.min(x, L.x1)), L.Y(0)); c.closePath(); c.fill();
-    L.seg(L.x0, 0, L.x1, 0, 'rgba(147,160,187,.6)', 1.2);
-    for (let j = -3; j <= 3; j++) { const xv = m + j * s; if (xv < L.x0 || xv > L.x1) continue; L.seg(xv, 0, xv, dnorm(xv, m, s), j ? 'rgba(147,160,187,.35)' : COL.acc, j ? 1 : 2, j ? [3, 4] : []); L.texto(j ? `${j > 0 ? '+' : '−'}${Math.abs(j)}σ` : 'μ', xv, 0, COL.muted, { align: 'center', base: 'top', dy: 4, tam: 11 }); }
+    L.seg(L.x0, 0, L.x1, 0, tono(COL.muted, .6), 1.2);
+    for (let j = -3; j <= 3; j++) { const xv = m + j * s; if (xv < L.x0 || xv > L.x1) continue; L.seg(xv, 0, xv, dnorm(xv, m, s), j ? tono(COL.muted, .35) : COL.acc, j ? 1 : 2, j ? [3, 4] : []); L.texto(j ? `${j > 0 ? '+' : '−'}${Math.abs(j)}σ` : 'μ', xv, 0, COL.muted, { align: 'center', base: 'top', dy: 4, tam: 11 }); }
     L.fn((xv) => dnorm(xv, m, s), COL.acc, 3);
     L.seg(x, 0, x, dnorm(x, m, s) * 1.1 + L.y1 * 0.05, COL.warn, 2);
     L.texto(`x = ${x}`, x, dnorm(x, m, s) * 1.1 + L.y1 * 0.05, COL.warn, { align: 'center', dy: -4 });
@@ -7244,7 +7345,7 @@ const pesos = (x) => '$' + Math.round(x).toLocaleString('es-CL');
     L.limpiar(); const c = L.ctx;
     const pad = 46, baseY = L.h - 26, alto = L.h - 50, max = C0 * (1 + i) ** n * 1.05;
     const X = (k) => pad + (k / n) * (L.w - pad - 14), Y = (y) => baseY - (y / max) * alto;
-    c.strokeStyle = 'rgba(147,160,187,.5)'; c.lineWidth = 1; c.beginPath(); c.moveTo(pad, baseY); c.lineTo(L.w - 10, baseY); c.moveTo(pad, baseY); c.lineTo(pad, 10); c.stroke();
+    c.strokeStyle = tono(COL.muted, .5); c.lineWidth = 1; c.beginPath(); c.moveTo(pad, baseY); c.lineTo(L.w - 10, baseY); c.moveTo(pad, baseY); c.lineTo(pad, 10); c.stroke();
     [[(k) => C0 * (1 + i * k), COL.acc2], [(k) => C0 * (1 + i) ** k, COL.warn]].forEach(([f, col]) => {
       c.strokeStyle = col; c.lineWidth = 3; c.beginPath(); for (let k = 0; k <= n; k += n / 100) { if (k) c.lineTo(X(k), Y(f(k))); else c.moveTo(X(k), Y(f(k))); } c.stroke();
       for (let k = 0; k <= n; k++) { c.fillStyle = col; c.beginPath(); c.arc(X(k), Y(f(k)), 3, 0, 7); c.fill(); }
@@ -7271,7 +7372,7 @@ const pesos = (x) => '$' + Math.round(x).toLocaleString('es-CL');
     [['Te prestan', m, COL.acc2, 30], ['Pagas en total', total, COL.warn, 90]].forEach(([t, x, col, y]) => {
       c.fillStyle = col; c.fillRect(120, y, (x / max) * W, 36);
       L.texto(t, 112, y + 18, COL.ink, { px: true, align: 'right', base: 'middle', tam: 13 });
-      L.texto(pesos(x), 128, y + 18, '#0d111c', { px: true, base: 'middle', tam: 13, peso: 800 });
+      L.texto(pesos(x), 128, y + 18, '#0F1923', { px: true, base: 'middle', tam: 13, peso: 800 });
     });
     if (total > m) { c.strokeStyle = COL.mal; c.lineWidth = 2; c.setLineDash([4, 4]); c.strokeRect(120 + (m / max) * W, 86, ((total - m) / max) * W, 44); c.setLineDash([]); }
   };
@@ -7327,12 +7428,12 @@ const supN = (n) => String(n).replace('-', '⁻').replace(/\d/g, (d) => '⁰¹²
   animar('rea-ver', L, (t) => {
     const u = (t % 8) / 8; const g = u < 0.2 ? 45 : u < 0.7 ? lerp(45, 0, suave((u - 0.2) / 0.5)) : 0;
     L.limpiar(); const c = L.ctx;
-    L.seg(-0.5, 0, 2.3, 0, 'rgba(147,160,187,.7)', 1.5);
+    L.seg(-0.5, 0, 2.3, 0, tono(COL.muted, .7), 1.5);
     for (let x = 0; x <= 2; x++) { L.seg(x, -0.05, x, 0.05, COL.muted, 1.5); L.texto(String(x), x, 0, COL.muted, { align: 'center', base: 'top', dy: 6 }); }
     c.strokeStyle = COL.acc2; c.lineWidth = 2; c.strokeRect(L.X(0), L.Y(1), L.X(1) - L.X(0), L.Y(0) - L.Y(1));
     const r = Math.SQRT2, ang = (g * Math.PI) / 180;
     L.seg(0, 0, r * Math.cos(ang), r * Math.sin(ang), COL.warn, 3.5);
-    c.strokeStyle = 'rgba(242,184,75,.4)'; c.setLineDash([4, 4]); c.beginPath(); c.arc(L.X(0), L.Y(0), L.X(r) - L.X(0), -ang, 0); c.stroke(); c.setLineDash([]);
+    c.strokeStyle = tono(COL.warn, .4); c.setLineDash([4, 4]); c.beginPath(); c.arc(L.X(0), L.Y(0), L.X(r) - L.X(0), -ang, 0); c.stroke(); c.setLineDash([]);
     if (g < 1) { L.punto(r, 0, COL.warn, 6); L.texto('√2 ≈ 1,414…', r, 0, COL.warn, { align: 'center', dy: -10 }); }
     L.texto('lado 1', 0.5, 1, COL.acc2, { align: 'center', dy: -4 });
   });
@@ -7387,7 +7488,7 @@ const supN = (n) => String(n).replace('-', '⁻').replace(/\d/g, (d) => '⁰¹²
     L.limpiar(); L.grilla(1, true, 2);
     if (a === 0) { L.fn((x) => b * x + c, COL.acc, 3); return; }
     const xv = -b / (2 * a), yv = a * xv * xv + b * xv + c, D = b * b - 4 * a * c;
-    L.seg(xv, L.y0, xv, L.y1, 'rgba(147,160,187,.5)', 1, [5, 5]);
+    L.seg(xv, L.y0, xv, L.y1, tono(COL.muted, .5), 1, [5, 5]);
     L.fn((x) => a * x * x + b * x + c, COL.acc, 3);
     L.punto(xv, yv, COL.warn, 6); L.texto(`V(${fmt(xv)}, ${fmt(yv)})`, xv, yv, COL.warn, { dx: 8, dy: a > 0 ? 18 : -6, fondo: true });
     if (D >= 0) [(-b - Math.sqrt(D)) / (2 * a), (-b + Math.sqrt(D)) / (2 * a)].forEach((r) => L.punto(r, 0, COL.ok, 5.5));
