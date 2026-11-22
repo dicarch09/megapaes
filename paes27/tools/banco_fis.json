@@ -1,0 +1,3250 @@
+[
+ {
+  "id": "fis-cin-b1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "basico",
+  "enunciado": "Un auto recorre 3 km hacia el este y luego 4 km hacia el norte. ¿Cuál es el módulo de su desplazamiento?",
+  "opciones": [
+   {
+    "texto": "7 km",
+    "trampa": "Esa es la distancia recorrida (3 + 4). El desplazamiento une el inicio con el final."
+   },
+   {
+    "texto": "5 km",
+    "trampa": ""
+   },
+   {
+    "texto": "1 km",
+    "trampa": "Restaste 4 − 3. Las direcciones son perpendiculares: se usa Pitágoras."
+   },
+   {
+    "texto": "12 km",
+    "trampa": "Multiplicaste 3·4."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Los tramos son perpendiculares: √(3² + 4²) = 5 km."
+ },
+ {
+  "id": "fis-cin-b2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes magnitudes es vectorial?",
+  "opciones": [
+   {
+    "texto": "La rapidez",
+    "trampa": "La rapidez solo dice cuánto; no tiene dirección (es escalar)."
+   },
+   {
+    "texto": "La distancia recorrida",
+    "trampa": "La distancia es la longitud del camino, sin dirección (escalar)."
+   },
+   {
+    "texto": "El tiempo",
+    "trampa": "El tiempo no tiene dirección (escalar)."
+   },
+   {
+    "texto": "La velocidad",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La velocidad tiene módulo, dirección y sentido. Rapidez, distancia y tiempo son escalares."
+ },
+ {
+  "id": "fis-cin-b3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "basico",
+  "enunciado": "Un ciclista recorre 30 km en 1,5 h. ¿Cuál es su rapidez media?",
+  "opciones": [
+   {
+    "texto": "45 km/h",
+    "trampa": "Multiplicaste 30·1,5. La rapidez es distancia dividida por tiempo."
+   },
+   {
+    "texto": "20 km/h",
+    "trampa": ""
+   },
+   {
+    "texto": "0,05 km/h",
+    "trampa": "Dividiste al revés: 1,5/30."
+   },
+   {
+    "texto": "31,5 km/h",
+    "trampa": "Sumaste 30 + 1,5."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Rapidez media = 30 km / 1,5 h = 20 km/h."
+ },
+ {
+  "id": "fis-cin-p1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "paes",
+  "enunciado": "Un corredor da una vuelta completa a una pista de 400 m en 80 s y termina donde partió. ¿Cuáles son su rapidez media y el módulo de su velocidad media?",
+  "opciones": [
+   {
+    "texto": "5 m/s y 5 m/s",
+    "trampa": "Pensaste que rapidez y velocidad son lo mismo. Si vuelve al inicio, el desplazamiento es 0."
+   },
+   {
+    "texto": "0 m/s y 5 m/s",
+    "trampa": "Los invertiste: la rapidez usa la distancia (400 m) y la velocidad el desplazamiento (0)."
+   },
+   {
+    "texto": "5 m/s y 0 m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "0 m/s y 0 m/s",
+    "trampa": "Pensaste que, al volver al inicio, la rapidez también es cero. La distancia recorrida sí fue 400 m."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Rapidez media = 400/80 = 5 m/s. Desplazamiento 0 → velocidad media 0."
+ },
+ {
+  "id": "fis-cin-p2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "paes",
+  "enunciado": "Un móvil en línea recta pasa de 10 m/s a 30 m/s en 4 s, sin cambiar de sentido. ¿Cuál es su aceleración media?",
+  "opciones": [
+   {
+    "texto": "5 m/s²",
+    "trampa": ""
+   },
+   {
+    "texto": "10 m/s²",
+    "trampa": "Sumaste las velocidades (40/4). La aceleración usa el CAMBIO de velocidad."
+   },
+   {
+    "texto": "7,5 m/s²",
+    "trampa": "Usaste solo la velocidad final (30/4)."
+   },
+   {
+    "texto": "20 m/s²",
+    "trampa": "Calculaste Δv = 20 m/s pero no dividiste por el tiempo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a = Δv/Δt = (30 − 10)/4 = 5 m/s²."
+ },
+ {
+  "id": "fis-cin-p3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "paes",
+  "enunciado": "Un objeto se mueve en línea recta desde la posición x = −4 m hasta x = 6 m en 5 s. ¿Cuál es su velocidad media?",
+  "opciones": [
+   {
+    "texto": "0,4 m/s",
+    "trampa": "Sumaste las posiciones (−4 + 6 = 2). El desplazamiento es final − inicial."
+   },
+   {
+    "texto": "−2 m/s",
+    "trampa": "Restaste al revés: inicial − final."
+   },
+   {
+    "texto": "2 m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "10 m/s",
+    "trampa": "Calculaste el desplazamiento (10 m) pero no dividiste por el tiempo."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Δx = 6 − (−4) = 10 m. v = 10/5 = 2 m/s."
+ },
+ {
+  "id": "fis-cin-d1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "dificil",
+  "enunciado": "Un auto recorre 60 km a 60 km/h y luego otros 60 km a 30 km/h. ¿Cuál es su rapidez media en todo el viaje?",
+  "opciones": [
+   {
+    "texto": "45 km/h",
+    "trampa": "Promediaste las rapideces. Pero estuvo más tiempo yendo lento: hay que usar distancia total/tiempo total."
+   },
+   {
+    "texto": "90 km/h",
+    "trampa": "Sumaste las rapideces."
+   },
+   {
+    "texto": "80 km/h",
+    "trampa": "Calculaste el segundo tiempo al revés (30/60 = 0,5 h): 120 km / 1,5 h = 80 km/h."
+   },
+   {
+    "texto": "40 km/h",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Tiempos: 60/60 = 1 h y 60/30 = 2 h. Rapidez media = 120 km / 3 h = 40 km/h."
+ },
+ {
+  "id": "fis-cin-d2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "paes",
+  "enunciado": "Se lanza una pelota hacia arriba y vuelve a la mano a los 4 s. ¿Cuál afirmación es correcta para todo el vuelo?",
+  "opciones": [
+   {
+    "texto": "Su velocidad media es igual a su rapidez media.",
+    "trampa": "Como vuelve al punto de partida, la velocidad media es 0, pero la rapidez media no."
+   },
+   {
+    "texto": "Su desplazamiento total es cero, pero la distancia recorrida no.",
+    "trampa": ""
+   },
+   {
+    "texto": "Su aceleración es cero en el punto más alto.",
+    "trampa": "Arriba la VELOCIDAD es cero, pero la gravedad sigue actuando: la aceleración es g."
+   },
+   {
+    "texto": "Su rapidez media es cero.",
+    "trampa": "Recorrió una distancia (subió y bajó): la rapidez media no es cero."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Vuelve al mismo punto: Δx = 0, pero recorrió la subida más la bajada."
+ },
+ {
+  "id": "fis-cin-d3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.cinematica",
+  "nivel": "dificil",
+  "enunciado": "La velocidad de un móvil cambia de 20 m/s hacia el este a 20 m/s hacia el oeste en 5 s. ¿Cuál es el módulo de su aceleración media?",
+  "opciones": [
+   {
+    "texto": "0 m/s²",
+    "trampa": "La rapidez no cambió, pero la velocidad sí (cambió de sentido): hay aceleración."
+   },
+   {
+    "texto": "4 m/s²",
+    "trampa": "Usaste solo 20 m/s: el cambio de velocidad es de +20 a −20, o sea 40 m/s."
+   },
+   {
+    "texto": "40 m/s²",
+    "trampa": "Calculaste Δv = 40 m/s pero no dividiste por el tiempo."
+   },
+   {
+    "texto": "8 m/s²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Δv = −20 − 20 = −40 m/s. |a| = 40/5 = 8 m/s²."
+ },
+ {
+  "id": "fis-mru-b1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "basico",
+  "enunciado": "La posición de un móvil es x(t) = 5 + 3t (en metros y segundos). ¿Dónde está a los 4 s?",
+  "opciones": [
+   {
+    "texto": "17 m",
+    "trampa": ""
+   },
+   {
+    "texto": "12 m",
+    "trampa": "Olvidaste sumar la posición inicial: calculaste solo 3·4 = 12 m."
+   },
+   {
+    "texto": "32 m",
+    "trampa": "Sumaste antes de multiplicar: (5 + 3)·4."
+   },
+   {
+    "texto": "8 m",
+    "trampa": "Sumaste 5 + 3 sin usar el tiempo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "x(4) = 5 + 3·4 = 17 m."
+ },
+ {
+  "id": "fis-mru-b2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "basico",
+  "enunciado": "En un gráfico posición–tiempo, un tramo horizontal indica que el móvil:",
+  "opciones": [
+   {
+    "texto": "se mueve con rapidez constante",
+    "trampa": "Eso sería una recta inclinada. Horizontal significa que la posición no cambia."
+   },
+   {
+    "texto": "está acelerando",
+    "trampa": "Una curva en x–t indica aceleración; una recta horizontal, reposo."
+   },
+   {
+    "texto": "está detenido",
+    "trampa": ""
+   },
+   {
+    "texto": "se mueve hacia el origen",
+    "trampa": "Hacia el origen sería una recta que baja hacia x = 0."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "En x–t la pendiente es la velocidad: horizontal → v = 0."
+ },
+ {
+  "id": "fis-mru-b3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "basico",
+  "enunciado": "Un auto parte del reposo con una aceleración constante de 3 m/s². ¿Qué velocidad tiene a los 6 s?",
+  "opciones": [
+   {
+    "texto": "18 m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "54 m/s",
+    "trampa": "Calculaste ½·3·6² = 54, que es la distancia en metros, no la velocidad."
+   },
+   {
+    "texto": "9 m/s",
+    "trampa": "Usaste ½·a·t: el ½ es solo para la posición."
+   },
+   {
+    "texto": "2 m/s",
+    "trampa": "Dividiste 6/3."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "v = v₀ + a·t = 0 + 3·6 = 18 m/s."
+ },
+ {
+  "id": "fis-mru-p1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "paes",
+  "enunciado": "La posición de un móvil es x(t) = 10 − 2t + t² (en metros y segundos). ¿Cuáles son su velocidad inicial y su aceleración?",
+  "opciones": [
+   {
+    "texto": "v₀ = 10 m/s y a = 1 m/s²",
+    "trampa": "10 es la posición inicial; y el coeficiente de t² es ½·a, no a."
+   },
+   {
+    "texto": "v₀ = −2 m/s y a = 1 m/s²",
+    "trampa": "Olvidaste que el término de t² es ½·a·t²: ½·a = 1 → a = 2."
+   },
+   {
+    "texto": "v₀ = 2 m/s y a = 2 m/s²",
+    "trampa": "Perdiste el signo de la velocidad inicial: el término es −2t."
+   },
+   {
+    "texto": "v₀ = −2 m/s y a = 2 m/s²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Comparo con x = x₀ + v₀t + ½at²: x₀ = 10, v₀ = −2, ½a = 1 → a = 2 m/s²."
+ },
+ {
+  "id": "fis-mru-p2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "paes",
+  "enunciado": "Un móvil pasa de 0 a 12 m/s de manera uniforme en 4 s y luego sigue 6 s a 12 m/s. ¿Qué distancia recorre en total?",
+  "opciones": [
+   {
+    "texto": "120 m",
+    "trampa": "Usaste 12 m/s durante los 10 s. En los primeros 4 s iba más lento (área de triángulo)."
+   },
+   {
+    "texto": "96 m",
+    "trampa": ""
+   },
+   {
+    "texto": "72 m",
+    "trampa": "Calculaste solo el tramo a velocidad constante."
+   },
+   {
+    "texto": "60 m",
+    "trampa": "Tomaste todo el gráfico como un solo triángulo (½·10·12)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Área bajo v–t: triángulo ½·4·12 = 24 m + rectángulo 6·12 = 72 m. Total 96 m."
+ },
+ {
+  "id": "fis-mru-p3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "paes",
+  "enunciado": "Un auto que va a 20 m/s frena de manera uniforme y se detiene en 4 s. ¿Qué distancia recorre al frenar?",
+  "opciones": [
+   {
+    "texto": "80 m",
+    "trampa": "Usaste 20 m/s durante todo el frenado (MRU). Mientras frena va cada vez más lento."
+   },
+   {
+    "texto": "5 m",
+    "trampa": "Esa es la aceleración (en m/s²), no la distancia."
+   },
+   {
+    "texto": "160 m",
+    "trampa": "Usaste ½·v·t² en vez de ½·v·t."
+   },
+   {
+    "texto": "40 m",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Área del triángulo v–t: ½·4·20 = 40 m. (a = −5 m/s²: x = 20·4 − ½·5·16 = 40 m.)"
+ },
+ {
+  "id": "fis-mru-d1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "dificil",
+  "enunciado": "Dos autos parten al mismo tiempo desde ciudades separadas por 300 km y viajan uno hacia el otro a 70 km/h y 80 km/h. ¿A qué distancia de la ciudad del primer auto se encuentran?",
+  "opciones": [
+   {
+    "texto": "150 km",
+    "trampa": "Supusiste que se encuentran en la mitad; el más rápido avanza más."
+   },
+   {
+    "texto": "160 km",
+    "trampa": "Esa es la distancia desde la ciudad del segundo auto."
+   },
+   {
+    "texto": "140 km",
+    "trampa": ""
+   },
+   {
+    "texto": "2 km",
+    "trampa": "2 es el tiempo (en horas) que tardan, no la distancia."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Se acercan a 150 km/h: t = 300/150 = 2 h. El primero avanza 70·2 = 140 km."
+ },
+ {
+  "id": "fis-mru-d2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "dificil",
+  "enunciado": "Un móvil con MRUA tiene v₀ = 4 m/s y a = 2 m/s². ¿Qué distancia recorre durante el tercer segundo (entre t = 2 s y t = 3 s)?",
+  "opciones": [
+   {
+    "texto": "9 m",
+    "trampa": ""
+   },
+   {
+    "texto": "21 m",
+    "trampa": "Esa es la distancia total en los primeros 3 s."
+   },
+   {
+    "texto": "12 m",
+    "trampa": "Esa es la distancia en los primeros 2 s."
+   },
+   {
+    "texto": "10 m",
+    "trampa": "Esa es la velocidad a los 3 s (en m/s), no la distancia."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "x(3) = 4·3 + 9 = 21 m; x(2) = 8 + 4 = 12 m. Diferencia: 9 m."
+ },
+ {
+  "id": "fis-mru-d3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.mru-mrua",
+  "nivel": "dificil",
+  "enunciado": "En un gráfico velocidad–tiempo, la velocidad baja en línea recta de 10 m/s a −10 m/s entre t = 0 y t = 4 s. ¿Cuáles son el desplazamiento y la distancia recorrida?",
+  "opciones": [
+   {
+    "texto": "20 m y 20 m",
+    "trampa": "Sumaste las dos áreas como positivas también para el desplazamiento; el área bajo el eje cuenta negativa."
+   },
+   {
+    "texto": "0 m y 0 m",
+    "trampa": "La distancia no se cancela: suma ambos tramos sin signo."
+   },
+   {
+    "texto": "0 m y 20 m",
+    "trampa": ""
+   },
+   {
+    "texto": "20 m y 0 m",
+    "trampa": "Los invertiste: el desplazamiento se cancela y la distancia no."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Triángulo sobre el eje: ½·2·10 = +10 m. Bajo el eje: −10 m. Desplazamiento 0; distancia 20 m."
+ },
+ {
+  "id": "fis-gal-b1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "basico",
+  "enunciado": "Un tren avanza a 20 m/s. Un pasajero camina hacia adelante a 2 m/s respecto del tren. ¿Cuál es la velocidad del pasajero respecto del andén?",
+  "opciones": [
+   {
+    "texto": "18 m/s",
+    "trampa": "Restaste. Si camina hacia adelante, su velocidad se suma a la del tren."
+   },
+   {
+    "texto": "22 m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "2 m/s",
+    "trampa": "Esa es su velocidad respecto del tren, no del andén."
+   },
+   {
+    "texto": "20 m/s",
+    "trampa": "Esa es la velocidad del tren."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "v = v′ + V = 2 + 20 = 22 m/s."
+ },
+ {
+  "id": "fis-gal-b2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "basico",
+  "enunciado": "Dos autos van por la carretera en el mismo sentido: A a 90 km/h y B a 70 km/h. ¿Cuál es la velocidad de A respecto de B?",
+  "opciones": [
+   {
+    "texto": "160 km/h",
+    "trampa": "Sumaste: eso sería si fueran en sentidos opuestos."
+   },
+   {
+    "texto": "−20 km/h",
+    "trampa": "Esa es la velocidad de B respecto de A."
+   },
+   {
+    "texto": "90 km/h",
+    "trampa": "Esa es la velocidad de A respecto del suelo."
+   },
+   {
+    "texto": "20 km/h",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Mismo sentido: se restan. 90 − 70 = 20 km/h."
+ },
+ {
+  "id": "fis-gal-b3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "basico",
+  "enunciado": "Desde el andén se ve pasar un tren a 15 m/s hacia el este. Para un pasajero sentado en el tren, ¿cómo se mueve el andén?",
+  "opciones": [
+   {
+    "texto": "Está en reposo",
+    "trampa": "El andén está quieto para quien está EN el andén; para el pasajero, el andén se mueve."
+   },
+   {
+    "texto": "A 15 m/s hacia el oeste",
+    "trampa": ""
+   },
+   {
+    "texto": "A 15 m/s hacia el este",
+    "trampa": "Error de sentido: si el tren va al este, el pasajero ve que el andén se aleja hacia el oeste."
+   },
+   {
+    "texto": "A 30 m/s hacia el oeste",
+    "trampa": "Sumaste la velocidad dos veces. Cambiar de observador solo resta la velocidad del tren una vez."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "v′ = v − V = 0 − 15 = −15 m/s: el andén se mueve a 15 m/s hacia el oeste."
+ },
+ {
+  "id": "fis-gal-p1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "paes",
+  "enunciado": "Dos autos se acercan de frente: uno a 60 km/h y el otro a 40 km/h. ¿Con qué rapidez se acerca uno al otro?",
+  "opciones": [
+   {
+    "texto": "20 km/h",
+    "trampa": "Restaste: eso es si van en el mismo sentido."
+   },
+   {
+    "texto": "60 km/h",
+    "trampa": "Usaste solo la del auto más rápido."
+   },
+   {
+    "texto": "100 km/h",
+    "trampa": ""
+   },
+   {
+    "texto": "50 km/h",
+    "trampa": "Promediaste las rapideces."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Sentidos opuestos: las rapideces se suman: 60 + 40 = 100 km/h."
+ },
+ {
+  "id": "fis-gal-p2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "paes",
+  "enunciado": "Un pasajero de un bus que va a velocidad constante deja caer una moneda. Para el pasajero, ¿cómo cae la moneda?",
+  "opciones": [
+   {
+    "texto": "En línea recta vertical, a sus pies",
+    "trampa": ""
+   },
+   {
+    "texto": "Hacia atrás, porque el bus avanza",
+    "trampa": "La moneda ya iba con la velocidad del bus: avanza con él."
+   },
+   {
+    "texto": "Hacia adelante",
+    "trampa": "No hay nada que la empuje hacia adelante respecto del bus."
+   },
+   {
+    "texto": "En una curva (parábola)",
+    "trampa": "Así la ve alguien parado en la calle, no el pasajero."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "En un sistema a velocidad constante todo ocurre como en reposo: cae vertical a sus pies."
+ },
+ {
+  "id": "fis-gal-p3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "paes",
+  "enunciado": "Un río corre a 3 m/s. Un bote navega a 5 m/s respecto del agua. ¿Qué rapidez tiene respecto de la orilla yendo río abajo y yendo río arriba?",
+  "opciones": [
+   {
+    "texto": "8 m/s y 8 m/s",
+    "trampa": "Río arriba la corriente va en contra: se resta."
+   },
+   {
+    "texto": "2 m/s río abajo y 8 m/s río arriba",
+    "trampa": "Los invertiste: a favor de la corriente se suma."
+   },
+   {
+    "texto": "8 m/s río abajo y 2 m/s río arriba",
+    "trampa": ""
+   },
+   {
+    "texto": "5 m/s y 5 m/s",
+    "trampa": "Ignoraste la corriente del río."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Río abajo: 5 + 3 = 8 m/s. Río arriba: 5 − 3 = 2 m/s."
+ },
+ {
+  "id": "fis-gal-d1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "dificil",
+  "enunciado": "Un auto A va a 25 m/s y otro B, 100 m más adelante, va a 20 m/s en el mismo sentido. ¿Cuánto tarda A en alcanzar a B?",
+  "opciones": [
+   {
+    "texto": "4 s",
+    "trampa": "Usaste 25 m/s: pero B también avanza. Desde B, A se acerca solo a 5 m/s."
+   },
+   {
+    "texto": "2,2 s",
+    "trampa": "Sumaste las velocidades (45 m/s): eso sería si fueran de frente."
+   },
+   {
+    "texto": "5 s",
+    "trampa": "5 m/s es la velocidad relativa, no el tiempo."
+   },
+   {
+    "texto": "20 s",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Velocidad relativa 25 − 20 = 5 m/s. t = 100/5 = 20 s."
+ },
+ {
+  "id": "fis-gal-d2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "dificil",
+  "enunciado": "Según la relatividad de Galileo, al cambiar de un sistema de referencia a otro que se mueve con velocidad constante respecto del primero, ¿qué se mantiene igual?",
+  "opciones": [
+   {
+    "texto": "La posición y la velocidad",
+    "trampa": "Esas cambian: la velocidad depende de quién mira (se suma V)."
+   },
+   {
+    "texto": "El tiempo transcurrido y la aceleración",
+    "trampa": ""
+   },
+   {
+    "texto": "Solo la velocidad",
+    "trampa": "Es justo al revés: la velocidad cambia, la aceleración no."
+   },
+   {
+    "texto": "Nada: todo depende del observador",
+    "trampa": "En Galileo el tiempo y la aceleración son iguales para ambos."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "v = v′ + V con V constante: la aceleración no cambia y el tiempo es el mismo (t = t′)."
+ },
+ {
+  "id": "fis-gal-d3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.galileo",
+  "nivel": "dificil",
+  "enunciado": "Desde un tren que va a 30 m/s se lanza una pelota hacia atrás a 30 m/s respecto del tren. Para alguien parado en el andén, ¿qué velocidad horizontal tiene la pelota?",
+  "opciones": [
+   {
+    "texto": "30 m/s hacia atrás",
+    "trampa": "Esa es la velocidad respecto del tren. Respecto del andén se suma la del tren."
+   },
+   {
+    "texto": "60 m/s hacia adelante",
+    "trampa": "Sumaste las rapideces sin considerar que van en sentidos opuestos."
+   },
+   {
+    "texto": "60 m/s hacia atrás",
+    "trampa": "Sumaste las rapideces y le diste el sentido de la pelota: la del tren va en sentido contrario y se resta."
+   },
+   {
+    "texto": "0 m/s",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "v = v′ + V = −30 + 30 = 0: desde el andén la pelota cae vertical."
+ },
+ {
+  "id": "fis-new-b1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "basico",
+  "enunciado": "Sobre un cuerpo de 4 kg actúa una fuerza neta de 20 N. ¿Cuál es su aceleración?",
+  "opciones": [
+   {
+    "texto": "80 m/s²",
+    "trampa": "Multiplicaste F·m. La aceleración es F/m."
+   },
+   {
+    "texto": "0,2 m/s²",
+    "trampa": "Dividiste al revés: m/F."
+   },
+   {
+    "texto": "24 m/s²",
+    "trampa": "Sumaste fuerza y masa."
+   },
+   {
+    "texto": "5 m/s²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "a = F/m = 20/4 = 5 m/s²."
+ },
+ {
+  "id": "fis-new-b2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "basico",
+  "enunciado": "Cuando empujas una pared con 50 N, ¿qué hace la pared?",
+  "opciones": [
+   {
+    "texto": "No ejerce fuerza porque no se mueve",
+    "trampa": "Que no se mueva no significa que no empuje: por la 3.ª ley responde con 50 N."
+   },
+   {
+    "texto": "Te empuja con 50 N en sentido contrario",
+    "trampa": ""
+   },
+   {
+    "texto": "Te empuja con menos de 50 N",
+    "trampa": "Acción y reacción siempre tienen el mismo módulo."
+   },
+   {
+    "texto": "Su fuerza anula la tuya y por eso nada se mueve",
+    "trampa": "Acción y reacción actúan sobre cuerpos distintos: no se anulan entre sí."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "3.ª ley: fuerzas iguales y opuestas, sobre cuerpos distintos."
+ },
+ {
+  "id": "fis-new-b3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "basico",
+  "enunciado": "Un cuerpo se mueve en línea recta con velocidad constante. ¿Qué se puede afirmar?",
+  "opciones": [
+   {
+    "texto": "No actúa ninguna fuerza sobre él",
+    "trampa": "Pueden actuar varias fuerzas que se equilibran (por ejemplo, empuje y roce)."
+   },
+   {
+    "texto": "Actúa una fuerza constante en el sentido del movimiento",
+    "trampa": "Una fuerza neta constante lo haría acelerar."
+   },
+   {
+    "texto": "Su aceleración es constante y distinta de cero",
+    "trampa": "Velocidad constante significa aceleración cero."
+   },
+   {
+    "texto": "La fuerza neta sobre él es cero",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "1.ª ley: velocidad constante ⇔ ΣF = 0."
+ },
+ {
+  "id": "fis-new-p1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "paes",
+  "enunciado": "Un bloque de 5 kg se tira con una fuerza horizontal de 30 N y el roce es de 10 N. ¿Cuál es su aceleración?",
+  "opciones": [
+   {
+    "texto": "4 m/s²",
+    "trampa": ""
+   },
+   {
+    "texto": "6 m/s²",
+    "trampa": "Ignoraste el roce: 30/5."
+   },
+   {
+    "texto": "8 m/s²",
+    "trampa": "Sumaste el roce en vez de restarlo: 40/5."
+   },
+   {
+    "texto": "20 m/s²",
+    "trampa": "Calculaste la fuerza neta (20 N) pero no dividiste por la masa."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "ΣF = 30 − 10 = 20 N. a = 20/5 = 4 m/s²."
+ },
+ {
+  "id": "fis-new-p2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "paes",
+  "enunciado": "Un ascensor de 500 kg sube con velocidad constante. ¿Cuál es la tensión del cable? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "0 N",
+    "trampa": "Velocidad constante no significa sin fuerzas: significa que se equilibran."
+   },
+   {
+    "texto": "500 N",
+    "trampa": "Usaste la masa como si fuera una fuerza. El peso es m·g."
+   },
+   {
+    "texto": "5000 N",
+    "trampa": ""
+   },
+   {
+    "texto": "Más de 5000 N, porque está subiendo",
+    "trampa": "Para SUBIR a velocidad constante no hace falta más fuerza que el peso; solo para acelerar."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "v constante → ΣF = 0 → T = P = 500·10 = 5000 N."
+ },
+ {
+  "id": "fis-new-p3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "paes",
+  "enunciado": "Dos bloques de 2 kg y 3 kg, unidos por una cuerda, están sobre una mesa sin roce. Se tira horizontalmente del bloque de 3 kg con 20 N, alejándolo del otro. ¿Cuál es la tensión de la cuerda?",
+  "opciones": [
+   {
+    "texto": "8 N",
+    "trampa": ""
+   },
+   {
+    "texto": "20 N",
+    "trampa": "Esa es la fuerza aplicada; la cuerda solo debe acelerar al bloque de 2 kg."
+   },
+   {
+    "texto": "12 N",
+    "trampa": "Calculaste 3·4: la tensión mueve al bloque de 2 kg, no al de 3 kg."
+   },
+   {
+    "texto": "10 N",
+    "trampa": "Repartiste la fuerza en partes iguales; se reparte según las masas."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a = 20/5 = 4 m/s². La cuerda acelera al de 2 kg: T = 2·4 = 8 N."
+ },
+ {
+  "id": "fis-new-d1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "paes",
+  "enunciado": "Un auto de 1000 kg pasa de 0 a 20 m/s en 10 s. ¿Cuál es la fuerza neta media sobre él?",
+  "opciones": [
+   {
+    "texto": "20 000 N",
+    "trampa": "Multiplicaste m·v sin dividir por el tiempo."
+   },
+   {
+    "texto": "2000 N",
+    "trampa": ""
+   },
+   {
+    "texto": "10 000 N",
+    "trampa": "Calculaste el peso (m·g), no la fuerza neta."
+   },
+   {
+    "texto": "200 N",
+    "trampa": "Dividiste por el tiempo dos veces: m·v/t²."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "a = 20/10 = 2 m/s². F = 1000·2 = 2000 N."
+ },
+ {
+  "id": "fis-new-d2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "dificil",
+  "enunciado": "Una persona de 60 kg está sobre una balanza dentro de un ascensor que acelera hacia arriba a 2 m/s². ¿Qué fuerza marca la balanza? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "600 N",
+    "trampa": "Ignoraste la aceleración: así marcaría en reposo."
+   },
+   {
+    "texto": "480 N",
+    "trampa": "Restaste la aceleración: eso pasa si acelera hacia abajo."
+   },
+   {
+    "texto": "120 N",
+    "trampa": "Calculaste solo m·a, sin el peso."
+   },
+   {
+    "texto": "720 N",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "N − P = m·a → N = 60·10 + 60·2 = 720 N."
+ },
+ {
+  "id": "fis-new-d3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.newton",
+  "nivel": "dificil",
+  "enunciado": "Sobre un cuerpo de 2 kg actúan una fuerza de 6 N hacia el este y otra de 8 N hacia el norte. ¿Cuál es el módulo de su aceleración?",
+  "opciones": [
+   {
+    "texto": "7 m/s²",
+    "trampa": "Sumaste los módulos (14 N). Son perpendiculares: se combinan con Pitágoras."
+   },
+   {
+    "texto": "5 m/s²",
+    "trampa": ""
+   },
+   {
+    "texto": "1 m/s²",
+    "trampa": "Restaste los módulos (2 N)."
+   },
+   {
+    "texto": "10 m/s²",
+    "trampa": "Calculaste la fuerza neta (10 N) pero no dividiste por la masa."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "ΣF = √(6² + 8²) = 10 N. a = 10/2 = 5 m/s²."
+ },
+ {
+  "id": "fis-fue-b1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el peso de una persona de 70 kg? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "700 N",
+    "trampa": ""
+   },
+   {
+    "texto": "70 N",
+    "trampa": "70 es la masa en kg; el peso es m·g."
+   },
+   {
+    "texto": "7 N",
+    "trampa": "Dividiste por g en vez de multiplicar."
+   },
+   {
+    "texto": "80 N",
+    "trampa": "Sumaste 70 + 10."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "P = m·g = 70·10 = 700 N."
+ },
+ {
+  "id": "fis-fue-b2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "basico",
+  "enunciado": "Un resorte de constante 400 N/m se estira 0,1 m. ¿Qué fuerza ejerce?",
+  "opciones": [
+   {
+    "texto": "4000 N",
+    "trampa": "Dividiste por 0,1 en vez de multiplicar."
+   },
+   {
+    "texto": "4 N",
+    "trampa": "Usaste 0,01 m en vez de 0,1 m."
+   },
+   {
+    "texto": "40 N",
+    "trampa": ""
+   },
+   {
+    "texto": "0,00025 N",
+    "trampa": "Dividiste x/k. La ley de Hooke multiplica: F = k·x."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "F = k·x = 400·0,1 = 40 N."
+ },
+ {
+  "id": "fis-fue-b3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "basico",
+  "enunciado": "Un libro está en reposo sobre una mesa horizontal. ¿Qué se puede decir de la fuerza normal sobre el libro?",
+  "opciones": [
+   {
+    "texto": "Tiene el mismo módulo que el peso del libro",
+    "trampa": ""
+   },
+   {
+    "texto": "Es mayor que el peso",
+    "trampa": "Si fuera mayor, el libro aceleraría hacia arriba."
+   },
+   {
+    "texto": "Es cero, porque el libro no se mueve",
+    "trampa": "Si fuera cero, el libro caería: la mesa lo sostiene."
+   },
+   {
+    "texto": "Es la reacción del peso (3.ª ley)",
+    "trampa": "La reacción del peso es la fuerza con que el libro atrae a la Tierra; la normal es otra fuerza."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Reposo → ΣF = 0 → N = P (en módulo). No son par acción-reacción: ambas actúan sobre el libro."
+ },
+ {
+  "id": "fis-fue-p1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "paes",
+  "enunciado": "Un resorte se estira 5 cm al colgarle 2 kg. ¿Cuánto se estira con 5 kg colgados? (mismo resorte)",
+  "opciones": [
+   {
+    "texto": "2 cm",
+    "trampa": "Invertiste la proporción: más peso, más estiramiento."
+   },
+   {
+    "texto": "8 cm",
+    "trampa": "Sumaste 3 cm por los 3 kg extra: el estiramiento es proporcional, no aditivo."
+   },
+   {
+    "texto": "25 cm",
+    "trampa": "Multiplicaste 5·5."
+   },
+   {
+    "texto": "12,5 cm",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Proporcional: x = 5·(5/2) = 12,5 cm."
+ },
+ {
+  "id": "fis-fue-p2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "paes",
+  "enunciado": "Una caja de 20 kg está en el piso (μₑ = 0,4; μ<sub>c</sub> = 0,3). Si la empujas horizontalmente con 60 N, ¿qué ocurre? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "No se mueve y el roce vale 80 N",
+    "trampa": "80 N es el roce estático MÁXIMO; mientras no se mueve, vale lo justo para equilibrar."
+   },
+   {
+    "texto": "No se mueve y el roce vale 60 N",
+    "trampa": ""
+   },
+   {
+    "texto": "Se mueve y el roce vale 60 N",
+    "trampa": "Comparaste con el roce cinético (60 N). Para empezar a moverla hay que superar el estático máximo: 80 N."
+   },
+   {
+    "texto": "Se mueve y el roce vale 80 N",
+    "trampa": "Calculaste 0,4·200 = 80 N y creíste que el roce siempre vale eso y que la caja se mueve; 80 N es solo el máximo, y 60 N no lo supera."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "N = 200 N. Estático máximo = 0,4·200 = 80 N > 60 N: no se mueve, y el roce vale 60 N."
+ },
+ {
+  "id": "fis-fue-p3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "paes",
+  "enunciado": "Un bloque de 10 kg desliza sobre una superficie horizontal con μ<sub>c</sub> = 0,2 mientras se le tira con 50 N horizontales. ¿Cuál es su aceleración? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "5 m/s²",
+    "trampa": "Ignoraste el roce: 50/10."
+   },
+   {
+    "texto": "7 m/s²",
+    "trampa": "Sumaste el roce en vez de restarlo."
+   },
+   {
+    "texto": "30 m/s²",
+    "trampa": "Calculaste la fuerza neta (30 N) pero no dividiste por la masa."
+   },
+   {
+    "texto": "3 m/s²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Roce = 0,2·100 = 20 N. a = (50 − 20)/10 = 3 m/s²."
+ },
+ {
+  "id": "fis-fue-d1",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "dificil",
+  "enunciado": "Una caja de 50 kg está en reposo sobre un piso horizontal (μₑ = 0,5; μ<sub>c</sub> = 0,4). ¿Qué fuerza horizontal hay que superar para ponerla en movimiento y cuál la mantiene a velocidad constante? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "200 N y 250 N",
+    "trampa": "Los invertiste: cuesta más empezar a moverla (estático) que mantenerla (cinético)."
+   },
+   {
+    "texto": "250 N y 250 N",
+    "trampa": "Una vez en movimiento actúa el roce cinético, que es menor."
+   },
+   {
+    "texto": "250 N y 200 N",
+    "trampa": ""
+   },
+   {
+    "texto": "25 N y 20 N",
+    "trampa": "Usaste la masa (50) en vez del peso (500 N) para la normal."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "N = 500 N. Empezar: 0,5·500 = 250 N. Mantener (ΣF = 0): 0,4·500 = 200 N."
+ },
+ {
+  "id": "fis-fue-d2",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "paes",
+  "enunciado": "Un paracaidista cae y llega a una velocidad constante (velocidad terminal). En ese momento, ¿qué ocurre con las fuerzas sobre él?",
+  "opciones": [
+   {
+    "texto": "El roce con el aire es igual a su peso",
+    "trampa": ""
+   },
+   {
+    "texto": "El roce con el aire es mayor que su peso",
+    "trampa": "Si fuera mayor, iría frenando, no a velocidad constante."
+   },
+   {
+    "texto": "Ya no actúa el peso",
+    "trampa": "El peso actúa siempre; lo que pasa es que el roce lo equilibra."
+   },
+   {
+    "texto": "El roce con el aire es cero",
+    "trampa": "Sin roce seguiría acelerando."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Velocidad constante → ΣF = 0 → roce del aire = peso."
+ },
+ {
+  "id": "fis-fue-d3",
+  "prueba": "CIE",
+  "eje": "Mecánica",
+  "tema": "fis.mec.fuerzas",
+  "nivel": "dificil",
+  "enunciado": "Un resorte mide 20 cm sin carga y 26 cm al colgarle 3 kg. ¿Cuál es su constante? (g = 10 m/s²)",
+  "opciones": [
+   {
+    "texto": "115 N/m",
+    "trampa": "Usaste el largo total (0,26 m) en vez del estiramiento (0,06 m)."
+   },
+   {
+    "texto": "5 N/m",
+    "trampa": "No pasaste los 6 cm a metros: 30/6."
+   },
+   {
+    "texto": "500 N/m",
+    "trampa": ""
+   },
+   {
+    "texto": "50 N/m",
+    "trampa": "Usaste la masa (3 kg) en vez del peso (30 N)."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "x = 0,06 m. k = F/x = 30/0,06 = 500 N/m."
+ },
+ {
+  "id": "fis-ond-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "basico",
+  "enunciado": "Una onda tiene una frecuencia de 5 Hz. ¿Cuál es su período?",
+  "opciones": [
+   {
+    "texto": "5 s",
+    "trampa": "Confundiste período con frecuencia: T = 1/f."
+   },
+   {
+    "texto": "0,02 s",
+    "trampa": "Corriste la coma: 1/5 = 0,2."
+   },
+   {
+    "texto": "0,2 s",
+    "trampa": ""
+   },
+   {
+    "texto": "0,5 s",
+    "trampa": "Confundiste 1/5 con 1/2."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "T = 1/f = 1/5 = 0,2 s."
+ },
+ {
+  "id": "fis-ond-b2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "basico",
+  "enunciado": "En una onda, ¿cómo se llama la distancia entre dos crestas consecutivas?",
+  "opciones": [
+   {
+    "texto": "Longitud de onda",
+    "trampa": ""
+   },
+   {
+    "texto": "Amplitud",
+    "trampa": "La amplitud es la altura de la cresta medida desde el centro, no la distancia entre crestas."
+   },
+   {
+    "texto": "Período",
+    "trampa": "El período es un TIEMPO (lo que dura una oscilación), no una distancia."
+   },
+   {
+    "texto": "Frecuencia",
+    "trampa": "La frecuencia es cuántas oscilaciones hay por segundo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cresta a cresta = una longitud de onda λ."
+ },
+ {
+  "id": "fis-ond-b3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "basico",
+  "enunciado": "Una onda tiene una longitud de onda de 2 m y una frecuencia de 3 Hz. ¿Cuál es su rapidez?",
+  "opciones": [
+   {
+    "texto": "1,5 m/s",
+    "trampa": "Dividiste f/λ. La rapidez es λ·f."
+   },
+   {
+    "texto": "2/3 m/s",
+    "trampa": "Dividiste λ/f. La rapidez es λ·f."
+   },
+   {
+    "texto": "6 m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "5 m/s",
+    "trampa": "Sumaste λ + f."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "v = λ·f = 2·3 = 6 m/s."
+ },
+ {
+  "id": "fis-ond-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "paes",
+  "enunciado": "Una radio AM transmite a 1,5 MHz. ¿Cuál es la longitud de onda de sus ondas? (c = 3·10⁸ m/s)",
+  "opciones": [
+   {
+    "texto": "2·10⁸ m",
+    "trampa": "No pasaste MHz a Hz: falta el 10⁶."
+   },
+   {
+    "texto": "200 m",
+    "trampa": ""
+   },
+   {
+    "texto": "4,5·10¹⁴ m",
+    "trampa": "Multiplicaste c·f. Se despeja λ = c/f."
+   },
+   {
+    "texto": "0,005 m",
+    "trampa": "Dividiste al revés: f/c."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "λ = c/f = 3·10⁸ / 1,5·10⁶ = 200 m."
+ },
+ {
+  "id": "fis-ond-p2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "paes",
+  "enunciado": "Cuando la luz entra oblicuamente del aire al vidrio, ¿qué característica de la onda se mantiene?",
+  "opciones": [
+   {
+    "texto": "La longitud de onda",
+    "trampa": "λ cambia: en el vidrio la luz va más lenta y λ = v/f se achica."
+   },
+   {
+    "texto": "La rapidez",
+    "trampa": "En el vidrio la luz es más lenta (por eso se refracta)."
+   },
+   {
+    "texto": "La dirección de propagación",
+    "trampa": "Al entrar oblicuamente la luz se desvía: eso es la refracción."
+   },
+   {
+    "texto": "La frecuencia",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La frecuencia la fija la fuente; cambian la rapidez y la longitud de onda."
+ },
+ {
+  "id": "fis-ond-p3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "paes",
+  "enunciado": "Si se duplica la frecuencia de una onda electromagnética que viaja en el vacío, ¿qué pasa con su longitud de onda?",
+  "opciones": [
+   {
+    "texto": "Se duplica",
+    "trampa": "Pensaste que λ y f son directamente proporcionales; con v fija son inversas."
+   },
+   {
+    "texto": "Se reduce a la mitad",
+    "trampa": ""
+   },
+   {
+    "texto": "No cambia",
+    "trampa": "Pensaste que λ es fija; en el vacío lo fijo es v = c, así que si f cambia, λ también."
+   },
+   {
+    "texto": "Se reduce a la cuarta parte",
+    "trampa": "λ = c/f: es inversa simple, no al cuadrado."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "c = λ·f fija: doble de f → mitad de λ."
+ },
+ {
+  "id": "fis-ond-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "dificil",
+  "enunciado": "Una onda electromagnética tiene un período de 2·10⁻¹⁵ s. ¿Cuál es su longitud de onda en el vacío? (c = 3·10⁸ m/s)",
+  "opciones": [
+   {
+    "texto": "6·10⁻⁷ m",
+    "trampa": ""
+   },
+   {
+    "texto": "1,5·10²³ m",
+    "trampa": "Dividiste c por el período. λ = c·T (o c/f)."
+   },
+   {
+    "texto": "5·10¹⁴ m",
+    "trampa": "Calculaste la frecuencia (1/T) y la diste como longitud de onda."
+   },
+   {
+    "texto": "6,7·10⁻²⁴ m",
+    "trampa": "Dividiste T por c."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "λ = c·T = 3·10⁸·2·10⁻¹⁵ = 6·10⁻⁷ m (luz visible, naranja)."
+ },
+ {
+  "id": "fis-ond-d2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "dificil",
+  "enunciado": "Dos ondas electromagnéticas viajan en el vacío: A con λ = 400 nm y B con λ = 800 nm. ¿Qué se cumple?",
+  "opciones": [
+   {
+    "texto": "A viaja al doble de rapidez que B.",
+    "trampa": "En el vacío todas las ondas EM viajan a c."
+   },
+   {
+    "texto": "B tiene el doble de frecuencia que A.",
+    "trampa": "Lo invertiste: mayor λ significa menor frecuencia."
+   },
+   {
+    "texto": "A tiene el doble de frecuencia que B, y ambas viajan a la misma rapidez.",
+    "trampa": ""
+   },
+   {
+    "texto": "Tienen la misma frecuencia.",
+    "trampa": "Con la misma rapidez y distinta λ, la frecuencia tiene que ser distinta."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "c = λ·f: la mitad de λ implica el doble de f."
+ },
+ {
+  "id": "fis-ond-d3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.elementos",
+  "nivel": "dificil",
+  "enunciado": "Un horno microondas usa ondas de 2,45 GHz. ¿Cuál es su longitud de onda, aproximadamente? (c = 3·10⁸ m/s)",
+  "opciones": [
+   {
+    "texto": "12 cm",
+    "trampa": ""
+   },
+   {
+    "texto": "1,2 m",
+    "trampa": "Pasaste GHz como 10⁸. Giga = 10⁹: 2,45 GHz = 2,45·10⁹ Hz."
+   },
+   {
+    "texto": "8,2 m",
+    "trampa": "Dividiste al revés: f/c. La longitud de onda es c/f."
+   },
+   {
+    "texto": "7,35·10¹⁷ m",
+    "trampa": "Multiplicaste c·f. La longitud de onda es c/f."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "λ = c/f = 3·10⁸ / 2,45·10⁹ ≈ 0,122 m ≈ 12 cm."
+ },
+ {
+  "id": "fis-len-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "basico",
+  "enunciado": "¿Cómo es la imagen que forma un espejo plano?",
+  "opciones": [
+   {
+    "texto": "Real, invertida y del mismo tamaño",
+    "trampa": "La imagen de un espejo plano no se puede proyectar en una pantalla (es virtual) y no está invertida de arriba abajo."
+   },
+   {
+    "texto": "Virtual, derecha y del mismo tamaño",
+    "trampa": ""
+   },
+   {
+    "texto": "Virtual, derecha y más pequeña",
+    "trampa": "En un espejo plano el tamaño se conserva; más pequeña es la de un espejo convexo."
+   },
+   {
+    "texto": "Real, derecha y del mismo tamaño",
+    "trampa": "Está detrás del espejo, donde no llega la luz: es virtual."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Espejo plano: virtual, derecha, del mismo tamaño y a la misma distancia detrás del espejo."
+ },
+ {
+  "id": "fis-len-b2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "basico",
+  "enunciado": "Para usar una lente como lupa, ¿qué se necesita?",
+  "opciones": [
+   {
+    "texto": "Una lente divergente",
+    "trampa": "Pensaste que cualquier lente agranda; las divergentes siempre achican."
+   },
+   {
+    "texto": "Una lente convergente, con el objeto más allá de 2F",
+    "trampa": "Así la imagen sale real, invertida y más pequeña: no agranda."
+   },
+   {
+    "texto": "Cualquier lente, a cualquier distancia",
+    "trampa": "Pensaste que la distancia no importa; solo con el objeto dentro de la distancia focal sale mayor y derecha."
+   },
+   {
+    "texto": "Una lente convergente, con el objeto entre la lente y su foco",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Objeto entre F y la lente: imagen virtual, derecha y mayor."
+ },
+ {
+  "id": "fis-len-b3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "basico",
+  "enunciado": "Los espejos retrovisores laterales de los autos suelen ser convexos. ¿Cómo es la imagen que forman?",
+  "opciones": [
+   {
+    "texto": "Real, invertida y más grande",
+    "trampa": "Un espejo convexo nunca da imágenes reales: separa los rayos."
+   },
+   {
+    "texto": "Virtual, derecha y más pequeña",
+    "trampa": ""
+   },
+   {
+    "texto": "Virtual, derecha y más grande",
+    "trampa": "Eso hace un espejo cóncavo con el objeto muy cerca, no uno convexo."
+   },
+   {
+    "texto": "Real, derecha y más pequeña",
+    "trampa": "Las imágenes reales de espejos son invertidas; la del convexo es virtual."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Convexo: siempre virtual, derecha y menor (por eso cabe más campo visual)."
+ },
+ {
+  "id": "fis-len-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "paes",
+  "enunciado": "Un objeto está a 20 cm de una lente convergente de distancia focal 10 cm. ¿Cómo es la imagen?",
+  "opciones": [
+   {
+    "texto": "Virtual, derecha y de mayor tamaño",
+    "trampa": "Eso ocurre con el objeto entre F y la lente. Acá está en 2F."
+   },
+   {
+    "texto": "Real, invertida y de menor tamaño",
+    "trampa": "Eso ocurre con el objeto más allá de 2F."
+   },
+   {
+    "texto": "Real, invertida y del mismo tamaño",
+    "trampa": ""
+   },
+   {
+    "texto": "Real, invertida y de mayor tamaño",
+    "trampa": "Eso ocurre con el objeto entre F y 2F."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Objeto en 2F: imagen en 2F del otro lado, real, invertida y del mismo tamaño."
+ },
+ {
+  "id": "fis-len-p2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "paes",
+  "enunciado": "Un objeto está a 6 cm de una lente convergente de distancia focal 10 cm. ¿Cómo es la imagen?",
+  "opciones": [
+   {
+    "texto": "Virtual, derecha y de mayor tamaño",
+    "trampa": ""
+   },
+   {
+    "texto": "Real, invertida y de mayor tamaño",
+    "trampa": "Eso es con el objeto entre F y 2F; acá está dentro de la distancia focal."
+   },
+   {
+    "texto": "Real, invertida y de menor tamaño",
+    "trampa": "Eso es con el objeto más allá de 2F."
+   },
+   {
+    "texto": "No se forma imagen",
+    "trampa": "Eso pasa solo si el objeto está justo en el foco."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Objeto entre la lente y F (lupa): imagen virtual, derecha y mayor."
+ },
+ {
+  "id": "fis-len-p3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "paes",
+  "enunciado": "Un proyector forma en una pantalla una imagen grande de una diapositiva. ¿Cómo es esa imagen?",
+  "opciones": [
+   {
+    "texto": "Virtual y derecha",
+    "trampa": "Si se proyecta en una pantalla, los rayos llegan de verdad ahí: es real."
+   },
+   {
+    "texto": "Virtual e invertida",
+    "trampa": "Una imagen que se proyecta en una pantalla es real."
+   },
+   {
+    "texto": "Real e invertida",
+    "trampa": ""
+   },
+   {
+    "texto": "Real y derecha",
+    "trampa": "Las imágenes reales de una lente están invertidas: por eso la diapositiva se pone al revés."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Proyectar en pantalla = imagen real; con una lente, las reales son invertidas."
+ },
+ {
+  "id": "fis-len-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "dificil",
+  "enunciado": "Una lente convergente de distancia focal 10 cm forma una imagen real a 15 cm de ella. ¿A qué distancia está el objeto?",
+  "opciones": [
+   {
+    "texto": "6 cm",
+    "trampa": "Sumaste los inversos (1/10 + 1/15). Se despeja 1/d<sub>o</sub> = 1/f − 1/d<sub>i</sub>."
+   },
+   {
+    "texto": "5 cm",
+    "trampa": "Restaste las distancias (15 − 10)."
+   },
+   {
+    "texto": "25 cm",
+    "trampa": "Sumaste las distancias (15 + 10)."
+   },
+   {
+    "texto": "30 cm",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "1/d<sub>o</sub> = 1/10 − 1/15 = 1/30 → d<sub>o</sub> = 30 cm."
+ },
+ {
+  "id": "fis-len-d2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "dificil",
+  "enunciado": "Un objeto está a 30 cm de un espejo cóncavo de distancia focal 10 cm. ¿Cómo y dónde se forma la imagen?",
+  "opciones": [
+   {
+    "texto": "Virtual, derecha y mayor, 15 cm detrás del espejo",
+    "trampa": "Eso pasa con el objeto entre el espejo y el foco; acá está más allá del centro (2F)."
+   },
+   {
+    "texto": "Real, invertida y menor, a 15 cm del espejo",
+    "trampa": ""
+   },
+   {
+    "texto": "Real, invertida y mayor, a 30 cm del espejo",
+    "trampa": "Pensaste que la imagen queda donde está el objeto."
+   },
+   {
+    "texto": "Real, invertida y del mismo tamaño, a 20 cm del espejo",
+    "trampa": "Supusiste que siempre se forma en el centro (2F); eso ocurre solo si el objeto está en 2F."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "1/d<sub>i</sub> = 1/10 − 1/30 = 1/15 → 15 cm delante del espejo: real, invertida, aumento −0,5."
+ },
+ {
+  "id": "fis-len-d3",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espejos-lentes",
+  "nivel": "dificil",
+  "enunciado": "Un objeto se acerca desde muy lejos hacia una lente convergente, hasta llegar casi a su foco. ¿Qué le pasa a la imagen real?",
+  "opciones": [
+   {
+    "texto": "Se acerca a la lente y se achica",
+    "trampa": "Es al revés: mientras más cerca del foco el objeto, más lejos y más grande la imagen."
+   },
+   {
+    "texto": "Se queda en el foco y no cambia de tamaño",
+    "trampa": "Solo un objeto muy lejano tiene su imagen en el foco."
+   },
+   {
+    "texto": "Se vuelve virtual apenas el objeto cruza 2F",
+    "trampa": "Sigue siendo real mientras el objeto esté más allá de F."
+   },
+   {
+    "texto": "Se aleja de la lente y se agranda",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Lejos: imagen cerca de F y pequeña. Al acercarse a F, la imagen se aleja y crece sin límite."
+ },
+ {
+  "id": "fis-ref-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "basico",
+  "enunciado": "Un rayo de luz llega a un espejo plano formando 30° con la normal. ¿Cuál es el ángulo de reflexión?",
+  "opciones": [
+   {
+    "texto": "60°",
+    "trampa": "Mediste desde la superficie del espejo. Los ángulos se miden desde la normal."
+   },
+   {
+    "texto": "30°",
+    "trampa": ""
+   },
+   {
+    "texto": "90°",
+    "trampa": "Pensaste que la luz rebota perpendicular al espejo."
+   },
+   {
+    "texto": "150°",
+    "trampa": "Restaste de 180°. El ángulo de reflexión es igual al de incidencia."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Ley de reflexión: ángulo de incidencia = ángulo de reflexión = 30°."
+ },
+ {
+  "id": "fis-ref-b2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de los siguientes hechos muestra que la luz se propaga en línea recta?",
+  "opciones": [
+   {
+    "texto": "Que se forme un arcoíris",
+    "trampa": "El arcoíris se debe a la dispersión de la luz, no a la propagación rectilínea."
+   },
+   {
+    "texto": "Que un lápiz se vea quebrado dentro de un vaso con agua",
+    "trampa": "Eso es refracción: la luz CAMBIA de dirección al cambiar de medio."
+   },
+   {
+    "texto": "Que los objetos tengan colores distintos",
+    "trampa": "Eso depende de qué colores reflejan o absorben."
+   },
+   {
+    "texto": "Que las sombras tengan bordes definidos",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Si la luz va en línea recta, un objeto opaco bloquea una zona definida: la sombra."
+ },
+ {
+  "id": "fis-ref-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "paes",
+  "enunciado": "El índice de refracción del agua es 1,33. ¿Cuál es, aproximadamente, la rapidez de la luz en el agua? (c = 3·10⁸ m/s)",
+  "opciones": [
+   {
+    "texto": "3,99·10⁸ m/s",
+    "trampa": "Multiplicaste c·n. Se divide: v = c/n."
+   },
+   {
+    "texto": "3·10⁸ m/s",
+    "trampa": "En el agua la luz va más lenta que en el vacío."
+   },
+   {
+    "texto": "2,26·10⁸ m/s",
+    "trampa": ""
+   },
+   {
+    "texto": "1,33·10⁸ m/s",
+    "trampa": "Usaste el índice como si fuera la rapidez."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "v = c/n = 3·10⁸/1,33 ≈ 2,26·10⁸ m/s."
+ },
+ {
+  "id": "fis-ref-p2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "paes",
+  "enunciado": "Luz de 450 nm en el aire entra a un vidrio de índice 1,5. ¿Qué pasa con su frecuencia y su longitud de onda dentro del vidrio?",
+  "opciones": [
+   {
+    "texto": "La frecuencia no cambia y λ = 300 nm",
+    "trampa": ""
+   },
+   {
+    "texto": "La frecuencia no cambia y λ = 675 nm",
+    "trampa": "Multiplicaste por n. Como la luz va más lenta, λ se achica: λ/n."
+   },
+   {
+    "texto": "La frecuencia baja y λ = 450 nm",
+    "trampa": "Pensaste que cambia la frecuencia y no λ; es al revés: f se mantiene y λ cambia."
+   },
+   {
+    "texto": "La frecuencia sube y λ = 300 nm",
+    "trampa": "Pensaste que la frecuencia cambia con el medio; la fija la fuente."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "f igual; v = c/1,5 → λ = 450/1,5 = 300 nm."
+ },
+ {
+  "id": "fis-ref-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "dificil",
+  "enunciado": "Un rayo de luz pasa oblicuamente del agua (n = 1,33) al aire. ¿Qué ocurre?",
+  "opciones": [
+   {
+    "texto": "Disminuye su rapidez y se acerca a la normal",
+    "trampa": "Lo invertiste: eso pasa al entrar al agua, no al salir."
+   },
+   {
+    "texto": "Aumenta su rapidez y se acerca a la normal",
+    "trampa": "Al acelerar, el rayo se ALEJA de la normal."
+   },
+   {
+    "texto": "No se desvía, porque su frecuencia no cambia",
+    "trampa": "Que f no cambie no impide la desviación: la desviación se debe al cambio de rapidez."
+   },
+   {
+    "texto": "Aumenta su rapidez y se aleja de la normal",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Al aire (n menor) va más rápido y se aleja de la normal."
+ },
+ {
+  "id": "fis-ref-d2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.reflexion-refraccion",
+  "nivel": "paes",
+  "enunciado": "¿Por qué una polera negra al sol se calienta más que una blanca?",
+  "opciones": [
+   {
+    "texto": "Porque refleja todos los colores",
+    "trampa": "Eso hace la polera blanca, y por eso se calienta menos."
+   },
+   {
+    "texto": "Porque absorbe casi toda la luz visible, y esa energía la calienta",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque refracta la luz hacia su interior",
+    "trampa": "La diferencia está en cuánta luz absorbe cada una, no en la refracción."
+   },
+   {
+    "texto": "Porque emite más luz que la blanca",
+    "trampa": "Se ve negra justamente porque casi no refleja luz visible."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Negro = absorbe casi toda la luz visible; blanco = la refleja. La energía absorbida calienta la tela."
+ },
+ {
+  "id": "fis-esp-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes ondas electromagnéticas tiene MAYOR longitud de onda?",
+  "opciones": [
+   {
+    "texto": "Rayos gamma",
+    "trampa": "Los gamma tienen la MENOR longitud de onda (y la mayor frecuencia)."
+   },
+   {
+    "texto": "Luz visible",
+    "trampa": "Pensaste que lo visible es lo más «largo»; la radio tiene λ mucho mayor."
+   },
+   {
+    "texto": "Ultravioleta",
+    "trampa": "Invertiste el orden: el ultravioleta tiene menor λ que la luz visible."
+   },
+   {
+    "texto": "Ondas de radio",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Mayor λ = menor frecuencia: las ondas de radio."
+ },
+ {
+  "id": "fis-esp-b2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "basico",
+  "enunciado": "¿Qué tipo de onda electromagnética usa el control remoto de un televisor?",
+  "opciones": [
+   {
+    "texto": "Rayos X",
+    "trampa": "Los rayos X se usan en radiografías; serían peligrosos en un control remoto."
+   },
+   {
+    "texto": "Infrarrojo",
+    "trampa": ""
+   },
+   {
+    "texto": "Ultravioleta",
+    "trampa": "El UV se usa para esterilizar, no en controles remotos."
+   },
+   {
+    "texto": "Rayos gamma",
+    "trampa": "Los gamma son muy energéticos y peligrosos."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El control remoto emite pulsos infrarrojos, que el ojo no ve."
+ },
+ {
+  "id": "fis-esp-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "paes",
+  "enunciado": "Una polera verde se ilumina solo con luz roja. ¿De qué color se ve?",
+  "opciones": [
+   {
+    "texto": "Negra",
+    "trampa": ""
+   },
+   {
+    "texto": "Verde",
+    "trampa": "Pensaste que el color es del objeto siempre. La polera refleja verde, pero bajo luz roja no hay verde que reflejar."
+   },
+   {
+    "texto": "Roja",
+    "trampa": "Pensaste que refleja la luz que le llega; la polera absorbe el rojo."
+   },
+   {
+    "texto": "Amarilla",
+    "trampa": "Sumaste rojo y verde como si fueran dos luces; el objeto no suma colores, solo devuelve lo que refleja."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Refleja solo verde; la luz roja no trae verde; absorbe el rojo → no devuelve nada → negra."
+ },
+ {
+  "id": "fis-esp-p2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "paes",
+  "enunciado": "Cuando la luz blanca atraviesa un prisma, ¿qué color se desvía más?",
+  "opciones": [
+   {
+    "texto": "Rojo",
+    "trampa": "Es al revés: el rojo es el que menos se desvía."
+   },
+   {
+    "texto": "Todos se desvían igual",
+    "trampa": "Si se desviaran igual, no se separarían los colores (no habría dispersión)."
+   },
+   {
+    "texto": "Violeta",
+    "trampa": ""
+   },
+   {
+    "texto": "Verde",
+    "trampa": "Está al medio: se desvía más que el rojo y menos que el violeta."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "En el vidrio el violeta se frena más que el rojo, así que se desvía más."
+ },
+ {
+  "id": "fis-esp-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "dificil",
+  "enunciado": "Una onda electromagnética tiene λ = 3 cm. ¿Cuál es su frecuencia y a qué zona del espectro pertenece? (c = 3·10⁸ m/s)",
+  "opciones": [
+   {
+    "texto": "10⁸ Hz, microondas",
+    "trampa": "No pasaste 3 cm a metros (0,03 m)."
+   },
+   {
+    "texto": "10¹⁰ Hz, microondas",
+    "trampa": ""
+   },
+   {
+    "texto": "10¹⁰ Hz, infrarrojo",
+    "trampa": "La frecuencia está bien, pero λ de centímetros corresponde a microondas, no a infrarrojo."
+   },
+   {
+    "texto": "9·10⁶ Hz, ondas de radio",
+    "trampa": "Multiplicaste c·λ. La frecuencia es c/λ."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "f = 3·10⁸/0,03 = 10¹⁰ Hz: microondas (como el wifi y el radar)."
+ },
+ {
+  "id": "fis-esp-d2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.espectro-color",
+  "nivel": "dificil",
+  "enunciado": "¿Por qué la radiación ultravioleta puede dañar la piel y las ondas de radio no?",
+  "opciones": [
+   {
+    "texto": "Porque viaja más rápido",
+    "trampa": "Todas las ondas EM viajan a la misma rapidez en el vacío."
+   },
+   {
+    "texto": "Porque tiene mayor longitud de onda",
+    "trampa": "Es al revés: el UV tiene menor λ que la radio."
+   },
+   {
+    "texto": "Porque es una onda mecánica",
+    "trampa": "Ambas son ondas electromagnéticas."
+   },
+   {
+    "texto": "Porque tiene mayor frecuencia y, por eso, más energía",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La energía de la radiación EM crece con la frecuencia: UV, X y gamma pueden dañar células."
+ },
+ {
+  "id": "fis-dop-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "basico",
+  "enunciado": "Una fuente de luz se acerca rápidamente a un observador. ¿Cómo percibe el observador la luz?",
+  "opciones": [
+   {
+    "texto": "Con menor frecuencia (corrida hacia el rojo)",
+    "trampa": "Eso ocurre cuando la fuente se ALEJA."
+   },
+   {
+    "texto": "Con mayor frecuencia (corrida hacia el azul)",
+    "trampa": ""
+   },
+   {
+    "texto": "Con la misma frecuencia",
+    "trampa": "Si la fuente se mueve hacia el observador, los frentes llegan más juntos: cambia la frecuencia."
+   },
+   {
+    "texto": "Con mayor rapidez",
+    "trampa": "La rapidez de la luz no cambia; cambia la frecuencia percibida."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Efecto Doppler: fuente que se acerca → frentes más juntos → mayor frecuencia."
+ },
+ {
+  "id": "fis-dop-b2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "basico",
+  "enunciado": "¿Qué es la interferencia constructiva?",
+  "opciones": [
+   {
+    "texto": "Dos ondas que coinciden cresta con valle y se anulan",
+    "trampa": "Eso es interferencia destructiva."
+   },
+   {
+    "texto": "Una onda que rodea un obstáculo",
+    "trampa": "Eso es difracción."
+   },
+   {
+    "texto": "Una onda que rebota en una superficie",
+    "trampa": "Eso es reflexión."
+   },
+   {
+    "texto": "Dos ondas que coinciden cresta con cresta y forman una onda de mayor amplitud",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Constructiva: se suman en fase y la amplitud crece."
+ },
+ {
+  "id": "fis-dop-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "paes",
+  "enunciado": "Al analizar la luz de una estrella, sus líneas llegan corridas hacia el azul. ¿Qué indica?",
+  "opciones": [
+   {
+    "texto": "Que se está alejando de nosotros",
+    "trampa": "Invertiste el efecto: alejarse produce corrimiento al rojo."
+   },
+   {
+    "texto": "Que es de color azul",
+    "trampa": "El corrimiento compara la frecuencia recibida con la emitida; no dice de qué color es la estrella."
+   },
+   {
+    "texto": "Que se está acercando a nosotros",
+    "trampa": ""
+   },
+   {
+    "texto": "Que su luz viaja más rápido",
+    "trampa": "Pensaste que cambia la rapidez; la luz siempre viaja a c en el vacío, se mueva o no la fuente."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Corrimiento al azul = mayor frecuencia recibida = la fuente se acerca."
+ },
+ {
+  "id": "fis-dop-p2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "paes",
+  "enunciado": "Detrás de un cerro grande no se ve la antena de una radio AM, pero igual se sintoniza. ¿Por qué?",
+  "opciones": [
+   {
+    "texto": "Las ondas de radio, de λ mucho mayor, se difractan más alrededor de obstáculos grandes",
+    "trampa": ""
+   },
+   {
+    "texto": "Las ondas de radio viajan más rápido que la luz",
+    "trampa": "Ambas son ondas EM y viajan a la misma rapidez."
+   },
+   {
+    "texto": "La luz se refracta en el cerro",
+    "trampa": "La luz no atraviesa el cerro; lo que explica la diferencia es la difracción."
+   },
+   {
+    "texto": "Las ondas de radio no son electromagnéticas",
+    "trampa": "Sí lo son: la diferencia es su longitud de onda."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "La difracción se nota cuando el obstáculo es comparable a λ: la radio AM (λ de cientos de metros) rodea el cerro; la luz (λ diminuta) casi no."
+ },
+ {
+  "id": "fis-dop-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "paes",
+  "enunciado": "Dos ondas de igual amplitud A se superponen exactamente en oposición (cresta con valle). ¿Cuál es la amplitud resultante?",
+  "opciones": [
+   {
+    "texto": "2A",
+    "trampa": "Eso ocurre si coinciden cresta con cresta (constructiva)."
+   },
+   {
+    "texto": "A",
+    "trampa": "Pensaste que una «gana»; con igual amplitud y en oposición se anulan."
+   },
+   {
+    "texto": "A/2",
+    "trampa": "No se reparten: en cada punto se suman con signo, A + (−A) = 0."
+   },
+   {
+    "texto": "0",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Interferencia destructiva total: A + (−A) = 0."
+ },
+ {
+  "id": "fis-dop-d2",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.doppler-interferencia",
+  "nivel": "dificil",
+  "enunciado": "Un radar de tránsito envía microondas hacia un auto que se ACERCA. ¿Cómo vuelve la onda reflejada?",
+  "opciones": [
+   {
+    "texto": "Con menor frecuencia que la emitida",
+    "trampa": "Eso pasaría si el auto se alejara."
+   },
+   {
+    "texto": "Con mayor frecuencia que la emitida",
+    "trampa": ""
+   },
+   {
+    "texto": "Con la misma frecuencia, pero más intensa",
+    "trampa": "El movimiento del auto cambia la frecuencia de la onda reflejada: así el radar mide la velocidad."
+   },
+   {
+    "texto": "Con mayor rapidez",
+    "trampa": "Las microondas siempre viajan a c."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El auto que se acerca actúa como fuente en movimiento hacia el radar: la frecuencia reflejada aumenta."
+ },
+ {
+  "id": "fis-dis-b1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.dispositivos",
+  "nivel": "basico",
+  "enunciado": "¿Qué tipo de onda usa un radar para detectar aviones?",
+  "opciones": [
+   {
+    "texto": "Ultravioleta",
+    "trampa": "El UV se absorbe fácilmente en el aire y no se usa para detectar aviones."
+   },
+   {
+    "texto": "Rayos X",
+    "trampa": "Confundiste usos: los rayos X se usan en radiografías, no en radares."
+   },
+   {
+    "texto": "Luz visible",
+    "trampa": "La luz visible no sirve de noche ni con nubes; el radar usa microondas."
+   },
+   {
+    "texto": "Microondas",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "El radar emite microondas que se reflejan en el avión."
+ },
+ {
+  "id": "fis-dis-p1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.dispositivos",
+  "nivel": "paes",
+  "enunciado": "¿Qué diferencia a un telescopio reflector de uno refractor?",
+  "opciones": [
+   {
+    "texto": "El reflector junta la luz con un espejo cóncavo; el refractor, con lentes",
+    "trampa": ""
+   },
+   {
+    "texto": "El reflector usa lentes y el refractor, espejos",
+    "trampa": "Lo invertiste: refractor viene de refracción (lentes)."
+   },
+   {
+    "texto": "El reflector capta ondas de radio",
+    "trampa": "Ese es el radiotelescopio."
+   },
+   {
+    "texto": "El refractor solo sirve para mirar el Sol",
+    "trampa": "Ambos sirven para observar objetos lejanos; difieren en cómo juntan la luz."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Reflector = reflexión en un espejo cóncavo. Refractor = refracción en lentes."
+ },
+ {
+  "id": "fis-dis-d1",
+  "prueba": "CIE",
+  "eje": "Ondas",
+  "tema": "fis.ond.dispositivos",
+  "nivel": "paes",
+  "enunciado": "¿Por qué la luz puede viajar por una fibra óptica aunque esta se curve?",
+  "opciones": [
+   {
+    "texto": "Porque la fibra emite luz propia a lo largo de todo su recorrido",
+    "trampa": "Pensaste que la fibra emite luz; solo conduce la que entra por un extremo."
+   },
+   {
+    "texto": "Porque se refleja una y otra vez en las paredes internas de la fibra",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque la luz se curva sola siguiendo la forma de la fibra",
+    "trampa": "La luz va en línea recta; avanza rebotando en las paredes."
+   },
+   {
+    "texto": "Porque la fibra es hueca y la luz rebota en el aire de adentro",
+    "trampa": "La fibra es de vidrio macizo: la luz rebota en el borde del vidrio."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "La luz va rebotando dentro del vidrio sin escaparse, aunque la fibra tenga curvas."
+ },
+ {
+  "id": "fis-ohm-b1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "basico",
+  "enunciado": "Una resistencia de 4 Ω se conecta a una fuente de 12 V. ¿Qué corriente circula?",
+  "opciones": [
+   {
+    "texto": "3 A",
+    "trampa": ""
+   },
+   {
+    "texto": "48 A",
+    "trampa": "Multiplicaste V·R. La corriente es V/R."
+   },
+   {
+    "texto": "1/3 A",
+    "trampa": "Dividiste al revés: R/V."
+   },
+   {
+    "texto": "16 A",
+    "trampa": "Sumaste V + R."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "I = V/R = 12/4 = 3 A."
+ },
+ {
+  "id": "fis-ohm-b2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la resistencia equivalente de 3 Ω y 6 Ω conectadas en serie?",
+  "opciones": [
+   {
+    "texto": "2 Ω",
+    "trampa": "Ese es el resultado en paralelo. En serie se suman."
+   },
+   {
+    "texto": "18 Ω",
+    "trampa": "Multiplicaste 3·6."
+   },
+   {
+    "texto": "9 Ω",
+    "trampa": ""
+   },
+   {
+    "texto": "4,5 Ω",
+    "trampa": "Promediaste: en serie se suman, no se promedian."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Serie: R = 3 + 6 = 9 Ω."
+ },
+ {
+  "id": "fis-ohm-b3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la resistencia equivalente de dos resistencias de 6 Ω conectadas en paralelo?",
+  "opciones": [
+   {
+    "texto": "3 Ω",
+    "trampa": ""
+   },
+   {
+    "texto": "12 Ω",
+    "trampa": "Las sumaste como en serie."
+   },
+   {
+    "texto": "36 Ω",
+    "trampa": "Multiplicaste 6·6 sin dividir por la suma."
+   },
+   {
+    "texto": "6 Ω",
+    "trampa": "Pensaste que en paralelo la resistencia no cambia; con dos caminos, baja a la mitad."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "1/R = 1/6 + 1/6 = 1/3 → R = 3 Ω."
+ },
+ {
+  "id": "fis-ohm-p1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "paes",
+  "enunciado": "Tres resistencias de 2 Ω se conectan en serie a una fuente de 12 V. ¿Qué corriente entrega la fuente?",
+  "opciones": [
+   {
+    "texto": "6 A",
+    "trampa": "Usaste una sola resistencia (12/2). En serie se suman: 6 Ω."
+   },
+   {
+    "texto": "18 A",
+    "trampa": "Las tomaste en paralelo (2/3 Ω)."
+   },
+   {
+    "texto": "24 A",
+    "trampa": "Multiplicaste 12·2."
+   },
+   {
+    "texto": "2 A",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "R = 2 + 2 + 2 = 6 Ω. I = 12/6 = 2 A."
+ },
+ {
+  "id": "fis-ohm-p2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "paes",
+  "enunciado": "Dos resistencias de 4 Ω y 12 Ω se conectan en paralelo a una fuente de 12 V. ¿Qué corriente total entrega la fuente?",
+  "opciones": [
+   {
+    "texto": "0,75 A",
+    "trampa": "Las sumaste en serie (16 Ω)."
+   },
+   {
+    "texto": "4 A",
+    "trampa": ""
+   },
+   {
+    "texto": "1 A",
+    "trampa": "Calculaste solo la corriente de la resistencia de 12 Ω."
+   },
+   {
+    "texto": "3 A",
+    "trampa": "Calculaste solo la corriente de la resistencia de 4 Ω."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "En paralelo cada una recibe 12 V: 12/4 = 3 A y 12/12 = 1 A. Total 4 A."
+ },
+ {
+  "id": "fis-ohm-p3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "paes",
+  "enunciado": "Tres ampolletas están conectadas en serie. Si una se quema, ¿qué pasa con las otras?",
+  "opciones": [
+   {
+    "texto": "Las demás brillan más",
+    "trampa": "Pensaste que la corriente de la quemada se reparte entre las otras; sin camino cerrado no circula por ninguna."
+   },
+   {
+    "texto": "Las demás siguen igual",
+    "trampa": "Eso pasa en paralelo, donde cada una tiene su propio camino."
+   },
+   {
+    "texto": "Solo se apaga la quemada",
+    "trampa": "En serie hay un solo camino: si se corta, se corta para todas."
+   },
+   {
+    "texto": "Se apagan todas, porque se corta el único camino de la corriente",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "En serie hay un solo camino; una ampolleta quemada abre el circuito."
+ },
+ {
+  "id": "fis-ohm-d1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "dificil",
+  "enunciado": "Una resistencia de 2 Ω está en serie con dos resistencias en paralelo de 6 Ω y 3 Ω, y todo se conecta a 8 V. ¿Qué corriente entrega la fuente?",
+  "opciones": [
+   {
+    "texto": "8/11 A",
+    "trampa": "Sumaste las tres resistencias (11 Ω) como si todas estuvieran en serie."
+   },
+   {
+    "texto": "4 A",
+    "trampa": "Usaste solo la resistencia de 2 Ω."
+   },
+   {
+    "texto": "2 A",
+    "trampa": ""
+   },
+   {
+    "texto": "1 A",
+    "trampa": "Calculaste mal el paralelo como (6·3)/(6 − 3) = 6 Ω; es (6·3)/(6 + 3) = 2 Ω."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Paralelo: 2 Ω. Total 2 + 2 = 4 Ω. I = 8/4 = 2 A."
+ },
+ {
+  "id": "fis-ohm-d2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "dificil",
+  "enunciado": "Resistencias de 2 Ω y 4 Ω se conectan en serie a 12 V. ¿Qué voltaje hay en la resistencia de 4 Ω?",
+  "opciones": [
+   {
+    "texto": "8 V",
+    "trampa": ""
+   },
+   {
+    "texto": "4 V",
+    "trampa": "Ese es el voltaje en la resistencia de 2 Ω."
+   },
+   {
+    "texto": "6 V",
+    "trampa": "Repartiste el voltaje en partes iguales: en serie se reparte en proporción a cada R."
+   },
+   {
+    "texto": "12 V",
+    "trampa": "Ese es el voltaje total de la fuente, que se reparte entre las dos."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "I = 12/6 = 2 A. V = 2·4 = 8 V."
+ },
+ {
+  "id": "fis-ohm-d3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.ohm",
+  "nivel": "dificil",
+  "enunciado": "A una resistencia conectada a una fuente fija se le agrega otra resistencia en paralelo. ¿Qué pasa con la corriente total que entrega la fuente?",
+  "opciones": [
+   {
+    "texto": "Disminuye",
+    "trampa": "Pensaste que más resistencias siempre suman resistencia; en paralelo, la total BAJA."
+   },
+   {
+    "texto": "No cambia",
+    "trampa": "Miraste solo la primera resistencia, cuya corriente no cambia; la nueva rama suma la suya."
+   },
+   {
+    "texto": "Aumenta",
+    "trampa": ""
+   },
+   {
+    "texto": "Se hace cero",
+    "trampa": "Pensaste que la rama nueva corta el circuito; la primera sigue igual y se suma la nueva."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "En paralelo la resistencia equivalente baja; con el mismo voltaje, I = V/R sube."
+ },
+ {
+  "id": "fis-pot-b1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "basico",
+  "enunciado": "Un artefacto funciona con 220 V y por él circulan 5 A. ¿Qué potencia tiene?",
+  "opciones": [
+   {
+    "texto": "44 W",
+    "trampa": "Dividiste V/I. La potencia es V·I."
+   },
+   {
+    "texto": "225 W",
+    "trampa": "Sumaste V + I."
+   },
+   {
+    "texto": "0,023 W",
+    "trampa": "Dividiste I/V."
+   },
+   {
+    "texto": "1100 W",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P = V·I = 220·5 = 1100 W."
+ },
+ {
+  "id": "fis-pot-b2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "basico",
+  "enunciado": "Un artefacto de 1000 W funciona durante 2 horas. ¿Cuánta energía consume?",
+  "opciones": [
+   {
+    "texto": "2000 kWh",
+    "trampa": "Multiplicaste 1000·2 sin pasar W a kW: son 2000 Wh = 2 kWh."
+   },
+   {
+    "texto": "2 kWh",
+    "trampa": ""
+   },
+   {
+    "texto": "500 kWh",
+    "trampa": "Dividiste la potencia por el tiempo."
+   },
+   {
+    "texto": "1002 kWh",
+    "trampa": "Sumaste potencia y tiempo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "E = P·t = 1 kW · 2 h = 2 kWh."
+ },
+ {
+  "id": "fis-pot-b3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "basico",
+  "enunciado": "En la cuenta de la luz, ¿qué mide el kWh?",
+  "opciones": [
+   {
+    "texto": "Potencia",
+    "trampa": "La potencia se mide en W o kW; el kWh es potencia × tiempo: energía."
+   },
+   {
+    "texto": "Corriente",
+    "trampa": "La corriente se mide en amperes (A)."
+   },
+   {
+    "texto": "Voltaje",
+    "trampa": "El voltaje se mide en volts (V)."
+   },
+   {
+    "texto": "Energía",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "1 kWh = energía de 1000 W funcionando 1 hora."
+ },
+ {
+  "id": "fis-pot-p1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "paes",
+  "enunciado": "Una ampolleta de 60 W se usa 5 horas al día durante 30 días. Si el kWh cuesta $150, ¿cuánto cuesta esa energía?",
+  "opciones": [
+   {
+    "texto": "$1.350",
+    "trampa": ""
+   },
+   {
+    "texto": "$1.350.000",
+    "trampa": "No pasaste W a kW: son 9 kWh, no 9000."
+   },
+   {
+    "texto": "$45",
+    "trampa": "Calculaste un solo día."
+   },
+   {
+    "texto": "$9",
+    "trampa": "Diste la energía (9 kWh) como si fuera el costo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "E = 0,06 kW · 150 h = 9 kWh. Costo = 9 · 150 = $1.350."
+ },
+ {
+  "id": "fis-pot-p2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "paes",
+  "enunciado": "Una resistencia de 10 Ω se conecta a 20 V. ¿Qué potencia disipa?",
+  "opciones": [
+   {
+    "texto": "200 W",
+    "trampa": "Multiplicaste V·R."
+   },
+   {
+    "texto": "2 W",
+    "trampa": "Calculaste la corriente (V/R = 2 A), no la potencia."
+   },
+   {
+    "texto": "40 W",
+    "trampa": ""
+   },
+   {
+    "texto": "400 W",
+    "trampa": "Elevaste V al cuadrado y olvidaste dividir por R."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "P = V²/R = 400/10 = 40 W (o I = 2 A, P = V·I = 40 W)."
+ },
+ {
+  "id": "fis-pot-p3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "paes",
+  "enunciado": "Una ampolleta consume 100 J de energía eléctrica y entrega 10 J como luz. ¿Cuál es su eficiencia?",
+  "opciones": [
+   {
+    "texto": "10 %",
+    "trampa": ""
+   },
+   {
+    "texto": "90 %",
+    "trampa": "Ese es el porcentaje que se pierde como calor."
+   },
+   {
+    "texto": "1000 %",
+    "trampa": "Dividiste al revés: 100/10."
+   },
+   {
+    "texto": "0,1 %",
+    "trampa": "Calculaste 10/100 = 0,1 y le pusiste % sin multiplicar por 100."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Eficiencia = útil/consumida = 10/100 = 0,1 = 10 %."
+ },
+ {
+  "id": "fis-pot-d1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "dificil",
+  "enunciado": "Un hervidor dice «2200 W · 220 V». Si se conecta a 110 V (su resistencia no cambia), ¿qué potencia desarrolla?",
+  "opciones": [
+   {
+    "texto": "550 W",
+    "trampa": ""
+   },
+   {
+    "texto": "1100 W",
+    "trampa": "Pensaste que P baja a la mitad como V; también baja la corriente, así que P = V²/R baja a un cuarto."
+   },
+   {
+    "texto": "2200 W",
+    "trampa": "Pensaste que la potencia es fija; lo fijo es la resistencia."
+   },
+   {
+    "texto": "4400 W",
+    "trampa": "Invertiste el efecto: con menos voltaje la potencia baja."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "R = V²/P = 220²/2200 = 22 Ω. A 110 V: P = 110²/22 = 550 W (la mitad de V da un cuarto de P)."
+ },
+ {
+  "id": "fis-pot-d2",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "dificil",
+  "enunciado": "Dos ampolletas de 220 V, una de 100 W y otra de 60 W, funcionan normalmente en la casa. ¿Cuál tiene mayor resistencia?",
+  "opciones": [
+   {
+    "texto": "La de 100 W",
+    "trampa": "Pensaste que más potencia es más resistencia; con voltaje fijo, R = V²/P: menos potencia, MÁS resistencia."
+   },
+   {
+    "texto": "Tienen la misma resistencia",
+    "trampa": "Si tuvieran la misma R con el mismo voltaje, tendrían la misma potencia."
+   },
+   {
+    "texto": "Depende de la corriente del enchufe",
+    "trampa": "Ambas reciben 220 V; con eso, R queda fijada por la potencia: R = V²/P."
+   },
+   {
+    "texto": "La de 60 W",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "R = V²/P: 60 W → ≈ 807 Ω; 100 W → 484 Ω."
+ },
+ {
+  "id": "fis-pot-d3",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.potencia",
+  "nivel": "dificil",
+  "enunciado": "Una ampolleta LED de 10 W reemplaza a una incandescente de 60 W que daba la misma luz. ¿Cuánta energía se ahorra en 1000 horas de uso?",
+  "opciones": [
+   {
+    "texto": "50 000 kWh",
+    "trampa": "No pasaste W a kW: son 50 000 Wh = 50 kWh."
+   },
+   {
+    "texto": "50 kWh",
+    "trampa": ""
+   },
+   {
+    "texto": "60 kWh",
+    "trampa": "Calculaste solo el consumo de la incandescente (0,06 kW · 1000 h). El ahorro es la diferencia."
+   },
+   {
+    "texto": "70 kWh",
+    "trampa": "Sumaste las potencias en vez de restarlas."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Ahorro de potencia: 60 − 10 = 50 W = 0,05 kW. En 1000 h: 0,05 · 1000 = 50 kWh."
+ },
+ {
+  "id": "fis-dom-b1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.domiciliaria",
+  "nivel": "basico",
+  "enunciado": "¿Cómo están conectados los artefactos en la instalación eléctrica de una casa?",
+  "opciones": [
+   {
+    "texto": "En serie, para que la corriente sea la misma en todos",
+    "trampa": "En serie, al apagar uno se apagarían todos."
+   },
+   {
+    "texto": "En serie, para ahorrar energía",
+    "trampa": "Conectar en serie no ahorra energía y haría que dependan unos de otros."
+   },
+   {
+    "texto": "Mitad en serie y mitad en paralelo",
+    "trampa": "Los enchufes y las luces de la casa se conectan en paralelo."
+   },
+   {
+    "texto": "En paralelo, para que todos reciban 220 V y funcionen por separado",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "En paralelo cada artefacto recibe los 220 V y tiene su propio camino."
+ },
+ {
+  "id": "fis-dom-p1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.domiciliaria",
+  "nivel": "paes",
+  "enunciado": "¿Qué función cumple el disyuntor (automático) del tablero eléctrico?",
+  "opciones": [
+   {
+    "texto": "Cortar la corriente si circula más de la permitida",
+    "trampa": ""
+   },
+   {
+    "texto": "Medir la energía consumida",
+    "trampa": "Eso lo hace el medidor."
+   },
+   {
+    "texto": "Aumentar el voltaje de la casa",
+    "trampa": "Ningún componente del tablero aumenta el voltaje."
+   },
+   {
+    "texto": "Cortar si una persona recibe una descarga a tierra",
+    "trampa": "Esa es la función del diferencial."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El automático protege la instalación frente a sobrecargas y cortocircuitos."
+ },
+ {
+  "id": "fis-dom-d1",
+  "prueba": "CIE",
+  "eje": "Electricidad",
+  "tema": "fis.ele.domiciliaria",
+  "nivel": "dificil",
+  "enunciado": "En un circuito de 220 V protegido con un automático de 10 A se enchufan a la vez un hervidor de 1760 W y una plancha de 880 W. ¿Qué pasa?",
+  "opciones": [
+   {
+    "texto": "Funcionan, porque cada uno usa menos de 10 A",
+    "trampa": "Por separado usan 8 A y 4 A, pero en paralelo las corrientes se suman: 12 A."
+   },
+   {
+    "texto": "El automático corta, porque circulan 12 A en total",
+    "trampa": ""
+   },
+   {
+    "texto": "Funcionan, porque en paralelo la corriente se reparte",
+    "trampa": "Se reparte entre los artefactos, pero el total que pasa por el automático es la suma."
+   },
+   {
+    "texto": "Corta solo el hervidor",
+    "trampa": "El automático corta todo el circuito, no un artefacto."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "I = (1760 + 880)/220 = 8 + 4 = 12 A > 10 A: el automático se dispara."
+ },
+ {
+  "id": "fis-tec-b1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes es una evidencia de la deriva continental propuesta por Wegener?",
+  "opciones": [
+   {
+    "texto": "La existencia de volcanes en Chile",
+    "trampa": "Los volcanes se explican por la tectónica de placas; no fueron la evidencia de Wegener."
+   },
+   {
+    "texto": "Que la Tierra gira sobre su eje",
+    "trampa": "La rotación no tiene relación con el movimiento de los continentes."
+   },
+   {
+    "texto": "Fósiles de la misma especie en continentes separados por océanos",
+    "trampa": ""
+   },
+   {
+    "texto": "Que el núcleo externo es líquido",
+    "trampa": "Eso se supo después y es parte del modelo del interior, no una evidencia de Wegener."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Fósiles y rocas iguales a ambos lados del océano indican que los continentes estuvieron unidos."
+ },
+ {
+  "id": "fis-tec-b2",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "basico",
+  "enunciado": "Según el modelo físico del interior de la Tierra, ¿qué capa se encuentra en estado líquido?",
+  "opciones": [
+   {
+    "texto": "El núcleo externo",
+    "trampa": ""
+   },
+   {
+    "texto": "La astenosfera",
+    "trampa": "La astenosfera es sólida pero plástica: puede fluir lentamente, pero no es líquida."
+   },
+   {
+    "texto": "El núcleo interno",
+    "trampa": "El núcleo interno es sólido por la enorme presión."
+   },
+   {
+    "texto": "La litosfera",
+    "trampa": "La litosfera es la capa rígida que forma las placas."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El núcleo externo (hierro y níquel fundidos) es la capa líquida."
+ },
+ {
+  "id": "fis-tec-p1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "paes",
+  "enunciado": "¿Qué ocurre en una dorsal oceánica?",
+  "opciones": [
+   {
+    "texto": "Una placa se hunde bajo otra",
+    "trampa": "Eso es una zona de subducción (límite convergente)."
+   },
+   {
+    "texto": "Las placas se separan y se forma corteza nueva",
+    "trampa": ""
+   },
+   {
+    "texto": "Las placas se deslizan de lado sin crear corteza",
+    "trampa": "Eso es un límite transformante."
+   },
+   {
+    "texto": "Dos continentes chocan y forman cordilleras",
+    "trampa": "Eso es un límite convergente continente-continente."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Dorsal = límite divergente: sube magma y se crea litosfera oceánica."
+ },
+ {
+  "id": "fis-tec-p2",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "paes",
+  "enunciado": "¿Sobre qué capa se desplazan las placas tectónicas?",
+  "opciones": [
+   {
+    "texto": "El núcleo externo",
+    "trampa": "Está mucho más profundo; las placas se apoyan sobre la astenosfera."
+   },
+   {
+    "texto": "La corteza",
+    "trampa": "La corteza es parte de la litosfera, es decir, de las mismas placas."
+   },
+   {
+    "texto": "La mesosfera",
+    "trampa": "La mesosfera está debajo de la astenosfera."
+   },
+   {
+    "texto": "La astenosfera",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La litosfera rígida se desplaza sobre la astenosfera, que se comporta de forma plástica."
+ },
+ {
+  "id": "fis-tec-d1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "dificil",
+  "enunciado": "¿En qué se diferencian el modelo físico y el modelo químico del interior de la Tierra?",
+  "opciones": [
+   {
+    "texto": "El físico divide las capas según su comportamiento mecánico; el químico, según su composición",
+    "trampa": ""
+   },
+   {
+    "texto": "El físico usa la temperatura y el químico la profundidad",
+    "trampa": "Ambos tienen profundidades; el criterio es comportamiento (físico) contra composición (químico)."
+   },
+   {
+    "texto": "Son el mismo modelo con distintos nombres",
+    "trampa": "No coinciden: por ejemplo, la litosfera incluye la corteza y parte del manto."
+   },
+   {
+    "texto": "El químico es más moderno y reemplazó al físico",
+    "trampa": "Se usan los dos: miran la Tierra con criterios distintos."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Físico: litosfera, astenosfera, mesosfera, núcleo externo e interno. Químico: corteza, manto, núcleo."
+ },
+ {
+  "id": "fis-tec-d2",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.tie.tectonica",
+  "nivel": "basico",
+  "enunciado": "¿Qué diferencia hay entre el hipocentro y el epicentro de un sismo?",
+  "opciones": [
+   {
+    "texto": "El epicentro es donde se origina y el hipocentro, en la superficie",
+    "trampa": "Lo invertiste."
+   },
+   {
+    "texto": "Son el mismo punto",
+    "trampa": "Pensaste que son sinónimos; uno está bajo tierra y el otro en la superficie."
+   },
+   {
+    "texto": "El hipocentro es donde se origina, en profundidad; el epicentro es el punto de la superficie justo encima",
+    "trampa": ""
+   },
+   {
+    "texto": "El epicentro es el lugar donde más daño hubo",
+    "trampa": "El epicentro se define por su posición sobre el hipocentro, no por el daño."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Hipocentro (o foco): en el interior. Epicentro: en la superficie, encima."
+ },
+ {
+  "id": "fis-cos-b1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.mec.cosmos",
+  "nivel": "basico",
+  "enunciado": "¿Qué propone el modelo heliocéntrico de Copérnico?",
+  "opciones": [
+   {
+    "texto": "La Tierra está quieta al centro del universo",
+    "trampa": "Ese es el modelo geocéntrico de Aristóteles y Ptolomeo."
+   },
+   {
+    "texto": "Los planetas giran en epiciclos alrededor de la Tierra",
+    "trampa": "Los epiciclos son del modelo de Ptolomeo."
+   },
+   {
+    "texto": "El universo comenzó en una gran expansión",
+    "trampa": "Esa es la teoría del Big Bang, muy posterior."
+   },
+   {
+    "texto": "El Sol está al centro y la Tierra gira a su alrededor",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Heliocéntrico: el Sol al centro; la Tierra es un planeta más."
+ },
+ {
+  "id": "fis-cos-p1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.mec.cosmos",
+  "nivel": "paes",
+  "enunciado": "¿Qué observación de Galileo con su telescopio apoyó el modelo heliocéntrico?",
+  "opciones": [
+   {
+    "texto": "Las fases completas de Venus",
+    "trampa": ""
+   },
+   {
+    "texto": "Las órbitas elípticas de los planetas",
+    "trampa": "Ese fue el aporte de Kepler, a partir de datos, no una observación de Galileo."
+   },
+   {
+    "texto": "Los epiciclos de los planetas",
+    "trampa": "Los epiciclos eran parte del modelo geocéntrico."
+   },
+   {
+    "texto": "La radiación de fondo de microondas",
+    "trampa": "Es una evidencia del Big Bang, descubierta en el siglo XX."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Venus muestra todas sus fases solo si gira alrededor del Sol."
+ },
+ {
+  "id": "fis-cos-p2",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.mec.cosmos",
+  "nivel": "paes",
+  "enunciado": "Según Kepler, ¿qué forma tienen las órbitas de los planetas?",
+  "opciones": [
+   {
+    "texto": "Circunferencias perfectas con el Sol al centro",
+    "trampa": "Eso pensaba Copérnico; Kepler mostró que son elipses."
+   },
+   {
+    "texto": "Elipses, con la Tierra en uno de sus focos",
+    "trampa": "El Sol, no la Tierra, está en el foco."
+   },
+   {
+    "texto": "Elipses, con el Sol en uno de sus focos",
+    "trampa": ""
+   },
+   {
+    "texto": "Epiciclos alrededor del Sol",
+    "trampa": "Los epiciclos pertenecen al modelo de Ptolomeo."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "1.ª ley de Kepler: órbitas elípticas con el Sol en un foco."
+ },
+ {
+  "id": "fis-cos-d1",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.mec.cosmos",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de las siguientes es una evidencia que sustenta la teoría del Big Bang?",
+  "opciones": [
+   {
+    "texto": "Las fases de Venus",
+    "trampa": "Apoyan el modelo heliocéntrico, no el origen del universo."
+   },
+   {
+    "texto": "La radiación de fondo de microondas",
+    "trampa": ""
+   },
+   {
+    "texto": "La deriva continental",
+    "trampa": "Mezclaste temas: la deriva continental explica el movimiento de los continentes, no el origen del universo."
+   },
+   {
+    "texto": "Que las órbitas de los planetas sean elípticas",
+    "trampa": "Mezclaste temas: las órbitas elípticas son una ley de Kepler sobre el sistema solar."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El «eco» del universo caliente y denso: la radiación de fondo de microondas."
+ },
+ {
+  "id": "fis-cos-p3",
+  "prueba": "CIE",
+  "eje": "Tierra y Universo",
+  "tema": "fis.mec.cosmos",
+  "nivel": "paes",
+  "enunciado": "El Big Crunch propone que el universo algún día dejaría de expandirse y volvería a contraerse. ¿Qué observación actual lo hace poco probable?",
+  "opciones": [
+   {
+    "texto": "La expansión del universo se está acelerando",
+    "trampa": ""
+   },
+   {
+    "texto": "La luz de las galaxias lejanas llega corrida al rojo",
+    "trampa": "Eso muestra que hoy se expanden, algo que el Big Crunch también acepta; no dice si la expansión frenará."
+   },
+   {
+    "texto": "Existe la radiación de fondo de microondas",
+    "trampa": "Es evidencia del Big Bang (el pasado); no dice nada sobre el final."
+   },
+   {
+    "texto": "Los planetas giran en órbitas elípticas",
+    "trampa": "Mezclaste temas: es una ley de Kepler del sistema solar."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Para contraerse, la expansión tendría que frenarse. Se observa lo contrario: se acelera. Por eso hoy el Big Crunch se ve poco probable."
+ }
+]

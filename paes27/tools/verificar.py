@@ -36,9 +36,13 @@ def temas_validos():
 
 def preguntas():
     out = []
+    bancos_vistos = set()  # un mismo banco puede ir incrustado en varias páginas
     for html in sorted(RAIZ.glob("*.html")):
         txt = html.read_text(encoding="utf-8")
         for m in re.finditer(r'<script type="application/json" id="(banco-[a-z0-9]+)">(.*?)</script>', txt, re.S):
+            if m.group(1) in bancos_vistos:
+                continue
+            bancos_vistos.add(m.group(1))
             datos = json.loads(m.group(2))
 
             def walk(x):
@@ -57,7 +61,7 @@ def preguntas():
 
 # ---------------------------------------------------------------- evaluación de alternativas
 SUPER = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
-UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km|m|N|A|Ω|V|W|kWh|años|horas|%|°)"
+UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km/h|km|N/m|kWh|kg|Hz|UF|mA|m|N|A|Ω|V|W|J|s|años|horas|%|°)"
 
 
 def a_python(t):
@@ -94,7 +98,10 @@ def cerca(a, b, tol=1e-6):
     if isinstance(a, (tuple, list)):
         return False
     try:
-        return abs(float(a) - float(b)) <= tol * max(1.0, abs(float(b)))
+        a, b = float(a), float(b)
+        if abs(b) < 1e-12:
+            return abs(a) < 1e-9
+        return abs(a - b) <= tol * max(abs(a), abs(b))  # tolerancia relativa (sirve para 10⁻⁷ y para 10⁸)
     except (TypeError, ValueError):
         return False
 
@@ -244,10 +251,6 @@ def _(q):
     return idx_texto(q, max(presentes, key=espectro.index))
 
 
-@chk("d-cie-13")
-def _(q):
-    hijos = [a + b for a in "Aa" for b in "Aa"]
-    return idx_num(q, Fraction(sum(h == "aa" for h in hijos), len(hijos)))
 
 
 chk("d-cie-14")(lambda q: idx_num(q, 35 - 17))
@@ -277,12 +280,12 @@ CONCEPTUALES = {
     "d-cie-09": "refracción: cualitativa",
     "d-cie-11": "tectónica: cualitativa",
     "d-cie-12": "sinapsis: cualitativa",
+    "d-cie-13": "mitosis: etapas (cualitativa)",
     **{f"d-len-0{i}": "comprensión lectora" for i in range(1, 7)},
 }
 
 # Las lecciones (m2.html) registran sus cálculos en este archivo aparte, para no mezclar.
-EXTRA = RAIZ / "tools" / "verificar_m2.py"
-if EXTRA.exists():
+for EXTRA in sorted((RAIZ / "tools").glob("verificar_*.py")):
     exec(compile(EXTRA.read_text(encoding="utf-8"), str(EXTRA), "exec"))  # noqa: S102 (archivo propio)
 
 

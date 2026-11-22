@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAES 27 · prototipos de diseño</title>
+<style>
+@font-face{font-family:"Nunito Sans";src:url(../lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(../lib/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+
+/* ---------- A · Riso claro (Numeria, modo claro) ---------- */
+body[data-v=a]{--bg:#ECE8E1;--card:#F7F4EF;--card2:#E0DBD1;--ink:#0F1923;--muted:#56606B;--borde:2px solid #0F1923;--sombra:0 4px 0 0 rgba(15,25,35,.9);--sombra-sm:0 2px 0 0 rgba(15,25,35,.9);--r:16px;
+  --pri:#1A5FFF;--pri-ink:#fff;--ok:#2F7D00;--okf:#58CC02;--mal:#D92D3F;--malf:#FF4655;--sol:#B28600;
+  --m2:#1A5FFF;--cie:#58CC02;--m1:#FF9600;--len:#FF4655;--tile-ink:#fff;--fondo:none}
+/* ---------- B · Riso noche (Numeria, modo oscuro) ---------- */
+body[data-v=b]{--bg:#1E1F22;--card:#2B2D31;--card2:#35373C;--ink:#DBDEE1;--muted:#9AA0A8;--borde:2px solid rgba(219,222,225,.14);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--r:16px;
+  --pri:#5B8CFF;--pri-ink:#0F1923;--ok:#79E22B;--okf:#79E22B;--mal:#FF5C66;--malf:#FF5C66;--sol:#FFCB33;
+  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;--tile-ink:#0F1923;--fondo:none}
+/* ---------- C · Azulejos vivos (como el ícono) ---------- */
+body[data-v=c]{--bg:#F4F6FB;--card:#FFFFFF;--card2:#EEF1F8;--ink:#14162B;--muted:#5D6478;--borde:1px solid rgba(20,22,43,.06);--sombra:0 10px 30px -12px rgba(20,22,43,.25);--sombra-sm:0 4px 14px -8px rgba(20,22,43,.3);--r:22px;
+  --pri:linear-gradient(135deg,#E5157A,#FF8A1F);--pri-ink:#fff;--ok:#0B9B5A;--okf:#18D98B;--mal:#D4145A;--malf:#E5157A;--sol:#C77700;
+  --m2:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie:linear-gradient(135deg,#18D98B,#0BAE6A);--m1:linear-gradient(135deg,#FF8A1F,#FFC53A);--len:linear-gradient(135deg,#E5157A,#F2295F);--tile-ink:#fff;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.16),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.12),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.12),transparent 70%)}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--fondo),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.5 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.disp{font-family:"Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;letter-spacing:-.01em;margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.marca{display:flex;align-items:center;gap:10px}
+.marca svg{width:46px;height:46px;flex:none}
+.marca b{font:800 1.5rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.marca small{display:block;color:var(--muted);font-weight:700;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase}
+.nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav a{padding:.42em .9em;border-radius:999px;font-weight:800;font-size:.9rem;text-decoration:none;color:var(--ink);border:var(--borde);background:var(--card)}
+.nav a.on{background:var(--m2);color:var(--tile-ink);border-color:transparent}
+body[data-v=c] .nav a{border:0;box-shadow:var(--sombra-sm)}
+.tema{width:38px;height:38px;border-radius:12px;border:var(--borde);background:var(--card);display:grid;place-items:center;font-size:1.1rem}
+.saludo{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:8px 0 14px}
+.saludo h1{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.4rem)}
+.saludo p{margin:.2em 0 0;color:var(--muted);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.tile{position:relative;border-radius:var(--r);padding:14px 14px 12px;color:var(--tile-ink);background:var(--c);box-shadow:var(--sombra);overflow:hidden;min-height:118px}
+body[data-v=a] .tile{border:2px solid #0F1923}
+.tile .sim{position:absolute;right:10px;top:6px;font:800 2.6rem/1 "Bricolage Grotesque",sans-serif;opacity:.9}
+.tile .dias{font:800 2.1rem/1 "Bricolage Grotesque",sans-serif;margin-top:18px}
+.tile .dias small{font-size:.9rem;font-weight:700}
+.tile .pr{font-weight:800;font-size:.95rem}
+.tile .f{font-size:.78rem;font-weight:700;opacity:.9}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px}
+.card{background:var(--card);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:16px}
+.card h2{font-size:1.15rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.bloque{display:grid;grid-template-columns:22px 92px 1fr;gap:10px;align-items:center;padding:9px 0;border-top:1px dashed color-mix(in oklab,var(--muted) 40%,transparent)}
+.bloque:first-of-type{border-top:0}
+.chk{width:22px;height:22px;border-radius:7px;border:2px solid var(--muted);display:grid;place-items:center;font-size:.8rem;font-weight:900}
+.chk.si{background:var(--okf);border-color:var(--okf);color:#0F1923}
+.hora{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700;font-size:.88rem}
+.tag{display:inline-block;font-size:.7rem;font-weight:900;padding:.1em .5em;border-radius:6px;margin-right:6px;color:var(--tile-ink);background:var(--c)}
+.tit{font-weight:800}
+.det{color:var(--muted);font-size:.84rem}
+.dom{display:grid;grid-template-columns:1fr 120px 42px;gap:10px;align-items:center;margin:6px 0;font-weight:700;font-size:.92rem}
+.bar{height:10px;border-radius:99px;background:var(--card2);overflow:hidden}.bar i{display:block;height:100%;border-radius:99px}
+.q-meta{font-size:.74rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.q-enun{font-size:1.06rem;font-weight:600;margin-bottom:12px}
+.op{display:flex;gap:12px;align-items:center;padding:.7em .9em;border-radius:14px;border:var(--borde);background:var(--card);box-shadow:var(--sombra-sm);margin:8px 0;font-weight:700}
+body[data-v=c] .op:not(.ok):not(.mal){background:var(--card2);box-shadow:none;border:2px solid transparent}
+.op .l{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:800 .95rem/1 "Bricolage Grotesque",sans-serif;background:var(--card2);flex:none}
+body[data-v=c] .op:not(.ok):not(.mal) .l{background:#fff}
+body .op.ok{border-color:var(--okf);background:color-mix(in oklab,var(--okf) 16%,var(--card))}
+body .op.ok .l{background:var(--okf);color:#0F1923}
+body .op.mal{border-color:var(--malf);background:color-mix(in oklab,var(--malf) 14%,var(--card))}
+body .op.mal .l{background:var(--malf);color:#fff}
+.trampa{margin-top:10px;padding:10px 12px;border-radius:12px;background:color-mix(in oklab,var(--malf) 12%,var(--card));border-left:5px solid var(--malf);font-size:.94rem}
+.acc{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.btn{border:0;border-radius:14px;padding:.62em 1.15em;font:800 1rem/1 "Bricolage Grotesque",sans-serif;cursor:pointer;color:var(--pri-ink);background:var(--pri);box-shadow:var(--sombra);transition:transform .08s,box-shadow .08s}
+body[data-v=a] .btn{border:2px solid #0F1923}
+.btn:active{transform:translateY(4px);box-shadow:none}
+.btn.sec{background:var(--card);color:var(--ink);border:var(--borde)}
+kbd{font:700 .7em ui-monospace,monospace;background:rgba(255,255,255,.25);border-radius:5px;padding:.1em .35em;margin-left:.35em}
+.leccion{margin-top:16px}
+.lec-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chip{font-size:.72rem;font-weight:900;padding:.2em .6em;border-radius:99px;background:var(--card2)}
+.chip.a{background:color-mix(in oklab,var(--malf) 22%,var(--card));color:var(--mal)}
+.chip.n{background:color-mix(in oklab,var(--okf) 22%,var(--card));color:var(--ok)}
+.idea{margin:12px 0;padding:12px 14px;border-radius:14px;background:var(--card2);font-weight:600}
+.idea b{color:var(--ink)}
+.pasos{display:flex;gap:8px;margin:10px 0 14px;flex-wrap:wrap}
+.pasos span{font-weight:800;font-size:.85rem;padding:.35em .8em;border-radius:99px;background:var(--card2);color:var(--muted)}
+.pasos span.on{background:var(--m2);color:var(--tile-ink)}
+.manip{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+.pizarra{background:#0F1923;border-radius:14px;overflow:hidden;border:2px solid #0F1923}
+body[data-v=c] .pizarra{border:0;background:linear-gradient(160deg,#141833,#0F1923)}
+.pizarra svg{display:block;width:100%;height:auto}
+.cap{background:#0F1923;color:#DBDEE1;padding:8px 12px;font-size:.9rem;font-weight:600}
+body[data-v=c] .cap{background:#141833}
+.sl{display:block;font-weight:800;font-size:.92rem;margin-bottom:10px}
+.sl b{color:var(--pri-solo,#1A5FFF)}
+body[data-v=b]{--pri-solo:#5B8CFF}body[data-v=c]{--pri-solo:#0E8BD8}
+input[type=range]{width:100%;accent-color:var(--pri-solo,#1A5FFF);height:22px}
+.formula{background:#0F1923;color:#DBDEE1;border-radius:14px;padding:12px 14px;font-weight:600;line-height:1.8;font-variant-numeric:tabular-nums}
+body[data-v=c] .formula{background:#141833}
+.formula .hl{color:#FFCB33;font-weight:800}
+.etq{position:absolute;left:50%;transform:translateX(-50%);top:4px;background:#0F1923;color:#fff;font:800 .85rem/1 "Bricolage Grotesque",sans-serif;padding:8px 12px;border-radius:10px;opacity:.85}
+@media (max-width:760px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.grid,.manip{grid-template-columns:minmax(0,1fr)}.nav{margin-left:0}}
+</style>
+</head>
+<body data-v="a">
+<div class="wrap">
+  <header class="top">
+    <div class="marca">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="gt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14C1CF"/><stop offset="1" stop-color="#0E9FD8"/></linearGradient>
+          <linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1FE39A"/><stop offset="1" stop-color="#0BC46E"/></linearGradient>
+          <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9127A"/><stop offset="1" stop-color="#F2295F"/></linearGradient>
+          <linearGradient id="go" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A1F"/><stop offset="1" stop-color="#FFC53A"/></linearGradient>
+        </defs>
+        <rect x="32" y="4" width="28" height="28" rx="6" fill="url(#gv)"/>
+        <rect x="4" y="4" width="30" height="30" rx="6" fill="url(#gt)"/>
+        <rect x="31" y="31" width="29" height="29" rx="6" fill="url(#go)"/>
+        <rect x="4" y="32" width="29" height="28" rx="6" fill="url(#gm)"/>
+        <g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none">
+          <path d="M19 12v14M12 19h14"/><path d="M41 13l10 10M51 13L41 23"/><path d="M12 46h14"/><path d="M38 42h15M38 50h15"/>
+        </g>
+        <g fill="#fff"><circle cx="19" cy="40" r="2.4"/><circle cx="19" cy="52" r="2.4"/></g>
+      </svg>
+      <div><b>PAES·27</b><small>estudio express · dicarch</small></div>
+    </div>
+    <nav class="nav"><a class="on">Hub</a><a>M2</a><a>Física</a><a>M1</a><a>Lectora</a></nav>
+    <div class="tema" title="Tema claro/oscuro"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></div>
+  </header>
+
+  <div class="saludo">
+    <div><h1>Faltan 8 días para M2</h1><p>Hoy: 6 bloques · 2 hechos · 3 temas vuelven en el repaso</p></div>
+    <button class="btn">Seguir con mi ruta <kbd>Enter</kbd></button>
+  </div>
+
+  <div class="tiles">
+    <div class="tile" style="--c:var(--m2)"><span class="sim">+</span><div class="pr">Matemática 2</div><div class="dias">8 <small>días</small></div><div class="f">lun 30 nov · 15:00</div></div>
+    <div class="tile" style="--c:var(--len)"><span class="sim">÷</span><div class="pr">Lectora</div><div class="dias">9 <small>días</small></div><div class="f">mar 1 dic · 09:00</div></div>
+    <div class="tile" style="--c:var(--cie)"><span class="sim">×</span><div class="pr">Física</div><div class="dias">9 <small>días</small></div><div class="f">mar 1 dic · 15:00</div></div>
+    <div class="tile" style="--c:var(--m1)"><span class="sim">=</span><div class="pr">Matemática 1</div><div class="dias">10 <small>días</small></div><div class="f">mié 2 dic · 09:00</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Tus bloques de hoy</h2>
+      <div class="bloque"><span class="chk si">✓</span><span class="hora">09:00–09:50</span><div><span class="tag" style="--c:var(--m2)">M2</span><span class="tit">Suficiencia de datos</span><div class="det">Lección completa · termina con el nivel PAES</div></div></div>
+      <div class="bloque"><span class="chk si">✓</span><span class="hora">10:00–10:50</span><div><span class="tag" style="--c:var(--m2)">M2</span><span class="tit">Probabilidad condicional</span><div class="det">Dominio 34 %</div></div></div>
+      <div class="bloque"><span class="chk"></span><span class="hora">11:00–11:50</span><div><span class="tag" style="--c:var(--m2)">M2</span><span class="tit">Combinatoria</span><div class="det">Lección completa</div></div></div>
+      <div class="bloque"><span class="chk"></span><span class="hora">13:00–13:50</span><div><span class="tag" style="--c:var(--cie)">FÍS</span><span class="tit">MRU y MRUA: gráficos</span><div class="det">Nuevo 2027</div></div></div>
+      <h2 style="margin-top:14px">Tus temas más débiles</h2>
+      <div class="dom"><span>Logaritmos</span><div class="bar"><i style="width:22%;background:var(--malf)"></i></div><span style="color:var(--mal)">22%</span></div>
+      <div class="dom"><span>Homotecia</span><div class="bar"><i style="width:48%;background:var(--sol)"></i></div><span style="color:var(--sol)">48%</span></div>
+      <div class="dom"><span>Rectas y sistemas</span><div class="bar"><i style="width:76%;background:var(--okf)"></i></div><span style="color:var(--ok)">76%</span></div>
+    </div>
+    <div class="card">
+      <div class="q-meta">PAES · Probabilidad condicional · 2 de 3</div>
+      <div class="q-enun">En un curso de 40 estudiantes hay 22 mujeres; 18 practican deporte y, de ellos, 12 son mujeres. Si se elige una mujer al azar, ¿cuál es la probabilidad de que practique deporte?</div>
+      <div class="op ok"><span class="l">A</span>6/11</div>
+      <div class="op mal"><span class="l">B</span>2/3</div>
+      <div class="op"><span class="l">C</span>3/10</div>
+      <div class="op"><span class="l">D</span>9/20</div>
+      <div class="trampa"><b>La trampa:</b> condicionaste al revés. 12/18 es la probabilidad de ser mujer <i>dado que</i> practica deporte.</div>
+      <div class="acc"><button class="btn sec">No sé <kbd>N</kbd></button><button class="btn">Siguiente <kbd>Enter</kbd></button></div>
+    </div>
+  </div>
+
+  <div class="card leccion">
+    <div class="lec-head"><h2>Rectas en el plano + sistemas 2×2</h2><span class="chip a">Prioridad A</span><span class="chip n">nuevo 2027</span><span class="chip" style="margin-left:auto">Dominio 76 %</span></div>
+    <div class="pasos"><span>1 Ver</span><span class="on">2 Manipular</span><span>3 El porqué</span><span>4 Ejemplo</span><span>5 Práctica</span></div>
+    <p class="idea">Cada ecuación es una recta. Resolver el sistema es buscar <b>dónde se cruzan</b>: se cortan → 1 solución · paralelas → 0 · coinciden → infinitas.</p>
+    <div class="manip">
+      <div>
+        <div class="pizarra"><svg viewBox="0 0 480 260"><g stroke="rgba(147,160,187,.14)">
+          <path d="M0 30H480M0 70H480M0 110H480M0 150H480M0 190H480M0 230H480M40 0V260M100 0V260M160 0V260M220 0V260M280 0V260M340 0V260M400 0V260M460 0V260"/></g>
+          <path d="M0 130H480M240 0V260" stroke="rgba(147,160,187,.55)"/>
+          <path d="M120 260L330 0" stroke="#7C9DFF" stroke-width="4"/><path d="M60 20L440 230" stroke="#4FD1E8" stroke-width="4"/>
+          <circle cx="246" cy="104" r="8" fill="#FFCB33"/><text x="258" y="96" fill="#FFCB33" font-weight="800" font-size="15">(2, 5)</text></svg></div>
+        <div class="cap">Se cortan en (2, 5): <b style="color:#FFCB33">1 solución</b></div>
+      </div>
+      <div>
+        <label class="sl">m₁ · pendiente de L₁ <b>2</b><input type="range" value="70"></label>
+        <label class="sl">m₂ · pendiente de L₂ <b>−1</b><input type="range" value="38"></label>
+        <div class="formula">L₁: y = 2x + 1<br>L₂: y = −x + 7<br>x = (7 − 1)/(2 − (−1)) = <span class="hl">2</span><br>y = 2·2 + 1 = <span class="hl">5</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="etq" id="etq"></div>
+<script>
+const v = new URLSearchParams(location.search).get('v') || 'a';
+document.body.dataset.v = v;
+document.getElementById('etq').textContent = { a: 'A · Riso claro', b: 'B · Riso noche', c: 'C · Azulejos vivos' }[v];
+</script>
+</body>
+</html>
