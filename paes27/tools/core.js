@@ -28,9 +28,9 @@ const P27 = (() => {
     ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', 'm2.html#m2.geo.homotecia'],
     ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', 'm2.html#m2.num.financiera'],
     ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', 'm2.html#m2.geo.esfera'],
-    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
-    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
-    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', 'm2.html#m2.alg.potencia'],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
 
     ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
     ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],

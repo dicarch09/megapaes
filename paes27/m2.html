@@ -185,6 +185,36 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.alg.sistemas-rectas"></div></div>
     </div>
   </section>
+
+  <section class="leccion" id="m2.alg.potencia" data-tab="alg">
+    <div class="lec-head"><h2>Función potencia</h2><span class="chip C">C</span><span class="dom" data-tema="m2.alg.potencia"></span></div>
+    <div class="lec-body">
+    <p class="idea">f(x) = a·x<sup>n</sup>. Si n es <b>par</b>, la gráfica es simétrica respecto del eje Y (como una U). Si n es <b>impar</b>, es simétrica respecto del origen (sube por un lado y baja por el otro). El signo de a la da vuelta.</p>
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="pot-ver" role="img" aria-label="Las curvas x, x², x³, x⁴ y x⁵ aparecen una tras otra"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="pot-ver">⏸ Pausa</button><span id="pot-ver-txt"></span></div>
+    </div>
+    <div class="paso"><h3><span class="n">2</span> Manipular</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="pof-man" role="img" aria-label="Gráfico de a por x elevado a n"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>a <b id="pof-a-v"></b></span><input type="range" id="pof-a" min="-3" max="3" step="0.5" value="1"></label>
+          <label class="sl"><span>n (exponente entero) <b id="pof-n-v"></b></span><input type="range" id="pof-n" min="-2" max="5" step="1" value="3"></label>
+          <div class="formula" id="pof-form"></div>
+        </div>
+      </div>
+    </div>
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Si n es par, (−x)<sup>n</sup> = x<sup>n</sup>: f(−x) = f(x). La gráfica es <b>simétrica respecto del eje Y</b> (función par).</li>
+      <li>Si n es impar, (−x)<sup>n</sup> = −x<sup>n</sup>: f(−x) = −f(x). Simétrica respecto del <b>origen</b> (función impar).</li>
+      <li>Todas las x<sup>n</sup> con n ≥ 1 pasan por (0, 0) y (1, 1). Entre 0 y 1, mayor exponente da un número <b>más chico</b> (0,5² = 0,25 &gt; 0,5³ = 0,125); para x &gt; 1, más grande.</li>
+      <li>|a| &gt; 1 la estira y 0 &lt; |a| &lt; 1 la achata; si a &lt; 0 la refleja en el eje X. Recorrido con n par: y ≥ 0 si a &gt; 0, y ≤ 0 si a &lt; 0. Con n impar: todos los reales.</li>
+      <li>Con n negativo, x<sup>n</sup> = 1/x<sup>|n|</sup>: no existe en x = 0 y la curva se acerca a los ejes sin tocarlos.</li>
+    </ol></div></details>
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="pof"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.alg.potencia"></div></div>
+    </div>
+  </section>
   </div>
 
   <!-- ===================== NÚMEROS ===================== -->
@@ -266,6 +296,36 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
     </ol></div></details>
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="fin"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.num.financiera"></div></div>
+    </div>
+  </section>
+
+  <section class="leccion" id="m2.num.reales" data-tab="num">
+    <div class="lec-head"><h2>Operatoria en los números reales</h2><span class="chip C">C</span><span class="dom" data-tema="m2.num.reales"></span></div>
+    <div class="lec-body">
+    <p class="idea">Una raíz es una potencia de exponente fraccionario: <b>ⁿ√(a<sup>m</sup>) = a<sup>m/n</sup></b>. Por eso las raíces se multiplican y dividen fácil, pero <b>no se suman</b>: √a + √b ≠ √(a + b). Para sumar, primero simplifica a la misma raíz.</p>
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="rea-ver" role="img" aria-label="La diagonal de un cuadrado de lado 1 gira hasta la recta numérica y marca raíz de 2"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="rea-ver">⏸ Pausa</button><span id="rea-ver-txt">La diagonal de un cuadrado de lado 1 mide √2: un número real que no es fracción (irracional), pero tiene su lugar exacto en la recta.</span></div>
+    </div>
+    <div class="paso"><h3><span class="n">2</span> Manipular · simplificar raíces</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="rea-man" role="img" aria-label="Un número separado en un cuadrado perfecto por otro número"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>a <b id="rea-a-v"></b></span><input type="range" id="rea-a" min="1" max="100" step="1" value="12"></label>
+          <label class="sl"><span>b <b id="rea-b-v"></b></span><input type="range" id="rea-b" min="1" max="100" step="1" value="27"></label>
+          <div class="formula" id="rea-form"></div>
+        </div>
+      </div>
+    </div>
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li><b>ⁿ√a = a<sup>1/n</sup></b> porque (a<sup>1/n</sup>)<sup>n</sup> = a<sup>1</sup> = a. En general ⁿ√(a<sup>m</sup>) = a<sup>m/n</sup>.</li>
+      <li>Con las reglas de potencias: √a·√b = a<sup>1/2</sup>b<sup>1/2</sup> = (ab)<sup>1/2</sup> = <b>√(ab)</b>; igual con la división.</li>
+      <li>Simplificar: busco el mayor cuadrado perfecto que divide al número: √48 = √(16·3) = <b>4√3</b>.</li>
+      <li>Solo se suman raíces «iguales»: 2√3 + 3√3 = 5√3 (como 2x + 3x). Ojo: √(a + b) ≠ √a + √b. Ejemplo: √9 + √16 = 7, pero √(9 + 16) = √25 = 5.</li>
+      <li>Producto notable útil: (√a + √b)(√a − √b) = a − b. Racional = se escribe como fracción; √2, √3, π son irracionales (decimales infinitos sin período).</li>
+    </ol></div></details>
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="rea"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.num.reales"></div></div>
     </div>
   </section>
   </div>
@@ -613,6 +673,37 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="sd"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.sd"></div></div>
+    </div>
+  </section>
+
+  <section class="leccion" id="m2.m1-dificil" data-tab="sd">
+    <div class="lec-head"><h2>M1 en versión difícil: cuadrática, semejanza y cilindro</h2><span class="chip C">C</span><span class="dom" data-tema="m2.m1-dificil"></span></div>
+    <div class="lec-body">
+    <p class="idea">M2 también evalúa todo M1, pero en versión difícil. Tres ideas clave: el <b>vértice y el discriminante</b> de la parábola; en figuras semejantes, las áreas van con <b>k²</b> y los volúmenes con <b>k³</b>; y el cilindro: <b>V = πr²h</b>, área total <b>2πr² + 2πrh</b>.</p>
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="cua-ver" role="img" aria-label="Una parábola sube y baja; el número de cortes con el eje X cambia"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="cua-ver">⏸ Pausa</button><span id="cua-ver-txt"></span></div>
+    </div>
+    <div class="paso"><h3><span class="n">2</span> Manipular · y = ax² + bx + c</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="cua-man" role="img" aria-label="Parábola con vértice, eje de simetría y raíces"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>a <b id="cua-a-v"></b></span><input type="range" id="cua-a" min="-3" max="3" step="0.5" value="1"></label>
+          <label class="sl"><span>b <b id="cua-b-v"></b></span><input type="range" id="cua-b" min="-8" max="8" step="1" value="-4"></label>
+          <label class="sl"><span>c <b id="cua-c-v"></b></span><input type="range" id="cua-c" min="-8" max="8" step="1" value="3"></label>
+          <div class="formula" id="cua-form"></div>
+        </div>
+      </div>
+    </div>
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Completando el cuadrado: ax² + bx + c = a(x + b/(2a))² + c − b²/(4a). El vértice está en <b>x<sub>v</sub> = −b/(2a)</b>, y<sub>v</sub> = f(x<sub>v</sub>).</li>
+      <li>Ceros: ax² + bx + c = 0 → x = (−b ± √Δ)/(2a), con <b>Δ = b² − 4ac</b>. Δ &gt; 0: dos soluciones; Δ = 0: una; Δ &lt; 0: ninguna real.</li>
+      <li>a &gt; 0 abre hacia arriba (mínimo en el vértice); a &lt; 0 hacia abajo (máximo). Por eso los problemas de «área máxima» se resuelven con el vértice.</li>
+      <li>Semejanza de razón k: longitudes ×k, <b>áreas ×k²</b>. Y si todas las medidas de un cuerpo se multiplican por k, su volumen se multiplica por <b>k³</b> (cada dimensión aporta un factor k).</li>
+      <li>Cilindro: la base es un círculo (πr²) que se «apila» h veces → <b>V = πr²h</b>. Desenrollado, el manto es un rectángulo de 2πr por h → área total <b>2πr² + 2πrh</b>.</li>
+    </ol></div></details>
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="cua"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.m1-dificil"></div></div>
     </div>
   </section>
   </div>
@@ -4989,6 +5080,510 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   ],
   "correcta": 0,
   "explicacion": "Pie: 1.600.000. Cuotas: 36·230.000 = 8.280.000. Total 9.880.000 − 8.000.000 = 1.880.000."
+ },
+ {
+  "id": "m2-pof-b1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "basico",
+  "enunciado": "Si f(x) = 3x³, ¿cuánto es f(−2)?",
+  "opciones": [
+   {
+    "texto": "24",
+    "trampa": "Perdiste el signo: (−2)³ = −8, porque el exponente es impar."
+   },
+   {
+    "texto": "−216",
+    "trampa": "Elevaste también el 3: calculaste (3·(−2))³."
+   },
+   {
+    "texto": "−18",
+    "trampa": "Multiplicaste por el exponente en vez de elevar: 3·(−2)·3."
+   },
+   {
+    "texto": "−24",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "f(−2) = 3·(−2)³ = 3·(−8) = −24."
+ },
+ {
+  "id": "m2-pof-b2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes funciones es par (simétrica respecto del eje Y)?",
+  "opciones": [
+   {
+    "texto": "f(x) = x³",
+    "trampa": "Confundiste par/impar con la forma: exponente impar da simetría respecto del origen, no del eje Y."
+   },
+   {
+    "texto": "f(x) = x⁴",
+    "trampa": ""
+   },
+   {
+    "texto": "f(x) = x⁵",
+    "trampa": "Pensaste que cualquier potencia es simétrica respecto del eje Y; con exponente impar es respecto del origen."
+   },
+   {
+    "texto": "f(x) = 2x",
+    "trampa": "Creíste que una recta por el origen es simétrica respecto del eje Y; es simétrica respecto del origen (impar)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Con exponente par, (−x)⁴ = x⁴: f(−x) = f(x)."
+ },
+ {
+  "id": "m2-pof-p1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "paes",
+  "enunciado": "La gráfica de f(x) = a·x³ pasa por el punto (2, −4). ¿Cuál es el valor de a?",
+  "opciones": [
+   {
+    "texto": "−1/2",
+    "trampa": ""
+   },
+   {
+    "texto": "−2",
+    "trampa": "Olvidaste el cubo: resolviste a·2 = −4."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "Perdiste el signo: a·8 = −4 da a negativo."
+   },
+   {
+    "texto": "−32",
+    "trampa": "Multiplicaste −4 por 8 en vez de dividir."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a·2³ = −4 → 8a = −4 → a = −1/2."
+ },
+ {
+  "id": "m2-pof-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "paes",
+  "enunciado": "Si 0 < x < 1, ¿cuál de las siguientes expresiones tiene el mayor valor?",
+  "opciones": [
+   {
+    "texto": "x⁴",
+    "trampa": "Pensaste que mayor exponente da mayor valor. Entre 0 y 1 es al revés: 0,5⁴ = 0,0625 < 0,5² = 0,25."
+   },
+   {
+    "texto": "x³",
+    "trampa": "Pensaste que el exponente del medio da el valor del medio y que eso es lo «mayor seguro». Entre 0 y 1, x³ < x²."
+   },
+   {
+    "texto": "x²",
+    "trampa": ""
+   },
+   {
+    "texto": "Depende del valor de x",
+    "trampa": "Para todo x entre 0 y 1 el orden es el mismo: x² > x³ > x⁴."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Entre 0 y 1, multiplicar por x achica: x² > x³ > x⁴."
+ },
+ {
+  "id": "m2-pof-d1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es el recorrido de f(x) = −3x⁶ + 5?",
+  "opciones": [
+   {
+    "texto": "y ≥ 5",
+    "trampa": "Ignoraste el signo de a = −3: la curva abre hacia abajo."
+   },
+   {
+    "texto": "y ≤ 5",
+    "trampa": ""
+   },
+   {
+    "texto": "Todos los números reales",
+    "trampa": "Pensaste que, como con exponente impar, toma todos los valores. Con exponente par tiene un máximo (o un mínimo)."
+   },
+   {
+    "texto": "y ≤ −3",
+    "trampa": "Confundiste el coeficiente −3 con el valor máximo. El máximo es f(0) = 5."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "x⁶ ≥ 0 → −3x⁶ ≤ 0 → −3x⁶ + 5 ≤ 5. El máximo 5 se alcanza en x = 0."
+ },
+ {
+  "id": "m2-pof-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "dificil",
+  "enunciado": "Sean f(x) = x⁵ y g(x) = x³. ¿Para qué valores de x se cumple f(x) > g(x)?",
+  "opciones": [
+   {
+    "texto": "x > 1",
+    "trampa": "Olvidaste los negativos: con x = −0,5, x⁵ = −0,03 > x³ = −0,125."
+   },
+   {
+    "texto": "x > 0",
+    "trampa": "Entre 0 y 1, x⁵ < x³: mayor exponente achica."
+   },
+   {
+    "texto": "x < −1 o 0 < x < 1",
+    "trampa": "Invertiste la desigualdad: esos son los x donde x⁵ < x³."
+   },
+   {
+    "texto": "−1 < x < 0 o x > 1",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "x⁵ − x³ = x³(x² − 1) > 0. Positivo si x > 1 (ambos factores positivos) o si −1 < x < 0 (ambos negativos)."
+ },
+ {
+  "id": "m2-rea-b1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de los siguientes números es irracional?",
+  "opciones": [
+   {
+    "texto": "√8",
+    "trampa": ""
+   },
+   {
+    "texto": "√(16/9)",
+    "trampa": "Creíste que toda raíz es irracional; √(16/9) = 4/3."
+   },
+   {
+    "texto": "0,25",
+    "trampa": "Creíste que todo decimal es irracional; 0,25 = 1/4 es racional."
+   },
+   {
+    "texto": "∛27",
+    "trampa": "Creíste que toda raíz es irracional; ∛27 = 3 es entero."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "√8 = 2√2, y √2 no se puede escribir como fracción."
+ },
+ {
+  "id": "m2-rea-b2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de 8<sup>2/3</sup>?",
+  "opciones": [
+   {
+    "texto": "16/3",
+    "trampa": "Multiplicaste 8 por 2/3. El exponente fraccionario es raíz y potencia."
+   },
+   {
+    "texto": "64",
+    "trampa": "Elevaste al cuadrado y olvidaste la raíz cúbica."
+   },
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Sacaste la raíz cúbica y olvidaste elevar al cuadrado."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "8<sup>2/3</sup> = (∛8)² = 2² = 4."
+ },
+ {
+  "id": "m2-rea-p1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el valor de √12 + √27 − √75?",
+  "opciones": [
+   {
+    "texto": "√3",
+    "trampa": "Simplificaste √75 como 4√3; es 5√3 (75 = 25·3)."
+   },
+   {
+    "texto": "10√3",
+    "trampa": "Sumaste todos los coeficientes (2 + 3 + 5) sin respetar el signo menos."
+   },
+   {
+    "texto": "No es un número real",
+    "trampa": "Operaste los números de adentro: √(12 + 27 − 75) = √(−36). Las raíces no se suman así."
+   },
+   {
+    "texto": "0",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "2√3 + 3√3 − 5√3 = 0."
+ },
+ {
+  "id": "m2-rea-p2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el valor de (√5 + √2)(√5 − √2)?",
+  "opciones": [
+   {
+    "texto": "7",
+    "trampa": "Sumaste 5 + 2. Es suma por diferencia: a² − b²."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "√3",
+    "trampa": "Restaste dentro de una sola raíz: √(5 − 2)."
+   },
+   {
+    "texto": "7 − 2√10",
+    "trampa": "Desarrollaste como (√5 − √2)², que es otro producto."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Suma por diferencia: (√5)² − (√2)² = 5 − 2 = 3."
+ },
+ {
+  "id": "m2-rea-d1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "dificil",
+  "enunciado": "Sean a = √10, b = 3,2 y c = ∛30. ¿Cuál es el orden correcto?",
+  "opciones": [
+   {
+    "texto": "a < c < b",
+    "trampa": "∛30 ≈ 3,11 es menor que √10 ≈ 3,16: compara elevando a la misma potencia."
+   },
+   {
+    "texto": "a < b < c",
+    "trampa": "∛30 no es mayor que 3,2: 3,2³ = 32,8 > 30."
+   },
+   {
+    "texto": "c < a < b",
+    "trampa": ""
+   },
+   {
+    "texto": "c < b < a",
+    "trampa": "√10 no es mayor que 3,2: 3,2² = 10,24 > 10."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "3,2² = 10,24 > 10, así que √10 < 3,2. 3,1² = 9,61 < 10 y 3,1³ ≈ 29,8 < 30 < 3,2³ = 32,77; ∛30 ≈ 3,107 < √10 ≈ 3,162. Orden: c < a < b."
+ },
+ {
+  "id": "m2-rea-d2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "dificil",
+  "enunciado": "Si a = 2<sup>1/2</sup> y b = 2<sup>1/3</sup>, ¿cuánto es (a·b)<sup>6</sup>?",
+  "opciones": [
+   {
+    "texto": "32",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Multiplicaste los exponentes (1/2·1/3 = 1/6) en vez de sumarlos."
+   },
+   {
+    "texto": "64",
+    "trampa": "Sumaste mal las fracciones: 1/2 + 1/3 no es 1; es 5/6."
+   },
+   {
+    "texto": "5",
+    "trampa": "Ese es el exponente final: 2⁵ = 32."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a·b = 2<sup>1/2 + 1/3</sup> = 2<sup>5/6</sup>. Elevado a 6: 2⁵ = 32."
+ },
+ {
+  "id": "m2-mdi-b1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "basico",
+  "enunciado": "Un cilindro tiene radio 2 cm y altura 5 cm. ¿Cuál es su área total?",
+  "opciones": [
+   {
+    "texto": "20π cm²",
+    "trampa": "Calculaste solo el manto (2πrh). Faltan las dos tapas."
+   },
+   {
+    "texto": "28π cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "24π cm²",
+    "trampa": "Sumaste una sola tapa: el cilindro tiene dos."
+   },
+   {
+    "texto": "10π cm²",
+    "trampa": "Olvidaste el 2 del manto: calculaste πrh."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Tapas: 2·π·2² = 8π. Manto: 2π·2·5 = 20π. Total 28π cm²."
+ },
+ {
+  "id": "m2-mdi-b2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "basico",
+  "enunciado": "Dos triángulos semejantes tienen razón de semejanza 2 : 3. Si el área del menor es 8 cm², ¿cuál es el área del mayor?",
+  "opciones": [
+   {
+    "texto": "12 cm²",
+    "trampa": "Usaste la razón de los lados (3/2). Las áreas van con la razón al cuadrado."
+   },
+   {
+    "texto": "32/9 cm²",
+    "trampa": "Invertiste la razón: el mayor debe tener más área."
+   },
+   {
+    "texto": "27 cm²",
+    "trampa": "Usaste la razón al cubo, que corresponde a volúmenes."
+   },
+   {
+    "texto": "18 cm²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Áreas: (3/2)² = 9/4. 8·9/4 = 18 cm²."
+ },
+ {
+  "id": "m2-mdi-p1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "paes",
+  "enunciado": "¿Para qué valores de m la ecuación x² − 6x + m = 0 NO tiene soluciones reales?",
+  "opciones": [
+   {
+    "texto": "m < 9",
+    "trampa": "Invertiste la desigualdad: sin soluciones exige Δ < 0, es decir 36 − 4m < 0."
+   },
+   {
+    "texto": "m > 36",
+    "trampa": "Olvidaste el 4 de 4ac: Δ = 36 − 4m."
+   },
+   {
+    "texto": "m > 9",
+    "trampa": ""
+   },
+   {
+    "texto": "m = 9",
+    "trampa": "Con m = 9, Δ = 0: hay UNA solución, no ninguna."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Δ = 36 − 4m < 0 → m > 9."
+ },
+ {
+  "id": "m2-mdi-p2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "paes",
+  "enunciado": "Un rectángulo tiene perímetro 20 cm. ¿Cuál es el área máxima que puede tener?",
+  "opciones": [
+   {
+    "texto": "25 cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "100 cm²",
+    "trampa": "Elevaste el semiperímetro al cuadrado (10²). Los lados suman 10, no miden 10."
+   },
+   {
+    "texto": "50 cm²",
+    "trampa": "Planteaste el otro lado como 20 − 2x (olvidaste dividir el perímetro por 2): x(20 − 2x) tiene máximo 50 en x = 5."
+   },
+   {
+    "texto": "24 cm²",
+    "trampa": "Probaste lados enteros (6 y 4) sin llegar al máximo, que es el cuadrado 5 × 5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Lados x y 10 − x. Área A = x(10 − x), parábola con vértice en x = 5: A = 25 cm²."
+ },
+ {
+  "id": "m2-mdi-d1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "dificil",
+  "enunciado": "Un cilindro tiene un volumen de 50 cm³. Si se duplican su radio y su altura, ¿cuál es el nuevo volumen?",
+  "opciones": [
+   {
+    "texto": "100 cm³",
+    "trampa": "Pensaste que si todo se duplica, el volumen también se duplica. En πr²h el radio va al cuadrado."
+   },
+   {
+    "texto": "200 cm³",
+    "trampa": "Duplicaste el radio (r² → ×4) pero olvidaste duplicar también la altura."
+   },
+   {
+    "texto": "800 cm³",
+    "trampa": "Elevaste el radio al cubo (×8) y además duplicaste la altura (×2). En πr²h el radio va al cuadrado."
+   },
+   {
+    "texto": "400 cm³",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "V = π(2r)²(2h) = π·4r²·2h = 8·πr²h. Nuevo volumen: 8·50 = 400 cm³."
+ },
+ {
+  "id": "m2-mdi-d2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "dificil",
+  "enunciado": "La parábola y = x² − 4x + c tiene su vértice sobre el eje X. ¿Cuánto vale c?",
+  "opciones": [
+   {
+    "texto": "−4",
+    "trampa": "Al despejar c − 4 = 0 cambiaste mal el signo y pusiste c = −4."
+   },
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "2 es la coordenada x del vértice, no c."
+   },
+   {
+    "texto": "16",
+    "trampa": "Olvidaste el 4 de 4ac: 16 − c = 0 → c = 16."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Vértice en x = 2, y = 4 − 8 + c = c − 4. Sobre el eje X: c − 4 = 0 → c = 4."
  }
 ]
 </script>
@@ -5023,9 +5618,9 @@ const P27 = (() => {
     ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', 'm2.html#m2.geo.homotecia'],
     ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', 'm2.html#m2.num.financiera'],
     ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', 'm2.html#m2.geo.esfera'],
-    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
-    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
-    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', 'm2.html#m2.alg.potencia'],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
 
     ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
     ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
@@ -6416,6 +7011,128 @@ const pesos = (x) => '$' + Math.round(x).toLocaleString('es-CL');
 }
 
 // =====================================================================
+// LECCIÓN · función potencia
+// =====================================================================
+const supN = (n) => String(n).replace('-', '⁻').replace(/\d/g, (d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+{
+  const L = new Lienzo($('#pot-ver'), { vista: { x0: -2.4, x1: 2.4, yc: 0, igual: true }, aspecto: 0.6, maxH: 360 });
+  const COLS = [COL.muted, COL.acc2, COL.acc, COL.ok, COL.warn];
+  animar('pot-ver', L, (t) => {
+    const u = (t % 12) / 12; const k = Math.min(5, Math.floor(u * 6) + 1);
+    L.limpiar(); L.grilla(0.5, true, 1);
+    for (let n = 1; n <= k; n++) L.fn((x) => x ** n, COLS[n - 1], n === k ? 3.5 : 1.8);
+    L.texto(`y = x${supN(k)} · ${k % 2 ? 'impar: simétrica respecto del origen' : 'par: simétrica respecto del eje Y'}`, 12, 12, COLS[k - 1], { px: true, base: 'top', tam: 15 });
+    $('#pot-ver-txt').innerHTML = 'Todas pasan por (0, 0) y (1, 1). Entre 0 y 1, la de mayor exponente va <b>más abajo</b>; después de 1, <b>más arriba</b>.';
+  });
+}
+{
+  const L = new Lienzo($('#pof-man'), { vista: { x0: -4, x1: 4, yc: 0, igual: true }, aspecto: 0.75, maxH: 400 });
+  let v = {};
+  L.dibujar = () => { const a = v['pof-a'], n = v['pof-n'] || 1; L.limpiar(); L.grilla(1, true, 1); L.fn((x) => (n < 0 && Math.abs(x) < 1e-6 ? NaN : a * x ** n), COL.acc, 3); };
+  sliders(['pof-a', 'pof-n'], (val) => {
+    if (val['pof-n'] === 0) { $('#pof-n').value = 1; val['pof-n'] = 1; $('#pof-n-v').textContent = '1'; }
+    v = val; L.redibujar();
+    const a = val['pof-a'], n = val['pof-n'];
+    const par2 = n % 2 === 0;
+    let h = `<div class="res">f(x) = ${fmt(a)}·x${supN(n)}</div>`;
+    h += `<div>n = ${n} es <b>${par2 ? 'par' : 'impar'}</b> → simétrica respecto del ${par2 ? 'eje Y' : 'origen'}.</div>`;
+    h += `<div>f(2) = ${fmt(a)}·2${supN(n)} = <span class="hl">${fmt(a * 2 ** n, 3)}</span> · f(−2) = <span class="hl">${fmt(a * (-2) ** n, 3)}</span></div>`;
+    if (a === 0) h += '<div class="txt-warn">Con a = 0 la función es la constante 0.</div>';
+    else if (n > 0) h += `<div>Recorrido: ${par2 ? (a > 0 ? 'y ≥ 0' : 'y ≤ 0') : 'todos los reales'}.</div>`;
+    else h += `<div>n negativo: x${supN(n)} = 1/x${supN(-n)}. No existe en x = 0.</div>`;
+    $('#pof-form').innerHTML = h;
+  }, { 'pof-n': String });
+}
+
+// =====================================================================
+// LECCIÓN · operatoria en los reales
+// =====================================================================
+{
+  const L = new Lienzo($('#rea-ver'), { vista: { x0: -0.6, x1: 2.4, yc: 0.7, igual: true }, aspecto: 0.45, maxH: 300 });
+  animar('rea-ver', L, (t) => {
+    const u = (t % 8) / 8; const g = u < 0.2 ? 45 : u < 0.7 ? lerp(45, 0, suave((u - 0.2) / 0.5)) : 0;
+    L.limpiar(); const c = L.ctx;
+    L.seg(-0.5, 0, 2.3, 0, 'rgba(147,160,187,.7)', 1.5);
+    for (let x = 0; x <= 2; x++) { L.seg(x, -0.05, x, 0.05, COL.muted, 1.5); L.texto(String(x), x, 0, COL.muted, { align: 'center', base: 'top', dy: 6 }); }
+    c.strokeStyle = COL.acc2; c.lineWidth = 2; c.strokeRect(L.X(0), L.Y(1), L.X(1) - L.X(0), L.Y(0) - L.Y(1));
+    const r = Math.SQRT2, ang = (g * Math.PI) / 180;
+    L.seg(0, 0, r * Math.cos(ang), r * Math.sin(ang), COL.warn, 3.5);
+    c.strokeStyle = 'rgba(242,184,75,.4)'; c.setLineDash([4, 4]); c.beginPath(); c.arc(L.X(0), L.Y(0), L.X(r) - L.X(0), -ang, 0); c.stroke(); c.setLineDash([]);
+    if (g < 1) { L.punto(r, 0, COL.warn, 6); L.texto('√2 ≈ 1,414…', r, 0, COL.warn, { align: 'center', dy: -10 }); }
+    L.texto('lado 1', 0.5, 1, COL.acc2, { align: 'center', dy: -4 });
+  });
+}
+{
+  const L = new Lienzo($('#rea-man'), { aspecto: 0.45, maxH: 260 });
+  const simplificar = (n) => { let k = 1; for (let i = Math.floor(Math.sqrt(n)); i > 1; i--) if (n % (i * i) === 0) { k = i; break; } return [k, n / (k * k)]; };
+  const rtxt = ([k, m]) => (m === 1 ? String(k) : (k === 1 ? '' : k) + '√' + m);
+  let v = {};
+  L.dibujar = () => {
+    L.limpiar();
+    [['a', v['rea-a'], COL.acc, 0.25], ['b', v['rea-b'], COL.acc2, 0.72]].forEach(([nom, n, col, fx]) => {
+      const [k, m] = simplificar(n);
+      L.texto(`√${n} = √(${k * k}·${m}) = ${rtxt([k, m])}`, L.w * fx, L.h / 2, col, { px: true, align: 'center', base: 'middle', tam: 18, peso: 800 });
+      L.texto(nom === 'a' ? 'cuadrado perfecto más grande: ' + k * k : 'cuadrado perfecto más grande: ' + k * k, L.w * fx, L.h / 2 + 28, COL.muted, { px: true, align: 'center', base: 'middle', tam: 12 });
+    });
+  };
+  sliders(['rea-a', 'rea-b'], (val) => {
+    v = val; L.redibujar();
+    const a = val['rea-a'], b = val['rea-b'];
+    const [ka, ma] = simplificar(a), [kb, mb] = simplificar(b), [kp, mp] = simplificar(a * b);
+    let h = `<div>√${a} = ${rtxt([ka, ma])} · √${b} = ${rtxt([kb, mb])}</div>`;
+    h += `<div>Producto: √${a}·√${b} = √${a * b} = <span class="hl">${rtxt([kp, mp])}</span></div>`;
+    h += ma === mb ? `<div class="res">Suma: ${rtxt([ka, ma])} + ${rtxt([kb, mb])} = <span class="hl">${rtxt([ka + kb, ma])}</span> (misma raíz √${ma}: se suman como 2x + 3x)</div>`
+      : `<div class="res">Suma: ${rtxt([ka, ma])} + ${rtxt([kb, mb])} <span class="small muted">no se puede juntar: raíces distintas</span></div>`;
+    h += `<div class="txt-mal small">Ojo: √${a} + √${b} ≈ ${fmt(Math.sqrt(a) + Math.sqrt(b), 3)}, pero √(${a} + ${b}) ≈ ${fmt(Math.sqrt(a + b), 3)}: no son iguales.</div>`;
+    $('#rea-form').innerHTML = h;
+  }, { 'rea-a': String, 'rea-b': String });
+}
+
+// =====================================================================
+// LECCIÓN · M1 difícil (cuadrática)
+// =====================================================================
+{
+  const L = new Lienzo($('#cua-ver'), { vista: { x0: -4, x1: 6, yc: 1, igual: true }, aspecto: 0.55, maxH: 340 });
+  animar('cua-ver', L, (t) => {
+    const k = 2.5 * Math.sin(t * 0.6) - 0.5; // y = (x − 1)² + k
+    L.limpiar(); L.grilla(1, true, 2);
+    L.fn((x) => (x - 1) ** 2 + k, COL.acc, 3);
+    L.punto(1, k, COL.warn, 6);
+    const n = k < -1e-6 ? 2 : Math.abs(k) < 0.05 ? 1 : 0;
+    if (n === 2) { const r = Math.sqrt(-k); L.punto(1 - r, 0, COL.ok, 5.5); L.punto(1 + r, 0, COL.ok, 5.5); }
+    L.texto(`y = (x − 1)² ${k < 0 ? '−' : '+'} ${fmt(Math.abs(k), 1)} · Δ ${k < -0.05 ? '> 0: 2 soluciones' : Math.abs(k) <= 0.05 ? '= 0: 1 solución' : '< 0: sin soluciones reales'}`, 12, 12, COL.ink, { px: true, base: 'top', tam: 14 });
+    $('#cua-ver-txt').innerHTML = 'Al subir la parábola, los cortes con el eje X se juntan en el vértice y luego desaparecen: eso es lo que mide el discriminante.';
+  });
+}
+{
+  const L = new Lienzo($('#cua-man'), { vista: { x0: -8, x1: 8, yc: 0, igual: true }, aspecto: 0.75, maxH: 400 });
+  let v = {};
+  L.dibujar = () => {
+    const a = v['cua-a'], b = v['cua-b'], c = v['cua-c'];
+    L.limpiar(); L.grilla(1, true, 2);
+    if (a === 0) { L.fn((x) => b * x + c, COL.acc, 3); return; }
+    const xv = -b / (2 * a), yv = a * xv * xv + b * xv + c, D = b * b - 4 * a * c;
+    L.seg(xv, L.y0, xv, L.y1, 'rgba(147,160,187,.5)', 1, [5, 5]);
+    L.fn((x) => a * x * x + b * x + c, COL.acc, 3);
+    L.punto(xv, yv, COL.warn, 6); L.texto(`V(${fmt(xv)}, ${fmt(yv)})`, xv, yv, COL.warn, { dx: 8, dy: a > 0 ? 18 : -6, fondo: true });
+    if (D >= 0) [(-b - Math.sqrt(D)) / (2 * a), (-b + Math.sqrt(D)) / (2 * a)].forEach((r) => L.punto(r, 0, COL.ok, 5.5));
+    L.punto(0, c, COL.acc2, 4.5);
+  };
+  sliders(['cua-a', 'cua-b', 'cua-c'], (val) => {
+    v = val; L.redibujar();
+    const a = val['cua-a'], b = val['cua-b'], c = val['cua-c'];
+    if (a === 0) { $('#cua-form').innerHTML = '<div class="txt-warn">Con a = 0 no es una parábola: es una recta.</div>'; return; }
+    const xv = -b / (2 * a), yv = a * xv * xv + b * xv + c, D = b * b - 4 * a * c;
+    let h = `<div class="res">y = ${fmt(a)}x² ${b < 0 ? '−' : '+'} ${fmt(Math.abs(b))}x ${c < 0 ? '−' : '+'} ${fmt(Math.abs(c))}</div>`;
+    h += `<div>Vértice: x = −b/(2a) = ${fmt(-b)}/${fmt(2 * a)} = <span class="hl">${fmt(xv)}</span>; y = f(${fmt(xv)}) = <span class="hl">${fmt(yv)}</span> → ${a > 0 ? 'mínimo' : 'máximo'}</div>`;
+    h += `<div>Δ = b² − 4ac = ${fmt(b * b)} − 4·${par(a)}·${par(c)} = <span class="hl">${fmt(D)}</span> → ${D > 0 ? '2 soluciones' : D === 0 ? '1 solución' : 'sin soluciones reales'}</div>`;
+    if (D >= 0) h += `<div>x = (${fmt(-b)} ± √${fmt(D)})/${fmt(2 * a)} → ${fmt((-b - Math.sqrt(D)) / (2 * a))} y ${fmt((-b + Math.sqrt(D)) / (2 * a))}</div>`;
+    h += `<div class="small muted">Corta al eje Y en (0, ${fmt(c)}). Recorrido: y ${a > 0 ? '≥' : '≤'} ${fmt(yv)}.</div>`;
+    $('#cua-form').innerHTML = h;
+  });
+}
+
+// =====================================================================
 // EJEMPLOS RESUELTOS (un paso a la vez) · números verificados en tools/verificar_m2.py
 // =====================================================================
 const EJEMPLOS = {
@@ -6550,6 +7267,39 @@ const EJEMPLOS = {
       'Diferencia: $1.208, que es el «interés sobre el interés».',
     ],
     trampa: '2 % por 3 meses no es 1,06 en el compuesto: es 1,02³. Y no confundas el monto final con el interés ganado.',
+  },
+  pof: {
+    enun: '¿Cuál es el recorrido de f(x) = −2x⁴ + 3?',
+    pasos: [
+      'x⁴ tiene exponente par: x⁴ ≥ 0 para todo x (vale 0 solo en x = 0).',
+      'Multiplico por −2 (negativo): −2x⁴ ≤ 0. La desigualdad se da vuelta.',
+      'Sumo 3: −2x⁴ + 3 ≤ 3.',
+      'El valor 3 se alcanza en x = 0, y hacia los lados la función baja sin límite.',
+      '<b>Recorrido: y ≤ 3</b> (en intervalo: ]−∞, 3]).',
+    ],
+    trampa: 'Si olvidas que a = −2 es negativo, respondes y ≥ 3: la curva abre hacia abajo.',
+  },
+  rea: {
+    enun: '¿Cuál es el valor de √12 + √27 − √48?',
+    pasos: [
+      '√12 = √(4·3) = <b>2√3</b>.',
+      '√27 = √(9·3) = <b>3√3</b>.',
+      '√48 = √(16·3) = <b>4√3</b>.',
+      'Ahora son raíces iguales: 2√3 + 3√3 − 4√3 = (2 + 3 − 4)√3.',
+      '<b>Resultado: √3</b>.',
+    ],
+    trampa: 'No operes los números de adentro: √(12 + 27 − 48) = √(−9) no tiene nada que ver.',
+  },
+  cua: {
+    enun: '¿Para qué valores de k la ecuación x² + kx + 9 = 0 tiene una única solución?',
+    pasos: [
+      'Una única solución ⇔ el discriminante es 0: Δ = b² − 4ac = 0.',
+      'Acá a = 1, b = k, c = 9: Δ = k² − 4·1·9 = k² − 36.',
+      'k² − 36 = 0 → k² = 36.',
+      '<b>k = 6 o k = −6</b> (no olvides el negativo).',
+      'Comprobación: con k = 6, x² + 6x + 9 = (x + 3)², solución única x = −3 ✔.',
+    ],
+    trampa: 'Si respondes solo k = 6 te pierdes la mitad: (−6)² también es 36.',
   },
 };
 document.querySelectorAll('.ejemplo').forEach((box) => {

@@ -11,6 +11,10 @@ python -m http.server 8000
 
 Luego abre http://localhost:8000. Usa siempre el puerto 8000: el progreso se guarda en el navegador, por dirección y puerto. Para respaldarlo, usa la pestaña **Progreso** del hub.
 
+## En línea (Netlify)
+
+`netlify.toml` ya está listo: en Netlify → *Add new site* → *Import from Git* → este repo, rama `main`. Publica solo los HTML y `lib/` (sin `tools/`). El progreso en línea se guarda en ese navegador, aparte del de localhost: usa exportar/importar para moverlo.
+
 ## Verificar (antes de cada entrega)
 
 ```bash

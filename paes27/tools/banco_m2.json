@@ -3058,5 +3058,509 @@
   ],
   "correcta": 0,
   "explicacion": "Pie: 1.600.000. Cuotas: 36·230.000 = 8.280.000. Total 9.880.000 − 8.000.000 = 1.880.000."
+ },
+ {
+  "id": "m2-pof-b1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "basico",
+  "enunciado": "Si f(x) = 3x³, ¿cuánto es f(−2)?",
+  "opciones": [
+   {
+    "texto": "24",
+    "trampa": "Perdiste el signo: (−2)³ = −8, porque el exponente es impar."
+   },
+   {
+    "texto": "−216",
+    "trampa": "Elevaste también el 3: calculaste (3·(−2))³."
+   },
+   {
+    "texto": "−18",
+    "trampa": "Multiplicaste por el exponente en vez de elevar: 3·(−2)·3."
+   },
+   {
+    "texto": "−24",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "f(−2) = 3·(−2)³ = 3·(−8) = −24."
+ },
+ {
+  "id": "m2-pof-b2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes funciones es par (simétrica respecto del eje Y)?",
+  "opciones": [
+   {
+    "texto": "f(x) = x³",
+    "trampa": "Confundiste par/impar con la forma: exponente impar da simetría respecto del origen, no del eje Y."
+   },
+   {
+    "texto": "f(x) = x⁴",
+    "trampa": ""
+   },
+   {
+    "texto": "f(x) = x⁵",
+    "trampa": "Pensaste que cualquier potencia es simétrica respecto del eje Y; con exponente impar es respecto del origen."
+   },
+   {
+    "texto": "f(x) = 2x",
+    "trampa": "Creíste que una recta por el origen es simétrica respecto del eje Y; es simétrica respecto del origen (impar)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Con exponente par, (−x)⁴ = x⁴: f(−x) = f(x)."
+ },
+ {
+  "id": "m2-pof-p1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "paes",
+  "enunciado": "La gráfica de f(x) = a·x³ pasa por el punto (2, −4). ¿Cuál es el valor de a?",
+  "opciones": [
+   {
+    "texto": "−1/2",
+    "trampa": ""
+   },
+   {
+    "texto": "−2",
+    "trampa": "Olvidaste el cubo: resolviste a·2 = −4."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "Perdiste el signo: a·8 = −4 da a negativo."
+   },
+   {
+    "texto": "−32",
+    "trampa": "Multiplicaste −4 por 8 en vez de dividir."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a·2³ = −4 → 8a = −4 → a = −1/2."
+ },
+ {
+  "id": "m2-pof-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "paes",
+  "enunciado": "Si 0 < x < 1, ¿cuál de las siguientes expresiones tiene el mayor valor?",
+  "opciones": [
+   {
+    "texto": "x⁴",
+    "trampa": "Pensaste que mayor exponente da mayor valor. Entre 0 y 1 es al revés: 0,5⁴ = 0,0625 < 0,5² = 0,25."
+   },
+   {
+    "texto": "x³",
+    "trampa": "Pensaste que el exponente del medio da el valor del medio y que eso es lo «mayor seguro». Entre 0 y 1, x³ < x²."
+   },
+   {
+    "texto": "x²",
+    "trampa": ""
+   },
+   {
+    "texto": "Depende del valor de x",
+    "trampa": "Para todo x entre 0 y 1 el orden es el mismo: x² > x³ > x⁴."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Entre 0 y 1, multiplicar por x achica: x² > x³ > x⁴."
+ },
+ {
+  "id": "m2-pof-d1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es el recorrido de f(x) = −3x⁶ + 5?",
+  "opciones": [
+   {
+    "texto": "y ≥ 5",
+    "trampa": "Ignoraste el signo de a = −3: la curva abre hacia abajo."
+   },
+   {
+    "texto": "y ≤ 5",
+    "trampa": ""
+   },
+   {
+    "texto": "Todos los números reales",
+    "trampa": "Pensaste que, como con exponente impar, toma todos los valores. Con exponente par tiene un máximo (o un mínimo)."
+   },
+   {
+    "texto": "y ≤ −3",
+    "trampa": "Confundiste el coeficiente −3 con el valor máximo. El máximo es f(0) = 5."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "x⁶ ≥ 0 → −3x⁶ ≤ 0 → −3x⁶ + 5 ≤ 5. El máximo 5 se alcanza en x = 0."
+ },
+ {
+  "id": "m2-pof-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.potencia",
+  "nivel": "dificil",
+  "enunciado": "Sean f(x) = x⁵ y g(x) = x³. ¿Para qué valores de x se cumple f(x) > g(x)?",
+  "opciones": [
+   {
+    "texto": "x > 1",
+    "trampa": "Olvidaste los negativos: con x = −0,5, x⁵ = −0,03 > x³ = −0,125."
+   },
+   {
+    "texto": "x > 0",
+    "trampa": "Entre 0 y 1, x⁵ < x³: mayor exponente achica."
+   },
+   {
+    "texto": "x < −1 o 0 < x < 1",
+    "trampa": "Invertiste la desigualdad: esos son los x donde x⁵ < x³."
+   },
+   {
+    "texto": "−1 < x < 0 o x > 1",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "x⁵ − x³ = x³(x² − 1) > 0. Positivo si x > 1 (ambos factores positivos) o si −1 < x < 0 (ambos negativos)."
+ },
+ {
+  "id": "m2-rea-b1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de los siguientes números es irracional?",
+  "opciones": [
+   {
+    "texto": "√8",
+    "trampa": ""
+   },
+   {
+    "texto": "√(16/9)",
+    "trampa": "Creíste que toda raíz es irracional; √(16/9) = 4/3."
+   },
+   {
+    "texto": "0,25",
+    "trampa": "Creíste que todo decimal es irracional; 0,25 = 1/4 es racional."
+   },
+   {
+    "texto": "∛27",
+    "trampa": "Creíste que toda raíz es irracional; ∛27 = 3 es entero."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "√8 = 2√2, y √2 no se puede escribir como fracción."
+ },
+ {
+  "id": "m2-rea-b2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de 8<sup>2/3</sup>?",
+  "opciones": [
+   {
+    "texto": "16/3",
+    "trampa": "Multiplicaste 8 por 2/3. El exponente fraccionario es raíz y potencia."
+   },
+   {
+    "texto": "64",
+    "trampa": "Elevaste al cuadrado y olvidaste la raíz cúbica."
+   },
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Sacaste la raíz cúbica y olvidaste elevar al cuadrado."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "8<sup>2/3</sup> = (∛8)² = 2² = 4."
+ },
+ {
+  "id": "m2-rea-p1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el valor de √12 + √27 − √75?",
+  "opciones": [
+   {
+    "texto": "√3",
+    "trampa": "Simplificaste √75 como 4√3; es 5√3 (75 = 25·3)."
+   },
+   {
+    "texto": "10√3",
+    "trampa": "Sumaste todos los coeficientes (2 + 3 + 5) sin respetar el signo menos."
+   },
+   {
+    "texto": "No es un número real",
+    "trampa": "Operaste los números de adentro: √(12 + 27 − 75) = √(−36). Las raíces no se suman así."
+   },
+   {
+    "texto": "0",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "2√3 + 3√3 − 5√3 = 0."
+ },
+ {
+  "id": "m2-rea-p2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el valor de (√5 + √2)(√5 − √2)?",
+  "opciones": [
+   {
+    "texto": "7",
+    "trampa": "Sumaste 5 + 2. Es suma por diferencia: a² − b²."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "√3",
+    "trampa": "Restaste dentro de una sola raíz: √(5 − 2)."
+   },
+   {
+    "texto": "7 − 2√10",
+    "trampa": "Desarrollaste como (√5 − √2)², que es otro producto."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Suma por diferencia: (√5)² − (√2)² = 5 − 2 = 3."
+ },
+ {
+  "id": "m2-rea-d1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "dificil",
+  "enunciado": "Sean a = √10, b = 3,2 y c = ∛30. ¿Cuál es el orden correcto?",
+  "opciones": [
+   {
+    "texto": "a < c < b",
+    "trampa": "∛30 ≈ 3,11 es menor que √10 ≈ 3,16: compara elevando a la misma potencia."
+   },
+   {
+    "texto": "a < b < c",
+    "trampa": "∛30 no es mayor que 3,2: 3,2³ = 32,8 > 30."
+   },
+   {
+    "texto": "c < a < b",
+    "trampa": ""
+   },
+   {
+    "texto": "c < b < a",
+    "trampa": "√10 no es mayor que 3,2: 3,2² = 10,24 > 10."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "3,2² = 10,24 > 10, así que √10 < 3,2. 3,1² = 9,61 < 10 y 3,1³ ≈ 29,8 < 30 < 3,2³ = 32,77; ∛30 ≈ 3,107 < √10 ≈ 3,162. Orden: c < a < b."
+ },
+ {
+  "id": "m2-rea-d2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.reales",
+  "nivel": "dificil",
+  "enunciado": "Si a = 2<sup>1/2</sup> y b = 2<sup>1/3</sup>, ¿cuánto es (a·b)<sup>6</sup>?",
+  "opciones": [
+   {
+    "texto": "32",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Multiplicaste los exponentes (1/2·1/3 = 1/6) en vez de sumarlos."
+   },
+   {
+    "texto": "64",
+    "trampa": "Sumaste mal las fracciones: 1/2 + 1/3 no es 1; es 5/6."
+   },
+   {
+    "texto": "5",
+    "trampa": "Ese es el exponente final: 2⁵ = 32."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a·b = 2<sup>1/2 + 1/3</sup> = 2<sup>5/6</sup>. Elevado a 6: 2⁵ = 32."
+ },
+ {
+  "id": "m2-mdi-b1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "basico",
+  "enunciado": "Un cilindro tiene radio 2 cm y altura 5 cm. ¿Cuál es su área total?",
+  "opciones": [
+   {
+    "texto": "20π cm²",
+    "trampa": "Calculaste solo el manto (2πrh). Faltan las dos tapas."
+   },
+   {
+    "texto": "28π cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "24π cm²",
+    "trampa": "Sumaste una sola tapa: el cilindro tiene dos."
+   },
+   {
+    "texto": "10π cm²",
+    "trampa": "Olvidaste el 2 del manto: calculaste πrh."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Tapas: 2·π·2² = 8π. Manto: 2π·2·5 = 20π. Total 28π cm²."
+ },
+ {
+  "id": "m2-mdi-b2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "basico",
+  "enunciado": "Dos triángulos semejantes tienen razón de semejanza 2 : 3. Si el área del menor es 8 cm², ¿cuál es el área del mayor?",
+  "opciones": [
+   {
+    "texto": "12 cm²",
+    "trampa": "Usaste la razón de los lados (3/2). Las áreas van con la razón al cuadrado."
+   },
+   {
+    "texto": "32/9 cm²",
+    "trampa": "Invertiste la razón: el mayor debe tener más área."
+   },
+   {
+    "texto": "27 cm²",
+    "trampa": "Usaste la razón al cubo, que corresponde a volúmenes."
+   },
+   {
+    "texto": "18 cm²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Áreas: (3/2)² = 9/4. 8·9/4 = 18 cm²."
+ },
+ {
+  "id": "m2-mdi-p1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "paes",
+  "enunciado": "¿Para qué valores de m la ecuación x² − 6x + m = 0 NO tiene soluciones reales?",
+  "opciones": [
+   {
+    "texto": "m < 9",
+    "trampa": "Invertiste la desigualdad: sin soluciones exige Δ < 0, es decir 36 − 4m < 0."
+   },
+   {
+    "texto": "m > 36",
+    "trampa": "Olvidaste el 4 de 4ac: Δ = 36 − 4m."
+   },
+   {
+    "texto": "m > 9",
+    "trampa": ""
+   },
+   {
+    "texto": "m = 9",
+    "trampa": "Con m = 9, Δ = 0: hay UNA solución, no ninguna."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Δ = 36 − 4m < 0 → m > 9."
+ },
+ {
+  "id": "m2-mdi-p2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "paes",
+  "enunciado": "Un rectángulo tiene perímetro 20 cm. ¿Cuál es el área máxima que puede tener?",
+  "opciones": [
+   {
+    "texto": "25 cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "100 cm²",
+    "trampa": "Elevaste el semiperímetro al cuadrado (10²). Los lados suman 10, no miden 10."
+   },
+   {
+    "texto": "50 cm²",
+    "trampa": "Planteaste el otro lado como 20 − 2x (olvidaste dividir el perímetro por 2): x(20 − 2x) tiene máximo 50 en x = 5."
+   },
+   {
+    "texto": "24 cm²",
+    "trampa": "Probaste lados enteros (6 y 4) sin llegar al máximo, que es el cuadrado 5 × 5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Lados x y 10 − x. Área A = x(10 − x), parábola con vértice en x = 5: A = 25 cm²."
+ },
+ {
+  "id": "m2-mdi-d1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "dificil",
+  "enunciado": "Un cilindro tiene un volumen de 50 cm³. Si se duplican su radio y su altura, ¿cuál es el nuevo volumen?",
+  "opciones": [
+   {
+    "texto": "100 cm³",
+    "trampa": "Pensaste que si todo se duplica, el volumen también se duplica. En πr²h el radio va al cuadrado."
+   },
+   {
+    "texto": "200 cm³",
+    "trampa": "Duplicaste el radio (r² → ×4) pero olvidaste duplicar también la altura."
+   },
+   {
+    "texto": "800 cm³",
+    "trampa": "Elevaste el radio al cubo (×8) y además duplicaste la altura (×2). En πr²h el radio va al cuadrado."
+   },
+   {
+    "texto": "400 cm³",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "V = π(2r)²(2h) = π·4r²·2h = 8·πr²h. Nuevo volumen: 8·50 = 400 cm³."
+ },
+ {
+  "id": "m2-mdi-d2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.m1-dificil",
+  "nivel": "dificil",
+  "enunciado": "La parábola y = x² − 4x + c tiene su vértice sobre el eje X. ¿Cuánto vale c?",
+  "opciones": [
+   {
+    "texto": "−4",
+    "trampa": "Al despejar c − 4 = 0 cambiaste mal el signo y pusiste c = −4."
+   },
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "2 es la coordenada x del vértice, no c."
+   },
+   {
+    "texto": "16",
+    "trampa": "Olvidaste el 4 de 4ac: 16 − c = 0 → c = 16."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Vértice en x = 2, y = 4 − 8 + c = c − 4. Sobre el eje X: c − 4 = 0 → c = 4."
  }
 ]

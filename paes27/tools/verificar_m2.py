@@ -371,3 +371,86 @@ def _ejemplos_2c():
 
 
 _ejemplos_2c()
+
+
+# ===== Fase 2d · función potencia, reales, M1 difícil
+chk("m2-pof-b1")(lambda q: idx_num(q, 3 * (-2) ** 3))
+
+
+@chk("m2-pof-b2")
+def _(q):
+    def par(t):
+        f = lambda x: valor(re.sub(r"^f\(x\) = ", "", t), {"x": x})  # noqa: E731
+        return all(cerca(f(-x), f(x)) for x in (0.7, 1.3, 2.1)) and not all(cerca(f(-x), -f(x)) for x in (0.7, 1.3))
+    return unico(q, par, "función par")
+
+
+chk("m2-pof-p1")(lambda q: idx_num(q, Fraction(-4, 2 ** 3)))
+
+
+@chk("m2-pof-p2")
+def _(q):
+    xs = [0.1, 0.37, 0.5, 0.83, 0.99]
+    assert all(x ** 2 > x ** 3 > x ** 4 for x in xs)
+    return idx_texto(q, "x²")
+
+
+@chk("m2-pof-d1")
+def _(q):
+    f = lambda x: -3 * x ** 6 + 5  # noqa: E731
+    xs = [i / 100 for i in range(-300, 301)]
+    assert max(f(x) for x in xs) == 5 and min(f(x) for x in xs) < -100
+    return idx_texto(q, "y ≤ 5")
+
+
+@chk("m2-pof-d2")
+def _(q):
+    xs = [i / 20 for i in range(-60, 61) if i % 20]
+    verdad = {x for x in xs if x ** 5 > x ** 3}
+    conj = {"−1 < x < 0 o x > 1": lambda x: -1 < x < 0 or x > 1, "x > 1": lambda x: x > 1, "x > 0": lambda x: x > 0,
+            "x < −1 o 0 < x < 1": lambda x: x < -1 or 0 < x < 1}
+    return unico(q, lambda t: {x for x in xs if conj[t](x)} == verdad, "conjunto solución")
+
+
+@chk("m2-rea-b1")
+def _(q):
+    vals = {"√8": math.sqrt(8), "√(16/9)": Fraction(4, 3), "0,25": Fraction(1, 4), "∛27": 3}
+    assert math.isqrt(8) ** 2 != 8 and Fraction(4, 3) ** 2 == Fraction(16, 9) and 3 ** 3 == 27
+    return idx_texto(q, next(k for k, v in vals.items() if isinstance(v, float)))
+
+
+chk("m2-rea-b2")(lambda q: idx_num(q, round(8 ** (2 / 3), 9)))
+chk("m2-rea-p1")(lambda q: idx_num(q, math.sqrt(12) + math.sqrt(27) - math.sqrt(75)))
+chk("m2-rea-p2")(lambda q: idx_num(q, (math.sqrt(5) + math.sqrt(2)) * (math.sqrt(5) - math.sqrt(2))))
+
+
+@chk("m2-rea-d1")
+def _(q):
+    v = {"a": math.sqrt(10), "b": 3.2, "c": 30 ** (1 / 3)}
+    return idx_texto(q, " < ".join(sorted(v, key=v.get)))
+
+
+chk("m2-rea-d2")(lambda q: idx_num(q, (2 ** 0.5 * 2 ** (1 / 3)) ** 6))
+chk("m2-mdi-b1")(lambda q: idx_num(q, (2 * 2 ** 2 + 2 * 2 * 5) * math.pi))
+chk("m2-mdi-b2")(lambda q: idx_num(q, 8 * Fraction(3, 2) ** 2))
+
+
+@chk("m2-mdi-p1")
+def _(q):
+    sin_sol = lambda m: 36 - 4 * m < 0  # noqa: E731
+    assert sin_sol(9.01) and not sin_sol(9) and not sin_sol(8.99)
+    return idx_texto(q, "m > 9")
+
+
+chk("m2-mdi-p2")(lambda q: idx_num(q, max(x / 100 * (10 - x / 100) for x in range(0, 1001))))
+chk("m2-mdi-d1")(lambda q: idx_num(q, 50 * 2 ** 2 * 2))   # π(2r)²(2h) = 8πr²h
+chk("m2-mdi-d2")(lambda q: idx_num(q, -(2 ** 2 - 4 * 2)))   # y_v = 4 − 8 + c = 0
+
+
+def _ejemplos_2d():
+    assert max(-2 * (i / 10) ** 4 + 3 for i in range(-30, 31)) == 3
+    assert abs(math.sqrt(12) + math.sqrt(27) - math.sqrt(48) - math.sqrt(3)) < 1e-12
+    assert [k for k in range(-10, 11) if k * k - 36 == 0] == [-6, 6]
+
+
+_ejemplos_2d()
