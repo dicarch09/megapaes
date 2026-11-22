@@ -1006,5 +1006,797 @@
   ],
   "correcta": 2,
   "explicacion": "BC = 10·0,6 = 6 (opuesto a A). AC = √(100 − 36) = 8. Área = 6·8/2 = 24."
+ },
+ {
+  "id": "m2-sd-b1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar el valor de x si:<br>(1) 3x − 2 = 10<br>(2) x² = 16",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "(2) sola no alcanza: x² = 16 da x = 4 o x = −4."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Juntas sí alcanzan, pero (1) ya alcanzaba sola. Si una sola basta, la respuesta no es C."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(2) sola no basta: tiene dos soluciones, 4 y −4."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(1) sola ya da x = 4: no falta información."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(1): 3x = 12 → x = 4, un solo valor. (2): x = 4 o x = −4, no es único. Solo (1) alcanza: A."
+ },
+ {
+  "id": "m2-sd-b2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar la edad de Ana si:<br>(1) Ana tiene 5 años más que Bea.<br>(2) La suma de las edades de Ana y Bea es 31 años.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "(1) solo relaciona las edades: Ana 20 y Bea 15, o Ana 30 y Bea 25… hay infinitas parejas."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "La suma sola no fija la edad de Ana: 16 + 15, 20 + 11…"
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna alcanza sola: cada una deja infinitas parejas posibles."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Juntas forman un sistema 2×2 con solución única (Ana 18, Bea 13): no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "A − B = 5 y A + B = 31 → 2A = 36 → A = 18. Juntas sí alcanzan; solas no. C."
+ },
+ {
+  "id": "m2-sd-b3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar la medida de la hipotenusa AB del triángulo ABC, rectángulo en C, si:<br>(1) AC = 6 cm<br>(2) BC = 8 cm",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con un solo cateto falta el otro: la hipotenusa podría medir cualquier valor mayor que 6."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Con un solo cateto falta el otro: la hipotenusa podría medir cualquier valor mayor que 8."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: Pitágoras necesita los dos catetos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Con los dos catetos, Pitágoras da AB = 10: no falta nada."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "AB² = AC² + BC². Con ambos: √(36 + 64) = 10. Con uno solo, no se puede. C."
+ },
+ {
+  "id": "m2-sd-p1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar el valor de a/b, con b ≠ 0, si:<br>(1) 3a = 2b<br>(2) a + b = 10",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "a + b = 10 tiene infinitas parejas con cocientes distintos: 5/5 = 1, 2/8 = 1/4…"
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Buscaste a y b por separado, pero (1) ya da a/b = 2/3 sin conocerlos."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(2) sola no alcanza: muchas parejas suman 10 y dan cocientes distintos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(1) dividida por 3b da a/b = 2/3 directo: no falta información."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(1): 3a = 2b → a/b = 2/3, un solo valor. (2) sola no alcanza. A."
+ },
+ {
+  "id": "m2-sd-p2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar el valor del número entero n si:<br>(1) 3 &lt; n &lt; 6<br>(2) n es par",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Entre 3 y 6 hay dos enteros: 4 y 5."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Hay infinitos números pares."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: (1) deja 4 o 5, y (2) deja infinitos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Juntas solo queda n = 4: no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): n = 4 o n = 5. (2): infinitos. Juntas: n = 4. C."
+ },
+ {
+  "id": "m2-sd-p3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar la probabilidad de sacar una bolita roja de una urna que solo tiene bolitas rojas y azules, si:<br>(1) Hay 12 bolitas en total.<br>(2) Hay el doble de bolitas azules que de rojas.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Saber el total no dice cuántas son rojas."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Creíste que necesitas el total, pero la probabilidad es una razón: con «el doble» ya sale 1/3."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(1) sola no alcanza: no dice cuántas son rojas."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(2) sola ya da r/(r + 2r) = 1/3: no falta información."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "(2): si hay r rojas, hay 2r azules, y P = r/(3r) = 1/3 para cualquier r. (1) sola no alcanza. B."
+ },
+ {
+  "id": "m2-sd-d1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar el valor de x·y si:<br>(1) x = 2y<br>(2) y² = 9",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con x = 2y, el producto x·y = 2y² depende de y."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "(2) da y = 3 o y = −3, pero x puede ser cualquier número."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: a cada una le falta la otra variable."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Creíste que y = ±3 deja dos resultados, pero x·y = 2y² = 18 en ambos casos."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Juntas: x·y = 2y·y = 2y² = 2·9 = 18, sea y = 3 o y = −3. Solas no alcanzan. C."
+ },
+ {
+  "id": "m2-sd-d2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar el área de un rectángulo si:<br>(1) Su perímetro es 20 cm.<br>(2) Su diagonal mide √52 cm.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con perímetro 20 sirven 1 × 9 (área 9) o 5 × 5 (área 25)."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Con diagonal √52 sirven 4 × 6 (área 24) o √26 × √26 (área 26)."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: cada una permite rectángulos de áreas distintas."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Creíste que necesitas los lados por separado; pero (a + b)² = a² + b² + 2ab da 100 = 52 + 2ab → ab = 24."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): a + b = 10. (2): a² + b² = 52. Juntas: 2ab = 100 − 52 = 48 → área = 24 cm². C."
+ },
+ {
+  "id": "m2-sd-d3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar cuántos estudiantes hay en un curso si:<br>(1) Al formar grupos de 4 estudiantes, no sobra nadie.<br>(2) En el curso hay entre 30 y 34 estudiantes (ambos incluidos).",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Hay muchos múltiplos de 4: 28, 32, 36…"
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Entre 30 y 34 hay varias cantidades posibles."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Pensaste que (2) sola alcanza porque el rango es corto, pero deja 30, 31, 32, 33 o 34."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Entre 30 y 34, el único múltiplo de 4 es 32: no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): la cantidad es múltiplo de 4. (2): está entre 30 y 34. Juntas: 32. C."
+ },
+ {
+  "id": "m2-com-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "¿De cuántas formas se pueden ordenar 5 libros distintos en un estante?",
+  "opciones": [
+   {
+    "texto": "25",
+    "trampa": "Calculaste 5·5: cada libro se usa una sola vez, así que las opciones bajan: 5·4·3·2·1."
+   },
+   {
+    "texto": "15",
+    "trampa": "Sumaste 5 + 4 + 3 + 2 + 1. Las elecciones sucesivas se multiplican."
+   },
+   {
+    "texto": "5",
+    "trampa": "Contaste solo qué libro va primero."
+   },
+   {
+    "texto": "120",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Es 5! = 5·4·3·2·1 = 120."
+ },
+ {
+  "id": "m2-com-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "Un menú tiene 3 entradas, 4 platos de fondo y 2 postres. ¿Cuántos menús distintos se pueden armar con una entrada, un fondo y un postre?",
+  "opciones": [
+   {
+    "texto": "9",
+    "trampa": "Sumaste 3 + 4 + 2. Cada entrada se combina con cada fondo y cada postre: se multiplica."
+   },
+   {
+    "texto": "24",
+    "trampa": ""
+   },
+   {
+    "texto": "12",
+    "trampa": "Olvidaste los postres: 3·4."
+   },
+   {
+    "texto": "84",
+    "trampa": "Calculaste C(9, 3), como si las 9 comidas fueran un solo grupo. Hay que elegir una de cada tipo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Principio multiplicativo: 3·4·2 = 24."
+ },
+ {
+  "id": "m2-com-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de C(6, 2)?",
+  "opciones": [
+   {
+    "texto": "30",
+    "trampa": "Calculaste 6·5 y no dividiste por 2!: cada pareja quedó contada dos veces."
+   },
+   {
+    "texto": "12",
+    "trampa": "Multiplicaste 6·2."
+   },
+   {
+    "texto": "3",
+    "trampa": "Dividiste 6 entre 2."
+   },
+   {
+    "texto": "15",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "C(6, 2) = (6·5)/2! = 30/2 = 15."
+ },
+ {
+  "id": "m2-com-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "¿Cuántas claves de 4 dígitos (del 0 al 9) se pueden formar si los dígitos se pueden repetir?",
+  "opciones": [
+   {
+    "texto": "10.000",
+    "trampa": ""
+   },
+   {
+    "texto": "5.040",
+    "trampa": "Calculaste 10·9·8·7, sin repetir dígitos. Acá se pueden repetir."
+   },
+   {
+    "texto": "210",
+    "trampa": "C(10, 4) ignora el orden, pero en una clave 1234 no es lo mismo que 4321."
+   },
+   {
+    "texto": "40",
+    "trampa": "Multiplicaste 10·4."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cada uno de los 4 lugares tiene 10 opciones: 10⁴ = 10.000."
+ },
+ {
+  "id": "m2-com-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "¿De cuántas formas se puede elegir un grupo de 3 personas entre 8?",
+  "opciones": [
+   {
+    "texto": "336",
+    "trampa": "Contaste con orden (8·7·6). En un grupo el orden no importa: hay que dividir por 3! = 6."
+   },
+   {
+    "texto": "24",
+    "trampa": "Multiplicaste 8·3."
+   },
+   {
+    "texto": "56",
+    "trampa": ""
+   },
+   {
+    "texto": "512",
+    "trampa": "Calculaste 8³: con orden y permitiendo elegir a la misma persona varias veces."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "C(8, 3) = (8·7·6)/3! = 336/6 = 56."
+ },
+ {
+  "id": "m2-com-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "En una carrera compiten 7 atletas. ¿De cuántas formas se pueden repartir las medallas de oro, plata y bronce?",
+  "opciones": [
+   {
+    "texto": "210",
+    "trampa": ""
+   },
+   {
+    "texto": "35",
+    "trampa": "C(7, 3) ignora el orden, pero no es lo mismo ganar oro que bronce."
+   },
+   {
+    "texto": "343",
+    "trampa": "7³ permite que un mismo atleta gane dos medallas."
+   },
+   {
+    "texto": "21",
+    "trampa": "Multiplicaste 7·3."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Oro: 7 opciones, plata: 6, bronce: 5. Total 7·6·5 = 210."
+ },
+ {
+  "id": "m2-com-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "¿Cuántos números de 3 cifras distintas se pueden formar con los dígitos 0, 1, 2, 3 y 4?",
+  "opciones": [
+   {
+    "texto": "60",
+    "trampa": "Contaste también los que empiezan con 0 (como 012), que no son de 3 cifras."
+   },
+   {
+    "texto": "48",
+    "trampa": ""
+   },
+   {
+    "texto": "100",
+    "trampa": "Permitiste repetir dígitos: 4·5·5."
+   },
+   {
+    "texto": "24",
+    "trampa": "Sacaste el 0 de todos los lugares (4·3·2). Solo está prohibido en el primero."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Primera cifra: 4 opciones (no el 0). Segunda: 4 (ahora sí el 0, menos la usada). Tercera: 3. Total 4·4·3 = 48."
+ },
+ {
+  "id": "m2-com-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "De un grupo de 5 hombres y 4 mujeres se elige un comité de 2 hombres y 2 mujeres. ¿Cuántos comités distintos se pueden formar?",
+  "opciones": [
+   {
+    "texto": "16",
+    "trampa": "Sumaste C(5, 2) + C(4, 2). Cada pareja de hombres se combina con cada pareja de mujeres: se multiplica."
+   },
+   {
+    "texto": "126",
+    "trampa": "C(9, 4) elige 4 personas cualquiera, sin respetar la condición de 2 y 2."
+   },
+   {
+    "texto": "240",
+    "trampa": "Contaste con orden: 5·4·4·3. En un comité el orden no importa."
+   },
+   {
+    "texto": "60",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "C(5, 2)·C(4, 2) = 10·6 = 60."
+ },
+ {
+  "id": "m2-com-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "¿De cuántas formas se pueden sentar 5 personas en una fila si Ana y Beto deben quedar juntos?",
+  "opciones": [
+   {
+    "texto": "24",
+    "trampa": "Olvidaste que Ana y Beto pueden intercambiar lugares entre ellos: falta multiplicar por 2."
+   },
+   {
+    "texto": "48",
+    "trampa": ""
+   },
+   {
+    "texto": "120",
+    "trampa": "Ignoraste la condición: 5! son todas las formas."
+   },
+   {
+    "texto": "72",
+    "trampa": "Calculaste las formas en que NO están juntos: 120 − 48."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Pego a Ana y Beto como un bloque: quedan 4 «cosas» → 4! = 24. Dentro del bloque hay 2 órdenes: 24·2 = 48."
+ },
+ {
+  "id": "m2-dis-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el rango del conjunto de datos 12, 7, 15, 9, 4?",
+  "opciones": [
+   {
+    "texto": "8",
+    "trampa": "Restaste el primero y el último de la lista (12 − 4) sin ordenar. El rango es máximo − mínimo."
+   },
+   {
+    "texto": "9",
+    "trampa": "9 es la mediana, no el rango."
+   },
+   {
+    "texto": "19",
+    "trampa": "Sumaste el máximo y el mínimo."
+   },
+   {
+    "texto": "11",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Rango = máximo − mínimo = 15 − 4 = 11."
+ },
+ {
+  "id": "m2-dis-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "Dos conjuntos de datos, P y Q, tienen la misma media. La desviación estándar de P es 1,2 y la de Q es 3,5. ¿Qué se puede afirmar?",
+  "opciones": [
+   {
+    "texto": "Los datos de Q son mayores que los de P.",
+    "trampa": "Confundes dispersión con tamaño: las medias son iguales."
+   },
+   {
+    "texto": "En promedio, los datos de Q están más alejados de la media que los de P.",
+    "trampa": ""
+   },
+   {
+    "texto": "P tiene más datos que Q.",
+    "trampa": "Pensaste que a mayor σ hay menos datos (o al revés). σ mide qué tan separados están los datos, no cuántos hay."
+   },
+   {
+    "texto": "Q tiene mayor media que P.",
+    "trampa": "El enunciado dice que la media es la misma."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Mayor desviación estándar = datos más dispersos alrededor de la media."
+ },
+ {
+  "id": "m2-dis-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "Si a cada dato de un conjunto se le suma 5, ¿qué ocurre con la desviación estándar?",
+  "opciones": [
+   {
+    "texto": "Aumenta en 5",
+    "trampa": "Eso le pasa a la media. Las distancias entre los datos y la media no cambian."
+   },
+   {
+    "texto": "Se multiplica por 5",
+    "trampa": "Confundiste sumar con multiplicar."
+   },
+   {
+    "texto": "Disminuye",
+    "trampa": "Pensaste que al subir la media los datos quedan más juntos. Todos se mueven lo mismo: las distancias no cambian."
+   },
+   {
+    "texto": "No cambia",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Todos los datos y la media se corren 5: las desviaciones quedan iguales, y σ también."
+ },
+ {
+  "id": "m2-dis-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la desviación estándar del conjunto 2, 3, 5, 6, 9?",
+  "opciones": [
+   {
+    "texto": "√6",
+    "trampa": ""
+   },
+   {
+    "texto": "6",
+    "trampa": "6 es la varianza: falta sacar la raíz."
+   },
+   {
+    "texto": "√7,5",
+    "trampa": "Dividiste por n − 1 = 4. En la PAES se divide por n = 5."
+   },
+   {
+    "texto": "2",
+    "trampa": "Promediaste las distancias sin elevarlas al cuadrado: (3 + 2 + 0 + 1 + 4)/5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Media 5. Desviaciones −3, −2, 0, 1, 4. Cuadrados 9 + 4 + 0 + 1 + 16 = 30. Varianza 30/5 = 6. σ = √6."
+ },
+ {
+  "id": "m2-dis-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "Si cada dato de un conjunto se multiplica por 3, ¿qué ocurre con la varianza?",
+  "opciones": [
+   {
+    "texto": "Se multiplica por 3",
+    "trampa": "Eso le pasa a la desviación estándar. La varianza usa cuadrados: 3² = 9."
+   },
+   {
+    "texto": "No cambia",
+    "trampa": "Eso pasa al SUMAR una constante, no al multiplicar."
+   },
+   {
+    "texto": "Se multiplica por 9",
+    "trampa": ""
+   },
+   {
+    "texto": "Aumenta en 3",
+    "trampa": "Sumaste en vez de multiplicar."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Las desviaciones se multiplican por 3; al elevarlas al cuadrado, por 9. La varianza se multiplica por 9."
+ },
+ {
+  "id": "m2-dis-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "Las notas de Ana son 5, 5, 5, 5 y las de Beto son 3, 4, 6, 7. ¿Cuál afirmación es correcta?",
+  "opciones": [
+   {
+    "texto": "Tienen la misma media, pero las notas de Beto tienen mayor desviación estándar.",
+    "trampa": ""
+   },
+   {
+    "texto": "Ana tiene mayor desviación estándar porque repite notas.",
+    "trampa": "Repetir la misma nota da σ = 0: la menor posible."
+   },
+   {
+    "texto": "Tienen la misma desviación estándar porque tienen la misma media.",
+    "trampa": "La media no determina la dispersión."
+   },
+   {
+    "texto": "Beto tiene mayor media porque tiene notas más altas.",
+    "trampa": "También tiene notas más bajas: ambas medias son 5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Ambas medias son 5. Ana: σ = 0. Beto: desviaciones −2, −1, 1, 2 → varianza 10/4 = 2,5 → σ ≈ 1,58."
+ },
+ {
+  "id": "m2-dis-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "Un conjunto de 5 datos tiene media 6 y varianza 4. Si se agrega un dato igual a 6, ¿cuál es la nueva varianza?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Pensaste que agregar un dato igual a la media no cambia nada; pero ahora se divide por 6, no por 5."
+   },
+   {
+    "texto": "10/3",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Diste la desviación estándar original (√4)."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Dividiste la varianza (4) por 6, en vez de dividir la suma de cuadrados (20)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Suma de cuadrados = 4·5 = 20. El nuevo dato aporta 0 y la media sigue en 6. Nueva varianza = 20/6 = 10/3."
+ },
+ {
+  "id": "m2-dis-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "Los sueldos de una empresa tienen media $800.000 y desviación estándar $100.000. Si todos reciben un aumento del 10 %, ¿cuál es la nueva desviación estándar?",
+  "opciones": [
+   {
+    "texto": "$100.000",
+    "trampa": "Un aumento porcentual multiplica (×1,1); no es como sumar una constante."
+   },
+   {
+    "texto": "$180.000",
+    "trampa": "Le sumaste a σ el 10 % de la media (80.000)."
+   },
+   {
+    "texto": "$121.000",
+    "trampa": "Multiplicaste por 1,1², que es lo que le pasa a la varianza, no a σ."
+   },
+   {
+    "texto": "$110.000",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Cada sueldo se multiplica por 1,1, y σ también: 100.000·1,1 = 110.000."
+ },
+ {
+  "id": "m2-dis-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "El conjunto {2, 4, x} tiene media 4. ¿Cuál es su varianza?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Dividiste por n − 1 = 2. En la PAES se divide por n = 3."
+   },
+   {
+    "texto": "8/3",
+    "trampa": ""
+   },
+   {
+    "texto": "0",
+    "trampa": "Sumaste las desviaciones sin elevarlas al cuadrado: −2 + 0 + 2 = 0."
+   },
+   {
+    "texto": "√(8/3)",
+    "trampa": "Esa es la desviación estándar; se pide la varianza."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "2 + 4 + x = 12 → x = 6. Desviaciones −2, 0, 2. Varianza (4 + 0 + 4)/3 = 8/3."
  }
 ]

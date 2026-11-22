@@ -123,7 +123,7 @@ const SHOTS = process.env.SHOTS || '';
     await page.goto(BASE + '/m2.html');
     await page.waitForTimeout(600);
     const lecciones = await page.locator('section.leccion').count();
-    ok(lecciones === 4, `4 lecciones (${lecciones})`);
+    ok(lecciones >= 7, `lecciones en m2.html: ${lecciones}`);
     // cada lección: abrir, mover sliders, practicar los 3 niveles
     const ids = await page.locator('section.leccion').evaluateAll((ls) => ls.map((l) => l.id));
     for (const id of ids) {
@@ -132,13 +132,14 @@ const SHOTS = process.env.SHOTS || '';
       const sec = page.locator(`section.leccion[id="${id}"]`);
       ok(await sec.isVisible(), `lección ${id} visible por enlace directo`);
       const sliders = sec.locator('input[type=range]');
+      const selects = await sec.locator('select').count();
       const n = await sliders.count();
       for (let i = 0; i < n; i++) {
         const s = sliders.nth(i);
         if (!(await s.isVisible())) continue;
         await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
       }
-      ok(n >= 2, `${id}: ${n} sliders`);
+      ok(n + selects >= 2, `${id}: ${n} sliders, ${selects} selectores`);
       const pasos = sec.locator('button', { hasText: 'Siguiente paso' });
       while (await pasos.isVisible()) await pasos.click();
       for (const nivel of ['Básico', 'PAES', 'Difícil']) {

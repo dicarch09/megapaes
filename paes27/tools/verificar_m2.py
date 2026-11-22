@@ -156,3 +156,105 @@ def _ejemplos():
 
 
 _ejemplos()
+
+
+# ===== Fase 2a · suficiencia de datos (decide la alternativa con soluciones de muestra)
+import itertools  # noqa: E402
+import statistics  # noqa: E402
+
+R1 = [Fraction(n, 2) for n in range(-40, 41)]
+POS = [Fraction(n, 2) for n in range(1, 41)]
+
+
+def sd_idx(sol1, sol2, solj, f):
+    return idx_sd(None, determina(sol1, f), determina(sol2, f), determina(solj, f))
+
+
+def chk_sd(qid, sol1, sol2, solj, f):
+    @chk(qid)
+    def _(q):
+        return sd_idx(sol1, sol2, solj, f)
+
+
+uno = lambda cond, dom=R1: [(x,) for x in dom if cond(x)]  # noqa: E731
+chk_sd("m2-sd-b1", uno(lambda x: 3 * x - 2 == 10), uno(lambda x: x * x == 16), uno(lambda x: 3 * x - 2 == 10 and x * x == 16), lambda x: x)
+chk_sd("m2-sd-b2", rejilla(lambda a, b: a - b == 5), rejilla(lambda a, b: a + b == 31), rejilla(lambda a, b: a - b == 5 and a + b == 31), lambda a, b: a)
+pos2 = lambda cond: rejilla(lambda a, b: a > 0 and b > 0 and cond(a, b))  # noqa: E731
+chk_sd("m2-sd-b3", pos2(lambda ac, bc: ac == 6), pos2(lambda ac, bc: bc == 8), pos2(lambda ac, bc: ac == 6 and bc == 8), lambda ac, bc: math.hypot(ac, bc))
+nz = lambda cond: rejilla(lambda a, b: b != 0 and cond(a, b))  # noqa: E731
+chk_sd("m2-sd-p1", nz(lambda a, b: 3 * a == 2 * b), nz(lambda a, b: a + b == 10), nz(lambda a, b: 3 * a == 2 * b and a + b == 10), lambda a, b: a / b)
+ENT = range(-50, 51)
+chk_sd("m2-sd-p2", uno(lambda n: 3 < n < 6, ENT), uno(lambda n: n % 2 == 0, ENT), uno(lambda n: 3 < n < 6 and n % 2 == 0, ENT), lambda n: n)
+urna = lambda cond: [(r, a) for r in range(1, 40) for a in range(1, 40) if cond(r, a)]  # noqa: E731
+chk_sd("m2-sd-p3", urna(lambda r, a: r + a == 12), urna(lambda r, a: a == 2 * r), urna(lambda r, a: r + a == 12 and a == 2 * r), lambda r, a: Fraction(r, r + a))
+chk_sd("m2-sd-d1", rejilla(lambda x, y: x == 2 * y), rejilla(lambda x, y: y * y == 9), rejilla(lambda x, y: x == 2 * y and y * y == 9), lambda x, y: x * y)
+# rectángulo: soluciones continuas parametrizadas
+s_per = [(a, 10 - a) for a in (1, 2.5, 5, 7)]
+s_diag = [(a, math.sqrt(52 - a * a)) for a in (2, 4, math.sqrt(26), 6.5)]
+s_amb = [(a, 10 - a) for a in (4, 6) if abs(a * a + (10 - a) ** 2 - 52) < 1e-9]
+assert len(s_amb) == 2
+chk_sd("m2-sd-d2", s_per, s_diag, s_amb, lambda a, b: a * b)
+ALU = range(1, 101)
+chk_sd("m2-sd-d3", uno(lambda n: n % 4 == 0, ALU), uno(lambda n: 30 <= n <= 34, ALU), uno(lambda n: n % 4 == 0 and 30 <= n <= 34, ALU), lambda n: n)
+
+# ===== Fase 2a · combinatoria
+chk("m2-com-b1")(lambda q: idx_num(q, math.factorial(5)))
+chk("m2-com-b2")(lambda q: idx_num(q, 3 * 4 * 2))
+chk("m2-com-b3")(lambda q: idx_num(q, math.comb(6, 2)))
+chk("m2-com-p1")(lambda q: idx_num(q, sum(1 for _ in itertools.product(range(10), repeat=4))))
+chk("m2-com-p2")(lambda q: idx_num(q, sum(1 for _ in itertools.combinations(range(8), 3))))
+chk("m2-com-p3")(lambda q: idx_num(q, sum(1 for _ in itertools.permutations(range(7), 3))))
+chk("m2-com-d1")(lambda q: idx_num(q, sum(1 for p in itertools.permutations(range(5), 3) if p[0] != 0)))
+chk("m2-com-d2")(lambda q: idx_num(q, sum(1 for h in itertools.combinations(range(5), 2) for m in itertools.combinations(range(4), 2))))
+chk("m2-com-d3")(lambda q: idx_num(q, sum(1 for p in itertools.permutations(range(5)) if abs(p.index(0) - p.index(1)) == 1)))
+
+# ===== Fase 2a · dispersión
+chk("m2-dis-b1")(lambda q: idx_num(q, max([12, 7, 15, 9, 4]) - min([12, 7, 15, 9, 4])))
+
+
+@chk("m2-dis-b3")
+def _(q):
+    d = [1, 4, 6, 9]
+    antes, despues = statistics.pstdev(d), statistics.pstdev([x + 5 for x in d])
+    return idx_texto(q, "No cambia" if abs(antes - despues) < 1e-12 else "?")
+
+
+chk("m2-dis-p1")(lambda q: idx_num(q, math.sqrt(statistics.pvariance([2, 3, 5, 6, 9]))))
+
+
+@chk("m2-dis-p2")
+def _(q):
+    d = [1, 4, 6, 9]
+    k = statistics.pvariance([3 * x for x in d]) / statistics.pvariance(d)
+    return idx_texto(q, f"Se multiplica por {k:g}")
+
+
+@chk("m2-dis-p3")
+def _(q):
+    ana, beto = [5, 5, 5, 5], [3, 4, 6, 7]
+    assert statistics.mean(ana) == statistics.mean(beto) and statistics.pstdev(beto) > statistics.pstdev(ana)
+    return idx_texto(q, "Tienen la misma media, pero las notas de Beto tienen mayor desviación estándar.")
+
+
+@chk("m2-dis-d1")
+def _(q):
+    d = [3, 5, 6, 7, 9]
+    assert statistics.mean(d) == 6 and statistics.pvariance(d) == 4
+    return idx_num(q, statistics.pvariance([Fraction(x) for x in d + [6]]))
+
+
+chk("m2-dis-d2")(lambda q: idx_num(q, 100_000 * 1.1))
+chk("m2-dis-d3")(lambda q: idx_num(q, statistics.pvariance([Fraction(x) for x in [2, 4, 3 * 4 - 2 - 4]])))
+CONCEPTUALES["m2-dis-b2"] = "dispersión: comparación cualitativa de σ"
+
+
+def _ejemplos_2a():
+    c, l = 1040, 440
+    assert 3 * c + 2 * l == 4000 and c == l + 600
+    assert 10 * 9 * 8 == 720 and math.comb(10, 3) == 720 // math.factorial(3) == 120
+    d = [2, 4, 4, 4, 5, 5, 7, 9]
+    assert statistics.mean(d) == 5 and statistics.pvariance(d) == 4 and statistics.pstdev(d) == 2
+    assert sum((x - 5) ** 2 for x in d) == 32
+
+
+_ejemplos_2a()

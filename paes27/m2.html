@@ -58,7 +58,12 @@ input[type=range]{accent-color:var(--acc);width:100%}
 .paginas span{color:var(--muted);border-style:dashed}
 .leccion{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
 .lec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.lec-head h2{margin:0 8px 0 0}
+.lec-head h2{margin:0 8px 0 0;font-size:1.2rem}
+.lec-head{cursor:pointer;user-select:none}
+.lec-head::before{content:"▾";color:var(--acc);font-size:1.1rem}
+.leccion.cerrada .lec-head::before{content:"▸"}
+.leccion.cerrada .lec-body{display:none}
+.leccion.cerrada{padding:12px 18px}
 .chip.nuevo{color:#9fe3c9;border-color:#245c4a}
 .dom{margin-left:auto;font-size:.9rem;font-weight:700}
 .idea{background:var(--panel2);border-left:3px solid var(--acc);padding:10px 12px;border-radius:0 8px 8px 0;margin:12px 0}
@@ -91,6 +96,12 @@ table.t2 .hl{background:rgba(242,184,75,.22)}table.t2 .hl2{background:rgba(94,20
 .pend .card{margin:0;border-style:dashed}
 .ley{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .ley i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.sd-demo{background:#0f1524;border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
+.sd-caso>div{margin:4px 0}
+.sd-lista{margin:0;padding:0;list-style:none}.sd-lista li{padding:3px 8px;border-radius:6px;transition:opacity .3s}
+.sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:rgba(67,197,158,.18);color:var(--ok);font-weight:700}
+.sd-opciones{margin:-4px 0 8px}
+@media (max-width:700px){.sd-demo{grid-template-columns:1fr}}
 select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:.3em .5em;font:inherit}
 </style>
 </head>
@@ -116,7 +127,8 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
     <button data-tab="num">Números</button>
     <button data-tab="geo">Geometría</button>
     <button data-tab="pro">Probabilidad</button>
-    <button data-tab="sd">Suficiencia de datos</button>
+    <button data-tab="sd">Suficiencia + M1 difícil</button>
+    <button data-tab="ensayo">Ensayo cronometrado</button>
   </nav>
   <p class="small muted">Cada lección: <b>1 ver</b> → <b>2 manipular</b> → <b>3 el porqué</b> → <b>4 ejemplo</b> → <b>5 práctica</b>. Atajos en la práctica: 1–4 para responder, Enter para seguir.</p>
 
@@ -124,6 +136,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   <div class="pane" id="p-alg">
   <section class="leccion" id="m2.alg.sistemas-rectas" data-tab="alg">
     <div class="lec-head"><h2>Rectas en el plano + sistemas 2×2</h2><span class="chip A">A</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="m2.alg.sistemas-rectas"></span></div>
+    <div class="lec-body">
     <p class="idea">Cada ecuación es una recta. Resolver el sistema es buscar <b>dónde se cruzan</b>. Se cortan → <b>1 solución</b>. Paralelas → <b>0</b>. Coinciden → <b>infinitas</b>.</p>
 
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
@@ -160,6 +173,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="rec"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.alg.sistemas-rectas"></div></div>
+    </div>
   </section>
   </div>
 
@@ -167,6 +181,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   <div class="pane" id="p-num">
   <section class="leccion" id="m2.num.log-exp" data-tab="num">
     <div class="lec-head"><h2>Logaritmos + función exponencial y logarítmica</h2><span class="chip A">A</span><span class="dom" data-tema="m2.num.log-exp"></span></div>
+    <div class="lec-body">
     <p class="idea">Un logaritmo es <b>un exponente</b>: log<sub>b</sub> N responde «¿a qué número elevo b para obtener N?». Por eso la función logarítmica es la exponencial <b>al revés</b>: intercambia x e y.</p>
 
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
@@ -199,6 +214,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="log"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.num.log-exp"></div></div>
+    </div>
   </section>
   </div>
 
@@ -206,6 +222,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   <div class="pane" id="p-geo">
   <section class="leccion" id="m2.geo.trig-razones" data-tab="geo">
     <div class="lec-head"><h2>Trigonometría: del triángulo a la onda</h2><span class="chip A">A</span><span class="chip B">B · seno y coseno</span><span class="dom" data-tema="m2.geo.trig-razones"></span><span class="dom" data-tema="m2.alg.trig-funciones" style="margin-left:8px"></span></div>
+    <div class="lec-body">
     <p class="idea">En un triángulo rectángulo, las razones entre lados dependen <b>solo del ángulo</b>. En una circunferencia de radio 1, <b>cos θ es la x</b> y <b>sen θ es la y</b> del punto. Al girar, esa y sube y baja: eso es la gráfica del seno.</p>
 
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
@@ -247,6 +264,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="tri"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.geo.trig-razones,m2.alg.trig-funciones"></div></div>
+    </div>
   </section>
   </div>
 
@@ -254,6 +272,7 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   <div class="pane" id="p-pro">
   <section class="leccion" id="m2.pro.condicional" data-tab="pro">
     <div class="lec-head"><h2>Probabilidad condicional</h2><span class="chip A">A</span><span class="dom" data-tema="m2.pro.condicional"></span></div>
+    <div class="lec-body">
     <p class="idea">«Dado que pasó B» significa: <b>el universo se achica a B</b>. P(A | B) = casos de A dentro de B / casos de B. La trampa clásica es dividir por el total, o condicionar al revés.</p>
 
     <div class="paso"><h3><span class="n">1</span> Ver</h3>
@@ -287,10 +306,122 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 
     <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="con"></div></div>
     <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.pro.condicional"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="m2.pro.combinatoria" data-tab="pro">
+    <div class="lec-head"><h2>Permutaciones y combinatoria</h2><span class="chip A">A</span><span class="dom" data-tema="m2.pro.combinatoria"></span></div>
+    <div class="lec-body">
+    <p class="idea">Dos preguntas deciden todo: <b>¿importa el orden?</b> y <b>¿se puede repetir?</b> Si el orden importa, multiplica las opciones de cada lugar. Si no importa, divide por las formas de ordenar lo elegido (k!).</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="com-ver" role="img" aria-label="Doce parejas ordenadas de cuatro letras se juntan de a dos en seis grupos"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="com-ver">⏸ Pausa</button><span id="com-ver-txt"></span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="com-man" role="img" aria-label="Lista de ordenamientos o grupos según n y k"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>n · cuántos elementos hay <b id="com-n-v"></b></span><input type="range" id="com-n" min="1" max="10" step="1" value="4"></label>
+          <label class="sl"><span>k · cuántos eliges <b id="com-k-v"></b></span><input type="range" id="com-k" min="0" max="10" step="1" value="2"></label>
+          <label class="fila small"><input type="checkbox" id="com-orden" checked> ¿Importa el orden? (cargos, filas, claves)</label>
+          <label class="fila small"><input type="checkbox" id="com-rep"> ¿Se puede repetir? (claves, dados)</label>
+          <div class="formula" id="com-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li><b>Principio multiplicativo:</b> si una decisión tiene a opciones y la siguiente b, hay a·b formas en total.</li>
+      <li>Ordenar n cosas: n opciones para el 1.º lugar, n − 1 para el 2.º… → <b>n! = n·(n − 1)···1</b>. (0! = 1.)</li>
+      <li>Elegir k con orden y sin repetir: n·(n − 1)···(n − k + 1) = <b>n!/(n − k)!</b>. Si se puede repetir: <b>n<sup>k</sup></b>.</li>
+      <li>Si el orden NO importa, cada grupo se contó k! veces (sus k! ordenamientos). Divido: <b>C(n, k) = n!/(k!·(n − k)!)</b>.</li>
+      <li>Elegir k es lo mismo que dejar fuera n − k: <b>C(n, k) = C(n, n − k)</b>. Con varias condiciones («2 hombres y 2 mujeres») se multiplica: C(5, 2)·C(4, 2).</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="com"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.pro.combinatoria"></div></div>
+    </div>
+  </section>
+
+  <section class="leccion" id="m2.pro.dispersion" data-tab="pro">
+    <div class="lec-head"><h2>Medidas de dispersión</h2><span class="chip A">A</span><span class="dom" data-tema="m2.pro.dispersion"></span></div>
+    <div class="lec-body">
+    <p class="idea">La media dice <b>dónde</b> están los datos; la dispersión dice <b>qué tan separados</b> están de ella. Rango = máximo − mínimo. Varianza = promedio de las distancias a la media <b>al cuadrado</b>. Desviación estándar σ = √varianza.</p>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="cv"><canvas id="dis-ver" role="img" aria-label="Cinco datos con la misma media se separan y se juntan; la desviación estándar cambia"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="dis-ver">⏸ Pausa</button><span id="dis-ver-txt"></span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="dis-man" role="img" aria-label="Datos en una recta numérica con su media y desviaciones"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Dato 1 <b id="dis-1-v"></b></span><input type="range" id="dis-1" min="0" max="10" step="0.5" value="2"></label>
+          <label class="sl"><span>Dato 2 <b id="dis-2-v"></b></span><input type="range" id="dis-2" min="0" max="10" step="0.5" value="4"></label>
+          <label class="sl"><span>Dato 3 <b id="dis-3-v"></b></span><input type="range" id="dis-3" min="0" max="10" step="0.5" value="5"></label>
+          <label class="sl"><span>Dato 4 <b id="dis-4-v"></b></span><input type="range" id="dis-4" min="0" max="10" step="0.5" value="6"></label>
+          <label class="sl"><span>Dato 5 <b id="dis-5-v"></b></span><input type="range" id="dis-5" min="0" max="10" step="0.5" value="8"></label>
+          <label class="sl"><span>Transformar todos los datos</span><select id="dis-tr"><option value="0">sin cambio</option><option value="s">sumar 3 a cada dato</option><option value="m">multiplicar cada dato por 2</option></select></label>
+          <div class="formula" id="dis-form"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>Para medir separación, miro la distancia de cada dato a la media: x<sub>i</sub> − x̄ (desviación).</li>
+      <li>Las desviaciones siempre suman 0 (los de arriba compensan a los de abajo), así que promediarlas no sirve.</li>
+      <li>Las elevo al cuadrado para que todas sumen positivo y las promedio: <b>varianza = Σ(x<sub>i</sub> − x̄)²/n</b>.</li>
+      <li>La varianza queda en unidades al cuadrado (notas², $²). Saco raíz para volver a la unidad: <b>σ = √varianza</b>.</li>
+      <li>Si sumo c a todos, todo se corre igual: <b>σ no cambia</b>. Si multiplico por k, las distancias se multiplican por k: <b>σ se multiplica por |k| y la varianza por k²</b>.</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="dis"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.pro.dispersion"></div></div>
+    </div>
   </section>
   </div>
 
-  <div class="pane" id="p-sd"></div>
+  <div class="pane" id="p-sd">
+  <section class="leccion" id="m2.sd" data-tab="sd">
+    <div class="lec-head"><h2>Suficiencia de datos: método de descarte</h2><span class="chip A">A</span><span class="dom" data-tema="m2.sd"></span></div>
+    <div class="lec-body">
+    <p class="idea">No hay que resolver: solo decidir <b>si se puede</b> obtener un valor único. Las 5 alternativas son siempre las mismas y en el mismo orden. Prueba (1) sola, después (2) sola, y <b>tacha</b>.</p>
+    <div class="sd-opciones small muted">A) (1) por sí sola · B) (2) por sí sola · C) Ambas juntas, (1) y (2) · D) Cada una por sí sola, (1) ó (2) · E) Se requiere información adicional</div>
+
+    <div class="paso"><h3><span class="n">1</span> Ver</h3>
+      <div class="sd-demo" id="sd-ver" role="img" aria-label="Cinco casos de suficiencia de datos donde se tachan alternativas paso a paso"></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="sd-ver">⏸ Pausa</button><span class="small muted">Mira cómo cada afirmación tacha un grupo de alternativas.</span></div>
+    </div>
+
+    <div class="paso"><h3><span class="n">2</span> Manipular · el probador</h3>
+      <div class="manip">
+        <div class="ctrl">
+          <label class="sl"><span>¿Se puede determinar…</span><select id="sd-obj"><option value="x">x</option><option value="y">y</option><option value="s">x + y</option><option value="p">x·y</option></select></label>
+          <label class="sl"><span>(1)</span><select id="sd-a"></select></label>
+          <label class="sl"><span>(2)</span><select id="sd-b"></select></label>
+          <p class="small muted">El probador revisa todos los pares (x, y) entre −20 y 20, cada 0,5, y te muestra si el valor pedido queda <b>único</b>.</p>
+        </div>
+        <div class="formula" id="sd-form"></div>
+      </div>
+    </div>
+
+    <details class="acc"><summary><span class="n">3</span> El porqué (5 pasos)</summary><div class="in"><ol>
+      <li>«Determinar» = llegar a <b>un solo valor</b>. Si quedan dos posibles (como x = 3 o x = −3), NO se puede.</li>
+      <li>Tapa la (2) y mira solo la (1). Si alcanza → quedan <b>A o D</b>. Si no → quedan <b>B, C o E</b>.</li>
+      <li>Tapa la (1) y mira solo la (2). Con eso decides: A o D, o bien B contra C/E.</li>
+      <li>Solo si ninguna alcanza sola, <b>júntalas</b>: si alcanzan → <b>C</b>; si no → <b>E</b>.</li>
+      <li>Trampas: no calcules de más (no necesitas el número, solo saber que es único); cuidado con las dos soluciones de un cuadrado; y una afirmación equivalente a la otra (x + y = 10 y 2x + 2y = 20) no agrega nada.</li>
+    </ol></div></details>
+
+    <div class="paso"><h3><span class="n">4</span> Ejemplo resuelto tipo PAES</h3><div class="ejemplo" data-ej="sd"></div></div>
+    <div class="paso"><h3><span class="n">5</span> Práctica</h3><div class="practica" data-temas="m2.sd"></div></div>
+    </div>
+  </section>
+  </div>
+
+  <div class="pane" id="p-ensayo"></div>
 </div>
 
 <script type="application/json" id="banco-m2">
@@ -1302,16 +1433,808 @@ select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
   ],
   "correcta": 2,
   "explicacion": "BC = 10·0,6 = 6 (opuesto a A). AC = √(100 − 36) = 8. Área = 6·8/2 = 24."
+ },
+ {
+  "id": "m2-sd-b1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar el valor de x si:<br>(1) 3x − 2 = 10<br>(2) x² = 16",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "(2) sola no alcanza: x² = 16 da x = 4 o x = −4."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Juntas sí alcanzan, pero (1) ya alcanzaba sola. Si una sola basta, la respuesta no es C."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(2) sola no basta: tiene dos soluciones, 4 y −4."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(1) sola ya da x = 4: no falta información."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(1): 3x = 12 → x = 4, un solo valor. (2): x = 4 o x = −4, no es único. Solo (1) alcanza: A."
+ },
+ {
+  "id": "m2-sd-b2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar la edad de Ana si:<br>(1) Ana tiene 5 años más que Bea.<br>(2) La suma de las edades de Ana y Bea es 31 años.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "(1) solo relaciona las edades: Ana 20 y Bea 15, o Ana 30 y Bea 25… hay infinitas parejas."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "La suma sola no fija la edad de Ana: 16 + 15, 20 + 11…"
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna alcanza sola: cada una deja infinitas parejas posibles."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Juntas forman un sistema 2×2 con solución única (Ana 18, Bea 13): no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "A − B = 5 y A + B = 31 → 2A = 36 → A = 18. Juntas sí alcanzan; solas no. C."
+ },
+ {
+  "id": "m2-sd-b3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "basico",
+  "enunciado": "Se puede determinar la medida de la hipotenusa AB del triángulo ABC, rectángulo en C, si:<br>(1) AC = 6 cm<br>(2) BC = 8 cm",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con un solo cateto falta el otro: la hipotenusa podría medir cualquier valor mayor que 6."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Con un solo cateto falta el otro: la hipotenusa podría medir cualquier valor mayor que 8."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: Pitágoras necesita los dos catetos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Con los dos catetos, Pitágoras da AB = 10: no falta nada."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "AB² = AC² + BC². Con ambos: √(36 + 64) = 10. Con uno solo, no se puede. C."
+ },
+ {
+  "id": "m2-sd-p1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar el valor de a/b, con b ≠ 0, si:<br>(1) 3a = 2b<br>(2) a + b = 10",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "a + b = 10 tiene infinitas parejas con cocientes distintos: 5/5 = 1, 2/8 = 1/4…"
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Buscaste a y b por separado, pero (1) ya da a/b = 2/3 sin conocerlos."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(2) sola no alcanza: muchas parejas suman 10 y dan cocientes distintos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(1) dividida por 3b da a/b = 2/3 directo: no falta información."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(1): 3a = 2b → a/b = 2/3, un solo valor. (2) sola no alcanza. A."
+ },
+ {
+  "id": "m2-sd-p2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar el valor del número entero n si:<br>(1) 3 &lt; n &lt; 6<br>(2) n es par",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Entre 3 y 6 hay dos enteros: 4 y 5."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Hay infinitos números pares."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: (1) deja 4 o 5, y (2) deja infinitos."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Juntas solo queda n = 4: no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): n = 4 o n = 5. (2): infinitos. Juntas: n = 4. C."
+ },
+ {
+  "id": "m2-sd-p3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "paes",
+  "enunciado": "Se puede determinar la probabilidad de sacar una bolita roja de una urna que solo tiene bolitas rojas y azules, si:<br>(1) Hay 12 bolitas en total.<br>(2) Hay el doble de bolitas azules que de rojas.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Saber el total no dice cuántas son rojas."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": ""
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": "Creíste que necesitas el total, pero la probabilidad es una razón: con «el doble» ya sale 1/3."
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "(1) sola no alcanza: no dice cuántas son rojas."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "(2) sola ya da r/(r + 2r) = 1/3: no falta información."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "(2): si hay r rojas, hay 2r azules, y P = r/(3r) = 1/3 para cualquier r. (1) sola no alcanza. B."
+ },
+ {
+  "id": "m2-sd-d1",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar el valor de x·y si:<br>(1) x = 2y<br>(2) y² = 9",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con x = 2y, el producto x·y = 2y² depende de y."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "(2) da y = 3 o y = −3, pero x puede ser cualquier número."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: a cada una le falta la otra variable."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Creíste que y = ±3 deja dos resultados, pero x·y = 2y² = 18 en ambos casos."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Juntas: x·y = 2y·y = 2y² = 2·9 = 18, sea y = 3 o y = −3. Solas no alcanzan. C."
+ },
+ {
+  "id": "m2-sd-d2",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar el área de un rectángulo si:<br>(1) Su perímetro es 20 cm.<br>(2) Su diagonal mide √52 cm.",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Con perímetro 20 sirven 1 × 9 (área 9) o 5 × 5 (área 25)."
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Con diagonal √52 sirven 4 × 6 (área 24) o √26 × √26 (área 26)."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Ninguna basta sola: cada una permite rectángulos de áreas distintas."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Creíste que necesitas los lados por separado; pero (a + b)² = a² + b² + 2ab da 100 = 52 + 2ab → ab = 24."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): a + b = 10. (2): a² + b² = 52. Juntas: 2ab = 100 − 52 = 48 → área = 24 cm². C."
+ },
+ {
+  "id": "m2-sd-d3",
+  "prueba": "M2",
+  "eje": "Transversal",
+  "tema": "m2.sd",
+  "nivel": "dificil",
+  "enunciado": "Se puede determinar cuántos estudiantes hay en un curso si:<br>(1) Al formar grupos de 4 estudiantes, no sobra nadie.<br>(2) En el curso hay entre 30 y 34 estudiantes (ambos incluidos).",
+  "opciones": [
+   {
+    "texto": "(1) por sí sola",
+    "trampa": "Hay muchos múltiplos de 4: 28, 32, 36…"
+   },
+   {
+    "texto": "(2) por sí sola",
+    "trampa": "Entre 30 y 34 hay varias cantidades posibles."
+   },
+   {
+    "texto": "Ambas juntas, (1) y (2)",
+    "trampa": ""
+   },
+   {
+    "texto": "Cada una por sí sola, (1) ó (2)",
+    "trampa": "Pensaste que (2) sola alcanza porque el rango es corto, pero deja 30, 31, 32, 33 o 34."
+   },
+   {
+    "texto": "Se requiere información adicional",
+    "trampa": "Entre 30 y 34, el único múltiplo de 4 es 32: no falta información."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(1): la cantidad es múltiplo de 4. (2): está entre 30 y 34. Juntas: 32. C."
+ },
+ {
+  "id": "m2-com-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "¿De cuántas formas se pueden ordenar 5 libros distintos en un estante?",
+  "opciones": [
+   {
+    "texto": "25",
+    "trampa": "Calculaste 5·5: cada libro se usa una sola vez, así que las opciones bajan: 5·4·3·2·1."
+   },
+   {
+    "texto": "15",
+    "trampa": "Sumaste 5 + 4 + 3 + 2 + 1. Las elecciones sucesivas se multiplican."
+   },
+   {
+    "texto": "5",
+    "trampa": "Contaste solo qué libro va primero."
+   },
+   {
+    "texto": "120",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Es 5! = 5·4·3·2·1 = 120."
+ },
+ {
+  "id": "m2-com-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "Un menú tiene 3 entradas, 4 platos de fondo y 2 postres. ¿Cuántos menús distintos se pueden armar con una entrada, un fondo y un postre?",
+  "opciones": [
+   {
+    "texto": "9",
+    "trampa": "Sumaste 3 + 4 + 2. Cada entrada se combina con cada fondo y cada postre: se multiplica."
+   },
+   {
+    "texto": "24",
+    "trampa": ""
+   },
+   {
+    "texto": "12",
+    "trampa": "Olvidaste los postres: 3·4."
+   },
+   {
+    "texto": "84",
+    "trampa": "Calculaste C(9, 3), como si las 9 comidas fueran un solo grupo. Hay que elegir una de cada tipo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Principio multiplicativo: 3·4·2 = 24."
+ },
+ {
+  "id": "m2-com-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de C(6, 2)?",
+  "opciones": [
+   {
+    "texto": "30",
+    "trampa": "Calculaste 6·5 y no dividiste por 2!: cada pareja quedó contada dos veces."
+   },
+   {
+    "texto": "12",
+    "trampa": "Multiplicaste 6·2."
+   },
+   {
+    "texto": "3",
+    "trampa": "Dividiste 6 entre 2."
+   },
+   {
+    "texto": "15",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "C(6, 2) = (6·5)/2! = 30/2 = 15."
+ },
+ {
+  "id": "m2-com-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "¿Cuántas claves de 4 dígitos (del 0 al 9) se pueden formar si los dígitos se pueden repetir?",
+  "opciones": [
+   {
+    "texto": "10.000",
+    "trampa": ""
+   },
+   {
+    "texto": "5.040",
+    "trampa": "Calculaste 10·9·8·7, sin repetir dígitos. Acá se pueden repetir."
+   },
+   {
+    "texto": "210",
+    "trampa": "C(10, 4) ignora el orden, pero en una clave 1234 no es lo mismo que 4321."
+   },
+   {
+    "texto": "40",
+    "trampa": "Multiplicaste 10·4."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cada uno de los 4 lugares tiene 10 opciones: 10⁴ = 10.000."
+ },
+ {
+  "id": "m2-com-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "¿De cuántas formas se puede elegir un grupo de 3 personas entre 8?",
+  "opciones": [
+   {
+    "texto": "336",
+    "trampa": "Contaste con orden (8·7·6). En un grupo el orden no importa: hay que dividir por 3! = 6."
+   },
+   {
+    "texto": "24",
+    "trampa": "Multiplicaste 8·3."
+   },
+   {
+    "texto": "56",
+    "trampa": ""
+   },
+   {
+    "texto": "512",
+    "trampa": "Calculaste 8³: con orden y permitiendo elegir a la misma persona varias veces."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "C(8, 3) = (8·7·6)/3! = 336/6 = 56."
+ },
+ {
+  "id": "m2-com-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "paes",
+  "enunciado": "En una carrera compiten 7 atletas. ¿De cuántas formas se pueden repartir las medallas de oro, plata y bronce?",
+  "opciones": [
+   {
+    "texto": "210",
+    "trampa": ""
+   },
+   {
+    "texto": "35",
+    "trampa": "C(7, 3) ignora el orden, pero no es lo mismo ganar oro que bronce."
+   },
+   {
+    "texto": "343",
+    "trampa": "7³ permite que un mismo atleta gane dos medallas."
+   },
+   {
+    "texto": "21",
+    "trampa": "Multiplicaste 7·3."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Oro: 7 opciones, plata: 6, bronce: 5. Total 7·6·5 = 210."
+ },
+ {
+  "id": "m2-com-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "¿Cuántos números de 3 cifras distintas se pueden formar con los dígitos 0, 1, 2, 3 y 4?",
+  "opciones": [
+   {
+    "texto": "60",
+    "trampa": "Contaste también los que empiezan con 0 (como 012), que no son de 3 cifras."
+   },
+   {
+    "texto": "48",
+    "trampa": ""
+   },
+   {
+    "texto": "100",
+    "trampa": "Permitiste repetir dígitos: 4·5·5."
+   },
+   {
+    "texto": "24",
+    "trampa": "Sacaste el 0 de todos los lugares (4·3·2). Solo está prohibido en el primero."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Primera cifra: 4 opciones (no el 0). Segunda: 4 (ahora sí el 0, menos la usada). Tercera: 3. Total 4·4·3 = 48."
+ },
+ {
+  "id": "m2-com-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "De un grupo de 5 hombres y 4 mujeres se elige un comité de 2 hombres y 2 mujeres. ¿Cuántos comités distintos se pueden formar?",
+  "opciones": [
+   {
+    "texto": "16",
+    "trampa": "Sumaste C(5, 2) + C(4, 2). Cada pareja de hombres se combina con cada pareja de mujeres: se multiplica."
+   },
+   {
+    "texto": "126",
+    "trampa": "C(9, 4) elige 4 personas cualquiera, sin respetar la condición de 2 y 2."
+   },
+   {
+    "texto": "240",
+    "trampa": "Contaste con orden: 5·4·4·3. En un comité el orden no importa."
+   },
+   {
+    "texto": "60",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "C(5, 2)·C(4, 2) = 10·6 = 60."
+ },
+ {
+  "id": "m2-com-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.combinatoria",
+  "nivel": "dificil",
+  "enunciado": "¿De cuántas formas se pueden sentar 5 personas en una fila si Ana y Beto deben quedar juntos?",
+  "opciones": [
+   {
+    "texto": "24",
+    "trampa": "Olvidaste que Ana y Beto pueden intercambiar lugares entre ellos: falta multiplicar por 2."
+   },
+   {
+    "texto": "48",
+    "trampa": ""
+   },
+   {
+    "texto": "120",
+    "trampa": "Ignoraste la condición: 5! son todas las formas."
+   },
+   {
+    "texto": "72",
+    "trampa": "Calculaste las formas en que NO están juntos: 120 − 48."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Pego a Ana y Beto como un bloque: quedan 4 «cosas» → 4! = 24. Dentro del bloque hay 2 órdenes: 24·2 = 48."
+ },
+ {
+  "id": "m2-dis-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el rango del conjunto de datos 12, 7, 15, 9, 4?",
+  "opciones": [
+   {
+    "texto": "8",
+    "trampa": "Restaste el primero y el último de la lista (12 − 4) sin ordenar. El rango es máximo − mínimo."
+   },
+   {
+    "texto": "9",
+    "trampa": "9 es la mediana, no el rango."
+   },
+   {
+    "texto": "19",
+    "trampa": "Sumaste el máximo y el mínimo."
+   },
+   {
+    "texto": "11",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Rango = máximo − mínimo = 15 − 4 = 11."
+ },
+ {
+  "id": "m2-dis-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "Dos conjuntos de datos, P y Q, tienen la misma media. La desviación estándar de P es 1,2 y la de Q es 3,5. ¿Qué se puede afirmar?",
+  "opciones": [
+   {
+    "texto": "Los datos de Q son mayores que los de P.",
+    "trampa": "Confundes dispersión con tamaño: las medias son iguales."
+   },
+   {
+    "texto": "En promedio, los datos de Q están más alejados de la media que los de P.",
+    "trampa": ""
+   },
+   {
+    "texto": "P tiene más datos que Q.",
+    "trampa": "Pensaste que a mayor σ hay menos datos (o al revés). σ mide qué tan separados están los datos, no cuántos hay."
+   },
+   {
+    "texto": "Q tiene mayor media que P.",
+    "trampa": "El enunciado dice que la media es la misma."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Mayor desviación estándar = datos más dispersos alrededor de la media."
+ },
+ {
+  "id": "m2-dis-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "basico",
+  "enunciado": "Si a cada dato de un conjunto se le suma 5, ¿qué ocurre con la desviación estándar?",
+  "opciones": [
+   {
+    "texto": "Aumenta en 5",
+    "trampa": "Eso le pasa a la media. Las distancias entre los datos y la media no cambian."
+   },
+   {
+    "texto": "Se multiplica por 5",
+    "trampa": "Confundiste sumar con multiplicar."
+   },
+   {
+    "texto": "Disminuye",
+    "trampa": "Pensaste que al subir la media los datos quedan más juntos. Todos se mueven lo mismo: las distancias no cambian."
+   },
+   {
+    "texto": "No cambia",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Todos los datos y la media se corren 5: las desviaciones quedan iguales, y σ también."
+ },
+ {
+  "id": "m2-dis-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la desviación estándar del conjunto 2, 3, 5, 6, 9?",
+  "opciones": [
+   {
+    "texto": "√6",
+    "trampa": ""
+   },
+   {
+    "texto": "6",
+    "trampa": "6 es la varianza: falta sacar la raíz."
+   },
+   {
+    "texto": "√7,5",
+    "trampa": "Dividiste por n − 1 = 4. En la PAES se divide por n = 5."
+   },
+   {
+    "texto": "2",
+    "trampa": "Promediaste las distancias sin elevarlas al cuadrado: (3 + 2 + 0 + 1 + 4)/5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Media 5. Desviaciones −3, −2, 0, 1, 4. Cuadrados 9 + 4 + 0 + 1 + 16 = 30. Varianza 30/5 = 6. σ = √6."
+ },
+ {
+  "id": "m2-dis-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "Si cada dato de un conjunto se multiplica por 3, ¿qué ocurre con la varianza?",
+  "opciones": [
+   {
+    "texto": "Se multiplica por 3",
+    "trampa": "Eso le pasa a la desviación estándar. La varianza usa cuadrados: 3² = 9."
+   },
+   {
+    "texto": "No cambia",
+    "trampa": "Eso pasa al SUMAR una constante, no al multiplicar."
+   },
+   {
+    "texto": "Se multiplica por 9",
+    "trampa": ""
+   },
+   {
+    "texto": "Aumenta en 3",
+    "trampa": "Sumaste en vez de multiplicar."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Las desviaciones se multiplican por 3; al elevarlas al cuadrado, por 9. La varianza se multiplica por 9."
+ },
+ {
+  "id": "m2-dis-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "paes",
+  "enunciado": "Las notas de Ana son 5, 5, 5, 5 y las de Beto son 3, 4, 6, 7. ¿Cuál afirmación es correcta?",
+  "opciones": [
+   {
+    "texto": "Tienen la misma media, pero las notas de Beto tienen mayor desviación estándar.",
+    "trampa": ""
+   },
+   {
+    "texto": "Ana tiene mayor desviación estándar porque repite notas.",
+    "trampa": "Repetir la misma nota da σ = 0: la menor posible."
+   },
+   {
+    "texto": "Tienen la misma desviación estándar porque tienen la misma media.",
+    "trampa": "La media no determina la dispersión."
+   },
+   {
+    "texto": "Beto tiene mayor media porque tiene notas más altas.",
+    "trampa": "También tiene notas más bajas: ambas medias son 5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Ambas medias son 5. Ana: σ = 0. Beto: desviaciones −2, −1, 1, 2 → varianza 10/4 = 2,5 → σ ≈ 1,58."
+ },
+ {
+  "id": "m2-dis-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "Un conjunto de 5 datos tiene media 6 y varianza 4. Si se agrega un dato igual a 6, ¿cuál es la nueva varianza?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Pensaste que agregar un dato igual a la media no cambia nada; pero ahora se divide por 6, no por 5."
+   },
+   {
+    "texto": "10/3",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Diste la desviación estándar original (√4)."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Dividiste la varianza (4) por 6, en vez de dividir la suma de cuadrados (20)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Suma de cuadrados = 4·5 = 20. El nuevo dato aporta 0 y la media sigue en 6. Nueva varianza = 20/6 = 10/3."
+ },
+ {
+  "id": "m2-dis-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "Los sueldos de una empresa tienen media $800.000 y desviación estándar $100.000. Si todos reciben un aumento del 10 %, ¿cuál es la nueva desviación estándar?",
+  "opciones": [
+   {
+    "texto": "$100.000",
+    "trampa": "Un aumento porcentual multiplica (×1,1); no es como sumar una constante."
+   },
+   {
+    "texto": "$180.000",
+    "trampa": "Le sumaste a σ el 10 % de la media (80.000)."
+   },
+   {
+    "texto": "$121.000",
+    "trampa": "Multiplicaste por 1,1², que es lo que le pasa a la varianza, no a σ."
+   },
+   {
+    "texto": "$110.000",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Cada sueldo se multiplica por 1,1, y σ también: 100.000·1,1 = 110.000."
+ },
+ {
+  "id": "m2-dis-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.dispersion",
+  "nivel": "dificil",
+  "enunciado": "El conjunto {2, 4, x} tiene media 4. ¿Cuál es su varianza?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Dividiste por n − 1 = 2. En la PAES se divide por n = 3."
+   },
+   {
+    "texto": "8/3",
+    "trampa": ""
+   },
+   {
+    "texto": "0",
+    "trampa": "Sumaste las desviaciones sin elevarlas al cuadrado: −2 + 0 + 2 = 0."
+   },
+   {
+    "texto": "√(8/3)",
+    "trampa": "Esa es la desviación estándar; se pide la varianza."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "2 + 4 + x = 12 → x = 6. Desviaciones −2, 0, 2. Varianza (4 + 0 + 4)/3 = 8/3."
  }
 ]
 </script>
 <script>
-// == paes27-core v1 ==
+// == paes27-core v2 ==
 // Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 1;
+  const VERSION = 2;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -1326,10 +2249,10 @@ const P27 = (() => {
     ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
     ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
     ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
-    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', null],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', 'm2.html#m2.pro.combinatoria'],
     ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
-    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', null],
-    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', null],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', 'm2.html#m2.pro.dispersion'],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', 'm2.html#m2.sd'],
     ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
     ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', null],
     ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', null],
@@ -1517,7 +2440,7 @@ const P27 = (() => {
     return api;
   }
   document.addEventListener('keydown', (ev) => {
-    if (!activa || !document.body.contains(activa.caja)) return;
+    if (!activa || !document.body.contains(activa.caja) || !activa.caja.offsetParent) return; // solo la pregunta visible
     const t = ev.target;
     if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -1531,7 +2454,7 @@ const P27 = (() => {
 
   return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
 })();
-// == fin paes27-core v1 ==
+// == fin paes27-core v2 ==
 
 (() => {
 'use strict';
@@ -2035,6 +2958,250 @@ function dibujarRectas(L, m1, n1, m2, n2, triangulo) {
 }
 
 // =====================================================================
+// LECCIÓN · suficiencia de datos
+// =====================================================================
+const SD_LETRAS = ['A', 'B', 'C', 'D', 'E'];
+const SD_TXT = ['(1) por sí sola', '(2) por sí sola', 'Ambas juntas, (1) y (2)', 'Cada una por sí sola, (1) ó (2)', 'Se requiere información adicional'];
+const sdRespuesta = (s1, s2, j) => (s1 && s2 ? 3 : s1 ? 0 : s2 ? 1 : j ? 2 : 4);
+function sdTachar(s1, s2, j, paso = 3) {
+  const t = new Set();
+  if (paso >= 1) (s1 ? [1, 2, 4] : [0, 3]).forEach((i) => t.add(i));
+  if (paso >= 2) { if (s1) t.add(s2 ? 0 : 3); else if (s2) { t.add(2); t.add(4); } else t.add(1); }
+  if (paso >= 3 && !s1 && !s2) t.add(j ? 4 : 2);
+  return t;
+}
+const sdLista = (tach, fin) => '<ol class="sd-lista">' + SD_TXT.map((t, i) => `<li class="${tach.has(i) ? 'tach' : ''} ${fin === i ? 'fin' : ''}"><b>${SD_LETRAS[i]})</b> ${t}</li>`).join('') + '</ol>';
+{
+  const box = $('#sd-ver');
+  const CASOS = [
+    { a: 'x + 2 = 5', b: 'x² = 9', s1: true, s2: false, ra: 'x = 3, un solo valor ✔', rb: 'x = 3 o x = −3: dos valores ✘' },
+    { a: 'x > 0', b: '2x = 8', s1: false, s2: true, ra: 'infinitos valores ✘', rb: 'x = 4 ✔' },
+    { a: 'x + y = 7', b: 'x − y = 1', s1: false, s2: false, j: true, ra: 'depende de y ✘', rb: 'depende de y ✘', rj: 'sistema 2×2 → x = 4 ✔' },
+    { a: '3x = 12', b: 'x − 1 = 3', s1: true, s2: true, ra: 'x = 4 ✔', rb: 'x = 4 ✔' },
+    { a: 'x > 2', b: 'x < 9', s1: false, s2: false, j: false, ra: 'infinitos ✘', rb: 'infinitos ✘', rj: '2 < x < 9: siguen siendo infinitos ✘' },
+  ];
+  const T = 6;
+  let clave = '';
+  const falso = { c: box, dibujar: null, redibujar() { if (this.dibujar) this.dibujar(); } };
+  animar('sd-ver', falso, (t) => {
+    const k = Math.floor(t / T) % CASOS.length, u = t % T;
+    const paso = u < 1 ? 0 : u < 2.3 ? 1 : u < 3.6 ? 2 : 3;
+    if (clave === k + ':' + paso) return;
+    clave = k + ':' + paso;
+    const c = CASOS[k];
+    const fin = paso >= 3 ? sdRespuesta(c.s1, c.s2, c.j) : null;
+    const v = (ok, txt) => `→ <span class="${ok ? 'txt-ok' : 'txt-mal'}">${txt}</span>`;
+    box.innerHTML = `<div class="sd-caso"><div><b>Caso ${k + 1} de 5 · ¿Se puede determinar x?</b></div>
+      <div class="${paso >= 1 ? '' : 'muted'}">(1) ${c.a} ${paso >= 1 ? v(c.s1, c.ra) : ''}</div>
+      <div class="${paso >= 2 ? '' : 'muted'}">(2) ${c.b} ${paso >= 2 ? v(c.s2, c.rb) : ''}</div>
+      ${c.rj && paso >= 3 ? `<div>Juntas ${v(c.j, c.rj)}</div>` : ''}
+      ${fin !== null ? `<div class="txt-ok" style="margin-top:6px"><b>Respuesta: ${SD_LETRAS[fin]}</b></div>` : ''}</div>${sdLista(sdTachar(c.s1, c.s2, c.j, paso), fin)}`;
+  });
+}
+{
+  const AF = [
+    ['x + y = 10', (x, y) => x + y === 10], ['x − y = 2', (x, y) => x - y === 2], ['2x + 2y = 20', (x, y) => 2 * x + 2 * y === 20],
+    ['x = 2y', (x, y) => x === 2 * y], ['x² = 36', (x) => x * x === 36], ['x > 0', (x) => x > 0], ['y = 4', (x, y) => y === 4],
+    ['x·y = 24', (x, y) => x * y === 24], ['x = 3', (x) => x === 3],
+  ];
+  const OBJ = { x: [(x) => x, 'x'], y: [(x, y) => y, 'y'], s: [(x, y) => x + y, 'x + y'], p: [(x, y) => x * y, 'x·y'] };
+  const sa = $('#sd-a'), sb = $('#sd-b');
+  AF.forEach(([t], i) => { sa.add(new Option(t, i)); sb.add(new Option(t, i)); });
+  sa.value = '0'; sb.value = '1';
+  const PTS = [];
+  for (let i = -40; i <= 40; i++) for (let j = -40; j <= 40; j++) PTS.push([i / 2, j / 2]);
+  const analizar = (conds, f) => {
+    const vals = new Map();
+    for (const [x, y] of PTS) if (conds.every((c) => c(x, y))) { const v = f(x, y); if (!vals.has(v)) vals.set(v, [x, y]); if (vals.size > 1) break; }
+    return vals;
+  };
+  const desc = (vals, nombre) => {
+    if (vals.size === 0) return '<span class="txt-warn">sin soluciones (se contradicen)</span>';
+    if (vals.size === 1) return `<span class="txt-ok">✔ único: ${nombre} = ${fmt([...vals.keys()][0])}</span>`;
+    const [[v1, p1], [v2, p2]] = [...vals.entries()];
+    return `<span class="txt-mal">✘ no es único</span><br><span class="small muted">(${fmt(p1[0])}, ${fmt(p1[1])}) da ${fmt(v1)}, pero (${fmt(p2[0])}, ${fmt(p2[1])}) da ${fmt(v2)}</span>`;
+  };
+  const calc = () => {
+    const [f, nombre] = OBJ[$('#sd-obj').value];
+    const A = AF[sa.value], B = AF[sb.value];
+    const r1 = analizar([A[1]], f), r2 = analizar([B[1]], f), rj = analizar([A[1], B[1]], f);
+    const s1 = r1.size === 1, s2 = r2.size === 1, j = rj.size === 1;
+    const resp = sdRespuesta(s1, s2, j);
+    let h = `<div><b>(1) sola</b> (${A[0]}): ${desc(r1, nombre)}</div><div><b>(2) sola</b> (${B[0]}): ${desc(r2, nombre)}</div>`;
+    if (!s1 && !s2) h += `<div><b>Juntas:</b> ${desc(rj, nombre)}</div>`;
+    h += sdLista(sdTachar(s1, s2, j), resp) + `<div class="res">Respuesta: ${SD_LETRAS[resp]}) ${SD_TXT[resp]}</div>`;
+    $('#sd-form').innerHTML = h;
+  };
+  [sa, sb, $('#sd-obj')].forEach((x) => x.addEventListener('change', calc));
+  calc();
+}
+
+// =====================================================================
+// LECCIÓN · combinatoria
+// =====================================================================
+const fact = (n) => { let r = 1; for (let i = 2; i <= n; i++) r *= i; return r; };
+const miles = (n) => n.toLocaleString('es-CL');
+{
+  const L = new Lienzo($('#com-ver'), { aspecto: 0.5, maxH: 340 });
+  const LET = 'ABCD';
+  const pares = [];
+  for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) if (i !== j) pares.push([i, j]);
+  const clave = ([i, j]) => Math.min(i, j) * 4 + Math.max(i, j);
+  const grupos = [...new Set(pares.map(clave))];
+  const COL6 = ['#8b7cf6', '#5ec8e5', '#43c59e', '#f2b84b', '#f0697a', '#f2a65a'];
+  const T = 13;
+  const ficha = (x, y, txt, color, alfa = 1) => {
+    const c = L.ctx; c.globalAlpha = alfa;
+    c.fillStyle = color; c.beginPath(); c.roundRect(x - 24, y - 15, 48, 30, 8); c.fill();
+    c.fillStyle = '#0d111c'; c.font = '700 15px system-ui'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(txt, x, y + 1);
+    c.globalAlpha = 1;
+  };
+  animar('com-ver', L, (t) => {
+    const u = t % T; L.limpiar();
+    const pad = 16, top = 40;
+    const izqW = L.w * 0.58;
+    const cw = (izqW - 2 * pad) / 3, ch = (L.h - top - pad) / 4;
+    const pos = (idx) => [pad + ((idx % 3) + 0.5) * cw, top + (Math.floor(idx / 3) + 0.5) * ch];
+    const rx0 = izqW + 10, rw = (L.w - rx0 - pad) / 2, rh = (L.h - top - pad) / 3;
+    const posG = (g) => [rx0 + ((g % 2) + 0.5) * rw, top + (Math.floor(g / 2) + 0.5) * rh];
+    const visibles = Math.min(12, Math.floor(u / 0.3) + 1);
+    const color = u > 4.5;
+    const mov = u < 6.5 ? 0 : u < 9.5 ? suave((u - 6.5) / 3) : 1;
+    if (mov > 0) { const c = L.ctx; c.strokeStyle = 'rgba(147,160,187,.35)'; c.setLineDash([5, 5]); c.strokeRect(rx0 - 4, top - 4, L.w - rx0 - pad + 8, L.h - top - pad + 8); c.setLineDash([]); }
+    pares.forEach((pr, idx) => {
+      if (idx >= visibles) return;
+      const g = grupos.indexOf(clave(pr));
+      const [x0, y0] = pos(idx), [x1, y1] = posG(g);
+      const primero = pr[0] < pr[1];
+      const x = lerp(x0, x1, mov), y = lerp(y0, y1, mov);
+      const txt = mov >= 1 && primero ? `${LET[pr[0]]}${LET[pr[1]]}` : `${LET[pr[0]]}${LET[pr[1]]}`;
+      ficha(x, y, txt, color ? COL6[g] : '#3a4566', primero ? 1 : 1 - 0.85 * mov);
+    });
+    const tit = u < 4.5 ? 'Orden importa: 4 opciones · 3 opciones = 12 parejas' : u < 6.5 ? 'AB y BA tienen el mismo color: son el mismo grupo' : 'Orden NO importa: 12 / 2! = 6 grupos';
+    L.texto(tit, L.w / 2, 10, mov > 0 ? COL.acc2 : COL.ink, { px: true, align: 'center', base: 'top', tam: 14 });
+    $('#com-ver-txt').innerHTML = u < 6.5 ? 'Elegir 2 personas de {A, B, C, D}, <b>con orden</b> (presidente y secretario).' : 'Si es solo «un grupo de 2», AB = BA: cada grupo se contó <b>2! = 2 veces</b>.';
+  });
+}
+{
+  const L = new Lienzo($('#com-man'), { aspecto: 0.62, maxH: 380 });
+  let lista = [], total = 0, aviso = '';
+  const LET = 'ABCDEFGHIJ';
+  L.dibujar = () => {
+    L.limpiar(); const c = L.ctx;
+    if (aviso) { L.texto(aviso, L.w / 2, L.h / 2, COL.warn, { px: true, align: 'center', base: 'middle', tam: 14 }); return; }
+    const n = lista.length;
+    if (!n) return;
+    const txtW = Math.max(24, lista[0].length * 11 + 14);
+    const cols = Math.max(1, Math.floor((L.w - 16) / (txtW + 6)));
+    const filas = Math.ceil(n / cols);
+    const ch = Math.min(28, (L.h - 40) / Math.max(1, filas));
+    c.font = `700 ${Math.max(10, Math.min(14, ch - 10))}px system-ui`; c.textAlign = 'center'; c.textBaseline = 'middle';
+    lista.forEach((it, i) => {
+      const x = 8 + (i % cols) * (txtW + 6), y = 10 + Math.floor(i / cols) * ch;
+      c.fillStyle = '#26304a'; c.beginPath(); c.roundRect(x, y, txtW, ch - 4, 5); c.fill();
+      c.fillStyle = COL.ink; c.fillText(it.map((k) => LET[k]).join('') || '∅', x + txtW / 2, y + (ch - 4) / 2);
+    });
+    if (total > n) L.texto(`… y ${miles(total - n)} más (total ${miles(total)})`, L.w / 2, L.h - 8, COL.muted, { px: true, align: 'center' });
+  };
+  const generar = (n, k, orden, rep, lim) => {
+    const out = [];
+    const rec = (pref, ini, usados) => {
+      if (out.length >= lim) return;
+      if (pref.length === k) { out.push(pref.slice()); return; }
+      for (let i = orden ? 0 : ini; i < n; i++) {
+        if (!rep && usados.has(i)) continue;
+        pref.push(i); if (!rep) usados.add(i);
+        rec(pref, rep ? i : i + 1, usados);
+        pref.pop(); usados.delete(i);
+      }
+    };
+    rec([], 0, new Set());
+    return out;
+  };
+  const leer = sliders(['com-n', 'com-k'], (val) => {
+    const n = val['com-n'], k = val['com-k'];
+    const orden = $('#com-orden').checked, rep = $('#com-rep').checked;
+    let h = `<div>Elementos: {${LET.slice(0, n).split('').join(', ')}} · elijo ${k}</div>`;
+    aviso = '';
+    if (!orden && rep) { aviso = 'Grupos con repetición: no se pide en la PAES.'; total = 0; h += '<div class="txt-warn">Esta combinación no se pide en la PAES. Cambia una de las dos casillas.</div>'; }
+    else if (!rep && k > n) { total = 0; aviso = `No puedes elegir ${k} distintos si hay ${n}.`; h += `<div class="res">Resultado: 0</div>`; }
+    else if (orden && rep) { total = n ** k; h += `<div>Cada uno de los ${k} lugares tiene ${n} opciones:</div><div class="res">${n}<sup>${k}</sup> = <span class="hl">${miles(total)}</span></div>`; }
+    else {
+      let v = 1; const fac = [];
+      for (let i = 0; i < k; i++) { v *= n - i; fac.push(n - i); }
+      const prod = k ? fac.join('·') : '1';
+      if (orden) { total = v; h += `<div>Lugar 1: ${n} opciones, lugar 2: ${n - 1}…</div><div class="res">${prod} = <span class="hl">${miles(v)}</span></div><div class="small muted">= ${n}!/${n - k}!${k === n ? ` = ${n}! (ordenar todos)` : ''}</div>`; }
+      else { total = v / fact(k); h += `<div>Con orden serían ${prod} = ${miles(v)}.</div><div>Cada grupo aparece ${k}! = ${fact(k)} veces → divido:</div><div class="res">C(${n}, ${k}) = ${miles(v)}/${fact(k)} = <span class="hl">${miles(total)}</span></div><div class="small muted">Igual a C(${n}, ${n - k}): elegir ${k} es dejar fuera ${n - k}.</div>`; }
+    }
+    lista = aviso ? [] : generar(n, k, orden, rep, 48);
+    $('#com-form').innerHTML = h;
+    L.redibujar();
+  }, { 'com-n': String, 'com-k': String });
+  ['com-orden', 'com-rep'].forEach((id) => $('#' + id).addEventListener('change', () => leer.leer()));
+}
+
+// =====================================================================
+// LECCIÓN · dispersión
+// =====================================================================
+const media = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+const varianza = (a) => { const m = media(a); return a.reduce((s, x) => s + (x - m) ** 2, 0) / a.length; };
+function dibujarDatos(L, datos, opts = {}) {
+  const m = media(datos);
+  L.limpiar();
+  const c = L.ctx; const yBase = L.h - 34;
+  c.strokeStyle = 'rgba(147,160,187,.55)'; c.lineWidth = 1.3; c.beginPath(); c.moveTo(0, yBase); c.lineTo(L.w, yBase); c.stroke();
+  c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
+  for (let x = Math.ceil(L.x0); x <= L.x1; x++) { const X = L.X(x); c.beginPath(); c.moveTo(X, yBase - 4); c.lineTo(X, yBase + 4); c.stroke(); if (x % (opts.paso || 1) === 0) c.fillText(String(x), X, yBase + 6); }
+  const filaH = (yBase - 30) / (datos.length + 1);
+  if (opts.fantasma) opts.fantasma.forEach((x, i) => { c.globalAlpha = 0.25; c.fillStyle = COL.muted; c.beginPath(); c.arc(L.X(x), 20 + (i + 1) * filaH, 6, 0, 7); c.fill(); c.globalAlpha = 1; });
+  c.strokeStyle = COL.acc; c.lineWidth = 2; c.setLineDash([6, 4]); c.beginPath(); c.moveTo(L.X(m), 14); c.lineTo(L.X(m), yBase); c.stroke(); c.setLineDash([]);
+  L.texto(`media = ${fmt(m)}`, L.X(m), 12, COL.acc, { px: true, align: 'center', base: 'top', fondo: true });
+  datos.forEach((x, i) => {
+    const y = 20 + (i + 1) * filaH;
+    c.strokeStyle = x >= m ? COL.ok : COL.mal; c.lineWidth = 3; c.beginPath(); c.moveTo(L.X(m), y); c.lineTo(L.X(x), y); c.stroke();
+    c.fillStyle = COL.warn; c.beginPath(); c.arc(L.X(x), y, 7, 0, 7); c.fill();
+    if (opts.etiquetas) L.texto(`${x - m >= 0 ? '+' : ''}${fmt(x - m)}`, L.X(x) + (x >= m ? 10 : -10), y, x >= m ? COL.ok : COL.mal, { px: true, align: x >= m ? 'left' : 'right', base: 'middle', tam: 12 });
+  });
+}
+{
+  const L = new Lienzo($('#dis-ver'), { vista: { x0: -0.5, x1: 10.5, y0: 0, y1: 1 }, aspecto: 0.42, maxH: 300 });
+  const A = [4, 4.5, 5, 5.5, 6], B = [1, 3, 5, 7, 9];
+  animar('dis-ver', L, (t) => {
+    const u = (Math.sin(t * 0.7) + 1) / 2;
+    const d = A.map((a, i) => lerp(a, B[i], u));
+    dibujarDatos(L, d, { etiquetas: true });
+    const s = Math.sqrt(varianza(d));
+    L.texto(`σ = ${fmt(s)}`, L.w - 12, 12, COL.warn, { px: true, align: 'right', base: 'top', tam: 16 });
+    $('#dis-ver-txt').innerHTML = `La media sigue en 5, pero las barras (distancias a la media) crecen y achican: <b>σ = ${fmt(s)}</b>.`;
+  });
+}
+{
+  const L = new Lienzo($('#dis-man'), { vista: { x0: -1, x1: 21, y0: 0, y1: 1 }, aspecto: 0.55, maxH: 360 });
+  let orig = [], datos = [];
+  L.dibujar = () => dibujarDatos(L, datos, { etiquetas: true, paso: 2, fantasma: datos === orig ? null : orig });
+  const s = sliders(['dis-1', 'dis-2', 'dis-3', 'dis-4', 'dis-5'], (val) => {
+    orig = [1, 2, 3, 4, 5].map((i) => val['dis-' + i]);
+    const tr = $('#dis-tr').value;
+    datos = tr === 's' ? orig.map((x) => x + 3) : tr === 'm' ? orig.map((x) => 2 * x) : orig;
+    const m = media(datos), v = varianza(datos);
+    const desv = datos.map((x) => x - m);
+    let h = `<div>Datos: ${datos.map((x) => fmt(x)).join(' · ')}</div>`;
+    h += `<div>Media = ${fmt(datos.reduce((a, b) => a + b, 0))}/5 = <span class="hl">${fmt(m)}</span></div>`;
+    h += `<div>Desviaciones: ${desv.map((x) => fmt(x)).join(', ')} <span class="small muted">(suman ${fmt(desv.reduce((a, b) => a + b, 0))})</span></div>`;
+    h += `<div>Cuadrados: ${desv.map((x) => fmt(x * x)).join(' + ')} = ${fmt(desv.reduce((a, b) => a + b * b, 0))}</div>`;
+    h += `<div>Varianza = ${fmt(desv.reduce((a, b) => a + b * b, 0))}/5 = <span class="hl">${fmt(v)}</span></div>`;
+    h += `<div class="res">σ = √${fmt(v)} = <span class="hl">${fmt(Math.sqrt(v))}</span> · rango = ${fmt(Math.max(...datos))} − ${fmt(Math.min(...datos))} = ${fmt(Math.max(...datos) - Math.min(...datos))}</div>`;
+    if (tr !== '0') {
+      const v0 = varianza(orig);
+      h += `<div class="txt-ok small">Antes: σ = ${fmt(Math.sqrt(v0))}, varianza = ${fmt(v0)}. ${tr === 's' ? 'Sumar 3 corre todo: <b>σ no cambia</b>.' : 'Multiplicar por 2: <b>σ se duplica</b> y la varianza se multiplica por 4.'}</div>`;
+    }
+    $('#dis-form').innerHTML = h;
+    L.redibujar();
+  });
+  $('#dis-tr').addEventListener('change', () => s.leer());
+}
+
+// =====================================================================
 // EJEMPLOS RESUELTOS (un paso a la vez) · números verificados en tools/verificar_m2.py
 // =====================================================================
 const EJEMPLOS = {
@@ -2081,6 +3248,39 @@ const EJEMPLOS = {
       'Control: menos de 6 m ✔ y más de 3 m, porque el ángulo es mayor que 30° ✔.',
     ],
     trampa: 'Con cos 60° = 1/2 te da 3 m: esa es la distancia del pie de la escalera al muro, no la altura.',
+  },
+  sd: {
+    enun: 'Se puede determinar el precio de un cuaderno si:<br>(1) 3 cuadernos y 2 lápices cuestan $4.000.<br>(2) Un cuaderno cuesta $600 más que un lápiz.',
+    pasos: [
+      'Tapo la (2). La (1) es una ecuación con dos incógnitas (cuaderno y lápiz): hay infinitas parejas. <b>No alcanza</b> → tacho A y D.',
+      'Tapo la (1). La (2) solo relaciona los precios: <b>no alcanza</b> → tacho B. Quedan C y E.',
+      'Juntas: 3c + 2l = 4000 y c = l + 600. Son dos rectas con pendientes distintas: <b>se cortan en un solo punto</b>.',
+      'Por lo tanto hay un único precio → tacho E. <b>Respuesta: C) Ambas juntas.</b>',
+      'Comprobación (no hacía falta): 3(l + 600) + 2l = 4000 → 5l = 2200 → l = 440 y c = 1040.',
+    ],
+    trampa: 'No pierdas tiempo calculando el precio: en suficiencia solo importa si el valor es único.',
+  },
+  com: {
+    enun: 'Un curso de 10 estudiantes elige una comisión de 3 personas. ¿Cuántas comisiones distintas se pueden formar? ¿Y si los 3 fueran presidente, secretario y tesorero?',
+    pasos: [
+      'Comisión: el orden <b>no importa</b> (Ana-Beto-Caro es la misma comisión que Caro-Ana-Beto).',
+      'Si importara el orden habría 10·9·8 = <b>720</b> formas.',
+      'Cada comisión aparece 3! = <b>6</b> veces en esa cuenta (sus 6 ordenamientos).',
+      'C(10, 3) = 720/6 = <b>120 comisiones</b>.',
+      'Con cargos distintos el orden <b>sí</b> importa: <b>720</b> formas.',
+    ],
+    trampa: 'Pregúntate: si cambio el orden, ¿es otra cosa? Comisión, grupo, mano de cartas → no. Cargos, filas, claves, podio → sí.',
+  },
+  dis: {
+    enun: '¿Cuál es la desviación estándar del conjunto 2, 4, 4, 4, 5, 5, 7, 9?',
+    pasos: [
+      'Media: (2 + 4 + 4 + 4 + 5 + 5 + 7 + 9)/8 = 40/8 = <b>5</b>.',
+      'Desviaciones: −3, −1, −1, −1, 0, 0, 2, 4 (suman 0 ✔).',
+      'Cuadrados: 9, 1, 1, 1, 0, 0, 4, 16 → suman <b>32</b>.',
+      'Varianza = 32/8 = <b>4</b>.',
+      'σ = √4 = <b>2</b>.',
+    ],
+    trampa: 'Si piden la desviación estándar, no te quedes en la varianza (4). En la PAES se usa la fórmula que divide por n, la cantidad de datos.',
   },
 };
 document.querySelectorAll('.ejemplo').forEach((box) => {
@@ -2166,7 +3366,6 @@ pintarDominio();
 
 // ---------------- temas pendientes por pestaña ----------------
 const EJES = { alg: 'Álgebra y funciones', num: 'Números', geo: 'Geometría', pro: 'Probabilidad y estadística', sd: 'Transversal' };
-const FASE2 = new Set(['m2.sd', 'm2.pro.combinatoria']);
 for (const [tab, eje] of Object.entries(EJES)) {
   const pane = $('#p-' + tab);
   const otros = Object.values(TEMAS).filter((t) => t.prueba === 'M2' && t.eje === eje && !pane.querySelector(`section[id="${t.id}"]`));
@@ -2176,18 +3375,24 @@ for (const [tab, eje] of Object.entries(EJES)) {
   otros.forEach((t) => {
     const c = el('div', 'card');
     if (t.leccion) c.innerHTML = `<b>${t.nombre}</b> <span class="chip ${t.prio}">${t.prio}</span><p class="small">Está dentro de otra lección: <a href="${t.leccion}">ir a la lección</a>.</p>`;
-    else c.innerHTML = `<b>${t.nombre}</b> <span class="chip ${t.prio}">${t.prio}</span><p class="small muted">Lección en la Fase 2${FASE2.has(t.id) ? ' (va primero)' : ''}.</p>`;
+    else c.innerHTML = `<b>${t.nombre}</b> <span class="chip ${t.prio}">${t.prio}</span><p class="small muted">Lección en camino (Fase 2).</p>`;
     g.appendChild(c);
   });
   box.appendChild(g); pane.appendChild(box);
 }
+
+// ---------------- acordeón de lecciones ----------------
+document.querySelectorAll('.leccion').forEach((l) => {
+  l.classList.add('cerrada');
+  l.querySelector('.lec-head').addEventListener('click', (e) => { if (e.target.closest('a,button,select,input')) return; l.classList.toggle('cerrada'); });
+});
 
 // ---------------- pestañas + enlaces directos a una lección ----------------
 function ir(hash) {
   const id = decodeURIComponent(hash || '');
   const sec = id && document.getElementById(id);
   let tab = 'alg';
-  if (sec && sec.classList.contains('leccion')) tab = sec.dataset.tab;
+  if (sec && sec.classList.contains('leccion')) { tab = sec.dataset.tab; sec.classList.remove('cerrada'); }
   else if (EJES[id]) tab = id;
   document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
   document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + tab));
