@@ -11,7 +11,12 @@ const SHOTS = process.env.SHOTS || '';
   const page = await ctx.newPage();
   const errores = [];
   const externos = [];
-  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errores.push(`[${m.type()}] ${m.text()}`); });
+  let avisosDriver = 0; // avisos de rendimiento del GL por software de Chromium headless (no son de la app)
+  page.on('console', (m) => {
+    if (m.type() !== 'error' && m.type() !== 'warning') return;
+    if (m.type() === 'warning' && /GL Driver Message .*GPU stall due to ReadPixels/.test(m.text())) { avisosDriver++; return; }
+    errores.push(`[${m.type()}] ${m.text()}`);
+  });
   page.on('pageerror', (e) => errores.push(`[pageerror] ${e.message}`));
   page.on('request', (r) => { if (!r.url().startsWith(BASE) && !r.url().startsWith('blob:') && !r.url().startsWith('data:')) externos.push(r.url()); });
   page.on('dialog', (d) => d.accept());
@@ -123,7 +128,7 @@ const SHOTS = process.env.SHOTS || '';
     await page.goto(BASE + '/m2.html');
     await page.waitForTimeout(600);
     const lecciones = await page.locator('section.leccion').count();
-    ok(lecciones === 4, `4 lecciones (${lecciones})`);
+    ok(lecciones >= 7, `lecciones en m2.html: ${lecciones}`);
     // cada lección: abrir, mover sliders, practicar los 3 niveles
     const ids = await page.locator('section.leccion').evaluateAll((ls) => ls.map((l) => l.id));
     for (const id of ids) {
@@ -132,13 +137,25 @@ const SHOTS = process.env.SHOTS || '';
       const sec = page.locator(`section.leccion[id="${id}"]`);
       ok(await sec.isVisible(), `lección ${id} visible por enlace directo`);
       const sliders = sec.locator('input[type=range]');
+      const selects = await sec.locator('select').count();
       const n = await sliders.count();
       for (let i = 0; i < n; i++) {
         const s = sliders.nth(i);
         if (!(await s.isVisible())) continue;
         await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
       }
-      ok(n >= 2, `${id}: ${n} sliders`);
+      const arrastre = await sec.locator('canvas[style*="touch-action"]').count();
+      ok(n + selects + arrastre >= 2, `${id}: ${n} sliders, ${selects} selectores, ${arrastre} lienzos con arrastre`);
+      if (arrastre) {
+        const cv = sec.locator('canvas[style*="touch-action"]').first();
+        await cv.scrollIntoViewIfNeeded();
+        const antes = await sec.locator('.formula').first().innerText();
+        const b = await cv.boundingBox();
+        const x0 = b.x + b.width * (8 / 21), y0 = b.y + b.height / 2; // centro O = (2, 2) en la vista −6..15
+        await page.mouse.move(x0, y0); await page.mouse.down(); await page.mouse.move(x0 + 60, y0 - 40, { steps: 5 }); await page.mouse.up();
+        const despues = await sec.locator('.formula').first().innerText();
+        ok(antes !== despues, `${id}: arrastrar el centro actualiza la fórmula`);
+      }
       const pasos = sec.locator('button', { hasText: 'Siguiente paso' });
       while (await pasos.isVisible()) await pasos.click();
       for (const nivel of ['Básico', 'PAES', 'Difícil']) {
@@ -155,6 +172,23 @@ const SHOTS = process.env.SHOTS || '';
       }
       if (SHOTS) await page.screenshot({ path: `${SHOTS}/m2-${id}.png`, fullPage: false });
     }
+    // ensayo corto: responder con teclado, recargar a la mitad, entregar
+    await page.goto(BASE + '/m2.html#ensayo');
+    await page.click('#p-ensayo button:has-text("Corto")');
+    await page.waitForSelector('#ens-reloj');
+    for (let i = 0; i < 5; i++) { await page.keyboard.press(String((i % 4) + 1)); await page.keyboard.press('Enter'); }
+    await page.reload(); await page.waitForSelector('#ens-reloj');
+    const enCurso = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso'));
+    ok(enCurso && Object.keys(enCurso.resp).length === 5 && enCurso.ids.length === 20, `ensayo sigue en curso tras recargar (${enCurso && Object.keys(enCurso.resp).length} respondidas)`);
+    ok(new Set(enCurso.ids).size === 20, 'ensayo sin preguntas repetidas');
+    await page.click('#p-ensayo button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    const ens = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')));
+    ok(ens.length === 1 && ens[0].estado === 'hecho' && ens[0].total === 20 && ens[0].omitidas === 15, 'ensayo entregado y guardado');
+    if (SHOTS) await page.screenshot({ path: SHOTS + '/m2-ensayo-resultado.png' });
+    await page.goto(BASE + '/index.html#ensayos'); await page.waitForTimeout(300);
+    ok(await page.locator('#p-ensayos >> text=Historial').isVisible(), 'el hub muestra el historial de ensayos');
+    await page.goto(BASE + '/m2.html');
     const dom2 = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:dominio')));
     ok(dom2 && dom2['m2.num.log-exp'] !== undefined, 'práctica de M2 actualiza el dominio compartido');
     await page.setViewportSize({ width: 380, height: 800 });
@@ -164,6 +198,7 @@ const SHOTS = process.env.SHOTS || '';
 
   console.log('\nErrores/avisos de consola:', errores.length ? '\n' + errores.join('\n') : 0);
   console.log('Pedidos fuera de localhost:', externos.length ? '\n' + externos.join('\n') : 0);
+  console.log('Avisos del driver GL por software (ignorados):', avisosDriver);
   await browser.close();
   process.exit(errores.length || externos.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });

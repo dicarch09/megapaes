@@ -36,9 +36,13 @@ def temas_validos():
 
 def preguntas():
     out = []
+    bancos_vistos = set()  # un mismo banco puede ir incrustado en varias páginas
     for html in sorted(RAIZ.glob("*.html")):
         txt = html.read_text(encoding="utf-8")
         for m in re.finditer(r'<script type="application/json" id="(banco-[a-z0-9]+)">(.*?)</script>', txt, re.S):
+            if m.group(1) in bancos_vistos:
+                continue
+            bancos_vistos.add(m.group(1))
             datos = json.loads(m.group(2))
 
             def walk(x):
@@ -57,7 +61,7 @@ def preguntas():
 
 # ---------------------------------------------------------------- evaluación de alternativas
 SUPER = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
-UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km|m|N|A|Ω|V|W|kWh|años|horas|%|°)"
+UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km|m|N|A|Ω|V|W|kWh|UF|años|horas|%|°)"
 
 
 def a_python(t):

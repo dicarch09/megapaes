@@ -1,9 +1,9 @@
-// == paes27-core v1 ==
+// == paes27-core v2 ==
 // Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 1;
+  const VERSION = 2;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -18,19 +18,19 @@ const P27 = (() => {
     ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
     ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
     ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
-    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', null],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', 'm2.html#m2.pro.combinatoria'],
     ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
-    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', null],
-    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', null],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', 'm2.html#m2.pro.dispersion'],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', 'm2.html#m2.sd'],
     ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
-    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', null],
-    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', null],
-    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', null],
-    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', null],
-    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', null],
-    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
-    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
-    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', 'm2.html#m2.pro.binomial-normal'],
+    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', 'm2.html#m2.geo.circunferencia'],
+    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', 'm2.html#m2.geo.homotecia'],
+    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', 'm2.html#m2.num.financiera'],
+    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', 'm2.html#m2.geo.esfera'],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', 'm2.html#m2.alg.potencia'],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
 
     ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
     ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
@@ -209,7 +209,7 @@ const P27 = (() => {
     return api;
   }
   document.addEventListener('keydown', (ev) => {
-    if (!activa || !document.body.contains(activa.caja)) return;
+    if (!activa || !document.body.contains(activa.caja) || !activa.caja.offsetParent) return; // solo la pregunta visible
     const t = ev.target;
     if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -223,4 +223,4 @@ const P27 = (() => {
 
   return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
 })();
-// == fin paes27-core v1 ==
+// == fin paes27-core v2 ==

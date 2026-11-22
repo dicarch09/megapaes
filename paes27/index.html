@@ -1442,12 +1442,12 @@ select,input[type=time],input[type=number]{background:var(--panel2);color:var(--
 }
 </script>
 <script>
-// == paes27-core v1 ==
+// == paes27-core v2 ==
 // Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 1;
+  const VERSION = 2;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -1462,19 +1462,19 @@ const P27 = (() => {
     ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
     ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
     ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
-    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', null],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', 'm2.html#m2.pro.combinatoria'],
     ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
-    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', null],
-    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', null],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', 'm2.html#m2.pro.dispersion'],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', 'm2.html#m2.sd'],
     ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
-    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', null],
-    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', null],
-    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', null],
-    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', null],
-    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', null],
-    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
-    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
-    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', 'm2.html#m2.pro.binomial-normal'],
+    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', 'm2.html#m2.geo.circunferencia'],
+    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', 'm2.html#m2.geo.homotecia'],
+    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', 'm2.html#m2.num.financiera'],
+    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', 'm2.html#m2.geo.esfera'],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', 'm2.html#m2.alg.potencia'],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
 
     ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
     ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
@@ -1653,7 +1653,7 @@ const P27 = (() => {
     return api;
   }
   document.addEventListener('keydown', (ev) => {
-    if (!activa || !document.body.contains(activa.caja)) return;
+    if (!activa || !document.body.contains(activa.caja) || !activa.caja.offsetParent) return; // solo la pregunta visible
     const t = ev.target;
     if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
@@ -1667,7 +1667,7 @@ const P27 = (() => {
 
   return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
 })();
-// == fin paes27-core v1 ==
+// == fin paes27-core v2 ==
 
 (() => {
 'use strict';
@@ -1827,7 +1827,7 @@ function generarRuta(opts = {}) {
     }
     dias[fecha] = bloques;
   }
-  const ruta = { generado: new Date().toISOString(), N, inicio, dias };
+  const ruta = { v: P27.VERSION, generado: new Date().toISOString(), N, inicio, dias };
   guardar('ruta', ruta);
   return ruta;
 }
@@ -1877,7 +1877,7 @@ function describirBloque(b, diag) {
     case 'len': return b.ficha
       ? { tit: 'Lectora · trampas típicas (30 min)', det: 'Repasa los errores de tu diagnóstico de Lectora: absolutos, detalles convertidos en tesis, inferencias que el texto no permite.' }
       : { tit: 'Lectora · estrategias (30 min)', det: 'Un texto corto cronometrado: primero la pregunta, luego el párrafo. Anota qué tipo de pregunta era (localizar, interpretar, evaluar).' };
-    case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba. El modo ensayo de la app llega en la Fase 2; si no está listo, usa el modelo oficial DEMRE.', link: '#ensayos' };
+    case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba (M2 → Ensayo). Si ya viste casi todas las preguntas de la app, haz además el modelo oficial DEMRE.', link: 'm2.html#ensayo' };
     case 'revision': return { tit: 'Revisión de errores del ensayo M2', det: 'Por cada error: ¿fue concepto, cálculo o trampa? Anótalo en la ficha.' };
     case 'parcial': return { tit: 'Ensayo parcial de Física', det: 'Unas 40 preguntas en 80 min. Revisa los errores al final.', link: '#ensayos' };
     case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas' };
@@ -1933,7 +1933,8 @@ function tarjetaEvento(fecha) {
 
 function rutaActual() {
   let r = cargar('ruta', null);
-  if (!r || !r.dias) r = generarRuta();
+  // si hay lecciones nuevas (core distinto), se recalcula desde hoy conservando lo hecho
+  if (!r || !r.dias || r.v !== P27.VERSION) r = generarRuta();
   return r;
 }
 
@@ -2226,7 +2227,14 @@ function tarjetaDemre() {
 RENDER.ensayos = () => {
   const p = $('#p-ensayos'); p.innerHTML = '';
   const ens = cargar('ensayos', []);
-  p.appendChild(el('div', 'card', `<h2>Ensayos cronometrados</h2><p>El modo ensayo con tiempos reales (M2: 55 preguntas en 2 h 20 min; Ciencias: 80 en 2 h 40 min; M1: 65 en 2 h 20 min) llega en la <b>Fase 2</b>, empezando por M2.</p>${ens.length ? '<h3>Historial</h3>' + ens.map((e) => `<p>${esc(e.prueba)} · ${esc(e.fecha)} · ${e.correctas}/${e.total}</p>`).join('') : '<p class="muted small">Aún no hay ensayos registrados.</p>'}`));
+  const hechos = ens.filter((e) => e.estado === 'hecho').reverse();
+  const curso = ens.find((e) => e.estado === 'en-curso');
+  const c = el('div', 'card', `<h2>Ensayos cronometrados</h2>
+    ${curso ? `<p class="aviso amar">Tienes un ensayo de ${esc(curso.prueba)} en curso: el reloj sigue corriendo. <a href="m2.html#ensayo">Volver al ensayo</a></p>` : ''}
+    <p><a class="btn" style="text-decoration:none" href="m2.html#ensayo">Ensayo de M2</a> <span class="small muted">· completo (55 preguntas, 2 h 20 min) o corto (20 preguntas, 50 min)</span></p>
+    <p class="small muted">Ciencias (80 preguntas, 2 h 40 min) llega con la Fase 3 y M1 (65 preguntas, 2 h 20 min) con la Fase 4.</p>
+    ${hechos.length ? '<h3>Historial</h3>' + hechos.map((e) => `<p>${esc(e.prueba)} · ${fechaCorta(e.fecha)} · ${e.modo === 'corto' ? 'corto' : 'completo'} · <b>${e.correctas}/${e.total}</b> (${Math.round((e.correctas / e.total) * 100)} %)</p>`).join('') : '<p class="muted small">Aún no hay ensayos.</p>'}`);
+  p.appendChild(c);
   p.appendChild(tarjetaDemre());
 };
 
