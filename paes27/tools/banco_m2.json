@@ -1,0 +1,1010 @@
+[
+ {
+  "id": "m2-rec-b1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la pendiente de la recta 4x + 2y = 6?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": "Leíste el coeficiente de x sin despejar y. La pendiente se lee en la forma y = mx + n."
+   },
+   {
+    "texto": "2",
+    "trampa": "Olvidaste el signo al pasar 4x al otro lado: 2y = −4x + 6."
+   },
+   {
+    "texto": "3",
+    "trampa": "3 es el coeficiente de posición (donde corta al eje Y), no la pendiente."
+   },
+   {
+    "texto": "−2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "2y = −4x + 6 → y = −2x + 3. La pendiente es −2."
+ },
+ {
+  "id": "m2-rec-b2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la pendiente de la recta que pasa por los puntos (2, 1) y (4, 7)?",
+  "opciones": [
+   {
+    "texto": "1/3",
+    "trampa": "Invertiste la fórmula: es Δy/Δx, no Δx/Δy."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "4",
+    "trampa": "Sumaste las coordenadas: (7 + 1)/2. La pendiente usa diferencias."
+   },
+   {
+    "texto": "−3",
+    "trampa": "Restaste en distinto orden arriba y abajo: (7 − 1)/(2 − 4)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "m = (7 − 1)/(4 − 2) = 6/2 = 3."
+ },
+ {
+  "id": "m2-rec-b3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la solución del sistema x + y = 10 ; x − y = 4?",
+  "opciones": [
+   {
+    "texto": "(3, 7)",
+    "trampa": "Intercambiaste x e y: 3 − 7 = −4, no 4."
+   },
+   {
+    "texto": "(14, −4)",
+    "trampa": "Al sumar las ecuaciones quedó 2x = 14 y olvidaste dividir por 2; luego y = 10 − 14."
+   },
+   {
+    "texto": "(7, −3)",
+    "trampa": "Despejaste mal: de x − y = 4 sale y = x − 4, no y = 4 − x."
+   },
+   {
+    "texto": "(7, 3)",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sumando las ecuaciones: 2x = 14 → x = 7. Luego y = 10 − 7 = 3. Comprueba: 7 − 3 = 4 ✔."
+ },
+ {
+  "id": "m2-rec-p1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la ecuación de la recta que pasa por (0, −2) y es perpendicular a y = 3x + 1?",
+  "opciones": [
+   {
+    "texto": "y = −(1/3)x − 2",
+    "trampa": ""
+   },
+   {
+    "texto": "y = 3x − 2",
+    "trampa": "Esa es paralela (misma pendiente), no perpendicular."
+   },
+   {
+    "texto": "y = (1/3)x − 2",
+    "trampa": "Invertiste la pendiente pero olvidaste cambiarle el signo."
+   },
+   {
+    "texto": "y = −3x − 2",
+    "trampa": "Cambiaste el signo pero olvidaste invertir la pendiente."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Perpendicular: m<sub>1</sub>·m<sub>2</sub> = −1, así que m = −1/3. Pasa por (0, −2), entonces n = −2."
+ },
+ {
+  "id": "m2-rec-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "¿Para qué valor de m las rectas y = mx + 2 y 2x − 4y = 8 son paralelas?",
+  "opciones": [
+   {
+    "texto": "2",
+    "trampa": "Tomaste el coeficiente de x sin despejar y."
+   },
+   {
+    "texto": "−1/2",
+    "trampa": "Al dividir −2x por −4 dejaste el signo menos. Menos dividido por menos da más: y = x/2 − 2."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   },
+   {
+    "texto": "−2",
+    "trampa": "−2 hace que las rectas sean perpendiculares (−2 · 1/2 = −1), no paralelas."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "2x − 4y = 8 → y = (1/2)x − 2. Paralelas: misma pendiente, m = 1/2."
+ },
+ {
+  "id": "m2-rec-p3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "paes",
+  "enunciado": "En una librería, 2 cuadernos y 3 lápices cuestan $3.400, y 1 cuaderno y 2 lápices cuestan $2.000. ¿Cuánto cuesta un cuaderno?",
+  "opciones": [
+   {
+    "texto": "$800",
+    "trampa": ""
+   },
+   {
+    "texto": "$600",
+    "trampa": "Ese es el precio del lápiz. Lee bien qué incógnita te piden."
+   },
+   {
+    "texto": "$1.400",
+    "trampa": "Hallaste l = 600 y lo reemplazaste en c + 2l = 2000, pero olvidaste el 2: c = 2000 − 600."
+   },
+   {
+    "texto": "$1.600",
+    "trampa": "Reemplazaste l = 600 en la primera ecuación (2c = 1.600) y olvidaste dividir por 2."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "2c + 3l = 3400 y c + 2l = 2000. De la segunda, c = 2000 − 2l. Reemplazando: 4000 − 4l + 3l = 3400 → l = 600, c = 800."
+ },
+ {
+  "id": "m2-rec-d1",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "¿Qué valor debe tener k para que el sistema 2x + ky = 5 ; 4x + 6y = 7 NO tenga solución?",
+  "opciones": [
+   {
+    "texto": "−3",
+    "trampa": "Crees que paralelas exige pendientes opuestas. Exige pendientes IGUALES."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "12",
+    "trampa": "Despejaste mal la proporción 2/4 = k/6: k = 6·2/4 = 3, no 6·4/2."
+   },
+   {
+    "texto": "Ningún valor de k",
+    "trampa": "Crees que dos rectas siempre se cortan. Si son paralelas y distintas, no hay solución."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Sin solución = rectas paralelas distintas: 2/4 = k/6 ≠ 5/7. Entonces k = 3, y como 5/7 ≠ 1/2, no coinciden."
+ },
+ {
+  "id": "m2-rec-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "Las rectas y = 2x − 1 e y = −x + 5 forman, junto con el eje Y, un triángulo. ¿Cuál es su área?",
+  "opciones": [
+   {
+    "texto": "12",
+    "trampa": "Olvidaste dividir por 2 en la fórmula del área del triángulo."
+   },
+   {
+    "texto": "9",
+    "trampa": "Usaste como altura la coordenada y del punto de corte (3). La altura hacia el eje Y es la distancia horizontal: x = 2."
+   },
+   {
+    "texto": "4",
+    "trampa": "Calculaste la base como 5 − 1 ignorando el signo de −1. La base va de −1 a 5: mide 6."
+   },
+   {
+    "texto": "6",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Se cortan en 2x − 1 = −x + 5 → x = 2, y = 3. En el eje Y cortan en −1 y en 5: base 6. Altura = 2. Área = 6·2/2 = 6."
+ },
+ {
+  "id": "m2-rec-d3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.sistemas-rectas",
+  "nivel": "dificil",
+  "enunciado": "La recta que pasa por (−1, 4) y (3, −4), ¿en qué punto corta al eje X?",
+  "opciones": [
+   {
+    "texto": "(0, 2)",
+    "trampa": "Ese es el corte con el eje Y."
+   },
+   {
+    "texto": "(1, 0)",
+    "trampa": ""
+   },
+   {
+    "texto": "(2, 0)",
+    "trampa": "Usaste el coeficiente de posición (2) como si fuera el corte con X."
+   },
+   {
+    "texto": "(−1, 0)",
+    "trampa": "Error de signo al resolver −2x + 2 = 0."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "m = (−4 − 4)/(3 − (−1)) = −2. y − 4 = −2(x + 1) → y = −2x + 2. Corta al eje X cuando y = 0: x = 1."
+ },
+ {
+  "id": "m2-log-b1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de log<sub>5</sub> 125?",
+  "opciones": [
+   {
+    "texto": "25",
+    "trampa": "Dividiste 125 entre 5. El logaritmo es un exponente: ¿a qué se eleva 5 para dar 125?"
+   },
+   {
+    "texto": "1/3",
+    "trampa": "Confundiste con la raíz cúbica: 125<sup>1/3</sup> = 5. Se pide el exponente de 5."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "2",
+    "trampa": "Escribiste 125 = 5·25 = 5·5² y contaste solo el exponente de 25. En realidad 125 = 5³."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "5<sup>3</sup> = 125, entonces log<sub>5</sub> 125 = 3."
+ },
+ {
+  "id": "m2-log-b2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de log 1000 + log 0,1? (log = logaritmo en base 10)",
+  "opciones": [
+   {
+    "texto": "2",
+    "trampa": ""
+   },
+   {
+    "texto": "4",
+    "trampa": "Tomaste log 0,1 = 1. Pero 10<sup>−1</sup> = 0,1: vale −1."
+   },
+   {
+    "texto": "3",
+    "trampa": "Tomaste log 0,1 = 0. Es log 1 el que vale 0."
+   },
+   {
+    "texto": "100",
+    "trampa": "1000·0,1 = 100 es el argumento: falta sacarle el logaritmo (log 100 = 2)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "log 1000 = 3 y log 0,1 = −1. Suma: 2. (También: log(1000·0,1) = log 100 = 2.)"
+ },
+ {
+  "id": "m2-log-b3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el dominio de f(x) = log<sub>2</sub>(x − 3)?",
+  "opciones": [
+   {
+    "texto": "x ≥ 3",
+    "trampa": "Incluiste el 3, pero log<sub>2</sub>(0) no existe: el argumento debe ser mayor que 0."
+   },
+   {
+    "texto": "x > 0",
+    "trampa": "Ese es el dominio de log<sub>2</sub> x. Acá el argumento es x − 3."
+   },
+   {
+    "texto": "x > 3",
+    "trampa": ""
+   },
+   {
+    "texto": "x > −3",
+    "trampa": "Error de signo: x − 3 > 0 → x > 3."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El argumento de un logaritmo debe ser positivo: x − 3 > 0 → x > 3."
+ },
+ {
+  "id": "m2-log-p1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "Si log 2 = a y log 3 = b, ¿a qué es igual log 18?",
+  "opciones": [
+   {
+    "texto": "2a + b",
+    "trampa": "Factorizaste 18 como 2<sup>2</sup>·3 = 12. En realidad 18 = 2·3<sup>2</sup>."
+   },
+   {
+    "texto": "a + 2b",
+    "trampa": ""
+   },
+   {
+    "texto": "2ab",
+    "trampa": "Multiplicaste los logaritmos: log 2 · log 9 = a·2b. El logaritmo de un producto es la SUMA."
+   },
+   {
+    "texto": "a + b²",
+    "trampa": "log(3<sup>2</sup>) = 2·log 3, no (log 3)<sup>2</sup>."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "18 = 2·3<sup>2</sup> → log 18 = log 2 + 2·log 3 = a + 2b."
+ },
+ {
+  "id": "m2-log-p2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la solución de 3<sup>2x − 1</sup> = 27?",
+  "opciones": [
+   {
+    "texto": "5",
+    "trampa": "Dividiste 27 entre 3 en vez de escribir 27 como potencia de 3 (27 = 3<sup>3</sup>)."
+   },
+   {
+    "texto": "3/2",
+    "trampa": "Olvidaste el −1: resolviste 2x = 3."
+   },
+   {
+    "texto": "1",
+    "trampa": "Al despejar restaste 1 en vez de sumarlo: 2x = 3 − 1 = 2, y así x = 1."
+   },
+   {
+    "texto": "2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "27 = 3<sup>3</sup>, así que 2x − 1 = 3 → 2x = 4 → x = 2."
+ },
+ {
+  "id": "m2-log-p3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre f(x) = (1/2)<sup>x</sup> es verdadera?",
+  "opciones": [
+   {
+    "texto": "Es creciente y corta al eje Y en (0, 1).",
+    "trampa": "No toda exponencial crece: si la base está entre 0 y 1, decrece."
+   },
+   {
+    "texto": "Es decreciente y corta al eje Y en (0, 1).",
+    "trampa": ""
+   },
+   {
+    "texto": "Es decreciente y corta al eje Y en (0, 1/2).",
+    "trampa": "Evaluaste en x = 1. El corte con el eje Y es en x = 0, y (1/2)<sup>0</sup> = 1."
+   },
+   {
+    "texto": "Corta al eje X en (1, 0).",
+    "trampa": "Confundiste con la logarítmica. Una exponencial nunca vale 0: no corta al eje X."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Base 1/2 (entre 0 y 1): decreciente. f(0) = (1/2)<sup>0</sup> = 1, así que corta al eje Y en (0, 1)."
+ },
+ {
+  "id": "m2-log-d1",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "Si log<sub>a</sub> 2 = 0,4, ¿cuál es el valor de log<sub>a</sub> 8 − log<sub>a</sub> 4?",
+  "opciones": [
+   {
+    "texto": "0,4",
+    "trampa": ""
+   },
+   {
+    "texto": "0,8",
+    "trampa": "Restaste los argumentos: log<sub>a</sub>(8 − 4). La resta de logaritmos es el logaritmo de la DIVISIÓN."
+   },
+   {
+    "texto": "1,5",
+    "trampa": "Dividiste los logaritmos (1,2/0,8). Lo que se divide son los argumentos."
+   },
+   {
+    "texto": "2",
+    "trampa": "8/4 = 2 es el argumento: falta sacarle el logaritmo."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "log<sub>a</sub> 8 − log<sub>a</sub> 4 = log<sub>a</sub>(8/4) = log<sub>a</sub> 2 = 0,4."
+ },
+ {
+  "id": "m2-log-d2",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es la solución de log<sub>3</sub>(x) + log<sub>3</sub>(x − 8) = 2?",
+  "opciones": [
+   {
+    "texto": "−1 y 9",
+    "trampa": "No revisaste el dominio: con x = −1, log<sub>3</sub>(−1) no existe."
+   },
+   {
+    "texto": "−1",
+    "trampa": "Te quedaste con la raíz que NO cumple el dominio."
+   },
+   {
+    "texto": "9",
+    "trampa": ""
+   },
+   {
+    "texto": "17/2",
+    "trampa": "Sumaste los argumentos (2x − 8 = 9). La suma de logaritmos es el logaritmo del PRODUCTO."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "x(x − 8) = 3<sup>2</sup> = 9 → x<sup>2</sup> − 8x − 9 = 0 → (x − 9)(x + 1) = 0. Solo x = 9 cumple x > 8."
+ },
+ {
+  "id": "m2-log-d3",
+  "prueba": "M2",
+  "eje": "Números",
+  "tema": "m2.num.log-exp",
+  "nivel": "dificil",
+  "enunciado": "Un capital crece según C(t) = 1000·(1,1)<sup>t</sup>, con t en años. ¿En cuántos años se duplica? Usa log 2 ≈ 0,30 y log 1,1 ≈ 0,04.",
+  "opciones": [
+   {
+    "texto": "7,5 años",
+    "trampa": ""
+   },
+   {
+    "texto": "50 años",
+    "trampa": "Calculaste 2/0,04: olvidaste sacarle el logaritmo al 2."
+   },
+   {
+    "texto": "10 años",
+    "trampa": "Pensaste en interés simple (10 % por año, 10 años para sumar 100 %). Acá es compuesto."
+   },
+   {
+    "texto": "0,13 años",
+    "trampa": "Invertiste el cociente: 0,04/0,30."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "2000 = 1000·1,1<sup>t</sup> → 1,1<sup>t</sup> = 2 → t·log 1,1 = log 2 → t = 0,30/0,04 = 7,5."
+ },
+ {
+  "id": "m2-con-b1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "La tabla muestra a 40 personas según sexo y uso de lentes.<table><tr><th></th><th>Con lentes</th><th>Sin lentes</th><th>Total</th></tr><tr><th>Hombres</th><td>8</td><td>12</td><td>20</td></tr><tr><th>Mujeres</th><td>6</td><td>14</td><td>20</td></tr><tr><th>Total</th><td>14</td><td>26</td><td>40</td></tr></table>Se elige una persona que usa lentes. ¿Cuál es la probabilidad de que sea mujer?",
+  "opciones": [
+   {
+    "texto": "3/10",
+    "trampa": "6/20 es la probabilidad de usar lentes DADO que es mujer: condicionaste al revés."
+   },
+   {
+    "texto": "3/7",
+    "trampa": ""
+   },
+   {
+    "texto": "3/20",
+    "trampa": "6/40 es la probabilidad de ser mujer Y usar lentes. Ya sabes que usa lentes: el total es 14."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "20/40 es la probabilidad de ser mujer sin usar la condición."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "La condición «usa lentes» deja 14 personas; 6 son mujeres: 6/14 = 3/7."
+ },
+ {
+  "id": "m2-con-b2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "Si P(A) = 0,5, P(B) = 0,4 y P(A ∩ B) = 0,2, ¿cuánto es P(A | B)?",
+  "opciones": [
+   {
+    "texto": "0,4",
+    "trampa": "Dividiste por P(A): eso es P(B | A)."
+   },
+   {
+    "texto": "0,08",
+    "trampa": "Multiplicaste 0,2·0,4. La condicional DIVIDE por la probabilidad de la condición."
+   },
+   {
+    "texto": "0,2",
+    "trampa": "Esa es la intersección, sin dividir por P(B)."
+   },
+   {
+    "texto": "0,5",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(A | B) = P(A ∩ B)/P(B) = 0,2/0,4 = 0,5."
+ },
+ {
+  "id": "m2-con-b3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "basico",
+  "enunciado": "Una bolsa tiene 4 bolitas rojas y 6 azules. Se sacan 2, una tras otra, sin reposición. ¿Cuál es la probabilidad de que ambas sean rojas?",
+  "opciones": [
+   {
+    "texto": "4/25",
+    "trampa": "Calculaste con reposición (4/10·4/10). Al no reponer, quedan 3 rojas de 9."
+   },
+   {
+    "texto": "2/15",
+    "trampa": ""
+   },
+   {
+    "texto": "2/5",
+    "trampa": "Calculaste solo la primera extracción."
+   },
+   {
+    "texto": "11/15",
+    "trampa": "Sumaste las ramas (4/10 + 3/9). En un mismo camino del árbol se multiplica."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "P = 4/10 · 3/9 = 12/90 = 2/15."
+ },
+ {
+  "id": "m2-con-p1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "En un colegio, el 40 % de los estudiantes juega fútbol y el 25 % juega fútbol y básquetbol. Si un estudiante juega fútbol, ¿cuál es la probabilidad de que también juegue básquetbol?",
+  "opciones": [
+   {
+    "texto": "1/10",
+    "trampa": "Multiplicaste 0,40·0,25. Hay que dividir por la condición."
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Esa es la intersección (25 %), sin condicionar."
+   },
+   {
+    "texto": "5/8",
+    "trampa": ""
+   },
+   {
+    "texto": "3/20",
+    "trampa": "Restaste 0,40 − 0,25. Eso es «fútbol y NO básquetbol»."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "P(B | F) = P(F ∩ B)/P(F) = 0,25/0,40 = 5/8."
+ },
+ {
+  "id": "m2-con-p2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "Una fábrica tiene dos máquinas: A hace el 70 % de las piezas y B el 30 %. El 2 % de las piezas de A y el 5 % de las de B salen defectuosas. ¿Cuál es la probabilidad de que una pieza elegida al azar sea defectuosa?",
+  "opciones": [
+   {
+    "texto": "2,9 %",
+    "trampa": ""
+   },
+   {
+    "texto": "7 %",
+    "trampa": "Sumaste 2 % + 5 % sin ponderar por cuántas piezas hace cada máquina."
+   },
+   {
+    "texto": "3,5 %",
+    "trampa": "Promediaste 2 % y 5 % como si cada máquina hiciera la mitad."
+   },
+   {
+    "texto": "1,4 %",
+    "trampa": "Calculaste solo la rama de la máquina A."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Probabilidad total: 0,7·0,02 + 0,3·0,05 = 0,014 + 0,015 = 0,029 = 2,9 %."
+ },
+ {
+  "id": "m2-con-p3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "Se lanzan dos monedas. Si se sabe que salió al menos una cara, ¿cuál es la probabilidad de que hayan salido dos caras?",
+  "opciones": [
+   {
+    "texto": "1/2",
+    "trampa": "Pensaste «la otra moneda es cara o sello». Pero no sabes CUÁL salió cara: quedan 3 casos (CC, CS, SC)."
+   },
+   {
+    "texto": "1/4",
+    "trampa": "No achicaste el universo: usaste los 4 casos, incluido SS, que ya está descartado."
+   },
+   {
+    "texto": "1/3",
+    "trampa": ""
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Contaste los casos con una sola cara (CS y SC) en vez del caso pedido (CC)."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Con «al menos una cara» quedan CC, CS y SC. Solo CC tiene dos caras: 1/3."
+ },
+ {
+  "id": "m2-con-d1",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "dificil",
+  "enunciado": "El 10 % de una población tiene cierta enfermedad. Un test da positivo en el 90 % de los enfermos y en el 20 % de los sanos. Si una persona dio positivo, ¿cuál es la probabilidad de que esté enferma?",
+  "opciones": [
+   {
+    "texto": "9/10",
+    "trampa": "Confundiste P(positivo | enfermo) con P(enfermo | positivo): es la trampa más famosa."
+   },
+   {
+    "texto": "9/100",
+    "trampa": "0,1·0,9 es la probabilidad de estar enfermo Y dar positivo. Falta dividir por P(positivo)."
+   },
+   {
+    "texto": "27/100",
+    "trampa": "0,27 es la probabilidad total de dar positivo, no la condicional."
+   },
+   {
+    "texto": "1/3",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(+) = 0,1·0,9 + 0,9·0,2 = 0,09 + 0,18 = 0,27. P(E | +) = 0,09/0,27 = 1/3."
+ },
+ {
+  "id": "m2-con-d2",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "paes",
+  "enunciado": "A y B son eventos independientes, con P(A) = 0,3 y P(B) = 0,5. ¿Cuánto es P(A ∪ B)?",
+  "opciones": [
+   {
+    "texto": "0,8",
+    "trampa": "Sumaste sin restar la intersección. Solo se suman directo si son excluyentes."
+   },
+   {
+    "texto": "0,65",
+    "trampa": ""
+   },
+   {
+    "texto": "0,15",
+    "trampa": "0,3·0,5 es la intersección P(A ∩ B), no la unión."
+   },
+   {
+    "texto": "0,85",
+    "trampa": "Usaste 1 − P(A)·P(B). El complemento correcto es 1 − P(no A)·P(no B) = 1 − 0,7·0,5."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Independientes: P(A ∩ B) = 0,3·0,5 = 0,15. P(A ∪ B) = 0,3 + 0,5 − 0,15 = 0,65."
+ },
+ {
+  "id": "m2-con-d3",
+  "prueba": "M2",
+  "eje": "Probabilidad y estadística",
+  "tema": "m2.pro.condicional",
+  "nivel": "dificil",
+  "enunciado": "En un curso, 3/5 son mujeres. Usan lentes la mitad de las mujeres y 1/4 de los hombres. Si se elige al azar a alguien que usa lentes, ¿cuál es la probabilidad de que sea hombre?",
+  "opciones": [
+   {
+    "texto": "1/10",
+    "trampa": "2/5·1/4 = 1/10 es la probabilidad de ser hombre Y usar lentes. Falta dividir por P(lentes)."
+   },
+   {
+    "texto": "2/5",
+    "trampa": "Esa es la probabilidad de ser hombre sin la condición (y también P(lentes))."
+   },
+   {
+    "texto": "3/4",
+    "trampa": "Esa es la probabilidad de ser MUJER dado que usa lentes: respondiste al revés."
+   },
+   {
+    "texto": "1/4",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(L) = 3/5·1/2 + 2/5·1/4 = 3/10 + 1/10 = 2/5. P(H | L) = (1/10)/(2/5) = 1/4."
+ },
+ {
+  "id": "m2-tri-b1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "basico",
+  "enunciado": "En un triángulo rectángulo, sen α = 5/13. ¿Cuánto vale cos α?",
+  "opciones": [
+   {
+    "texto": "12/13",
+    "trampa": ""
+   },
+   {
+    "texto": "13/5",
+    "trampa": "Invertiste el seno. El coseno es adyacente/hipotenusa."
+   },
+   {
+    "texto": "5/12",
+    "trampa": "Esa es tan α (opuesto/adyacente)."
+   },
+   {
+    "texto": "8/13",
+    "trampa": "Restaste 13 − 5 = 8. El cateto adyacente sale por Pitágoras: √(169 − 25) = 12."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Opuesto 5, hipotenusa 13. Adyacente = √(13² − 5²) = 12. cos α = 12/13."
+ },
+ {
+  "id": "m2-tri-b2",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de sen 30° + cos 60°?",
+  "opciones": [
+   {
+    "texto": "√3",
+    "trampa": "Usaste √3/2 para ambos. Ese es el valor de sen 60° y de cos 30°."
+   },
+   {
+    "texto": "(1 + √3)/2",
+    "trampa": "Confundiste cos 60° con cos 30°."
+   },
+   {
+    "texto": "1",
+    "trampa": ""
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Multiplicaste 1/2·1/2 en vez de sumar."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "sen 30° = 1/2 y cos 60° = 1/2. Suma: 1."
+ },
+ {
+  "id": "m2-tri-b3",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la amplitud de f(x) = −4·cos(x) + 1?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "−4",
+    "trampa": "La amplitud es una distancia: siempre positiva. El signo solo refleja la curva."
+   },
+   {
+    "texto": "5",
+    "trampa": "Sumaste el desplazamiento vertical. El +1 sube la curva, no cambia su amplitud."
+   },
+   {
+    "texto": "1",
+    "trampa": "1 es el desplazamiento vertical (la línea central), no la amplitud."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "En A·cos(x) + C, la amplitud es |A| = |−4| = 4."
+ },
+ {
+  "id": "m2-tri-p1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Desde un punto del suelo, a 20 m de la base de un edificio, se ve la parte más alta con un ángulo de elevación de 30°. ¿Cuál es la altura del edificio?",
+  "opciones": [
+   {
+    "texto": "10 m",
+    "trampa": "Usaste sen 30°. Tienes el cateto adyacente (20 m) y buscas el opuesto: es tangente."
+   },
+   {
+    "texto": "20√3 m",
+    "trampa": "Usaste tan 60°: tomaste el ángulo del otro vértice."
+   },
+   {
+    "texto": "10√3 m",
+    "trampa": "Usaste cos 30°: 20·√3/2."
+   },
+   {
+    "texto": "20√3/3 m",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "tan 30° = h/20 → h = 20·(√3/3) = 20√3/3 ≈ 11,5 m."
+ },
+ {
+  "id": "m2-tri-p2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el período de f(x) = sen(3x)?",
+  "opciones": [
+   {
+    "texto": "6π",
+    "trampa": "Multiplicaste 2π por 3. El 3 comprime la curva: el período se DIVIDE."
+   },
+   {
+    "texto": "2π/3",
+    "trampa": ""
+   },
+   {
+    "texto": "3",
+    "trampa": "Leíste el 3 como período. El período es 2π/3."
+   },
+   {
+    "texto": "π/3",
+    "trampa": "Usaste π como período básico. El seno se repite cada 2π."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Período = 2π/B = 2π/3."
+ },
+ {
+  "id": "m2-tri-p3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Si α es un ángulo agudo y tan α = 1, ¿cuál es el valor de sen α · cos α?",
+  "opciones": [
+   {
+    "texto": "1",
+    "trampa": "Supusiste que sen α · cos α = tan α. La tangente es el COCIENTE sen/cos."
+   },
+   {
+    "texto": "√2/2",
+    "trampa": "Ese es solo sen α (o cos α). Falta multiplicarlos."
+   },
+   {
+    "texto": "2",
+    "trampa": "Usaste sen α = cos α = √2, olvidando dividir por 2."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "tan α = 1 con α agudo → α = 45°. sen 45° · cos 45° = (√2/2)·(√2/2) = 2/4 = 1/2."
+ },
+ {
+  "id": "m2-tri-d1",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "paes",
+  "enunciado": "Un avión despega en línea recta con un ángulo de 30° respecto del suelo. Después de recorrer 2 km por su trayectoria, ¿a qué altura está y cuánto avanzó en horizontal?",
+  "opciones": [
+   {
+    "texto": "√3 km de altura y 1 km en horizontal",
+    "trampa": "Intercambiaste seno y coseno: la altura es el lado OPUESTO al ángulo de 30°."
+   },
+   {
+    "texto": "1 km de altura y 2 km en horizontal",
+    "trampa": "Tomaste la trayectoria (hipotenusa) como si fuera el avance horizontal."
+   },
+   {
+    "texto": "1 km de altura y √3 km en horizontal",
+    "trampa": ""
+   },
+   {
+    "texto": "1/2 km de altura y √3/2 km en horizontal",
+    "trampa": "Usaste sen 30° y cos 30° pero olvidaste multiplicar por los 2 km."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Altura = 2·sen 30° = 2·1/2 = 1 km. Horizontal = 2·cos 30° = 2·√3/2 = √3 km."
+ },
+ {
+  "id": "m2-tri-d2",
+  "prueba": "M2",
+  "eje": "Álgebra y funciones",
+  "tema": "m2.alg.trig-funciones",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál de las siguientes funciones tiene valor máximo 5, valor mínimo 1 y período π?",
+  "opciones": [
+   {
+    "texto": "f(x) = 2·sen(2x) + 3",
+    "trampa": ""
+   },
+   {
+    "texto": "f(x) = 5·sen(2x) + 1",
+    "trampa": "Tomaste el máximo como amplitud y el mínimo como desplazamiento. Su máximo es 6 y su mínimo −4."
+   },
+   {
+    "texto": "f(x) = 2·sen(x/2) + 3",
+    "trampa": "Con B = 1/2 el período es 2π/(1/2) = 4π, no π."
+   },
+   {
+    "texto": "f(x) = 3·sen(2x) + 2",
+    "trampa": "Intercambiaste amplitud y desplazamiento. El máximo calza (5), pero el mínimo es −1."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Amplitud = (5 − 1)/2 = 2. Línea central = (5 + 1)/2 = 3. Período π → B = 2π/π = 2. f(x) = 2·sen(2x) + 3."
+ },
+ {
+  "id": "m2-tri-d3",
+  "prueba": "M2",
+  "eje": "Geometría",
+  "tema": "m2.geo.trig-razones",
+  "nivel": "dificil",
+  "enunciado": "En el triángulo ABC, rectángulo en C, la hipotenusa AB mide 10 y sen A = 0,6. ¿Cuál es el área del triángulo?",
+  "opciones": [
+   {
+    "texto": "48",
+    "trampa": "Olvidaste dividir por 2."
+   },
+   {
+    "texto": "30",
+    "trampa": "Usaste la hipotenusa como si fuera un cateto: 10·6/2."
+   },
+   {
+    "texto": "24",
+    "trampa": ""
+   },
+   {
+    "texto": "18",
+    "trampa": "Tomaste los dos catetos iguales a 6. El otro sale por Pitágoras: 8."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "BC = 10·0,6 = 6 (opuesto a A). AC = √(100 − 36) = 8. Área = 6·8/2 = 24."
+ }
+]

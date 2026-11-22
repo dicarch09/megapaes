@@ -1,0 +1,21 @@
+# Despliegue estático en Netlify: publica solo la app (sin tools/).
+# Netlify → "Add new site" → "Import from Git" → este repo, rama main. No hay que configurar nada más.
+[build]
+  publish = "dist"
+  command = "rm -rf dist && mkdir -p dist && cp paes27/*.html dist/ && if [ -d paes27/lib ]; then cp -r paes27/lib dist/; fi"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/lib/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
