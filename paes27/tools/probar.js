@@ -156,6 +156,23 @@ const SHOTS = process.env.SHOTS || '';
       }
       if (SHOTS) await page.screenshot({ path: `${SHOTS}/m2-${id}.png`, fullPage: false });
     }
+    // ensayo corto: responder con teclado, recargar a la mitad, entregar
+    await page.goto(BASE + '/m2.html#ensayo');
+    await page.click('#p-ensayo button:has-text("Corto")');
+    await page.waitForSelector('#ens-reloj');
+    for (let i = 0; i < 5; i++) { await page.keyboard.press(String((i % 4) + 1)); await page.keyboard.press('Enter'); }
+    await page.reload(); await page.waitForSelector('#ens-reloj');
+    const enCurso = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso'));
+    ok(enCurso && Object.keys(enCurso.resp).length === 5 && enCurso.ids.length === 20, `ensayo sigue en curso tras recargar (${enCurso && Object.keys(enCurso.resp).length} respondidas)`);
+    ok(new Set(enCurso.ids).size === 20, 'ensayo sin preguntas repetidas');
+    await page.click('#p-ensayo button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    const ens = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')));
+    ok(ens.length === 1 && ens[0].estado === 'hecho' && ens[0].total === 20 && ens[0].omitidas === 15, 'ensayo entregado y guardado');
+    if (SHOTS) await page.screenshot({ path: SHOTS + '/m2-ensayo-resultado.png' });
+    await page.goto(BASE + '/index.html#ensayos'); await page.waitForTimeout(300);
+    ok(await page.locator('#p-ensayos >> text=Historial').isVisible(), 'el hub muestra el historial de ensayos');
+    await page.goto(BASE + '/m2.html');
     const dom2 = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:dominio')));
     ok(dom2 && dom2['m2.num.log-exp'] !== undefined, 'práctica de M2 actualiza el dominio compartido');
     await page.setViewportSize({ width: 380, height: 800 });

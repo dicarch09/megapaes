@@ -1877,7 +1877,7 @@ function describirBloque(b, diag) {
     case 'len': return b.ficha
       ? { tit: 'Lectora · trampas típicas (30 min)', det: 'Repasa los errores de tu diagnóstico de Lectora: absolutos, detalles convertidos en tesis, inferencias que el texto no permite.' }
       : { tit: 'Lectora · estrategias (30 min)', det: 'Un texto corto cronometrado: primero la pregunta, luego el párrafo. Anota qué tipo de pregunta era (localizar, interpretar, evaluar).' };
-    case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba. El modo ensayo de la app llega en la Fase 2; si no está listo, usa el modelo oficial DEMRE.', link: '#ensayos' };
+    case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba (M2 → Ensayo). Si ya viste casi todas las preguntas de la app, haz además el modelo oficial DEMRE.', link: 'm2.html#ensayo' };
     case 'revision': return { tit: 'Revisión de errores del ensayo M2', det: 'Por cada error: ¿fue concepto, cálculo o trampa? Anótalo en la ficha.' };
     case 'parcial': return { tit: 'Ensayo parcial de Física', det: 'Unas 40 preguntas en 80 min. Revisa los errores al final.', link: '#ensayos' };
     case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas' };
@@ -2227,7 +2227,14 @@ function tarjetaDemre() {
 RENDER.ensayos = () => {
   const p = $('#p-ensayos'); p.innerHTML = '';
   const ens = cargar('ensayos', []);
-  p.appendChild(el('div', 'card', `<h2>Ensayos cronometrados</h2><p>El modo ensayo con tiempos reales (M2: 55 preguntas en 2 h 20 min; Ciencias: 80 en 2 h 40 min; M1: 65 en 2 h 20 min) llega en la <b>Fase 2</b>, empezando por M2.</p>${ens.length ? '<h3>Historial</h3>' + ens.map((e) => `<p>${esc(e.prueba)} · ${esc(e.fecha)} · ${e.correctas}/${e.total}</p>`).join('') : '<p class="muted small">Aún no hay ensayos registrados.</p>'}`));
+  const hechos = ens.filter((e) => e.estado === 'hecho').reverse();
+  const curso = ens.find((e) => e.estado === 'en-curso');
+  const c = el('div', 'card', `<h2>Ensayos cronometrados</h2>
+    ${curso ? `<p class="aviso amar">Tienes un ensayo de ${esc(curso.prueba)} en curso: el reloj sigue corriendo. <a href="m2.html#ensayo">Volver al ensayo</a></p>` : ''}
+    <p><a class="btn" style="text-decoration:none" href="m2.html#ensayo">Ensayo de M2</a> <span class="small muted">· completo (55 preguntas, 2 h 20 min) o corto (20 preguntas, 50 min)</span></p>
+    <p class="small muted">Ciencias (80 preguntas, 2 h 40 min) llega con la Fase 3 y M1 (65 preguntas, 2 h 20 min) con la Fase 4.</p>
+    ${hechos.length ? '<h3>Historial</h3>' + hechos.map((e) => `<p>${esc(e.prueba)} · ${fechaCorta(e.fecha)} · ${e.modo === 'corto' ? 'corto' : 'completo'} · <b>${e.correctas}/${e.total}</b> (${Math.round((e.correctas / e.total) * 100)} %)</p>`).join('') : '<p class="muted small">Aún no hay ensayos.</p>'}`);
+  p.appendChild(c);
   p.appendChild(tarjetaDemre());
 };
 
