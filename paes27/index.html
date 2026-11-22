@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAES 2027 · Hub</title>
+<style>
+/* == paes27-css v1 == */
+:root{--bg:#0d111c;--panel:#151b2b;--panel2:#1c2438;--line:#2a3450;--ink:#e7ecf6;--muted:#93a0bb;--acc:#8b7cf6;--acc2:#5ec8e5;--ok:#43c59e;--mal:#f0697a;--warn:#f2b84b;--m2:#8b7cf6;--cie:#5ec8e5;--m1:#7fd17a;--len:#f2a65a;--r:12px;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc2)}
+h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
+h2{font-size:1.3rem}h3{font-size:1.08rem}
+.wrap{max-width:1040px;margin:0 auto;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0}
+.muted{color:var(--muted)}.small{font-size:.88rem}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:9px;padding:.55em 1em;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:default}
+.btn.sec{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+.btn.mini{padding:.3em .7em;font-size:.88rem}
+kbd{font:600 .72em ui-monospace,monospace;background:rgba(255,255,255,.14);border-radius:4px;padding:.05em .35em;margin-left:.3em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:8px 0 4px}
+.tabs button{background:none;border:0;color:var(--muted);font:inherit;padding:.6em .9em;cursor:pointer;border-bottom:3px solid transparent}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+.pane{display:none}.pane.on{display:block}
+details.acc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;margin:10px 0}
+details.acc>summary{cursor:pointer;padding:.7em 1em;font-weight:600;list-style:none}
+details.acc>summary::before{content:"▸ ";color:var(--acc)}details.acc[open]>summary::before{content:"▾ "}
+details.acc>.in{padding:0 1em 1em}
+.chip{display:inline-block;padding:.1em .55em;border-radius:99px;font-size:.78rem;font-weight:700;background:var(--panel2);border:1px solid var(--line)}
+.chip.A{color:#ffb4bd;border-color:#6b2f3a}.chip.B{color:#ffd98c;border-color:#6b5524}.chip.C{color:#a9b7d4}.chip.R{color:#9fe3c9;border-color:#245c4a}
+.bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
+.q{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.q-meta{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.q-enun{font-size:1.04rem;margin-bottom:12px}
+.q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+.q-ops{display:grid;gap:8px}
+.q-op{display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.6em .8em;font:inherit;cursor:pointer}
+.q-op:hover:not(:disabled){border-color:var(--acc)}
+.q-op:disabled{cursor:default}
+.q-op.ok{border-color:var(--ok);background:rgba(67,197,158,.13)}.q-op.mal{border-color:var(--mal);background:rgba(240,105,122,.13)}
+.q-l{font-weight:800;color:var(--acc);min-width:1.2em}
+.q-fb{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
+.q-trampa{margin:6px 0;padding:6px 10px;border-left:3px solid var(--mal);background:rgba(240,105,122,.08)}
+.q-exp{margin-top:6px}
+.q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+input[type=range]{accent-color:var(--acc);width:100%}
+@media (max-width:600px){.wrap{padding:10px}.card{padding:12px}}
+/* == fin paes27-css v1 == */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.top h1{font-size:1.5rem;margin:0}
+.paginas{display:flex;gap:6px;flex-wrap:wrap}
+.paginas a,.paginas span{padding:.35em .75em;border-radius:99px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:.9rem}
+.paginas a.on{background:var(--acc);border-color:var(--acc)}
+.paginas span{color:var(--muted);border-style:dashed}
+.aviso{border-radius:10px;padding:10px 14px;margin:10px 0;font-size:.95rem}
+.aviso.rojo{background:rgba(240,105,122,.15);border:1px solid var(--mal)}
+.aviso.amar{background:rgba(242,184,75,.12);border:1px solid var(--warn)}
+.cuenta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.cuenta .ex{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;border-top:3px solid var(--c)}
+.cuenta .ex b{font-size:1.25rem}
+code{background:var(--panel2);padding:.1em .4em;border-radius:5px;font-size:.92em}
+.diag-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.diag-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;border-top:3px solid var(--c)}
+.run-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.prog{height:6px;background:var(--panel2);border-radius:9px;overflow:hidden;margin:6px 0 12px}.prog i{display:block;height:100%;background:var(--acc)}
+.len-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.len-texto{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;max-height:75vh;overflow:auto;position:sticky;top:8px}
+.len-texto p{margin:.5em 0}
+@media (max-width:800px){.len-layout{grid-template-columns:1fr}.len-texto{position:static;max-height:none}}
+table.res{width:100%;border-collapse:collapse;font-size:.93rem}
+table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.dia{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin:10px 0;overflow:hidden}
+.dia>h3{margin:0;padding:10px 14px;background:var(--panel2);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:1rem}
+.dia.hoy{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.dia.pasado{opacity:.6}
+.bloque{display:grid;grid-template-columns:28px 96px 1fr;gap:8px;padding:9px 14px;border-top:1px solid var(--line);align-items:start}
+.bloque:first-of-type{border-top:0}
+.bloque .hora{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.9rem}
+.bloque.hecho .tit{text-decoration:line-through;color:var(--muted)}
+.bloque .tit{font-weight:600}
+.bloque .det{color:var(--muted);font-size:.88rem}
+.bloque input{width:18px;height:18px;margin-top:3px;accent-color:var(--ok)}
+.tag{font-size:.72rem;font-weight:800;padding:.05em .45em;border-radius:5px;margin-right:6px;color:#0d111c;background:var(--c)}
+.dom-row{display:grid;grid-template-columns:1fr 150px 48px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.dom-row .n{font-size:.95rem}.dom-row .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+@media (max-width:560px){.dom-row{grid-template-columns:1fr 90px 42px}.bloque{grid-template-columns:24px 1fr}.bloque .hora{grid-column:2}.bloque>div:last-child{grid-column:2}}
+.fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+textarea{width:100%;min-height:110px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;font:13px ui-monospace,monospace;padding:8px}
+select,input[type=time],input[type=number]{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:.3em .5em;font:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>PAES 2027 · estudio express</h1>
+      <div class="muted small" id="hoyTxt"></div>
+    </div>
+    <nav class="paginas">
+      <a href="index.html" class="on">Hub</a>
+      <a href="m2.html">M2</a>
+      <span title="Llega en la Fase 3">Física</span>
+      <span title="Llega en la Fase 4">Bio/Quím</span>
+      <span title="Llega en la Fase 4">M1</span>
+      <span title="Llega en la Fase 5">Lectora</span>
+    </nav>
+  </header>
+  <div id="avisoOrigen"></div>
+  <div class="cuenta" id="cuenta"></div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="hoy">Hoy</button>
+    <button data-tab="diag">Diagnóstico</button>
+    <button data-tab="ruta">Ruta 8 días</button>
+    <button data-tab="dominio">Dominio</button>
+    <button data-tab="repaso">Repaso</button>
+    <button data-tab="ensayos">Ensayos</button>
+    <button data-tab="fichas">Fichas</button>
+    <button data-tab="progreso">Progreso</button>
+  </nav>
+
+  <section class="pane" id="p-hoy"></section>
+  <section class="pane" id="p-diag"></section>
+  <section class="pane" id="p-ruta"></section>
+  <section class="pane" id="p-dominio"></section>
+  <section class="pane" id="p-repaso"></section>
+  <section class="pane" id="p-ensayos"></section>
+  <section class="pane" id="p-fichas"></section>
+  <section class="pane" id="p-progreso"></section>
+</div>
+
+<script type="application/json" id="banco-diag">
+{
+"M2": [
+{"id":"d-m2-01","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.sistemas-rectas","nivel":"paes",
+ "enunciado":"Las rectas L<sub>1</sub>: y = 2x + 3 y L<sub>2</sub>: ax − y = 5 son paralelas. ¿Cuál es el valor de a?",
+ "opciones":[
+  {"texto":"2","trampa":""},
+  {"texto":"−2","trampa":"Error de signo al despejar y: de ax − y = 5 sale y = ax − 5, no y = −ax + 5."},
+  {"texto":"−1/2","trampa":"Esa es la condición de perpendicularidad (m<sub>1</sub>·m<sub>2</sub> = −1), no de paralelismo."},
+  {"texto":"3","trampa":"Comparaste coeficientes de posición. Paralelas = misma pendiente, no mismo intercepto."}],
+ "correcta":0,"explicacion":"Despeja L<sub>2</sub>: y = ax − 5, su pendiente es a. Paralelas tienen la misma pendiente: a = 2."},
+{"id":"d-m2-02","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.sistemas-rectas","nivel":"dificil",
+ "enunciado":"¿Para qué valor de k el sistema kx + 2y = 4 ; 3x + 6y = 12 tiene infinitas soluciones?",
+ "opciones":[
+  {"texto":"1","trampa":""},
+  {"texto":"3","trampa":"Igualaste los coeficientes de x sin escalar. La segunda ecuación es la primera multiplicada por 3, así que hay que comparar k·3 con 3."},
+  {"texto":"−1","trampa":"Error de signo: la proporción k/3 = 2/6 da k positivo."},
+  {"texto":"Para ningún valor de k","trampa":"Crees que dos ecuaciones distintas no pueden ser la misma recta. Si una es múltiplo de la otra, coinciden."}],
+ "correcta":0,"explicacion":"Infinitas soluciones = rectas coincidentes: los coeficientes son proporcionales. k/3 = 2/6 = 4/12 = 1/3, así que k = 1."},
+{"id":"d-m2-03","prueba":"M2","eje":"Números","tema":"m2.num.log-exp","nivel":"basico",
+ "enunciado":"¿Cuál es el valor de log<sub>2</sub> 32 − log<sub>3</sub> (1/9)?",
+ "opciones":[
+  {"texto":"7","trampa":""},
+  {"texto":"3","trampa":"Tomaste log<sub>3</sub>(1/9) = 2. Pero 3<sup>−2</sup> = 1/9, así que vale −2."},
+  {"texto":"−7","trampa":"Restaste en el orden contrario: log<sub>3</sub>(1/9) − log<sub>2</sub> 32."},
+  {"texto":"−3","trampa":"Dos errores juntos: tomaste log<sub>3</sub>(1/9) = 2 y además restaste al revés."}],
+ "correcta":0,"explicacion":"2<sup>5</sup> = 32, así que log<sub>2</sub> 32 = 5. 3<sup>−2</sup> = 1/9, así que log<sub>3</sub>(1/9) = −2. Entonces 5 − (−2) = 7."},
+{"id":"d-m2-04","prueba":"M2","eje":"Números","tema":"m2.num.log-exp","nivel":"paes",
+ "enunciado":"Si log 2 ≈ 0,3 y log 3 ≈ 0,48, ¿cuál es el valor aproximado de log 12?",
+ "opciones":[
+  {"texto":"1,08","trampa":""},
+  {"texto":"0,288","trampa":"Usaste log(a·b) = log a · log b. El logaritmo de un producto es la SUMA de los logaritmos."},
+  {"texto":"0,57","trampa":"Usaste log(2<sup>2</sup>) = (log 2)<sup>2</sup>. Lo correcto es log(2<sup>2</sup>) = 2·log 2."},
+  {"texto":"0,78","trampa":"Factorizaste mal: 2·3 = 6, no 12. Falta un 2 más: 12 = 2·2·3."}],
+ "correcta":0,"explicacion":"12 = 2<sup>2</sup>·3, entonces log 12 = 2·log 2 + log 3 ≈ 0,6 + 0,48 = 1,08."},
+{"id":"d-m2-05","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.condicional","nivel":"paes",
+ "enunciado":"En un curso de 40 estudiantes hay 22 mujeres. 18 estudiantes practican deporte y, de ellos, 12 son mujeres. Si se elige al azar una mujer del curso, ¿cuál es la probabilidad de que practique deporte?",
+ "opciones":[
+  {"texto":"6/11","trampa":""},
+  {"texto":"2/3","trampa":"Condicionaste al revés: 12/18 es la probabilidad de ser mujer dado que practica deporte."},
+  {"texto":"3/10","trampa":"12/40 es la probabilidad de ser mujer Y practicar deporte. Pero ya sabes que es mujer: el total es 22."},
+  {"texto":"9/20","trampa":"18/40 es la probabilidad de practicar deporte sin la condición «es mujer»."}],
+ "correcta":0,"explicacion":"La condición «es mujer» achica el universo a 22. De ellas, 12 practican deporte: 12/22 = 6/11."},
+{"id":"d-m2-06","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.binomial-normal","nivel":"paes",
+ "enunciado":"Se lanza una moneda equilibrada 4 veces. ¿Cuál es la probabilidad de obtener exactamente 2 caras?",
+ "opciones":[
+  {"texto":"3/8","trampa":""},
+  {"texto":"1/2","trampa":"«2 de 4 es la mitad» no es una probabilidad. Hay que contar los casos."},
+  {"texto":"1/4","trampa":"Calculaste (1/2)·(1/2) solo para las dos caras y olvidaste los sellos y el orden."},
+  {"texto":"1/16","trampa":"Esa es la probabilidad de UNA secuencia (por ejemplo CCSS). Hay C(4,2) = 6 secuencias así."}],
+ "correcta":0,"explicacion":"Binomial: C(4,2)·(1/2)<sup>2</sup>·(1/2)<sup>2</sup> = 6/16 = 3/8."},
+{"id":"d-m2-07","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.combinatoria","nivel":"basico",
+ "enunciado":"¿De cuántas formas se puede elegir un presidente, un secretario y un tesorero entre 6 personas, si nadie puede tener dos cargos?",
+ "opciones":[
+  {"texto":"120","trampa":""},
+  {"texto":"20","trampa":"C(6,3) = 20 sirve cuando el orden no importa. Acá los cargos son distintos: el orden sí importa."},
+  {"texto":"216","trampa":"6<sup>3</sup> permite que una persona tenga varios cargos. Sin repetición es 6·5·4."},
+  {"texto":"18","trampa":"Sumaste 6 + 6 + 6. Las elecciones sucesivas se multiplican, no se suman."}],
+ "correcta":0,"explicacion":"Presidente: 6 opciones, secretario: 5, tesorero: 4. Total 6·5·4 = 120 (permutación de 6 tomados de a 3)."},
+{"id":"d-m2-08","prueba":"M2","eje":"Geometría","tema":"m2.geo.trig-razones","nivel":"basico",
+ "enunciado":"En un triángulo rectángulo, un cateto mide 6 cm y la hipotenusa mide 10 cm. Si α es el ángulo opuesto al cateto de 6 cm, ¿cuánto vale tan α?",
+ "opciones":[
+  {"texto":"3/4","trampa":""},
+  {"texto":"3/5","trampa":"6/10 es sen α (opuesto/hipotenusa), no tan α."},
+  {"texto":"4/3","trampa":"Invertiste la razón: tan α = opuesto/adyacente, no adyacente/opuesto."},
+  {"texto":"4/5","trampa":"8/10 es cos α (adyacente/hipotenusa)."}],
+ "correcta":0,"explicacion":"Por Pitágoras el otro cateto mide √(100 − 36) = 8. tan α = opuesto/adyacente = 6/8 = 3/4."},
+{"id":"d-m2-09","prueba":"M2","eje":"Álgebra y funciones","tema":"m2.alg.trig-funciones","nivel":"paes",
+ "enunciado":"¿Cuáles son la amplitud y el período de f(x) = 3·sen(2x)?",
+ "opciones":[
+  {"texto":"Amplitud 3, período π","trampa":""},
+  {"texto":"Amplitud 3, período 4π","trampa":"Multiplicaste 2π por 2. El período es 2π dividido por el número que acompaña a x."},
+  {"texto":"Amplitud 3, período 2π","trampa":"Crees que el período no cambia. El 2 dentro del seno lo comprime a la mitad."},
+  {"texto":"Amplitud 6, período π","trampa":"6 es la distancia entre el máximo y el mínimo. La amplitud es la mitad: 3."}],
+ "correcta":0,"explicacion":"En A·sen(Bx): amplitud = |A| = 3, período = 2π/B = 2π/2 = π."},
+{"id":"d-m2-10","prueba":"M2","eje":"Probabilidad y estadística","tema":"m2.pro.dispersion","nivel":"paes",
+ "enunciado":"¿Cuál es la varianza del conjunto de datos 2, 4, 6, 8, 10?",
+ "opciones":[
+  {"texto":"8","trampa":""},
+  {"texto":"2√2","trampa":"√8 = 2√2 es la desviación estándar. La varianza es el valor antes de sacar la raíz."},
+  {"texto":"0","trampa":"Sumaste las desviaciones sin elevarlas al cuadrado: −4, −2, 0, 2, 4 se cancelan."},
+  {"texto":"12/5","trampa":"Promediaste las desviaciones en valor absoluto (12/5). La varianza usa los cuadrados."}],
+ "correcta":0,"explicacion":"Media = 6. Desviaciones: −4, −2, 0, 2, 4. Cuadrados: 16, 4, 0, 4, 16. Suma 40, dividido por 5 = 8."},
+{"id":"d-m2-11","prueba":"M2","eje":"Transversal","tema":"m2.sd","nivel":"paes",
+ "enunciado":"Se puede determinar el valor de x + y si:<br>(1) x − y = 4<br>(2) 2x + 2y = 18",
+ "opciones":[
+  {"texto":"(1) por sí sola","trampa":"Con x − y = 4 hay infinitos pares (5 y 1, 10 y 6...) con sumas distintas."},
+  {"texto":"(2) por sí sola","trampa":""},
+  {"texto":"Ambas juntas, (1) y (2)","trampa":"Buscaste x e y por separado. La pregunta pide solo x + y, y (2) ya la da."},
+  {"texto":"Cada una por sí sola, (1) ó (2)","trampa":"(1) sola no alcanza: da la diferencia, no la suma."},
+  {"texto":"Se requiere información adicional","trampa":"(2) dividida por 2 ya entrega x + y = 9."}],
+ "correcta":1,"explicacion":"(2): 2(x + y) = 18, entonces x + y = 9. Alcanza sola. (1) sola no determina la suma. Respuesta: (2) por sí sola."},
+{"id":"d-m2-12","prueba":"M2","eje":"Geometría","tema":"m2.geo.circunferencia","nivel":"paes",
+ "enunciado":"En una circunferencia de centro O, el ángulo del centro ∠AOB mide 110°. El punto C está en el arco mayor AB. ¿Cuánto mide el ángulo inscrito ∠ACB?",
+ "opciones":[
+  {"texto":"55°","trampa":""},
+  {"texto":"110°","trampa":"El ángulo inscrito NO es igual al del centro: mide la mitad del arco que subtiende."},
+  {"texto":"220°","trampa":"Duplicaste en vez de dividir por 2."},
+  {"texto":"125°","trampa":"Ese sería el ángulo si C estuviera en el arco menor (180° − 55°)."}],
+ "correcta":0,"explicacion":"El ángulo inscrito mide la mitad del ángulo del centro que subtiende el mismo arco: 110°/2 = 55°."},
+{"id":"d-m2-13","prueba":"M2","eje":"Geometría","tema":"m2.geo.homotecia","nivel":"paes",
+ "enunciado":"Se aplica una homotecia de centro en el origen y razón k = −2 al punto P(3, −1). ¿Cuáles son las coordenadas de su imagen?",
+ "opciones":[
+  {"texto":"(−6, 2)","trampa":""},
+  {"texto":"(6, −2)","trampa":"Ignoraste el signo de k. Razón negativa = la imagen queda al otro lado del centro."},
+  {"texto":"(1, −3)","trampa":"Sumaste k a cada coordenada. La homotecia con centro en el origen multiplica."},
+  {"texto":"(−3/2, 1/2)","trampa":"Dividiste por k en vez de multiplicar."}],
+ "correcta":0,"explicacion":"Con centro en el origen, P' = k·P = (−2·3, −2·(−1)) = (−6, 2)."},
+{"id":"d-m2-14","prueba":"M2","eje":"Números","tema":"m2.num.financiera","nivel":"paes",
+ "enunciado":"Se invierten $1.000.000 a interés compuesto del 2 % mensual durante 2 meses. ¿Cuánto dinero hay al final?",
+ "opciones":[
+  {"texto":"$1.040.400","trampa":""},
+  {"texto":"$1.040.000","trampa":"Eso es interés simple (2 % + 2 % sobre el capital inicial). En el compuesto, el segundo mes gana interés sobre lo ganado."},
+  {"texto":"$1.000.400","trampa":"Elevaste solo la tasa: 0,02<sup>2</sup>. Lo que se eleva es el factor (1 + 0,02)."},
+  {"texto":"$1.020.000","trampa":"Calculaste solo un mes."}],
+ "correcta":0,"explicacion":"C = 1.000.000·(1,02)<sup>2</sup> = 1.000.000·1,0404 = 1.040.400."},
+{"id":"d-m2-15","prueba":"M2","eje":"Geometría","tema":"m2.geo.esfera","nivel":"paes",
+ "enunciado":"Una esfera tiene un volumen de 36π cm<sup>3</sup>. ¿Cuál es su área?",
+ "opciones":[
+  {"texto":"36π cm²","trampa":""},
+  {"texto":"9π cm²","trampa":"πr<sup>2</sup> es el área de un círculo máximo. La esfera tiene 4πr<sup>2</sup>."},
+  {"texto":"12π cm²","trampa":"Calculaste 4πr sin elevar r al cuadrado."},
+  {"texto":"108π cm²","trampa":"Usaste r<sup>3</sup> = 27 en vez de r<sup>2</sup> = 9 en la fórmula del área."}],
+ "correcta":0,"explicacion":"(4/3)πr<sup>3</sup> = 36π, entonces r<sup>3</sup> = 27 y r = 3. Área = 4πr<sup>2</sup> = 4π·9 = 36π cm<sup>2</sup>."}
+],
+"CIE": [
+{"id":"d-cie-01","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.cinematica","nivel":"paes",
+ "enunciado":"Una persona camina 30 m hacia el norte y luego 40 m hacia el sur, en un total de 50 s. ¿Cuáles son su rapidez media y el módulo de su velocidad media?",
+ "opciones":[
+  {"texto":"1,4 m/s y 0,2 m/s","trampa":""},
+  {"texto":"0,2 m/s y 1,4 m/s","trampa":"Los invertiste. Rapidez usa la distancia recorrida (70 m); velocidad usa el desplazamiento (10 m)."},
+  {"texto":"1,4 m/s y 1,4 m/s","trampa":"Crees que rapidez y velocidad son lo mismo. Si hay cambio de sentido, difieren."},
+  {"texto":"1,0 m/s y 0,2 m/s","trampa":"Usaste Pitágoras (√(30² + 40²) = 50 m), pero norte y sur están en la misma línea, no son perpendiculares."}],
+ "correcta":0,"explicacion":"Distancia = 30 + 40 = 70 m, rapidez = 70/50 = 1,4 m/s. Desplazamiento = 10 m al sur, velocidad = 10/50 = 0,2 m/s."},
+{"id":"d-cie-02","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.mru-mrua","nivel":"basico",
+ "enunciado":"Un auto parte del reposo con aceleración constante de 2 m/s<sup>2</sup>. ¿Qué distancia recorre en los primeros 5 s?",
+ "opciones":[
+  {"texto":"25 m","trampa":""},
+  {"texto":"50 m","trampa":"Olvidaste el ½ de la ecuación de itinerario: d = ½·a·t<sup>2</sup>."},
+  {"texto":"10 m","trampa":"Calculaste a·t = 10, que es la velocidad final en m/s, no la distancia."},
+  {"texto":"5 m","trampa":"No elevaste el tiempo al cuadrado: ½·2·5 = 5."}],
+ "correcta":0,"explicacion":"Parte del reposo: d = ½·a·t<sup>2</sup> = ½·2·25 = 25 m."},
+{"id":"d-cie-03","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.newton","nivel":"basico",
+ "enunciado":"Sobre un bloque de 4 kg, en una superficie sin roce, actúan dos fuerzas horizontales: 20 N hacia la derecha y 8 N hacia la izquierda. ¿Cuál es el módulo de la aceleración del bloque?",
+ "opciones":[
+  {"texto":"3 m/s²","trampa":""},
+  {"texto":"7 m/s²","trampa":"Sumaste las fuerzas (28 N). Tienen sentidos opuestos: se restan."},
+  {"texto":"12 m/s²","trampa":"12 N es la fuerza neta. Falta dividir por la masa."},
+  {"texto":"5 m/s²","trampa":"Usaste solo la fuerza de 20 N y olvidaste la de 8 N."}],
+ "correcta":0,"explicacion":"Fuerza neta = 20 − 8 = 12 N hacia la derecha. a = F/m = 12/4 = 3 m/s<sup>2</sup>."},
+{"id":"d-cie-04","prueba":"CIE","eje":"Mecánica","tema":"fis.mec.fuerzas","nivel":"basico",
+ "enunciado":"Un resorte de constante elástica 200 N/m se estira 5 cm desde su largo natural. ¿Qué fuerza elástica ejerce?",
+ "opciones":[
+  {"texto":"10 N","trampa":""},
+  {"texto":"1000 N","trampa":"No convertiste 5 cm a metros. La constante está en N/m."},
+  {"texto":"40 N","trampa":"Dividiste 200 entre 5. La ley de Hooke multiplica: F = k·x."},
+  {"texto":"100 N","trampa":"Convertiste mal: 5 cm = 0,05 m, no 0,5 m."}],
+ "correcta":0,"explicacion":"Ley de Hooke: F = k·x = 200 N/m · 0,05 m = 10 N."},
+{"id":"d-cie-05","prueba":"CIE","eje":"Ondas","tema":"fis.ond.elementos","nivel":"paes",
+ "enunciado":"Una onda electromagnética de frecuencia 6·10<sup>14</sup> Hz se propaga en el vacío, donde c = 3·10<sup>8</sup> m/s. ¿Cuál es su longitud de onda?",
+ "opciones":[
+  {"texto":"5·10⁻⁷ m","trampa":""},
+  {"texto":"2·10⁶ m","trampa":"Calculaste f/c. De v = λ·f se despeja λ = v/f."},
+  {"texto":"1,8·10²³ m","trampa":"Multiplicaste c·f. Eso no tiene unidades de longitud."},
+  {"texto":"5·10⁻⁶ m","trampa":"3/6 = 0,5 y 0,5·10<sup>−6</sup> = 5·10<sup>−7</sup>. Moviste la coma sin ajustar el exponente."}],
+ "correcta":0,"explicacion":"λ = c/f = 3·10<sup>8</sup> / 6·10<sup>14</sup> = 0,5·10<sup>−6</sup> = 5·10<sup>−7</sup> m (luz visible)."},
+{"id":"d-cie-06","prueba":"CIE","eje":"Ondas","tema":"fis.ond.espejos-lentes","nivel":"paes",
+ "enunciado":"Un objeto se ubica a 30 cm de una lente convergente cuya distancia focal es 10 cm. ¿Cómo es la imagen que se forma?",
+ "opciones":[
+  {"texto":"Real, invertida y de menor tamaño","trampa":""},
+  {"texto":"Virtual, derecha y de mayor tamaño","trampa":"Eso pasa cuando el objeto está entre el foco y la lente (lupa). Acá está más allá de 2f."},
+  {"texto":"Real, invertida y de mayor tamaño","trampa":"Eso pasa cuando el objeto está entre f y 2f (entre 10 y 20 cm)."},
+  {"texto":"Real, invertida y del mismo tamaño","trampa":"Eso pasa solo si el objeto está justo en 2f = 20 cm."}],
+ "correcta":0,"explicacion":"El objeto está más allá de 2f (30 > 20 cm). 1/d<sub>i</sub> = 1/10 − 1/30 = 1/15, d<sub>i</sub> = 15 cm: imagen real, invertida y de la mitad del tamaño."},
+{"id":"d-cie-07","prueba":"CIE","eje":"Electricidad","tema":"fis.ele.ohm","nivel":"paes",
+ "enunciado":"Dos resistencias de 6 Ω y 3 Ω se conectan en paralelo a una fuente de 12 V. ¿Cuál es la corriente total que entrega la fuente?",
+ "opciones":[
+  {"texto":"6 A","trampa":""},
+  {"texto":"4/3 A","trampa":"Las sumaste como si estuvieran en serie (9 Ω)."},
+  {"texto":"2 A","trampa":"Calculaste solo la corriente de la resistencia de 6 Ω."},
+  {"texto":"4 A","trampa":"Calculaste solo la corriente de la resistencia de 3 Ω."}],
+ "correcta":0,"explicacion":"En paralelo: 1/R = 1/6 + 1/3 = 1/2, R = 2 Ω. I = V/R = 12/2 = 6 A (2 A + 4 A)."},
+{"id":"d-cie-08","prueba":"CIE","eje":"Electricidad","tema":"fis.ele.potencia","nivel":"paes",
+ "enunciado":"Un hervidor de 2000 W se usa 15 minutos al día durante 30 días. Si 1 kWh cuesta $200, ¿cuánto cuesta esa energía?",
+ "opciones":[
+  {"texto":"$3.000","trampa":""},
+  {"texto":"$180.000","trampa":"Usaste 15 horas en vez de 15 minutos (0,25 h)."},
+  {"texto":"$3.000.000","trampa":"Usaste 2000 W como si fueran kW. 2000 W = 2 kW."},
+  {"texto":"$100","trampa":"Calculaste un solo día. Son 30 días."}],
+ "correcta":0,"explicacion":"E = 2 kW · 0,25 h · 30 = 15 kWh. Costo = 15 · $200 = $3.000."},
+{"id":"d-cie-09","prueba":"CIE","eje":"Ondas","tema":"fis.ond.reflexion-refraccion","nivel":"basico",
+ "enunciado":"Un rayo de luz pasa del aire al agua (el agua tiene mayor índice de refracción). ¿Qué ocurre con la luz?",
+ "opciones":[
+  {"texto":"Disminuye su rapidez y se acerca a la normal","trampa":""},
+  {"texto":"Aumenta su rapidez y se aleja de la normal","trampa":"Es al revés: mayor índice = medio más lento, y el rayo se acerca a la normal."},
+  {"texto":"Disminuye su rapidez y cambia su frecuencia","trampa":"Al refractarse, la frecuencia NO cambia. Cambian la rapidez y la longitud de onda."},
+  {"texto":"Mantiene su rapidez y solo cambia de dirección","trampa":"La desviación ocurre justamente porque cambia la rapidez."}],
+ "correcta":0,"explicacion":"Mayor índice de refracción = menor rapidez. Al frenarse, el rayo se acerca a la normal. La frecuencia se mantiene."},
+{"id":"d-cie-10","prueba":"CIE","eje":"Ondas","tema":"fis.ond.espectro-color","nivel":"basico",
+ "enunciado":"¿Cuál de las siguientes ondas electromagnéticas tiene MAYOR frecuencia?",
+ "opciones":[
+  {"texto":"Rayos X","trampa":""},
+  {"texto":"Ondas de radio","trampa":"Tienen la MAYOR longitud de onda, y por eso la menor frecuencia (λ y f son inversas)."},
+  {"texto":"Luz violeta","trampa":"Es la de mayor frecuencia dentro de la luz visible, pero el ultravioleta y los rayos X están más arriba."},
+  {"texto":"Infrarrojo","trampa":"Lo asocias con calor, pero está bajo el rojo: menos frecuencia que la luz visible."}],
+ "correcta":0,"explicacion":"Orden por frecuencia creciente: radio, microondas, infrarrojo, visible (rojo → violeta), ultravioleta, rayos X, rayos gamma."},
+{"id":"d-cie-11","prueba":"CIE","eje":"Tierra y Universo","tema":"fis.tie.tectonica","nivel":"basico",
+ "enunciado":"Frente a Chile, la placa de Nazca (oceánica) converge con la placa Sudamericana (continental). ¿Qué ocurre en ese límite?",
+ "opciones":[
+  {"texto":"La placa oceánica, más densa, se hunde bajo la continental (subducción)","trampa":""},
+  {"texto":"La placa continental se hunde bajo la oceánica","trampa":"Invertiste las densidades: la oceánica es más densa y es la que se hunde."},
+  {"texto":"Las placas se separan y se forma corteza nueva","trampa":"Eso es un límite divergente (como una dorsal oceánica)."},
+  {"texto":"Las placas se deslizan de lado sin crear ni destruir corteza","trampa":"Eso es un límite transformante (como la falla de San Andrés)."}],
+ "correcta":0,"explicacion":"Límite convergente océano–continente: la placa oceánica, más densa, subducta. Eso genera sismos, la fosa y volcanes."},
+{"id":"d-cie-12","prueba":"CIE","eje":"Biología","tema":"bio.procesos","nivel":"basico",
+ "enunciado":"En una sinapsis química, ¿qué estructura libera los neurotransmisores?",
+ "opciones":[
+  {"texto":"El terminal del axón de la neurona presináptica","trampa":""},
+  {"texto":"Las dendritas de la neurona postsináptica","trampa":"Invertiste el sentido: las dendritas de la postsináptica RECIBEN los neurotransmisores."},
+  {"texto":"La vaina de mielina","trampa":"La mielina aísla el axón y acelera el impulso; no libera neurotransmisores."},
+  {"texto":"El núcleo de la neurona postsináptica","trampa":"El núcleo guarda el ADN; la liberación ocurre en el terminal del axón de la otra neurona."}],
+ "correcta":0,"explicacion":"El impulso llega al terminal del axón presináptico, las vesículas liberan neurotransmisores al espacio sináptico y estos se unen a receptores de la postsináptica."},
+{"id":"d-cie-13","prueba":"CIE","eje":"Biología","tema":"bio.herencia","nivel":"basico",
+ "enunciado":"Se cruzan dos plantas heterocigotas Aa, donde A es dominante sobre a. ¿Qué proporción de la descendencia se espera con el fenotipo recesivo?",
+ "opciones":[
+  {"texto":"1/4","trampa":""},
+  {"texto":"3/4","trampa":"Esa es la proporción del fenotipo DOMINANTE (AA + Aa)."},
+  {"texto":"1/2","trampa":"Esa es la proporción de heterocigotos (Aa), que muestran el fenotipo dominante."},
+  {"texto":"0","trampa":"Los padres no muestran el rasgo recesivo, pero lo portan: pueden tener hijos aa."}],
+ "correcta":0,"explicacion":"Cuadro de Punnett Aa × Aa: AA, Aa, Aa, aa. Solo aa (1 de 4) muestra el fenotipo recesivo."},
+{"id":"d-cie-14","prueba":"CIE","eje":"Química","tema":"qui.atomica","nivel":"basico",
+ "enunciado":"Un átomo neutro tiene número atómico Z = 17 y número másico A = 35. ¿Cuántos neutrones tiene?",
+ "opciones":[
+  {"texto":"18","trampa":""},
+  {"texto":"17","trampa":"17 son los protones (Z), y también los electrones por ser neutro."},
+  {"texto":"35","trampa":"35 es el número másico: protones + neutrones."},
+  {"texto":"52","trampa":"Sumaste A + Z. Los neutrones son A − Z."}],
+ "correcta":0,"explicacion":"Neutrones = A − Z = 35 − 17 = 18."},
+{"id":"d-cie-15","prueba":"CIE","eje":"Química","tema":"qui.estequiometria","nivel":"basico",
+ "enunciado":"Según la ecuación 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O, ¿cuántos moles de agua se forman a partir de 3 moles de O<sub>2</sub>, con H<sub>2</sub> en exceso?",
+ "opciones":[
+  {"texto":"6","trampa":""},
+  {"texto":"3","trampa":"Copiaste los moles de O<sub>2</sub> sin usar la proporción 1 : 2 de la ecuación."},
+  {"texto":"1,5","trampa":"Dividiste por 2 en vez de multiplicar: por cada mol de O<sub>2</sub> salen 2 de agua."},
+  {"texto":"2","trampa":"Copiaste el coeficiente de la ecuación, sin escalarlo a 3 moles."}],
+ "correcta":0,"explicacion":"1 mol de O<sub>2</sub> produce 2 moles de H<sub>2</sub>O. Con 3 moles de O<sub>2</sub>: 3·2 = 6 moles."}
+],
+"M1": [
+{"id":"d-m1-01","prueba":"M1","eje":"Números","tema":"m1.num.enteros-racionales","nivel":"paes",
+ "enunciado":"¿Cuál es el valor de (−3)<sup>2</sup> − 2·(−4) + 6 : (−2)?",
+ "opciones":[
+  {"texto":"14","trampa":""},
+  {"texto":"−4","trampa":"Tomaste (−3)<sup>2</sup> = −9. Con paréntesis, el cuadrado de un negativo es positivo: 9."},
+  {"texto":"−2","trampa":"Tomaste −2·(−4) = −8. Menos por menos da más: +8."},
+  {"texto":"11","trampa":"Operaste de izquierda a derecha sin respetar la prioridad: primero multiplicaciones y divisiones."}],
+ "correcta":0,"explicacion":"(−3)<sup>2</sup> = 9; −2·(−4) = +8; 6 : (−2) = −3. Total: 9 + 8 − 3 = 14."},
+{"id":"d-m1-02","prueba":"M1","eje":"Números","tema":"m1.num.porcentaje","nivel":"paes",
+ "enunciado":"El precio de un producto sube un 20 % y luego baja un 20 %. Respecto del precio original, el precio final:",
+ "opciones":[
+  {"texto":"Es 4 % menor","trampa":""},
+  {"texto":"Es igual","trampa":"Los porcentajes no se cancelan: el 20 % que baja se calcula sobre un precio mayor."},
+  {"texto":"Es 4 % mayor","trampa":"Error de signo: 1,2·0,8 = 0,96, que es menos que 1."},
+  {"texto":"Es 20 % menor","trampa":"Solo consideraste la última variación."}],
+ "correcta":0,"explicacion":"Precio final = P·1,2·0,8 = 0,96·P. Es un 4 % menor que el original."},
+{"id":"d-m1-03","prueba":"M1","eje":"Números","tema":"m1.num.potencias-raices","nivel":"paes",
+ "enunciado":"¿Cuál es el valor de √50 − √18?",
+ "opciones":[
+  {"texto":"2√2","trampa":""},
+  {"texto":"√32","trampa":"Restaste los números de adentro: √a − √b no es √(a − b)."},
+  {"texto":"2","trampa":"Restaste los coeficientes 5 − 3 y olvidaste el √2."},
+  {"texto":"8√2","trampa":"Sumaste en vez de restar."}],
+ "correcta":0,"explicacion":"√50 = 5√2 y √18 = 3√2. Entonces 5√2 − 3√2 = 2√2."},
+{"id":"d-m1-04","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.expresiones","nivel":"basico",
+ "enunciado":"¿Cuál es el desarrollo de (2x − 3)<sup>2</sup>?",
+ "opciones":[
+  {"texto":"4x² − 12x + 9","trampa":""},
+  {"texto":"4x² − 9","trampa":"Olvidaste el doble producto. (a − b)<sup>2</sup> = a<sup>2</sup> − 2ab + b<sup>2</sup>."},
+  {"texto":"4x² − 6x + 9","trampa":"Te faltó el 2 del doble producto: 2·(2x)·3 = 12x."},
+  {"texto":"2x² − 12x + 9","trampa":"No elevaste el 2: (2x)<sup>2</sup> = 4x<sup>2</sup>."}],
+ "correcta":0,"explicacion":"(2x)<sup>2</sup> − 2·(2x)·3 + 3<sup>2</sup> = 4x<sup>2</sup> − 12x + 9."},
+{"id":"d-m1-05","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.ecuaciones","nivel":"basico",
+ "enunciado":"Si 3(x − 2) = x + 4, ¿cuál es el valor de x?",
+ "opciones":[
+  {"texto":"5","trampa":""},
+  {"texto":"3","trampa":"Distribuiste mal: 3(x − 2) = 3x − 6, no 3x − 2."},
+  {"texto":"2,5","trampa":"Pasaste x sumando en vez de restando: 3x + x = 10."},
+  {"texto":"−1","trampa":"Pasaste el −6 sin cambiarle el signo: 2x = 4 − 6."}],
+ "correcta":0,"explicacion":"3x − 6 = x + 4 → 2x = 10 → x = 5."},
+{"id":"d-m1-06","prueba":"M1","eje":"Álgebra y funciones","tema":"m1.alg.funciones","nivel":"paes",
+ "enunciado":"¿Cuáles son las coordenadas del vértice de la parábola f(x) = x<sup>2</sup> − 6x + 5?",
+ "opciones":[
+  {"texto":"(3, −4)","trampa":""},
+  {"texto":"(−3, 32)","trampa":"Usaste x = b/(2a) sin el signo menos. El vértice está en x = −b/(2a) = 3."},
+  {"texto":"(3, 5)","trampa":"5 es donde la parábola corta al eje Y, no la altura del vértice."},
+  {"texto":"(−3, −4)","trampa":"Error de signo en la coordenada x: −(−6)/2 = +3."}],
+ "correcta":0,"explicacion":"x<sub>v</sub> = −b/(2a) = 6/2 = 3. y<sub>v</sub> = f(3) = 9 − 18 + 5 = −4."},
+{"id":"d-m1-07","prueba":"M1","eje":"Geometría","tema":"m1.geo.areas-volumenes","nivel":"basico",
+ "enunciado":"Un cilindro tiene radio 3 cm y altura 10 cm. ¿Cuál es su volumen?",
+ "opciones":[
+  {"texto":"90π cm³","trampa":""},
+  {"texto":"30π cm³","trampa":"Usaste r en vez de r<sup>2</sup> en el área de la base."},
+  {"texto":"60π cm³","trampa":"2πrh = 60π es el área lateral, no el volumen."},
+  {"texto":"360π cm³","trampa":"Usaste el diámetro (6) como si fuera el radio."}],
+ "correcta":0,"explicacion":"V = área de la base · altura = π·3<sup>2</sup>·10 = 90π cm<sup>3</sup>."},
+{"id":"d-m1-08","prueba":"M1","eje":"Geometría","tema":"m1.geo.semejanza-pitagoras","nivel":"basico",
+ "enunciado":"Un poste de 4 m proyecta una sombra de 3 m. A la misma hora, un edificio proyecta una sombra de 15 m. ¿Cuánto mide el edificio?",
+ "opciones":[
+  {"texto":"20 m","trampa":""},
+  {"texto":"11,25 m","trampa":"Invertiste la razón: altura/sombra = 4/3, no 3/4."},
+  {"texto":"16 m","trampa":"Sumaste la diferencia de sombras (12 m) al poste. La semejanza es multiplicativa, no aditiva."},
+  {"texto":"5 m","trampa":"Calculaste la hipotenusa del triángulo 3–4–5. Eso no responde la altura del edificio."}],
+ "correcta":0,"explicacion":"Triángulos semejantes: 4/3 = h/15, entonces h = 15·4/3 = 20 m."},
+{"id":"d-m1-09","prueba":"M1","eje":"Probabilidad y estadística","tema":"m1.pro.datos","nivel":"basico",
+ "enunciado":"Las notas de un estudiante son 5,0 · 6,0 · 4,0 · 6,0 · 7,0. ¿Cuál es la mediana?",
+ "opciones":[
+  {"texto":"6,0","trampa":""},
+  {"texto":"4,0","trampa":"Tomaste el dato del medio sin ordenar. Primero se ordena: 4, 5, 6, 6, 7."},
+  {"texto":"5,6","trampa":"Ese es el promedio (media aritmética), no la mediana."},
+  {"texto":"5,5","trampa":"Promediaste 5 y 6 como si hubiera una cantidad par de datos. Con 5 datos, la mediana es el 3.º."}],
+ "correcta":0,"explicacion":"Ordenados: 4,0 · 5,0 · 6,0 · 6,0 · 7,0. El dato central (3.º de 5) es 6,0."},
+{"id":"d-m1-10","prueba":"M1","eje":"Probabilidad y estadística","tema":"m1.pro.probabilidad","nivel":"paes",
+ "enunciado":"Se lanzan dos dados comunes. ¿Cuál es la probabilidad de que la suma sea 7?",
+ "opciones":[
+  {"texto":"1/6","trampa":""},
+  {"texto":"1/11","trampa":"Las 11 sumas posibles (2 a 12) no son igualmente probables."},
+  {"texto":"7/36","trampa":"Supusiste 7 casos favorables porque la suma es 7. Son 6: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)."},
+  {"texto":"1/12","trampa":"Contaste (1,6) y (6,1) como un solo caso. El orden cuenta: son dos dados distintos."}],
+ "correcta":0,"explicacion":"Hay 36 resultados igual de probables y 6 suman 7: 6/36 = 1/6."}
+],
+"LEN": {
+"titulo":"El valor de aburrirse",
+"texto":"<p><b>1</b> Durante siglos, el aburrimiento tuvo mala fama. Se lo asociaba con la pereza y, a veces, con un defecto del carácter. Sin embargo, en las últimas décadas varios investigadores empezaron a mirarlo de otra forma: no como una falla, sino como una señal.</p><p><b>2</b> Según esta idea, el aburrimiento funciona de un modo parecido al hambre. Así como el hambre avisa que el cuerpo necesita energía, el aburrimiento avisaría que lo que estamos haciendo ya no nos aporta nada y que conviene buscar otra cosa. En un experimento, un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico. Ese grupo propuso más ideas, y más variadas, que otro grupo que pasó directo a la tarea creativa.</p><p><b>3</b> El problema, advierten los mismos especialistas, es que hoy casi nunca dejamos que esa señal haga su trabajo. Basta un minuto de espera para que saquemos el teléfono. Llenamos cada hueco del día con estímulos breves y, así, la incomodidad desaparece antes de empujarnos hacia algo nuevo.</p><p><b>4</b> Nada de esto significa que el aburrimiento sea siempre bueno. Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo. La clave, dicen, no está en buscarlo ni en huir de él, sino en escucharlo: preguntarse qué nos está pidiendo antes de taparlo con lo primero que tengamos a mano.</p>",
+"preguntas":[
+{"id":"d-len-01","prueba":"LEN","eje":"Habilidades","tema":"len.localizar","nivel":"basico",
+ "enunciado":"Según el texto, ¿qué hizo el grupo que propuso más ideas ANTES de la tarea creativa?",
+ "opciones":[
+  {"texto":"Copió números de una lista durante quince minutos.","trampa":""},
+  {"texto":"Usó el teléfono durante un minuto de espera.","trampa":"Mezcla un dato del párrafo 3 con el experimento del párrafo 2."},
+  {"texto":"Inventó usos para un vaso plástico.","trampa":"Esa ERA la tarea creativa, no lo que hizo antes."},
+  {"texto":"Descansó sin hacer nada durante quince minutos.","trampa":"El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite."}],
+ "correcta":0,"explicacion":"Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico»."},
+{"id":"d-len-02","prueba":"LEN","eje":"Habilidades","tema":"len.localizar","nivel":"basico",
+ "enunciado":"De acuerdo con el párrafo 4, ¿con qué se relaciona el aburrimiento crónico?",
+ "opciones":[
+  {"texto":"Con el desánimo y con conductas de riesgo.","trampa":""},
+  {"texto":"Con la pereza y con un defecto del carácter.","trampa":"Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4."},
+  {"texto":"Con una mayor creatividad.","trampa":"Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico."},
+  {"texto":"Con el uso excesivo del teléfono.","trampa":"El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico."}],
+ "correcta":0,"explicacion":"Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo»."},
+{"id":"d-len-03","prueba":"LEN","eje":"Habilidades","tema":"len.interpretar","nivel":"paes",
+ "enunciado":"¿Qué función cumple la comparación con el hambre en el párrafo 2?",
+ "opciones":[
+  {"texto":"Explicar que el aburrimiento es una señal que empuja a cambiar de actividad.","trampa":""},
+  {"texto":"Demostrar que el aburrimiento produce un malestar físico.","trampa":"Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas."},
+  {"texto":"Mostrar que el aburrimiento es tan necesario como comer.","trampa":"Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es."},
+  {"texto":"Criticar la idea antigua de que el aburrimiento es pereza.","trampa":"Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua."}],
+ "correcta":0,"explicacion":"El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal."},
+{"id":"d-len-04","prueba":"LEN","eje":"Habilidades","tema":"len.interpretar","nivel":"paes",
+ "enunciado":"¿Cuál es la idea principal del texto?",
+ "opciones":[
+  {"texto":"El aburrimiento es una señal útil que hoy solemos tapar antes de escucharla.","trampa":""},
+  {"texto":"El aburrimiento siempre es bueno para la creatividad.","trampa":"Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca»."},
+  {"texto":"El teléfono celular es la causa del aburrimiento moderno.","trampa":"Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa."},
+  {"texto":"Antes, el aburrimiento se consideraba pereza.","trampa":"Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal."}],
+ "correcta":0,"explicacion":"La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4)."},
+{"id":"d-len-05","prueba":"LEN","eje":"Habilidades","tema":"len.evaluar","nivel":"paes",
+ "enunciado":"¿Qué propósito cumple el experimento mencionado en el párrafo 2?",
+ "opciones":[
+  {"texto":"Respaldar con evidencia la idea de que el aburrimiento puede impulsar ideas nuevas.","trampa":""},
+  {"texto":"Explicar cómo se realiza un experimento científico.","trampa":"Confunde el ejemplo con el tema. El texto no trata sobre el método científico."},
+  {"texto":"Contradecir la idea de que el aburrimiento es una señal.","trampa":"Invierte su función: el experimento apoya esa idea."},
+  {"texto":"Entretener al lector con una anécdota curiosa.","trampa":"Puede ser curioso, pero en el argumento su función es dar evidencia."}],
+ "correcta":0,"explicacion":"El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis."},
+{"id":"d-len-06","prueba":"LEN","eje":"Habilidades","tema":"len.evaluar","nivel":"dificil",
+ "enunciado":"¿Con cuál de las siguientes afirmaciones estaría de acuerdo el autor del texto?",
+ "opciones":[
+  {"texto":"Antes de llenar un momento de espera, vale la pena preguntarse qué necesitamos.","trampa":""},
+  {"texto":"Hay que buscar el aburrimiento todos los días para ser más creativos.","trampa":"El párrafo 4 dice que la clave NO está en buscarlo."},
+  {"texto":"El aburrimiento debe evitarse porque lleva a conductas de riesgo.","trampa":"Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él."},
+  {"texto":"Los teléfonos deberían prohibirse en las salas de espera.","trampa":"El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice."}],
+ "correcta":0,"explicacion":"Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo»."}
+]}
+}
+</script>
+<script>
+// == paes27-core v1 ==
+// Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
+// No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
+const P27 = (() => {
+  'use strict';
+  const VERSION = 1;
+  const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
+
+  const PRUEBAS = {
+    M2:  { id: 'M2',  corto: 'M2',      nombre: 'Matemática 2 (M2)',     fecha: '2026-11-30', hora: '15:00', prior: 30, peso: 1.2 },
+    LEN: { id: 'LEN', corto: 'Lectora', nombre: 'Competencia Lectora',   fecha: '2026-12-01', hora: '09:00', prior: 50, peso: 0.6 },
+    CIE: { id: 'CIE', corto: 'Física',  nombre: 'Ciencias Física',       fecha: '2026-12-01', hora: '15:00', prior: 30, peso: 1.0 },
+    M1:  { id: 'M1',  corto: 'M1',      nombre: 'Matemática 1 (M1)',     fecha: '2026-12-02', hora: '09:00', prior: 60, peso: 0.7 },
+  };
+
+  // [id, prueba, eje, prio, nombre, lección (página#ancla) o null]
+  const LISTA = [
+    ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
+    ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
+    ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', null],
+    ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', null],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', null],
+    ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', null],
+    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', null],
+    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', null],
+    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', null],
+    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', null],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', null],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', null],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', null],
+
+    ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
+    ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
+    ['fis.mec.newton', 'CIE', 'Mecánica', 'A', 'Leyes de Newton + diagrama de cuerpo libre', null],
+    ['fis.mec.fuerzas', 'CIE', 'Mecánica', 'A', 'Peso, normal, tensión, Hooke, roce', null],
+    ['fis.ond.elementos', 'CIE', 'Ondas', 'A', 'Ondas: v = λ·f, período, amplitud', null],
+    ['fis.ond.espejos-lentes', 'CIE', 'Ondas', 'A', 'Espejos y lentes', null],
+    ['fis.ele.ohm', 'CIE', 'Electricidad', 'A', 'Ley de Ohm: serie, paralelo, mixto', null],
+    ['fis.ele.potencia', 'CIE', 'Electricidad', 'A', 'Potencia y energía eléctrica (kWh)', null],
+    ['fis.ond.reflexion-refraccion', 'CIE', 'Ondas', 'B', 'Reflexión, refracción, absorción', null],
+    ['fis.ond.espectro-color', 'CIE', 'Ondas', 'B', 'Espectro EM, color y dispersión', null],
+    ['fis.ond.doppler-interferencia', 'CIE', 'Ondas', 'B', 'Doppler, interferencia, difracción', null],
+    ['fis.mec.galileo', 'CIE', 'Mecánica', 'B', 'Relatividad de Galileo', null],
+    ['fis.tie.tectonica', 'CIE', 'Tierra y Universo', 'B', 'Tectónica de placas, sismos, interior', null],
+    ['fis.mec.cosmos', 'CIE', 'Tierra y Universo', 'C', 'Sistema solar + origen del universo', null],
+    ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', null],
+    ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', null],
+
+    ['bio.celular', 'CIE', 'Biología', 'R', 'Organización y actividad celular', null],
+    ['bio.procesos', 'CIE', 'Biología', 'R', 'Procesos y funciones (incl. sistema nervioso)', null],
+    ['bio.herencia', 'CIE', 'Biología', 'R', 'Herencia y evolución', null],
+    ['bio.ambiente', 'CIE', 'Biología', 'R', 'Organismo y ambiente', null],
+    ['qui.atomica', 'CIE', 'Química', 'R', 'Estructura atómica', null],
+    ['qui.organica', 'CIE', 'Química', 'R', 'Química orgánica', null],
+    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Reacciones y estequiometría', null],
+
+    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', null],
+    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', null],
+    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', null],
+    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', null],
+    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', null],
+    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', null],
+    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', null],
+    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', null],
+    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', null],
+    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', null],
+    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', null],
+    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', null],
+
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+  ];
+  const TEMAS = {};
+  for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
+  const PESO_PRIO = { A: 3, B: 2, C: 1, R: 1.5 };
+
+  // ---------- almacenamiento ----------
+  function cargar(k, def) {
+    try { const s = localStorage.getItem(K[k]); return s ? JSON.parse(s) : def; } catch (e) { return def; }
+  }
+  function guardar(k, v) {
+    try { localStorage.setItem(K[k], JSON.stringify(v)); } catch (e) { console.warn('No se pudo guardar', k); }
+    window.dispatchEvent(new CustomEvent('p27:cambio', { detail: k }));
+  }
+
+  // ---------- fechas (locales) ----------
+  const pad = (n) => String(n).padStart(2, '0');
+  const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const hoy = () => iso(new Date());
+  function aFecha(s) { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); }
+  const sumarDias = (s, n) => { const d = aFecha(s); d.setDate(d.getDate() + n); return iso(d); };
+  const difDias = (a, b) => Math.round((aFecha(b) - aFecha(a)) / 86400000);
+  const DIAS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const fechaCorta = (s) => { const d = aFecha(s); return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; };
+
+  // ---------- dominio ----------
+  function prior(tema) { const t = TEMAS[tema]; return t ? PRUEBAS[t.prueba].prior : 30; }
+  function dominio(tema) { const d = cargar('dominio', {}); return tema in d ? d[tema] : null; }
+  function dominioEf(tema) { const v = dominio(tema); return v === null ? prior(tema) : v; }
+  // Correcta en difícil sube más; incorrecta en básico baja más.
+  const PESO_NIVEL = { basico: [0.7, 1.4], paes: [1, 1], dificil: [1.4, 0.7] };
+  function registrar(tema, nivel, ok, opts = {}) {
+    const d = cargar('dominio', {});
+    let v = tema in d ? d[tema] : prior(tema);
+    const base = opts.diag ? 0.35 : 0.15;
+    const [sube, baja] = PESO_NIVEL[nivel] || PESO_NIVEL.paes;
+    v = ok ? v + (100 - v) * base * sube : v - v * base * baja;
+    d[tema] = Math.max(0, Math.min(100, Math.round(v)));
+    guardar('dominio', d);
+    if (!ok) programarRepaso(tema); else cumplirRepaso(tema);
+    return d[tema];
+  }
+
+  // ---------- repaso espaciado: un fallo vuelve en +1 y +3 días ----------
+  function programarRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    for (const n of [1, 3]) {
+      const due = sumarDias(h, n);
+      if (!r.some((x) => x.tema === tema && x.due === due && !x.hecho)) r.push({ tema, due, hecho: false, creado: h });
+    }
+    guardar('repaso', r);
+  }
+  function cumplirRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    let cambio = false;
+    for (const x of r) if (x.tema === tema && !x.hecho && x.due <= h) { x.hecho = true; x.cumplido = h; cambio = true; }
+    if (cambio) guardar('repaso', r);
+  }
+  function repasoPendiente(fecha = hoy()) {
+    const r = cargar('repaso', []);
+    return [...new Set(r.filter((x) => !x.hecho && x.due <= fecha).map((x) => x.tema))];
+  }
+
+  // ---------- exportar / importar ----------
+  function exportar() {
+    const datos = {};
+    for (const k of Object.keys(K)) datos[k] = cargar(k, null);
+    return { app: 'paes27', version: VERSION, exportado: new Date().toISOString(), datos };
+  }
+  function importar(obj) {
+    if (!obj || obj.app !== 'paes27' || typeof obj.datos !== 'object') throw new Error('No es un respaldo de esta app.');
+    for (const k of Object.keys(K)) if (obj.datos[k] !== null && obj.datos[k] !== undefined) guardar(k, obj.datos[k]);
+  }
+
+  // ---------- widget de pregunta (atajos 1–5, N = no sé, Enter = seguir) ----------
+  const LETRAS = 'ABCDE';
+  let activa = null;
+  const NIVEL_TXT = { basico: 'Básico', paes: 'PAES', dificil: 'Difícil' };
+  function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+
+  // opts: { onRespuesta({ok, elegida}), onSiguiente(), noSe: bool, mezclar: bool, registrar: bool, meta: string, textoSiguiente }
+  function pregunta(cont, q, opts = {}) {
+    cont.innerHTML = '';
+    const caja = el('div', 'q');
+    const meta = opts.meta !== undefined ? opts.meta : `${NIVEL_TXT[q.nivel] || ''} · ${(TEMAS[q.tema] || {}).nombre || q.tema}`;
+    if (meta) caja.appendChild(el('div', 'q-meta', meta));
+    caja.appendChild(el('div', 'q-enun', q.enunciado));
+    const orden = q.opciones.map((_, i) => i);
+    if (opts.mezclar && q.tema !== 'm2.sd') for (let i = orden.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [orden[i], orden[j]] = [orden[j], orden[i]]; }
+    const lista = el('div', 'q-ops');
+    const botones = [];
+    orden.forEach((oi, pos) => {
+      const b = el('button', 'q-op', `<span class="q-l">${LETRAS[pos]}</span><span class="q-t">${q.opciones[oi].texto}</span>`);
+      b.type = 'button'; b.dataset.oi = oi;
+      b.addEventListener('click', () => responder(oi));
+      botones.push(b); lista.appendChild(b);
+    });
+    caja.appendChild(lista);
+    const fb = el('div', 'q-fb'); fb.hidden = true; caja.appendChild(fb);
+    const acc = el('div', 'q-acc');
+    let bNoSe = null;
+    if (opts.noSe) { bNoSe = el('button', 'btn sec', 'No sé <kbd>N</kbd>'); bNoSe.type = 'button'; bNoSe.addEventListener('click', () => responder(-1)); acc.appendChild(bNoSe); }
+    const bSig = el('button', 'btn', `${opts.textoSiguiente || 'Siguiente'} <kbd>Enter</kbd>`); bSig.type = 'button'; bSig.hidden = true;
+    bSig.addEventListener('click', () => { if (opts.onSiguiente) opts.onSiguiente(); });
+    acc.appendChild(bSig); caja.appendChild(acc);
+    cont.appendChild(caja);
+
+    let respondida = false;
+    function responder(oi) {
+      if (respondida) return;
+      respondida = true;
+      const ok = oi === q.correcta;
+      botones.forEach((b) => {
+        b.disabled = true;
+        const i = Number(b.dataset.oi);
+        if (i === q.correcta) b.classList.add('ok');
+        else if (i === oi) b.classList.add('mal');
+      });
+      let h = ok ? '<b class="txt-ok">¡Correcta!</b> ' : (oi === -1 ? '<b class="txt-mal">Sin responder.</b> ' : '<b class="txt-mal">Incorrecta.</b> ');
+      if (!ok && oi >= 0 && q.opciones[oi].trampa) h += `<div class="q-trampa"><b>La trampa:</b> ${q.opciones[oi].trampa}</div>`;
+      h += `<div class="q-exp"><b>Correcta: ${LETRAS[orden.indexOf(q.correcta)]}.</b> ${q.explicacion}</div>`;
+      fb.innerHTML = h; fb.hidden = false;
+      if (bNoSe) bNoSe.hidden = true;
+      bSig.hidden = !opts.onSiguiente;
+      if (opts.registrar) registrar(q.tema, q.nivel, ok);
+      if (opts.onRespuesta) opts.onRespuesta({ ok, elegida: oi });
+      if (!bSig.hidden) bSig.focus({ preventScroll: true });
+    }
+    const api = { caja, responder: (pos) => { if (pos < botones.length) responder(Number(botones[pos].dataset.oi)); }, noSe: () => { if (opts.noSe) responder(-1); }, siguiente: () => { if (respondida && !bSig.hidden) bSig.click(); }, get respondida() { return respondida; } };
+    caja.addEventListener('pointerdown', () => { activa = api; });
+    activa = api;
+    return api;
+  }
+  document.addEventListener('keydown', (ev) => {
+    if (!activa || !document.body.contains(activa.caja)) return;
+    const t = ev.target;
+    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (ev.key >= '1' && ev.key <= '5' && !activa.respondida) { activa.responder(Number(ev.key) - 1); ev.preventDefault(); }
+    else if ((ev.key === 'n' || ev.key === 'N') && !activa.respondida) { activa.noSe(); }
+    else if (ev.key === 'Enter' && activa.respondida) { ev.preventDefault(); activa.siguiente(); }
+  });
+
+  // ---------- acordeones y pestañas ----------
+  function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
+
+  return { VERSION, K, PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
+})();
+// == fin paes27-core v1 ==
+
+(() => {
+'use strict';
+const { PRUEBAS, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, el } = P27;
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ---------------- banco del diagnóstico ----------------
+const BANCO = JSON.parse(document.getElementById('banco-diag').textContent);
+const DIAG = { M2: BANCO.M2, CIE: BANCO.CIE, M1: BANCO.M1, LEN: BANCO.LEN.preguntas };
+const COLOR = { M2: 'var(--m2)', CIE: 'var(--cie)', M1: 'var(--m1)', LEN: 'var(--len)' };
+// minutos por pregunta en la prueba real
+const RITMO = { M2: 140 / 55, CIE: 160 / 80, M1: 140 / 65, LEN: 150 / 65 };
+const INFO_DIAG = {
+  M2: 'Incluye 1 pregunta de suficiencia de datos (5 alternativas fijas).',
+  CIE: '11 de Física + 4 de Biología/Química, para decidir cuánto rescate hacer.',
+  M1: 'M1 es tu fuerte: esto detecta trampas sueltas.',
+  LEN: 'Un texto corto original y 6 preguntas: localizar, interpretar y evaluar.',
+};
+const ORDEN_DIAG = ['M2', 'CIE', 'M1', 'LEN'];
+const fmtMin = (seg) => `${Math.floor(seg / 60)}:${String(Math.round(seg % 60)).padStart(2, '0')}`;
+
+// ---------------- pestañas ----------------
+const TABS = [...document.querySelectorAll('#tabs button')].map((b) => b.dataset.tab);
+function mostrarTab(t) {
+  if (!TABS.includes(t)) t = 'hoy';
+  document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === t));
+  document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + t));
+  RENDER[t]();
+}
+document.getElementById('tabs').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (location.hash !== '#' + b.dataset.tab) location.hash = b.dataset.tab; else mostrarTab(b.dataset.tab);
+});
+window.addEventListener('hashchange', () => mostrarTab(location.hash.slice(1)));
+const tabActual = () => (document.querySelector('#tabs button.on') || {}).dataset?.tab || 'hoy';
+
+// ---------------- avisos de origen y cuenta regresiva ----------------
+function avisoOrigen() {
+  const c = $('#avisoOrigen');
+  const cmd = '<code>python -m http.server 8000</code> en la carpeta <code>paes27</code> y abre <code>http://localhost:8000</code>';
+  if (location.protocol === 'file:') c.innerHTML = `<div class="aviso rojo"><b>Abriste el archivo directo.</b> Así no funcionan las lecciones y tu progreso puede perderse. Usa ${cmd}.</div>`;
+  else if (location.port !== '8000' && /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) c.innerHTML = `<div class="aviso amar"><b>Ojo con el puerto.</b> Estás en el puerto ${esc(location.port || '80')}. El progreso se guarda por dirección y puerto: usa siempre ${cmd}.</div>`;
+  else c.innerHTML = '';
+}
+function cuenta() {
+  const h = hoy();
+  const ahora = new Date();
+  $('#hoyTxt').textContent = `Hoy: ${fechaCorta(h)} · Ábrela siempre con «python -m http.server 8000» → localhost:8000`;
+  const orden = ['M2', 'LEN', 'CIE', 'M1'];
+  $('#cuenta').innerHTML = orden.map((id) => {
+    const p = PRUEBAS[id];
+    const d = difDias(h, p.fecha);
+    let txt;
+    if (d > 1) txt = `<b>${d}</b> días`;
+    else if (d === 1) txt = '<b>mañana</b>';
+    else if (d === 0) { const [hh, mm] = p.hora.split(':').map(Number); const t = new Date(); t.setHours(hh, mm, 0, 0); txt = t > ahora ? '<b>HOY</b>' : '<b>rendida</b>'; }
+    else txt = '<b>rendida</b>';
+    return `<div class="ex" style="--c:${COLOR[id]}"><div class="small muted">${esc(p.nombre)}</div>${txt} <span class="small muted">· ${fechaCorta(p.fecha)} ${p.hora}</span></div>`;
+  }).join('');
+}
+
+// ======================================================================
+// RUTA DE 8 DÍAS
+// ======================================================================
+const DIAS_RUTA = ['2026-11-22', '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26', '2026-11-27', '2026-11-28', '2026-11-29'];
+const EVENTOS = {
+  '2026-11-30': [['09:30', '30 min', 'Ficha final de M2 (solo leer, nada nuevo)', 'ficha', 'M2'], ['12:00', '', 'Reconocimiento de salas (12:00–13:00)', 'evento'], ['15:00', '2 h 20 min', 'PRUEBA M2', 'prueba', 'M2'], ['20:30', '20 min', 'Lectora: repasa las trampas típicas y duerme temprano', 'ficha', 'LEN']],
+  '2026-12-01': [['09:00', '2 h 30 min', 'PRUEBA Competencia Lectora', 'prueba', 'LEN'], ['12:30', '45 min', 'Ficha final de Física (solo leer)', 'ficha', 'CIE'], ['15:00', '2 h 40 min', 'PRUEBA Ciencias Física', 'prueba', 'CIE'], ['20:30', '40 min', 'Ficha final de M1 (trampas)', 'ficha', 'M1']],
+  '2026-12-02': [['09:00', '2 h 20 min', 'PRUEBA M1', 'prueba', 'M1']],
+};
+const temasDe = (pr, prios = 'ABC') => Object.values(TEMAS).filter((t) => t.prueba === pr && prios.includes(t.prio));
+
+function config() { const r = cargar('ruta', null); return { N: r?.N || 6, inicio: r?.inicio || '09:00' }; }
+
+function plantilla(fecha, N, diag) {
+  const S = [];
+  const add = (tipo, extra = {}) => S.push({ tipo, slots: 1, ...extra });
+  if (fecha === '2026-11-22') {
+    add('diag', { prueba: 'M2' }); add('diag', { prueba: 'CIE' }); add('diag', { prueba: 'M1+LEN' });
+    for (let i = 3; i < N; i++) add('flex', { pruebas: ['M2'] });
+  } else if (fecha <= '2026-11-25') {
+    for (let i = 0; i < N; i++) add('flex', { pruebas: ['M2', 'CIE'] });
+    add('len', { min: 30 });
+  } else if (fecha <= '2026-11-27') {
+    const bq = diag.CIE ? diag.CIE.respuestas.filter((r) => /^(bio|qui)\./.test(r.tema)).filter((r) => r.ok).length : 0;
+    const nRes = N >= 5 && bq <= 2 ? 2 : 1;
+    for (let i = 0; i < nRes; i++) add('rescate');
+    add('m1');
+    for (let i = nRes + 1; i < N; i++) add('flex', { pruebas: ['CIE'] });
+  } else if (fecha === '2026-11-28') {
+    add('ensayo', { prueba: 'M2', slots: 3 });
+    if (N >= 4) add('revision', { prueba: 'M2' });
+    if (N >= 5) add('parcial', { prueba: 'CIE', slots: Math.min(2, N - 4) });
+    for (let i = 6; i < N; i++) add('flex', { pruebas: ['CIE'] });
+  } else if (fecha === '2026-11-29') {
+    add('ficha', { prueba: 'M2' }); add('ficha', { prueba: 'CIE' }); add('repaso');
+    if (N >= 4) add('ficha', { prueba: 'M1' });
+    for (let i = 4; i < N; i++) add('repaso');
+    add('len', { min: 30, ficha: true });
+  }
+  return S;
+}
+
+function cercania(pr, fecha) { return 1 / Math.max(1, difDias(fecha, PRUEBAS[pr].fecha)); }
+
+function generarRuta(opts = {}) {
+  const prev = cargar('ruta', null);
+  const { N, inicio } = { ...config(), ...opts };
+  const diag = cargar('diag', {});
+  const h = hoy();
+  const desde = h < DIAS_RUTA[0] ? DIAS_RUTA[0] : h;
+  const hechos = new Set();
+  if (prev) for (const f in prev.dias) for (const b of prev.dias[f]) if (b.hecho) hechos.add(b.id);
+  const dom = {};
+  for (const id in TEMAS) dom[id] = P27.dominioEf(id);
+  const dias = {};
+  for (const fecha of DIAS_RUTA) {
+    if (fecha < desde && prev && prev.dias[fecha]) { dias[fecha] = prev.dias[fecha]; continue; }
+    const S = plantilla(fecha, N, diag);
+    const usadosHoy = new Set();
+    const cuenta = {};
+    const bloques = [];
+    let slot = 0;
+    S.forEach((s, k) => {
+      const b = { tipo: s.tipo, slots: s.slots, slot };
+      if (s.tipo === 'len') { b.min = s.min; b.slot = null; }
+      else slot += s.slots;
+      if (s.tipo === 'flex') {
+        // puntaje de prueba = peso × cercanía × Σ peso_tema·(1 − dominio), con variedad dentro del día
+        let mejor = null, mv = -1;
+        for (const pr of s.pruebas) {
+          let sum = 0;
+          for (const t of temasDe(pr)) sum += PESO_PRIO[t.prio] * (1 - dom[t.id] / 100);
+          const v = PRUEBAS[pr].peso * cercania(pr, fecha) * sum * Math.pow(0.75, cuenta[pr] || 0);
+          if (v > mv) { mv = v; mejor = pr; }
+        }
+        cuenta[mejor] = (cuenta[mejor] || 0) + 1;
+        b.prueba = mejor;
+        b.tema = elegirTema(temasDe(mejor), dom, usadosHoy, fecha);
+      } else if (s.tipo === 'rescate') {
+        b.prueba = 'CIE'; b.tema = elegirTema(temasDe('CIE', 'R'), dom, usadosHoy, fecha);
+      } else if (s.tipo === 'm1') {
+        b.prueba = 'M1'; b.tema = elegirTema(temasDe('M1'), dom, usadosHoy, fecha);
+      } else b.prueba = s.prueba;
+      b.id = `${fecha}#${k}:${b.tipo}:${b.tema || b.prueba}`;
+      b.hecho = hechos.has(b.id);
+      bloques.push(b);
+    });
+    // mañana M2, tarde Física (orden estable dentro del día)
+    const ordenPr = { M2: 0, CIE: 1, M1: 2, LEN: 3 };
+    if (fecha >= '2026-11-23' && fecha <= '2026-11-25') {
+      const flex = bloques.filter((b) => b.tipo === 'flex').sort((a, b) => ordenPr[a.prueba] - ordenPr[b.prueba]);
+      let i = 0; bloques.forEach((b, j) => { if (b.tipo === 'flex') bloques[j] = flex[i++]; });
+      let sl = 0; bloques.forEach((b) => { if (b.slot !== null) { b.slot = sl; sl += b.slots; } });
+    }
+    dias[fecha] = bloques;
+  }
+  const ruta = { generado: new Date().toISOString(), N, inicio, dias };
+  guardar('ruta', ruta);
+  return ruta;
+}
+
+function elegirTema(lista, dom, usadosHoy, fecha) {
+  let mejor = null, mv = -1;
+  for (const t of lista) {
+    let v = PESO_PRIO[t.prio] * (1 - dom[t.id] / 100);
+    if (t.leccion) v *= 1.25;
+    if (usadosHoy.has(t.id)) v *= 0.3;
+    if (v > mv) { mv = v; mejor = t; }
+  }
+  if (!mejor) return null;
+  usadosHoy.add(mejor.id);
+  dom[mejor.id] = Math.min(95, dom[mejor.id] + 20);
+  return mejor.id;
+}
+
+function horaSlot(inicio, slot) {
+  const [h, m] = inicio.split(':').map(Number);
+  let min = h * 60 + m + slot * 60 + (slot >= 3 ? 60 : 0); // almuerzo de 1 h después del 3.er bloque
+  return `${String(Math.floor(min / 60) % 24).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
+}
+function finSlot(inicio, slot, slots) {
+  const ini = horaSlot(inicio, slot + slots - 1);
+  const [h, m] = ini.split(':').map(Number);
+  const min = h * 60 + m + 50;
+  return `${String(Math.floor(min / 60) % 24).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
+}
+
+const FASE_LECCION = { M2: 'la Fase 2', CIE: 'la Fase 3', M1: 'la Fase 4', LEN: 'la Fase 5' };
+function describirBloque(b, diag) {
+  const t = b.tema ? TEMAS[b.tema] : null;
+  const pr = PRUEBAS[b.prueba] || null;
+  switch (b.tipo) {
+    case 'diag': {
+      const prs = b.prueba.split('+');
+      const nombres = prs.map((p) => PRUEBAS[p].corto).join(' + ');
+      return { tit: `Diagnóstico ${nombres}`, det: prs.map((p) => `${DIAG[p].length} preguntas de ${PRUEBAS[p].corto}`).join(' · '), link: '#diag', hecho: prs.every((p) => diag[p]) };
+    }
+    case 'flex': case 'rescate': case 'm1': {
+      const pref = b.tipo === 'rescate' ? 'Rescate Bio/Quím' : b.tipo === 'm1' ? 'M1 · trampas' : pr.corto;
+      if (t && t.leccion) return { tit: `${pref} · ${t.nombre}`, det: 'Lección completa: ver → manipular → el porqué → ejemplo → práctica en 3 niveles. Termina con el nivel PAES.', link: t.leccion };
+      const fase = b.tipo === 'rescate' ? 'la Fase 4' : FASE_LECCION[b.prueba];
+      return { tit: `${pref} · ${t ? t.nombre : '—'}`, det: `La lección de este tema llega en ${fase}. Mientras: estúdialo con tu material y practica preguntas reales de ese eje en los modelos DEMRE.`, link: null };
+    }
+    case 'len': return b.ficha
+      ? { tit: 'Lectora · trampas típicas (30 min)', det: 'Repasa los errores de tu diagnóstico de Lectora: absolutos, detalles convertidos en tesis, inferencias que el texto no permite.' }
+      : { tit: 'Lectora · estrategias (30 min)', det: 'Un texto corto cronometrado: primero la pregunta, luego el párrafo. Anota qué tipo de pregunta era (localizar, interpretar, evaluar).' };
+    case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba. El modo ensayo de la app llega en la Fase 2; si no está listo, usa el modelo oficial DEMRE.', link: '#ensayos' };
+    case 'revision': return { tit: 'Revisión de errores del ensayo M2', det: 'Por cada error: ¿fue concepto, cálculo o trampa? Anótalo en la ficha.' };
+    case 'parcial': return { tit: 'Ensayo parcial de Física', det: 'Unas 40 preguntas en 80 min. Revisa los errores al final.', link: '#ensayos' };
+    case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas' };
+    case 'repaso': return { tit: 'Repaso espaciado', det: 'Temas fallados que vuelven hoy. Ve a la pestaña Repaso.', link: '#repaso' };
+    default: return { tit: b.tipo, det: '' };
+  }
+}
+
+function filaBloque(b, ruta, fecha, diag) {
+  const d = describirBloque(b, diag);
+  const hora = b.slot === null ? 'cierre' : `${horaSlot(ruta.inicio, b.slot)}–${finSlot(ruta.inicio, b.slot, b.slots)}`;
+  const hecho = b.tipo === 'diag' ? d.hecho : b.hecho;
+  const fila = el('div', 'bloque' + (hecho ? ' hecho' : ''));
+  const chk = el('input'); chk.type = 'checkbox'; chk.checked = !!hecho; chk.title = 'Marcar como hecho';
+  if (b.tipo === 'diag') chk.disabled = true;
+  chk.addEventListener('change', () => {
+    const r = cargar('ruta', null); if (!r) return;
+    const x = r.dias[fecha].find((y) => y.id === b.id); if (x) x.hecho = chk.checked;
+    guardar('ruta', r);
+  });
+  fila.appendChild(chk);
+  fila.appendChild(el('div', 'hora', hora));
+  const pr = b.prueba && b.prueba.split('+')[0];
+  const tag = pr && PRUEBAS[pr] ? `<span class="tag" style="--c:${COLOR[pr]}">${esc(b.tipo === 'rescate' ? 'B/Q' : PRUEBAS[pr].corto)}</span>` : '';
+  let tit = `${tag}<span class="tit">${esc(d.tit)}</span>`;
+  if (d.link) tit = `<a href="${esc(d.link)}" style="color:inherit">${tit}</a>`;
+  let domTxt = '';
+  if (b.tema) { const v = P27.dominio(b.tema); domTxt = ` <span class="small" style="color:${P27.colorDominio(v)}">· dominio ${v === null ? 'sin dato' : v + ' %'}</span>`; }
+  fila.appendChild(el('div', '', `${tit}${domTxt}<div class="det">${esc(d.det)}</div>`));
+  return fila;
+}
+
+function tarjetaDia(fecha, ruta, diag) {
+  const h = hoy();
+  const card = el('div', 'dia' + (fecha === h ? ' hoy' : fecha < h ? ' pasado' : ''));
+  const bloques = ruta.dias[fecha] || [];
+  const hechos = bloques.filter((b) => b.tipo === 'diag' ? describirBloque(b, diag).hecho : b.hecho).length;
+  card.appendChild(el('h3', '', `<span>${fechaCorta(fecha)}${fecha === h ? ' · HOY' : ''}</span><span class="small muted">${hechos}/${bloques.length} hechos</span>`));
+  bloques.forEach((b) => card.appendChild(filaBloque(b, ruta, fecha, diag)));
+  return card;
+}
+
+function tarjetaEvento(fecha) {
+  const h = hoy();
+  const card = el('div', 'dia' + (fecha === h ? ' hoy' : fecha < h ? ' pasado' : ''));
+  card.appendChild(el('h3', '', `<span>${fechaCorta(fecha)}${fecha === h ? ' · HOY' : ''}</span><span class="small muted">día de prueba</span>`));
+  for (const [hora, dur, tit, tipo, pr] of EVENTOS[fecha]) {
+    const tag = pr ? `<span class="tag" style="--c:${COLOR[pr]}">${esc(PRUEBAS[pr].corto)}</span>` : '';
+    card.appendChild(el('div', 'bloque', `<span></span><div class="hora">${hora}</div><div>${tag}<span class="tit" ${tipo === 'prueba' ? 'style="color:var(--warn)"' : ''}>${esc(tit)}</span><div class="det">${esc(dur)}</div></div>`));
+  }
+  return card;
+}
+
+function rutaActual() {
+  let r = cargar('ruta', null);
+  if (!r || !r.dias) r = generarRuta();
+  return r;
+}
+
+// ======================================================================
+// RENDER POR PESTAÑA
+// ======================================================================
+const RENDER = {};
+
+RENDER.hoy = () => {
+  const p = $('#p-hoy'); p.innerHTML = '';
+  const diag = cargar('diag', {});
+  const h = hoy();
+  const pend = ORDEN_DIAG.filter((x) => !diag[x]);
+  if (pend.length) {
+    const c = el('div', 'card', `<h2>Empieza por los diagnósticos</h2><p>Te faltan: <b>${pend.map((x) => PRUEBAS[x].corto).join(', ')}</b>. Son ${pend.reduce((s, x) => s + DIAG[x].length, 0)} preguntas, unos ${Math.round(pend.reduce((s, x) => s + DIAG[x].length * RITMO[x], 0))} min en total. Con eso la ruta se ajusta a lo que de verdad te falta.</p>`);
+    const b = el('button', 'btn', 'Ir a los diagnósticos'); b.onclick = () => { location.hash = 'diag'; };
+    c.appendChild(b); p.appendChild(c);
+  }
+  const ruta = rutaActual();
+  if (ruta.dias[h]) { p.appendChild(el('h2', '', 'Tus bloques de hoy')); p.appendChild(tarjetaDia(h, ruta, diag)); }
+  else if (EVENTOS[h]) { p.appendChild(el('h2', '', 'Hoy')); p.appendChild(tarjetaEvento(h)); }
+  else if (h < DIAS_RUTA[0]) { p.appendChild(el('h2', '', 'La ruta parte el domingo 22')); p.appendChild(tarjetaDia(DIAS_RUTA[0], ruta, diag)); }
+  const rep = P27.repasoPendiente();
+  const cr = el('div', 'card', `<h3>Repaso espaciado de hoy</h3><p>${rep.length ? `<b>${rep.length}</b> tema(s) vuelven hoy: ${rep.map((t) => esc(TEMAS[t]?.nombre || t)).join(', ')}.` : 'Nada pendiente hoy. Cada tema que falles vuelve mañana y en 3 días.'}</p>`);
+  if (rep.length) { const b = el('button', 'btn', 'Repasar ahora'); b.onclick = () => { location.hash = 'repaso'; }; cr.appendChild(b); }
+  p.appendChild(cr);
+  // temas más débiles con dato
+  const dom = cargar('dominio', {});
+  const debiles = Object.keys(dom).filter((t) => TEMAS[t]).sort((a, b) => dom[a] - dom[b]).slice(0, 6);
+  if (debiles.length) {
+    const c = el('div', 'card', '<h3>Tus temas más débiles</h3>');
+    debiles.forEach((t) => c.appendChild(filaDominio(t)));
+    p.appendChild(c);
+  }
+};
+
+// ---------------- diagnóstico ----------------
+let runner = null; // {prueba, i, respuestas, seg, t0}
+let timerId = null;
+
+RENDER.diag = () => {
+  if (runner) return; // no interrumpir un diagnóstico en curso
+  const p = $('#p-diag'); p.innerHTML = '';
+  const diag = cargar('diag', {});
+  p.appendChild(el('p', 'muted', 'Responde sin ayuda. Si no sabes, aprieta <b>No sé</b> (N): adivinar ensucia el diagnóstico. Atajos: 1–5 para responder, Enter para seguir. Después de cada respuesta verás la explicación y la trampa.'));
+  const grid = el('div', 'diag-cards');
+  for (const pr of ORDEN_DIAG) {
+    const d = diag[pr];
+    const n = DIAG[pr].length;
+    const c = el('div', 'diag-card'); c.style.setProperty('--c', COLOR[pr]);
+    let h = `<h3>${esc(PRUEBAS[pr].nombre)}</h3><div class="small muted">${n} preguntas · ~${Math.round(n * RITMO[pr])} min a ritmo PAES</div><p class="small">${INFO_DIAG[pr]}</p>`;
+    if (d) h += `<p><b class="${d.correctas / d.total >= 0.7 ? 'txt-ok' : d.correctas / d.total >= 0.4 ? 'txt-warn' : 'txt-mal'}">${d.correctas}/${d.total}</b> <span class="small muted">· ${fechaCorta(d.fecha)} · ${fmtMin(d.seg)} min</span></p>`;
+    else if (diag.enCurso && diag.enCurso.prueba === pr) h += `<p class="txt-warn small">En curso: vas en la ${diag.enCurso.i + 1}/${n}.</p>`;
+    c.innerHTML = h;
+    const fila = el('div', 'fila');
+    const enCurso = diag.enCurso && diag.enCurso.prueba === pr;
+    const b = el('button', 'btn', d ? 'Rehacer' : enCurso ? 'Continuar' : 'Empezar');
+    if (d) b.className = 'btn sec';
+    b.onclick = () => {
+      if (d && !confirm('¿Rehacer este diagnóstico? Tu dominio se volverá a ajustar con las nuevas respuestas.')) return;
+      iniciarDiag(pr, enCurso);
+    };
+    fila.appendChild(b);
+    if (d) { const v = el('button', 'btn sec', 'Ver resultado'); v.onclick = () => verResultado(pr); fila.appendChild(v); }
+    c.appendChild(fila);
+    grid.appendChild(c);
+  }
+  p.appendChild(grid);
+};
+
+function iniciarDiag(pr, reanudar) {
+  const diag = cargar('diag', {});
+  if (reanudar && diag.enCurso && diag.enCurso.prueba === pr) runner = { ...diag.enCurso };
+  else runner = { prueba: pr, i: 0, respuestas: [], seg: 0 };
+  // un solo diagnóstico en curso a la vez
+  diag.enCurso = { ...runner }; guardar('diag', diag);
+  location.hash = 'diag';
+  pintarPregunta();
+}
+
+function guardarEnCurso() {
+  const diag = cargar('diag', {});
+  diag.enCurso = { prueba: runner.prueba, i: runner.i, respuestas: runner.respuestas, seg: runner.seg };
+  guardar('diag', diag);
+}
+
+function pintarPregunta() {
+  const p = $('#p-diag'); p.innerHTML = '';
+  const pr = runner.prueba; const qs = DIAG[pr]; const q = qs[runner.i];
+  const top = el('div', 'run-top');
+  top.innerHTML = `<div><b>Diagnóstico ${esc(PRUEBAS[pr].nombre)}</b> · pregunta ${runner.i + 1} de ${qs.length}</div><div class="small"><span id="reloj"></span> <span class="muted">· ritmo PAES ${fmtMin(RITMO[pr] * 60)} por pregunta</span></div>`;
+  const salir = el('button', 'btn sec mini', 'Pausar y salir');
+  salir.onclick = () => { clearInterval(timerId); runner = null; RENDER.diag(); };
+  top.appendChild(salir);
+  p.appendChild(top);
+  p.appendChild(el('div', 'prog', `<i style="width:${(runner.i / qs.length) * 100}%"></i>`));
+  let cont = p;
+  if (pr === 'LEN') {
+    const lay = el('div', 'len-layout');
+    lay.appendChild(el('div', 'len-texto', `<h3>${esc(BANCO.LEN.titulo)}</h3>${BANCO.LEN.texto}`));
+    cont = el('div'); lay.appendChild(cont); p.appendChild(lay);
+  } else { cont = el('div'); p.appendChild(cont); }
+  const t0 = Date.now();
+  const reloj = () => { const r = $('#reloj'); if (r) r.textContent = `⏱ ${fmtMin(runner.seg + (Date.now() - t0) / 1000)}`; };
+  clearInterval(timerId); timerId = setInterval(reloj, 1000); reloj();
+  let tResp = null;
+  P27.pregunta(cont, q, {
+    noSe: true,
+    meta: `${esc(q.eje)} · ${esc(TEMAS[q.tema]?.nombre || q.tema)}`,
+    textoSiguiente: runner.i + 1 < qs.length ? 'Siguiente' : 'Ver resultado',
+    onRespuesta: ({ ok, elegida }) => {
+      tResp = (Date.now() - t0) / 1000;
+      runner.seg += tResp;
+      clearInterval(timerId);
+      runner.respuestas.push({ id: q.id, tema: q.tema, nivel: q.nivel, ok, elegida, seg: Math.round(tResp) });
+      runner.i += 1;
+      guardarEnCurso();
+    },
+    onSiguiente: () => { if (runner.i < qs.length) pintarPregunta(); else finalizarDiag(); },
+  });
+}
+
+function finalizarDiag() {
+  const pr = runner.prueba;
+  const diag = cargar('diag', {});
+  const resp = runner.respuestas;
+  for (const r of resp) P27.registrar(r.tema, r.nivel, r.ok, { diag: true });
+  const d2 = cargar('diag', {});
+  d2[pr] = { fecha: hoy(), correctas: resp.filter((r) => r.ok).length, total: resp.length, seg: Math.round(runner.seg), respuestas: resp };
+  delete d2.enCurso;
+  guardar('diag', d2);
+  runner = null;
+  generarRuta();
+  verResultado(pr);
+  void diag;
+}
+
+function verResultado(pr) {
+  const p = $('#p-diag'); p.innerHTML = '';
+  const d = cargar('diag', {})[pr];
+  if (!d) { RENDER.diag(); return; }
+  const qs = Object.fromEntries(DIAG[pr].map((q) => [q.id, q]));
+  const volver = el('button', 'btn sec mini', '← Volver a diagnósticos'); volver.onclick = () => RENDER.diag();
+  p.appendChild(volver);
+  const c = el('div', 'card');
+  const pct = Math.round((d.correctas / d.total) * 100);
+  let h = `<h2>${esc(PRUEBAS[pr].nombre)}: ${d.correctas}/${d.total} (${pct} %)</h2><p class="muted">Tiempo: ${fmtMin(d.seg)} min · promedio ${fmtMin(d.seg / d.total)} por pregunta (ritmo PAES ${fmtMin(RITMO[pr] * 60)}).</p>`;
+  if (pr === 'CIE') {
+    const fis = d.respuestas.filter((r) => r.tema.startsWith('fis.'));
+    const bq = d.respuestas.filter((r) => /^(bio|qui)\./.test(r.tema));
+    const okBq = bq.filter((r) => r.ok).length;
+    h += `<p>Física: <b>${fis.filter((r) => r.ok).length}/${fis.length}</b> · Biología/Química: <b>${okBq}/${bq.length}</b></p>`;
+    h += `<p class="small">${okBq <= 2 ? 'El Módulo Común trae preguntas de Biología y Química: con este resultado, el rescate vale la pena. La ruta te da <b>2 bloques diarios</b> el jueves y el viernes.' : 'Tu base de Biología/Química está aceptable: la ruta deja <b>1 bloque diario</b> de rescate rápido y el resto para Física.'}</p>`;
+  }
+  // por eje
+  const ejes = {};
+  for (const r of d.respuestas) { const e = qs[r.id]?.eje || '—'; ejes[e] = ejes[e] || [0, 0]; ejes[e][1]++; if (r.ok) ejes[e][0]++; }
+  h += '<table class="res"><tr><th>Eje</th><th>Correctas</th></tr>' + Object.entries(ejes).map(([e, [a, b]]) => `<tr><td>${esc(e)}</td><td>${a}/${b}</td></tr>`).join('') + '</table>';
+  c.innerHTML = h; p.appendChild(c);
+  const c2 = el('div', 'card', '<h3>Pregunta por pregunta</h3>');
+  const tb = el('table', 'res');
+  tb.innerHTML = '<tr><th></th><th>Tema</th><th>Tiempo</th><th></th></tr>' + d.respuestas.map((r, i) => {
+    const t = TEMAS[r.tema];
+    const lnk = t && t.leccion ? `<a href="${t.leccion}">lección</a>` : '';
+    return `<tr><td>${r.ok ? '<span class="txt-ok">✔</span>' : r.elegida === -1 ? '<span class="txt-warn">—</span>' : '<span class="txt-mal">✘</span>'} ${i + 1}</td><td>${esc(t?.nombre || r.tema)}</td><td>${r.seg}s</td><td>${lnk}</td></tr>`;
+  }).join('');
+  c2.appendChild(tb); p.appendChild(c2);
+  const fallas = d.respuestas.filter((r) => !r.ok);
+  if (fallas.length) {
+    const c3 = el('div', 'card', '<h3>Revisa tus errores</h3><p class="small muted">Cada tema fallado vuelve en el repaso de mañana y en 3 días.</p>');
+    fallas.forEach((r) => {
+      const q = qs[r.id]; if (!q) return;
+      const det = el('details', 'acc');
+      det.innerHTML = `<summary>${esc(TEMAS[r.tema]?.nombre || r.tema)}</summary><div class="in"><div>${q.enunciado}</div>${r.elegida >= 0 ? `<p class="q-trampa"><b>Marcaste:</b> ${q.opciones[r.elegida].texto}. <b>La trampa:</b> ${q.opciones[r.elegida].trampa}</p>` : '<p class="muted">No respondiste.</p>'}<p><b>Correcta:</b> ${q.opciones[q.correcta].texto}. ${q.explicacion}</p></div>`;
+      c3.appendChild(det);
+    });
+    p.appendChild(c3);
+  }
+  const sig = ORDEN_DIAG.find((x) => !cargar('diag', {})[x]);
+  const f = el('div', 'fila');
+  if (sig) { const b = el('button', 'btn', `Siguiente diagnóstico: ${PRUEBAS[sig].corto}`); b.onclick = () => iniciarDiag(sig, false); f.appendChild(b); }
+  const r = el('button', 'btn sec', 'Ver mi ruta ajustada'); r.onclick = () => { location.hash = 'ruta'; }; f.appendChild(r);
+  p.appendChild(f);
+}
+
+// ---------------- ruta ----------------
+RENDER.ruta = () => {
+  const p = $('#p-ruta'); p.innerHTML = '';
+  const ruta = rutaActual();
+  const diag = cargar('diag', {});
+  const cfg = el('div', 'card');
+  cfg.innerHTML = `<div class="fila"><label>Bloques de 50 min por día: <select id="selN">${[3, 4, 5, 6, 7, 8, 9, 10].map((n) => `<option ${n === ruta.N ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
+  <label>Empiezo a las <input type="time" id="selIni" value="${esc(ruta.inicio)}"></label>
+  <button class="btn sec mini" id="btnRecalc">Recalcular desde hoy</button></div>
+  <p class="small muted" style="margin:.6em 0 0">Cada bloque: 50 min de estudio + 10 de pausa, con 1 h de almuerzo después del 3.º. El orden sale de <b>peso del tema × (1 − dominio) × cercanía de la prueba</b>: M2 pesa más al principio porque se rinde primero. Los días pasados no se tocan.</p>`;
+  p.appendChild(cfg);
+  const regen = () => { generarRuta({ N: Number($('#selN').value), inicio: $('#selIni').value || '09:00' }); RENDER.ruta(); };
+  cfg.querySelector('#selN').onchange = regen;
+  cfg.querySelector('#selIni').onchange = regen;
+  cfg.querySelector('#btnRecalc').onclick = regen;
+  for (const f of DIAS_RUTA) p.appendChild(tarjetaDia(f, ruta, diag));
+  for (const f of Object.keys(EVENTOS)) p.appendChild(tarjetaEvento(f));
+};
+
+// ---------------- dominio ----------------
+function filaDominio(t) {
+  const T = TEMAS[t]; const v = P27.dominio(t);
+  const r = el('div', 'dom-row');
+  const nombre = T.leccion ? `<a href="${T.leccion}" style="color:inherit">${esc(T.nombre)}</a>` : esc(T.nombre);
+  const pr = T.prueba === 'CIE' && T.prio === 'R' ? 'B/Q' : PRUEBAS[T.prueba].corto;
+  r.innerHTML = `<div class="n"><span class="chip ${T.prio}">${T.prio}</span> ${nombre} <span class="small muted">· ${esc(pr)}</span></div><div class="bar"><i style="width:${v ?? 0}%;background:${P27.colorDominio(v)}"></i></div><div class="v" style="color:${P27.colorDominio(v)}">${v === null ? '—' : v + '%'}</div>`;
+  return r;
+}
+RENDER.dominio = () => {
+  const p = $('#p-dominio'); p.innerHTML = '';
+  p.appendChild(el('p', 'muted small', 'Dominio de 0 a 100 %. Sube y baja con cada respuesta (pesa más acertar una difícil y fallar una básica). «—» = aún sin datos; para planificar se usa un valor inicial según tu nivel (M2 y Física 30 %, M1 60 %, Lectora 50 %). Prioridad: <span class="chip A">A</span> sale mucho y estás débil · <span class="chip B">B</span> · <span class="chip C">C</span> · <span class="chip R">R</span> rescate.'));
+  const grupos = [['M2', 'M2', 'ABC'], ['Física', 'CIE', 'ABC'], ['Biología y Química (rescate)', 'CIE', 'R'], ['M1', 'M1', 'ABC'], ['Competencia Lectora', 'LEN', 'ABC']];
+  for (const [tit, pr, prios] of grupos) {
+    const lista = Object.values(TEMAS).filter((t) => t.prueba === pr && prios.includes(t.prio));
+    const vals = lista.map((t) => P27.dominio(t.id)).filter((v) => v !== null);
+    const prom = vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) : null;
+    const c = el('div', 'card', `<h3>${esc(tit)} <span class="small muted">· promedio ${prom === null ? 'sin datos' : prom + ' %'} (${vals.length}/${lista.length} temas medidos)</span></h3>`);
+    lista.sort((a, b) => a.prio.localeCompare(b.prio)).forEach((t) => c.appendChild(filaDominio(t.id)));
+    p.appendChild(c);
+  }
+};
+
+// ---------------- repaso ----------------
+let repasoQuiz = null;
+RENDER.repaso = () => {
+  if (repasoQuiz) return;
+  const p = $('#p-repaso'); p.innerHTML = '';
+  const h = hoy();
+  const pend = P27.repasoPendiente();
+  const c = el('div', 'card', `<h2>Vuelven hoy (${pend.length})</h2>`);
+  if (!pend.length) c.appendChild(el('p', 'muted', 'Nada pendiente. Cuando falles un tema, vuelve mañana y en 3 días.'));
+  pend.forEach((t) => {
+    const T = TEMAS[t] || { nombre: t };
+    const f = el('div', 'dom-row');
+    f.style.gridTemplateColumns = '1fr auto';
+    const qs = Object.values(DIAG).flat().filter((q) => q.tema === t);
+    f.innerHTML = `<div class="n">${esc(T.nombre)} <span class="small muted">· dominio ${P27.dominio(t) ?? '—'} %</span></div>`;
+    const acc = el('div', 'fila');
+    if (T.leccion) { const a = el('a', 'btn mini', 'Practicar en la lección'); a.href = T.leccion; a.style.textDecoration = 'none'; acc.appendChild(a); }
+    if (qs.length) { const b = el('button', 'btn sec mini', `Rehacer ${qs.length} pregunta(s) del diagnóstico`); b.onclick = () => repasar(t, qs); acc.appendChild(b); }
+    const m = el('button', 'btn sec mini', 'Marcar repasado'); m.onclick = () => { P27.cumplirRepaso(t); RENDER.repaso(); }; acc.appendChild(m);
+    f.appendChild(acc); c.appendChild(f);
+  });
+  p.appendChild(c);
+  // próximos días
+  const r = cargar('repaso', []);
+  const prox = {};
+  for (const x of r) if (!x.hecho && x.due > h) (prox[x.due] = prox[x.due] || new Set()).add(x.tema);
+  const c2 = el('div', 'card', '<h3>Próximos repasos</h3>');
+  const fechas = Object.keys(prox).sort();
+  if (!fechas.length) c2.appendChild(el('p', 'muted', 'Sin repasos programados.'));
+  fechas.forEach((f) => c2.appendChild(el('p', '', `<b>${fechaCorta(f)}:</b> ${[...prox[f]].map((t) => esc(TEMAS[t]?.nombre || t)).join(', ')}`)));
+  p.appendChild(c2);
+};
+function repasar(tema, qs) {
+  const p = $('#p-repaso'); p.innerHTML = '';
+  let i = 0;
+  repasoQuiz = true;
+  const volver = el('button', 'btn sec mini', '← Volver'); volver.onclick = () => { repasoQuiz = null; RENDER.repaso(); };
+  p.appendChild(volver);
+  const cont = el('div'); cont.style.marginTop = '10px'; p.appendChild(cont);
+  const sig = () => {
+    if (i >= qs.length) { repasoQuiz = null; RENDER.repaso(); return; }
+    const q = qs[i++];
+    if (q.prueba === 'LEN') cont.innerHTML = '';
+    P27.pregunta(cont, q, { registrar: true, mezclar: true, onSiguiente: sig, textoSiguiente: i < qs.length ? 'Siguiente' : 'Terminar' });
+    if (q.prueba === 'LEN') cont.insertBefore(el('details', 'acc', `<summary>Texto: ${esc(BANCO.LEN.titulo)}</summary><div class="in">${BANCO.LEN.texto}</div>`), cont.firstChild);
+  };
+  sig();
+}
+
+// ---------------- ensayos ----------------
+const DEMRE = [
+  ['Temario M2 (PDF)', 'https://demre.cl/publicaciones/pdf/2027-26-03-19-temario-paes-regular-m2.pdf'],
+  ['Temario Ciencias (PDF)', 'https://demre.cl/publicaciones/pdf/2027-26-03-19-temario-paes-regular-ciencias.pdf'],
+  ['Temario M1', 'https://demre.cl/publicaciones/2027/2027-26-03-19-temario-paes-regular-m1'],
+  ['Temario Competencia Lectora', 'https://demre.cl/publicaciones/2027/2027-26-03-19-temario-paes-regular-competencia-lectora'],
+  ['Contenidos nuevos 2027', 'https://demre.cl/noticias/2026-03-20-nuevos-contenidos-paes-regular-p2027'],
+  ['Portada DEMRE (modelos y selecciones de preguntas)', 'https://demre.cl/'],
+];
+function tarjetaDemre() {
+  return el('div', 'card', `<h3>Material oficial DEMRE</h3><p class="small muted">Para practicar con preguntas reales. Los modelos de prueba y las selecciones de preguntas están en demre.cl, sección Publicaciones. No pude abrir el sitio desde donde se construyó la app, así que no enlazo directo a los modelos: búscalos ahí.</p><ul>${DEMRE.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ul>`);
+}
+RENDER.ensayos = () => {
+  const p = $('#p-ensayos'); p.innerHTML = '';
+  const ens = cargar('ensayos', []);
+  p.appendChild(el('div', 'card', `<h2>Ensayos cronometrados</h2><p>El modo ensayo con tiempos reales (M2: 55 preguntas en 2 h 20 min; Ciencias: 80 en 2 h 40 min; M1: 65 en 2 h 20 min) llega en la <b>Fase 2</b>, empezando por M2.</p>${ens.length ? '<h3>Historial</h3>' + ens.map((e) => `<p>${esc(e.prueba)} · ${esc(e.fecha)} · ${e.correctas}/${e.total}</p>`).join('') : '<p class="muted small">Aún no hay ensayos registrados.</p>'}`));
+  p.appendChild(tarjetaDemre());
+};
+
+// ---------------- fichas ----------------
+RENDER.fichas = () => {
+  const p = $('#p-fichas'); p.innerHTML = '';
+  p.appendChild(el('div', 'card', '<h2>Fichas finales</h2><p>Una página por prueba con fórmulas y trampas, para la mañana del examen. Llegan en la <b>Fase 5</b>. Mientras, cada lección de M2 ya trae su resumen en «El porqué».</p>'));
+};
+
+// ---------------- progreso ----------------
+RENDER.progreso = () => {
+  const p = $('#p-progreso'); p.innerHTML = '';
+  p.appendChild(el('div', 'card', `<h2>Cómo abrir la app</h2><ol><li>Abre una terminal en la carpeta <code>paes27</code>.</li><li>Ejecuta <code>python -m http.server 8000</code> (o <code>python3 -m http.server 8000</code>).</li><li>Abre <code>http://localhost:8000</code> en Chrome.</li></ol><p class="small muted">Usa siempre el mismo puerto: el progreso se guarda en el navegador, separado por dirección y puerto. Si abres el archivo con doble clic (file://), las lecciones con módulos no cargan y tu progreso queda en otro lado.</p>`));
+  const c = el('div', 'card', '<h2>Respaldo del progreso</h2><p class="small muted">Exporta un JSON para no perder nada si cambias de navegador o de puerto.</p>');
+  const f = el('div', 'fila');
+  const bExp = el('button', 'btn', 'Descargar respaldo (.json)');
+  bExp.onclick = () => {
+    const blob = new Blob([JSON.stringify(P27.exportar(), null, 1)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `paes27-progreso-${hoy()}.json`; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  };
+  const file = el('input'); file.type = 'file'; file.accept = 'application/json,.json'; file.hidden = true;
+  const bImp = el('button', 'btn sec', 'Importar respaldo…'); bImp.onclick = () => file.click();
+  file.onchange = async () => { if (!file.files[0]) return; importarTexto(await file.files[0].text()); };
+  f.append(bExp, bImp, file); c.appendChild(f);
+  const ta = el('textarea'); ta.placeholder = 'O pega aquí el contenido de un respaldo y aprieta «Importar texto».';
+  const bTa = el('button', 'btn sec mini', 'Importar texto'); bTa.onclick = () => importarTexto(ta.value);
+  const bVer = el('button', 'btn sec mini', 'Mostrar mi progreso como texto'); bVer.onclick = () => { ta.value = JSON.stringify(P27.exportar()); ta.select(); };
+  c.append(el('div', '', '<br>'), ta, el('div', 'fila'));
+  c.lastChild.append(bTa, bVer);
+  p.appendChild(c);
+  const c3 = el('div', 'card', '<h3>Empezar de cero</h3><p class="small muted">Borra diagnósticos, dominio, repaso, ruta y ensayos de este navegador.</p>');
+  const bDel = el('button', 'btn sec', 'Borrar todo mi progreso');
+  bDel.onclick = () => { if (confirm('¿Borrar TODO tu progreso? Descarga un respaldo antes si no estás seguro.')) { for (const k of Object.values(P27.K)) localStorage.removeItem(k); runner = null; location.hash = 'hoy'; mostrarTab('hoy'); } };
+  c3.appendChild(bDel); p.appendChild(c3);
+};
+function importarTexto(txt) {
+  try { P27.importar(JSON.parse(txt)); alert('Progreso importado.'); mostrarTab(tabActual()); }
+  catch (e) { alert('No se pudo importar: ' + e.message); }
+}
+
+// ---------------- arranque ----------------
+window.addEventListener('storage', (e) => { if (e.key && e.key.startsWith('paes27:') && !runner && !repasoQuiz) mostrarTab(tabActual()); });
+avisoOrigen();
+cuenta();
+setInterval(cuenta, 60000);
+mostrarTab(location.hash.slice(1) || 'hoy');
+})();
+</script>
+</body>
+</html>
