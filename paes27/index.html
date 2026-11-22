@@ -1716,7 +1716,8 @@ function avisoOrigen() {
 function cuenta() {
   const h = hoy();
   const ahora = new Date();
-  $('#hoyTxt').textContent = `Hoy: ${fechaCorta(h)} · Ábrela siempre con «python -m http.server 8000» → localhost:8000`;
+  const local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  $('#hoyTxt').textContent = `Hoy: ${fechaCorta(h)} · ${local ? 'Ábrela siempre con «python -m http.server 8000» → localhost:8000' : 'Versión en línea: tu progreso se guarda en este navegador'}`;
   const orden = ['M2', 'LEN', 'CIE', 'M1'];
   $('#cuenta').innerHTML = orden.map((id) => {
     const p = PRUEBAS[id];
@@ -2238,7 +2239,7 @@ RENDER.fichas = () => {
 // ---------------- progreso ----------------
 RENDER.progreso = () => {
   const p = $('#p-progreso'); p.innerHTML = '';
-  p.appendChild(el('div', 'card', `<h2>Cómo abrir la app</h2><ol><li>Abre una terminal en la carpeta <code>paes27</code>.</li><li>Ejecuta <code>python -m http.server 8000</code> (o <code>python3 -m http.server 8000</code>).</li><li>Abre <code>http://localhost:8000</code> en Chrome.</li></ol><p class="small muted">Usa siempre el mismo puerto: el progreso se guarda en el navegador, separado por dirección y puerto. Si abres el archivo con doble clic (file://), las lecciones con módulos no cargan y tu progreso queda en otro lado.</p>`));
+  p.appendChild(el('div', 'card', `<h2>Cómo abrir la app</h2><ol><li>Abre una terminal en la carpeta <code>paes27</code>.</li><li>Ejecuta <code>python -m http.server 8000</code> (o <code>python3 -m http.server 8000</code>).</li><li>Abre <code>http://localhost:8000</code> en Chrome.</li></ol><p class="small muted">Usa siempre el mismo puerto: el progreso se guarda en el navegador, separado por dirección y puerto. Si abres el archivo con doble clic (file://), las lecciones con módulos no cargan y tu progreso queda en otro lado.</p><h3>Versión en línea (Netlify)</h3><p class="small muted">Si la abres desde su dirección de Netlify (por ejemplo, en el celular), ese progreso es <b>distinto</b> del de localhost y del de otro dispositivo. Para moverlo: «Descargar respaldo» en uno e «Importar respaldo» en el otro.</p>`));
   const c = el('div', 'card', '<h2>Respaldo del progreso</h2><p class="small muted">Exporta un JSON para no perder nada si cambias de navegador o de puerto.</p>');
   const f = el('div', 'fila');
   const bExp = el('button', 'btn', 'Descargar respaldo (.json)');

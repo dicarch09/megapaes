@@ -94,15 +94,15 @@ const SHOTS = process.env.SHOTS || '';
 
   // exportar / importar
   await tab('progreso');
-  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('text=Descargar respaldo')]);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('button:has-text("Descargar respaldo")')]);
   const ruta_dl = await dl.path();
   const json = JSON.parse(require('fs').readFileSync(ruta_dl, 'utf8'));
   ok(json.app === 'paes27' && json.datos.diag.M2, 'respaldo exportado');
-  await page.click('text=Borrar todo mi progreso');
+  await page.click('button:has-text("Borrar todo mi progreso")');
   ok((await page.evaluate(() => localStorage.getItem('paes27:diag'))) === null, 'borrar todo');
   await tab('progreso');
   await page.fill('#p-progreso textarea', JSON.stringify(json));
-  await page.click('text=Importar texto');
+  await page.click('button:has-text("Importar texto")');
   const d3 = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:diag')));
   ok(d3 && d3.M2 && d3.M2.total === 15, 'respaldo importado');
   for (const t of ['hoy', 'ensayos', 'fichas']) { await tab(t); }
