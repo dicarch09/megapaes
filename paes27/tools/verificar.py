@@ -98,7 +98,10 @@ def cerca(a, b, tol=1e-6):
     if isinstance(a, (tuple, list)):
         return False
     try:
-        return abs(float(a) - float(b)) <= tol * max(1.0, abs(float(b)))
+        a, b = float(a), float(b)
+        if abs(b) < 1e-12:
+            return abs(a) < 1e-9
+        return abs(a - b) <= tol * max(abs(a), abs(b))  # tolerancia relativa (sirve para 10⁻⁷ y para 10⁸)
     except (TypeError, ValueError):
         return False
 
@@ -282,8 +285,7 @@ CONCEPTUALES = {
 }
 
 # Las lecciones (m2.html) registran sus cálculos en este archivo aparte, para no mezclar.
-EXTRA = RAIZ / "tools" / "verificar_m2.py"
-if EXTRA.exists():
+for EXTRA in sorted((RAIZ / "tools").glob("verificar_*.py")):
     exec(compile(EXTRA.read_text(encoding="utf-8"), str(EXTRA), "exec"))  # noqa: S102 (archivo propio)
 
 

@@ -43,6 +43,7 @@
   --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--fondo),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.55 "Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3,summary,.disp{font-family:"Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;letter-spacing:-.01em}
 h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
@@ -173,6 +174,12 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-weight:800}
 .sd-opciones{margin:-4px 0 8px}
 @media (max-width:700px){.sd-demo{grid-template-columns:1fr}}
+/* lecciones en formato tarjeta */
+.tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0 16px}
+.tarjeta{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px}
+.tarjeta h4{margin:6px 0 4px;font:800 1.05rem/1.2 "Bricolage Grotesque",sans-serif}
+.tarjeta p{margin:0;font-size:.93rem}
+.tarjeta .onda{display:inline-block;font-size:.72rem;font-weight:900;padding:.15em .55em;border-radius:99px;background:color-mix(in srgb,var(--acc) 15%,transparent);color:var(--acc)}
 /* ensayo */
 .ens-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
 .ens-reloj{font:800 1.35rem/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
@@ -1605,22 +1612,22 @@ const P27 = (() => {
     ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
     ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
 
-    ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', null],
-    ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', null],
-    ['fis.mec.newton', 'CIE', 'Mecánica', 'A', 'Leyes de Newton + diagrama de cuerpo libre', null],
-    ['fis.mec.fuerzas', 'CIE', 'Mecánica', 'A', 'Peso, normal, tensión, Hooke, roce', null],
-    ['fis.ond.elementos', 'CIE', 'Ondas', 'A', 'Ondas: v = λ·f, período, amplitud', null],
-    ['fis.ond.espejos-lentes', 'CIE', 'Ondas', 'A', 'Espejos y lentes', null],
-    ['fis.ele.ohm', 'CIE', 'Electricidad', 'A', 'Ley de Ohm: serie, paralelo, mixto', null],
-    ['fis.ele.potencia', 'CIE', 'Electricidad', 'A', 'Potencia y energía eléctrica (kWh)', null],
-    ['fis.ond.reflexion-refraccion', 'CIE', 'Ondas', 'B', 'Reflexión, refracción, absorción', null],
-    ['fis.ond.espectro-color', 'CIE', 'Ondas', 'B', 'Espectro EM, color y dispersión', null],
-    ['fis.ond.doppler-interferencia', 'CIE', 'Ondas', 'B', 'Doppler, interferencia, difracción', null],
-    ['fis.mec.galileo', 'CIE', 'Mecánica', 'B', 'Relatividad de Galileo', null],
-    ['fis.tie.tectonica', 'CIE', 'Tierra y Universo', 'B', 'Tectónica de placas, sismos, interior', null],
-    ['fis.mec.cosmos', 'CIE', 'Tierra y Universo', 'C', 'Sistema solar + origen del universo', null],
-    ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', null],
-    ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', null],
+    ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', 'fisica.html#fis.mec.cinematica'],
+    ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', 'fisica.html#fis.mec.mru-mrua'],
+    ['fis.mec.newton', 'CIE', 'Mecánica', 'A', 'Leyes de Newton + diagrama de cuerpo libre', 'fisica.html#fis.mec.newton'],
+    ['fis.mec.fuerzas', 'CIE', 'Mecánica', 'A', 'Peso, normal, tensión, Hooke, roce', 'fisica.html#fis.mec.fuerzas'],
+    ['fis.ond.elementos', 'CIE', 'Ondas', 'A', 'Ondas: v = λ·f, período, amplitud', 'fisica.html#fis.ond.elementos'],
+    ['fis.ond.espejos-lentes', 'CIE', 'Ondas', 'A', 'Espejos y lentes', 'fisica.html#fis.ond.espejos-lentes'],
+    ['fis.ele.ohm', 'CIE', 'Electricidad', 'A', 'Ley de Ohm: serie, paralelo, mixto', 'fisica.html#fis.ele.ohm'],
+    ['fis.ele.potencia', 'CIE', 'Electricidad', 'A', 'Potencia y energía eléctrica (kWh)', 'fisica.html#fis.ele.potencia'],
+    ['fis.ond.reflexion-refraccion', 'CIE', 'Ondas', 'B', 'Reflexión, refracción, absorción', 'fisica.html#fis.ond.reflexion-refraccion'],
+    ['fis.ond.espectro-color', 'CIE', 'Ondas', 'B', 'Espectro EM, color y dispersión', 'fisica.html#fis.ond.espectro-color'],
+    ['fis.ond.doppler-interferencia', 'CIE', 'Ondas', 'B', 'Doppler, interferencia, difracción', 'fisica.html#fis.ond.doppler-interferencia'],
+    ['fis.mec.galileo', 'CIE', 'Mecánica', 'B', 'Relatividad de Galileo', 'fisica.html#fis.mec.galileo'],
+    ['fis.tie.tectonica', 'CIE', 'Tierra y Universo', 'B', 'Tectónica de placas, sismos, interior', 'fisica.html#fis.tie.tectonica'],
+    ['fis.mec.cosmos', 'CIE', 'Tierra y Universo', 'C', 'Sistema solar + origen del universo', 'fisica.html#fis.mec.cosmos'],
+    ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', 'fisica.html#fis.ond.dispositivos'],
+    ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', 'fisica.html#fis.ele.domiciliaria'],
 
     ['bio.celular', 'CIE', 'Biología', 'R', 'Organización y actividad celular', null],
     ['bio.procesos', 'CIE', 'Biología', 'R', 'Procesos y funciones (incl. sistema nervioso)', null],
@@ -2039,7 +2046,7 @@ function describirBloque(b, diag) {
       : { tit: 'Lectora · estrategias (30 min)', det: 'Un texto corto cronometrado: primero la pregunta, luego el párrafo. Anota qué tipo de pregunta era (localizar, interpretar, evaluar).' };
     case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba (M2 → Ensayo). Si ya viste casi todas las preguntas de la app, haz además el modelo oficial DEMRE.', link: 'm2.html#ensayo' };
     case 'revision': return { tit: 'Revisión de errores del ensayo M2', det: 'Por cada error: ¿fue concepto, cálculo o trampa? Anótalo en la ficha.' };
-    case 'parcial': return { tit: 'Ensayo parcial de Física', det: 'Unas 40 preguntas en 80 min. Revisa los errores al final.', link: '#ensayos' };
+    case 'parcial': return { tit: 'Ensayo parcial de Física', det: '40 preguntas en 80 min (Física → Ensayo). Revisa los errores al final.', link: 'fisica.html#ensayo' };
     case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas' };
     case 'repaso': return { tit: 'Repaso espaciado', det: 'Temas fallados que vuelven hoy. Ve a la pestaña Repaso.', link: '#repaso' };
     default: return { tit: b.tipo, det: '' };
@@ -2390,9 +2397,10 @@ RENDER.ensayos = () => {
   const hechos = ens.filter((e) => e.estado === 'hecho').reverse();
   const curso = ens.find((e) => e.estado === 'en-curso');
   const c = el('div', 'card', `<h2>Ensayos cronometrados</h2>
-    ${curso ? `<p class="aviso amar">Tienes un ensayo de ${esc(curso.prueba)} en curso: el reloj sigue corriendo. <a href="m2.html#ensayo">Volver al ensayo</a></p>` : ''}
+    ${curso ? `<p class="aviso amar">Tienes un ensayo de ${esc(PRUEBAS[curso.prueba]?.corto || curso.prueba)} en curso: el reloj sigue corriendo. <a href="${curso.prueba === 'CIE' ? 'fisica.html' : 'm2.html'}#ensayo">Volver al ensayo</a></p>` : ''}
     <p><a class="btn" style="text-decoration:none" href="m2.html#ensayo">Ensayo de M2</a> <span class="small muted">· completo (55 preguntas, 2 h 20 min) o corto (20 preguntas, 50 min)</span></p>
-    <p class="small muted">Ciencias (80 preguntas, 2 h 40 min) llega con la Fase 3 y M1 (65 preguntas, 2 h 20 min) con la Fase 4.</p>
+    <p><a class="btn sec" style="text-decoration:none" href="fisica.html#ensayo">Ensayo de Física</a> <span class="small muted">· parcial (40 preguntas, 80 min) o corto (20, 40 min)</span></p>
+    <p class="small muted">El ensayo completo de Ciencias (80 preguntas, con Biología y Química) y el de M1 (65 preguntas) llegan con la Fase 4.</p>
     ${hechos.length ? '<h3>Historial</h3>' + hechos.map((e) => `<p>${esc(e.prueba)} · ${fechaCorta(e.fecha)} · ${e.modo === 'corto' ? 'corto' : 'completo'} · <b>${e.correctas}/${e.total}</b> (${Math.round((e.correctas / e.total) * 100)} %)</p>`).join('') : '<p class="muted small">Aún no hay ensayos.</p>'}`);
   p.appendChild(c);
   p.appendChild(tarjetaDemre());

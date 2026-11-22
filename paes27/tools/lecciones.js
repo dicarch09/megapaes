@@ -222,7 +222,8 @@ document.querySelectorAll('.practica').forEach((box) => {
   NIVELES.forEach(([n, nombre]) => {
     const b = el('button', 'btn sec mini', nombre);
     const cant = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === n).length;
-    b.title = `${cant} preguntas`;
+    b.title = cant ? `${cant} preguntas` : 'Sin preguntas en este nivel';
+    b.disabled = !cant;
     b.onclick = () => empezar(n);
     botones[n] = b; bar.appendChild(b);
   });
