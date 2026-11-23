@@ -222,8 +222,8 @@ const P27 = (() => {
   function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
 
   // ---------- tema (claro/oscuro), logo y firma dicarch ----------
-  const TEMA_K = 'paes27:tema2'; // clave nueva: ignora preferencias guardadas con el comportamiento anterior
-  const tema = () => document.documentElement.dataset.theme || 'light'; // claro por defecto, aunque el sistema esté en oscuro
+  const TEMA_K = 'paes27:tema';
+  const tema = () => document.documentElement.dataset.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   // Las pizarras leen los colores al cargar: al cambiar de tema se recarga (el progreso está guardado).
   function alternarTema() { try { localStorage.setItem(TEMA_K, tema() === 'dark' ? 'light' : 'dark'); } catch (e) { /* sin almacenamiento: solo esta vez */ } location.reload(); }
   const LOGO = '<svg viewBox="0 0 64 64" role="img" aria-label="PAES·27"><defs>'

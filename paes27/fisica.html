@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>try{var t=localStorage.getItem("paes27:tema2");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>PAES 2027 · Física</title>
 <style>
 /* == paes27-css v3 == */
 /* Sistema de diseño PAES·27 · dicarch (prototipo C). Claro: «azulejos vivos». Oscuro: «Riso noche» (Numeria).
    Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
-   El tema claro es el predeterminado aunque el sistema esté en modo oscuro; el oscuro se activa con el botón ◐.
    Se copia IDÉNTICO en cada página con tools/sync_core.py: edita tools/core.css. */
 @font-face{font-family:"Nunito Sans";src:url(lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(lib/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
@@ -25,6 +24,15 @@
   --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.14),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.10),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.10),transparent 70%);
   color-scheme:light
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
+  --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
+  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
+  --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
+  --sobre:#0F1923;--btn:#5B8CFF;--btn-ink:#0F1923;
+  --borde:2px solid rgba(219,222,225,.12);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--sombra-btn:0 4px 0 0 #0C0C0E;
+  --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}}
 :root[data-theme=dark]{
   --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
   --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
@@ -5505,8 +5513,8 @@ const P27 = (() => {
   function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
 
   // ---------- tema (claro/oscuro), logo y firma dicarch ----------
-  const TEMA_K = 'paes27:tema2'; // clave nueva: ignora preferencias guardadas con el comportamiento anterior
-  const tema = () => document.documentElement.dataset.theme || 'light'; // claro por defecto, aunque el sistema esté en oscuro
+  const TEMA_K = 'paes27:tema';
+  const tema = () => document.documentElement.dataset.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   // Las pizarras leen los colores al cargar: al cambiar de tema se recarga (el progreso está guardado).
   function alternarTema() { try { localStorage.setItem(TEMA_K, tema() === 'dark' ? 'light' : 'dark'); } catch (e) { /* sin almacenamiento: solo esta vez */ } location.reload(); }
   const LOGO = '<svg viewBox="0 0 64 64" role="img" aria-label="PAES·27"><defs>'
