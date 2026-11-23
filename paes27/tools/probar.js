@@ -29,7 +29,7 @@ const SHOTS = process.env.SHOTS || '';
   await page.evaluate(() => localStorage.clear());
   // migración: los temas viejos de Bio/Quím guardados se renombran una sola vez
   await page.evaluate(() => localStorage.setItem('paes27:dominio', JSON.stringify({ 'bio.procesos': 40, 'qui.atomica': 20 })));
-  await page.goto(BASE + '/index.html#hoy');
+  await page.reload();
   const mig = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:dominio')));
   ok(mig['bio.nervioso'] === 40 && mig['qui.modelos'] === 20 && !('bio.procesos' in mig), 'migración de temas viejos de Bio/Quím');
   await page.evaluate(() => localStorage.clear());
