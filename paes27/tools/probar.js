@@ -27,6 +27,12 @@ const SHOTS = process.env.SHOTS || '';
   console.log('index.html');
   await page.goto(BASE + '/index.html');
   await page.evaluate(() => localStorage.clear());
+  // migración: los temas viejos de Bio/Quím guardados se renombran una sola vez
+  await page.evaluate(() => localStorage.setItem('paes27:dominio', JSON.stringify({ 'bio.procesos': 40, 'qui.atomica': 20 })));
+  await page.reload();
+  const mig = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:dominio')));
+  ok(mig['bio.nervioso'] === 40 && mig['qui.modelos'] === 20 && !('bio.procesos' in mig), 'migración de temas viejos de Bio/Quím');
+  await page.evaluate(() => localStorage.clear());
   await page.goto(BASE + '/index.html#hoy');
   ok(await page.locator('#p-hoy.on').isVisible(), 'pestaña Hoy visible');
   ok((await page.locator('.cuenta .ex').count()) === 4, 'cuenta regresiva de 4 pruebas');
@@ -218,6 +224,8 @@ const SHOTS = process.env.SHOTS || '';
   }
   await probarLecciones('m2.html', 15);
   await probarLecciones('fisica.html', 16);
+  await probarLecciones('bioquim.html', 15);
+  await probarLecciones('m1.html', 12);
   {
     // ensayo corto: responder con teclado, recargar a la mitad, entregar
     await page.goto(BASE + '/m2.html#ensayo');
@@ -243,6 +251,32 @@ const SHOTS = process.env.SHOTS || '';
     await Promise.all([page.waitForNavigation(), page.click('[data-tema-btn]')]);
     const temaDespues = await page.evaluate(() => P27.tema());
     ok(temaAntes !== temaDespues, `botón de tema: ${temaAntes} → ${temaDespues}`);
+  }
+  {
+    // ensayo completo de Ciencias: 54 del módulo común (18 + 18 + 18) y luego 26 de Física, sin repetir
+    await page.goto(BASE + '/fisica.html#ensayo');
+    await page.click('#p-ensayo button:has-text("Completo")');
+    await page.waitForSelector('#ens-reloj');
+    const c = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso' && e.prueba === 'CIE'));
+    const ej = (id) => (id.startsWith('bq-b') || /^d-cie-1[23]$/.test(id) ? 'bio' : id.startsWith('bq-q') || /^d-cie-1[45]$/.test(id) ? 'qui' : 'fis');
+    const comun = c.ids.slice(0, 54).map(ej), electivo = c.ids.slice(54).map(ej);
+    const cuenta = (l, x) => l.filter((y) => y === x).length;
+    ok(c.ids.length === 80 && new Set(c.ids).size === 80, `Ciencias completo: 80 preguntas distintas (${c.ids.length})`);
+    ok(cuenta(comun, 'bio') === 18 && cuenta(comun, 'qui') === 18 && cuenta(comun, 'fis') === 18 && electivo.every((x) => x === 'fis'),
+      `Ciencias completo: común ${cuenta(comun, 'bio')} Bio + ${cuenta(comun, 'qui')} Quím + ${cuenta(comun, 'fis')} Fís, electivo ${electivo.length} Fís`);
+    ok(c.limite === 160 * 60, 'Ciencias completo: 2 h 40 min');
+    await page.click('#p-ensayo button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    // ensayo completo de M1: 65 preguntas distintas en 2 h 20 min
+    await page.goto(BASE + '/m1.html#ensayo');
+    await page.click('#p-ensayo button:has-text("Completo")');
+    await page.waitForSelector('#ens-reloj');
+    const m = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso' && e.prueba === 'M1'));
+    ok(m.ids.length === 65 && new Set(m.ids).size === 65 && m.limite === 140 * 60, `M1 completo: ${m.ids.length} preguntas distintas en 2 h 20 min`);
+    await page.keyboard.press('2'); await page.keyboard.press('Enter');
+    await page.click('#p-ensayo button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    if (SHOTS) await page.screenshot({ path: SHOTS + '/m1-ensayo-resultado.png' });
   }
   console.log('\nErrores/avisos de consola:', errores.length ? '\n' + errores.join('\n') : 0);
   console.log('Pedidos fuera de localhost:', externos.length ? '\n' + externos.join('\n') : 0);

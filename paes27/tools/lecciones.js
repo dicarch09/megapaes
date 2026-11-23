@@ -277,11 +277,13 @@ function montarEnsayo(pane, cfg) {
   const POR_ID = Object.fromEntries(POOL.map((q) => [q.id, q]));
   let timer = null, st = null;
 
-  function elegir(n) {
+  // elige n preguntas (opcional: solo las que cumplen `filtro`), priorizando temas importantes y las menos vistas
+  function elegir(n, filtro) {
+    const base = filtro ? POOL.filter(filtro) : POOL;
     const vistos = {};
     for (const e of lista()) for (const r of e.respuestas || []) vistos[r.id] = (vistos[r.id] || 0) + 1;
-    let candidatos = POOL.filter((q) => q.nivel !== 'basico');
-    if (candidatos.length < n) candidatos = POOL.slice();
+    let candidatos = base.filter((q) => q.nivel !== 'basico');
+    if (candidatos.length < n) candidatos = base.slice();
     const porTema = {};
     for (const q of candidatos.sort(() => Math.random() - 0.5)) (porTema[q.tema] = porTema[q.tema] || []).push(q);
     for (const t in porTema) porTema[t].sort((a, b) => (vistos[a.id] || 0) - (vistos[b.id] || 0));
@@ -294,7 +296,8 @@ function montarEnsayo(pane, cfg) {
 
   function empezar(modo) {
     const M = MODOS[modo];
-    const qs = elegir(M.n);
+    // un modo puede armar la prueba por partes (p. ej. Ciencias: módulo común + electivo)
+    const qs = M.componer ? M.componer(elegir) : elegir(M.n, M.filtro);
     const orden = {};
     for (const q of qs) {
       const o = q.opciones.map((_, i) => i);
@@ -413,7 +416,7 @@ function montarEnsayo(pane, cfg) {
     const cur = enCurso();
     if (cur) { st = cur; if (restante() <= 0) return terminar(true); return correr(); }
     pane.innerHTML = '';
-    const nAvanz = POOL.filter((q) => q.nivel !== 'basico').length;
+    const nAvanz = POOL.filter((q) => q.nivel !== 'basico' && (!cfg.filtroIntro || cfg.filtroIntro(q))).length;
     const c = el('div', 'card', cfg.intro(nAvanz));
     const f = el('div', 'fila');
     for (const [k, M] of Object.entries(MODOS)) {

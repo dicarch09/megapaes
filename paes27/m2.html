@@ -171,10 +171,11 @@ details.acc>.in>ol>li::before{content:counter(v);position:absolute;left:12px;top
 details.acc>.in>ol>li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:8px;color:var(--muted);font-weight:900;font-size:1.1rem}
 details.acc>.in>ol>li b{display:inline-block;background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--ink);border-radius:8px;padding:.05em .4em;margin:.1em 0;font-weight:800}
 details.acc>.in>ol>li .esq{display:block;width:100%;height:auto;max-height:110px;margin:-2px 0 8px;overflow:visible;color:var(--ink)}
-details.acc>.in>ol>li .esq .a{stroke:var(--acc);fill:none}details.acc>.in>ol>li .esq .b{stroke:var(--acc2);fill:none}
-details.acc>.in>ol>li .esq .w{stroke:var(--warn);fill:none}details.acc>.in>ol>li .esq .r{stroke:var(--mal);fill:none}details.acc>.in>ol>li .esq .g{stroke:var(--ok);fill:none}
-details.acc>.in>ol>li .esq .m{stroke:var(--muted);fill:none}details.acc>.in>ol>li .esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
-details.acc>.in>ol>li .esq .fa{fill:var(--acc);stroke:none}details.acc>.in>ol>li .esq .fr{fill:var(--mal);stroke:none}details.acc>.in>ol>li .esq .fg{fill:var(--ok);stroke:none}details.acc>.in>ol>li .esq .fm{fill:var(--muted);stroke:none}details.acc>.in>ol>li .esq .fw{fill:var(--warn);stroke:none}details.acc>.in>ol>li .esq .fb{fill:var(--acc2);stroke:none}
+.tarjeta .esq{display:block;width:100%;height:auto;max-height:130px;margin:8px 0 6px;overflow:visible;color:var(--ink)}
+.esq .a{stroke:var(--acc);fill:none}.esq .b{stroke:var(--acc2);fill:none}
+.esq .w{stroke:var(--warn);fill:none}.esq .r{stroke:var(--mal);fill:none}.esq .g{stroke:var(--ok);fill:none}
+.esq .m{stroke:var(--muted);fill:none}.esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
+.esq .fa{fill:var(--acc);stroke:none}.esq .fr{fill:var(--mal);stroke:none}.esq .fg{fill:var(--ok);stroke:none}.esq .fm{fill:var(--muted);stroke:none}.esq .fw{fill:var(--warn);stroke:none}.esq .fb{fill:var(--acc2);stroke:none}
 /* ejemplo resuelto y práctica */
 .ejemplo .enun{font-weight:700;margin-bottom:8px}
 .ejemplo ol{margin:0;padding-left:1.4em}
@@ -201,6 +202,11 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .tarjeta h4{margin:6px 0 4px;font:800 1.05rem/1.2 "Bricolage Grotesque",sans-serif}
 .tarjeta p{margin:0;font-size:.93rem}
 .tarjeta .onda{display:inline-block;font-size:.72rem;font-weight:900;padding:.15em .55em;border-radius:99px;background:color-mix(in srgb,var(--acc) 15%,transparent);color:var(--acc)}
+.tarjeta.trampa .onda{background:color-mix(in srgb,var(--malf) 16%,transparent);color:var(--mal)}
+.no,.si{display:block;margin:5px 0 0;padding:5px 9px;border-radius:9px;font-weight:700;font-variant-numeric:tabular-nums}
+.no{background:color-mix(in srgb,var(--malf) 11%,transparent);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--mal) 55%,transparent)}
+.no::before{content:"✘ ";color:var(--mal);display:inline-block;text-decoration:none}
+.si{background:color-mix(in srgb,var(--okf) 14%,transparent)}.si::before{content:"✔ ";color:var(--ok)}
 /* ensayo */
 .ens-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
 .ens-reloj{font:800 1.35rem/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
@@ -223,8 +229,8 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
       <a href="index.html" style="--c:var(--btn)">Hub</a>
       <a href="m2.html" class="on" style="--c:var(--m2-g)">M2</a>
       <a href="fisica.html" style="--c:var(--cie-g)">Física</a>
-      <span title="Llega en la Fase 4">Bio/Quím</span>
-      <span title="Llega en la Fase 4">M1</span>
+      <a href="bioquim.html" style="--c:var(--cie-g)">Bio/Quím</a>
+      <a href="m1.html" style="--c:var(--m1-g)">M1</a>
       <span title="Llega en la Fase 5">Lectora</span>
     </nav>
     <button class="tema-btn" data-tema-btn></button>
@@ -1552,7 +1558,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    "id": "d-cie-12",
    "prueba": "CIE",
    "eje": "Biología",
-   "tema": "bio.procesos",
+   "tema": "bio.nervioso",
    "nivel": "basico",
    "enunciado": "En una sinapsis química, ¿qué estructura libera los neurotransmisores?",
    "opciones": [
@@ -1580,7 +1586,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    "id": "d-cie-13",
    "prueba": "CIE",
    "eje": "Biología",
-   "tema": "bio.herencia",
+   "tema": "bio.division",
    "nivel": "basico",
    "enunciado": "¿En qué etapa de la mitosis las cromátidas hermanas se separan y se mueven hacia polos opuestos de la célula?",
    "opciones": [
@@ -1608,7 +1614,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    "id": "d-cie-14",
    "prueba": "CIE",
    "eje": "Química",
-   "tema": "qui.atomica",
+   "tema": "qui.modelos",
    "nivel": "basico",
    "enunciado": "Un átomo neutro tiene número atómico Z = 17 y número másico A = 35. ¿Cuántos neutrones tiene?",
    "opciones": [
@@ -5693,7 +5699,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 3;
+  const VERSION = 4;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -5739,26 +5745,34 @@ const P27 = (() => {
     ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', 'fisica.html#fis.ond.dispositivos'],
     ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', 'fisica.html#fis.ele.domiciliaria'],
 
-    ['bio.celular', 'CIE', 'Biología', 'R', 'Organización y actividad celular', null],
-    ['bio.procesos', 'CIE', 'Biología', 'R', 'Procesos y funciones (incl. sistema nervioso)', null],
-    ['bio.herencia', 'CIE', 'Biología', 'R', 'Herencia y evolución', null],
-    ['bio.ambiente', 'CIE', 'Biología', 'R', 'Organismo y ambiente', null],
-    ['qui.atomica', 'CIE', 'Química', 'R', 'Estructura atómica', null],
-    ['qui.organica', 'CIE', 'Química', 'R', 'Química orgánica', null],
-    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Reacciones y estequiometría', null],
+    ['bio.celula', 'CIE', 'Biología', 'R', 'Célula: organelos y células especializadas', 'bioquim.html#bio.celula'],
+    ['bio.nervioso', 'CIE', 'Biología', 'R', 'Sistema nervioso y sus cuidados', 'bioquim.html#bio.nervioso'],
+    ['bio.reproduccion', 'CIE', 'Biología', 'R', 'Reproducción: gametos, fecundación y ciclos', 'bioquim.html#bio.reproduccion'],
+    ['bio.anticoncepcion-its', 'CIE', 'Biología', 'R', 'Métodos anticonceptivos e ITS', 'bioquim.html#bio.anticoncepcion-its'],
+    ['bio.division', 'CIE', 'Biología', 'R', 'Ciclo celular, mitosis y meiosis', 'bioquim.html#bio.division'],
+    ['bio.manipulacion', 'CIE', 'Biología', 'R', 'Manipulación genética', 'bioquim.html#bio.manipulacion'],
+    ['bio.evolucion', 'CIE', 'Biología', 'R', 'Evolución y selección natural', 'bioquim.html#bio.evolucion'],
+    ['bio.fotosintesis', 'CIE', 'Biología', 'R', 'Fotosíntesis y respiración celular', 'bioquim.html#bio.fotosintesis'],
+    ['qui.materia', 'CIE', 'Química', 'R', 'Materia, mezclas y separación', 'bioquim.html#qui.materia'],
+    ['qui.modelos', 'CIE', 'Química', 'R', 'Modelos atómicos y partículas (Z, A)', 'bioquim.html#qui.modelos'],
+    ['qui.carbono', 'CIE', 'Química', 'R', 'Átomo de carbono: hibridación y enlaces', 'bioquim.html#qui.carbono'],
+    ['qui.organica', 'CIE', 'Química', 'R', 'Hidrocarburos y grupos funcionales', 'bioquim.html#qui.organica'],
+    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Leyes ponderales, mol y reactivo limitante', 'bioquim.html#qui.estequiometria'],
+    ['qui.composicion', 'CIE', 'Química', 'R', 'Composición porcentual y fórmula empírica', 'bioquim.html#qui.composicion'],
+    ['qui.soluciones', 'CIE', 'Química', 'R', 'Soluciones: concentración y dilución', 'bioquim.html#qui.soluciones'],
 
-    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', null],
-    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', null],
-    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', null],
-    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', null],
-    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', null],
-    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', null],
-    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', null],
-    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', null],
-    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', null],
-    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', null],
-    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', null],
-    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', null],
+    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', 'm1.html#m1.num.enteros-racionales'],
+    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', 'm1.html#m1.num.porcentaje'],
+    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', 'm1.html#m1.num.potencias-raices'],
+    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', 'm1.html#m1.alg.expresiones'],
+    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', 'm1.html#m1.alg.ecuaciones'],
+    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', 'm1.html#m1.alg.funciones'],
+    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', 'm1.html#m1.alg.proporcionalidad'],
+    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', 'm1.html#m1.geo.areas-volumenes'],
+    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', 'm1.html#m1.geo.semejanza-pitagoras'],
+    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', 'm1.html#m1.geo.transformaciones'],
+    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
+    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
 
     ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
     ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
@@ -5766,6 +5780,8 @@ const P27 = (() => {
   ];
   const TEMAS = {};
   for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
+  // Fase 4: los 7 temas gruesos de Bio/Quím pasaron a 15 temas finos. Los datos guardados se renombran una vez.
+  const RENOMBRE = { 'bio.celular': 'bio.celula', 'bio.procesos': 'bio.nervioso', 'bio.herencia': 'bio.division', 'bio.ambiente': 'bio.fotosintesis', 'qui.atomica': 'qui.modelos' };
   const PESO_PRIO = { A: 3, B: 2, C: 1, R: 1.5 };
 
   // ---------- almacenamiento ----------
@@ -5776,6 +5792,22 @@ const P27 = (() => {
     try { localStorage.setItem(K[k], JSON.stringify(v)); } catch (e) { console.warn('No se pudo guardar', k); }
     window.dispatchEvent(new CustomEvent('p27:cambio', { detail: k }));
   }
+  // renombra temas viejos en lo guardado (dominio, repaso, diagnóstico); se hace una sola vez
+  (function migrar() {
+    const ren = (t) => RENOMBRE[t] || t;
+    const dom = cargar('dominio', null);
+    if (dom && Object.keys(dom).some((t) => RENOMBRE[t])) {
+      for (const t of Object.keys(dom)) if (RENOMBRE[t]) { if (!(RENOMBRE[t] in dom)) dom[RENOMBRE[t]] = dom[t]; delete dom[t]; }
+      guardar('dominio', dom);
+    }
+    const rep = cargar('repaso', null);
+    if (rep && rep.some((x) => RENOMBRE[x.tema])) { rep.forEach((x) => { x.tema = ren(x.tema); }); guardar('repaso', rep); }
+    const dg = cargar('diag', null);
+    if (dg && Object.values(dg).some((d) => d && d.respuestas && d.respuestas.some((r) => RENOMBRE[r.tema]))) {
+      Object.values(dg).forEach((d) => { if (d && d.respuestas) d.respuestas.forEach((r) => { r.tema = ren(r.tema); }); });
+      guardar('diag', dg);
+    }
+  })();
 
   // ---------- fechas (locales) ----------
   const pad = (n) => String(n).padStart(2, '0');
@@ -6223,11 +6255,13 @@ function montarEnsayo(pane, cfg) {
   const POR_ID = Object.fromEntries(POOL.map((q) => [q.id, q]));
   let timer = null, st = null;
 
-  function elegir(n) {
+  // elige n preguntas (opcional: solo las que cumplen `filtro`), priorizando temas importantes y las menos vistas
+  function elegir(n, filtro) {
+    const base = filtro ? POOL.filter(filtro) : POOL;
     const vistos = {};
     for (const e of lista()) for (const r of e.respuestas || []) vistos[r.id] = (vistos[r.id] || 0) + 1;
-    let candidatos = POOL.filter((q) => q.nivel !== 'basico');
-    if (candidatos.length < n) candidatos = POOL.slice();
+    let candidatos = base.filter((q) => q.nivel !== 'basico');
+    if (candidatos.length < n) candidatos = base.slice();
     const porTema = {};
     for (const q of candidatos.sort(() => Math.random() - 0.5)) (porTema[q.tema] = porTema[q.tema] || []).push(q);
     for (const t in porTema) porTema[t].sort((a, b) => (vistos[a.id] || 0) - (vistos[b.id] || 0));
@@ -6240,7 +6274,8 @@ function montarEnsayo(pane, cfg) {
 
   function empezar(modo) {
     const M = MODOS[modo];
-    const qs = elegir(M.n);
+    // un modo puede armar la prueba por partes (p. ej. Ciencias: módulo común + electivo)
+    const qs = M.componer ? M.componer(elegir) : elegir(M.n, M.filtro);
     const orden = {};
     for (const q of qs) {
       const o = q.opciones.map((_, i) => i);
@@ -6359,7 +6394,7 @@ function montarEnsayo(pane, cfg) {
     const cur = enCurso();
     if (cur) { st = cur; if (restante() <= 0) return terminar(true); return correr(); }
     pane.innerHTML = '';
-    const nAvanz = POOL.filter((q) => q.nivel !== 'basico').length;
+    const nAvanz = POOL.filter((q) => q.nivel !== 'basico' && (!cfg.filtroIntro || cfg.filtroIntro(q))).length;
     const c = el('div', 'card', cfg.intro(nAvanz));
     const f = el('div', 'fila');
     for (const [k, M] of Object.entries(MODOS)) {

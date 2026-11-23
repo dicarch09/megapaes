@@ -163,10 +163,11 @@ details.acc>.in>ol>li::before{content:counter(v);position:absolute;left:12px;top
 details.acc>.in>ol>li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:8px;color:var(--muted);font-weight:900;font-size:1.1rem}
 details.acc>.in>ol>li b{display:inline-block;background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--ink);border-radius:8px;padding:.05em .4em;margin:.1em 0;font-weight:800}
 details.acc>.in>ol>li .esq{display:block;width:100%;height:auto;max-height:110px;margin:-2px 0 8px;overflow:visible;color:var(--ink)}
-details.acc>.in>ol>li .esq .a{stroke:var(--acc);fill:none}details.acc>.in>ol>li .esq .b{stroke:var(--acc2);fill:none}
-details.acc>.in>ol>li .esq .w{stroke:var(--warn);fill:none}details.acc>.in>ol>li .esq .r{stroke:var(--mal);fill:none}details.acc>.in>ol>li .esq .g{stroke:var(--ok);fill:none}
-details.acc>.in>ol>li .esq .m{stroke:var(--muted);fill:none}details.acc>.in>ol>li .esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
-details.acc>.in>ol>li .esq .fa{fill:var(--acc);stroke:none}details.acc>.in>ol>li .esq .fr{fill:var(--mal);stroke:none}details.acc>.in>ol>li .esq .fg{fill:var(--ok);stroke:none}details.acc>.in>ol>li .esq .fm{fill:var(--muted);stroke:none}details.acc>.in>ol>li .esq .fw{fill:var(--warn);stroke:none}details.acc>.in>ol>li .esq .fb{fill:var(--acc2);stroke:none}
+.tarjeta .esq{display:block;width:100%;height:auto;max-height:130px;margin:8px 0 6px;overflow:visible;color:var(--ink)}
+.esq .a{stroke:var(--acc);fill:none}.esq .b{stroke:var(--acc2);fill:none}
+.esq .w{stroke:var(--warn);fill:none}.esq .r{stroke:var(--mal);fill:none}.esq .g{stroke:var(--ok);fill:none}
+.esq .m{stroke:var(--muted);fill:none}.esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
+.esq .fa{fill:var(--acc);stroke:none}.esq .fr{fill:var(--mal);stroke:none}.esq .fg{fill:var(--ok);stroke:none}.esq .fm{fill:var(--muted);stroke:none}.esq .fw{fill:var(--warn);stroke:none}.esq .fb{fill:var(--acc2);stroke:none}
 /* ejemplo resuelto y práctica */
 .ejemplo .enun{font-weight:700;margin-bottom:8px}
 .ejemplo ol{margin:0;padding-left:1.4em}
@@ -193,6 +194,11 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .tarjeta h4{margin:6px 0 4px;font:800 1.05rem/1.2 "Bricolage Grotesque",sans-serif}
 .tarjeta p{margin:0;font-size:.93rem}
 .tarjeta .onda{display:inline-block;font-size:.72rem;font-weight:900;padding:.15em .55em;border-radius:99px;background:color-mix(in srgb,var(--acc) 15%,transparent);color:var(--acc)}
+.tarjeta.trampa .onda{background:color-mix(in srgb,var(--malf) 16%,transparent);color:var(--mal)}
+.no,.si{display:block;margin:5px 0 0;padding:5px 9px;border-radius:9px;font-weight:700;font-variant-numeric:tabular-nums}
+.no{background:color-mix(in srgb,var(--malf) 11%,transparent);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--mal) 55%,transparent)}
+.no::before{content:"✘ ";color:var(--mal);display:inline-block;text-decoration:none}
+.si{background:color-mix(in srgb,var(--okf) 14%,transparent)}.si::before{content:"✔ ";color:var(--ok)}
 /* ensayo */
 .ens-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
 .ens-reloj{font:800 1.35rem/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}

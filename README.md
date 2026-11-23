@@ -20,6 +20,8 @@ Luego abre http://localhost:8000. Usa siempre el puerto 8000: el progreso se gua
 ```bash
 cd paes27
 python3 tools/esquemas.py           # dibuja los esquemas de «El porqué» en cada lección
+python3 tools/bioquim.py            # escribe las lecciones de Biología y Química (tarjetas) en bioquim.html
+python3 tools/m1.py                 # escribe el repaso rápido y las trampas de M1 en m1.html
 python3 tools/sync_core.py          # copia el bloque compartido y los bancos a cada HTML
 python3 tools/verificar.py          # recalcula cada respuesta numérica
 node tools/probar.js                # consola limpia, sin internet, flujos principales (con el servidor arriba)
