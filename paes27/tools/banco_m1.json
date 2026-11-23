@@ -1,0 +1,1682 @@
+[
+ {
+  "id": "m1-ent-b1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.enteros-racionales",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de −3 + 5 · (−2)?",
+  "opciones": [
+   {
+    "texto": "−13",
+    "trampa": ""
+   },
+   {
+    "texto": "−4",
+    "trampa": "Sumaste antes de multiplicar: (−3 + 5) · (−2). Primero va la multiplicación."
+   },
+   {
+    "texto": "7",
+    "trampa": "Te equivocaste en el signo del producto: 5 · (−2) = −10, no 10."
+   },
+   {
+    "texto": "13",
+    "trampa": "Olvidaste el signo del resultado: −3 − 10 = −13."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Primero la multiplicación: 5 · (−2) = −10. Luego −3 − 10 = −13."
+ },
+ {
+  "id": "m1-ent-p1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.enteros-racionales",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de estos números es el mayor?",
+  "opciones": [
+   {
+    "texto": "0,66",
+    "trampa": "0,66 es menor que 0,666…: 2/3 es un decimal periódico, un poco más grande."
+   },
+   {
+    "texto": "5/8",
+    "trampa": "5/8 = 0,625: es menor que 2/3 ≈ 0,667."
+   },
+   {
+    "texto": "2/3",
+    "trampa": ""
+   },
+   {
+    "texto": "0,6",
+    "trampa": "Comparaste solo la primera cifra decimal; 0,6 es el menor de los cuatro."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "En decimales: 2/3 ≈ 0,667; 0,66; 5/8 = 0,625; 0,6. El mayor es 2/3."
+ },
+ {
+  "id": "m1-ent-p2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.enteros-racionales",
+  "nivel": "paes",
+  "enunciado": "Un estanque está a 3/4 de su capacidad. Se usa 1/3 del agua que tiene. ¿Qué fracción de la capacidad queda?",
+  "opciones": [
+   {
+    "texto": "5/12",
+    "trampa": "Restaste 3/4 − 1/3; el 1/3 es del agua que hay, no de la capacidad total."
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Calculaste el agua que se usó (3/4 · 1/3), no la que queda."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Usaste 1 − 1/3 sin multiplicar por los 3/4 que había."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Queda 2/3 de lo que había: 3/4 · 2/3 = 6/12 = 1/2."
+ },
+ {
+  "id": "m1-ent-d1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.enteros-racionales",
+  "nivel": "dificil",
+  "enunciado": "Si a = −2/3 y b = 1/2, ¿cuál es el valor de (a − b) / (a · b)?",
+  "opciones": [
+   {
+    "texto": "7/2",
+    "trampa": ""
+   },
+   {
+    "texto": "−7/2",
+    "trampa": "Error de signo: negativo dividido por negativo da positivo."
+   },
+   {
+    "texto": "1/2",
+    "trampa": "Restaste mal: −2/3 − 1/2 = −7/6, no −1/6."
+   },
+   {
+    "texto": "7/18",
+    "trampa": "Multiplicaste en vez de dividir."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a − b = −2/3 − 1/2 = −7/6. a · b = −1/3. (−7/6) / (−1/3) = 7/6 · 3 = 7/2."
+ },
+ {
+  "id": "m1-ent-d2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.enteros-racionales",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál de estos números NO está entre 1/3 y 1/2?",
+  "opciones": [
+   {
+    "texto": "5/12",
+    "trampa": "Convertiste mal: 5/12 ≈ 0,42 sí está entre 1/3 ≈ 0,33 y 1/2 = 0,5."
+   },
+   {
+    "texto": "0,4",
+    "trampa": "0,4 sí está entre 0,33 y 0,5."
+   },
+   {
+    "texto": "4/7",
+    "trampa": ""
+   },
+   {
+    "texto": "3/7",
+    "trampa": "3/7 ≈ 0,43 sí está entre 0,33 y 0,5."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "4/7 ≈ 0,57, que es mayor que 1/2. Los otros tres están entre 0,33 y 0,5."
+ },
+ {
+  "id": "m1-por-b1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.porcentaje",
+  "nivel": "basico",
+  "enunciado": "¿Cuánto es el 15 % de 240?",
+  "opciones": [
+   {
+    "texto": "16",
+    "trampa": "Dividiste 240 por 15; el 15 % es 15/100 · 240."
+   },
+   {
+    "texto": "36",
+    "trampa": ""
+   },
+   {
+    "texto": "3600",
+    "trampa": "Multiplicaste 15 · 240 y olvidaste dividir por 100."
+   },
+   {
+    "texto": "225",
+    "trampa": "Restaste 15 a 240; el porcentaje es una parte de 240, no una resta."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "15 % de 240 = 0,15 · 240 = 36."
+ },
+ {
+  "id": "m1-por-p1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.porcentaje",
+  "nivel": "paes",
+  "enunciado": "Un producto cuesta $20.000. Su precio sube 10 % y, después, baja 10 %. ¿Cuál es su precio final?",
+  "opciones": [
+   {
+    "texto": "$19.800",
+    "trampa": ""
+   },
+   {
+    "texto": "$20.000",
+    "trampa": "Pensaste que subir y bajar el mismo porcentaje se compensa; la bajada se calcula sobre un precio mayor."
+   },
+   {
+    "texto": "$22.000",
+    "trampa": "Solo aplicaste la subida."
+   },
+   {
+    "texto": "$18.000",
+    "trampa": "Solo aplicaste la bajada."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "20.000 · 1,1 = 22.000; 22.000 · 0,9 = 19.800."
+ },
+ {
+  "id": "m1-por-p2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.porcentaje",
+  "nivel": "paes",
+  "enunciado": "En un curso de 40 estudiantes, 12 reprobaron. ¿Qué porcentaje aprobó?",
+  "opciones": [
+   {
+    "texto": "30 %",
+    "trampa": "Ese es el porcentaje que reprobó."
+   },
+   {
+    "texto": "28 %",
+    "trampa": "Confundiste la cantidad de aprobados (28) con el porcentaje."
+   },
+   {
+    "texto": "12 %",
+    "trampa": "Tomaste los 12 reprobados como porcentaje."
+   },
+   {
+    "texto": "70 %",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Aprobaron 40 − 12 = 28. 28 / 40 = 0,7 = 70 %."
+ },
+ {
+  "id": "m1-por-d1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.porcentaje",
+  "nivel": "dificil",
+  "enunciado": "Con un descuento del 20 %, una polera cuesta $12.000. ¿Cuál era su precio original?",
+  "opciones": [
+   {
+    "texto": "$14.400",
+    "trampa": "Le sumaste el 20 % de $12.000; el descuento se calculó sobre el precio original."
+   },
+   {
+    "texto": "$9.600",
+    "trampa": "Aplicaste otro descuento; el precio original tiene que ser mayor."
+   },
+   {
+    "texto": "$15.000",
+    "trampa": ""
+   },
+   {
+    "texto": "$2.400",
+    "trampa": "Ese es el 20 % de $12.000, no el precio original."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Pagar con 20 % de descuento es pagar el 80 %: 0,8 · P = 12.000 → P = 15.000."
+ },
+ {
+  "id": "m1-por-d2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.porcentaje",
+  "nivel": "dificil",
+  "enunciado": "Una población de bacterias aumenta 50 % cada hora. Si al inicio hay 400, ¿cuántas hay después de 2 horas?",
+  "opciones": [
+   {
+    "texto": "800",
+    "trampa": "Sumaste 50 % + 50 % = 100 % sobre las 400 iniciales; el segundo aumento se aplica sobre 600."
+   },
+   {
+    "texto": "900",
+    "trampa": ""
+   },
+   {
+    "texto": "600",
+    "trampa": "Aplicaste un solo aumento."
+   },
+   {
+    "texto": "1600",
+    "trampa": "Duplicaste cada hora; aumentar 50 % es multiplicar por 1,5, no por 2."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "400 · 1,5 = 600; 600 · 1,5 = 900."
+ },
+ {
+  "id": "m1-pot-b1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.potencias-raices",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el valor de 2⁻³?",
+  "opciones": [
+   {
+    "texto": "−8",
+    "trampa": "El exponente negativo no hace negativo el número: indica el inverso."
+   },
+   {
+    "texto": "−6",
+    "trampa": "Multiplicaste la base por el exponente: 2 · (−3)."
+   },
+   {
+    "texto": "8",
+    "trampa": "Olvidaste invertir: 2⁻³ = 1/2³."
+   },
+   {
+    "texto": "1/8",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "2⁻³ = 1/2³ = 1/8."
+ },
+ {
+  "id": "m1-pot-p1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.potencias-raices",
+  "nivel": "paes",
+  "enunciado": "¿A qué es igual (a³ · a⁵) / a², con a ≠ 0?",
+  "opciones": [
+   {
+    "texto": "a⁶",
+    "trampa": ""
+   },
+   {
+    "texto": "a¹³",
+    "trampa": "Multiplicaste los exponentes 3 · 5; al multiplicar potencias de igual base se suman."
+   },
+   {
+    "texto": "a¹⁰",
+    "trampa": "Sumaste todos los exponentes; al dividir se restan."
+   },
+   {
+    "texto": "a⁴",
+    "trampa": "Restaste 3 − 5 + 2… revisa: arriba se suman (3 + 5 = 8) y luego se resta el de abajo (8 − 2)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "a³ · a⁵ = a⁸. a⁸ / a² = a⁶."
+ },
+ {
+  "id": "m1-pot-p2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.potencias-raices",
+  "nivel": "paes",
+  "enunciado": "¿A qué es igual √50 + √18?",
+  "opciones": [
+   {
+    "texto": "√68",
+    "trampa": "Sumaste dentro de la raíz: √a + √b no es √(a + b)."
+   },
+   {
+    "texto": "15√2",
+    "trampa": "Multiplicaste los coeficientes 5 · 3; hay que sumarlos."
+   },
+   {
+    "texto": "8√2",
+    "trampa": ""
+   },
+   {
+    "texto": "2√2",
+    "trampa": "Restaste 5√2 − 3√2; la operación es una suma."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "√50 = √(25·2) = 5√2; √18 = √(9·2) = 3√2. Suma: 8√2."
+ },
+ {
+  "id": "m1-pot-d1",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.potencias-raices",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es el valor de 27<sup>2/3</sup>?",
+  "opciones": [
+   {
+    "texto": "18",
+    "trampa": "Multiplicaste 27 · 2/3; el exponente fraccionario indica raíz y potencia."
+   },
+   {
+    "texto": "9",
+    "trampa": ""
+   },
+   {
+    "texto": "3",
+    "trampa": "Solo sacaste la raíz cúbica; falta elevar al cuadrado."
+   },
+   {
+    "texto": "1/9",
+    "trampa": "Invertiste el resultado; el exponente es positivo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "27<sup>2/3</sup> = (∛27)² = 3² = 9."
+ },
+ {
+  "id": "m1-pot-d2",
+  "prueba": "M1",
+  "eje": "Números",
+  "tema": "m1.num.potencias-raices",
+  "nivel": "dificil",
+  "enunciado": "Si 2ˣ = 32, ¿cuál es el valor de 2<sup>x − 2</sup>?",
+  "opciones": [
+   {
+    "texto": "8",
+    "trampa": ""
+   },
+   {
+    "texto": "30",
+    "trampa": "Restaste 2 al resultado; 2<sup>x − 2</sup> = 2ˣ / 2² = 32 / 4."
+   },
+   {
+    "texto": "16",
+    "trampa": "Dividiste por 2; hay que dividir por 2² = 4."
+   },
+   {
+    "texto": "3",
+    "trampa": "Ese es x − 2 (con x = 5), no la potencia."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "2<sup>x − 2</sup> = 2ˣ · 2⁻² = 32 / 4 = 8."
+ },
+ {
+  "id": "m1-exp-b1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.expresiones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el desarrollo de (x + 3)²?",
+  "opciones": [
+   {
+    "texto": "x² + 9",
+    "trampa": "Olvidaste el doble producto: 2 · x · 3 = 6x."
+   },
+   {
+    "texto": "x² + 3x + 9",
+    "trampa": "El término del medio es 2 · x · 3 = 6x, no 3x."
+   },
+   {
+    "texto": "x² + 6x + 9",
+    "trampa": ""
+   },
+   {
+    "texto": "x² + 6x + 6",
+    "trampa": "El último término es 3² = 9, no 2 · 3."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(a + b)² = a² + 2ab + b²: x² + 2·x·3 + 3² = x² + 6x + 9."
+ },
+ {
+  "id": "m1-exp-p1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.expresiones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la factorización de x² − 5x + 6?",
+  "opciones": [
+   {
+    "texto": "(x + 2)(x + 3)",
+    "trampa": "Revisa los signos: necesitas dos números que sumen −5 y multipliquen 6: −2 y −3."
+   },
+   {
+    "texto": "(x − 2)(x − 3)",
+    "trampa": ""
+   },
+   {
+    "texto": "(x − 1)(x − 6)",
+    "trampa": "−1 y −6 multiplican 6, pero suman −7, no −5."
+   },
+   {
+    "texto": "(x − 6)(x + 1)",
+    "trampa": "−6 y 1 suman −5, pero multiplican −6, no 6."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Dos números que sumen −5 y multipliquen 6: −2 y −3. x² − 5x + 6 = (x − 2)(x − 3)."
+ },
+ {
+  "id": "m1-exp-p2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.expresiones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el resultado de (2x − 1)(2x + 1)?",
+  "opciones": [
+   {
+    "texto": "4x² − 1",
+    "trampa": ""
+   },
+   {
+    "texto": "4x² + 1",
+    "trampa": "Suma por diferencia da una resta de cuadrados: (2x)² − 1²."
+   },
+   {
+    "texto": "2x² − 1",
+    "trampa": "(2x)² = 4x², no 2x²."
+   },
+   {
+    "texto": "4x² − 4x − 1",
+    "trampa": "Los términos del medio se anulan: −2x + 2x = 0."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "(a − b)(a + b) = a² − b²: (2x)² − 1² = 4x² − 1."
+ },
+ {
+  "id": "m1-exp-d1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.expresiones",
+  "nivel": "dificil",
+  "enunciado": "Si a + b = 7 y a · b = 10, ¿cuál es el valor de a² + b²?",
+  "opciones": [
+   {
+    "texto": "49",
+    "trampa": "Elevaste a + b al cuadrado y te faltó restar 2ab."
+   },
+   {
+    "texto": "39",
+    "trampa": "Restaste ab una sola vez; hay que restar 2ab = 20."
+   },
+   {
+    "texto": "69",
+    "trampa": "Sumaste 2ab en vez de restarlo."
+   },
+   {
+    "texto": "29",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "(a + b)² = a² + 2ab + b² → a² + b² = 49 − 2·10 = 29."
+ },
+ {
+  "id": "m1-exp-d2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.expresiones",
+  "nivel": "dificil",
+  "enunciado": "Simplifica (x² − 9) / (x² + 3x), con x ≠ 0 y x ≠ −3.",
+  "opciones": [
+   {
+    "texto": "−9/(3x)",
+    "trampa": "No se pueden «tachar» términos que se suman; primero hay que factorizar."
+   },
+   {
+    "texto": "(x − 3)/x",
+    "trampa": ""
+   },
+   {
+    "texto": "(x + 3)/x",
+    "trampa": "x² − 9 = (x − 3)(x + 3): el que se simplifica es (x + 3), y arriba queda (x − 3)."
+   },
+   {
+    "texto": "x − 3",
+    "trampa": "El denominador x(x + 3) deja una x abajo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "(x − 3)(x + 3) / [x(x + 3)] = (x − 3)/x."
+ },
+ {
+  "id": "m1-ecu-b1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.ecuaciones",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es la solución de 3(x − 2) = 2x + 5?",
+  "opciones": [
+   {
+    "texto": "11",
+    "trampa": ""
+   },
+   {
+    "texto": "7",
+    "trampa": "Distribuiste mal: 3(x − 2) = 3x − 6, no 3x − 2."
+   },
+   {
+    "texto": "−1",
+    "trampa": "Al pasar el −6 al otro lado no le cambiaste el signo."
+   },
+   {
+    "texto": "11/5",
+    "trampa": "Sumaste 3x + 2x; al pasar 2x al otro lado se resta."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "3x − 6 = 2x + 5 → 3x − 2x = 5 + 6 → x = 11."
+ },
+ {
+  "id": "m1-ecu-p1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.ecuaciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el conjunto solución de −2x + 3 &gt; 9?",
+  "opciones": [
+   {
+    "texto": "x &gt; −3",
+    "trampa": "Al dividir por un número negativo hay que invertir la desigualdad."
+   },
+   {
+    "texto": "x &lt; 3",
+    "trampa": "Dividiste 6 por 2 en vez de por −2: el resultado es negativo."
+   },
+   {
+    "texto": "x &gt; 3",
+    "trampa": "Perdiste el signo de la división y además no invertiste la desigualdad."
+   },
+   {
+    "texto": "x &lt; −3",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "−2x &gt; 6 → al dividir por −2 se invierte: x &lt; −3."
+ },
+ {
+  "id": "m1-ecu-p2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.ecuaciones",
+  "nivel": "paes",
+  "enunciado": "Si x + y = 10 y x − y = 4, ¿cuál es el valor de x · y?",
+  "opciones": [
+   {
+    "texto": "24",
+    "trampa": "Usaste x = 6 e y = 4: tomaste números del enunciado sin resolver el sistema."
+   },
+   {
+    "texto": "40",
+    "trampa": "Multiplicaste los resultados de las ecuaciones (10 · 4), no las incógnitas."
+   },
+   {
+    "texto": "21",
+    "trampa": ""
+   },
+   {
+    "texto": "7",
+    "trampa": "Ese es el valor de x; te piden x · y."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Sumando: 2x = 14 → x = 7; y = 3. x · y = 21."
+ },
+ {
+  "id": "m1-ecu-d1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.ecuaciones",
+  "nivel": "dificil",
+  "enunciado": "Un cine cobra $5.000 por adulto y $3.000 por niño. Un grupo de 8 personas pagó $34.000. ¿Cuántos niños había?",
+  "opciones": [
+   {
+    "texto": "5",
+    "trampa": "Ese es el número de adultos."
+   },
+   {
+    "texto": "3",
+    "trampa": ""
+   },
+   {
+    "texto": "4",
+    "trampa": "Repartiste el grupo en partes iguales sin plantear el sistema."
+   },
+   {
+    "texto": "7",
+    "trampa": "Supusiste que todos eran adultos (34.000 / 5.000 ≈ 7)."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "a + n = 8 y 5a + 3n = 34 (en miles). 5(8 − n) + 3n = 34 → 40 − 2n = 34 → n = 3."
+ },
+ {
+  "id": "m1-ecu-d2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.ecuaciones",
+  "nivel": "dificil",
+  "enunciado": "Un plan de celular cobra $8.000 fijos más $50 por minuto. ¿Cuál es la mayor cantidad de minutos que se pueden usar sin pagar más de $15.000?",
+  "opciones": [
+   {
+    "texto": "300",
+    "trampa": "Dividiste 15.000 por 50 sin restar el cargo fijo."
+   },
+   {
+    "texto": "460",
+    "trampa": "Sumaste el cargo fijo en vez de restarlo."
+   },
+   {
+    "texto": "160",
+    "trampa": "Dividiste el cargo fijo (8.000) por 50."
+   },
+   {
+    "texto": "140",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "8.000 + 50m ≤ 15.000 → 50m ≤ 7.000 → m ≤ 140."
+ },
+ {
+  "id": "m1-fun-b1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.funciones",
+  "nivel": "basico",
+  "enunciado": "Si f(x) = 3x − 2, ¿cuál es el valor de f(−4)?",
+  "opciones": [
+   {
+    "texto": "14",
+    "trampa": "Perdiste el signo: 3 · (−4) = −12 y −12 − 2 = −14."
+   },
+   {
+    "texto": "−14",
+    "trampa": ""
+   },
+   {
+    "texto": "−10",
+    "trampa": "Sumaste 2 en vez de restarlo: −12 + 2."
+   },
+   {
+    "texto": "10",
+    "trampa": "Reemplazaste x = 4 en vez de −4."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "f(−4) = 3 · (−4) − 2 = −12 − 2 = −14."
+ },
+ {
+  "id": "m1-fun-p1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.funciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la pendiente de la recta que pasa por (1, 3) y (4, 9)?",
+  "opciones": [
+   {
+    "texto": "2",
+    "trampa": ""
+   },
+   {
+    "texto": "1/2",
+    "trampa": "Invertiste: la pendiente es Δy / Δx, no Δx / Δy."
+   },
+   {
+    "texto": "6",
+    "trampa": "Solo calculaste Δy = 6; falta dividir por Δx = 3."
+   },
+   {
+    "texto": "12/5",
+    "trampa": "Sumaste las coordenadas; hay que restarlas."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "m = (9 − 3) / (4 − 1) = 6/3 = 2."
+ },
+ {
+  "id": "m1-fun-p2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.funciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuáles son los ceros de f(x) = x² − x − 12?",
+  "opciones": [
+   {
+    "texto": "−4 y 3",
+    "trampa": "Cambiaste los signos: los ceros son las soluciones de (x − 4)(x + 3) = 0."
+   },
+   {
+    "texto": "6 y −2",
+    "trampa": "6 · (−2) = −12, pero suman 4: deben sumar 1."
+   },
+   {
+    "texto": "4 y −3",
+    "trampa": ""
+   },
+   {
+    "texto": "12 y −1",
+    "trampa": "12 · (−1) = −12, pero suman 11: deben sumar 1."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "x² − x − 12 = (x − 4)(x + 3) = 0 → x = 4 o x = −3."
+ },
+ {
+  "id": "m1-fun-d1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.funciones",
+  "nivel": "dificil",
+  "enunciado": "¿Cuál es el vértice de la parábola y = x² − 6x + 5?",
+  "opciones": [
+   {
+    "texto": "(3, −4)",
+    "trampa": ""
+   },
+   {
+    "texto": "(−3, −4)",
+    "trampa": "x del vértice = −b/(2a) = −(−6)/2 = 3: olvidaste el signo menos."
+   },
+   {
+    "texto": "(3, 5)",
+    "trampa": "El 5 es el corte con el eje Y; la altura del vértice es y(3) = −4."
+   },
+   {
+    "texto": "(1, 0)",
+    "trampa": "(1, 0) es un cero de la función, no el vértice."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "x = −b/(2a) = 6/2 = 3. y = 9 − 18 + 5 = −4."
+ },
+ {
+  "id": "m1-fun-d2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.funciones",
+  "nivel": "dificil",
+  "enunciado": "La altura de una pelota es h(t) = −5t² + 20t (h en metros, t en segundos). ¿Cuál es su altura máxima?",
+  "opciones": [
+   {
+    "texto": "40 m",
+    "trampa": "Calculaste 20 · 2 sin restar 5 · 2² = 20."
+   },
+   {
+    "texto": "15 m",
+    "trampa": "Usaste t = 1; el máximo ocurre en t = −b/(2a) = 2."
+   },
+   {
+    "texto": "60 m",
+    "trampa": "Sumaste 5 · 2² en vez de restarlo."
+   },
+   {
+    "texto": "20 m",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "t = −20/(2·(−5)) = 2 s. h(2) = −20 + 40 = 20 m."
+ },
+ {
+  "id": "m1-pro-b1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.proporcionalidad",
+  "nivel": "basico",
+  "enunciado": "Si 4 cuadernos cuestan $6.000, ¿cuánto cuestan 10 cuadernos iguales?",
+  "opciones": [
+   {
+    "texto": "$24.000",
+    "trampa": "Multiplicaste 6.000 · 4; primero calcula lo que cuesta uno."
+   },
+   {
+    "texto": "$2.400",
+    "trampa": "Invertiste la proporción: 6.000 · 4 / 10."
+   },
+   {
+    "texto": "$15.000",
+    "trampa": ""
+   },
+   {
+    "texto": "$60.000",
+    "trampa": "Multiplicaste 6.000 · 10 sin dividir por 4."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Un cuaderno cuesta 6.000 / 4 = 1.500. Diez cuestan 15.000."
+ },
+ {
+  "id": "m1-pro-p1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.proporcionalidad",
+  "nivel": "paes",
+  "enunciado": "6 trabajadores pintan una casa en 10 días. ¿Cuántos días tardan 4 trabajadores, al mismo ritmo?",
+  "opciones": [
+   {
+    "texto": "6,7",
+    "trampa": "Usaste proporción directa; con menos trabajadores se tarda más, no menos."
+   },
+   {
+    "texto": "8",
+    "trampa": "Restaste 2 días por los 2 trabajadores menos; la relación es inversa, no una resta."
+   },
+   {
+    "texto": "12",
+    "trampa": "Sumaste 2 días por los 2 trabajadores menos; la relación es inversa."
+   },
+   {
+    "texto": "15",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Es inversa: 6 · 10 = 4 · d → d = 15."
+ },
+ {
+  "id": "m1-pro-p2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.proporcionalidad",
+  "nivel": "paes",
+  "enunciado": "y es inversamente proporcional a x. Si y = 12 cuando x = 3, ¿cuánto vale y cuando x = 9?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "36",
+    "trampa": "Usaste proporción directa: 12 · 9/3."
+   },
+   {
+    "texto": "6",
+    "trampa": "Restaste: 12 − (9 − 3). En la inversa el producto es constante."
+   },
+   {
+    "texto": "4/3",
+    "trampa": "Dividiste 12 por 9; primero calcula la constante k = 3 · 12 = 36."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "x · y = 36 → y = 36 / 9 = 4."
+ },
+ {
+  "id": "m1-pro-d1",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.proporcionalidad",
+  "nivel": "dificil",
+  "enunciado": "Si 3 grifos iguales llenan un estanque en 8 horas, ¿en cuántas horas lo llenan 4 grifos iguales?",
+  "opciones": [
+   {
+    "texto": "10,7",
+    "trampa": "Usaste proporción directa (8 · 4/3); con más grifos se demora menos."
+   },
+   {
+    "texto": "6",
+    "trampa": ""
+   },
+   {
+    "texto": "7",
+    "trampa": "Restaste una hora por el grifo extra; la relación es inversa."
+   },
+   {
+    "texto": "32",
+    "trampa": "Multiplicaste 8 · 4 sin dividir por 3."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Es inversa: 3 · 8 = 4 · t → t = 6 horas."
+ },
+ {
+  "id": "m1-pro-d2",
+  "prueba": "M1",
+  "eje": "Álgebra y funciones",
+  "tema": "m1.alg.proporcionalidad",
+  "nivel": "dificil",
+  "enunciado": "En una tabla, x toma los valores 2, 4 y 5, e y toma los valores 10, 5 y 4, respectivamente. ¿Qué relación hay entre x e y?",
+  "opciones": [
+   {
+    "texto": "Directa, con y / x = 5",
+    "trampa": "Probaste solo el primer par (10/2); con 5/4 ya no da 5."
+   },
+   {
+    "texto": "Inversa, con x · y = 20",
+    "trampa": ""
+   },
+   {
+    "texto": "Inversa, con x · y = 10",
+    "trampa": "Multiplicaste mal: 2 · 10 = 20."
+   },
+   {
+    "texto": "No hay proporcionalidad",
+    "trampa": "Sí la hay: el producto x · y es siempre 20."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "2 · 10 = 4 · 5 = 5 · 4 = 20: producto constante, proporcionalidad inversa."
+ },
+ {
+  "id": "m1-are-b1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.areas-volumenes",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el área de un trapecio de bases 8 cm y 4 cm y altura 5 cm?",
+  "opciones": [
+   {
+    "texto": "30 cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "60 cm²",
+    "trampa": "Olvidaste dividir por 2: A = (B + b) · h / 2."
+   },
+   {
+    "texto": "160 cm²",
+    "trampa": "Multiplicaste las tres medidas."
+   },
+   {
+    "texto": "17 cm²",
+    "trampa": "Sumaste las medidas: eso no es un área."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "A = (8 + 4) · 5 / 2 = 30 cm²."
+ },
+ {
+  "id": "m1-are-p1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.areas-volumenes",
+  "nivel": "paes",
+  "enunciado": "Un cilindro tiene radio 3 cm y altura 10 cm. ¿Cuál es su volumen?",
+  "opciones": [
+   {
+    "texto": "30π cm³",
+    "trampa": "Usaste r en vez de r² en el área de la base."
+   },
+   {
+    "texto": "60π cm³",
+    "trampa": "Usaste el perímetro de la base (2πr) en vez de su área (πr²)."
+   },
+   {
+    "texto": "90π cm³",
+    "trampa": ""
+   },
+   {
+    "texto": "900π cm³",
+    "trampa": "Elevaste al cuadrado también la altura: V = πr² · h."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "V = π · 3² · 10 = 90π cm³."
+ },
+ {
+  "id": "m1-are-p2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.areas-volumenes",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el área total de un cubo de arista 4 cm?",
+  "opciones": [
+   {
+    "texto": "64 cm²",
+    "trampa": "Calculaste el volumen (4³); el área total es 6 · 4²."
+   },
+   {
+    "texto": "16 cm²",
+    "trampa": "Esa es el área de una sola cara; el cubo tiene 6."
+   },
+   {
+    "texto": "48 cm²",
+    "trampa": "Contaste solo 3 caras; el cubo tiene 6."
+   },
+   {
+    "texto": "96 cm²",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "A = 6 · 4² = 96 cm²."
+ },
+ {
+  "id": "m1-are-d1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.areas-volumenes",
+  "nivel": "dificil",
+  "enunciado": "Un círculo tiene perímetro 10π cm. ¿Cuál es su área?",
+  "opciones": [
+   {
+    "texto": "100π cm²",
+    "trampa": "Usaste el diámetro (10) como radio: r = 5."
+   },
+   {
+    "texto": "25π cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "10π cm²",
+    "trampa": "El perímetro y el área no son iguales: A = πr²."
+   },
+   {
+    "texto": "5π cm²",
+    "trampa": "Olvidaste elevar el radio al cuadrado: π · 5²."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "2πr = 10π → r = 5. A = π · 5² = 25π cm²."
+ },
+ {
+  "id": "m1-are-d2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.areas-volumenes",
+  "nivel": "dificil",
+  "enunciado": "Un estanque cilíndrico tiene 2 m de diámetro y 1,5 m de altura. ¿Cuántos litros caben? (Usa π ≈ 3,14 y 1 m³ = 1.000 L.)",
+  "opciones": [
+   {
+    "texto": "4.710 L",
+    "trampa": ""
+   },
+   {
+    "texto": "18.840 L",
+    "trampa": "Usaste el diámetro como radio: r = 1 m."
+   },
+   {
+    "texto": "4,71 L",
+    "trampa": "No pasaste de m³ a litros: multiplica por 1.000."
+   },
+   {
+    "texto": "9.420 L",
+    "trampa": "Usaste el manto (2πr · h) en vez de πr² · h."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "V = 3,14 · 1² · 1,5 = 4,71 m³ = 4.710 L."
+ },
+ {
+  "id": "m1-sem-b1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.semejanza-pitagoras",
+  "nivel": "basico",
+  "enunciado": "Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. ¿Cuánto mide la hipotenusa?",
+  "opciones": [
+   {
+    "texto": "14 cm",
+    "trampa": "Sumaste los catetos; la hipotenusa es √(6² + 8²)."
+   },
+   {
+    "texto": "100 cm",
+    "trampa": "Te faltó sacar la raíz: 6² + 8² = 100."
+   },
+   {
+    "texto": "√28 cm",
+    "trampa": "Restaste los cuadrados; eso sirve para un cateto, no para la hipotenusa."
+   },
+   {
+    "texto": "10 cm",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "c = √(36 + 64) = √100 = 10 cm."
+ },
+ {
+  "id": "m1-sem-p1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.semejanza-pitagoras",
+  "nivel": "paes",
+  "enunciado": "Una escalera de 5 m se apoya en una pared, con su base a 3 m de la pared. ¿A qué altura de la pared llega?",
+  "opciones": [
+   {
+    "texto": "√34 m",
+    "trampa": "Sumaste los cuadrados; la escalera es la hipotenusa, así que se resta."
+   },
+   {
+    "texto": "4 m",
+    "trampa": ""
+   },
+   {
+    "texto": "2 m",
+    "trampa": "Restaste las medidas sin elevarlas al cuadrado."
+   },
+   {
+    "texto": "8 m",
+    "trampa": "Sumaste las medidas."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "h = √(5² − 3²) = √16 = 4 m."
+ },
+ {
+  "id": "m1-sem-p2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.semejanza-pitagoras",
+  "nivel": "paes",
+  "enunciado": "En un mapa a escala 1 : 50.000, dos ciudades están a 8 cm. ¿Cuál es la distancia real entre ellas?",
+  "opciones": [
+   {
+    "texto": "4 km",
+    "trampa": ""
+   },
+   {
+    "texto": "40 km",
+    "trampa": "Corriste mal la coma: 400.000 cm = 4.000 m = 4 km."
+   },
+   {
+    "texto": "0,4 km",
+    "trampa": "Dividiste de más: 400.000 cm son 4 km."
+   },
+   {
+    "texto": "6,25 km",
+    "trampa": "Dividiste 50.000 por 8; hay que multiplicar."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "8 · 50.000 = 400.000 cm = 4.000 m = 4 km."
+ },
+ {
+  "id": "m1-sem-d1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.semejanza-pitagoras",
+  "nivel": "dificil",
+  "enunciado": "Un poste de 3 m proyecta una sombra de 2 m. A la misma hora, un edificio proyecta una sombra de 18 m. ¿Cuál es la altura del edificio?",
+  "opciones": [
+   {
+    "texto": "12 m",
+    "trampa": "Invertiste la razón: 18 · 2/3."
+   },
+   {
+    "texto": "19 m",
+    "trampa": "Sumaste la diferencia (1 m) en vez de usar la razón."
+   },
+   {
+    "texto": "27 m",
+    "trampa": ""
+   },
+   {
+    "texto": "36 m",
+    "trampa": "Multiplicaste 18 · 2."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Triángulos semejantes: h / 18 = 3 / 2 → h = 27 m."
+ },
+ {
+  "id": "m1-sem-d2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.semejanza-pitagoras",
+  "nivel": "dificil",
+  "enunciado": "Dos triángulos semejantes tienen razón de semejanza 1 : 3. Si el área del menor es 5 cm², ¿cuál es el área del mayor?",
+  "opciones": [
+   {
+    "texto": "15 cm²",
+    "trampa": "Las áreas no crecen con k = 3, sino con k² = 9."
+   },
+   {
+    "texto": "45 cm²",
+    "trampa": ""
+   },
+   {
+    "texto": "135 cm²",
+    "trampa": "Usaste k³; esa razón es para volúmenes."
+   },
+   {
+    "texto": "8 cm²",
+    "trampa": "Sumaste 3 al área."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Razón de áreas = k² = 9. 5 · 9 = 45 cm²."
+ },
+ {
+  "id": "m1-tra-b1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.transformaciones",
+  "nivel": "basico",
+  "enunciado": "El punto (2, −1) se traslada según el vector (−3, 4). ¿A qué punto llega?",
+  "opciones": [
+   {
+    "texto": "(5, −5)",
+    "trampa": "Restaste el vector en vez de sumarlo."
+   },
+   {
+    "texto": "(−6, −4)",
+    "trampa": "Multiplicaste las coordenadas; en una traslación se suman."
+   },
+   {
+    "texto": "(−1, 3)",
+    "trampa": ""
+   },
+   {
+    "texto": "(1, 3)",
+    "trampa": "Error de signo: 2 + (−3) = −1."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "(2 + (−3), −1 + 4) = (−1, 3)."
+ },
+ {
+  "id": "m1-tra-p1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.transformaciones",
+  "nivel": "paes",
+  "enunciado": "¿Qué punto se obtiene al reflejar (3, 5) respecto del eje Y?",
+  "opciones": [
+   {
+    "texto": "(−3, 5)",
+    "trampa": ""
+   },
+   {
+    "texto": "(3, −5)",
+    "trampa": "Eso es reflejar respecto del eje X."
+   },
+   {
+    "texto": "(−3, −5)",
+    "trampa": "Eso es reflejar respecto del origen (o rotar 180°)."
+   },
+   {
+    "texto": "(5, 3)",
+    "trampa": "Eso es reflejar respecto de la recta y = x."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Al reflejar respecto del eje Y cambia el signo de la x: (−3, 5)."
+ },
+ {
+  "id": "m1-tra-p2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.transformaciones",
+  "nivel": "paes",
+  "enunciado": "¿Qué punto se obtiene al rotar (4, 1) en 90° en sentido antihorario, con centro en el origen?",
+  "opciones": [
+   {
+    "texto": "(1, −4)",
+    "trampa": "Rotaste en sentido horario."
+   },
+   {
+    "texto": "(−4, −1)",
+    "trampa": "Eso es una rotación de 180°."
+   },
+   {
+    "texto": "(4, −1)",
+    "trampa": "Eso es una reflexión respecto del eje X."
+   },
+   {
+    "texto": "(−1, 4)",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Rotación de 90° antihoraria: (x, y) → (−y, x) = (−1, 4)."
+ },
+ {
+  "id": "m1-tra-d1",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.transformaciones",
+  "nivel": "dificil",
+  "enunciado": "El triángulo A(1, 1), B(4, 1), C(1, 3) se traslada de modo que A llega a (−2, 5). ¿A qué punto llega C?",
+  "opciones": [
+   {
+    "texto": "(1, 7)",
+    "trampa": "Solo moviste la coordenada y; el vector es (−3, 4)."
+   },
+   {
+    "texto": "(−2, 7)",
+    "trampa": ""
+   },
+   {
+    "texto": "(−2, 5)",
+    "trampa": "Ese es el punto al que llega A, no C."
+   },
+   {
+    "texto": "(4, −1)",
+    "trampa": "Restaste el vector en vez de sumarlo."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Vector: (−2 − 1, 5 − 1) = (−3, 4). C′ = (1 − 3, 3 + 4) = (−2, 7)."
+ },
+ {
+  "id": "m1-tra-d2",
+  "prueba": "M1",
+  "eje": "Geometría",
+  "tema": "m1.geo.transformaciones",
+  "nivel": "dificil",
+  "enunciado": "¿Qué transformación lleva el triángulo de vértices (1, 2), (3, 2), (1, 5) al de vértices (−1, −2), (−3, −2), (−1, −5)?",
+  "opciones": [
+   {
+    "texto": "Una reflexión respecto del eje X",
+    "trampa": "Esa solo cambiaría el signo de y: (1, −2)."
+   },
+   {
+    "texto": "Una reflexión respecto del eje Y",
+    "trampa": "Esa solo cambiaría el signo de x: (−1, 2)."
+   },
+   {
+    "texto": "Una traslación según el vector (−2, −4)",
+    "trampa": "Una traslación mueve todos los puntos igual; (3, 2) no llega a (−3, −2) con ese vector."
+   },
+   {
+    "texto": "Una rotación de 180° con centro en el origen",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Cada punto (x, y) va a (−x, −y): es una rotación de 180° con centro en el origen."
+ },
+ {
+  "id": "m1-dat-b1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.datos",
+  "nivel": "basico",
+  "enunciado": "¿Cuál es el promedio de 5, 6, 6, 10 y 13?",
+  "opciones": [
+   {
+    "texto": "6",
+    "trampa": "Ese valor es la mediana (y la moda), no el promedio."
+   },
+   {
+    "texto": "10",
+    "trampa": "Dividiste la suma (40) por 4; son 5 datos."
+   },
+   {
+    "texto": "9",
+    "trampa": "Promediaste solo el menor y el mayor: (5 + 13) / 2."
+   },
+   {
+    "texto": "8",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Suma: 40. Promedio: 40 / 5 = 8."
+ },
+ {
+  "id": "m1-dat-p1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.datos",
+  "nivel": "paes",
+  "enunciado": "En una encuesta, 12 de 40 estudiantes eligieron fútbol. ¿Cuál es la frecuencia relativa porcentual de fútbol?",
+  "opciones": [
+   {
+    "texto": "12 %",
+    "trampa": "Esa es la frecuencia absoluta (12 estudiantes), no el porcentaje."
+   },
+   {
+    "texto": "30 %",
+    "trampa": ""
+   },
+   {
+    "texto": "3,3 %",
+    "trampa": "Dividiste 40 por 12; es 12 / 40."
+   },
+   {
+    "texto": "28 %",
+    "trampa": "Restaste 40 − 12."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "12 / 40 = 0,3 = 30 %."
+ },
+ {
+  "id": "m1-dat-p2",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.datos",
+  "nivel": "paes",
+  "enunciado": "Los datos ordenados son 2, 4, 4, 4, 7, 8, 9, 11, 12. ¿Cuál es el primer cuartil (Q₁)?",
+  "opciones": [
+   {
+    "texto": "4",
+    "trampa": ""
+   },
+   {
+    "texto": "7",
+    "trampa": "Esa es la mediana (Q₂)."
+   },
+   {
+    "texto": "2,25",
+    "trampa": "Calculaste la posición (n/4) y la usaste como si fuera el valor."
+   },
+   {
+    "texto": "3",
+    "trampa": "Promediaste 2 y 4; el 25 % de los datos cae entre dos 4."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El 25 % inferior termina entre el 2.º y el 3.er dato, que son 4 y 4: Q₁ = 4."
+ },
+ {
+  "id": "m1-dat-d1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.datos",
+  "nivel": "dificil",
+  "enunciado": "Un diagrama de cajón de las notas de un curso muestra: mínimo 2,0; Q₁ = 4,0; mediana 5,0; Q₃ = 6,0; máximo 7,0. ¿Qué afirmación es verdadera?",
+  "opciones": [
+   {
+    "texto": "El promedio del curso es 5,0",
+    "trampa": "El cajón muestra la mediana, no el promedio."
+   },
+   {
+    "texto": "La mitad de las notas está entre 2,0 y 6,0",
+    "trampa": "Entre el mínimo y Q₃ está cerca del 75 %; la mitad central está entre Q₁ y Q₃."
+   },
+   {
+    "texto": "Al menos la mitad del curso tiene nota 5,0 o más",
+    "trampa": ""
+   },
+   {
+    "texto": "El 25 % de las notas es menor que 2,0",
+    "trampa": "2,0 es el mínimo: ninguna nota es menor. El 25 % más bajo está bajo 4,0."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "La mediana (5,0) deja al menos la mitad de los datos a cada lado."
+ },
+ {
+  "id": "m1-dat-d2",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.datos",
+  "nivel": "dificil",
+  "enunciado": "El promedio de 4 notas es 5,5. ¿Qué nota se necesita en una quinta prueba para que el promedio suba a 5,8?",
+  "opciones": [
+   {
+    "texto": "7,0",
+    "trampa": ""
+   },
+   {
+    "texto": "6,1",
+    "trampa": "Promediaste solo dos notas (5,5 y la nueva); el 5,5 vale por 4 notas."
+   },
+   {
+    "texto": "5,8",
+    "trampa": "Con un 5,8 el promedio no llega a 5,8: quedaría 5,56."
+   },
+   {
+    "texto": "1,2",
+    "trampa": "Multiplicaste 5,8 por 4 notas; con la quinta son 5."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Suma actual: 4 · 5,5 = 22. Suma necesaria: 5 · 5,8 = 29. Nota: 29 − 22 = 7,0."
+ },
+ {
+  "id": "m1-prb-b1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.probabilidad",
+  "nivel": "basico",
+  "enunciado": "Se lanza un dado común. ¿Cuál es la probabilidad de obtener un número mayor que 4?",
+  "opciones": [
+   {
+    "texto": "1/2",
+    "trampa": "Contaste el 4; «mayor que 4» son solo el 5 y el 6."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Esa es la probabilidad de obtener 4 o menos."
+   },
+   {
+    "texto": "1/3",
+    "trampa": ""
+   },
+   {
+    "texto": "1/6",
+    "trampa": "Contaste un solo caso favorable; son dos: 5 y 6."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Casos favorables: 5 y 6. P = 2/6 = 1/3."
+ },
+ {
+  "id": "m1-prb-p1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.probabilidad",
+  "nivel": "paes",
+  "enunciado": "Se lanzan dos monedas. ¿Cuál es la probabilidad de obtener exactamente una cara?",
+  "opciones": [
+   {
+    "texto": "1/3",
+    "trampa": "Contaste 3 resultados (0, 1 o 2 caras), pero no son igual de probables: hay 4 casos."
+   },
+   {
+    "texto": "1/2",
+    "trampa": ""
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Contaste solo CS; también está SC."
+   },
+   {
+    "texto": "3/4",
+    "trampa": "Esa es la probabilidad de obtener al menos una cara."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Casos: CC, CS, SC, SS. Exactamente una cara: CS y SC. P = 2/4 = 1/2."
+ },
+ {
+  "id": "m1-prb-p2",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.probabilidad",
+  "nivel": "paes",
+  "enunciado": "Una urna tiene 5 bolitas rojas, 3 azules y 2 verdes. Se saca una al azar. ¿Cuál es la probabilidad de que sea roja o verde?",
+  "opciones": [
+   {
+    "texto": "1/10",
+    "trampa": "Multiplicaste 5/10 · 2/10; para «o» con sucesos que no pueden ocurrir juntos se suma."
+   },
+   {
+    "texto": "3/10",
+    "trampa": "Esa es la probabilidad de sacar azul."
+   },
+   {
+    "texto": "1/5",
+    "trampa": "Esa es solo la probabilidad de verde."
+   },
+   {
+    "texto": "7/10",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "P(roja o verde) = 5/10 + 2/10 = 7/10."
+ },
+ {
+  "id": "m1-prb-d1",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.probabilidad",
+  "nivel": "dificil",
+  "enunciado": "De la misma urna (5 rojas, 3 azules y 2 verdes) se sacan dos bolitas, una tras otra y sin devolver la primera. ¿Cuál es la probabilidad de que ambas sean rojas?",
+  "opciones": [
+   {
+    "texto": "2/9",
+    "trampa": ""
+   },
+   {
+    "texto": "1/4",
+    "trampa": "Calculaste con reposición (5/10 · 5/10); sin devolver quedan 4 rojas de 9."
+   },
+   {
+    "texto": "17/18",
+    "trampa": "Sumaste 5/10 + 4/9; para «y» se multiplica."
+   },
+   {
+    "texto": "4/9",
+    "trampa": "Esa es solo la segunda extracción; falta multiplicar por 5/10."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "P = 5/10 · 4/9 = 20/90 = 2/9."
+ },
+ {
+  "id": "m1-prb-d2",
+  "prueba": "M1",
+  "eje": "Probabilidad y estadística",
+  "tema": "m1.pro.probabilidad",
+  "nivel": "dificil",
+  "enunciado": "En un curso de 30 estudiantes, 18 juegan fútbol, 12 juegan básquetbol y 5 juegan ambos. Si se elige uno al azar, ¿cuál es la probabilidad de que juegue fútbol o básquetbol?",
+  "opciones": [
+   {
+    "texto": "1",
+    "trampa": "Sumaste 18 + 12 sin restar a los 5 que juegan ambos."
+   },
+   {
+    "texto": "2/3",
+    "trampa": "Restaste dos veces a los 5 que juegan ambos."
+   },
+   {
+    "texto": "5/6",
+    "trampa": ""
+   },
+   {
+    "texto": "1/6",
+    "trampa": "Esa es la probabilidad de que no juegue ninguno de los dos."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "P(F ∪ B) = (18 + 12 − 5) / 30 = 25/30 = 5/6."
+ }
+]

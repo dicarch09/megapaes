@@ -3,7 +3,7 @@
 // No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
 const P27 = (() => {
   'use strict';
-  const VERSION = 3;
+  const VERSION = 4;
   const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
 
   const PRUEBAS = {
@@ -49,26 +49,34 @@ const P27 = (() => {
     ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', 'fisica.html#fis.ond.dispositivos'],
     ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', 'fisica.html#fis.ele.domiciliaria'],
 
-    ['bio.celular', 'CIE', 'Biología', 'R', 'Organización y actividad celular', null],
-    ['bio.procesos', 'CIE', 'Biología', 'R', 'Procesos y funciones (incl. sistema nervioso)', null],
-    ['bio.herencia', 'CIE', 'Biología', 'R', 'Herencia y evolución', null],
-    ['bio.ambiente', 'CIE', 'Biología', 'R', 'Organismo y ambiente', null],
-    ['qui.atomica', 'CIE', 'Química', 'R', 'Estructura atómica', null],
-    ['qui.organica', 'CIE', 'Química', 'R', 'Química orgánica', null],
-    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Reacciones y estequiometría', null],
+    ['bio.celula', 'CIE', 'Biología', 'R', 'Célula: organelos y células especializadas', 'bioquim.html#bio.celula'],
+    ['bio.nervioso', 'CIE', 'Biología', 'R', 'Sistema nervioso y sus cuidados', 'bioquim.html#bio.nervioso'],
+    ['bio.reproduccion', 'CIE', 'Biología', 'R', 'Reproducción: gametos, fecundación y ciclos', 'bioquim.html#bio.reproduccion'],
+    ['bio.anticoncepcion-its', 'CIE', 'Biología', 'R', 'Métodos anticonceptivos e ITS', 'bioquim.html#bio.anticoncepcion-its'],
+    ['bio.division', 'CIE', 'Biología', 'R', 'Ciclo celular, mitosis y meiosis', 'bioquim.html#bio.division'],
+    ['bio.manipulacion', 'CIE', 'Biología', 'R', 'Manipulación genética', 'bioquim.html#bio.manipulacion'],
+    ['bio.evolucion', 'CIE', 'Biología', 'R', 'Evolución y selección natural', 'bioquim.html#bio.evolucion'],
+    ['bio.fotosintesis', 'CIE', 'Biología', 'R', 'Fotosíntesis y respiración celular', 'bioquim.html#bio.fotosintesis'],
+    ['qui.materia', 'CIE', 'Química', 'R', 'Materia, mezclas y separación', 'bioquim.html#qui.materia'],
+    ['qui.modelos', 'CIE', 'Química', 'R', 'Modelos atómicos y partículas (Z, A)', 'bioquim.html#qui.modelos'],
+    ['qui.carbono', 'CIE', 'Química', 'R', 'Átomo de carbono: hibridación y enlaces', 'bioquim.html#qui.carbono'],
+    ['qui.organica', 'CIE', 'Química', 'R', 'Hidrocarburos y grupos funcionales', 'bioquim.html#qui.organica'],
+    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Leyes ponderales, mol y reactivo limitante', 'bioquim.html#qui.estequiometria'],
+    ['qui.composicion', 'CIE', 'Química', 'R', 'Composición porcentual y fórmula empírica', 'bioquim.html#qui.composicion'],
+    ['qui.soluciones', 'CIE', 'Química', 'R', 'Soluciones: concentración y dilución', 'bioquim.html#qui.soluciones'],
 
-    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', null],
-    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', null],
-    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', null],
-    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', null],
-    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', null],
-    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', null],
-    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', null],
-    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', null],
-    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', null],
-    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', null],
-    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', null],
-    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', null],
+    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', 'm1.html#m1.num.enteros-racionales'],
+    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', 'm1.html#m1.num.porcentaje'],
+    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', 'm1.html#m1.num.potencias-raices'],
+    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', 'm1.html#m1.alg.expresiones'],
+    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', 'm1.html#m1.alg.ecuaciones'],
+    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', 'm1.html#m1.alg.funciones'],
+    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', 'm1.html#m1.alg.proporcionalidad'],
+    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', 'm1.html#m1.geo.areas-volumenes'],
+    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', 'm1.html#m1.geo.semejanza-pitagoras'],
+    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', 'm1.html#m1.geo.transformaciones'],
+    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
+    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
 
     ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
     ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
@@ -76,6 +84,8 @@ const P27 = (() => {
   ];
   const TEMAS = {};
   for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
+  // Fase 4: los 7 temas gruesos de Bio/Quím pasaron a 15 temas finos. Los datos guardados se renombran una vez.
+  const RENOMBRE = { 'bio.celular': 'bio.celula', 'bio.procesos': 'bio.nervioso', 'bio.herencia': 'bio.division', 'bio.ambiente': 'bio.fotosintesis', 'qui.atomica': 'qui.modelos' };
   const PESO_PRIO = { A: 3, B: 2, C: 1, R: 1.5 };
 
   // ---------- almacenamiento ----------
@@ -86,6 +96,22 @@ const P27 = (() => {
     try { localStorage.setItem(K[k], JSON.stringify(v)); } catch (e) { console.warn('No se pudo guardar', k); }
     window.dispatchEvent(new CustomEvent('p27:cambio', { detail: k }));
   }
+  // renombra temas viejos en lo guardado (dominio, repaso, diagnóstico); se hace una sola vez
+  (function migrar() {
+    const ren = (t) => RENOMBRE[t] || t;
+    const dom = cargar('dominio', null);
+    if (dom && Object.keys(dom).some((t) => RENOMBRE[t])) {
+      for (const t of Object.keys(dom)) if (RENOMBRE[t]) { if (!(RENOMBRE[t] in dom)) dom[RENOMBRE[t]] = dom[t]; delete dom[t]; }
+      guardar('dominio', dom);
+    }
+    const rep = cargar('repaso', null);
+    if (rep && rep.some((x) => RENOMBRE[x.tema])) { rep.forEach((x) => { x.tema = ren(x.tema); }); guardar('repaso', rep); }
+    const dg = cargar('diag', null);
+    if (dg && Object.values(dg).some((d) => d && d.respuestas && d.respuestas.some((r) => RENOMBRE[r.tema]))) {
+      Object.values(dg).forEach((d) => { if (d && d.respuestas) d.respuestas.forEach((r) => { r.tema = ren(r.tema); }); });
+      guardar('diag', dg);
+    }
+  })();
 
   // ---------- fechas (locales) ----------
   const pad = (n) => String(n).padStart(2, '0');

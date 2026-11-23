@@ -1,0 +1,2593 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>PAES 2027 · Biología y Química</title>
+<style>
+/* == paes27-css v3 == */
+/* Sistema de diseño PAES·27 · dicarch (prototipo C, «azulejos vivos»): degradados y sombras suaves.
+   El tema oscuro usa el mismo estilo (degradados, sombras difusas) sobre fondo azul noche.
+   Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
+   Se copia IDÉNTICO en cada página con tools/sync_core.py: edita tools/core.css. */
+@font-face{font-family:"Nunito Sans";src:url(lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(lib/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+:root{
+  --bg:#F4F6FB;--panel:#FFFFFF;--panel2:#EEF1F8;--line:#DDE3EE;--ink:#14162B;--muted:#5D6478;
+  --acc:#2563EB;--acc2:#0E9DB4;--ok:#0B8F55;--mal:#D4145A;--warn:#C46A00;--okf:#18D98B;--malf:#E5157A;
+  --cv:#FFFFFF;--cv-panel:#E4E9F3;--cv-panel2:#CBD3E2;
+  --m2:#0E8BD8;--cie:#0BAE6A;--m1:#F08A00;--len:#E5157A;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(20,22,43,.07);--sombra:0 10px 30px -14px rgba(20,22,43,.28);--sombra-sm:0 4px 14px -8px rgba(20,22,43,.3);--sombra-btn:0 6px 16px -8px rgba(229,21,122,.6);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.14),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.10),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.10),transparent 70%);
+  color-scheme:light
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#12142A;--panel:#1C1F3A;--panel2:#262A4A;--line:#323760;--ink:#E9EBF7;--muted:#A4AAC6;
+  --acc:#7C9DFF;--acc2:#3FD3E6;--ok:#2EE09A;--mal:#FF5C8A;--warn:#FFB547;--okf:#18D98B;--malf:#F2295F;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;
+  --m2:#22B8E0;--cie:#18D98B;--m1:#FFA53A;--len:#F2295F;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(255,255,255,.06);--sombra:0 12px 32px -14px rgba(0,0,0,.7);--sombra-sm:0 4px 14px -8px rgba(0,0,0,.65);--sombra-btn:0 6px 18px -8px rgba(229,21,122,.65);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.18),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.14),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.12),transparent 70%);
+  color-scheme:dark}}
+:root[data-theme=dark]{
+  --bg:#12142A;--panel:#1C1F3A;--panel2:#262A4A;--line:#323760;--ink:#E9EBF7;--muted:#A4AAC6;
+  --acc:#7C9DFF;--acc2:#3FD3E6;--ok:#2EE09A;--mal:#FF5C8A;--warn:#FFB547;--okf:#18D98B;--malf:#F2295F;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;
+  --m2:#22B8E0;--cie:#18D98B;--m1:#FFA53A;--len:#F2295F;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(255,255,255,.06);--sombra:0 12px 32px -14px rgba(0,0,0,.7);--sombra-sm:0 4px 14px -8px rgba(0,0,0,.65);--sombra-btn:0 6px 18px -8px rgba(229,21,122,.65);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.18),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.14),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.12),transparent 70%);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--fondo),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.55 "Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,summary,.disp{font-family:"Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;letter-spacing:-.01em}
+h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
+h2{font-size:1.3rem}h3{font-size:1.08rem}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 32px}
+.card{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:16px;margin:14px 0}
+.muted{color:var(--muted)}.small{font-size:.88rem}
+.btn{display:inline-flex;align-items:center;gap:.3em;background:var(--btn);color:var(--btn-ink);border:0;border-radius:var(--r-sm);padding:.6em 1.1em;font:800 1rem/1.1 "Bricolage Grotesque","Nunito Sans",system-ui,sans-serif;cursor:pointer;box-shadow:var(--sombra-btn);transition:transform .08s,box-shadow .08s,filter .1s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.btn:disabled{opacity:.5;cursor:default;transform:none}
+.btn.sec{background:var(--panel);color:var(--ink);border:var(--borde);box-shadow:var(--sombra-sm)}
+.btn.mini{padding:.4em .8em;font-size:.88rem}
+kbd{font:700 .7em ui-monospace,monospace;background:rgba(127,127,127,.22);border-radius:5px;padding:.1em .35em;margin-left:.3em}
+/* encabezado, marca y pie */
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.marca svg{width:44px;height:44px;flex:none}
+.marca b{display:block;font:800 1.45rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.marca small{display:block;color:var(--muted);font-weight:800;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+.paginas{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.paginas a,.paginas span{padding:.4em .85em;border-radius:999px;font-weight:800;font-size:.88rem;text-decoration:none;color:var(--ink);background:var(--panel);border:var(--borde);box-shadow:var(--sombra-sm)}
+.paginas a.on{background:var(--c,var(--m2-g));color:var(--sobre);border-color:transparent}
+.paginas span{color:var(--muted);box-shadow:none;border-style:dashed}
+.tema-btn{width:40px;height:40px;border-radius:12px;border:var(--borde);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:var(--sombra-sm)}
+.firma{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.85rem;font-weight:700;padding:18px 0 6px}
+.firma img{width:30px;height:30px;border-radius:8px}
+.firma b{font-family:"Bricolage Grotesque",sans-serif;color:var(--ink)}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:8px 0 6px}
+.hero h1{font-size:clamp(1.6rem,1.15rem + 1.7vw,2.4rem);margin:0}
+/* pestañas, paneles y acordeones */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px;padding:5px;background:var(--panel2);border-radius:var(--r-sm)}
+.tabs button{background:none;border:0;color:var(--muted);font:800 .92rem/1 "Bricolage Grotesque",sans-serif;padding:.65em .9em;cursor:pointer;border-radius:10px}
+.tabs button.on{background:var(--panel);color:var(--ink);box-shadow:var(--sombra-sm)}
+.pane{display:none}.pane.on{display:block}
+details.acc{background:var(--panel2);border-radius:var(--r-sm);margin:12px 0}
+details.acc>summary{cursor:pointer;padding:.75em 1em;font-weight:800;list-style:none;display:flex;align-items:center;gap:8px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"▸";margin-left:auto;color:var(--muted);transition:transform .15s}details.acc[open]>summary::after{transform:rotate(90deg)}
+details.acc>.in{padding:0 1em 1em}
+.chip{display:inline-block;padding:.15em .6em;border-radius:99px;font-size:.74rem;font-weight:900;background:var(--panel2);color:var(--muted)}
+.chip.A{background:color-mix(in srgb,var(--mal) 16%,transparent);color:var(--mal)}
+.chip.B{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.chip.C{color:var(--muted)}
+.chip.R{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.chip.nuevo{background:color-mix(in srgb,var(--cie) 18%,transparent);color:var(--ok)}
+.bar{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:99px}
+.txt-ok{color:var(--ok)}.txt-mal{color:var(--mal)}.txt-warn{color:var(--warn)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input[type=range]{accent-color:var(--pag-solo,var(--m2));width:100%;height:24px}
+select,input[type=time],input[type=number],textarea{background:var(--panel2);color:var(--ink);border:var(--borde);border-radius:10px;padding:.35em .55em;font:inherit}
+code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92em}
+/* pregunta (práctica, diagnóstico, ensayo) */
+.q{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:16px}
+.q-meta{font-size:.74rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.q-enun{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+.q-enun table{border-collapse:collapse;margin:8px 0}.q-enun td,.q-enun th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+.q-ops{display:grid;gap:9px}
+.q-op{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel2);color:var(--ink);border:2px solid transparent;border-radius:14px;padding:.7em .9em;font:inherit;font-weight:700;cursor:pointer;transition:transform .06s,border-color .1s}
+.q-op:hover:not(:disabled){border-color:var(--acc);transform:translateY(-1px)}
+.q-op:disabled{cursor:default}
+.q-l{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:800 .95rem/1 "Bricolage Grotesque",sans-serif;background:var(--panel);color:var(--ink)}
+.q-op.ok{border-color:var(--okf);background:color-mix(in srgb,var(--okf) 16%,var(--panel))}.q-op.ok .q-l{background:var(--okf);color:#0F1923}
+.q-op.mal{border-color:var(--malf);background:color-mix(in srgb,var(--malf) 14%,var(--panel))}.q-op.mal .q-l{background:var(--malf);color:#fff}
+.q-op.sel{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,var(--panel))}.q-op.sel .q-l{background:var(--acc);color:var(--sobre)}
+.q-fb{margin-top:10px}
+.q-trampa{margin:8px 0;padding:10px 12px;border-left:5px solid var(--malf);border-radius:12px;background:color-mix(in srgb,var(--malf) 12%,var(--panel))}
+.q-exp{margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--panel2)}
+.q-acc{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+/* lecciones */
+.leccion{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);padding:18px;margin:16px 0}
+.lec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;cursor:pointer;user-select:none}
+.lec-head h2{margin:0 6px 0 0;font-size:1.22rem}
+.lec-head::before{content:"";width:12px;height:12px;flex:none;border-right:3px solid var(--acc);border-bottom:3px solid var(--acc);transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+.leccion.cerrada .lec-head::before{transform:rotate(-45deg)}
+.leccion.cerrada .lec-body{display:none}
+.leccion.cerrada{padding:13px 18px}
+.dom{margin-left:auto;font-size:.74rem;font-weight:900;padding:.2em .65em;border-radius:99px;background:var(--panel2)}
+.idea{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px;margin:12px 0;font-weight:600}
+.paso{margin:20px 0}
+.pasos{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
+.pasos button{border:0;border-radius:99px;padding:.45em .85em;background:var(--panel2);color:var(--muted);font:800 .86rem/1.1 "Bricolage Grotesque","Nunito Sans",sans-serif;cursor:pointer;transition:background .12s,color .12s}
+.pasos button:hover{color:var(--ink)}
+.pasos button.on{background:var(--pag,var(--m2-g));color:var(--sobre)}
+.paso-pane{display:none}.paso-pane.on{display:block;animation:apar .25s ease}
+.con-pasos .paso{margin:14px 0 8px}.con-pasos .paso>h3{display:none}
+.con-pasos .paso-pane.multi .paso>h3{display:flex;margin-top:18px}.con-pasos .paso-pane.multi .paso>h3 .n{display:none}
+.con-pasos details.acc.porque{background:none;margin:14px 0 8px}.con-pasos details.acc.porque>summary{display:none}.con-pasos details.acc.porque>.in{padding:0}
+.paso-sig{display:flex;justify-content:flex-end;margin-top:14px}
+.paso>h3{display:flex;align-items:center;gap:9px}
+.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
+.cv,.formula,.sd-demo,.cv+.cap,.sd-demo+.cap{
+  --ink:#DBDEE1;--muted:#9AA3B2;--line:#35406A;--panel:#1F2747;--panel2:#2A3359;--sobre:#0F1923;
+  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;--borde:1px solid rgba(147,160,187,.16);color:var(--ink)}
+.cv{position:relative;min-width:0;border-radius:14px;overflow:hidden;border:0;background:var(--cv)}
+.cv:has(+.cap),.sd-demo:has(+.cap){border-bottom-left-radius:0;border-bottom-right-radius:0}
+.cv+.cap,.sd-demo+.cap{margin:0;background:var(--cv);border-top:1px solid rgba(147,160,187,.12);border-radius:0 0 14px 14px;padding:8px 12px;font-weight:600;font-size:.93rem}
+.cv canvas{display:block;width:100%}
+.cv.tres{height:340px}.cv.tres canvas{height:100%!important}
+.manip{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:820px){.manip{grid-template-columns:minmax(0,1fr)}}
+.ctrl{display:grid;gap:8px}
+.sl{display:grid;gap:2px;font-size:.92rem;font-weight:700}
+.sl b{color:var(--pag-solo,var(--m2));font-variant-numeric:tabular-nums}
+.formula{background:var(--cv);border-radius:14px;padding:12px 14px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.8}
+.formula .res{font-weight:800}
+.formula .hl{color:var(--warn);font-weight:800}
+.cap{margin:8px 0 0;min-height:1.5em}
+.ley{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);font-weight:700;margin-top:4px}
+.ley i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+/* «el porqué» como viñetas visuales */
+details.acc>.in>ol{counter-reset:v;list-style:none;padding:0;margin:4px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px}
+details.acc>.in>ol>li{counter-increment:v;position:relative;background:var(--panel);border:var(--borde);border-radius:var(--r-sm);box-shadow:var(--sombra-sm);padding:40px 12px 12px;font-size:.95rem;line-height:1.5}
+details.acc>.in>ol>li::before{content:counter(v);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:var(--btn);color:var(--btn-ink);font:800 .85rem/1 "Bricolage Grotesque",sans-serif}
+details.acc>.in>ol>li:not(:last-child)::after{content:"→";position:absolute;right:12px;top:8px;color:var(--muted);font-weight:900;font-size:1.1rem}
+details.acc>.in>ol>li b{display:inline-block;background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--ink);border-radius:8px;padding:.05em .4em;margin:.1em 0;font-weight:800}
+details.acc>.in>ol>li .esq{display:block;width:100%;height:auto;max-height:110px;margin:-2px 0 8px;overflow:visible;color:var(--ink)}
+.tarjeta .esq{display:block;width:100%;height:auto;max-height:130px;margin:8px 0 6px;overflow:visible;color:var(--ink)}
+.esq .a{stroke:var(--acc);fill:none}.esq .b{stroke:var(--acc2);fill:none}
+.esq .w{stroke:var(--warn);fill:none}.esq .r{stroke:var(--mal);fill:none}.esq .g{stroke:var(--ok);fill:none}
+.esq .m{stroke:var(--muted);fill:none}.esq text{fill:currentColor;font:800 12px "Nunito Sans",sans-serif;stroke:none}
+.esq .fa{fill:var(--acc);stroke:none}.esq .fr{fill:var(--mal);stroke:none}.esq .fg{fill:var(--ok);stroke:none}.esq .fm{fill:var(--muted);stroke:none}.esq .fw{fill:var(--warn);stroke:none}.esq .fb{fill:var(--acc2);stroke:none}
+/* ejemplo resuelto y práctica */
+.ejemplo .enun{font-weight:700;margin-bottom:8px}
+.ejemplo ol{margin:0;padding-left:1.4em}
+.ejemplo li{margin:7px 0;animation:apar .35s ease}
+@keyframes apar{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+.ejemplo .trampa-ej{margin-top:10px;padding:8px 12px;border-left:5px solid var(--warn);border-radius:10px;background:color-mix(in srgb,var(--warn) 10%,var(--panel))}
+.niveles{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.niveles button.on{background:var(--btn);color:var(--btn-ink);border-color:transparent}
+.resumen-nivel{background:var(--panel2);border-radius:var(--r);padding:14px}
+table.t2{border-collapse:collapse;margin:4px 0;font-variant-numeric:tabular-nums}
+table.t2 td,table.t2 th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 .hl2{background:color-mix(in srgb,var(--acc2) 20%,transparent)}
+.pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.pend .card{margin:0;box-shadow:none;border-style:dashed}
+.sd-demo{background:var(--cv);border-radius:14px;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:200px}
+.sd-caso>div{margin:4px 0}
+.sd-lista{margin:0;padding:0;list-style:none}.sd-lista li{padding:3px 8px;border-radius:8px;transition:opacity .3s}
+.sd-lista li.tach{text-decoration:line-through;opacity:.35}.sd-lista li.fin{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-weight:800}
+.sd-opciones{margin:-4px 0 8px}
+@media (max-width:700px){.sd-demo{grid-template-columns:1fr}}
+/* lecciones en formato tarjeta */
+.tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0 16px}
+.tarjeta{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px}
+.tarjeta h4{margin:6px 0 4px;font:800 1.05rem/1.2 "Bricolage Grotesque",sans-serif}
+.tarjeta p{margin:0;font-size:.93rem}
+.tarjeta .onda{display:inline-block;font-size:.72rem;font-weight:900;padding:.15em .55em;border-radius:99px;background:color-mix(in srgb,var(--acc) 15%,transparent);color:var(--acc)}
+.tarjeta.trampa .onda{background:color-mix(in srgb,var(--malf) 16%,transparent);color:var(--mal)}
+.no,.si{display:block;margin:5px 0 0;padding:5px 9px;border-radius:9px;font-weight:700;font-variant-numeric:tabular-nums}
+.no{background:color-mix(in srgb,var(--malf) 11%,transparent);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--mal) 55%,transparent)}
+.no::before{content:"✘ ";color:var(--mal);display:inline-block;text-decoration:none}
+.si{background:color-mix(in srgb,var(--okf) 14%,transparent)}.si::before{content:"✔ ";color:var(--ok)}
+/* ensayo */
+.ens-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
+.ens-reloj{font:800 1.35rem/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
+.ens-grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:8px}
+.ens-grilla button{background:var(--panel2);color:var(--muted);border:2px solid transparent;border-radius:9px;padding:5px 0;font:800 .85rem/1.2 "Nunito Sans",sans-serif;cursor:pointer}
+.ens-grilla button.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-grilla button.m{border-color:var(--warn)}
+.ens-grilla button.a{outline:3px solid var(--acc2)}
+.ens-ley{padding:0 6px;border-radius:5px}.ens-ley.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-ley.m{border:2px solid var(--warn)}
+@media (max-width:600px){.wrap{padding:12px 12px 24px}.card,.leccion{padding:13px}.marca b{font-size:1.25rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+/* == fin paes27-css v3 == */
+</style>
+</head>
+<body style="--pag:var(--cie-g);--pag-solo:var(--cie)">
+<div class="wrap">
+  <header class="top">
+    <a class="marca" href="index.html"><span data-logo></span><span><b>PAES·27</b><small>estudio express · dicarch</small></span></a>
+    <nav class="paginas">
+      <a href="index.html" style="--c:var(--btn)">Hub</a>
+      <a href="m2.html" style="--c:var(--m2-g)">M2</a>
+      <a href="fisica.html" style="--c:var(--cie-g)">Física</a>
+      <a href="bioquim.html" class="on" style="--c:var(--cie-g)">Bio/Quím</a>
+      <a href="m1.html" style="--c:var(--m1-g)">M1</a>
+      <span title="Llega en la Fase 5">Lectora</span>
+    </nav>
+    <button class="tema-btn" data-tema-btn></button>
+  </header>
+  <div class="hero"><div><h1 id="heroTit">Biología y Química</h1><div class="muted small" id="hoyTxt">Mar 1 dic, 15:00 · Rescate para el Módulo Común de Ciencias: las primeras 54 de las 80 preguntas mezclan Biología, Física y Química</div></div></div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="bio">Biología</button>
+    <button data-tab="qui">Química</button>
+  </nav>
+  <p class="small muted">Cada tema: lee sus tarjetas (5 a 10 minutos) y responde sus 3 preguntas (básico, PAES y difícil). Parte por los marcados <b>nuevo 2027</b>. Atajos: 1–4 para responder, Enter para seguir.</p>
+
+  <section class="pane" id="p-bio">
+  <!-- @@bio@@ -->
+  <section class="leccion" id="bio.celula" data-tab="bio">
+    <div class="lec-head"><h2>Célula: organelos y células especializadas</h2><span class="chip R">Rescate</span><span class="dom" data-tema="bio.celula"></span></div>
+    <div class="lec-body">
+    <p class="idea">La célula es una fábrica: cada organelo hace un trabajo. Si una célula hace mucho de algo, tiene mucho del organelo que lo hace: <b>la forma sigue a la función</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Forma ↔ función</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="a" x="6" y="34" width="80" height="44" rx="4" stroke-width="2.5"/><path class="a" d="M10 34L14 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M14 20L18 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M18 34L22 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M22 20L26 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M26 34L30 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M30 20L34 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M34 34L38 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M38 20L42 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M42 34L46 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M46 20L50 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M50 34L54 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M54 20L58 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M58 34L62 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M62 20L66 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M66 34L70 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M70 20L74 34" stroke-width="2" stroke-linecap="round"/><path class="a" d="M74 34L78 20" stroke-width="2" stroke-linecap="round"/><path class="a" d="M78 20L82 34" stroke-width="2" stroke-linecap="round"/><text x="46" y="60" text-anchor="middle">enterocito</text><text x="46" y="92" text-anchor="middle">+ superficie</text><rect class="w" x="108" y="30" width="86" height="48" rx="4" stroke-width="2.5"/><ellipse class="fw" cx="120" cy="42" rx="6" ry="3.5"/><ellipse class="fw" cx="136" cy="42" rx="6" ry="3.5"/><ellipse class="fw" cx="152" cy="42" rx="6" ry="3.5"/><ellipse class="fw" cx="168" cy="42" rx="6" ry="3.5"/><ellipse class="fw" cx="184" cy="42" rx="6" ry="3.5"/><ellipse class="fw" cx="120" cy="60" rx="6" ry="3.5"/><ellipse class="fw" cx="136" cy="60" rx="6" ry="3.5"/><ellipse class="fw" cx="152" cy="60" rx="6" ry="3.5"/><ellipse class="fw" cx="168" cy="60" rx="6" ry="3.5"/><ellipse class="fw" cx="184" cy="60" rx="6" ry="3.5"/><text x="151" y="22" text-anchor="middle">fibra muscular</text><text x="151" y="92" text-anchor="middle">muchas mitocondrias</text></svg><p>Más superficie para absorber; más mitocondrias donde se gasta más energía.</p></div>
+      <div class="tarjeta"><span class="onda">dos tipos</span><h4>Procarionte y eucarionte</h4><p><b>Procarionte</b> (bacterias): sin núcleo (ADN en el citoplasma) y sin organelos con membrana; tiene membrana, ribosomas, pared y a veces cápsula y flagelo. <b>Eucarionte</b>: núcleo con membrana y organelos (animales y plantas).</p></div>
+      <div class="tarjeta"><span class="onda">animal vs vegetal</span><h4>Lo que cambia</h4><p>Solo vegetal: <b>pared celular</b> (celulosa), <b>cloroplastos</b> y una <b>vacuola central</b> grande. Solo animal: <b>centriolos</b>. Ambas: núcleo, mitocondrias, retículos, Golgi y ribosomas.</p></div>
+      <div class="tarjeta"><span class="onda">control</span><h4>Membrana, núcleo y nucléolo</h4><p><b>Membrana</b>: controla qué entra y sale. <b>Núcleo</b>: guarda el ADN y dirige la célula. <b>Nucléolo</b>: arma los ribosomas.</p></div>
+      <div class="tarjeta"><span class="onda">fábrica de proteínas</span><h4>Ribosomas → RER → Golgi</h4><p><b>Ribosomas</b>: hacen proteínas. <b>RER</b> (con ribosomas): proteínas para exportar o para la membrana. <b>Golgi</b>: las modifica, empaca y envía en vesículas. <b>REL</b> (liso): lípidos y desintoxicación.</p></div>
+      <div class="tarjeta"><span class="onda">energía y limpieza</span><h4>Mitocondria, cloroplasto, lisosoma, peroxisoma</h4><p><b>Mitocondria</b>: respiración celular → ATP. <b>Cloroplasto</b>: fotosíntesis. <b>Lisosoma</b>: digiere con enzimas. <b>Peroxisoma</b>: degrada sustancias tóxicas, como el agua oxigenada (H₂O₂).</p></div>
+      <div class="tarjeta"><span class="onda">forma y movimiento</span><h4>Citoesqueleto, centriolos, cilios y flagelos</h4><p><b>Citoesqueleto</b>: da forma y mueve cosas dentro de la célula. <b>Centriolos</b>: organizan el huso en la división. <b>Cilios y flagelos</b>: movimiento.</p></div>
+      <div class="tarjeta"><span class="onda">células especializadas</span><h4>Cuatro que salen en la PAES</h4><p><b>Enterocito</b> (intestino): microvellosidades para absorber. <b>Fibra muscular esquelética</b>: muchas mitocondrias y varios núcleos. <b>Neurona</b>: dendritas y axón para conducir señales. <b>Célula pancreática secretora</b>: mucho RER y Golgi para fabricar y exportar enzimas.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.celula"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.nervioso" data-tab="bio">
+    <div class="lec-head"><h2>Sistema nervioso y sus cuidados</h2><span class="chip R">Rescate</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="bio.nervioso"></span></div>
+    <div class="lec-body">
+    <p class="idea">El sistema nervioso recibe estímulos, los integra y ordena una respuesta. La señal viaja <b>eléctrica</b> por la neurona y <b>química</b> de una neurona a otra (sinapsis).</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>La neurona</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M30 46L8 22" stroke-width="2" stroke-linecap="round"/><path class="a" d="M30 46L6 46" stroke-width="2" stroke-linecap="round"/><path class="a" d="M30 46L10 70" stroke-width="2" stroke-linecap="round"/><path class="a" d="M30 46L18 14" stroke-width="2" stroke-linecap="round"/><path class="a" d="M30 46L16 80" stroke-width="2" stroke-linecap="round"/><circle class="fa" cx="32" cy="46" r="12"/><path class="a" d="M44 46L160 46" stroke-width="3" stroke-linecap="round"/><rect class="b" x="60" y="39" width="18" height="14" rx="4" stroke-width="2.5"/><rect class="b" x="84" y="39" width="18" height="14" rx="4" stroke-width="2.5"/><rect class="b" x="108" y="39" width="18" height="14" rx="4" stroke-width="2.5"/><rect class="b" x="132" y="39" width="18" height="14" rx="4" stroke-width="2.5"/><path class="a" d="M160 46L182 30" stroke-width="2" stroke-linecap="round"/><circle class="fa" cx="184" cy="30" r="3"/><path class="a" d="M160 46L182 46" stroke-width="2" stroke-linecap="round"/><circle class="fa" cx="184" cy="46" r="3"/><path class="a" d="M160 46L182 62" stroke-width="2" stroke-linecap="round"/><circle class="fa" cx="184" cy="62" r="3"/><text x="2" y="90" text-anchor="start">dendritas</text><text x="40" y="26" text-anchor="middle">soma</text><text x="108" y="30" text-anchor="middle">axón con mielina</text><text x="198" y="16" text-anchor="end">terminal</text><path class="w" d="M70 70L142.0 70.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M150 70L142.0 65.5L142.0 74.5Z"/><text x="110" y="86" text-anchor="middle">sentido del impulso</text></svg><p>Dendritas reciben → el soma integra → el axón conduce → el terminal libera neurotransmisores. La mielina aísla el axón y hace que el impulso viaje más rápido.</p></div>
+      <div class="tarjeta"><span class="onda">organización</span><h4>Central y periférico</h4><p><b>SNC</b>: encéfalo y médula espinal (integran). <b>SNP</b>: nervios. Las vías <b>sensitivas</b> llevan información al SNC; las <b>motoras</b> llevan órdenes a músculos y glándulas.</p></div>
+      <div class="tarjeta"><span class="onda">impulso</span><h4>De reposo a impulso</h4><p>En reposo el interior es negativo (unos −70 mV); lo mantiene la bomba Na⁺/K⁺. Si el estímulo supera el <b>umbral</b>: entra Na⁺ (<b>despolarización</b>) y luego sale K⁺ (<b>repolarización</b>). Es «todo o nada».</p></div>
+      <div class="tarjeta"><span class="onda">sinapsis química</span><h4>De una neurona a otra</h4><p>El impulso llega al terminal → se liberan <b>neurotransmisores</b> al espacio sináptico → se unen a <b>receptores</b> de la neurona siguiente → la excitan (nace una nueva señal) o la inhiben. Va en un solo sentido.</p></div>
+      <div class="tarjeta"><span class="onda">arco reflejo</span><h4>Responder sin pensar</h4><p>Receptor → neurona <b>sensitiva</b> → <b>médula espinal</b> → neurona <b>motora</b> → efector (músculo). Es rápido e involuntario: la médula responde antes de que el cerebro «se entere».</p></div>
+      <div class="tarjeta"><span class="onda">sustancias</span><h4>Café, alcohol y drogas</h4><p><b>Cafeína</b>: estimulante (más alerta). <b>Alcohol</b>: depresor (reflejos y coordinación más lentos). Las <b>drogas de abuso</b> alteran la sinapsis y generan tolerancia y dependencia.</p></div>
+      <div class="tarjeta"><span class="onda">cuidados</span><h4>Sueño y prevención</h4><p>Dormir lo suficiente (adolescentes: unas 8 a 10 horas) ayuda a la memoria y al aprendizaje. Prevenir traumatismos: casco, cinturón de seguridad y no lanzarse de cabeza a aguas desconocidas.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.nervioso"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.reproduccion" data-tab="bio">
+    <div class="lec-head"><h2>Reproducción: gametos, fecundación y ciclos</h2><span class="chip R">Rescate</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="bio.reproduccion"></span></div>
+    <div class="lec-body">
+    <p class="idea">Dos gametos con la mitad de los cromosomas se unen en la fecundación. Cada mes, el <b>ovario</b> prepara un ovocito y el <b>útero</b> prepara el endometrio; las hormonas coordinan ambos ciclos.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Las hormonas del ciclo</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M14 78L194 78" stroke-width="1.5" stroke-linecap="round"/><path class="m" d="M104 8L104 78" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 3"/><path class="a" d="M14.0 76.0L16.0 76.0L18.0 76.0L20.0 76.0L22.0 76.0L24.0 76.0L26.0 76.0L28.0 76.0L30.0 76.0L32.0 75.9L34.0 75.9L36.0 75.8L38.0 75.7L40.0 75.6L42.0 75.4L44.0 75.2L46.0 74.8L48.0 74.3L50.0 73.7L52.0 72.8L54.0 71.8L56.0 70.5L58.0 68.8L60.0 66.9L62.0 64.6L64.0 62.0L66.0 59.1L68.0 55.9L70.0 52.4L72.0 48.9L74.0 45.3L76.0 41.8L78.0 38.6L80.0 35.7L82.0 33.3L84.0 31.5L86.0 30.4L88.0 30.0L90.0 30.4L92.0 31.5L94.0 33.3L96.0 35.7L98.0 38.6L100.0 41.8L102.0 45.3L104.0 48.9L106.0 52.4L108.0 55.8L110.0 59.0L112.0 61.8L114.0 64.4L116.0 66.5L118.0 68.2L120.0 69.6L122.0 70.5L124.0 71.1L126.0 71.3L128.0 71.2L130.0 70.7L132.0 70.0L134.0 69.1L136.0 68.0L138.0 66.8L140.0 65.5L142.0 64.4L144.0 63.4L146.0 62.6L148.0 62.1L150.0 62.0L152.0 62.2L154.0 62.7L156.0 63.5L158.0 64.5L160.0 65.7L162.0 67.0L164.0 68.4L166.0 69.6L168.0 70.8L170.0 71.9L172.0 72.9L174.0 73.6L176.0 74.3L178.0 74.8L180.0 75.1L182.0 75.4L184.0 75.6L186.0 75.7L188.0 75.8L190.0 75.9L192.0 75.9L194.0 76.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="r" d="M14.0 76.0L15.5 76.0L17.0 76.0L18.5 76.0L20.0 76.0L21.5 76.0L23.0 76.0L24.5 76.0L26.0 76.0L27.5 76.0L29.0 76.0L30.5 76.0L32.0 76.0L33.5 76.0L35.0 76.0L36.5 76.0L38.0 76.0L39.5 76.0L41.0 76.0L42.5 76.0L44.0 76.0L45.5 76.0L47.0 76.0L48.5 76.0L50.0 76.0L51.5 76.0L53.0 76.0L54.5 76.0L56.0 76.0L57.5 76.0L59.0 76.0L60.5 76.0L62.0 76.0L63.5 76.0L65.0 76.0L66.5 76.0L68.0 76.0L69.5 76.0L71.0 76.0L72.5 76.0L74.0 76.0L75.5 76.0L77.0 76.0L78.5 76.0L80.0 76.0L81.5 76.0L83.0 76.0L84.5 76.0L86.0 76.0L87.5 76.0L89.0 76.0L90.5 76.0L92.0 75.8L93.5 75.3L95.0 73.8L96.5 70.1L98.0 62.7L99.5 51.1L101.0 36.9L102.5 24.8L104.0 20.0L105.5 24.8L107.0 36.9L108.5 51.1L110.0 62.7L111.5 70.1L113.0 73.8L114.5 75.3L116.0 75.8L117.5 76.0L119.0 76.0L120.5 76.0L122.0 76.0L123.5 76.0L125.0 76.0L126.5 76.0L128.0 76.0L129.5 76.0L131.0 76.0L132.5 76.0L134.0 76.0L135.5 76.0L137.0 76.0L138.5 76.0L140.0 76.0L141.5 76.0L143.0 76.0L144.5 76.0L146.0 76.0L147.5 76.0L149.0 76.0L150.5 76.0L152.0 76.0L153.5 76.0L155.0 76.0L156.5 76.0L158.0 76.0L159.5 76.0L161.0 76.0L162.5 76.0L164.0 76.0L165.5 76.0L167.0 76.0L168.5 76.0L170.0 76.0L171.5 76.0L173.0 76.0L174.5 76.0L176.0 76.0L177.5 76.0L179.0 76.0L180.5 76.0L182.0 76.0L183.5 76.0L185.0 76.0L186.5 76.0L188.0 76.0L189.5 76.0L191.0 76.0L192.5 76.0L194.0 76.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="g" d="M14.0 76.0L16.0 76.0L18.0 76.0L20.0 76.0L22.0 76.0L24.0 76.0L26.0 76.0L28.0 76.0L30.0 76.0L32.0 76.0L34.0 76.0L36.0 76.0L38.0 76.0L40.0 76.0L42.0 76.0L44.0 76.0L46.0 76.0L48.0 76.0L50.0 76.0L52.0 76.0L54.0 76.0L56.0 76.0L58.0 76.0L60.0 76.0L62.0 76.0L64.0 76.0L66.0 76.0L68.0 76.0L70.0 76.0L72.0 76.0L74.0 76.0L76.0 76.0L78.0 76.0L80.0 76.0L82.0 76.0L84.0 76.0L86.0 76.0L88.0 76.0L90.0 76.0L92.0 76.0L94.0 76.0L96.0 76.0L98.0 76.0L100.0 75.9L102.0 75.9L104.0 75.8L106.0 75.7L108.0 75.5L110.0 75.3L112.0 75.0L114.0 74.5L116.0 73.9L118.0 73.1L120.0 72.0L122.0 70.6L124.0 69.0L126.0 67.0L128.0 64.7L130.0 62.0L132.0 59.1L134.0 56.0L136.0 52.7L138.0 49.5L140.0 46.4L142.0 43.6L144.0 41.3L146.0 39.5L148.0 38.4L150.0 38.0L152.0 38.4L154.0 39.5L156.0 41.3L158.0 43.6L160.0 46.4L162.0 49.5L164.0 52.7L166.0 56.0L168.0 59.1L170.0 62.0L172.0 64.7L174.0 67.0L176.0 69.0L178.0 70.6L180.0 72.0L182.0 73.1L184.0 73.9L186.0 74.5L188.0 75.0L190.0 75.3L192.0 75.5L194.0 75.7" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="104" y="90" text-anchor="middle">ovulación ~día 14</text><text x="60" y="22" text-anchor="middle">estrógenos</text><text x="118" y="14" text-anchor="start">LH</text><text x="170" y="30" text-anchor="middle">progesterona</text><text x="14" y="90" text-anchor="start">día 1</text><text x="194" y="90" text-anchor="end">28</text></svg><p>Estrógenos suben antes de la ovulación; un pico de LH la provoca; después domina la progesterona.</p></div>
+      <div class="tarjeta"><span class="onda">gametos</span><h4>Espermatozoide y ovocito</h4><p><b>Espermatozoide</b>: pequeño, con flagelo, mitocondrias (energía) y acrosoma (enzimas para entrar al ovocito). <b>Ovocito</b>: grande, inmóvil, con reservas. Ambos tienen 23 cromosomas (haploides).</p></div>
+      <div class="tarjeta"><span class="onda">fecundación</span><h4>Dónde y cómo</h4><p>Ocurre en la <b>trompa de Falopio</b>. Un espermatozoide atraviesa las cubiertas y entra; en ese momento el ovocito bloquea la entrada de otros. Luego se unen los núcleos y se forma el <b>cigoto</b> (46 cromosomas).</p></div>
+      <div class="tarjeta"><span class="onda">sistemas</span><h4>Órganos y funciones</h4><p>Masculino: <b>testículos</b> (espermatozoides y testosterona), conductos deferentes, vesículas seminales y próstata (forman el semen), uretra. Femenino: <b>ovarios</b> (ovocitos, estrógenos y progesterona), trompas, útero y vagina.</p></div>
+      <div class="tarjeta"><span class="onda">ciclo ovárico</span><h4>Folicular → ovulación → lútea</h4><p><b>Fase folicular</b> (días 1–14): madura un folículo (FSH) y produce estrógenos. <b>Ovulación</b> (~día 14): el pico de <b>LH</b> libera el ovocito. <b>Fase lútea</b>: el folículo vacío forma el <b>cuerpo lúteo</b>, que secreta progesterona.</p></div>
+      <div class="tarjeta"><span class="onda">ciclo uterino</span><h4>Menstrual → proliferativa → secretora</h4><p><b>Menstruación</b> (días 1–5): se desprende el endometrio. <b>Proliferativa</b>: el endometrio crece (estrógenos). <b>Secretora</b>: se prepara para un embrión (progesterona). Sin embarazo, el cuerpo lúteo degenera, baja la progesterona y llega la menstruación.</p></div>
+      <div class="tarjeta"><span class="onda">sexualidad</span><h4>Más que biología</h4><p>La sexualidad incluye afectos, respeto, consentimiento y responsabilidad con uno mismo y con los demás. La PAES puede preguntar por estos aspectos sociales y afectivos.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.reproduccion"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.anticoncepcion-its" data-tab="bio">
+    <div class="lec-head"><h2>Métodos anticonceptivos e ITS</h2><span class="chip R">Rescate</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="bio.anticoncepcion-its"></span></div>
+    <div class="lec-body">
+    <p class="idea">Los anticonceptivos evitan que se junten espermatozoide y ovocito, o que haya ovulación. <b>Solo el condón protege además de las ITS.</b></p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Virus o bacteria</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="r" x="6" y="8" width="88" height="76" rx="4" stroke-width="2.5"/><text x="50" y="26" text-anchor="middle">VIRUS</text><text x="50" y="46" text-anchor="middle">VIH · herpes</text><text x="50" y="66" text-anchor="middle">sin cura</text><rect class="g" x="106" y="8" width="88" height="76" rx="4" stroke-width="2.5"/><text x="150" y="26" text-anchor="middle">BACTERIAS</text><text x="150" y="46" text-anchor="middle">gonorrea</text><text x="150" y="60" text-anchor="middle">clamidia</text><text x="150" y="76" text-anchor="middle">antibióticos</text></svg><p>VIH y herpes (virus) no tienen cura, sí tratamiento; gonorrea y clamidia (bacterias) se curan con antibióticos.</p></div>
+      <div class="tarjeta"><span class="onda">naturales</span><h4>Calendario, temperatura basal, Billings</h4><p>Buscan no tener relaciones en los días fértiles: por el calendario de ciclos anteriores, por la <b>temperatura basal</b> (sube un poco tras ovular) o por el <b>moco cervical</b> (filante y transparente en días fértiles). Son los menos eficaces.</p></div>
+      <div class="tarjeta"><span class="onda">barrera</span><h4>Condón y diafragma</h4><p>Impiden físicamente que los espermatozoides lleguen al ovocito. El <b>condón</b> (masculino o femenino) es el único que además previene ITS.</p></div>
+      <div class="tarjeta"><span class="onda">hormonales</span><h4>Píldora, inyección, implante</h4><p>Impiden la <b>ovulación</b> (y espesan el moco cervical). Son reversibles: al dejarlos vuelve la fertilidad.</p></div>
+      <div class="tarjeta"><span class="onda">quirúrgicos</span><h4>Vasectomía y ligadura</h4><p>Se cortan los conductos deferentes (vasectomía) o las trompas (ligadura). Muy eficaces; se consideran <b>parcialmente reversibles</b> porque revertirlos es difícil y no siempre funciona.</p></div>
+      <div class="tarjeta"><span class="onda">ITS</span><h4>Cuatro que debes conocer</h4><p><b>VIH</b> (virus): ataca defensas (linfocitos T) y puede llevar al SIDA; se transmite por sexo, sangre y de madre a hijo. <b>Herpes genital</b> (virus): vesículas dolorosas que reaparecen. <b>Gonorrea</b> (bacteria): ardor y secreción. <b>Clamidia</b> (bacteria): muchas veces sin síntomas.</p></div>
+      <div class="tarjeta"><span class="onda">prevención</span><h4>Cómo cuidarse</h4><p>Condón en todas las relaciones, testeo periódico, no compartir jeringas y conversar con la pareja. Que no haya síntomas no significa que no haya infección.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.anticoncepcion-its"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.division" data-tab="bio">
+    <div class="lec-head"><h2>Ciclo celular, mitosis y meiosis</h2><span class="chip R">Rescate</span><span class="dom" data-tema="bio.division"></span></div>
+    <div class="lec-body">
+    <p class="idea"><b>Mitosis</b>: una célula da 2 hijas iguales (crecer y reparar). <b>Meiosis</b>: una célula da 4 células con la mitad de los cromosomas y distintas entre sí (variabilidad). En el ser humano forma los gametos: 4 espermatozoides, pero solo 1 ovocito (el resto son cuerpos polares).</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Mitosis vs meiosis</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="a" cx="30" cy="46" r="14" stroke-width="2.5"/><text x="30" y="50" text-anchor="middle">2n</text><path class="m" d="M46 40L59.4 30.6" stroke-width="2" stroke-linecap="round"/><path class="fm" d="M66 26L56.9 26.9L62.0 34.3Z"/><path class="m" d="M46 52L59.4 61.4" stroke-width="2" stroke-linecap="round"/><path class="fm" d="M66 66L62.0 57.7L56.9 65.1Z"/><circle class="a" cx="80" cy="22" r="12" stroke-width="2.5"/><text x="80" y="26" text-anchor="middle">2n</text><circle class="a" cx="80" cy="70" r="12" stroke-width="2.5"/><text x="80" y="74" text-anchor="middle">2n</text><circle class="b" cx="116" cy="46" r="14" stroke-width="2.5"/><text x="116" y="50" text-anchor="middle">2n</text><path class="m" d="M132 40L139.9 33.2" stroke-width="2" stroke-linecap="round"/><path class="fm" d="M146 28L137.0 29.8L142.9 36.6Z"/><path class="m" d="M132 52L139.9 58.8" stroke-width="2" stroke-linecap="round"/><path class="fm" d="M146 64L142.9 55.4L137.0 62.2Z"/><circle class="b" cx="156" cy="24" r="10" stroke-width="2.5"/><text x="156" y="28" text-anchor="middle">n</text><circle class="b" cx="156" cy="68" r="10" stroke-width="2.5"/><text x="156" y="72" text-anchor="middle">n</text><path class="m" d="M167 20L171.5 16.7" stroke-width="1.6" stroke-linecap="round"/><path class="fm" d="M178 12L168.9 13.1L174.2 20.3Z"/><path class="m" d="M167 28L171.5 31.3" stroke-width="1.6" stroke-linecap="round"/><path class="fm" d="M178 36L174.2 27.7L168.9 34.9Z"/><path class="m" d="M167 64L171.5 60.7" stroke-width="1.6" stroke-linecap="round"/><path class="fm" d="M178 56L168.9 57.1L174.2 64.3Z"/><path class="m" d="M167 72L171.5 75.3" stroke-width="1.6" stroke-linecap="round"/><path class="fm" d="M178 80L174.2 71.7L168.9 78.9Z"/><circle class="w" cx="188" cy="10" r="7" stroke-width="2.5"/><text x="188" y="14" text-anchor="middle">n</text><circle class="w" cx="188" cy="36" r="7" stroke-width="2.5"/><text x="188" y="40" text-anchor="middle">n</text><circle class="w" cx="188" cy="56" r="7" stroke-width="2.5"/><text x="188" y="60" text-anchor="middle">n</text><circle class="w" cx="188" cy="82" r="7" stroke-width="2.5"/><text x="188" y="86" text-anchor="middle">n</text><text x="55" y="90" text-anchor="middle">mitosis</text><text x="150" y="90" text-anchor="middle">meiosis</text></svg><p>Mitosis: 1 división, 2 células 2n idénticas. Meiosis: 2 divisiones, 4 células n distintas.</p></div>
+      <div class="tarjeta"><span class="onda">cromatina</span><h4>Del hilo al cromosoma</h4><p>El ADN se enrolla en proteínas (histonas): eso es la <b>cromatina</b>. Para dividirse se compacta al máximo y se ven los cromosomas. Un cromosoma duplicado tiene 2 <b>cromátidas hermanas</b> unidas por el centrómero.</p></div>
+      <div class="tarjeta"><span class="onda">interfase</span><h4>G1 → S → G2</h4><p><b>G1</b>: la célula crece y trabaja. <b>S</b>: duplica su ADN. <b>G2</b>: se prepara para dividirse. Casi toda su vida la célula está en interfase.</p></div>
+      <div class="tarjeta"><span class="onda">controles</span><h4>Puntos de control</h4><p><b>G1–S</b>: ¿hay condiciones y el ADN está sano? <b>G2–M</b>: ¿se copió bien el ADN? <b>Metafase</b>: ¿todos los cromosomas están unidos al huso? Si fallan, la célula puede dividirse sin freno: <b>cáncer</b>.</p></div>
+      <div class="tarjeta"><span class="onda">mitosis</span><h4>Profase, metafase, anafase, telofase</h4><p><b>Profase</b>: se condensan los cromosomas y se forma el huso. <b>Metafase</b>: se alinean al centro. <b>Anafase</b>: se separan las cromátidas hermanas. <b>Telofase</b>: dos núcleos nuevos. Luego la citocinesis divide el citoplasma.</p></div>
+      <div class="tarjeta"><span class="onda">meiosis</span><h4>Dos divisiones seguidas</h4><p><b>Meiosis I</b>: se separan los cromosomas homólogos (2n → n); en la profase I hay <b>entrecruzamiento</b>. <b>Meiosis II</b>: se separan las cromátidas, como en una mitosis. Resultado: 4 células haploides distintas.</p></div>
+      <div class="tarjeta"><span class="onda">variabilidad</span><h4>Por qué los hermanos no son iguales</h4><p>El <b>entrecruzamiento</b> mezcla genes entre homólogos, y la <b>permutación cromosómica</b> reparte los homólogos al azar en la metafase I. Por eso cada gameto es único.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.division"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.manipulacion" data-tab="bio">
+    <div class="lec-head"><h2>Manipulación genética</h2><span class="chip R">Rescate</span><span class="dom" data-tema="bio.manipulacion"></span></div>
+    <div class="lec-body">
+    <p class="idea">Manipular genes es cortar un gen útil de un organismo y ponerlo en otro, que lo «lee» y fabrica la proteína. Funciona porque <b>el código genético es casi universal</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>ADN recombinante</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="a" cx="40" cy="44" r="22" stroke-width="3"/><rect class="w" x="34" y="18" width="14" height="10" rx="4" stroke-width="2.5"/><text x="40" y="84" text-anchor="middle">plásmido + gen</text><path class="m" d="M66 44L90.0 44.0" stroke-width="2.5" stroke-linecap="round"/><path class="fm" d="M98 44L90.0 39.5L90.0 48.5Z"/><rect x="104" y="28" width="56" height="32" rx="16" class="b" stroke-width="2.5"/><circle class="a" cx="124" cy="44" r="7" stroke-width="2"/><text x="132" y="84" text-anchor="middle">bacteria</text><path class="g" d="M162 44L176.0 44.0" stroke-width="2.5" stroke-linecap="round"/><path class="fg" d="M184 44L176.0 39.5L176.0 48.5Z"/><circle class="fg" cx="190" cy="44" r="5"/><text x="186" y="66" text-anchor="middle">insulina</text></svg><p>El gen se pega en un plásmido, entra a una bacteria y la bacteria fabrica la proteína.</p></div>
+      <div class="tarjeta"><span class="onda">paso a paso</span><h4>Cómo se hace</h4><p>1) Se cortan el gen y el plásmido con la misma <b>enzima de restricción</b>. 2) Se pega en un vector (un plásmido) con <b>ligasa</b>. 3) Se introduce en la célula que lo va a usar. 4) La célula se multiplica y produce la proteína.</p></div>
+      <div class="tarjeta"><span class="onda">fármacos</span><h4>Medicamentos</h4><p><b>Insulina humana</b> hecha por bacterias (para personas con diabetes), hormona del crecimiento y algunas vacunas.</p></div>
+      <div class="tarjeta"><span class="onda">alimentos</span><h4>Cultivos y alimentos</h4><p>Cultivos <b>transgénicos</b> resistentes a plagas o a la sequía; arroz con más provitamina A; enzimas para fabricar queso.</p></div>
+      <div class="tarjeta"><span class="onda">detergentes y ropa</span><h4>Más allá de la comida</h4><p><b>Detergentes</b> con enzimas (proteasas, lipasas) hechas por microorganismos modificados, que sacan manchas en agua fría. <b>Algodón</b> transgénico resistente a insectos.</p></div>
+      <div class="tarjeta"><span class="onda">debate</span><h4>Ventajas y riesgos</h4><p>Ventajas: más producción y medicamentos más accesibles. Riesgos y debate: efectos en los ecosistemas, dependencia de semillas y etiquetado. La PAES puede pedir que evalúes ambos lados.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.manipulacion"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.evolucion" data-tab="bio">
+    <div class="lec-head"><h2>Evolución y selección natural</h2><span class="chip R">Rescate</span><span class="dom" data-tema="bio.evolucion"></span></div>
+    <div class="lec-body">
+    <p class="idea">Las especies cambian con el tiempo. Darwin y Wallace lo explicaron con la <b>selección natural</b>: los individuos con variaciones ventajosas dejan más descendencia.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Selección natural</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fm" cx="14" cy="24" r="4.5"/><circle class="fm" cx="26" cy="24" r="4.5"/><circle class="fm" cx="38" cy="24" r="4.5"/><circle class="fr" cx="50" cy="24" r="4.5"/><circle class="fm" cx="62" cy="24" r="4.5"/><circle class="fm" cx="14" cy="38" r="4.5"/><circle class="fm" cx="26" cy="38" r="4.5"/><circle class="fm" cx="38" cy="38" r="4.5"/><circle class="fm" cx="50" cy="38" r="4.5"/><circle class="fm" cx="62" cy="38" r="4.5"/><circle class="fm" cx="14" cy="52" r="4.5"/><circle class="fr" cx="26" cy="52" r="4.5"/><circle class="fm" cx="38" cy="52" r="4.5"/><circle class="fm" cx="50" cy="52" r="4.5"/><circle class="fm" cx="62" cy="52" r="4.5"/><text x="38" y="86" text-anchor="middle">generación 1</text><path class="w" d="M78 44L108.0 44.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M116 44L108.0 39.5L108.0 48.5Z"/><text x="97" y="60" text-anchor="middle">selección</text><circle class="fr" cx="128" cy="24" r="4.5"/><circle class="fr" cx="140" cy="24" r="4.5"/><circle class="fm" cx="152" cy="24" r="4.5"/><circle class="fr" cx="164" cy="24" r="4.5"/><circle class="fr" cx="176" cy="24" r="4.5"/><circle class="fr" cx="128" cy="38" r="4.5"/><circle class="fr" cx="140" cy="38" r="4.5"/><circle class="fr" cx="152" cy="38" r="4.5"/><circle class="fr" cx="164" cy="38" r="4.5"/><circle class="fm" cx="176" cy="38" r="4.5"/><circle class="fr" cx="128" cy="52" r="4.5"/><circle class="fr" cx="140" cy="52" r="4.5"/><circle class="fr" cx="152" cy="52" r="4.5"/><circle class="fr" cx="164" cy="52" r="4.5"/><circle class="fr" cx="176" cy="52" r="4.5"/><text x="152" y="86" text-anchor="middle">generación 20</text></svg><p>Si el ambiente favorece una variante que ya existía, generación tras generación esa variante se vuelve la mayoría.</p></div>
+      <div class="tarjeta"><span class="onda">Lamarck</span><h4>Uso, desuso y herencia de lo adquirido</h4><p>La jirafa estiraba el cuello y heredaba ese cuello más largo a sus crías. Hoy se sabe que lo adquirido en vida <b>no se hereda</b>.</p></div>
+      <div class="tarjeta"><span class="onda">Darwin y Wallace</span><h4>Misma idea, por separado</h4><p>Llegaron a la <b>selección natural</b> cada uno por su lado (se presentó en 1858). Darwin la desarrolló en <i>El origen de las especies</i> (1859).</p></div>
+      <div class="tarjeta"><span class="onda">cómo funciona</span><h4>Cinco ideas</h4><p>1) Hay <b>variación</b> entre individuos. 2) Parte de ella se <b>hereda</b>. 3) Nacen más de los que sobreviven: hay competencia. 4) Los mejor adaptados sobreviven y se reproducen más. 5) Con las generaciones, la población cambia.</p></div>
+      <div class="tarjeta"><span class="onda">ejemplos</span><h4>En la vida real</h4><p>Bacterias resistentes a antibióticos; polillas oscuras que aumentaron en bosques con hollín; distintos picos en los pinzones de Galápagos según su alimento.</p></div>
+      <div class="tarjeta"><span class="onda">evidencias</span><h4>Cómo se sabe</h4><p><b>Registro fósil</b> (formas intermedias). <b>Anatomía comparada</b>: estructuras <b>homólogas</b> (mismo origen, aunque tengan distinta función: brazo humano y ala de murciélago) y <b>análogas</b> (distinto origen, misma función: ala de ave y de insecto). <b>Embriología</b>: embriones parecidos. <b>Biología molecular</b>: ADN más parecido = parentesco más cercano.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.evolucion"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="bio.fotosintesis" data-tab="bio">
+    <div class="lec-head"><h2>Fotosíntesis y respiración celular</h2><span class="chip R">Rescate</span><span class="dom" data-tema="bio.fotosintesis"></span></div>
+    <div class="lec-body">
+    <p class="idea">La fotosíntesis guarda la energía de la luz en glucosa; la respiración celular la libera como ATP. Lo que una produce, la otra lo usa: así circulan el <b>carbono</b> y el <b>oxígeno</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Dos procesos que se complementan</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="g" x="8" y="30" width="70" height="32" rx="4" stroke-width="2.5"/><text x="43" y="50" text-anchor="middle">cloroplasto</text><rect class="w" x="122" y="30" width="70" height="32" rx="4" stroke-width="2.5"/><text x="157" y="50" text-anchor="middle">mitocondria</text><path class="g" d="M78 36L114.0 36.0" stroke-width="2.5" stroke-linecap="round"/><path class="fg" d="M122 36L114.0 31.5L114.0 40.5Z"/><text x="100" y="28" text-anchor="middle">glucosa + O₂</text><path class="w" d="M122 56L86.0 56.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M78 56L86.0 60.5L86.0 51.5Z"/><text x="100" y="72" text-anchor="middle">CO₂ + H₂O</text><path class="w" d="M20 4L20.0 20.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M20 28L24.5 20.0L15.5 20.0Z"/><text x="28" y="12" text-anchor="start">luz</text><path class="r" d="M157 64L157.0 78.0" stroke-width="2.5" stroke-linecap="round"/><path class="fr" d="M157 86L161.5 78.0L152.5 78.0Z"/><text x="170" y="84" text-anchor="start">ATP</text></svg><p>El cloroplasto fabrica glucosa y O₂; la mitocondria los usa y devuelve CO₂ y agua.</p></div>
+      <div class="tarjeta"><span class="onda">ecuaciones</span><h4>Una es el reverso de la otra</h4><p><b>Fotosíntesis</b>: 6 CO₂ + 6 H₂O + luz → C₆H₁₂O₆ + 6 O₂. <b>Respiración</b>: C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + energía (ATP).</p></div>
+      <div class="tarjeta"><span class="onda">nutrición</span><h4>Autótrofos y heterótrofos</h4><p><b>Autótrofos</b> fabrican su materia orgánica (plantas, algas). <b>Heterótrofos</b> la obtienen comiendo a otros (animales). Las plantas también respiran, de día y de noche.</p></div>
+      <div class="tarjeta"><span class="onda">fase luminosa</span><h4>En los tilacoides</h4><p>Necesita luz. La clorofila capta la luz; el agua se rompe (<b>fotólisis</b>) y libera el <b>O₂</b>; se forman ATP y NADPH.</p></div>
+      <div class="tarjeta"><span class="onda">fase oscura</span><h4>En el estroma (ciclo de Calvin)</h4><p>No necesita luz directamente: usa el ATP y el NADPH de la fase luminosa para <b>fijar CO₂</b> y formar glucosa.</p></div>
+      <div class="tarjeta"><span class="onda">variables</span><h4>Qué la acelera</h4><p>Sube con más <b>luz</b>, más <b>CO₂</b> y temperatura adecuada, hasta un máximo: ahí otro factor pasa a limitar. Si hace demasiado calor, las enzimas se dañan y baja.</p></div>
+      <div class="tarjeta"><span class="onda">ecosistema</span><h4>Energía fluye, materia circula</h4><p>La energía va en un solo sentido (sol → productores → consumidores) y se pierde como calor. El carbono y el oxígeno se reciclan entre fotosíntesis y respiración.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="bio.fotosintesis"></div></div>
+    </div>
+  </section>
+  <!-- @@/bio@@ -->
+  </section>
+  <section class="pane" id="p-qui">
+  <!-- @@qui@@ -->
+  <section class="leccion" id="qui.materia" data-tab="qui">
+    <div class="lec-head"><h2>Materia, mezclas y su separación</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.materia"></span></div>
+    <div class="lec-body">
+    <p class="idea">La materia es <b>pura</b> (un solo tipo de sustancia) o una <b>mezcla</b>. Las mezclas se separan con métodos físicos que aprovechan una diferencia: tamaño, densidad o punto de ebullición.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Cómo se clasifica</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="m" x="70" y="2" width="60" height="18" rx="4" stroke-width="2.5"/><text x="100" y="15" text-anchor="middle">materia</text><path class="m" d="M100 20L50 32" stroke-width="2" stroke-linecap="round"/><path class="m" d="M100 20L150 32" stroke-width="2" stroke-linecap="round"/><rect class="a" x="4" y="32" width="92" height="18" rx="4" stroke-width="2.5"/><text x="50" y="45" text-anchor="middle">sustancia pura</text><rect class="b" x="112" y="32" width="76" height="18" rx="4" stroke-width="2.5"/><text x="150" y="45" text-anchor="middle">mezcla</text><path class="a" d="M50 50L26 66" stroke-width="2" stroke-linecap="round"/><path class="a" d="M50 50L72 78" stroke-width="2" stroke-linecap="round"/><path class="b" d="M150 50L126 66" stroke-width="2" stroke-linecap="round"/><path class="b" d="M150 50L160 78" stroke-width="2" stroke-linecap="round"/><text x="32" y="76" text-anchor="middle">elemento</text><text x="72" y="90" text-anchor="middle">compuesto</text><text x="126" y="76" text-anchor="middle">homogénea</text><text x="160" y="90" text-anchor="middle">heterogénea</text></svg><p>Pura: elemento o compuesto. Mezcla: homogénea o heterogénea.</p></div>
+      <div class="tarjeta"><span class="onda">sustancias puras</span><h4>Elemento y compuesto</h4><p><b>Elemento</b>: un solo tipo de átomo (O₂, Fe). <b>Compuesto</b>: dos o más elementos unidos en proporción fija (H₂O, NaCl); solo se separa por métodos químicos.</p></div>
+      <div class="tarjeta"><span class="onda">mezclas</span><h4>Homogénea y heterogénea</h4><p><b>Homogénea</b>: una sola fase, no se distinguen sus partes (agua con sal, aire). <b>Heterogénea</b>: se ven las partes (agua con aceite, arena con piedras).</p></div>
+      <div class="tarjeta"><span class="onda">separación</span><h4>Cuatro métodos</h4><p><b>Decantación</b>: líquidos que no se mezclan, o un sólido que se va al fondo (densidad). <b>Filtración</b>: un sólido no disuelto en un líquido. <b>Tamizado</b>: sólidos de distinto tamaño. <b>Destilación</b>: líquidos con distinto punto de ebullición, o recuperar el solvente de una sal disuelta.</p></div>
+      <div class="tarjeta"><span class="onda">propiedades</span><h4>Densidad y puntos de cambio</h4><p>Propiedades físicas: puntos de fusión y de ebullición, masa, volumen y <b>densidad = masa / volumen</b> (g/mL). Lo menos denso flota.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.materia"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.modelos" data-tab="qui">
+    <div class="lec-head"><h2>Modelos atómicos y partículas (Z, A)</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.modelos"></span></div>
+    <div class="lec-body">
+    <p class="idea">La idea del átomo cambió con cada experimento: de esfera maciza (Dalton) a núcleo pequeño con electrones en niveles de energía (Bohr).</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Cuatro modelos</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fm" cx="20" cy="40" r="15"/><text x="20" y="84" text-anchor="middle">Dalton</text><circle class="r" cx="66" cy="40" r="16" stroke-width="2.5"/><circle class="fa" cx="59" cy="34" r="2.5"/><circle class="fa" cx="72" cy="32" r="2.5"/><circle class="fa" cx="66" cy="42" r="2.5"/><circle class="fa" cx="60" cy="49" r="2.5"/><circle class="fa" cx="74" cy="47" r="2.5"/><text x="66" y="72" text-anchor="middle">Thomson</text><circle class="fr" cx="128" cy="40" r="3.5"/><ellipse class="a" cx="128" cy="40" rx="20" ry="8" stroke-width="1.8"/><ellipse class="a" cx="128" cy="40" rx="8" ry="20" stroke-width="1.8"/><text x="128" y="84" text-anchor="middle">Rutherford</text><circle class="fr" cx="180" cy="40" r="3.5"/><circle class="a" cx="180" cy="40" r="10" stroke-width="1.8"/><circle class="a" cx="180" cy="40" r="18" stroke-width="1.8"/><circle class="fa" cx="190" cy="40" r="2.5"/><circle class="fa" cx="180" cy="22" r="2.5"/><text x="180" y="72" text-anchor="middle">Bohr</text></svg><p>Esfera maciza → budín con electrones → núcleo + electrones → órbitas con energía fija.</p></div>
+      <div class="tarjeta"><span class="onda">Dalton</span><h4>Esfera indivisible</h4><p>Átomos indivisibles; los de un mismo elemento son iguales; los compuestos combinan átomos en proporciones fijas.</p></div>
+      <div class="tarjeta"><span class="onda">Thomson</span><h4>Budín de pasas</h4><p>Descubre el <b>electrón</b>. Modelo: una esfera positiva con electrones incrustados.</p></div>
+      <div class="tarjeta"><span class="onda">Rutherford</span><h4>Núcleo</h4><p>Lámina de oro: casi todas las partículas alfa pasan derecho, unas pocas se desvían y muy pocas rebotan. Conclusión: el átomo es casi todo <b>vacío</b>, con un <b>núcleo</b> pequeño, denso y positivo.</p></div>
+      <div class="tarjeta"><span class="onda">Bohr</span><h4>Niveles de energía</h4><p>Los electrones giran en órbitas de energía fija. Al saltar de nivel absorben o emiten energía (luz).</p></div>
+      <div class="tarjeta"><span class="onda">partículas</span><h4>Z y A</h4><p><b>Protón</b> (+) y <b>neutrón</b> (sin carga) en el núcleo; <b>electrón</b> (−) afuera, con masa muchísimo menor. <b>Z</b> = protones. <b>A</b> = protones + neutrones. <b>Neutrones = A − Z</b>. Átomo neutro: electrones = protones.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.modelos"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.carbono" data-tab="qui">
+    <div class="lec-head"><h2>Átomo de carbono: hibridación y enlaces</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.carbono"></span></div>
+    <div class="lec-body">
+    <p class="idea">El carbono forma <b>4 enlaces</b> (es tetravalente). Según cómo los reparta —simples, dobles o triples— cambia su hibridación, su forma y el ángulo entre enlaces.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Tres formas</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M30 44L30.0 26.0" stroke-width="3" stroke-linecap="round"/><path class="a" d="M30 44L45.588457268119896 53.0" stroke-width="3" stroke-linecap="round"/><path class="a" d="M30 44L14.411542731880104 53.0" stroke-width="3" stroke-linecap="round"/><path class="a" d="M30 44L36 52" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 3"/><circle class="fm" cx="30" cy="44" r="5"/><text x="30" y="80" text-anchor="middle">sp³ · 109,5°</text><path class="b" d="M100 44L100.0 24.0" stroke-width="3" stroke-linecap="round"/><path class="b" d="M100 44L117.32050807568878 54.0" stroke-width="3" stroke-linecap="round"/><path class="b" d="M100 44L82.67949192431122 54.0" stroke-width="3" stroke-linecap="round"/><circle class="fm" cx="100" cy="44" r="5"/><text x="100" y="80" text-anchor="middle">sp² · 120°</text><path class="w" d="M146 44L194 44" stroke-width="3" stroke-linecap="round"/><circle class="fm" cx="170" cy="44" r="5"/><text x="170" y="80" text-anchor="middle">sp · 180°</text></svg><p>sp³ tetraédrico (109,5°), sp² plano (120°), sp lineal (180°).</p></div>
+      <div class="tarjeta"><span class="onda">tetravalencia</span><h4>Cuatro enlaces</h4><p>El carbono tiene 4 electrones de valencia: forma 4 enlaces covalentes y puede unirse a otros carbonos en cadenas largas, ramificadas o en anillos.</p></div>
+      <div class="tarjeta"><span class="onda">regla rápida</span><h4>Cuenta los enlaces del C</h4><p>Solo simples → <b>sp³</b> (metano, CH₄). Un doble → <b>sp²</b> (eteno, C₂H₄). Un triple o dos dobles → <b>sp</b> (etino, C₂H₂; el C del CO₂).</p></div>
+      <div class="tarjeta"><span class="onda">enlaces</span><h4>Simple, doble, triple</h4><p>Más enlaces entre dos carbonos = enlace <b>más corto</b> y <b>más fuerte</b>. Longitud: C≡C (120 pm) &lt; C=C (134 pm) &lt; C–C (154 pm). Energía: al revés.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.carbono"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.organica" data-tab="qui">
+    <div class="lec-head"><h2>Hidrocarburos y grupos funcionales</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.organica"></span></div>
+    <div class="lec-body">
+    <p class="idea">Los compuestos orgánicos son cadenas de carbono. Si solo hay C e H son <b>hidrocarburos</b>; si aparece otro grupo de átomos (–OH, –COOH…), ese <b>grupo funcional</b> define sus propiedades y su nombre.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Fórmula topológica</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M6.0 54.0L26.0 38.0L46.0 54.0L66.0 38.0" stroke-width="3" fill="none" stroke-linecap="round"/><path class="a" d="M66 38L76 46" stroke-width="2.5" stroke-linecap="round"/><text x="78" y="52" text-anchor="start">OH</text><circle class="fm" cx="6" cy="54" r="3"/><circle class="fm" cx="26" cy="38" r="3"/><circle class="fm" cx="46" cy="54" r="3"/><circle class="fm" cx="66" cy="38" r="3"/><text x="44" y="76" text-anchor="middle">butanol</text><text x="44" y="90" text-anchor="middle">vértice = un C</text><text x="110" y="18" text-anchor="start">–OH alcohol</text><text x="110" y="38" text-anchor="start">–CHO aldehído</text><text x="110" y="58" text-anchor="start">–CO– cetona</text><text x="110" y="78" text-anchor="start">–COOH ácido</text></svg><p>Cada vértice o extremo de la línea es un carbono; los H no se dibujan.</p></div>
+      <div class="tarjeta"><span class="onda">hidrocarburos</span><h4>Alcanos, alquenos, alquinos</h4><p><b>Alcanos</b> (solo simples, -ano): CₙH₂ₙ₊₂. <b>Alquenos</b> (un doble, -eno): CₙH₂ₙ. <b>Alquinos</b> (un triple, -ino): CₙH₂ₙ₋₂. También cíclicos (anillos) y <b>aromáticos</b> (anillo de benceno).</p></div>
+      <div class="tarjeta"><span class="onda">prefijos</span><h4>Cuántos carbonos</h4><p>1 met · 2 et · 3 prop · 4 but · 5 pent · 6 hex · 7 hept · 8 oct.</p></div>
+      <div class="tarjeta"><span class="onda">grupos con O</span><h4>Los más preguntados</h4><p>Alcohol R–OH (-ol). Fenol: –OH en un benceno. Éter R–O–R'. Aldehído R–CHO (-al). Cetona R–CO–R' (-ona). Ácido carboxílico R–COOH (ácido -oico). Éster R–COO–R'. Anhídrido R–CO–O–CO–R'.</p></div>
+      <div class="tarjeta"><span class="onda">grupos con N, S y halógenos</span><h4>El resto de la lista</h4><p>Amina R–NH₂. Amida R–CONH₂. Nitrilo R–C≡N. Haluro R–X (cloro, bromo…). Sulfuro R–S–R'.</p></div>
+      <div class="tarjeta"><span class="onda">representaciones</span><h4>Formas de escribir una molécula</h4><p><b>Molecular</b> (C₂H₆O: cuenta átomos). <b>Empírica</b> (proporción mínima). <b>Desarrollada</b> (todos los enlaces). <b>Semidesarrollada</b> (CH₃–CH₂–OH). <b>Condensada</b> (CH₃CH₂OH o C₂H₅OH). <b>Topológica</b> (zigzag). Modelos de <b>esferas y varillas</b> y <b>compactos</b>.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.organica"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.estequiometria" data-tab="qui">
+    <div class="lec-head"><h2>Leyes ponderales, mol y reactivo limitante</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.estequiometria"></span></div>
+    <div class="lec-body">
+    <p class="idea">En una reacción los átomos no se crean ni se destruyen: solo se reordenan. Por eso se <b>balancea</b> la ecuación y se calculan cantidades con el <b>mol</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Una ecuación balanceada</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fa" cx="14" cy="34" r="6"/><circle class="fa" cx="14" cy="48" r="6"/><circle class="fa" cx="32" cy="34" r="6"/><circle class="fa" cx="32" cy="48" r="6"/><text x="62" y="44" text-anchor="middle">+</text><circle class="fr" cx="80" cy="34" r="7"/><circle class="fr" cx="80" cy="50" r="7"/><path class="m" d="M96 42L112.0 42.0" stroke-width="2.5" stroke-linecap="round"/><path class="fm" d="M120 42L112.0 37.5L112.0 46.5Z"/><circle class="fr" cx="140" cy="42" r="7"/><circle class="fa" cx="131" cy="30" r="5"/><circle class="fa" cx="149" cy="30" r="5"/><circle class="fr" cx="172" cy="42" r="7"/><circle class="fa" cx="163" cy="30" r="5"/><circle class="fa" cx="181" cy="30" r="5"/><text x="48" y="80" text-anchor="middle">4 H · 2 O</text><text x="156" y="80" text-anchor="middle">4 H · 2 O</text><text x="100" y="16" text-anchor="middle">2 H₂ + O₂ → 2 H₂O</text></svg><p>El mismo número de átomos de cada elemento a cada lado.</p></div>
+      <div class="tarjeta"><span class="onda">leyes ponderales</span><h4>Lavoisier, Proust, Dalton</h4><p><b>Conservación de la masa</b>: masa de reactantes = masa de productos. <b>Proporciones definidas</b>: un compuesto siempre tiene la misma proporción en masa (agua: 1 g de H por cada 8 g de O). <b>Proporciones múltiples</b>: si dos elementos forman varios compuestos, con la misma masa de uno, la del otro está en razón de enteros simples: con 12 g de C hay 16 g de O en el CO y 32 g en el CO₂ (1 : 2).</p></div>
+      <div class="tarjeta"><span class="onda">balancear</span><h4>Solo coeficientes</h4><p>Reactantes → productos. Se cambian los <b>coeficientes</b> (los números de adelante), nunca los subíndices.</p></div>
+      <div class="tarjeta"><span class="onda">mol</span><h4>Contar por montones</h4><p>1 mol = 6,02·10²³ partículas. <b>Masa molar</b> = suma de masas atómicas: H₂O = 2·1 + 16 = 18 g/mol. <b>n = m / M</b>.</p></div>
+      <div class="tarjeta"><span class="onda">cómo resolver</span><h4>Cuatro pasos</h4><p>1) Ecuación balanceada. 2) Pasa a moles (n = m/M). 3) Usa la razón de coeficientes. 4) Vuelve a gramos si te piden masa.</p></div>
+      <div class="tarjeta"><span class="onda">reactivo limitante</span><h4>El que se acaba primero</h4><p>Determina cuánto producto se forma; el otro queda en <b>exceso</b>. Para hallarlo, divide los moles de cada reactivo por su coeficiente: el menor es el limitante.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.estequiometria"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.composicion" data-tab="qui">
+    <div class="lec-head"><h2>Composición porcentual y fórmula empírica</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.composicion"></span></div>
+    <div class="lec-body">
+    <p class="idea">La composición porcentual dice qué parte de la masa es de cada elemento. Con esos porcentajes se reconstruye la <b>fórmula empírica</b> (la proporción más simple) y, con la masa molar, la <b>molecular</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Porcentaje en masa</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect x="14" y="28" width="46.9" height="26" rx="6" class="fm"/><rect x="60.9" y="28" width="125.1" height="26" rx="6" class="fr"/><text x="37.452200000000005" y="46" text-anchor="middle">C</text><text x="123.4522" y="46" text-anchor="middle">O · 72,7 %</text><text x="100" y="16" text-anchor="middle">CO₂ = 44 g/mol</text><text x="100" y="78" text-anchor="middle">C: 12/44 = 27,3 %</text></svg><p>% = masa del elemento en 1 mol ÷ masa molar · 100.</p></div>
+      <div class="tarjeta"><span class="onda">empírica vs molecular</span><h4>Proporción y fórmula real</h4><p><b>Empírica</b>: la razón entera más simple (CH₂O). <b>Molecular</b>: la real (glucosa C₆H₁₂O₆ = 6 · CH₂O). Molecular = n · empírica, con <b>n = masa molar real ÷ masa de la empírica</b>.</p></div>
+      <div class="tarjeta"><span class="onda">receta</span><h4>De porcentajes a fórmula</h4><p>1) Supón 100 g: los % pasan a gramos. 2) Divide cada uno por su masa atómica (moles). 3) Divide todo por el menor. 4) Si queda ,5 multiplica por 2; si queda ,33 o ,67, por 3; si queda ,25 o ,75, por 4.</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.composicion"></div></div>
+    </div>
+  </section>
+  <section class="leccion" id="qui.soluciones" data-tab="qui">
+    <div class="lec-head"><h2>Soluciones: concentración y dilución</h2><span class="chip R">Rescate</span><span class="dom" data-tema="qui.soluciones"></span></div>
+    <div class="lec-body">
+    <p class="idea">Una solución es un soluto disuelto en un solvente. La <b>concentración</b> dice cuánto soluto hay en cierta cantidad de solución. Al diluir, los moles de soluto no cambian: <b>C₁·V₁ = C₂·V₂</b>.</p>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>Diluir</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M20.0 30.0L20.0 80.0L60.0 80.0L60.0 30.0Z" stroke-width="2"/><rect x="21" y="52" width="38" height="27" style="fill:var(--acc2);fill-opacity:.35"/><circle class="fr" cx="30" cy="62" r="3"/><circle class="fr" cx="44" cy="58" r="3"/><circle class="fr" cx="38" cy="72" r="3"/><circle class="fr" cx="52" cy="68" r="3"/><text x="40" y="92" text-anchor="middle">100 mL · 2 M</text><path class="m" d="M70 56L96.0 56.0" stroke-width="2.5" stroke-linecap="round"/><path class="fm" d="M104 56L96.0 51.5L96.0 60.5Z"/><text x="87" y="46" text-anchor="middle">+ agua</text><path class="m" d="M118.0 8.0L118.0 80.0L186.0 80.0L186.0 8.0Z" stroke-width="2"/><rect x="119" y="22" width="66" height="57" style="fill:var(--acc2);fill-opacity:.18"/><circle class="fr" cx="132" cy="40" r="3"/><circle class="fr" cx="160" cy="34" r="3"/><circle class="fr" cx="146" cy="64" r="3"/><circle class="fr" cx="172" cy="58" r="3"/><text x="152" y="92" text-anchor="middle">400 mL · 0,5 M</text></svg><p>Mismas partículas de soluto en más volumen: la concentración baja.</p></div>
+      <div class="tarjeta"><span class="onda">componentes</span><h4>Soluto y solvente</h4><p><b>Soluto</b>: lo que se disuelve. <b>Solvente</b>: donde se disuelve (el agua es el más común). Una solución es una mezcla homogénea.</p></div>
+      <div class="tarjeta"><span class="onda">unidades físicas</span><h4>%m/m, %m/v, %v/v, ppm</h4><p><b>%m/m</b> = g de soluto en 100 g de <b>solución</b>. <b>%m/v</b> = g de soluto en 100 mL de solución. <b>%v/v</b> = mL de soluto en 100 mL de solución. <b>ppm</b> = mg de soluto por kg (o por L) de solución.</p></div>
+      <div class="tarjeta"><span class="onda">unidades químicas</span><h4>Molaridad, molalidad, fracción molar</h4><p><b>Molaridad</b> = mol de soluto / L de solución. <b>Molalidad</b> = mol de soluto / kg de <b>solvente</b>. <b>Fracción molar</b> = mol de un componente / mol totales (todas suman 1).</p></div>
+      <div class="tarjeta"><span class="onda">mezclar</span><h4>Dos soluciones del mismo soluto</h4><p>Se suman los moles y se suman los volúmenes: C = (C₁V₁ + C₂V₂) / (V₁ + V₂).</p></div>
+      <div class="tarjeta"><span class="onda">solubilidad</span><h4>Cuánto se puede disolver</h4><p>Es la máxima cantidad de soluto que se disuelve en una cantidad dada de solvente (por ejemplo, 100 g de agua) a cierta temperatura. Sólidos: suele subir con la temperatura. Gases: baja con la temperatura y sube con la presión (una bebida fría y cerrada guarda más gas). «Lo semejante disuelve a lo semejante».</p></div>
+    </div>
+    <div class="paso"><h3><span class="n">✓</span> Práctica: 3 preguntas</h3><div class="practica" data-temas="qui.soluciones"></div></div>
+    </div>
+  </section>
+  <!-- @@/qui@@ -->
+  </section>
+  <footer class="firma" data-firma></footer>
+</div>
+
+<script type="application/json" id="banco-bq">
+[
+ {
+  "id": "bq-bcel-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "basico",
+  "enunciado": "¿Qué organelo produce la mayor parte del ATP de una célula animal?",
+  "opciones": [
+   {
+    "texto": "La mitocondria",
+    "trampa": ""
+   },
+   {
+    "texto": "El cloroplasto",
+    "trampa": "El cloroplasto hace fotosíntesis y no está en las células animales."
+   },
+   {
+    "texto": "El ribosoma",
+    "trampa": "El ribosoma fabrica proteínas, no energía."
+   },
+   {
+    "texto": "El complejo de Golgi",
+    "trampa": "El Golgi modifica y empaca proteínas; no produce energía."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "La respiración celular ocurre en la mitocondria y produce la mayor parte del ATP."
+ },
+ {
+  "id": "bq-bcel-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "paes",
+  "enunciado": "Las células del páncreas que fabrican y exportan grandes cantidades de enzimas digestivas tienen muy desarrollados dos organelos. ¿Cuáles?",
+  "opciones": [
+   {
+    "texto": "Los lisosomas y los peroxisomas",
+    "trampa": "Esos organelos degradan sustancias; no fabrican proteínas para exportar."
+   },
+   {
+    "texto": "Los cloroplastos y la vacuola central",
+    "trampa": "Son organelos de células vegetales."
+   },
+   {
+    "texto": "El retículo endoplasmático rugoso y el complejo de Golgi",
+    "trampa": ""
+   },
+   {
+    "texto": "El retículo endoplasmático liso y los centriolos",
+    "trampa": "El REL fabrica lípidos y los centriolos actúan en la división; ninguno exporta proteínas."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Las enzimas son proteínas: se fabrican en los ribosomas del RER y el Golgi las empaca para enviarlas fuera de la célula."
+ },
+ {
+  "id": "bq-bcel-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "dificil",
+  "enunciado": "Una célula tiene pared celular, ribosomas y ADN libre en el citoplasma, pero no tiene núcleo ni mitocondrias. ¿Qué tipo de célula es?",
+  "opciones": [
+   {
+    "texto": "Una célula vegetal",
+    "trampa": "Tiene pared celular, pero también núcleo y mitocondrias (y cloroplastos en las partes verdes)."
+   },
+   {
+    "texto": "Una célula animal",
+    "trampa": "No tiene pared celular y sí tiene núcleo y mitocondrias."
+   },
+   {
+    "texto": "Una fibra muscular esquelética",
+    "trampa": "Es una célula animal: tiene varios núcleos y muchas mitocondrias."
+   },
+   {
+    "texto": "Una célula procarionte, como una bacteria",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sin núcleo y sin organelos con membrana, pero con ribosomas y ADN libre: es una procarionte."
+ },
+ {
+  "id": "bq-bner-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "basico",
+  "enunciado": "En un arco reflejo, ¿cuál es el orden correcto del recorrido?",
+  "opciones": [
+   {
+    "texto": "Receptor → neurona motora → médula espinal → neurona sensitiva → efector",
+    "trampa": "Invertiste las neuronas: la sensitiva lleva la información hacia la médula y la motora lleva la orden al músculo."
+   },
+   {
+    "texto": "Receptor → neurona sensitiva → médula espinal → neurona motora → efector",
+    "trampa": ""
+   },
+   {
+    "texto": "Receptor → neurona sensitiva → cerebro → neurona motora → efector",
+    "trampa": "En el reflejo simple la respuesta se integra en la médula espinal; por eso es tan rápido."
+   },
+   {
+    "texto": "Efector → neurona motora → médula espinal → neurona sensitiva → receptor",
+    "trampa": "Está al revés: el recorrido parte en el receptor y termina en el efector."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El estímulo lo capta un receptor, la neurona sensitiva lo lleva a la médula, y la neurona motora lleva la respuesta al músculo (efector)."
+ },
+ {
+  "id": "bq-bner-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "paes",
+  "enunciado": "Cuando un estímulo supera el umbral de una neurona, ¿qué ocurre primero?",
+  "opciones": [
+   {
+    "texto": "Entran iones Na⁺ y el interior de la neurona se vuelve positivo (despolarización)",
+    "trampa": ""
+   },
+   {
+    "texto": "Salen iones K⁺ y el interior se vuelve más negativo",
+    "trampa": "Eso es la repolarización, que viene después de la despolarización."
+   },
+   {
+    "texto": "Se liberan neurotransmisores en las dendritas",
+    "trampa": "Los neurotransmisores se liberan en el terminal del axón, al final del recorrido."
+   },
+   {
+    "texto": "Se detiene la bomba de Na⁺/K⁺",
+    "trampa": "La bomba mantiene el potencial de reposo; no es lo que inicia el impulso."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Al superar el umbral se abren canales de Na⁺: entra sodio y el interior se vuelve positivo. Después sale K⁺ y se repolariza."
+ },
+ {
+  "id": "bq-bner-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "dificil",
+  "enunciado": "Un fármaco bloquea los receptores de neurotransmisores de la neurona postsináptica. ¿Qué efecto tiene en esa sinapsis?",
+  "opciones": [
+   {
+    "texto": "Aumenta la liberación de neurotransmisores y el impulso pasa más rápido",
+    "trampa": "Bloquear el receptor impide la respuesta; no la acelera."
+   },
+   {
+    "texto": "El impulso pasa a viajar de la neurona postsináptica a la presináptica",
+    "trampa": "La sinapsis química va en un solo sentido; bloquear los receptores no la invierte."
+   },
+   {
+    "texto": "El axón de la neurona presináptica deja de conducir el impulso",
+    "trampa": "El fármaco actúa en la neurona siguiente; el axón presináptico sigue conduciendo."
+   },
+   {
+    "texto": "El impulso no pasa a la neurona siguiente, aunque se sigan liberando neurotransmisores",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sin receptores disponibles, el neurotransmisor no puede actuar sobre la neurona postsináptica: la señal se corta ahí."
+ },
+ {
+  "id": "bq-brep-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "basico",
+  "enunciado": "¿Dónde ocurre normalmente la fecundación en la especie humana?",
+  "opciones": [
+   {
+    "texto": "En el útero",
+    "trampa": "En el útero se implanta el embrión días después; la fecundación ocurre antes, en la trompa."
+   },
+   {
+    "texto": "En el ovario",
+    "trampa": "El ovario libera el ovocito; el encuentro con el espermatozoide es en la trompa."
+   },
+   {
+    "texto": "En la trompa de Falopio (oviducto)",
+    "trampa": ""
+   },
+   {
+    "texto": "En la vagina",
+    "trampa": "Ahí se depositan los espermatozoides, pero deben subir hasta la trompa."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El ovocito liberado entra a la trompa de Falopio, y ahí lo alcanzan los espermatozoides."
+ },
+ {
+  "id": "bq-brep-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "paes",
+  "enunciado": "¿Qué hormona, con un aumento brusco a mitad del ciclo, provoca la ovulación?",
+  "opciones": [
+   {
+    "texto": "La FSH",
+    "trampa": "La FSH hace madurar el folículo; el pico que provoca la ovulación es de LH."
+   },
+   {
+    "texto": "La LH (hormona luteinizante)",
+    "trampa": ""
+   },
+   {
+    "texto": "La progesterona",
+    "trampa": "La progesterona sube después de la ovulación, producida por el cuerpo lúteo."
+   },
+   {
+    "texto": "La testosterona",
+    "trampa": "Es la principal hormona sexual masculina; no gatilla la ovulación."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Cerca del día 14 hay un pico de LH que rompe el folículo maduro y libera el ovocito."
+ },
+ {
+  "id": "bq-brep-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "dificil",
+  "enunciado": "Si en un ciclo no hay fecundación, ¿qué explica que llegue la menstruación?",
+  "opciones": [
+   {
+    "texto": "El cuerpo lúteo degenera, baja la progesterona y el endometrio se desprende",
+    "trampa": ""
+   },
+   {
+    "texto": "Sube la progesterona y el endometrio se engrosa",
+    "trampa": "Eso prepara el útero para un embarazo; la menstruación llega cuando la progesterona baja."
+   },
+   {
+    "texto": "El pico de LH desprende el endometrio",
+    "trampa": "El pico de LH provoca la ovulación, no la menstruación."
+   },
+   {
+    "texto": "El ovocito no fecundado libera enzimas que destruyen el endometrio",
+    "trampa": "El endometrio se desprende por la baja de las hormonas, no por el ovocito."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Sin embarazo, el cuerpo lúteo deja de producir progesterona; sin ella el endometrio no se sostiene y se desprende."
+ },
+ {
+  "id": "bq-bant-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de estos métodos, además de evitar el embarazo, previene las infecciones de transmisión sexual?",
+  "opciones": [
+   {
+    "texto": "La píldora anticonceptiva",
+    "trampa": "Evita la ovulación, pero no impide el contacto con fluidos ni con lesiones."
+   },
+   {
+    "texto": "El método de Billings",
+    "trampa": "Es un método natural: solo identifica los días fértiles; no protege de ITS."
+   },
+   {
+    "texto": "La vasectomía",
+    "trampa": "Impide la salida de espermatozoides, pero el semen y el contacto pueden seguir transmitiendo ITS."
+   },
+   {
+    "texto": "El condón",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "El condón es una barrera física: impide el paso de espermatozoides y también el contacto con fluidos y lesiones que transmiten ITS."
+ },
+ {
+  "id": "bq-bant-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de estos pares de ITS es causado por virus?",
+  "opciones": [
+   {
+    "texto": "VIH y herpes genital",
+    "trampa": ""
+   },
+   {
+    "texto": "Gonorrea y clamidia",
+    "trampa": "Ambas son bacterianas: se tratan con antibióticos."
+   },
+   {
+    "texto": "VIH y gonorrea",
+    "trampa": "La gonorrea es bacteriana."
+   },
+   {
+    "texto": "Herpes genital y clamidia",
+    "trampa": "La clamidia es bacteriana."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "VIH y herpes son virus (no tienen cura, sí tratamiento). Gonorrea y clamidia son bacterias (se curan con antibióticos)."
+ },
+ {
+  "id": "bq-bant-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "dificil",
+  "enunciado": "Una pareja usa el método del calendario. ¿Por qué falla más que los métodos hormonales?",
+  "opciones": [
+   {
+    "texto": "Porque altera las hormonas del ciclo",
+    "trampa": "Los métodos naturales no usan hormonas: solo observan el ciclo."
+   },
+   {
+    "texto": "Porque destruye los espermatozoides",
+    "trampa": "No actúa sobre los espermatozoides; solo busca evitar los días fértiles."
+   },
+   {
+    "texto": "Porque el día de la ovulación puede variar de un ciclo a otro y los espermatozoides sobreviven varios días",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque solo funciona si el ciclo dura exactamente 28 días",
+    "trampa": "28 días es solo un promedio: el método necesita ciclos regulares, no de 28 días justos."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El calendario supone que la ovulación será en la misma fecha. Si se adelanta o se atrasa, o los espermatozoides sobreviven más días, puede haber embarazo."
+ },
+ {
+  "id": "bq-bdiv-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "basico",
+  "enunciado": "¿En qué etapa del ciclo celular se duplica el ADN?",
+  "opciones": [
+   {
+    "texto": "En G1",
+    "trampa": "En G1 la célula crece y trabaja; el ADN se copia en S."
+   },
+   {
+    "texto": "En la fase S de la interfase",
+    "trampa": ""
+   },
+   {
+    "texto": "En G2",
+    "trampa": "En G2 el ADN ya está duplicado: la célula se prepara para dividirse."
+   },
+   {
+    "texto": "En la profase",
+    "trampa": "La profase es de la mitosis; el ADN llega ya copiado."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "S viene de «síntesis»: en esa fase se replica el ADN."
+ },
+ {
+  "id": "bq-bdiv-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "paes",
+  "enunciado": "Una célula del testículo, con 46 cromosomas, hace meiosis. ¿Cuántas células resultan y cuántos cromosomas tiene cada una?",
+  "opciones": [
+   {
+    "texto": "2 células con 46 cromosomas cada una",
+    "trampa": "Eso es el resultado de una mitosis."
+   },
+   {
+    "texto": "4 células con 46 cromosomas cada una",
+    "trampa": "La meiosis reduce los cromosomas a la mitad: los gametos son haploides."
+   },
+   {
+    "texto": "2 células con 23 cromosomas cada una",
+    "trampa": "Te quedaste en la meiosis I; la meiosis II divide otra vez, así que son 4."
+   },
+   {
+    "texto": "4 células con 23 cromosomas cada una",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Dos divisiones seguidas: de 1 célula salen 4, y cada una tiene la mitad de los cromosomas (23)."
+ },
+ {
+  "id": "bq-bdiv-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "dificil",
+  "enunciado": "Si una célula pierde el control del punto G1–S, ¿qué consecuencia es más probable?",
+  "opciones": [
+   {
+    "texto": "Que se divida aunque su ADN esté dañado, lo que puede originar un cáncer",
+    "trampa": ""
+   },
+   {
+    "texto": "Que se detenga para siempre en G1",
+    "trampa": "Perder un control quita un freno; no detiene la célula."
+   },
+   {
+    "texto": "Que haga meiosis en vez de mitosis",
+    "trampa": "Los puntos de control no cambian el tipo de división."
+   },
+   {
+    "texto": "Que sus cromosomas no se condensen en la profase",
+    "trampa": "El control G1–S revisa antes de copiar el ADN; no afecta la condensación."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El punto G1–S frena la división si el ADN está dañado. Sin ese freno, se copian y heredan errores: así puede empezar un cáncer."
+ },
+ {
+  "id": "bq-bman-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "basico",
+  "enunciado": "Hoy la insulina para personas con diabetes se produce en gran cantidad gracias a que…",
+  "opciones": [
+   {
+    "texto": "se extrae del páncreas de personas donantes",
+    "trampa": "No se obtiene de donantes: la fabrican bacterias que recibieron el gen."
+   },
+   {
+    "texto": "se fabrica en el laboratorio sin usar células",
+    "trampa": "La producen células vivas que recibieron el gen de la insulina."
+   },
+   {
+    "texto": "se insertó el gen humano de la insulina en bacterias, que la fabrican",
+    "trampa": ""
+   },
+   {
+    "texto": "se clona un páncreas humano completo",
+    "trampa": "No se clona un órgano: se transfiere un solo gen."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Es ADN recombinante: el gen de la insulina se pega en un plásmido, entra a una bacteria y la bacteria la produce."
+ },
+ {
+  "id": "bq-bman-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "paes",
+  "enunciado": "¿Por qué una bacteria puede fabricar una proteína humana si recibe el gen correspondiente?",
+  "opciones": [
+   {
+    "texto": "Porque las bacterias tienen núcleo, igual que las células humanas",
+    "trampa": "Las bacterias son procariontes: no tienen núcleo."
+   },
+   {
+    "texto": "Porque el código genético es prácticamente universal",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque todas las proteínas son iguales en todos los seres vivos",
+    "trampa": "Las proteínas son distintas; lo que se comparte es la forma de leer el ADN."
+   },
+   {
+    "texto": "Porque la bacteria se transforma en una célula humana",
+    "trampa": "Sigue siendo una bacteria; solo agrega un gen."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Casi todos los seres vivos leen el ADN con el mismo código, así que la bacteria «traduce» el gen humano a la misma proteína."
+ },
+ {
+  "id": "bq-bman-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "dificil",
+  "enunciado": "Para que una bacteria fabrique insulina humana se hace lo siguiente: I) introducir el plásmido en la bacteria; II) cortar el gen y el plásmido con la misma enzima de restricción; III) unir el gen al plásmido con ligasa; IV) cultivar la bacteria y purificar la insulina. ¿Cuál es el orden correcto?",
+  "opciones": [
+   {
+    "texto": "I, II, III, IV",
+    "trampa": "La bacteria debe recibir el plásmido con el gen ya puesto: primero se corta y se une, después se introduce."
+   },
+   {
+    "texto": "II, I, III, IV",
+    "trampa": "La ligasa une el gen al plásmido fuera de la bacteria, antes de introducirlo."
+   },
+   {
+    "texto": "III, II, I, IV",
+    "trampa": "Antes de unir hay que cortar: la ligasa pega los extremos que deja la enzima de restricción."
+   },
+   {
+    "texto": "II, III, I, IV",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Se corta (enzima de restricción), se pega (ligasa), se introduce el plásmido en la bacteria, y esta se multiplica y fabrica la insulina."
+ },
+ {
+  "id": "bq-bevo-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "basico",
+  "enunciado": "El brazo humano y el ala de un murciélago tienen los mismos huesos, pero distinta función. ¿Cómo se llaman estas estructuras?",
+  "opciones": [
+   {
+    "texto": "Homólogas",
+    "trampa": ""
+   },
+   {
+    "texto": "Análogas",
+    "trampa": "Las análogas cumplen la misma función con distinto origen, como el ala de un ave y la de un insecto."
+   },
+   {
+    "texto": "Embrionarias",
+    "trampa": "La embriología compara embriones; aquí se comparan estructuras de adultos."
+   },
+   {
+    "texto": "Fósiles",
+    "trampa": "El registro fósil es otra evidencia: restos de organismos antiguos."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Mismo origen (los mismos huesos), aunque cumplan distinta función: son homólogas, una evidencia de un ancestro común."
+ },
+ {
+  "id": "bq-bevo-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "paes",
+  "enunciado": "Según Lamarck, ¿por qué las jirafas tienen el cuello largo?",
+  "opciones": [
+   {
+    "texto": "Porque las que nacieron con el cuello más largo sobrevivieron y se reprodujeron más",
+    "trampa": "Esa es la explicación de Darwin y Wallace: la selección natural."
+   },
+   {
+    "texto": "Porque una mutación las cambió en una sola generación",
+    "trampa": "Lamarck no habló de mutaciones; su idea fue el uso, el desuso y la herencia de lo adquirido."
+   },
+   {
+    "texto": "Porque lo estiraron para alcanzar hojas altas y heredaron ese cambio a sus crías",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque fueron creadas así y nunca han cambiado",
+    "trampa": "Eso es el fijismo; Lamarck sí proponía que las especies cambian."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Para Lamarck, el uso de un órgano lo desarrolla y ese cambio adquirido se hereda. Hoy se sabe que lo adquirido en vida no se hereda."
+ },
+ {
+  "id": "bq-bevo-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "dificil",
+  "enunciado": "Al usar mal un antibiótico aparecen bacterias resistentes. ¿Cómo se explica por selección natural?",
+  "opciones": [
+   {
+    "texto": "El antibiótico enseñó a las bacterias a resistirlo",
+    "trampa": "Eso es pensar como Lamarck: el ambiente no «enseña», selecciona variaciones que ya existían."
+   },
+   {
+    "texto": "Algunas bacterias ya eran resistentes; el antibiótico eliminó a las demás y las resistentes se multiplicaron",
+    "trampa": ""
+   },
+   {
+    "texto": "El antibiótico pierde su fuerza con el tiempo",
+    "trampa": "El fármaco no cambia; lo que cambia es la población de bacterias."
+   },
+   {
+    "texto": "Todas las bacterias se volvieron resistentes al mismo tiempo",
+    "trampa": "La resistencia no aparece en todas a la vez: aumenta la proporción de las que ya la tenían."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Hay variación previa; el antibiótico actúa como presión de selección y sobreviven y se reproducen las resistentes."
+ },
+ {
+  "id": "bq-bfot-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "basico",
+  "enunciado": "¿De dónde proviene el O₂ que liberan las plantas en la fotosíntesis?",
+  "opciones": [
+   {
+    "texto": "Del dióxido de carbono (CO₂)",
+    "trampa": "Es un error clásico: el oxígeno liberado viene de romper el agua en la fase luminosa."
+   },
+   {
+    "texto": "Del agua (H₂O)",
+    "trampa": ""
+   },
+   {
+    "texto": "De la glucosa",
+    "trampa": "La glucosa es un producto de la fotosíntesis, no la fuente del O₂."
+   },
+   {
+    "texto": "Del oxígeno del aire que respiran",
+    "trampa": "El O₂ del aire lo usan para respirar; el que liberan viene del agua."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "En la fase luminosa la luz rompe moléculas de agua (fotólisis) y de ahí sale el O₂."
+ },
+ {
+  "id": "bq-bfot-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "paes",
+  "enunciado": "¿En qué lugar de la célula vegetal ocurre la fase que fija el CO₂ y forma glucosa?",
+  "opciones": [
+   {
+    "texto": "En los tilacoides",
+    "trampa": "En los tilacoides ocurre la fase luminosa, que produce ATP, NADPH y O₂."
+   },
+   {
+    "texto": "En la mitocondria",
+    "trampa": "La mitocondria hace la respiración celular: libera CO₂, no lo fija."
+   },
+   {
+    "texto": "En la membrana externa del cloroplasto",
+    "trampa": "La membrana rodea al cloroplasto; las reacciones ocurren adentro."
+   },
+   {
+    "texto": "En el estroma",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La fase oscura (ciclo de Calvin) ocurre en el estroma y usa el ATP y el NADPH de la fase luminosa."
+ },
+ {
+  "id": "bq-bfot-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "dificil",
+  "enunciado": "En un experimento, al aumentar la luz la fotosíntesis sube, pero desde cierto punto ya no aumenta. ¿Qué explica mejor ese límite?",
+  "opciones": [
+   {
+    "texto": "Otro factor, como la cantidad de CO₂, pasa a limitar el proceso",
+    "trampa": ""
+   },
+   {
+    "texto": "La luz empieza a destruir la clorofila de inmediato",
+    "trampa": "Con más luz la velocidad se estabiliza; no cae de inmediato."
+   },
+   {
+    "texto": "La planta deja de respirar",
+    "trampa": "La respiración sigue; no es lo que frena a la fotosíntesis."
+   },
+   {
+    "texto": "La fase oscura solo puede ocurrir de noche",
+    "trampa": "La fase oscura también ocurre de día: no necesita luz directamente."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cuando la luz sobra, la velocidad la limita otro factor (CO₂ o temperatura). Por eso la curva se aplana."
+ },
+ {
+  "id": "bq-qmat-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes es una mezcla homogénea?",
+  "opciones": [
+   {
+    "texto": "Agua con aceite",
+    "trampa": "Se ven dos capas: es una mezcla heterogénea."
+   },
+   {
+    "texto": "Agua pura",
+    "trampa": "Es un compuesto: una sustancia pura, no una mezcla."
+   },
+   {
+    "texto": "Agua con sal disuelta",
+    "trampa": ""
+   },
+   {
+    "texto": "Arena con piedras",
+    "trampa": "Se distinguen sus partes: es heterogénea."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "La sal disuelta no se distingue del agua: hay una sola fase."
+ },
+ {
+  "id": "bq-qmat-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "paes",
+  "enunciado": "Para separar el alcohol del agua en una mezcla de ambos, ¿qué método conviene?",
+  "opciones": [
+   {
+    "texto": "Destilación",
+    "trampa": ""
+   },
+   {
+    "texto": "Filtración",
+    "trampa": "El filtro retiene sólidos; el alcohol está disuelto y pasa con el agua."
+   },
+   {
+    "texto": "Decantación",
+    "trampa": "El agua y el alcohol se mezclan en una sola fase: no forman capas."
+   },
+   {
+    "texto": "Tamizado",
+    "trampa": "El tamiz sirve para sólidos de distinto tamaño."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El alcohol hierve a menor temperatura que el agua: al calentar se evapora primero y se condensa aparte."
+ },
+ {
+  "id": "bq-qmat-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "dificil",
+  "enunciado": "Un trozo de metal de 54 g se sumerge en una probeta con agua, y el nivel sube de 20 mL a 40 mL. ¿Cuál es la densidad del metal?",
+  "opciones": [
+   {
+    "texto": "1,35 g/mL",
+    "trampa": "Dividiste por 40 mL; el volumen del metal es lo que subió el agua: 20 mL."
+   },
+   {
+    "texto": "2,7 g/mL",
+    "trampa": ""
+   },
+   {
+    "texto": "0,37 g/mL",
+    "trampa": "Dividiste el volumen por la masa; la densidad es masa / volumen."
+   },
+   {
+    "texto": "1080 g/mL",
+    "trampa": "Multiplicaste masa por volumen; la densidad es masa / volumen."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "V = 40 − 20 = 20 mL. d = m / V = 54 / 20 = 2,7 g/mL."
+ },
+ {
+  "id": "bq-qmod-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "basico",
+  "enunciado": "¿Qué modelo atómico propuso por primera vez un núcleo pequeño y positivo, con los electrones alrededor?",
+  "opciones": [
+   {
+    "texto": "El de Thomson",
+    "trampa": "Thomson imaginó una esfera positiva con electrones incrustados, sin núcleo."
+   },
+   {
+    "texto": "El de Dalton",
+    "trampa": "Para Dalton el átomo era una esfera maciza e indivisible."
+   },
+   {
+    "texto": "El de Bohr",
+    "trampa": "Bohr partió del núcleo de Rutherford y le agregó niveles de energía."
+   },
+   {
+    "texto": "El de Rutherford",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "El experimento de la lámina de oro llevó a Rutherford a proponer el núcleo."
+ },
+ {
+  "id": "bq-qmod-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "paes",
+  "enunciado": "Un átomo neutro tiene Z = 26 y A = 56. ¿Cuántos protones, neutrones y electrones tiene?",
+  "opciones": [
+   {
+    "texto": "26 protones, 56 neutrones y 26 electrones",
+    "trampa": "Tomaste A como el número de neutrones; los neutrones son A − Z."
+   },
+   {
+    "texto": "30 protones, 26 neutrones y 30 electrones",
+    "trampa": "Invertiste: Z es el número de protones."
+   },
+   {
+    "texto": "26 protones, 30 neutrones y 26 electrones",
+    "trampa": ""
+   },
+   {
+    "texto": "26 protones, 30 neutrones y 30 electrones",
+    "trampa": "En un átomo neutro hay tantos electrones como protones."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Protones = Z = 26. Neutrones = A − Z = 56 − 26 = 30. Electrones = protones = 26."
+ },
+ {
+  "id": "bq-qmod-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "dificil",
+  "enunciado": "En el experimento de Rutherford, la mayoría de las partículas alfa atravesó la lámina de oro sin desviarse. ¿Qué concluyó de eso?",
+  "opciones": [
+   {
+    "texto": "Que el átomo es en su mayor parte espacio vacío",
+    "trampa": ""
+   },
+   {
+    "texto": "Que el núcleo es negativo",
+    "trampa": "El núcleo es positivo: por eso rechazó a las pocas partículas alfa (positivas) que rebotaron."
+   },
+   {
+    "texto": "Que los electrones están en niveles de energía",
+    "trampa": "Eso lo propuso Bohr después, para explicar los espectros."
+   },
+   {
+    "texto": "Que el átomo es una esfera maciza",
+    "trampa": "Si fuera maciza, casi ninguna partícula pasaría sin desviarse."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Si casi todas pasan derecho, casi todo el átomo está vacío; las pocas que se desviaron mucho o rebotaron pasaron cerca de un núcleo pequeño y positivo, que las repelió."
+ },
+ {
+  "id": "bq-qcar-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "basico",
+  "enunciado": "En el etino (HC≡CH), ¿qué hibridación tienen los átomos de carbono?",
+  "opciones": [
+   {
+    "texto": "sp",
+    "trampa": ""
+   },
+   {
+    "texto": "sp²",
+    "trampa": "sp² corresponde a un doble enlace, como en el eteno."
+   },
+   {
+    "texto": "sp³",
+    "trampa": "sp³ es para cuatro enlaces simples, como en el metano."
+   },
+   {
+    "texto": "No tienen hibridación",
+    "trampa": "En los compuestos orgánicos el carbono se hibrida; con un triple enlace es sp."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cada carbono tiene un enlace triple y uno simple: hibridación sp, forma lineal (180°)."
+ },
+ {
+  "id": "bq-qcar-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el ángulo de enlace aproximado alrededor de un carbono con hibridación sp²?",
+  "opciones": [
+   {
+    "texto": "109,5°",
+    "trampa": "Ese es el ángulo del carbono sp³ (tetraédrico)."
+   },
+   {
+    "texto": "120°",
+    "trampa": ""
+   },
+   {
+    "texto": "180°",
+    "trampa": "Ese es el ángulo del carbono sp (lineal)."
+   },
+   {
+    "texto": "90°",
+    "trampa": "Pensaste en un cuadrado; los tres enlaces del sp² se reparten en el plano: 360° / 3 = 120°."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El carbono sp² tiene 3 zonas de enlace en un plano, separadas por 120°."
+ },
+ {
+  "id": "bq-qcar-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "dificil",
+  "enunciado": "¿Cómo se ordenan las longitudes de los enlaces carbono–carbono, de menor a mayor?",
+  "opciones": [
+   {
+    "texto": "C–C &lt; C=C &lt; C≡C",
+    "trampa": "Es al revés: más enlaces entre los mismos átomos los acercan más."
+   },
+   {
+    "texto": "Las tres miden lo mismo",
+    "trampa": "No miden lo mismo: a más electrones compartidos, el enlace es más corto."
+   },
+   {
+    "texto": "C≡C &lt; C=C &lt; C–C",
+    "trampa": ""
+   },
+   {
+    "texto": "C=C &lt; C≡C &lt; C–C",
+    "trampa": "El triple es el más corto de los tres."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Triple (120 pm) &lt; doble (134 pm) &lt; simple (154 pm). Más corto también significa más fuerte."
+ },
+ {
+  "id": "bq-qorg-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "basico",
+  "enunciado": "¿Qué grupo funcional tiene el etanol (CH₃–CH₂–OH)?",
+  "opciones": [
+   {
+    "texto": "Ácido carboxílico (–COOH)",
+    "trampa": "El ácido tiene –COOH; el etanol solo tiene –OH."
+   },
+   {
+    "texto": "Alcohol (–OH)",
+    "trampa": ""
+   },
+   {
+    "texto": "Éter (R–O–R')",
+    "trampa": "En un éter el oxígeno está entre dos carbonos."
+   },
+   {
+    "texto": "Aldehído (–CHO)",
+    "trampa": "El aldehído tiene un C=O en el extremo de la cadena."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El –OH unido a un carbono de una cadena es un alcohol; por eso su nombre termina en -ol."
+ },
+ {
+  "id": "bq-qorg-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la fórmula molecular del pentano, el alcano de 5 carbonos?",
+  "opciones": [
+   {
+    "texto": "C₅H₁₀",
+    "trampa": "Esa es la fórmula de un alqueno: CₙH₂ₙ."
+   },
+   {
+    "texto": "C₅H₈",
+    "trampa": "Esa corresponde a un alquino: CₙH₂ₙ₋₂."
+   },
+   {
+    "texto": "C₅H₅",
+    "trampa": "Contaste un hidrógeno por carbono; en un alcano son 2n + 2."
+   },
+   {
+    "texto": "C₅H₁₂",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Alcanos: CₙH₂ₙ₊₂. Con n = 5: C₅H₁₂."
+ },
+ {
+  "id": "bq-qorg-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "dificil",
+  "enunciado": "La propanona (CH₃–CO–CH₃) y el propanal (CH₃–CH₂–CHO) tienen la misma fórmula molecular, C₃H₆O. ¿En qué se diferencian?",
+  "opciones": [
+   {
+    "texto": "En la posición del C=O: en la cetona está en un carbono interior y en el aldehído, en el extremo",
+    "trampa": ""
+   },
+   {
+    "texto": "En que la propanona tiene un átomo de oxígeno más",
+    "trampa": "Ambas tienen un solo oxígeno: tienen la misma fórmula molecular."
+   },
+   {
+    "texto": "En que el propanal es un alcohol",
+    "trampa": "No tiene –OH: tiene el grupo –CHO de los aldehídos."
+   },
+   {
+    "texto": "En el número de carbonos",
+    "trampa": "Ambas tienen 3 carbonos (prop-)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Mismos átomos, distinto orden: la cetona tiene el C=O entre dos carbonos; el aldehído, en el extremo (–CHO)."
+ },
+ {
+  "id": "bq-qest-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "basico",
+  "enunciado": "¿Cuántos moles hay en 36 g de agua (H₂O)? (masas atómicas: H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "2 mol",
+    "trampa": ""
+   },
+   {
+    "texto": "0,5 mol",
+    "trampa": "Dividiste 18 / 36; los moles son masa / masa molar: 36 / 18."
+   },
+   {
+    "texto": "648 mol",
+    "trampa": "Multiplicaste 36 · 18; hay que dividir."
+   },
+   {
+    "texto": "36 mol",
+    "trampa": "Confundiste gramos con moles."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "M(H₂O) = 2·1 + 16 = 18 g/mol. n = 36 / 18 = 2 mol."
+ },
+ {
+  "id": "bq-qest-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "paes",
+  "enunciado": "Según la ecuación N₂ + 3 H₂ → 2 NH₃, ¿cuántos moles de NH₃ se forman con 6 mol de H₂ y suficiente N₂?",
+  "opciones": [
+   {
+    "texto": "6 mol",
+    "trampa": "Usaste una razón 1 : 1; la ecuación dice 3 H₂ por cada 2 NH₃."
+   },
+   {
+    "texto": "9 mol",
+    "trampa": "Invertiste la razón: es 6 · 2/3, no 6 · 3/2."
+   },
+   {
+    "texto": "4 mol",
+    "trampa": ""
+   },
+   {
+    "texto": "12 mol",
+    "trampa": "Multiplicaste por 2 y olvidaste dividir por 3."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "3 mol de H₂ dan 2 mol de NH₃. Con 6 mol de H₂: 6 · 2/3 = 4 mol de NH₃."
+ },
+ {
+  "id": "bq-qest-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "dificil",
+  "enunciado": "En la reacción 2 H₂ + O₂ → 2 H₂O se mezclan 4 mol de H₂ con 3 mol de O₂. ¿Cuál es el reactivo limitante y cuánta agua se forma?",
+  "opciones": [
+   {
+    "texto": "El O₂; se forman 3 mol de H₂O",
+    "trampa": "Miraste solo de cuál hay menos y usaste una razón 1 : 1 con el agua. Hay que dividir por los coeficientes: el H₂ (4/2 = 2) se acaba antes que el O₂ (3/1 = 3)."
+   },
+   {
+    "texto": "El H₂; se forman 4 mol de H₂O",
+    "trampa": ""
+   },
+   {
+    "texto": "El H₂; se forman 6 mol de H₂O",
+    "trampa": "El agua la limita el H₂: 4 mol de H₂ dan 4 mol de agua (razón 2 : 2)."
+   },
+   {
+    "texto": "El O₂; se forman 6 mol de H₂O",
+    "trampa": "Con 3 mol de O₂ saldrían 6 mol de agua, pero para eso harían falta 6 mol de H₂ y solo hay 4."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "H₂: 4/2 = 2; O₂: 3/1 = 3. El menor es el H₂, el limitante. 4 mol de H₂ forman 4 mol de H₂O y sobra 1 mol de O₂."
+ },
+ {
+  "id": "bq-qcom-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "basico",
+  "enunciado": "¿Qué porcentaje en masa de carbono tiene el CO₂? (masas atómicas: C = 12, O = 16)",
+  "opciones": [
+   {
+    "texto": "33,3 %",
+    "trampa": "Contaste átomos (1 de 3); el porcentaje es en masa."
+   },
+   {
+    "texto": "37,5 %",
+    "trampa": "Dividiste 12 por 32; la masa molar del CO₂ incluye el carbono: 44 g/mol."
+   },
+   {
+    "texto": "72,7 %",
+    "trampa": "Ese es el porcentaje de oxígeno."
+   },
+   {
+    "texto": "27,3 %",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "M(CO₂) = 12 + 2·16 = 44 g/mol. %C = 12/44 · 100 ≈ 27,3 %."
+ },
+ {
+  "id": "bq-qcom-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "paes",
+  "enunciado": "La fórmula empírica de un compuesto es CH₂O y su masa molar es 180 g/mol. ¿Cuál es su fórmula molecular? (C = 12, H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "C₃H₆O₃",
+    "trampa": "Usaste 60 g/mol para CH₂O; su masa es 12 + 2 + 16 = 30 g/mol."
+   },
+   {
+    "texto": "CH₂O",
+    "trampa": "Esa es la empírica; la molecular es 180/30 = 6 veces mayor."
+   },
+   {
+    "texto": "C₆H₁₂O₆",
+    "trampa": ""
+   },
+   {
+    "texto": "C₆H₆O₆",
+    "trampa": "Tomaste un solo H en CH₂O; el subíndice 2 también se multiplica: 2 · 6 = 12."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Masa de CH₂O = 30 g/mol. n = 180 / 30 = 6. Fórmula molecular: C₆H₁₂O₆."
+ },
+ {
+  "id": "bq-qcom-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "dificil",
+  "enunciado": "Un compuesto tiene 40 % de C, 6,7 % de H y 53,3 % de O en masa. ¿Cuál es su fórmula empírica? (C = 12, H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "CH₂O",
+    "trampa": ""
+   },
+   {
+    "texto": "C₆HO₈",
+    "trampa": "Dividiste los porcentajes por el menor sin pasarlos antes a moles."
+   },
+   {
+    "texto": "CHO",
+    "trampa": "Dividiste por el número atómico (C = 6, O = 8) y no por la masa atómica: así todo da ≈ 6,7 y queda 1 : 1 : 1."
+   },
+   {
+    "texto": "C₆H₁₂O₆",
+    "trampa": "Esa es una fórmula molecular posible (la glucosa), pero la empírica es la más simple."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "En 100 g: C 40/12 = 3,33 mol; H 6,7/1 = 6,7 mol; O 53,3/16 = 3,33 mol. Dividiendo por 3,33: 1 : 2 : 1 → CH₂O."
+ },
+ {
+  "id": "bq-qsol-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "basico",
+  "enunciado": "Se disuelven 20 g de azúcar en 180 g de agua. ¿Cuál es el % m/m de la solución?",
+  "opciones": [
+   {
+    "texto": "11,1 %",
+    "trampa": "Dividiste por la masa del agua; el % m/m es sobre la masa de la solución: 200 g."
+   },
+   {
+    "texto": "10 %",
+    "trampa": ""
+   },
+   {
+    "texto": "20 %",
+    "trampa": "Supusiste 100 g de solución; la solución pesa 20 + 180 = 200 g."
+   },
+   {
+    "texto": "90 %",
+    "trampa": "Ese es el porcentaje de agua."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Masa de solución = 20 + 180 = 200 g. % m/m = 20/200 · 100 = 10 %."
+ },
+ {
+  "id": "bq-qsol-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la molaridad de una solución que tiene 0,5 mol de NaCl en 250 mL de solución?",
+  "opciones": [
+   {
+    "texto": "0,002 mol/L",
+    "trampa": "No pasaste los mL a L: 250 mL = 0,25 L."
+   },
+   {
+    "texto": "0,125 mol/L",
+    "trampa": "Multiplicaste 0,5 · 0,25; la molaridad es mol / L."
+   },
+   {
+    "texto": "125 mol/L",
+    "trampa": "Multiplicaste por 250; hay que dividir por el volumen en litros."
+   },
+   {
+    "texto": "2 mol/L",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "M = n / V = 0,5 / 0,25 = 2 mol/L."
+ },
+ {
+  "id": "bq-qsol-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "dificil",
+  "enunciado": "Se tienen 100 mL de una solución 2 mol/L. ¿Cuánta agua hay que agregar para que quede 0,5 mol/L?",
+  "opciones": [
+   {
+    "texto": "300 mL",
+    "trampa": ""
+   },
+   {
+    "texto": "400 mL",
+    "trampa": "Ese es el volumen final; hay que agregar 400 − 100 = 300 mL."
+   },
+   {
+    "texto": "25 mL",
+    "trampa": "Invertiste la fórmula: 0,5 · 100 / 2 daría una solución más concentrada, no más diluida."
+   },
+   {
+    "texto": "100 mL",
+    "trampa": "Duplicaste el volumen: eso deja 1 mol/L, no 0,5 mol/L."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "C₁V₁ = C₂V₂ → 2 · 100 = 0,5 · V₂ → V₂ = 400 mL. Se agregan 400 − 100 = 300 mL de agua."
+ }
+]
+</script>
+<script>
+// == paes27-core v3 ==
+// Bloque compartido. Se copia IDÉNTICO en cada página con tools/sync_core.py.
+// No lo edites dentro de un HTML: edita tools/core.js y vuelve a sincronizar.
+const P27 = (() => {
+  'use strict';
+  const VERSION = 4;
+  const K = { diag: 'paes27:diag', dominio: 'paes27:dominio', repaso: 'paes27:repaso', ruta: 'paes27:ruta', ensayos: 'paes27:ensayos' };
+
+  const PRUEBAS = {
+    M2:  { id: 'M2',  corto: 'M2',      nombre: 'Matemática 2 (M2)',     fecha: '2026-11-30', hora: '15:00', prior: 30, peso: 1.2 },
+    LEN: { id: 'LEN', corto: 'Lectora', nombre: 'Competencia Lectora',   fecha: '2026-12-01', hora: '09:00', prior: 50, peso: 0.6 },
+    CIE: { id: 'CIE', corto: 'Física',  nombre: 'Ciencias Física',       fecha: '2026-12-01', hora: '15:00', prior: 30, peso: 1.0 },
+    M1:  { id: 'M1',  corto: 'M1',      nombre: 'Matemática 1 (M1)',     fecha: '2026-12-02', hora: '09:00', prior: 60, peso: 0.7 },
+  };
+
+  // [id, prueba, eje, prio, nombre, lección (página#ancla) o null]
+  const LISTA = [
+    ['m2.alg.sistemas-rectas', 'M2', 'Álgebra y funciones', 'A', 'Rectas en el plano + sistemas 2×2', 'm2.html#m2.alg.sistemas-rectas'],
+    ['m2.num.log-exp', 'M2', 'Números', 'A', 'Logaritmos + función exponencial y logarítmica', 'm2.html#m2.num.log-exp'],
+    ['m2.pro.condicional', 'M2', 'Probabilidad y estadística', 'A', 'Probabilidad condicional', 'm2.html#m2.pro.condicional'],
+    ['m2.pro.combinatoria', 'M2', 'Probabilidad y estadística', 'A', 'Permutaciones y combinatoria', 'm2.html#m2.pro.combinatoria'],
+    ['m2.geo.trig-razones', 'M2', 'Geometría', 'A', 'Razones trigonométricas', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.dispersion', 'M2', 'Probabilidad y estadística', 'A', 'Medidas de dispersión', 'm2.html#m2.pro.dispersion'],
+    ['m2.sd', 'M2', 'Transversal', 'A', 'Suficiencia de datos', 'm2.html#m2.sd'],
+    ['m2.alg.trig-funciones', 'M2', 'Álgebra y funciones', 'B', 'Gráficos de seno y coseno', 'm2.html#m2.geo.trig-razones'],
+    ['m2.pro.binomial-normal', 'M2', 'Probabilidad y estadística', 'B', 'Binomial y normal', 'm2.html#m2.pro.binomial-normal'],
+    ['m2.geo.circunferencia', 'M2', 'Geometría', 'B', 'Circunferencia: ángulos, arcos, cuerdas', 'm2.html#m2.geo.circunferencia'],
+    ['m2.geo.homotecia', 'M2', 'Geometría', 'B', 'Homotecia', 'm2.html#m2.geo.homotecia'],
+    ['m2.num.financiera', 'M2', 'Números', 'B', 'Matemática financiera', 'm2.html#m2.num.financiera'],
+    ['m2.geo.esfera', 'M2', 'Geometría', 'B', 'Esfera: área y volumen', 'm2.html#m2.geo.esfera'],
+    ['m2.alg.potencia', 'M2', 'Álgebra y funciones', 'C', 'Función potencia', 'm2.html#m2.alg.potencia'],
+    ['m2.num.reales', 'M2', 'Números', 'C', 'Operatoria en los reales', 'm2.html#m2.num.reales'],
+    ['m2.m1-dificil', 'M2', 'Transversal', 'C', 'M1 versión difícil', 'm2.html#m2.m1-dificil'],
+
+    ['fis.mec.cinematica', 'CIE', 'Mecánica', 'A', 'Posición, desplazamiento, velocidad, aceleración', 'fisica.html#fis.mec.cinematica'],
+    ['fis.mec.mru-mrua', 'CIE', 'Mecánica', 'A', 'MRU y MRUA: itinerario y gráficos', 'fisica.html#fis.mec.mru-mrua'],
+    ['fis.mec.newton', 'CIE', 'Mecánica', 'A', 'Leyes de Newton + diagrama de cuerpo libre', 'fisica.html#fis.mec.newton'],
+    ['fis.mec.fuerzas', 'CIE', 'Mecánica', 'A', 'Peso, normal, tensión, Hooke, roce', 'fisica.html#fis.mec.fuerzas'],
+    ['fis.ond.elementos', 'CIE', 'Ondas', 'A', 'Ondas: v = λ·f, período, amplitud', 'fisica.html#fis.ond.elementos'],
+    ['fis.ond.espejos-lentes', 'CIE', 'Ondas', 'A', 'Espejos y lentes', 'fisica.html#fis.ond.espejos-lentes'],
+    ['fis.ele.ohm', 'CIE', 'Electricidad', 'A', 'Ley de Ohm: serie, paralelo, mixto', 'fisica.html#fis.ele.ohm'],
+    ['fis.ele.potencia', 'CIE', 'Electricidad', 'A', 'Potencia y energía eléctrica (kWh)', 'fisica.html#fis.ele.potencia'],
+    ['fis.ond.reflexion-refraccion', 'CIE', 'Ondas', 'B', 'Reflexión, refracción, absorción', 'fisica.html#fis.ond.reflexion-refraccion'],
+    ['fis.ond.espectro-color', 'CIE', 'Ondas', 'B', 'Espectro EM, color y dispersión', 'fisica.html#fis.ond.espectro-color'],
+    ['fis.ond.doppler-interferencia', 'CIE', 'Ondas', 'B', 'Doppler, interferencia, difracción', 'fisica.html#fis.ond.doppler-interferencia'],
+    ['fis.mec.galileo', 'CIE', 'Mecánica', 'B', 'Relatividad de Galileo', 'fisica.html#fis.mec.galileo'],
+    ['fis.tie.tectonica', 'CIE', 'Tierra y Universo', 'B', 'Tectónica de placas, sismos, interior', 'fisica.html#fis.tie.tectonica'],
+    ['fis.mec.cosmos', 'CIE', 'Tierra y Universo', 'C', 'Sistema solar + origen del universo', 'fisica.html#fis.mec.cosmos'],
+    ['fis.ond.dispositivos', 'CIE', 'Ondas', 'C', 'Radar, láser, telescopios, fibra óptica', 'fisica.html#fis.ond.dispositivos'],
+    ['fis.ele.domiciliaria', 'CIE', 'Electricidad', 'C', 'Instalación eléctrica domiciliaria', 'fisica.html#fis.ele.domiciliaria'],
+
+    ['bio.celula', 'CIE', 'Biología', 'R', 'Célula: organelos y células especializadas', 'bioquim.html#bio.celula'],
+    ['bio.nervioso', 'CIE', 'Biología', 'R', 'Sistema nervioso y sus cuidados', 'bioquim.html#bio.nervioso'],
+    ['bio.reproduccion', 'CIE', 'Biología', 'R', 'Reproducción: gametos, fecundación y ciclos', 'bioquim.html#bio.reproduccion'],
+    ['bio.anticoncepcion-its', 'CIE', 'Biología', 'R', 'Métodos anticonceptivos e ITS', 'bioquim.html#bio.anticoncepcion-its'],
+    ['bio.division', 'CIE', 'Biología', 'R', 'Ciclo celular, mitosis y meiosis', 'bioquim.html#bio.division'],
+    ['bio.manipulacion', 'CIE', 'Biología', 'R', 'Manipulación genética', 'bioquim.html#bio.manipulacion'],
+    ['bio.evolucion', 'CIE', 'Biología', 'R', 'Evolución y selección natural', 'bioquim.html#bio.evolucion'],
+    ['bio.fotosintesis', 'CIE', 'Biología', 'R', 'Fotosíntesis y respiración celular', 'bioquim.html#bio.fotosintesis'],
+    ['qui.materia', 'CIE', 'Química', 'R', 'Materia, mezclas y separación', 'bioquim.html#qui.materia'],
+    ['qui.modelos', 'CIE', 'Química', 'R', 'Modelos atómicos y partículas (Z, A)', 'bioquim.html#qui.modelos'],
+    ['qui.carbono', 'CIE', 'Química', 'R', 'Átomo de carbono: hibridación y enlaces', 'bioquim.html#qui.carbono'],
+    ['qui.organica', 'CIE', 'Química', 'R', 'Hidrocarburos y grupos funcionales', 'bioquim.html#qui.organica'],
+    ['qui.estequiometria', 'CIE', 'Química', 'R', 'Leyes ponderales, mol y reactivo limitante', 'bioquim.html#qui.estequiometria'],
+    ['qui.composicion', 'CIE', 'Química', 'R', 'Composición porcentual y fórmula empírica', 'bioquim.html#qui.composicion'],
+    ['qui.soluciones', 'CIE', 'Química', 'R', 'Soluciones: concentración y dilución', 'bioquim.html#qui.soluciones'],
+
+    ['m1.num.enteros-racionales', 'M1', 'Números', 'B', 'Enteros y racionales', 'm1.html#m1.num.enteros-racionales'],
+    ['m1.num.porcentaje', 'M1', 'Números', 'B', 'Porcentaje', 'm1.html#m1.num.porcentaje'],
+    ['m1.num.potencias-raices', 'M1', 'Números', 'B', 'Potencias y raíces', 'm1.html#m1.num.potencias-raices'],
+    ['m1.alg.expresiones', 'M1', 'Álgebra y funciones', 'B', 'Expresiones algebraicas', 'm1.html#m1.alg.expresiones'],
+    ['m1.alg.ecuaciones', 'M1', 'Álgebra y funciones', 'A', 'Ecuaciones, inecuaciones y sistemas', 'm1.html#m1.alg.ecuaciones'],
+    ['m1.alg.funciones', 'M1', 'Álgebra y funciones', 'A', 'Función lineal, afín y cuadrática', 'm1.html#m1.alg.funciones'],
+    ['m1.alg.proporcionalidad', 'M1', 'Álgebra y funciones', 'C', 'Proporcionalidad', 'm1.html#m1.alg.proporcionalidad'],
+    ['m1.geo.areas-volumenes', 'M1', 'Geometría', 'A', 'Áreas y volúmenes (incl. cilindro)', 'm1.html#m1.geo.areas-volumenes'],
+    ['m1.geo.semejanza-pitagoras', 'M1', 'Geometría', 'A', 'Semejanza y Pitágoras', 'm1.html#m1.geo.semejanza-pitagoras'],
+    ['m1.geo.transformaciones', 'M1', 'Geometría', 'C', 'Transformaciones isométricas', 'm1.html#m1.geo.transformaciones'],
+    ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
+    ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
+
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+  ];
+  const TEMAS = {};
+  for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
+  // Fase 4: los 7 temas gruesos de Bio/Quím pasaron a 15 temas finos. Los datos guardados se renombran una vez.
+  const RENOMBRE = { 'bio.celular': 'bio.celula', 'bio.procesos': 'bio.nervioso', 'bio.herencia': 'bio.division', 'bio.ambiente': 'bio.fotosintesis', 'qui.atomica': 'qui.modelos' };
+  const PESO_PRIO = { A: 3, B: 2, C: 1, R: 1.5 };
+
+  // ---------- almacenamiento ----------
+  function cargar(k, def) {
+    try { const s = localStorage.getItem(K[k]); return s ? JSON.parse(s) : def; } catch (e) { return def; }
+  }
+  function guardar(k, v) {
+    try { localStorage.setItem(K[k], JSON.stringify(v)); } catch (e) { console.warn('No se pudo guardar', k); }
+    window.dispatchEvent(new CustomEvent('p27:cambio', { detail: k }));
+  }
+  // renombra temas viejos en lo guardado (dominio, repaso, diagnóstico); se hace una sola vez
+  (function migrar() {
+    const ren = (t) => RENOMBRE[t] || t;
+    const dom = cargar('dominio', null);
+    if (dom && Object.keys(dom).some((t) => RENOMBRE[t])) {
+      for (const t of Object.keys(dom)) if (RENOMBRE[t]) { if (!(RENOMBRE[t] in dom)) dom[RENOMBRE[t]] = dom[t]; delete dom[t]; }
+      guardar('dominio', dom);
+    }
+    const rep = cargar('repaso', null);
+    if (rep && rep.some((x) => RENOMBRE[x.tema])) { rep.forEach((x) => { x.tema = ren(x.tema); }); guardar('repaso', rep); }
+    const dg = cargar('diag', null);
+    if (dg && Object.values(dg).some((d) => d && d.respuestas && d.respuestas.some((r) => RENOMBRE[r.tema]))) {
+      Object.values(dg).forEach((d) => { if (d && d.respuestas) d.respuestas.forEach((r) => { r.tema = ren(r.tema); }); });
+      guardar('diag', dg);
+    }
+  })();
+
+  // ---------- fechas (locales) ----------
+  const pad = (n) => String(n).padStart(2, '0');
+  const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const hoy = () => iso(new Date());
+  function aFecha(s) { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); }
+  const sumarDias = (s, n) => { const d = aFecha(s); d.setDate(d.getDate() + n); return iso(d); };
+  const difDias = (a, b) => Math.round((aFecha(b) - aFecha(a)) / 86400000);
+  const DIAS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const fechaCorta = (s) => { const d = aFecha(s); return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; };
+
+  // ---------- dominio ----------
+  function prior(tema) { const t = TEMAS[tema]; return t ? PRUEBAS[t.prueba].prior : 30; }
+  function dominio(tema) { const d = cargar('dominio', {}); return tema in d ? d[tema] : null; }
+  function dominioEf(tema) { const v = dominio(tema); return v === null ? prior(tema) : v; }
+  // Correcta en difícil sube más; incorrecta en básico baja más.
+  const PESO_NIVEL = { basico: [0.7, 1.4], paes: [1, 1], dificil: [1.4, 0.7] };
+  function registrar(tema, nivel, ok, opts = {}) {
+    const d = cargar('dominio', {});
+    let v = tema in d ? d[tema] : prior(tema);
+    const base = opts.diag ? 0.35 : 0.15;
+    const [sube, baja] = PESO_NIVEL[nivel] || PESO_NIVEL.paes;
+    v = ok ? v + (100 - v) * base * sube : v - v * base * baja;
+    d[tema] = Math.max(0, Math.min(100, Math.round(v)));
+    guardar('dominio', d);
+    if (!ok) programarRepaso(tema); else cumplirRepaso(tema);
+    return d[tema];
+  }
+
+  // ---------- repaso espaciado: un fallo vuelve en +1 y +3 días ----------
+  function programarRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    for (const n of [1, 3]) {
+      const due = sumarDias(h, n);
+      if (!r.some((x) => x.tema === tema && x.due === due && !x.hecho)) r.push({ tema, due, hecho: false, creado: h });
+    }
+    guardar('repaso', r);
+  }
+  function cumplirRepaso(tema) {
+    const r = cargar('repaso', []);
+    const h = hoy();
+    let cambio = false;
+    for (const x of r) if (x.tema === tema && !x.hecho && x.due <= h) { x.hecho = true; x.cumplido = h; cambio = true; }
+    if (cambio) guardar('repaso', r);
+  }
+  function repasoPendiente(fecha = hoy()) {
+    const r = cargar('repaso', []);
+    return [...new Set(r.filter((x) => !x.hecho && x.due <= fecha).map((x) => x.tema))];
+  }
+
+  // ---------- exportar / importar ----------
+  function exportar() {
+    const datos = {};
+    for (const k of Object.keys(K)) datos[k] = cargar(k, null);
+    return { app: 'paes27', version: VERSION, exportado: new Date().toISOString(), datos };
+  }
+  function importar(obj) {
+    if (!obj || obj.app !== 'paes27' || typeof obj.datos !== 'object') throw new Error('No es un respaldo de esta app.');
+    for (const k of Object.keys(K)) if (obj.datos[k] !== null && obj.datos[k] !== undefined) guardar(k, obj.datos[k]);
+  }
+
+  // ---------- widget de pregunta (atajos 1–5, N = no sé, Enter = seguir) ----------
+  const LETRAS = 'ABCDE';
+  let activa = null;
+  const NIVEL_TXT = { basico: 'Básico', paes: 'PAES', dificil: 'Difícil' };
+  function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+
+  // opts: { onRespuesta({ok, elegida}), onSiguiente(), noSe: bool, mezclar: bool, registrar: bool, meta: string, textoSiguiente }
+  function pregunta(cont, q, opts = {}) {
+    cont.innerHTML = '';
+    const caja = el('div', 'q');
+    const meta = opts.meta !== undefined ? opts.meta : `${NIVEL_TXT[q.nivel] || ''} · ${(TEMAS[q.tema] || {}).nombre || q.tema}`;
+    if (meta) caja.appendChild(el('div', 'q-meta', meta));
+    caja.appendChild(el('div', 'q-enun', q.enunciado));
+    const orden = q.opciones.map((_, i) => i);
+    if (opts.mezclar && q.tema !== 'm2.sd') for (let i = orden.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [orden[i], orden[j]] = [orden[j], orden[i]]; }
+    const lista = el('div', 'q-ops');
+    const botones = [];
+    orden.forEach((oi, pos) => {
+      const b = el('button', 'q-op', `<span class="q-l">${LETRAS[pos]}</span><span class="q-t">${q.opciones[oi].texto}</span>`);
+      b.type = 'button'; b.dataset.oi = oi;
+      b.addEventListener('click', () => responder(oi));
+      botones.push(b); lista.appendChild(b);
+    });
+    caja.appendChild(lista);
+    const fb = el('div', 'q-fb'); fb.hidden = true; caja.appendChild(fb);
+    const acc = el('div', 'q-acc');
+    let bNoSe = null;
+    if (opts.noSe) { bNoSe = el('button', 'btn sec', 'No sé <kbd>N</kbd>'); bNoSe.type = 'button'; bNoSe.addEventListener('click', () => responder(-1)); acc.appendChild(bNoSe); }
+    const bSig = el('button', 'btn', `${opts.textoSiguiente || 'Siguiente'} <kbd>Enter</kbd>`); bSig.type = 'button'; bSig.hidden = true;
+    bSig.addEventListener('click', () => { if (opts.onSiguiente) opts.onSiguiente(); });
+    acc.appendChild(bSig); caja.appendChild(acc);
+    cont.appendChild(caja);
+
+    let respondida = false;
+    function responder(oi) {
+      if (respondida) return;
+      respondida = true;
+      const ok = oi === q.correcta;
+      botones.forEach((b) => {
+        b.disabled = true;
+        const i = Number(b.dataset.oi);
+        if (i === q.correcta) b.classList.add('ok');
+        else if (i === oi) b.classList.add('mal');
+      });
+      let h = ok ? '<b class="txt-ok">¡Correcta!</b> ' : (oi === -1 ? '<b class="txt-mal">Sin responder.</b> ' : '<b class="txt-mal">Incorrecta.</b> ');
+      if (!ok && oi >= 0 && q.opciones[oi].trampa) h += `<div class="q-trampa"><b>La trampa:</b> ${q.opciones[oi].trampa}</div>`;
+      h += `<div class="q-exp"><b>Correcta: ${LETRAS[orden.indexOf(q.correcta)]}.</b> ${q.explicacion}</div>`;
+      fb.innerHTML = h; fb.hidden = false;
+      if (bNoSe) bNoSe.hidden = true;
+      bSig.hidden = !opts.onSiguiente;
+      if (opts.registrar) registrar(q.tema, q.nivel, ok);
+      if (opts.onRespuesta) opts.onRespuesta({ ok, elegida: oi });
+      if (!bSig.hidden) bSig.focus({ preventScroll: true });
+    }
+    const api = { caja, responder: (pos) => { if (pos < botones.length) responder(Number(botones[pos].dataset.oi)); }, noSe: () => { if (opts.noSe) responder(-1); }, siguiente: () => { if (respondida && !bSig.hidden) bSig.click(); }, get respondida() { return respondida; } };
+    caja.addEventListener('pointerdown', () => { activa = api; });
+    activa = api;
+    return api;
+  }
+  document.addEventListener('keydown', (ev) => {
+    if (!activa || !document.body.contains(activa.caja) || !activa.caja.offsetParent) return; // solo la pregunta visible
+    const t = ev.target;
+    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') || t.isContentEditable)) return;
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (ev.key >= '1' && ev.key <= '5' && !activa.respondida) { activa.responder(Number(ev.key) - 1); ev.preventDefault(); }
+    else if ((ev.key === 'n' || ev.key === 'N') && !activa.respondida) { activa.noSe(); }
+    else if (ev.key === 'Enter' && activa.respondida) { ev.preventDefault(); activa.siguiente(); }
+  });
+
+  // ---------- acordeones y pestañas ----------
+  function colorDominio(v) { return v === null ? 'var(--muted)' : v < 40 ? 'var(--mal)' : v < 70 ? 'var(--warn)' : 'var(--ok)'; }
+
+  // ---------- tema (claro/oscuro), logo y firma dicarch ----------
+  const TEMA_K = 'paes27:tema';
+  const tema = () => document.documentElement.dataset.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  // Las pizarras leen los colores al cargar: al cambiar de tema se recarga (el progreso está guardado).
+  function alternarTema() { try { localStorage.setItem(TEMA_K, tema() === 'dark' ? 'light' : 'dark'); } catch (e) { /* sin almacenamiento: solo esta vez */ } location.reload(); }
+  const LOGO = '<svg viewBox="0 0 64 64" role="img" aria-label="PAES·27"><defs>'
+    + '<linearGradient id="p27t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14C1CF"/><stop offset="1" stop-color="#0E9FD8"/></linearGradient>'
+    + '<linearGradient id="p27v" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1FE39A"/><stop offset="1" stop-color="#0BC46E"/></linearGradient>'
+    + '<linearGradient id="p27m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9127A"/><stop offset="1" stop-color="#F2295F"/></linearGradient>'
+    + '<linearGradient id="p27o" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A1F"/><stop offset="1" stop-color="#FFC53A"/></linearGradient></defs>'
+    + '<rect x="32" y="4" width="28" height="28" rx="6" fill="url(#p27v)"/><rect x="4" y="4" width="30" height="30" rx="6" fill="url(#p27t)"/>'
+    + '<rect x="31" y="31" width="29" height="29" rx="6" fill="url(#p27o)"/><rect x="4" y="32" width="29" height="28" rx="6" fill="url(#p27m)"/>'
+    + '<g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M19 12v14M12 19h14"/><path d="M41 13l10 10M51 13L41 23"/><path d="M12 46h14"/><path d="M38 42h15M38 50h15"/></g>'
+    + '<g fill="#fff"><circle cx="19" cy="40" r="2.4"/><circle cx="19" cy="52" r="2.4"/></g></svg>';
+  const ICONO_TEMA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>';
+  function montarMarca() {
+    document.querySelectorAll('[data-logo]').forEach((e) => { e.innerHTML = LOGO; });
+    document.querySelectorAll('[data-tema-btn]').forEach((b) => {
+      b.innerHTML = ICONO_TEMA; b.type = 'button';
+      b.title = tema() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'; b.setAttribute('aria-label', b.title);
+      b.addEventListener('click', alternarTema);
+    });
+    document.querySelectorAll('[data-firma]').forEach((e) => { e.innerHTML = '<img src="lib/dicarch.webp" alt="" width="30" height="30"><span>PAES·27 · hecho por <b>dicarch</b></span>'; });
+  }
+  montarMarca();
+
+  return { VERSION, K, PRUEBAS, tema, alternarTema, TEMAS, PESO_PRIO, cargar, guardar, hoy, sumarDias, difDias, fechaCorta, aFecha, prior, dominio, dominioEf, registrar, programarRepaso, cumplirRepaso, repasoPendiente, exportar, importar, pregunta, colorDominio, el };
+})();
+// == fin paes27-core v3 ==
+
+(() => {
+'use strict';
+const BANCO = JSON.parse(document.getElementById('banco-bq').textContent);
+// == paes27-lecciones v2 ==
+// Utilidades de las páginas de lecciones. Se copia IDÉNTICO con tools/sync_core.py: edita tools/lecciones.js.
+const { TEMAS, el } = P27;
+const $ = (s) => document.querySelector(s);
+// Las pizarras son siempre oscuras y tienen su propia paleta (core.css, regla .cv):
+// los colores se leen desde un elemento .cv de muestra, no desde la raíz de la página.
+const SONDA_CV = document.createElement('div'); SONDA_CV.className = 'cv'; SONDA_CV.hidden = true; document.body.appendChild(SONDA_CV);
+const cssv = (v) => getComputedStyle(SONDA_CV).getPropertyValue(v).trim();
+const COL = {};
+for (const k of ['acc', 'acc2', 'ok', 'mal', 'warn', 'ink', 'muted', 'line']) COL[k] = cssv('--' + k);
+COL.bg = cssv('--cv'); COL.panel = cssv('--cv-panel'); COL.panel2 = cssv('--cv-panel2');
+const tono = (c, a) => { let h = (c || '#888888').replace('#', ''); if (h.length === 3) h = h.split('').map((x) => x + x).join(''); const n = parseInt(h, 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
+const REDUCIR = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------------- formato ----------------
+function fmt(x, d = 2) {
+  if (!Number.isFinite(x)) return '—';
+  let r = Number(x.toFixed(d));
+  if (Object.is(r, -0) || Math.abs(r) < 1e-12) r = 0;
+  return String(r).replace('.', ',').replace('-', '−');
+}
+const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+function frac(n, d) { if (d === 0) return '—'; const g = gcd(n, d); n /= g; d /= g; if (d < 0) { n = -n; d = -d; } return d === 1 ? fmt(n) : `${fmt(n)}/${d}`; }
+// "y = 2x − 3"
+function recta(m, n) {
+  let s = 'y = ';
+  if (m === 0) return s + fmt(n);
+  s += m === 1 ? 'x' : m === -1 ? '−x' : `${fmt(m)}x`;
+  if (n > 0) s += ` + ${fmt(n)}`; else if (n < 0) s += ` − ${fmt(-n)}`;
+  return s;
+}
+const par = (x) => (x < 0 ? `(${fmt(x)})` : fmt(x));
+
+// ---------------- lienzo 2D ----------------
+class Lienzo {
+  constructor(canvas, o) {
+    this.c = canvas; this.ctx = canvas.getContext('2d');
+    this.o = { aspecto: 0.62, maxH: 420, ...o };
+    this.dibujar = o.dibujar || (() => {});
+    this.w = 0; this.h = 0;
+    this.ajustar(true);
+    new ResizeObserver(() => this.ajustar()).observe(canvas.parentElement);
+  }
+  ajustar(forzar) {
+    const w = Math.max(220, this.c.parentElement.clientWidth);
+    const h = Math.min(this.o.maxH, Math.round(w * this.o.aspecto));
+    if (!forzar && w === this.w && h === this.h) return;
+    const dpr = window.devicePixelRatio || 1;
+    this.c.width = Math.round(w * dpr); this.c.height = Math.round(h * dpr);
+    this.c.style.height = h + 'px';
+    this.w = w; this.h = h;
+    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    this.fijarVista();
+    this.redibujar();
+  }
+  fijarVista() {
+    const v = this.o.vista;
+    if (!v) return;
+    this.x0 = v.x0; this.x1 = v.x1;
+    if (v.igual) { // unidades iguales en x e y
+      const alto = (v.x1 - v.x0) * (this.h / this.w);
+      this.y0 = v.yc - alto / 2; this.y1 = v.yc + alto / 2;
+    } else { this.y0 = v.y0; this.y1 = v.y1; }
+  }
+  redibujar() { if (this.w) this.dibujar(this); }
+  X(x) { return ((x - this.x0) / (this.x1 - this.x0)) * this.w; }
+  Y(y) { return this.h - ((y - this.y0) / (this.y1 - this.y0)) * this.h; }
+  limpiar() { const c = this.ctx; c.clearRect(0, 0, this.w, this.h); c.fillStyle = COL.bg; c.fillRect(0, 0, this.w, this.h); }
+  grilla(paso = 1, etiquetas = true, pasoEt = paso * 2) {
+    const c = this.ctx;
+    c.lineWidth = 1; c.strokeStyle = tono(COL.muted, .16);
+    c.beginPath();
+    for (let x = Math.ceil(this.x0 / paso) * paso; x <= this.x1; x += paso) { c.moveTo(this.X(x), 0); c.lineTo(this.X(x), this.h); }
+    for (let y = Math.ceil(this.y0 / paso) * paso; y <= this.y1; y += paso) { c.moveTo(0, this.Y(y)); c.lineTo(this.w, this.Y(y)); }
+    c.stroke();
+    c.strokeStyle = tono(COL.muted, .6); c.lineWidth = 1.3;
+    c.beginPath(); c.moveTo(0, this.Y(0)); c.lineTo(this.w, this.Y(0)); c.moveTo(this.X(0), 0); c.lineTo(this.X(0), this.h); c.stroke();
+    if (!etiquetas) return;
+    c.fillStyle = COL.muted; c.font = '11px system-ui'; c.textAlign = 'center'; c.textBaseline = 'top';
+    for (let x = Math.ceil(this.x0 / pasoEt) * pasoEt; x <= this.x1; x += pasoEt) if (Math.abs(x) > 1e-9) c.fillText(fmt(x), this.X(x), this.Y(0) + 3);
+    c.textAlign = 'right'; c.textBaseline = 'middle';
+    for (let y = Math.ceil(this.y0 / pasoEt) * pasoEt; y <= this.y1; y += pasoEt) if (Math.abs(y) > 1e-9) c.fillText(fmt(y), this.X(0) - 4, this.Y(y));
+  }
+  fn(f, color, ancho = 2.5, xa = this.x0, xb = this.x1, dash) {
+    const c = this.ctx; c.strokeStyle = color; c.lineWidth = ancho; c.setLineDash(dash || []);
+    c.beginPath();
+    let pen = false; let py = 0;
+    const N = Math.max(200, this.w);
+    for (let i = 0; i <= N; i++) {
+      const x = xa + ((xb - xa) * i) / N; const y = f(x);
+      const Y = this.Y(y);
+      if (!Number.isFinite(y) || Y < -2000 || Y > this.h + 2000 || (pen && Math.abs(Y - py) > this.h * 2)) { pen = false; continue; }
+      if (pen) c.lineTo(this.X(x), Y); else c.moveTo(this.X(x), Y);
+      pen = true; py = Y;
+    }
+    c.stroke(); c.setLineDash([]);
+  }
+  seg(x1, y1, x2, y2, color, ancho = 2, dash) {
+    const c = this.ctx; c.strokeStyle = color; c.lineWidth = ancho; c.setLineDash(dash || []);
+    c.beginPath(); c.moveTo(this.X(x1), this.Y(y1)); c.lineTo(this.X(x2), this.Y(y2)); c.stroke(); c.setLineDash([]);
+  }
+  punto(x, y, color, r = 5) { const c = this.ctx; c.fillStyle = color; c.beginPath(); c.arc(this.X(x), this.Y(y), r, 0, 7); c.fill(); }
+  texto(t, x, y, color, o = {}) {
+    const c = this.ctx; c.fillStyle = color || COL.ink; c.font = `${o.peso || 600} ${o.tam || 13}px system-ui`;
+    c.textAlign = o.align || 'left'; c.textBaseline = o.base || 'bottom';
+    const px = o.px ? x : this.X(x) + (o.dx || 0); const py = o.px ? y : this.Y(y) + (o.dy || 0);
+    if (o.fondo) {
+      const m = c.measureText(t); const w = m.width + 8; const th = (o.tam || 13) + 6;
+      const ax = o.align === 'center' ? px - w / 2 : o.align === 'right' ? px - w + 4 : px - 4;
+      const ay = o.base === 'top' ? py - 2 : o.base === 'middle' ? py - th / 2 : py - th + 2;
+      c.fillStyle = tono(COL.bg, .85); c.fillRect(ax, ay, w, th); c.fillStyle = color || COL.ink;
+    }
+    c.fillText(t, px, py);
+  }
+}
+
+// ---------------- animaciones (solo corren si se ven) ----------------
+const ANIMS = {};
+function animar(id, lienzo, cuadro) {
+  const a = { t: 0, corre: !REDUCIR, visible: false, lienzo, cuadro };
+  lienzo.dibujar = () => cuadro(a.t);
+  ANIMS[id] = a;
+  new IntersectionObserver((es) => { a.visible = es[0].isIntersecting; }).observe(lienzo.c);
+  lienzo.redibujar();
+  return a;
+}
+let tPrev = null;
+function bucle(ts) {
+  const dt = tPrev === null ? 0 : Math.min(0.05, (ts - tPrev) / 1000);
+  tPrev = ts;
+  for (const a of Object.values(ANIMS)) if (a.corre && a.visible) { a.t += dt; a.lienzo.redibujar(); }
+  requestAnimationFrame(bucle);
+}
+requestAnimationFrame(bucle);
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-pausa]'); if (!b) return;
+  const a = ANIMS[b.dataset.pausa]; if (!a) return;
+  a.corre = !a.corre; b.textContent = a.corre ? '⏸ Pausa' : '▶ Reproducir';
+});
+if (REDUCIR) document.querySelectorAll('[data-pausa]').forEach((b) => { b.textContent = '▶ Reproducir'; });
+
+function sliders(ids, alCambiar, fmtV = {}) {
+  const val = {};
+  const leer = () => {
+    for (const id of ids) {
+      const inp = document.getElementById(id); val[id] = Number(inp.value);
+      const o = document.getElementById(id + '-v'); if (o) o.textContent = fmtV[id] ? fmtV[id](val[id]) : fmt(val[id]);
+    }
+    alCambiar(val);
+  };
+  ids.forEach((id) => document.getElementById(id).addEventListener('input', leer));
+  leer();
+  return { val, leer };
+}
+const lerp = (a, b, t) => a + (b - a) * t;
+const suave = (t) => t * t * (3 - 2 * t);
+
+// =====================================================================
+// utilidades Fase 2c: arrastre, arcos de ángulo, círculos, WebGL
+// =====================================================================
+function arrastrable(L, puntos, alMover) {
+  let activo = null;
+  const pos = (e) => { const r = L.c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  const mundo = ([px, py]) => [L.x0 + (px / L.w) * (L.x1 - L.x0), L.y0 + ((L.h - py) / L.h) * (L.y1 - L.y0)];
+  L.c.addEventListener('pointerdown', (e) => {
+    const [px, py] = pos(e); let mejor = null, d0 = 24;
+    puntos().forEach((p, i) => { const d = Math.hypot(L.X(p.x) - px, L.Y(p.y) - py); if (d < d0) { d0 = d; mejor = i; } });
+    if (mejor !== null) { activo = mejor; L.c.setPointerCapture(e.pointerId); L.c.style.cursor = 'grabbing'; e.preventDefault(); }
+  });
+  L.c.addEventListener('pointermove', (e) => { if (activo === null) return; const [x, y] = mundo(pos(e)); alMover(activo, Math.round(x * 2) / 2, Math.round(y * 2) / 2); });
+  const fin = () => { activo = null; L.c.style.cursor = 'grab'; };
+  L.c.addEventListener('pointerup', fin); L.c.addEventListener('pointercancel', fin);
+}
+function arcoAngulo(L, V, P1, P2, r, color) {
+  const c = L.ctx, vx = L.X(V[0]), vy = L.Y(V[1]);
+  const a1 = Math.atan2(L.Y(P1[1]) - vy, L.X(P1[0]) - vx), a2 = Math.atan2(L.Y(P2[1]) - vy, L.X(P2[0]) - vx);
+  let d = a2 - a1; while (d <= -Math.PI) d += 2 * Math.PI; while (d > Math.PI) d -= 2 * Math.PI;
+  c.strokeStyle = color; c.lineWidth = 2; c.beginPath(); c.arc(vx, vy, r, a1, a1 + d, d < 0); c.stroke();
+}
+const angulo = (V, P1, P2) => { const u = [P1[0] - V[0], P1[1] - V[1]], v = [P2[0] - V[0], P2[1] - V[1]]; return (Math.acos(Math.max(-1, Math.min(1, (u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))))) * 180) / Math.PI; };
+const enCirc = (g, r = 1) => [r * Math.cos((g * Math.PI) / 180), r * Math.sin((g * Math.PI) / 180)];
+function circulo(L, cx, cy, r, color, ancho = 2) { const c = L.ctx; c.strokeStyle = color; c.lineWidth = ancho; c.beginPath(); c.arc(L.X(cx), L.Y(cy), (r * L.w) / (L.x1 - L.x0), 0, 7); c.stroke(); }
+function arcoCirc(L, g1, g2, color, ancho = 5) { // arco de la circunferencia unitaria desde g1 hasta g2 (grados, antihorario)
+  const c = L.ctx; const R = L.w / (L.x1 - L.x0);
+  c.strokeStyle = color; c.lineWidth = ancho; c.beginPath(); c.arc(L.X(0), L.Y(0), R, (-g1 * Math.PI) / 180, (-g2 * Math.PI) / 180, true); c.stroke();
+}
+const etiqueta = (L, t, P, color, dx = 8, dy = -6) => L.texto(t, P[0], P[1], color, { dx, dy, tam: 13 });
+const hayWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+let promThree = null;
+const cargarThree = () => (promThree = promThree || import('./lib/three.module.min.js'));
+
+function montarEjemplos(EJEMPLOS) {
+document.querySelectorAll('.ejemplo').forEach((box) => {
+  const ej = EJEMPLOS[box.dataset.ej];
+  box.innerHTML = `<div class="enun">${ej.enun}</div><ol></ol>`;
+  const ol = box.querySelector('ol');
+  const fila = el('div', 'fila'); fila.style.marginTop = '8px';
+  const b = el('button', 'btn mini', 'Siguiente paso (1/' + ej.pasos.length + ')');
+  const todo = el('button', 'btn sec mini', 'Ver todo');
+  let i = 0;
+  const mostrar = () => {
+    ol.appendChild(el('li', '', ej.pasos[i++]));
+    if (i < ej.pasos.length) b.textContent = `Siguiente paso (${i + 1}/${ej.pasos.length})`;
+    else { b.hidden = true; todo.hidden = true; box.appendChild(el('div', 'trampa-ej', `<b>Trampa típica:</b> ${ej.trampa}`)); }
+  };
+  b.onclick = mostrar; todo.onclick = () => { while (i < ej.pasos.length) mostrar(); };
+  fila.append(b, todo); box.appendChild(fila);
+  box.appendChild(el('p', 'small muted', 'Antes de cada paso, intenta adivinar qué viene.'));
+});
+}
+
+// =====================================================================
+// PRÁCTICA en 3 niveles
+// =====================================================================
+const NIVELES = [['basico', 'Básico'], ['paes', 'PAES'], ['dificil', 'Difícil']];
+function montarPracticas(BANCO) {
+document.querySelectorAll('.practica').forEach((box) => {
+  const temas = box.dataset.temas.split(',');
+  const bar = el('div', 'niveles');
+  const quiz = el('div', 'quiz');
+  const dom = P27.dominio(temas[0]);
+  quiz.innerHTML = `<p class="muted small">Elige un nivel. ${dom === null || dom < 40 ? 'Te conviene partir por <b>Básico</b>.' : dom < 70 ? 'Te conviene el nivel <b>PAES</b>.' : 'Prueba el nivel <b>Difícil</b>.'} Cada alternativa incorrecta te explica su trampa.</p>`;
+  const botones = {};
+  NIVELES.forEach(([n, nombre]) => {
+    const b = el('button', 'btn sec mini', nombre);
+    const cant = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === n).length;
+    b.title = cant ? `${cant} preguntas` : 'Sin preguntas en este nivel';
+    b.disabled = !cant;
+    b.onclick = () => empezar(n);
+    botones[n] = b; bar.appendChild(b);
+  });
+  box.append(bar, quiz);
+  function empezar(nivel) {
+    Object.entries(botones).forEach(([n, b]) => b.classList.toggle('on', n === nivel));
+    const qs = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === nivel).sort(() => Math.random() - 0.5);
+    let i = 0, aciertos = 0;
+    const sig = () => {
+      if (i >= qs.length) return resumen();
+      const q = qs[i++];
+      P27.pregunta(quiz, q, {
+        registrar: true, mezclar: true,
+        meta: `${NIVELES.find((x) => x[0] === nivel)[1]} · pregunta ${i} de ${qs.length} · ${TEMAS[q.tema].nombre}`,
+        textoSiguiente: i < qs.length ? 'Siguiente' : 'Ver resultado',
+        onRespuesta: ({ ok }) => { if (ok) aciertos++; },
+        onSiguiente: sig,
+      });
+    };
+    const resumen = () => {
+      const idx = NIVELES.findIndex((x) => x[0] === nivel);
+      const r = el('div', 'resumen-nivel');
+      const bien = aciertos === qs.length, mal = aciertos <= qs.length / 3;
+      r.innerHTML = `<h3>${aciertos}/${qs.length} en ${NIVELES[idx][1]}</h3><p>${bien ? (idx < 2 ? '¡Listo! Sube de nivel.' : '¡Dominado! Este tema queda para el repaso espaciado.') : mal ? 'Vuelve a «Manipular» y al ejemplo antes de repetir. Los temas fallados vuelven mañana y en 3 días.' : 'Casi. Revisa las trampas que te pillaron y repite.'}</p>`;
+      const f = el('div', 'fila');
+      const rep = el('button', 'btn sec mini', 'Repetir nivel'); rep.onclick = () => empezar(nivel); f.appendChild(rep);
+      if (idx < 2) { const s2 = el('button', 'btn mini', `Nivel ${NIVELES[idx + 1][1]}`); s2.onclick = () => empezar(NIVELES[idx + 1][0]); f.appendChild(s2); }
+      const dom2 = P27.dominio(temas[0]);
+      f.appendChild(el('span', 'small muted', `Dominio ahora: ${dom2 === null ? '—' : dom2 + ' %'}`));
+      r.appendChild(f);
+      quiz.innerHTML = ''; quiz.appendChild(r);
+    };
+    sig();
+  }
+});
+}
+
+// =====================================================================
+// ENSAYO CRONOMETRADO (sin feedback hasta el final). Estado en paes27:ensayos.
+// =====================================================================
+// cfg: { prueba, titulo, pool, modos: {clave: {n, seg, nombre}}, alFinal (tema que va al final), intro(nDisponibles) }
+function montarEnsayo(pane, cfg) {
+  const POOL = cfg.pool;
+  const MODOS = cfg.modos;
+  const fmtT = (s) => { s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60; return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0'); };
+  const lista = () => P27.cargar('ensayos', []);
+  const enCurso = () => lista().find((e) => e.estado === 'en-curso' && e.prueba === cfg.prueba);
+  const guardarEns = (e) => { const l = lista().filter((x) => x.id !== e.id); l.push(e); P27.guardar('ensayos', l); };
+  const POR_ID = Object.fromEntries(POOL.map((q) => [q.id, q]));
+  let timer = null, st = null;
+
+  // elige n preguntas (opcional: solo las que cumplen `filtro`), priorizando temas importantes y las menos vistas
+  function elegir(n, filtro) {
+    const base = filtro ? POOL.filter(filtro) : POOL;
+    const vistos = {};
+    for (const e of lista()) for (const r of e.respuestas || []) vistos[r.id] = (vistos[r.id] || 0) + 1;
+    let candidatos = base.filter((q) => q.nivel !== 'basico');
+    if (candidatos.length < n) candidatos = base.slice();
+    const porTema = {};
+    for (const q of candidatos.sort(() => Math.random() - 0.5)) (porTema[q.tema] = porTema[q.tema] || []).push(q);
+    for (const t in porTema) porTema[t].sort((a, b) => (vistos[a.id] || 0) - (vistos[b.id] || 0));
+    const temas = Object.keys(porTema).sort((a, b) => (P27.PESO_PRIO[TEMAS[b].prio] - P27.PESO_PRIO[TEMAS[a].prio]) || Math.random() - 0.5);
+    const out = [];
+    while (out.length < n && temas.some((t) => porTema[t].length)) for (const t of temas) if (porTema[t].length && out.length < n) out.push(porTema[t].shift());
+    const fin = out.filter((q) => q.tema === cfg.alFinal);
+    return [...out.filter((q) => q.tema !== cfg.alFinal).sort(() => Math.random() - 0.5), ...fin]; // p. ej. suficiencia al final, como en la prueba
+  }
+
+  function empezar(modo) {
+    const M = MODOS[modo];
+    // un modo puede armar la prueba por partes (p. ej. Ciencias: módulo común + electivo)
+    const qs = M.componer ? M.componer(elegir) : elegir(M.n, M.filtro);
+    const orden = {};
+    for (const q of qs) {
+      const o = q.opciones.map((_, i) => i);
+      if (q.tema !== 'm2.sd') o.sort(() => Math.random() - 0.5);
+      orden[q.id] = o;
+    }
+    st = { id: 'ens-' + Date.now(), prueba: cfg.prueba, estado: 'en-curso', modo, inicio: Date.now(), limite: M.seg, ids: qs.map((q) => q.id), orden, resp: {}, marcadas: [], actual: 0 };
+    guardarEns(st);
+    correr();
+  }
+
+  const restante = () => st.limite - (Date.now() - st.inicio) / 1000;
+
+  function correr() {
+    clearInterval(timer);
+    timer = setInterval(() => { const r = $('#ens-reloj'); if (!r) return; const s = restante(); r.textContent = fmtT(s); r.classList.toggle('txt-mal', s < 600); if (s <= 0) terminar(true); }, 1000);
+    pintar();
+  }
+
+  function pintar() {
+    if (restante() <= 0) return terminar(true);
+    const q = POR_ID[st.ids[st.actual]];
+    const n = st.ids.length;
+    const resp = Object.keys(st.resp).length;
+    pane.innerHTML = '';
+    const top = el('div', 'ens-top');
+    top.innerHTML = `<div><b>${cfg.titulo} · ${MODOS[st.modo].nombre}</b> · pregunta ${st.actual + 1} de ${n} · respondidas ${resp}/${n}</div><div class="ens-reloj">⏱ <span id="ens-reloj">${fmtT(restante())}</span></div>`;
+    const bEnt = el('button', 'btn sec mini', 'Entregar');
+    bEnt.onclick = () => { const f = n - resp; if (confirm(f ? `Te faltan ${f} preguntas. No hay descuento por error: conviene responderlas todas. ¿Entregar igual?` : '¿Entregar el ensayo?')) terminar(false); };
+    top.appendChild(bEnt);
+    pane.appendChild(top);
+    const caja = el('div', 'q');
+    caja.appendChild(el('div', 'q-meta', `Pregunta ${st.actual + 1}${st.marcadas.includes(q.id) ? ' · <span class="txt-warn">marcada para revisar</span>' : ''}`));
+    caja.appendChild(el('div', 'q-enun', q.enunciado));
+    const ops = el('div', 'q-ops');
+    st.orden[q.id].forEach((oi, pos) => {
+      const b = el('button', 'q-op' + (st.resp[q.id] === oi ? ' sel' : ''), `<span class="q-l">${'ABCDE'[pos]}</span><span class="q-t">${q.opciones[oi].texto}</span>`);
+      b.type = 'button';
+      b.onclick = () => elegirOp(pos);
+      ops.appendChild(b);
+    });
+    caja.appendChild(ops);
+    const acc = el('div', 'q-acc');
+    const bAnt = el('button', 'btn sec mini', '← Anterior'); bAnt.disabled = st.actual === 0; bAnt.onclick = () => ir2(st.actual - 1);
+    const bMar = el('button', 'btn sec mini', st.marcadas.includes(q.id) ? 'Desmarcar' : 'Marcar para revisar');
+    bMar.onclick = () => { const i = st.marcadas.indexOf(q.id); if (i >= 0) st.marcadas.splice(i, 1); else st.marcadas.push(q.id); guardarEns(st); pintar(); };
+    const bSig = el('button', 'btn mini', st.actual + 1 < n ? 'Siguiente <kbd>Enter</kbd>' : 'Ir a entregar'); bSig.onclick = () => (st.actual + 1 < n ? ir2(st.actual + 1) : bEnt.click());
+    acc.append(bAnt, bMar, bSig);
+    caja.appendChild(acc);
+    pane.appendChild(caja);
+    const grilla = el('div', 'ens-grilla');
+    st.ids.forEach((id, i) => {
+      const b = el('button', (st.resp[id] !== undefined ? 'r ' : '') + (st.marcadas.includes(id) ? 'm ' : '') + (i === st.actual ? 'a' : ''), String(i + 1));
+      b.type = 'button'; b.onclick = () => ir2(i); grilla.appendChild(b);
+    });
+    pane.appendChild(el('div', 'small muted', 'Mapa: <span class="ens-ley r">respondida</span> <span class="ens-ley m">marcada</span>. Atajos: 1–5 para elegir, Enter para seguir. Puedes cambiar respuestas hasta entregar.'));
+    pane.appendChild(grilla);
+  }
+  function elegirOp(pos) {
+    const q = POR_ID[st.ids[st.actual]];
+    const oi = st.orden[q.id][pos];
+    if (oi === undefined) return;
+    if (st.resp[q.id] === oi) delete st.resp[q.id]; else st.resp[q.id] = oi;
+    guardarEns(st); pintar();
+  }
+  function ir2(i) { st.actual = Math.max(0, Math.min(st.ids.length - 1, i)); guardarEns(st); pintar(); window.scrollTo({ top: pane.offsetTop - 10 }); }
+
+  document.addEventListener('keydown', (ev) => {
+    if (!st || st.estado !== 'en-curso' || !pane.offsetParent) return;
+    if (ev.ctrlKey || ev.metaKey || ev.altKey || (ev.target && /INPUT|TEXTAREA|SELECT/.test(ev.target.tagName))) return;
+    if (ev.key >= '1' && ev.key <= '5') { elegirOp(Number(ev.key) - 1); ev.preventDefault(); }
+    else if (ev.key === 'Enter') { ev.preventDefault(); if (st.actual + 1 < st.ids.length) ir2(st.actual + 1); }
+  });
+
+  function terminar(porTiempo) {
+    clearInterval(timer);
+    const respuestas = st.ids.map((id) => { const q = POR_ID[id]; const e = st.resp[id]; return { id, tema: q.tema, nivel: q.nivel, elegida: e === undefined ? -1 : e, ok: e === q.correcta }; });
+    for (const r of respuestas) P27.registrar(r.tema, r.nivel, r.ok);
+    const fin = { id: st.id, prueba: cfg.prueba, estado: 'hecho', modo: st.modo, fecha: P27.hoy(), correctas: respuestas.filter((r) => r.ok).length, total: respuestas.length,
+      omitidas: respuestas.filter((r) => r.elegida === -1).length, segundos: Math.round(Math.min(st.limite, (Date.now() - st.inicio) / 1000)), porTiempo, respuestas };
+    guardarEns(fin);
+    st = null;
+    resultado(fin);
+  }
+
+  function resultado(e) {
+    pane.innerHTML = '';
+    const volver = el('button', 'btn sec mini', '← Volver al inicio del ensayo'); volver.onclick = () => inicio();
+    pane.appendChild(volver);
+    const pct = Math.round((e.correctas / e.total) * 100);
+    const temas = {};
+    for (const r of e.respuestas) { temas[r.tema] = temas[r.tema] || [0, 0]; temas[r.tema][1]++; if (r.ok) temas[r.tema][0]++; }
+    const c = el('div', 'card', `<h2>${e.correctas}/${e.total} correctas (${pct} %)</h2><p class="muted">${MODOS[e.modo].nombre} · ${fmtT(e.segundos)} usados${e.porTiempo ? ' · se acabó el tiempo' : ''} · ${e.omitidas} sin responder.</p><p class="small muted">Esto no es un puntaje PAES: es el % de acierto en preguntas de la app. Los temas fallados vuelven en tu repaso de mañana y en 3 días.</p>`);
+    const tb = el('table', 'res');
+    tb.innerHTML = '<tr><th>Tema</th><th>Correctas</th><th></th></tr>' + Object.entries(temas).sort((a, b) => a[1][0] / a[1][1] - b[1][0] / b[1][1]).map(([t, [a, b]]) => {
+      const T = TEMAS[t];
+      return `<tr><td>${T.nombre}</td><td class="${a / b >= 0.7 ? 'txt-ok' : a / b >= 0.4 ? 'txt-warn' : 'txt-mal'}">${a}/${b}</td><td>${T.leccion ? `<a href="${T.leccion}">lección</a>` : ''}</td></tr>`;
+    }).join('');
+    c.appendChild(tb);
+    pane.appendChild(c);
+    const malas = e.respuestas.filter((r) => !r.ok);
+    if (malas.length) {
+      const c2 = el('div', 'card', `<h3>Revisa tus ${malas.length} errores</h3><p class="small muted">Para cada uno: ¿fue concepto, cálculo o trampa?</p>`);
+      malas.forEach((r, i) => {
+        const q = POR_ID[r.id]; if (!q) return;
+        const d = el('details', 'acc');
+        d.innerHTML = `<summary>${i + 1}. ${TEMAS[q.tema].nombre}</summary><div class="in"><div>${q.enunciado}</div>${r.elegida >= 0 ? `<p class="q-trampa"><b>Marcaste:</b> ${q.opciones[r.elegida].texto}. <b>La trampa:</b> ${q.opciones[r.elegida].trampa}</p>` : '<p class="muted">Sin responder.</p>'}<p><b>Correcta:</b> ${q.opciones[q.correcta].texto}. ${q.explicacion}</p></div>`;
+        c2.appendChild(d);
+      });
+      pane.appendChild(c2);
+    }
+  }
+
+  function inicio() {
+    clearInterval(timer);
+    const cur = enCurso();
+    if (cur) { st = cur; if (restante() <= 0) return terminar(true); return correr(); }
+    pane.innerHTML = '';
+    const nAvanz = POOL.filter((q) => q.nivel !== 'basico' && (!cfg.filtroIntro || cfg.filtroIntro(q))).length;
+    const c = el('div', 'card', cfg.intro(nAvanz));
+    const f = el('div', 'fila');
+    for (const [k, M] of Object.entries(MODOS)) {
+      const b = el('button', k === 'completo' ? 'btn' : 'btn sec', `${M.nombre}: ${M.n} preguntas · ${fmtT(M.seg)}`);
+      b.onclick = () => { if (confirm(`Empieza el ensayo ${M.nombre.toLowerCase()}: ${M.n} preguntas en ${fmtT(M.seg)}. El reloj no se detiene. ¿Listo?`)) empezar(k); };
+      f.appendChild(b);
+    }
+    c.appendChild(f);
+    pane.appendChild(c);
+    const hechos = lista().filter((e) => e.estado === 'hecho' && e.prueba === cfg.prueba).reverse();
+    if (hechos.length) {
+      const h = el('div', 'card', `<h3>Historial · ${cfg.titulo}</h3>`);
+      hechos.forEach((e) => {
+        const fila = el('div', 'fila');
+        fila.innerHTML = `<span>${P27.fechaCorta(e.fecha)} · ${MODOS[e.modo].nombre} · <b>${e.correctas}/${e.total}</b> (${Math.round((e.correctas / e.total) * 100)} %) · ${fmtT(e.segundos)}</span>`;
+        const b = el('button', 'btn sec mini', 'Ver errores'); b.onclick = () => resultado(e); fila.appendChild(b);
+        h.appendChild(fila);
+      });
+      pane.appendChild(h);
+    }
+  }
+  return { inicio };
+}
+
+// ---------------- dominio en vivo ----------------
+function montarDominio() {
+function pintarDominio() {
+  document.querySelectorAll('.dom[data-tema]').forEach((s) => {
+    const v = P27.dominio(s.dataset.tema);
+    s.style.color = P27.colorDominio(v);
+    s.textContent = `${s.dataset.tema.includes('trig-funciones') ? 'Funciones' : 'Dominio'} ${v === null ? '—' : v + ' %'}`;
+    s.title = v === null ? 'Aún sin datos: practica para medirlo' : 'Tu dominio de este tema (0–100 %)';
+  });
+}
+window.addEventListener('p27:cambio', pintarDominio);
+window.addEventListener('storage', pintarDominio);
+pintarDominio();
+}
+
+// ---------------- acordeón de lecciones ----------------
+function montarAcordeon() {
+document.querySelectorAll('.leccion').forEach((l) => {
+  l.classList.add('cerrada');
+  l.querySelector('.lec-head').addEventListener('click', (e) => { if (e.target.closest('a,button,select,input')) return; l.classList.toggle('cerrada'); });
+  const prio = l.querySelector('.lec-head .chip.A,.lec-head .chip.B,.lec-head .chip.C');
+  if (prio && prio.textContent.length === 1) prio.textContent = 'Prioridad ' + prio.textContent;
+});
+montarPasos();
+}
+
+// Los 5 pasos de cada lección como pestañas (pills): se ve un paso a la vez.
+// Lo que va antes del primer paso (la idea, tarjetas, avisos) queda siempre visible.
+const NOMBRE_PASO = [[/^ver\b/i, 'Ver'], [/manipular/i, 'Manipular'], [/porqu/i, 'El porqué'], [/ejemplo/i, 'Ejemplo'], [/pr[aá]ctica/i, 'Práctica']];
+function montarPasos() {
+document.querySelectorAll('.leccion > .lec-body').forEach((body) => {
+  const esPaso = (n) => n.matches('.paso, details.acc');
+  // «2b», «2c»…: continúan el paso anterior (misma pestaña, con su subtítulo visible)
+  const esSub = (n) => n.matches('.paso') && /^\d+[a-z]$/i.test(((n.querySelector('h3 .n') || {}).textContent || '').trim());
+  const hijos = [...body.children];
+  const k0 = hijos.findIndex(esPaso);
+  if (k0 < 0) return;
+  const grupos = [];
+  for (const n of hijos.slice(k0)) { if ((esPaso(n) && !esSub(n)) || !grupos.length) grupos.push([n]); else grupos[grupos.length - 1].push(n); }
+  if (grupos.length < 2) return;
+  body.classList.add('con-pasos');
+  const barra = el('div', 'pasos'); barra.setAttribute('role', 'tablist');
+  const pasos = grupos.map((g, i) => {
+    const cab = g[0].matches('details') ? g[0].querySelector('summary') : g[0].querySelector('h3');
+    const txt = (cab ? cab.textContent : '').replace(/^\s*\d+\s*/, '').trim();
+    const nombre = (NOMBRE_PASO.find(([re]) => re.test(txt)) || [0, txt.split(/[·(:]/)[0].trim()])[1];
+    if (g[0].matches('details')) { g[0].open = true; g[0].classList.add('porque'); }
+    const pane = el('div', 'paso-pane' + (g.some(esSub) ? ' multi' : '')); pane.setAttribute('role', 'tabpanel');
+    g[0].before(pane); g.forEach((n) => pane.appendChild(n));
+    const b = el('button', '', `${i + 1} ${nombre}`); b.type = 'button'; b.setAttribute('role', 'tab');
+    b.addEventListener('click', () => mostrar(i));
+    barra.appendChild(b);
+    return { pane, b, nombre };
+  });
+  pasos.forEach((p, i) => {
+    if (i === pasos.length - 1) return;
+    const s = el('button', 'btn sec mini', `Sigue: ${i + 2} ${pasos[i + 1].nombre} →`); s.type = 'button';
+    s.addEventListener('click', () => { mostrar(i + 1); const r = barra.getBoundingClientRect(); if (r.top < 0) barra.scrollIntoView({ block: 'start', behavior: REDUCIR ? 'auto' : 'smooth' }); });
+    const w = el('div', 'paso-sig'); w.appendChild(s); p.pane.appendChild(w);
+  });
+  body.insertBefore(barra, body.firstChild);
+  function mostrar(i) {
+    pasos.forEach((p, k) => { p.pane.classList.toggle('on', k === i); p.b.classList.toggle('on', k === i); p.b.setAttribute('aria-selected', String(k === i)); });
+  }
+  mostrar(0);
+});
+}
+
+// Escena Three.js con luces y cámara; devuelve null si no hay WebGL (la página cae a Canvas 2D).
+async function escena3D(cont, armar) {
+  if (!hayWebGL) return null;
+  let T;
+  try { T = await cargarThree(); } catch (e) { return null; }
+  const renderer = new T.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  renderer.setClearColor(COL.bg);
+  cont.appendChild(renderer.domElement);
+  const escena = new T.Scene();
+  const camara = new T.PerspectiveCamera(38, 1.6, 0.1, 200);
+  escena.add(new T.AmbientLight(0xffffff, 0.55));
+  const luz = new T.DirectionalLight(0xffffff, 1.6); luz.position.set(3, 5, 6); escena.add(luz);
+  const api = armar(T, escena, camara);
+  const medir = () => { const w = cont.clientWidth || 300, h = cont.clientHeight || 300; renderer.setSize(w, h); camara.aspect = w / h; camara.updateProjectionMatrix(); render(); };
+  const render = () => renderer.render(escena, camara);
+  new ResizeObserver(medir).observe(cont);
+  medir();
+  return { c: renderer.domElement, dibujar: null, redibujar() { if (this.dibujar) this.dibujar(); else render(); }, render, api, T };
+}
+function aro(T, r, y, color) {
+  const pts = []; for (let i = 0; i <= 64; i++) { const a = (i / 64) * Math.PI * 2; pts.push(new T.Vector3(r * Math.cos(a), y, r * Math.sin(a))); }
+  return new T.Line(new T.BufferGeometry().setFromPoints(pts), new T.LineBasicMaterial({ color }));
+}
+function respaldo2D(cont, dibujar) {
+  cont.style.height = 'auto';
+  const cv = document.createElement('canvas'); cont.appendChild(cv);
+  return new Lienzo(cv, { aspecto: 0.55, maxH: 340, dibujar });
+}
+// == fin paes27-lecciones v2 ==
+
+montarPracticas(BANCO);
+montarDominio();
+montarAcordeon();
+
+// ---------------- pestañas + enlaces directos ----------------
+const TABS_BQ = ['bio', 'qui'];
+function ir(hash) {
+  const id = decodeURIComponent(hash || '');
+  const sec = id && document.getElementById(id);
+  let tab = 'bio';
+  if (sec && sec.classList.contains('leccion')) { tab = sec.dataset.tab; sec.classList.remove('cerrada'); }
+  else if (TABS_BQ.includes(id)) tab = id;
+  document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+  document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + tab));
+  requestAnimationFrame(() => { if (sec && sec.classList.contains('leccion')) sec.scrollIntoView({ block: 'start' }); });
+}
+document.getElementById('tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) location.hash = b.dataset.tab; });
+window.addEventListener('hashchange', () => ir(location.hash.slice(1)));
+ir(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>

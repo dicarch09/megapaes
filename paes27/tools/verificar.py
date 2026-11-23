@@ -61,7 +61,7 @@ def preguntas():
 
 # ---------------------------------------------------------------- evaluación de alternativas
 SUPER = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
-UNIDADES = r"(cm²|cm³|cm|m/s²|m/s|km/h|km|N/m|kWh|kg|Hz|UF|mA|m|N|A|Ω|V|W|J|s|años|horas|%|°)"
+UNIDADES = r"(g/mL|g/mol|mol/L|mol|mL|L|cm²|cm³|cm|m/s²|m/s|km/h|km|N/m|kWh|kg|Hz|UF|mA|m|N|A|Ω|V|W|J|s|años|horas|%|°)"
 
 
 def a_python(t):

@@ -738,7 +738,7 @@
    "id": "d-cie-12",
    "prueba": "CIE",
    "eje": "Biología",
-   "tema": "bio.procesos",
+   "tema": "bio.nervioso",
    "nivel": "basico",
    "enunciado": "En una sinapsis química, ¿qué estructura libera los neurotransmisores?",
    "opciones": [
@@ -766,7 +766,7 @@
    "id": "d-cie-13",
    "prueba": "CIE",
    "eje": "Biología",
-   "tema": "bio.herencia",
+   "tema": "bio.division",
    "nivel": "basico",
    "enunciado": "¿En qué etapa de la mitosis las cromátidas hermanas se separan y se mueven hacia polos opuestos de la célula?",
    "opciones": [
@@ -794,7 +794,7 @@
    "id": "d-cie-14",
    "prueba": "CIE",
    "eje": "Química",
-   "tema": "qui.atomica",
+   "tema": "qui.modelos",
    "nivel": "basico",
    "enunciado": "Un átomo neutro tiene número atómico Z = 17 y número másico A = 35. ¿Cuántos neutrones tiene?",
    "opciones": [

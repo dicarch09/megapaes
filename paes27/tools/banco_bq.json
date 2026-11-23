@@ -1,0 +1,1262 @@
+[
+ {
+  "id": "bq-bcel-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "basico",
+  "enunciado": "¿Qué organelo produce la mayor parte del ATP de una célula animal?",
+  "opciones": [
+   {
+    "texto": "La mitocondria",
+    "trampa": ""
+   },
+   {
+    "texto": "El cloroplasto",
+    "trampa": "El cloroplasto hace fotosíntesis y no está en las células animales."
+   },
+   {
+    "texto": "El ribosoma",
+    "trampa": "El ribosoma fabrica proteínas, no energía."
+   },
+   {
+    "texto": "El complejo de Golgi",
+    "trampa": "El Golgi modifica y empaca proteínas; no produce energía."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "La respiración celular ocurre en la mitocondria y produce la mayor parte del ATP."
+ },
+ {
+  "id": "bq-bcel-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "paes",
+  "enunciado": "Las células del páncreas que fabrican y exportan grandes cantidades de enzimas digestivas tienen muy desarrollados dos organelos. ¿Cuáles?",
+  "opciones": [
+   {
+    "texto": "Los lisosomas y los peroxisomas",
+    "trampa": "Esos organelos degradan sustancias; no fabrican proteínas para exportar."
+   },
+   {
+    "texto": "Los cloroplastos y la vacuola central",
+    "trampa": "Son organelos de células vegetales."
+   },
+   {
+    "texto": "El retículo endoplasmático rugoso y el complejo de Golgi",
+    "trampa": ""
+   },
+   {
+    "texto": "El retículo endoplasmático liso y los centriolos",
+    "trampa": "El REL fabrica lípidos y los centriolos actúan en la división; ninguno exporta proteínas."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Las enzimas son proteínas: se fabrican en los ribosomas del RER y el Golgi las empaca para enviarlas fuera de la célula."
+ },
+ {
+  "id": "bq-bcel-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.celula",
+  "nivel": "dificil",
+  "enunciado": "Una célula tiene pared celular, ribosomas y ADN libre en el citoplasma, pero no tiene núcleo ni mitocondrias. ¿Qué tipo de célula es?",
+  "opciones": [
+   {
+    "texto": "Una célula vegetal",
+    "trampa": "Tiene pared celular, pero también núcleo y mitocondrias (y cloroplastos en las partes verdes)."
+   },
+   {
+    "texto": "Una célula animal",
+    "trampa": "No tiene pared celular y sí tiene núcleo y mitocondrias."
+   },
+   {
+    "texto": "Una fibra muscular esquelética",
+    "trampa": "Es una célula animal: tiene varios núcleos y muchas mitocondrias."
+   },
+   {
+    "texto": "Una célula procarionte, como una bacteria",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sin núcleo y sin organelos con membrana, pero con ribosomas y ADN libre: es una procarionte."
+ },
+ {
+  "id": "bq-bner-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "basico",
+  "enunciado": "En un arco reflejo, ¿cuál es el orden correcto del recorrido?",
+  "opciones": [
+   {
+    "texto": "Receptor → neurona motora → médula espinal → neurona sensitiva → efector",
+    "trampa": "Invertiste las neuronas: la sensitiva lleva la información hacia la médula y la motora lleva la orden al músculo."
+   },
+   {
+    "texto": "Receptor → neurona sensitiva → médula espinal → neurona motora → efector",
+    "trampa": ""
+   },
+   {
+    "texto": "Receptor → neurona sensitiva → cerebro → neurona motora → efector",
+    "trampa": "En el reflejo simple la respuesta se integra en la médula espinal; por eso es tan rápido."
+   },
+   {
+    "texto": "Efector → neurona motora → médula espinal → neurona sensitiva → receptor",
+    "trampa": "Está al revés: el recorrido parte en el receptor y termina en el efector."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El estímulo lo capta un receptor, la neurona sensitiva lo lleva a la médula, y la neurona motora lleva la respuesta al músculo (efector)."
+ },
+ {
+  "id": "bq-bner-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "paes",
+  "enunciado": "Cuando un estímulo supera el umbral de una neurona, ¿qué ocurre primero?",
+  "opciones": [
+   {
+    "texto": "Entran iones Na⁺ y el interior de la neurona se vuelve positivo (despolarización)",
+    "trampa": ""
+   },
+   {
+    "texto": "Salen iones K⁺ y el interior se vuelve más negativo",
+    "trampa": "Eso es la repolarización, que viene después de la despolarización."
+   },
+   {
+    "texto": "Se liberan neurotransmisores en las dendritas",
+    "trampa": "Los neurotransmisores se liberan en el terminal del axón, al final del recorrido."
+   },
+   {
+    "texto": "Se detiene la bomba de Na⁺/K⁺",
+    "trampa": "La bomba mantiene el potencial de reposo; no es lo que inicia el impulso."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Al superar el umbral se abren canales de Na⁺: entra sodio y el interior se vuelve positivo. Después sale K⁺ y se repolariza."
+ },
+ {
+  "id": "bq-bner-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.nervioso",
+  "nivel": "dificil",
+  "enunciado": "Un fármaco bloquea los receptores de neurotransmisores de la neurona postsináptica. ¿Qué efecto tiene en esa sinapsis?",
+  "opciones": [
+   {
+    "texto": "Aumenta la liberación de neurotransmisores y el impulso pasa más rápido",
+    "trampa": "Bloquear el receptor impide la respuesta; no la acelera."
+   },
+   {
+    "texto": "El impulso pasa a viajar de la neurona postsináptica a la presináptica",
+    "trampa": "La sinapsis química va en un solo sentido; bloquear los receptores no la invierte."
+   },
+   {
+    "texto": "El axón de la neurona presináptica deja de conducir el impulso",
+    "trampa": "El fármaco actúa en la neurona siguiente; el axón presináptico sigue conduciendo."
+   },
+   {
+    "texto": "El impulso no pasa a la neurona siguiente, aunque se sigan liberando neurotransmisores",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Sin receptores disponibles, el neurotransmisor no puede actuar sobre la neurona postsináptica: la señal se corta ahí."
+ },
+ {
+  "id": "bq-brep-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "basico",
+  "enunciado": "¿Dónde ocurre normalmente la fecundación en la especie humana?",
+  "opciones": [
+   {
+    "texto": "En el útero",
+    "trampa": "En el útero se implanta el embrión días después; la fecundación ocurre antes, en la trompa."
+   },
+   {
+    "texto": "En el ovario",
+    "trampa": "El ovario libera el ovocito; el encuentro con el espermatozoide es en la trompa."
+   },
+   {
+    "texto": "En la trompa de Falopio (oviducto)",
+    "trampa": ""
+   },
+   {
+    "texto": "En la vagina",
+    "trampa": "Ahí se depositan los espermatozoides, pero deben subir hasta la trompa."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El ovocito liberado entra a la trompa de Falopio, y ahí lo alcanzan los espermatozoides."
+ },
+ {
+  "id": "bq-brep-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "paes",
+  "enunciado": "¿Qué hormona, con un aumento brusco a mitad del ciclo, provoca la ovulación?",
+  "opciones": [
+   {
+    "texto": "La FSH",
+    "trampa": "La FSH hace madurar el folículo; el pico que provoca la ovulación es de LH."
+   },
+   {
+    "texto": "La LH (hormona luteinizante)",
+    "trampa": ""
+   },
+   {
+    "texto": "La progesterona",
+    "trampa": "La progesterona sube después de la ovulación, producida por el cuerpo lúteo."
+   },
+   {
+    "texto": "La testosterona",
+    "trampa": "Es la principal hormona sexual masculina; no gatilla la ovulación."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Cerca del día 14 hay un pico de LH que rompe el folículo maduro y libera el ovocito."
+ },
+ {
+  "id": "bq-brep-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.reproduccion",
+  "nivel": "dificil",
+  "enunciado": "Si en un ciclo no hay fecundación, ¿qué explica que llegue la menstruación?",
+  "opciones": [
+   {
+    "texto": "El cuerpo lúteo degenera, baja la progesterona y el endometrio se desprende",
+    "trampa": ""
+   },
+   {
+    "texto": "Sube la progesterona y el endometrio se engrosa",
+    "trampa": "Eso prepara el útero para un embarazo; la menstruación llega cuando la progesterona baja."
+   },
+   {
+    "texto": "El pico de LH desprende el endometrio",
+    "trampa": "El pico de LH provoca la ovulación, no la menstruación."
+   },
+   {
+    "texto": "El ovocito no fecundado libera enzimas que destruyen el endometrio",
+    "trampa": "El endometrio se desprende por la baja de las hormonas, no por el ovocito."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Sin embarazo, el cuerpo lúteo deja de producir progesterona; sin ella el endometrio no se sostiene y se desprende."
+ },
+ {
+  "id": "bq-bant-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de estos métodos, además de evitar el embarazo, previene las infecciones de transmisión sexual?",
+  "opciones": [
+   {
+    "texto": "La píldora anticonceptiva",
+    "trampa": "Evita la ovulación, pero no impide el contacto con fluidos ni con lesiones."
+   },
+   {
+    "texto": "El método de Billings",
+    "trampa": "Es un método natural: solo identifica los días fértiles; no protege de ITS."
+   },
+   {
+    "texto": "La vasectomía",
+    "trampa": "Impide la salida de espermatozoides, pero el semen y el contacto pueden seguir transmitiendo ITS."
+   },
+   {
+    "texto": "El condón",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "El condón es una barrera física: impide el paso de espermatozoides y también el contacto con fluidos y lesiones que transmiten ITS."
+ },
+ {
+  "id": "bq-bant-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "paes",
+  "enunciado": "¿Cuál de estos pares de ITS es causado por virus?",
+  "opciones": [
+   {
+    "texto": "VIH y herpes genital",
+    "trampa": ""
+   },
+   {
+    "texto": "Gonorrea y clamidia",
+    "trampa": "Ambas son bacterianas: se tratan con antibióticos."
+   },
+   {
+    "texto": "VIH y gonorrea",
+    "trampa": "La gonorrea es bacteriana."
+   },
+   {
+    "texto": "Herpes genital y clamidia",
+    "trampa": "La clamidia es bacteriana."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "VIH y herpes son virus (no tienen cura, sí tratamiento). Gonorrea y clamidia son bacterias (se curan con antibióticos)."
+ },
+ {
+  "id": "bq-bant-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.anticoncepcion-its",
+  "nivel": "dificil",
+  "enunciado": "Una pareja usa el método del calendario. ¿Por qué falla más que los métodos hormonales?",
+  "opciones": [
+   {
+    "texto": "Porque altera las hormonas del ciclo",
+    "trampa": "Los métodos naturales no usan hormonas: solo observan el ciclo."
+   },
+   {
+    "texto": "Porque destruye los espermatozoides",
+    "trampa": "No actúa sobre los espermatozoides; solo busca evitar los días fértiles."
+   },
+   {
+    "texto": "Porque el día de la ovulación puede variar de un ciclo a otro y los espermatozoides sobreviven varios días",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque solo funciona si el ciclo dura exactamente 28 días",
+    "trampa": "28 días es solo un promedio: el método necesita ciclos regulares, no de 28 días justos."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "El calendario supone que la ovulación será en la misma fecha. Si se adelanta o se atrasa, o los espermatozoides sobreviven más días, puede haber embarazo."
+ },
+ {
+  "id": "bq-bdiv-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "basico",
+  "enunciado": "¿En qué etapa del ciclo celular se duplica el ADN?",
+  "opciones": [
+   {
+    "texto": "En G1",
+    "trampa": "En G1 la célula crece y trabaja; el ADN se copia en S."
+   },
+   {
+    "texto": "En la fase S de la interfase",
+    "trampa": ""
+   },
+   {
+    "texto": "En G2",
+    "trampa": "En G2 el ADN ya está duplicado: la célula se prepara para dividirse."
+   },
+   {
+    "texto": "En la profase",
+    "trampa": "La profase es de la mitosis; el ADN llega ya copiado."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "S viene de «síntesis»: en esa fase se replica el ADN."
+ },
+ {
+  "id": "bq-bdiv-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "paes",
+  "enunciado": "Una célula del testículo, con 46 cromosomas, hace meiosis. ¿Cuántas células resultan y cuántos cromosomas tiene cada una?",
+  "opciones": [
+   {
+    "texto": "2 células con 46 cromosomas cada una",
+    "trampa": "Eso es el resultado de una mitosis."
+   },
+   {
+    "texto": "4 células con 46 cromosomas cada una",
+    "trampa": "La meiosis reduce los cromosomas a la mitad: los gametos son haploides."
+   },
+   {
+    "texto": "2 células con 23 cromosomas cada una",
+    "trampa": "Te quedaste en la meiosis I; la meiosis II divide otra vez, así que son 4."
+   },
+   {
+    "texto": "4 células con 23 cromosomas cada una",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Dos divisiones seguidas: de 1 célula salen 4, y cada una tiene la mitad de los cromosomas (23)."
+ },
+ {
+  "id": "bq-bdiv-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.division",
+  "nivel": "dificil",
+  "enunciado": "Si una célula pierde el control del punto G1–S, ¿qué consecuencia es más probable?",
+  "opciones": [
+   {
+    "texto": "Que se divida aunque su ADN esté dañado, lo que puede originar un cáncer",
+    "trampa": ""
+   },
+   {
+    "texto": "Que se detenga para siempre en G1",
+    "trampa": "Perder un control quita un freno; no detiene la célula."
+   },
+   {
+    "texto": "Que haga meiosis en vez de mitosis",
+    "trampa": "Los puntos de control no cambian el tipo de división."
+   },
+   {
+    "texto": "Que sus cromosomas no se condensen en la profase",
+    "trampa": "El control G1–S revisa antes de copiar el ADN; no afecta la condensación."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El punto G1–S frena la división si el ADN está dañado. Sin ese freno, se copian y heredan errores: así puede empezar un cáncer."
+ },
+ {
+  "id": "bq-bman-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "basico",
+  "enunciado": "Hoy la insulina para personas con diabetes se produce en gran cantidad gracias a que…",
+  "opciones": [
+   {
+    "texto": "se extrae del páncreas de personas donantes",
+    "trampa": "No se obtiene de donantes: la fabrican bacterias que recibieron el gen."
+   },
+   {
+    "texto": "se fabrica en el laboratorio sin usar células",
+    "trampa": "La producen células vivas que recibieron el gen de la insulina."
+   },
+   {
+    "texto": "se insertó el gen humano de la insulina en bacterias, que la fabrican",
+    "trampa": ""
+   },
+   {
+    "texto": "se clona un páncreas humano completo",
+    "trampa": "No se clona un órgano: se transfiere un solo gen."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Es ADN recombinante: el gen de la insulina se pega en un plásmido, entra a una bacteria y la bacteria la produce."
+ },
+ {
+  "id": "bq-bman-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "paes",
+  "enunciado": "¿Por qué una bacteria puede fabricar una proteína humana si recibe el gen correspondiente?",
+  "opciones": [
+   {
+    "texto": "Porque las bacterias tienen núcleo, igual que las células humanas",
+    "trampa": "Las bacterias son procariontes: no tienen núcleo."
+   },
+   {
+    "texto": "Porque el código genético es prácticamente universal",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque todas las proteínas son iguales en todos los seres vivos",
+    "trampa": "Las proteínas son distintas; lo que se comparte es la forma de leer el ADN."
+   },
+   {
+    "texto": "Porque la bacteria se transforma en una célula humana",
+    "trampa": "Sigue siendo una bacteria; solo agrega un gen."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Casi todos los seres vivos leen el ADN con el mismo código, así que la bacteria «traduce» el gen humano a la misma proteína."
+ },
+ {
+  "id": "bq-bman-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.manipulacion",
+  "nivel": "dificil",
+  "enunciado": "Para que una bacteria fabrique insulina humana se hace lo siguiente: I) introducir el plásmido en la bacteria; II) cortar el gen y el plásmido con la misma enzima de restricción; III) unir el gen al plásmido con ligasa; IV) cultivar la bacteria y purificar la insulina. ¿Cuál es el orden correcto?",
+  "opciones": [
+   {
+    "texto": "I, II, III, IV",
+    "trampa": "La bacteria debe recibir el plásmido con el gen ya puesto: primero se corta y se une, después se introduce."
+   },
+   {
+    "texto": "II, I, III, IV",
+    "trampa": "La ligasa une el gen al plásmido fuera de la bacteria, antes de introducirlo."
+   },
+   {
+    "texto": "III, II, I, IV",
+    "trampa": "Antes de unir hay que cortar: la ligasa pega los extremos que deja la enzima de restricción."
+   },
+   {
+    "texto": "II, III, I, IV",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Se corta (enzima de restricción), se pega (ligasa), se introduce el plásmido en la bacteria, y esta se multiplica y fabrica la insulina."
+ },
+ {
+  "id": "bq-bevo-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "basico",
+  "enunciado": "El brazo humano y el ala de un murciélago tienen los mismos huesos, pero distinta función. ¿Cómo se llaman estas estructuras?",
+  "opciones": [
+   {
+    "texto": "Homólogas",
+    "trampa": ""
+   },
+   {
+    "texto": "Análogas",
+    "trampa": "Las análogas cumplen la misma función con distinto origen, como el ala de un ave y la de un insecto."
+   },
+   {
+    "texto": "Embrionarias",
+    "trampa": "La embriología compara embriones; aquí se comparan estructuras de adultos."
+   },
+   {
+    "texto": "Fósiles",
+    "trampa": "El registro fósil es otra evidencia: restos de organismos antiguos."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Mismo origen (los mismos huesos), aunque cumplan distinta función: son homólogas, una evidencia de un ancestro común."
+ },
+ {
+  "id": "bq-bevo-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "paes",
+  "enunciado": "Según Lamarck, ¿por qué las jirafas tienen el cuello largo?",
+  "opciones": [
+   {
+    "texto": "Porque las que nacieron con el cuello más largo sobrevivieron y se reprodujeron más",
+    "trampa": "Esa es la explicación de Darwin y Wallace: la selección natural."
+   },
+   {
+    "texto": "Porque una mutación las cambió en una sola generación",
+    "trampa": "Lamarck no habló de mutaciones; su idea fue el uso, el desuso y la herencia de lo adquirido."
+   },
+   {
+    "texto": "Porque lo estiraron para alcanzar hojas altas y heredaron ese cambio a sus crías",
+    "trampa": ""
+   },
+   {
+    "texto": "Porque fueron creadas así y nunca han cambiado",
+    "trampa": "Eso es el fijismo; Lamarck sí proponía que las especies cambian."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Para Lamarck, el uso de un órgano lo desarrolla y ese cambio adquirido se hereda. Hoy se sabe que lo adquirido en vida no se hereda."
+ },
+ {
+  "id": "bq-bevo-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.evolucion",
+  "nivel": "dificil",
+  "enunciado": "Al usar mal un antibiótico aparecen bacterias resistentes. ¿Cómo se explica por selección natural?",
+  "opciones": [
+   {
+    "texto": "El antibiótico enseñó a las bacterias a resistirlo",
+    "trampa": "Eso es pensar como Lamarck: el ambiente no «enseña», selecciona variaciones que ya existían."
+   },
+   {
+    "texto": "Algunas bacterias ya eran resistentes; el antibiótico eliminó a las demás y las resistentes se multiplicaron",
+    "trampa": ""
+   },
+   {
+    "texto": "El antibiótico pierde su fuerza con el tiempo",
+    "trampa": "El fármaco no cambia; lo que cambia es la población de bacterias."
+   },
+   {
+    "texto": "Todas las bacterias se volvieron resistentes al mismo tiempo",
+    "trampa": "La resistencia no aparece en todas a la vez: aumenta la proporción de las que ya la tenían."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Hay variación previa; el antibiótico actúa como presión de selección y sobreviven y se reproducen las resistentes."
+ },
+ {
+  "id": "bq-bfot-b",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "basico",
+  "enunciado": "¿De dónde proviene el O₂ que liberan las plantas en la fotosíntesis?",
+  "opciones": [
+   {
+    "texto": "Del dióxido de carbono (CO₂)",
+    "trampa": "Es un error clásico: el oxígeno liberado viene de romper el agua en la fase luminosa."
+   },
+   {
+    "texto": "Del agua (H₂O)",
+    "trampa": ""
+   },
+   {
+    "texto": "De la glucosa",
+    "trampa": "La glucosa es un producto de la fotosíntesis, no la fuente del O₂."
+   },
+   {
+    "texto": "Del oxígeno del aire que respiran",
+    "trampa": "El O₂ del aire lo usan para respirar; el que liberan viene del agua."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "En la fase luminosa la luz rompe moléculas de agua (fotólisis) y de ahí sale el O₂."
+ },
+ {
+  "id": "bq-bfot-p",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "paes",
+  "enunciado": "¿En qué lugar de la célula vegetal ocurre la fase que fija el CO₂ y forma glucosa?",
+  "opciones": [
+   {
+    "texto": "En los tilacoides",
+    "trampa": "En los tilacoides ocurre la fase luminosa, que produce ATP, NADPH y O₂."
+   },
+   {
+    "texto": "En la mitocondria",
+    "trampa": "La mitocondria hace la respiración celular: libera CO₂, no lo fija."
+   },
+   {
+    "texto": "En la membrana externa del cloroplasto",
+    "trampa": "La membrana rodea al cloroplasto; las reacciones ocurren adentro."
+   },
+   {
+    "texto": "En el estroma",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "La fase oscura (ciclo de Calvin) ocurre en el estroma y usa el ATP y el NADPH de la fase luminosa."
+ },
+ {
+  "id": "bq-bfot-d",
+  "prueba": "CIE",
+  "eje": "Biología",
+  "tema": "bio.fotosintesis",
+  "nivel": "dificil",
+  "enunciado": "En un experimento, al aumentar la luz la fotosíntesis sube, pero desde cierto punto ya no aumenta. ¿Qué explica mejor ese límite?",
+  "opciones": [
+   {
+    "texto": "Otro factor, como la cantidad de CO₂, pasa a limitar el proceso",
+    "trampa": ""
+   },
+   {
+    "texto": "La luz empieza a destruir la clorofila de inmediato",
+    "trampa": "Con más luz la velocidad se estabiliza; no cae de inmediato."
+   },
+   {
+    "texto": "La planta deja de respirar",
+    "trampa": "La respiración sigue; no es lo que frena a la fotosíntesis."
+   },
+   {
+    "texto": "La fase oscura solo puede ocurrir de noche",
+    "trampa": "La fase oscura también ocurre de día: no necesita luz directamente."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cuando la luz sobra, la velocidad la limita otro factor (CO₂ o temperatura). Por eso la curva se aplana."
+ },
+ {
+  "id": "bq-qmat-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "basico",
+  "enunciado": "¿Cuál de las siguientes es una mezcla homogénea?",
+  "opciones": [
+   {
+    "texto": "Agua con aceite",
+    "trampa": "Se ven dos capas: es una mezcla heterogénea."
+   },
+   {
+    "texto": "Agua pura",
+    "trampa": "Es un compuesto: una sustancia pura, no una mezcla."
+   },
+   {
+    "texto": "Agua con sal disuelta",
+    "trampa": ""
+   },
+   {
+    "texto": "Arena con piedras",
+    "trampa": "Se distinguen sus partes: es heterogénea."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "La sal disuelta no se distingue del agua: hay una sola fase."
+ },
+ {
+  "id": "bq-qmat-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "paes",
+  "enunciado": "Para separar el alcohol del agua en una mezcla de ambos, ¿qué método conviene?",
+  "opciones": [
+   {
+    "texto": "Destilación",
+    "trampa": ""
+   },
+   {
+    "texto": "Filtración",
+    "trampa": "El filtro retiene sólidos; el alcohol está disuelto y pasa con el agua."
+   },
+   {
+    "texto": "Decantación",
+    "trampa": "El agua y el alcohol se mezclan en una sola fase: no forman capas."
+   },
+   {
+    "texto": "Tamizado",
+    "trampa": "El tamiz sirve para sólidos de distinto tamaño."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "El alcohol hierve a menor temperatura que el agua: al calentar se evapora primero y se condensa aparte."
+ },
+ {
+  "id": "bq-qmat-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.materia",
+  "nivel": "dificil",
+  "enunciado": "Un trozo de metal de 54 g se sumerge en una probeta con agua, y el nivel sube de 20 mL a 40 mL. ¿Cuál es la densidad del metal?",
+  "opciones": [
+   {
+    "texto": "1,35 g/mL",
+    "trampa": "Dividiste por 40 mL; el volumen del metal es lo que subió el agua: 20 mL."
+   },
+   {
+    "texto": "2,7 g/mL",
+    "trampa": ""
+   },
+   {
+    "texto": "0,37 g/mL",
+    "trampa": "Dividiste el volumen por la masa; la densidad es masa / volumen."
+   },
+   {
+    "texto": "1080 g/mL",
+    "trampa": "Multiplicaste masa por volumen; la densidad es masa / volumen."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "V = 40 − 20 = 20 mL. d = m / V = 54 / 20 = 2,7 g/mL."
+ },
+ {
+  "id": "bq-qmod-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "basico",
+  "enunciado": "¿Qué modelo atómico propuso por primera vez un núcleo pequeño y positivo, con los electrones alrededor?",
+  "opciones": [
+   {
+    "texto": "El de Thomson",
+    "trampa": "Thomson imaginó una esfera positiva con electrones incrustados, sin núcleo."
+   },
+   {
+    "texto": "El de Dalton",
+    "trampa": "Para Dalton el átomo era una esfera maciza e indivisible."
+   },
+   {
+    "texto": "El de Bohr",
+    "trampa": "Bohr partió del núcleo de Rutherford y le agregó niveles de energía."
+   },
+   {
+    "texto": "El de Rutherford",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "El experimento de la lámina de oro llevó a Rutherford a proponer el núcleo."
+ },
+ {
+  "id": "bq-qmod-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "paes",
+  "enunciado": "Un átomo neutro tiene Z = 26 y A = 56. ¿Cuántos protones, neutrones y electrones tiene?",
+  "opciones": [
+   {
+    "texto": "26 protones, 56 neutrones y 26 electrones",
+    "trampa": "Tomaste A como el número de neutrones; los neutrones son A − Z."
+   },
+   {
+    "texto": "30 protones, 26 neutrones y 30 electrones",
+    "trampa": "Invertiste: Z es el número de protones."
+   },
+   {
+    "texto": "26 protones, 30 neutrones y 26 electrones",
+    "trampa": ""
+   },
+   {
+    "texto": "26 protones, 30 neutrones y 30 electrones",
+    "trampa": "En un átomo neutro hay tantos electrones como protones."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Protones = Z = 26. Neutrones = A − Z = 56 − 26 = 30. Electrones = protones = 26."
+ },
+ {
+  "id": "bq-qmod-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.modelos",
+  "nivel": "dificil",
+  "enunciado": "En el experimento de Rutherford, la mayoría de las partículas alfa atravesó la lámina de oro sin desviarse. ¿Qué concluyó de eso?",
+  "opciones": [
+   {
+    "texto": "Que el átomo es en su mayor parte espacio vacío",
+    "trampa": ""
+   },
+   {
+    "texto": "Que el núcleo es negativo",
+    "trampa": "El núcleo es positivo: por eso rechazó a las pocas partículas alfa (positivas) que rebotaron."
+   },
+   {
+    "texto": "Que los electrones están en niveles de energía",
+    "trampa": "Eso lo propuso Bohr después, para explicar los espectros."
+   },
+   {
+    "texto": "Que el átomo es una esfera maciza",
+    "trampa": "Si fuera maciza, casi ninguna partícula pasaría sin desviarse."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Si casi todas pasan derecho, casi todo el átomo está vacío; las pocas que se desviaron mucho o rebotaron pasaron cerca de un núcleo pequeño y positivo, que las repelió."
+ },
+ {
+  "id": "bq-qcar-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "basico",
+  "enunciado": "En el etino (HC≡CH), ¿qué hibridación tienen los átomos de carbono?",
+  "opciones": [
+   {
+    "texto": "sp",
+    "trampa": ""
+   },
+   {
+    "texto": "sp²",
+    "trampa": "sp² corresponde a un doble enlace, como en el eteno."
+   },
+   {
+    "texto": "sp³",
+    "trampa": "sp³ es para cuatro enlaces simples, como en el metano."
+   },
+   {
+    "texto": "No tienen hibridación",
+    "trampa": "En los compuestos orgánicos el carbono se hibrida; con un triple enlace es sp."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Cada carbono tiene un enlace triple y uno simple: hibridación sp, forma lineal (180°)."
+ },
+ {
+  "id": "bq-qcar-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es el ángulo de enlace aproximado alrededor de un carbono con hibridación sp²?",
+  "opciones": [
+   {
+    "texto": "109,5°",
+    "trampa": "Ese es el ángulo del carbono sp³ (tetraédrico)."
+   },
+   {
+    "texto": "120°",
+    "trampa": ""
+   },
+   {
+    "texto": "180°",
+    "trampa": "Ese es el ángulo del carbono sp (lineal)."
+   },
+   {
+    "texto": "90°",
+    "trampa": "Pensaste en un cuadrado; los tres enlaces del sp² se reparten en el plano: 360° / 3 = 120°."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El carbono sp² tiene 3 zonas de enlace en un plano, separadas por 120°."
+ },
+ {
+  "id": "bq-qcar-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.carbono",
+  "nivel": "dificil",
+  "enunciado": "¿Cómo se ordenan las longitudes de los enlaces carbono–carbono, de menor a mayor?",
+  "opciones": [
+   {
+    "texto": "C–C &lt; C=C &lt; C≡C",
+    "trampa": "Es al revés: más enlaces entre los mismos átomos los acercan más."
+   },
+   {
+    "texto": "Las tres miden lo mismo",
+    "trampa": "No miden lo mismo: a más electrones compartidos, el enlace es más corto."
+   },
+   {
+    "texto": "C≡C &lt; C=C &lt; C–C",
+    "trampa": ""
+   },
+   {
+    "texto": "C=C &lt; C≡C &lt; C–C",
+    "trampa": "El triple es el más corto de los tres."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Triple (120 pm) &lt; doble (134 pm) &lt; simple (154 pm). Más corto también significa más fuerte."
+ },
+ {
+  "id": "bq-qorg-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "basico",
+  "enunciado": "¿Qué grupo funcional tiene el etanol (CH₃–CH₂–OH)?",
+  "opciones": [
+   {
+    "texto": "Ácido carboxílico (–COOH)",
+    "trampa": "El ácido tiene –COOH; el etanol solo tiene –OH."
+   },
+   {
+    "texto": "Alcohol (–OH)",
+    "trampa": ""
+   },
+   {
+    "texto": "Éter (R–O–R')",
+    "trampa": "En un éter el oxígeno está entre dos carbonos."
+   },
+   {
+    "texto": "Aldehído (–CHO)",
+    "trampa": "El aldehído tiene un C=O en el extremo de la cadena."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "El –OH unido a un carbono de una cadena es un alcohol; por eso su nombre termina en -ol."
+ },
+ {
+  "id": "bq-qorg-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la fórmula molecular del pentano, el alcano de 5 carbonos?",
+  "opciones": [
+   {
+    "texto": "C₅H₁₀",
+    "trampa": "Esa es la fórmula de un alqueno: CₙH₂ₙ."
+   },
+   {
+    "texto": "C₅H₈",
+    "trampa": "Esa corresponde a un alquino: CₙH₂ₙ₋₂."
+   },
+   {
+    "texto": "C₅H₅",
+    "trampa": "Contaste un hidrógeno por carbono; en un alcano son 2n + 2."
+   },
+   {
+    "texto": "C₅H₁₂",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "Alcanos: CₙH₂ₙ₊₂. Con n = 5: C₅H₁₂."
+ },
+ {
+  "id": "bq-qorg-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.organica",
+  "nivel": "dificil",
+  "enunciado": "La propanona (CH₃–CO–CH₃) y el propanal (CH₃–CH₂–CHO) tienen la misma fórmula molecular, C₃H₆O. ¿En qué se diferencian?",
+  "opciones": [
+   {
+    "texto": "En la posición del C=O: en la cetona está en un carbono interior y en el aldehído, en el extremo",
+    "trampa": ""
+   },
+   {
+    "texto": "En que la propanona tiene un átomo de oxígeno más",
+    "trampa": "Ambas tienen un solo oxígeno: tienen la misma fórmula molecular."
+   },
+   {
+    "texto": "En que el propanal es un alcohol",
+    "trampa": "No tiene –OH: tiene el grupo –CHO de los aldehídos."
+   },
+   {
+    "texto": "En el número de carbonos",
+    "trampa": "Ambas tienen 3 carbonos (prop-)."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "Mismos átomos, distinto orden: la cetona tiene el C=O entre dos carbonos; el aldehído, en el extremo (–CHO)."
+ },
+ {
+  "id": "bq-qest-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "basico",
+  "enunciado": "¿Cuántos moles hay en 36 g de agua (H₂O)? (masas atómicas: H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "2 mol",
+    "trampa": ""
+   },
+   {
+    "texto": "0,5 mol",
+    "trampa": "Dividiste 18 / 36; los moles son masa / masa molar: 36 / 18."
+   },
+   {
+    "texto": "648 mol",
+    "trampa": "Multiplicaste 36 · 18; hay que dividir."
+   },
+   {
+    "texto": "36 mol",
+    "trampa": "Confundiste gramos con moles."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "M(H₂O) = 2·1 + 16 = 18 g/mol. n = 36 / 18 = 2 mol."
+ },
+ {
+  "id": "bq-qest-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "paes",
+  "enunciado": "Según la ecuación N₂ + 3 H₂ → 2 NH₃, ¿cuántos moles de NH₃ se forman con 6 mol de H₂ y suficiente N₂?",
+  "opciones": [
+   {
+    "texto": "6 mol",
+    "trampa": "Usaste una razón 1 : 1; la ecuación dice 3 H₂ por cada 2 NH₃."
+   },
+   {
+    "texto": "9 mol",
+    "trampa": "Invertiste la razón: es 6 · 2/3, no 6 · 3/2."
+   },
+   {
+    "texto": "4 mol",
+    "trampa": ""
+   },
+   {
+    "texto": "12 mol",
+    "trampa": "Multiplicaste por 2 y olvidaste dividir por 3."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "3 mol de H₂ dan 2 mol de NH₃. Con 6 mol de H₂: 6 · 2/3 = 4 mol de NH₃."
+ },
+ {
+  "id": "bq-qest-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.estequiometria",
+  "nivel": "dificil",
+  "enunciado": "En la reacción 2 H₂ + O₂ → 2 H₂O se mezclan 4 mol de H₂ con 3 mol de O₂. ¿Cuál es el reactivo limitante y cuánta agua se forma?",
+  "opciones": [
+   {
+    "texto": "El O₂; se forman 3 mol de H₂O",
+    "trampa": "Miraste solo de cuál hay menos y usaste una razón 1 : 1 con el agua. Hay que dividir por los coeficientes: el H₂ (4/2 = 2) se acaba antes que el O₂ (3/1 = 3)."
+   },
+   {
+    "texto": "El H₂; se forman 4 mol de H₂O",
+    "trampa": ""
+   },
+   {
+    "texto": "El H₂; se forman 6 mol de H₂O",
+    "trampa": "El agua la limita el H₂: 4 mol de H₂ dan 4 mol de agua (razón 2 : 2)."
+   },
+   {
+    "texto": "El O₂; se forman 6 mol de H₂O",
+    "trampa": "Con 3 mol de O₂ saldrían 6 mol de agua, pero para eso harían falta 6 mol de H₂ y solo hay 4."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "H₂: 4/2 = 2; O₂: 3/1 = 3. El menor es el H₂, el limitante. 4 mol de H₂ forman 4 mol de H₂O y sobra 1 mol de O₂."
+ },
+ {
+  "id": "bq-qcom-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "basico",
+  "enunciado": "¿Qué porcentaje en masa de carbono tiene el CO₂? (masas atómicas: C = 12, O = 16)",
+  "opciones": [
+   {
+    "texto": "33,3 %",
+    "trampa": "Contaste átomos (1 de 3); el porcentaje es en masa."
+   },
+   {
+    "texto": "37,5 %",
+    "trampa": "Dividiste 12 por 32; la masa molar del CO₂ incluye el carbono: 44 g/mol."
+   },
+   {
+    "texto": "72,7 %",
+    "trampa": "Ese es el porcentaje de oxígeno."
+   },
+   {
+    "texto": "27,3 %",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "M(CO₂) = 12 + 2·16 = 44 g/mol. %C = 12/44 · 100 ≈ 27,3 %."
+ },
+ {
+  "id": "bq-qcom-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "paes",
+  "enunciado": "La fórmula empírica de un compuesto es CH₂O y su masa molar es 180 g/mol. ¿Cuál es su fórmula molecular? (C = 12, H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "C₃H₆O₃",
+    "trampa": "Usaste 60 g/mol para CH₂O; su masa es 12 + 2 + 16 = 30 g/mol."
+   },
+   {
+    "texto": "CH₂O",
+    "trampa": "Esa es la empírica; la molecular es 180/30 = 6 veces mayor."
+   },
+   {
+    "texto": "C₆H₁₂O₆",
+    "trampa": ""
+   },
+   {
+    "texto": "C₆H₆O₆",
+    "trampa": "Tomaste un solo H en CH₂O; el subíndice 2 también se multiplica: 2 · 6 = 12."
+   }
+  ],
+  "correcta": 2,
+  "explicacion": "Masa de CH₂O = 30 g/mol. n = 180 / 30 = 6. Fórmula molecular: C₆H₁₂O₆."
+ },
+ {
+  "id": "bq-qcom-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.composicion",
+  "nivel": "dificil",
+  "enunciado": "Un compuesto tiene 40 % de C, 6,7 % de H y 53,3 % de O en masa. ¿Cuál es su fórmula empírica? (C = 12, H = 1, O = 16)",
+  "opciones": [
+   {
+    "texto": "CH₂O",
+    "trampa": ""
+   },
+   {
+    "texto": "C₆HO₈",
+    "trampa": "Dividiste los porcentajes por el menor sin pasarlos antes a moles."
+   },
+   {
+    "texto": "CHO",
+    "trampa": "Dividiste por el número atómico (C = 6, O = 8) y no por la masa atómica: así todo da ≈ 6,7 y queda 1 : 1 : 1."
+   },
+   {
+    "texto": "C₆H₁₂O₆",
+    "trampa": "Esa es una fórmula molecular posible (la glucosa), pero la empírica es la más simple."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "En 100 g: C 40/12 = 3,33 mol; H 6,7/1 = 6,7 mol; O 53,3/16 = 3,33 mol. Dividiendo por 3,33: 1 : 2 : 1 → CH₂O."
+ },
+ {
+  "id": "bq-qsol-b",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "basico",
+  "enunciado": "Se disuelven 20 g de azúcar en 180 g de agua. ¿Cuál es el % m/m de la solución?",
+  "opciones": [
+   {
+    "texto": "11,1 %",
+    "trampa": "Dividiste por la masa del agua; el % m/m es sobre la masa de la solución: 200 g."
+   },
+   {
+    "texto": "10 %",
+    "trampa": ""
+   },
+   {
+    "texto": "20 %",
+    "trampa": "Supusiste 100 g de solución; la solución pesa 20 + 180 = 200 g."
+   },
+   {
+    "texto": "90 %",
+    "trampa": "Ese es el porcentaje de agua."
+   }
+  ],
+  "correcta": 1,
+  "explicacion": "Masa de solución = 20 + 180 = 200 g. % m/m = 20/200 · 100 = 10 %."
+ },
+ {
+  "id": "bq-qsol-p",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "paes",
+  "enunciado": "¿Cuál es la molaridad de una solución que tiene 0,5 mol de NaCl en 250 mL de solución?",
+  "opciones": [
+   {
+    "texto": "0,002 mol/L",
+    "trampa": "No pasaste los mL a L: 250 mL = 0,25 L."
+   },
+   {
+    "texto": "0,125 mol/L",
+    "trampa": "Multiplicaste 0,5 · 0,25; la molaridad es mol / L."
+   },
+   {
+    "texto": "125 mol/L",
+    "trampa": "Multiplicaste por 250; hay que dividir por el volumen en litros."
+   },
+   {
+    "texto": "2 mol/L",
+    "trampa": ""
+   }
+  ],
+  "correcta": 3,
+  "explicacion": "M = n / V = 0,5 / 0,25 = 2 mol/L."
+ },
+ {
+  "id": "bq-qsol-d",
+  "prueba": "CIE",
+  "eje": "Química",
+  "tema": "qui.soluciones",
+  "nivel": "dificil",
+  "enunciado": "Se tienen 100 mL de una solución 2 mol/L. ¿Cuánta agua hay que agregar para que quede 0,5 mol/L?",
+  "opciones": [
+   {
+    "texto": "300 mL",
+    "trampa": ""
+   },
+   {
+    "texto": "400 mL",
+    "trampa": "Ese es el volumen final; hay que agregar 400 − 100 = 300 mL."
+   },
+   {
+    "texto": "25 mL",
+    "trampa": "Invertiste la fórmula: 0,5 · 100 / 2 daría una solución más concentrada, no más diluida."
+   },
+   {
+    "texto": "100 mL",
+    "trampa": "Duplicaste el volumen: eso deja 1 mol/L, no 0,5 mol/L."
+   }
+  ],
+  "correcta": 0,
+  "explicacion": "C₁V₁ = C₂V₂ → 2 · 100 = 0,5 · V₂ → V₂ = 400 mL. Se agregan 400 − 100 = 300 mL de agua."
+ }
+]

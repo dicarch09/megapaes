@@ -82,8 +82,25 @@ Los IDs se usan para etiquetar preguntas y guardar el dominio. Prioridad: A = ap
 | fis.ond.dispositivos | Radar, láser, telescopios, fibra óptica, etc. | C |
 | fis.ele.domiciliaria | Instalación eléctrica de la casa, consumo y eficiencia | C |
 
-### Biología y Química (rescate, Fase 4)
-Elige del temario los 10–15 temas de mayor rendimiento. Áreas de Biología: organización y actividad celular; procesos y funciones biológicas; herencia y evolución; organismo y ambiente. Áreas de Química: estructura atómica; química orgánica; reacciones químicas y estequiometría. Muéstrale la lista a Ricardo antes de escribir.
+### Biología y Química (rescate, Fase 4 · aprobados por Ricardo el 23-11)
+Todos con prioridad R (rescate). Formato: tarjetas + 3 preguntas (básico, PAES, difícil).
+| ID | Tema | Área del temario |
+|---|---|---|
+| bio.celula | Célula: organelos y células especializadas | Organización, estructura y actividad celular |
+| bio.nervioso | Sistema nervioso: neurona, impulso, sinapsis, arco reflejo, drogas y cuidados (nuevo 2027) | Procesos y funciones biológicas |
+| bio.reproduccion | Reproducción: gametos, fecundación, ciclo ovárico y uterino (nuevo 2027) | Procesos y funciones biológicas |
+| bio.anticoncepcion-its | Métodos anticonceptivos e ITS (nuevo 2027) | Procesos y funciones biológicas |
+| bio.division | Ciclo celular, mitosis y meiosis | Herencia y evolución |
+| bio.manipulacion | Manipulación genética y sus aplicaciones | Herencia y evolución |
+| bio.evolucion | Evolución: evidencias, Lamarck/Darwin/Wallace, selección natural | Herencia y evolución |
+| bio.fotosintesis | Fotosíntesis y respiración celular | Organismo y ambiente |
+| qui.materia | Materia, mezclas y su separación | Estructura atómica |
+| qui.modelos | Modelos atómicos y partículas (Z, A) | Estructura atómica |
+| qui.carbono | Átomo de carbono: hibridación y enlaces | Química orgánica |
+| qui.organica | Hidrocarburos y grupos funcionales | Química orgánica |
+| qui.estequiometria | Leyes ponderales, mol y reactivo limitante | Reacciones químicas y estequiometría |
+| qui.composicion | Composición porcentual y fórmula empírica/molecular | Reacciones químicas y estequiometría |
+| qui.soluciones | Soluciones: concentraciones, dilución y solubilidad | Reacciones químicas y estequiometría |
 
 ## Cómo aprende Ricardo (cada concepto en este orden)
 1. **VER:** animación o forma del concepto antes de cualquier fórmula (la parábola que se mueve, el vector que se descompone, la onda que se propaga).
