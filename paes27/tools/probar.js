@@ -30,6 +30,11 @@ const SHOTS = process.env.SHOTS || '';
   await page.goto(BASE + '/index.html#hoy');
   ok(await page.locator('#p-hoy.on').isVisible(), 'pestaña Hoy visible');
   ok((await page.locator('.cuenta .ex').count()) === 4, 'cuenta regresiva de 4 pruebas');
+  ok((await page.locator('#p-hoy .hoy-grid > .card').count()) === 2, 'Hoy en dos columnas (bloques + práctica)');
+  ok(/^Hoy: \d+ bloques · \d+ hechos · /.test(await page.locator('#hoyTxt').innerText()), 'resumen del día bajo el título');
+  ok(await page.locator('#p-hoy button', { hasText: 'Ir a los diagnósticos' }).isVisible(), 'sin diagnósticos: tarjeta para empezar');
+  await page.click('#seguir'); await page.waitForSelector('#p-diag.on');
+  ok(true, '«Seguir con mi ruta» lleva a los diagnósticos pendientes');
   if (SHOTS) await page.screenshot({ path: SHOTS + '/hub-hoy.png', fullPage: true });
 
   // diagnóstico M2 completo con teclado: alterna correcta/incorrecta/no sé
@@ -112,6 +117,17 @@ const SHOTS = process.env.SHOTS || '';
   ok(d3 && d3.M2 && d3.M2.total === 15, 'respaldo importado');
   for (const t of ['hoy', 'ensayos', 'fichas']) { await tab(t); }
 
+  // práctica rápida en Hoy (con los 4 diagnósticos hechos)
+  await page.evaluate(() => { const d = JSON.parse(localStorage.getItem('paes27:diag')); d.CIE = d.CIE || d.M2; d.M1 = d.M1 || d.M2; localStorage.setItem('paes27:diag', JSON.stringify(d)); });
+  await tab('ensayos'); await tab('hoy');
+  ok(await page.locator('#p-hoy .q-op').first().isVisible(), 'práctica rápida con pregunta en Hoy');
+  const meta1 = await page.locator('#p-hoy .q-meta').innerText();
+  await page.keyboard.press('1'); await page.waitForSelector('#p-hoy .q-fb:not([hidden])');
+  await page.keyboard.press('Enter'); await page.waitForTimeout(100);
+  const meta2 = await page.locator('#p-hoy .q-meta').innerText();
+  ok(/1 de 3/i.test(meta1) && /2 de 3/i.test(meta2), `práctica rápida avanza con teclado (${meta1} → ${meta2})`);
+  if (SHOTS) await page.screenshot({ path: SHOTS + '/hub-practica.png', fullPage: true });
+
   // móvil: sin scroll horizontal
   await page.setViewportSize({ width: 380, height: 800 });
   for (const t of ['hoy', 'ruta', 'dominio', 'diag']) {
@@ -140,16 +156,32 @@ const SHOTS = process.env.SHOTS || '';
       const sliders = sec.locator('input[type=range]');
       const selects = await sec.locator('select').count();
       const n = await sliders.count();
-      for (let i = 0; i < n; i++) {
-        const s = sliders.nth(i);
-        if (!(await s.isVisible())) continue;
-        await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
+      const tarjetas = await sec.locator('.tarjetas').count();
+      const pills = sec.locator('.pasos button');
+      const np = await pills.count();
+      ok(tarjetas ? np === 0 : np === 5, `${id}: ${np} pasos en pestañas`);
+      // muestra la pestaña que contiene un elemento
+      const verPanelDe = async (loc) => {
+        const k = await loc.evaluate((x) => { const pn = x.closest('.paso-pane'); return pn ? [...pn.parentElement.querySelectorAll(':scope > .paso-pane')].indexOf(pn) : -1; });
+        if (k >= 0) { await pills.nth(k).click(); await page.waitForTimeout(80); }
+      };
+      for (let k = 0; k < Math.max(np, 1); k++) {
+        if (np) { await pills.nth(k).click(); await page.waitForTimeout(80); }
+        for (let i = 0; i < n; i++) {
+          const s = sliders.nth(i);
+          if (!(await s.isVisible())) continue;
+          await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
+        }
+      }
+      if (np) {
+        await pills.nth(2).click();
+        ok(await sec.locator('details.acc.porque ol').isVisible(), `${id}: «El porqué» visible en su pestaña`);
       }
       const arrastre = await sec.locator('canvas[style*="touch-action"]').count();
-      const tarjetas = await sec.locator('.tarjetas').count();
       ok(tarjetas > 0 || n + selects + arrastre >= 2, tarjetas ? `${id}: lección en tarjetas` : `${id}: ${n} sliders, ${selects} selectores, ${arrastre} lienzos con arrastre`);
       if (arrastre) {
         const cv = sec.locator('canvas[style*="touch-action"]').first();
+        await verPanelDe(cv);
         await cv.scrollIntoViewIfNeeded();
         const antes = await sec.locator('.formula').first().innerText();
         const b = await cv.boundingBox();
@@ -158,8 +190,10 @@ const SHOTS = process.env.SHOTS || '';
         const despues = await sec.locator('.formula').first().innerText();
         ok(antes !== despues, `${id}: arrastrar el centro actualiza la fórmula`);
       }
+      if (await sec.locator('.ejemplo').count()) await verPanelDe(sec.locator('.ejemplo').first());
       const pasos = sec.locator('button', { hasText: 'Siguiente paso' });
       while (await pasos.isVisible()) await pasos.click();
+      await verPanelDe(sec.locator('.practica').first());
       for (const nivel of ['Básico', 'PAES', 'Difícil']) {
         const bn = sec.locator('.niveles button', { hasText: nivel });
         if (await bn.isDisabled()) { ok((await bn.getAttribute('title')) === 'Sin preguntas en este nivel', `${id}: nivel ${nivel} sin preguntas (botón desactivado)`); continue; }
