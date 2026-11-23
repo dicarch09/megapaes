@@ -6,7 +6,7 @@
 <script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>PAES 2027 · Física</title>
 <style>
-/* == paes27-css v3 == */
+/* == paes27-css v4 == */
 /* Sistema de diseño PAES·27 · dicarch (prototipo C, «azulejos vivos»): degradados y sombras suaves.
    El tema oscuro usa el mismo estilo (degradados, sombras difusas) sobre fondo azul noche.
    Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
@@ -132,7 +132,7 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .leccion.cerrada{padding:13px 18px}
 .dom{margin-left:auto;font-size:.74rem;font-weight:900;padding:.2em .65em;border-radius:99px;background:var(--panel2)}
 .idea{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px;margin:12px 0;font-weight:600}
-.paso{margin:20px 0}
+.paso,.mueve{margin:20px 0}
 .pasos{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
 .pasos button{border:0;border-radius:99px;padding:.45em .85em;background:var(--panel2);color:var(--muted);font:800 .86rem/1.1 "Bricolage Grotesque","Nunito Sans",sans-serif;cursor:pointer;transition:background .12s,color .12s}
 .pasos button:hover{color:var(--ink)}
@@ -142,8 +142,8 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .con-pasos .paso-pane.multi .paso>h3{display:flex;margin-top:18px}.con-pasos .paso-pane.multi .paso>h3 .n{display:none}
 .con-pasos details.acc.porque{background:none;margin:14px 0 8px}.con-pasos details.acc.porque>summary{display:none}.con-pasos details.acc.porque>.in{padding:0}
 .paso-sig{display:flex;justify-content:flex-end;margin-top:14px}
-.paso>h3{display:flex;align-items:center;gap:9px}
-.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
+.paso>h3,.mueve>h3{display:flex;align-items:center;gap:9px}
+.paso>h3 .n,.mueve>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
 .cv,.formula,.sd-demo,.cv+.cap,.sd-demo+.cap{
   --ink:#DBDEE1;--muted:#9AA3B2;--line:#35406A;--panel:#1F2747;--panel2:#2A3359;--sobre:#0F1923;
   --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
@@ -217,7 +217,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .ens-ley{padding:0 6px;border-radius:5px}.ens-ley.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-ley.m{border:2px solid var(--warn)}
 @media (max-width:600px){.wrap{padding:12px 12px 24px}.card,.leccion{padding:13px}.marca b{font-size:1.25rem}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-/* == fin paes27-css v3 == */
+/* == fin paes27-css v4 == */
 
 </style>
 </head>
@@ -582,14 +582,14 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <div class="lec-body">
     <p class="idea">En formato tarjetas: para cada aparato, <b>qué onda usa</b> y <b>qué fenómeno aprovecha</b>. En la PAES suele bastar con reconocer esas dos cosas.</p>
     <div class="tarjetas">
-      <div class="tarjeta"><span class="onda">microondas · reflexión + Doppler</span><h4>Radar</h4><p>Envía microondas que rebotan en un avión o auto. Por el tiempo de vuelta sabe la distancia; por el cambio de frecuencia (Doppler), la velocidad.</p></div>
-      <div class="tarjeta"><span class="onda">luz de una sola frecuencia</span><h4>Láser</h4><p>Luz de un solo color, con sus ondas «en fase» y muy concentrada en un haz delgado. Lectores de código, cirugía ocular, punteros.</p></div>
-      <div class="tarjeta"><span class="onda">luz o infrarrojo · reflexión</span><h4>Fibra óptica</h4><p>La luz va rebotando por dentro de un hilo de vidrio sin escaparse, aunque la fibra se curve. Así viaja internet a enormes distancias.</p></div>
-      <div class="tarjeta"><span class="onda">luz visible · refracción</span><h4>Telescopio refractor</h4><p>Usa <b>lentes</b>: la lente principal junta la luz de objetos lejanos y el ocular agranda la imagen.</p></div>
-      <div class="tarjeta"><span class="onda">luz visible · reflexión</span><h4>Telescopio reflector</h4><p>Usa un <b>espejo cóncavo</b> para juntar la luz. Los grandes telescopios del norte de Chile son reflectores.</p></div>
-      <div class="tarjeta"><span class="onda">ondas de radio · reflexión</span><h4>Radiotelescopio</h4><p>Una antena parabólica (como un espejo cóncavo para ondas de radio) capta la radio que emiten estrellas y galaxias. Ej.: ALMA.</p></div>
-      <div class="tarjeta"><span class="onda">luz visible · refracción + reflexión</span><h4>Prismáticos</h4><p>Dos telescopios pequeños de lentes; unos prismas en su interior reflejan la luz para enderezar la imagen y acortar el aparato.</p></div>
-      <div class="tarjeta"><span class="onda">ondas de radio y microondas</span><h4>Celular, wifi, radio y TV</h4><p>Codifican la información (voz, datos, imagen) en ondas de radio o microondas que viajan por el aire a la rapidez de la luz.</p></div>
+      <div class="tarjeta"><span class="onda">microondas · reflexión + Doppler</span><h4>Radar</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M10 70Q22 46 40 40" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="m" d="M24 58L24 84" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M14 84L34 84" stroke-width="2.5" stroke-linecap="round"/><path class="w" d="M40 44L138.1 29.2" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M146 28L137.4 24.7L138.8 33.6Z"/><path class="b" d="M146 36L51.9 50.8" stroke-width="2.5" stroke-linecap="round"/><path class="fb" d="M44 52L52.6 55.2L51.2 46.3Z"/><path class="w" d="M150.0 26.0L186.0 22.0L190.0 26.0L186.0 30.0Z" stroke-width="2" style="fill:var(--warn);fill-opacity:0.5"/><path class="w" d="M166.0 25.0L158.0 12.0L164.0 12.0L176.0 25.0Z" stroke-width="2" style="fill:var(--warn);fill-opacity:0.5"/><text x="96" y="26" text-anchor="middle">va</text><text x="96" y="62" text-anchor="middle">vuelve</text><text x="112" y="88" text-anchor="middle">tiempo → distancia</text></svg><p>Envía microondas que rebotan en un avión o auto. Por el tiempo de vuelta sabe la distancia; por el cambio de frecuencia (Doppler), la velocidad.</p></div>
+      <div class="tarjeta"><span class="onda">luz de una sola frecuencia</span><h4>Láser</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fw" cx="36" cy="38" r="10"/><path class="w" d="M36 38L60.0 38.0" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L55.4 52.1" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L43.4 60.8" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L28.6 60.8" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L16.6 52.1" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L12.0 38.0" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L16.6 23.9" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L28.6 15.2" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L43.4 15.2" stroke-width="2" stroke-linecap="round"/><path class="w" d="M36 38L55.4 23.9" stroke-width="2" stroke-linecap="round"/><text x="36" y="80" text-anchor="middle">ampolleta:</text><text x="36" y="92" text-anchor="middle">todas direcciones</text><rect class="r" x="96" y="30" width="30" height="16" rx="4" stroke-width="2.5"/><path class="r" d="M126 35L196 35" stroke-width="1.5" stroke-linecap="round"/><path class="r" d="M126 38L196 38" stroke-width="1.5" stroke-linecap="round"/><path class="r" d="M126 41L196 41" stroke-width="1.5" stroke-linecap="round"/><path class="r" d="M130.0 38.0L130.6 36.9L131.1 35.9L131.7 35.0L132.2 34.2L132.8 33.6L133.3 33.2L133.8 33.0L134.4 33.1L134.9 33.3L135.5 33.8L136.1 34.5L136.6 35.4L137.2 36.4L137.7 37.4L138.2 38.5L138.8 39.5L139.3 40.5L139.9 41.4L140.4 42.1L141.0 42.6L141.6 42.9L142.1 43.0L142.7 42.8L143.2 42.5L143.8 41.9L144.3 41.1L144.8 40.2L145.4 39.2L145.9 38.1L146.5 37.0L147.1 36.0L147.6 35.1L148.2 34.3L148.7 33.6L149.2 33.2L149.8 33.0L150.3 33.0L150.9 33.3L151.4 33.8L152.0 34.5L152.6 35.3L153.1 36.3L153.7 37.3L154.2 38.4L154.8 39.5L155.3 40.4L155.8 41.3L156.4 42.0L156.9 42.6L157.5 42.9L158.1 43.0L158.6 42.9L159.2 42.5L159.7 41.9L160.2 41.2L160.8 40.3L161.3 39.3L161.9 38.2L162.4 37.1L163.0 36.1L163.6 35.1L164.1 34.3L164.7 33.7L165.2 33.2L165.8 33.0L166.3 33.0L166.8 33.3L167.4 33.7L167.9 34.4L168.5 35.2L169.1 36.2L169.6 37.2L170.2 38.3L170.7 39.4L171.2 40.4L171.8 41.2L172.3 42.0L172.9 42.5L173.4 42.9L174.0 43.0L174.6 42.9L175.1 42.5L175.7 42.0L176.2 41.2L176.8 40.4L177.3 39.4L177.8 38.3L178.4 37.2L178.9 36.2L179.5 35.2L180.1 34.4L180.6 33.7L181.2 33.3L181.7 33.0L182.2 33.0L182.8 33.2L183.3 33.7L183.9 34.3L184.4 35.1L185.0 36.1L185.6 37.1L186.1 38.2L186.7 39.3L187.2 40.3L187.8 41.2L188.3 41.9L188.8 42.5L189.4 42.9L189.9 43.0L190.5 42.9L191.1 42.6L191.6 42.0L192.2 41.3L192.7 40.4L193.2 39.5L193.8 38.4L194.3 37.3L194.9 36.3L195.4 35.3L196.0 34.5" stroke-width="2" fill="none" stroke-linecap="round"/><text x="150" y="66" text-anchor="middle">láser: un color,</text><text x="150" y="80" text-anchor="middle">en fase, haz delgado</text></svg><p>Luz de un solo color, con sus ondas «en fase» y muy concentrada en un haz delgado. Lectores de código, cirugía ocular, punteros.</p></div>
+      <div class="tarjeta"><span class="onda">luz o infrarrojo · reflexión</span><h4>Fibra óptica</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="b" d="M10.0 26.0L13.0 26.7L16.0 27.5L19.0 28.2L22.0 28.9L25.0 29.6L28.0 30.3L31.0 31.0L34.0 31.7L37.0 32.4L40.0 33.0L43.0 33.6L46.0 34.2L49.0 34.8L52.0 35.4L55.0 35.9L58.0 36.4L61.0 36.9L64.0 37.3L67.0 37.7L70.0 38.1L73.0 38.5L76.0 38.8L79.0 39.1L82.0 39.3L85.0 39.5L88.0 39.7L91.0 39.8L94.0 39.9L97.0 40.0L100.0 40.0L103.0 40.0L106.0 39.9L109.0 39.8L112.0 39.7L115.0 39.5L118.0 39.3L121.0 39.1L124.0 38.8L127.0 38.5L130.0 38.1L133.0 37.7L136.0 37.3L139.0 36.9L142.0 36.4L145.0 35.9L148.0 35.4L151.0 34.8L154.0 34.2L157.0 33.6L160.0 33.0L163.0 32.4L166.0 31.7L169.0 31.0L172.0 30.3L175.0 29.6L178.0 28.9L181.0 28.2L184.0 27.5L187.0 26.7L190.0 26.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="b" d="M10.0 52.0L13.0 52.7L16.0 53.5L19.0 54.2L22.0 54.9L25.0 55.6L28.0 56.3L31.0 57.0L34.0 57.7L37.0 58.4L40.0 59.0L43.0 59.6L46.0 60.2L49.0 60.8L52.0 61.4L55.0 61.9L58.0 62.4L61.0 62.9L64.0 63.3L67.0 63.7L70.0 64.1L73.0 64.5L76.0 64.8L79.0 65.1L82.0 65.3L85.0 65.5L88.0 65.7L91.0 65.8L94.0 65.9L97.0 66.0L100.0 66.0L103.0 66.0L106.0 65.9L109.0 65.8L112.0 65.7L115.0 65.5L118.0 65.3L121.0 65.1L124.0 64.8L127.0 64.5L130.0 64.1L133.0 63.7L136.0 63.3L139.0 62.9L142.0 62.4L145.0 61.9L148.0 61.4L151.0 60.8L154.0 60.2L157.0 59.6L160.0 59.0L163.0 58.4L166.0 57.7L169.0 57.0L172.0 56.3L175.0 55.6L178.0 54.9L181.0 54.2L184.0 53.5L187.0 52.7L190.0 52.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="w" d="M10.0 39.0L28.0 33.3L46.0 57.2L64.0 40.3L82.0 62.3L100.0 43.0L118.0 62.3L136.0 40.3L154.0 57.2L172.0 33.3L190.0 49.0" stroke-width="2" fill="none" stroke-linecap="round"/><text x="100" y="90" text-anchor="middle">la luz rebota por dentro</text></svg><p>La luz va rebotando por dentro de un hilo de vidrio sin escaparse, aunque la fibra se curve. Así viaja internet a enormes distancias.</p></div>
+      <div class="tarjeta"><span class="onda">luz visible · refracción</span><h4>Telescopio refractor</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M4 46L196 46" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 3"/><ellipse class="b" cx="56" cy="46" rx="5" ry="30" stroke-width="2.5" style="fill:var(--acc2);fill-opacity:.2"/><ellipse class="b" cx="168" cy="46" rx="4" ry="14" stroke-width="2.5" style="fill:var(--acc2);fill-opacity:.2"/><path class="w" d="M6 24L56 24" stroke-width="2" stroke-linecap="round"/><path class="w" d="M56 24L140 46" stroke-width="2" stroke-linecap="round"/><path class="w" d="M6 68L56 68" stroke-width="2" stroke-linecap="round"/><path class="w" d="M56 68L140 46" stroke-width="2" stroke-linecap="round"/><path class="w" d="M140 46L168 53.333333333333336" stroke-width="2" stroke-linecap="round"/><path class="w" d="M140 46L168 38.666666666666664" stroke-width="2" stroke-linecap="round"/><path class="w" d="M168 53.3L196 53.3" stroke-width="2" stroke-linecap="round"/><path class="w" d="M168 38.7L196 38.7" stroke-width="2" stroke-linecap="round"/><text x="56" y="90" text-anchor="middle">objetivo</text><text x="168" y="90" text-anchor="middle">ocular</text><text x="140" y="30" text-anchor="middle">foco</text></svg><p>Usa <b>lentes</b>: la lente principal junta la luz de objetos lejanos y el ocular agranda la imagen.</p></div>
+      <div class="tarjeta"><span class="onda">luz visible · reflexión</span><h4>Telescopio reflector</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="b" d="M176 8Q150 46 176 84" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="w" d="M6 22L173.2 22" stroke-width="2" stroke-linecap="round"/><path class="w" d="M173.2 22L96 46" stroke-width="2" stroke-linecap="round"/><path class="w" d="M6 70L173.2 70" stroke-width="2" stroke-linecap="round"/><path class="w" d="M173.2 70L96 46" stroke-width="2" stroke-linecap="round"/><path class="w" d="M6 46L163 46" stroke-width="2" stroke-linecap="round"/><circle class="fr" cx="96" cy="46" r="4"/><text x="96" y="66" text-anchor="middle">foco</text><text x="176" y="92" text-anchor="end">espejo cóncavo</text></svg><p>Usa un <b>espejo cóncavo</b> para juntar la luz. Los grandes telescopios del norte de Chile son reflectores.</p></div>
+      <div class="tarjeta"><span class="onda">ondas de radio · reflexión</span><h4>Radiotelescopio</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="b" d="M60 30Q96 76 132 30" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="m" d="M96 53L96 84" stroke-width="3" stroke-linecap="round"/><path class="m" d="M80 84L112 84" stroke-width="3" stroke-linecap="round"/><path class="m" d="M66 34L96 14" stroke-width="1.5" stroke-linecap="round"/><path class="m" d="M126 34L96 14" stroke-width="1.5" stroke-linecap="round"/><circle class="fr" cx="96" cy="14" r="4"/><path class="a" d="M150.0 20.0L150.4 19.3L150.8 18.6L151.2 18.0L151.5 17.5L151.9 17.2L152.3 17.0L152.7 17.0L153.1 17.2L153.4 17.5L153.8 18.0L154.2 18.6L154.6 19.3L155.0 20.0L155.4 20.7L155.8 21.4L156.1 22.0L156.5 22.4L156.9 22.8L157.3 23.0L157.7 23.0L158.1 22.8L158.4 22.5L158.8 22.0L159.2 21.4L159.6 20.8L160.0 20.1L160.3 19.3L160.7 18.7L161.1 18.1L161.5 17.6L161.9 17.2L162.3 17.0L162.7 17.0L163.0 17.2L163.4 17.5L163.8 17.9L164.2 18.5L164.6 19.2L164.9 19.9L165.3 20.6L165.7 21.3L166.1 21.9L166.5 22.4L166.9 22.8L167.2 23.0L167.6 23.0L168.0 22.8L168.4 22.5L168.8 22.1L169.2 21.5L169.6 20.8L169.9 20.1L170.3 19.4L170.7 18.7L171.1 18.1L171.5 17.6L171.8 17.2L172.2 17.0L172.6 17.0L173.0 17.1L173.4 17.5L173.8 17.9L174.2 18.5L174.5 19.1L174.9 19.8L175.3 20.6L175.7 21.2L176.1 21.9L176.4 22.4L176.8 22.7L177.2 23.0L177.6 23.0L178.0 22.9L178.4 22.6L178.8 22.1L179.1 21.6L179.5 20.9L179.9 20.2L180.3 19.5L180.7 18.8L181.1 18.2L181.4 17.6L181.8 17.3L182.2 17.1L182.6 17.0L183.0 17.1L183.3 17.4L183.7 17.9L184.1 18.4L184.5 19.1L184.9 19.8L185.3 20.5L185.7 21.2L186.0 21.8L186.4 22.3L186.8 22.7L187.2 22.9L187.6 23.0L187.9 22.9L188.3 22.6L188.7 22.2L189.1 21.6L189.5 21.0L189.9 20.3L190.2 19.5L190.6 18.8L191.0 18.2L191.4 17.7L191.8 17.3L192.2 17.1L192.6 17.0L192.9 17.1L193.3 17.4L193.7 17.8L194.1 18.4L194.5 19.0L194.8 19.7L195.2 20.4L195.6 21.1L196.0 21.8" stroke-width="2" fill="none" stroke-linecap="round"/><path class="a" d="M150.0 32.0L150.4 31.3L150.8 30.6L151.2 30.0L151.5 29.5L151.9 29.2L152.3 29.0L152.7 29.0L153.1 29.2L153.4 29.5L153.8 30.0L154.2 30.6L154.6 31.3L155.0 32.0L155.4 32.7L155.8 33.4L156.1 34.0L156.5 34.4L156.9 34.8L157.3 35.0L157.7 35.0L158.1 34.8L158.4 34.5L158.8 34.0L159.2 33.4L159.6 32.8L160.0 32.1L160.3 31.3L160.7 30.7L161.1 30.1L161.5 29.6L161.9 29.2L162.3 29.0L162.7 29.0L163.0 29.2L163.4 29.5L163.8 29.9L164.2 30.5L164.6 31.2L164.9 31.9L165.3 32.6L165.7 33.3L166.1 33.9L166.5 34.4L166.9 34.8L167.2 35.0L167.6 35.0L168.0 34.8L168.4 34.5L168.8 34.1L169.2 33.5L169.6 32.8L169.9 32.1L170.3 31.4L170.7 30.7L171.1 30.1L171.5 29.6L171.8 29.2L172.2 29.0L172.6 29.0L173.0 29.1L173.4 29.5L173.8 29.9L174.2 30.5L174.5 31.1L174.9 31.8L175.3 32.6L175.7 33.2L176.1 33.9L176.4 34.4L176.8 34.7L177.2 35.0L177.6 35.0L178.0 34.9L178.4 34.6L178.8 34.1L179.1 33.6L179.5 32.9L179.9 32.2L180.3 31.5L180.7 30.8L181.1 30.2L181.4 29.6L181.8 29.3L182.2 29.1L182.6 29.0L183.0 29.1L183.3 29.4L183.7 29.9L184.1 30.4L184.5 31.1L184.9 31.8L185.3 32.5L185.7 33.2L186.0 33.8L186.4 34.3L186.8 34.7L187.2 34.9L187.6 35.0L187.9 34.9L188.3 34.6L188.7 34.2L189.1 33.6L189.5 33.0L189.9 32.3L190.2 31.5L190.6 30.8L191.0 30.2L191.4 29.7L191.8 29.3L192.2 29.1L192.6 29.0L192.9 29.1L193.3 29.4L193.7 29.8L194.1 30.4L194.5 31.0L194.8 31.7L195.2 32.4L195.6 33.1L196.0 33.8" stroke-width="2" fill="none" stroke-linecap="round"/><text x="172" y="54" text-anchor="middle">ondas</text><text x="172" y="66" text-anchor="middle">de radio</text><text x="30" y="60" text-anchor="middle">ALMA</text></svg><p>Una antena parabólica (como un espejo cóncavo para ondas de radio) capta la radio que emiten estrellas y galaxias. Ej.: ALMA.</p></div>
+      <div class="tarjeta"><span class="onda">luz visible · refracción + reflexión</span><h4>Prismáticos</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="b" d="M50.0 78.0L150.0 78.0L100.0 28.0Z" stroke-width="2" style="fill:var(--acc2);fill-opacity:0.15"/><path class="w" d="M76 92L76.0 64.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M76 56L71.5 64.0L80.5 64.0Z"/><path class="w" d="M76 54L124 54" stroke-width="2.5" stroke-linecap="round"/><path class="w" d="M124 54L124.0 84.0" stroke-width="2.5" stroke-linecap="round"/><path class="fw" d="M124 92L128.5 84.0L119.5 84.0Z"/><text x="166" y="30" text-anchor="middle">el prisma</text><text x="166" y="44" text-anchor="middle">refleja</text><text x="166" y="58" text-anchor="middle">2 veces</text><text x="30" y="40" text-anchor="middle">prisma</text></svg><p>Dos telescopios pequeños de lentes; unos prismas en su interior reflejan la luz para enderezar la imagen y acortar el aparato.</p></div>
+      <div class="tarjeta"><span class="onda">ondas de radio y microondas</span><h4>Celular, wifi, radio y TV</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M30 84L40 30" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M50 84L40 30" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M34 64L46 64" stroke-width="2" stroke-linecap="round"/><circle class="fr" cx="40" cy="30" r="4"/><path class="a" d="M47.2 20.4A12 12 0 0 1 47.2 39.6" stroke-width="2" fill="none"/><path class="a" d="M53.2 12.4A22 22 0 0 1 53.2 47.6" stroke-width="2" fill="none"/><path class="a" d="M59.2 4.4A32 32 0 0 1 59.2 55.6" stroke-width="2" fill="none"/><rect class="b" x="150" y="30" width="24" height="42" rx="4" stroke-width="2.5"/><path class="b" d="M158 66L166 66" stroke-width="2" stroke-linecap="round"/><path class="a" d="M90 46L136.0 46.0" stroke-width="2" stroke-linecap="round"/><path class="fa" d="M144 46L136.0 41.5L136.0 50.5Z"/><text x="100" y="90" text-anchor="middle">ondas de radio a la rapidez c</text></svg><p>Codifican la información (voz, datos, imagen) en ondas de radio o microondas que viajan por el aire a la rapidez de la luz.</p></div>
     </div>
     <div class="paso"><h3><span class="n">✓</span> Práctica</h3><div class="practica" data-temas="fis.ond.dispositivos"></div></div>
     </div>
@@ -667,12 +667,12 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <div class="lec-body">
     <p class="idea">En Chile la red de la casa es de <b>220 V</b>. Los artefactos se conectan <b>en paralelo</b>: todos reciben 220 V y funcionan por separado. Cada componente tiene una función: medir, cortar, proteger.</p>
     <div class="tarjetas">
-      <div class="tarjeta"><span class="onda">mide energía</span><h4>Medidor</h4><p>Registra los kWh que consume la casa: con eso se calcula la cuenta.</p></div>
-      <div class="tarjeta"><span class="onda">protege la instalación</span><h4>Disyuntor (automático)</h4><p>Corta la corriente si pasa más de la permitida (sobrecarga o cortocircuito), para que los cables no se recalienten. Hace lo que antes hacía el fusible, pero se puede volver a subir.</p></div>
-      <div class="tarjeta"><span class="onda">protege a las personas</span><h4>Diferencial</h4><p>Corta si detecta que parte de la corriente se «escapa» (por ejemplo, a través de una persona hacia la tierra).</p></div>
-      <div class="tarjeta"><span class="onda">seguridad</span><h4>Cable a tierra</h4><p>Lleva a tierra la corriente que se escape a la carcasa metálica de un artefacto, para que no pase por quien lo toca.</p></div>
-      <div class="tarjeta"><span class="onda">en paralelo</span><h4>Enchufes</h4><p>Todos reciben 220 V. Más artefactos enchufados a la vez → más corriente total por el circuito.</p></div>
-      <div class="tarjeta"><span class="onda">en serie</span><h4>Interruptor</h4><p>Va en serie con la ampolleta: al abrirlo, corta el único camino de esa ampolleta y se apaga.</p></div>
+      <div class="tarjeta"><span class="onda">mide energía</span><h4>Medidor</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M6 46L66 46" stroke-width="3" stroke-linecap="round"/><rect class="w" x="66" y="24" width="68" height="44" rx="4" stroke-width="2.5"/><text x="100" y="44" text-anchor="middle">0 1 2 3 4</text><text x="100" y="60" text-anchor="middle">kWh</text><path class="m" d="M134 46L194 46" stroke-width="3" stroke-linecap="round"/><text x="30" y="36" text-anchor="middle">red</text><text x="170" y="36" text-anchor="middle">casa</text><text x="100" y="88" text-anchor="middle">cuenta = kWh × precio</text></svg><p>Registra los kWh que consume la casa: con eso se calcula la cuenta.</p></div>
+      <div class="tarjeta"><span class="onda">protege la instalación</span><h4>Disyuntor (automático)</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M6 46L76 46" stroke-width="3" stroke-linecap="round"/><circle class="fm" cx="76" cy="46" r="3.5"/><path class="r" d="M76 46L118 22" stroke-width="3.5" stroke-linecap="round"/><circle class="fm" cx="124" cy="46" r="3.5"/><path class="m" d="M124 46L194 46" stroke-width="3" stroke-linecap="round"/><text x="100" y="70" text-anchor="middle">I mayor que la permitida</text><text x="100" y="86" text-anchor="middle">→ se abre y corta</text></svg><p>Corta la corriente si pasa más de la permitida (sobrecarga o cortocircuito), para que los cables no se recalienten. Hace lo que antes hacía el fusible, pero se puede volver a subir.</p></div>
+      <div class="tarjeta"><span class="onda">protege a las personas</span><h4>Diferencial</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M6 32L122.0 32.0" stroke-width="2.5" stroke-linecap="round"/><path class="fa" d="M130 32L122.0 27.5L122.0 36.5Z"/><path class="b" d="M130 50L14.0 50.0" stroke-width="2.5" stroke-linecap="round"/><path class="fb" d="M6 50L14.0 54.5L14.0 45.5Z"/><ellipse class="w" cx="96" cy="41" rx="9" ry="20" stroke-width="3" fill="none"/><text x="6" y="22" text-anchor="start">entra 10 A</text><text x="6" y="68" text-anchor="start">vuelve 9,97 A</text><path class="b" d="M130 50L160 50" stroke-width="2.5" stroke-linecap="round"/><path class="r" d="M160 50L160.0 64.0" stroke-width="2.5" stroke-linecap="round"/><path class="fr" d="M160 72L164.5 64.0L155.5 64.0Z"/><text x="184" y="44" text-anchor="middle">fuga</text><path class="m" d="M150 76L170 76" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M154 80L166 80" stroke-width="2" stroke-linecap="round"/><path class="m" d="M158 84L162 84" stroke-width="1.5" stroke-linecap="round"/><text x="96" y="88" text-anchor="middle">distintas → corta</text></svg><p>Corta si detecta que parte de la corriente se «escapa» (por ejemplo, a través de una persona hacia la tierra).</p></div>
+      <div class="tarjeta"><span class="onda">seguridad</span><h4>Cable a tierra</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="m" x="20" y="16" width="70" height="46" rx="4" stroke-width="2.5"/><text x="55" y="44" text-anchor="middle">carcasa</text><path class="g" d="M90 50L140 50" stroke-width="2.5" stroke-linecap="round"/><path class="g" d="M140 50L140 72" stroke-width="2.5" stroke-linecap="round"/><path class="g" d="M126 72L154 72" stroke-width="2.5" stroke-linecap="round"/><path class="g" d="M131 78L149 78" stroke-width="2" stroke-linecap="round"/><path class="g" d="M136 84L144 84" stroke-width="1.5" stroke-linecap="round"/><path class="w" d="M150 54L150.0 60.0" stroke-width="2" stroke-linecap="round"/><path class="fw" d="M150 68L154.5 60.0L145.5 60.0Z"/><text x="166" y="22" text-anchor="middle">la fuga</text><text x="166" y="36" text-anchor="middle">va a tierra</text><text x="55" y="82" text-anchor="middle">no pasa por ti</text></svg><p>Lleva a tierra la corriente que se escape a la carcasa metálica de un artefacto, para que no pase por quien lo toca.</p></div>
+      <div class="tarjeta"><span class="onda">en paralelo</span><h4>Enchufes</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="r" d="M10 20L190 20" stroke-width="2.5" stroke-linecap="round"/><path class="b" d="M10 72L190 72" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M60 20L60 34" stroke-width="2" stroke-linecap="round"/><rect class="w" x="48" y="34" width="24" height="24" rx="4" stroke-width="2.5"/><path class="m" d="M60 58L60 72" stroke-width="2" stroke-linecap="round"/><path class="m" d="M110 20L110 34" stroke-width="2" stroke-linecap="round"/><rect class="w" x="98" y="34" width="24" height="24" rx="4" stroke-width="2.5"/><path class="m" d="M110 58L110 72" stroke-width="2" stroke-linecap="round"/><path class="m" d="M160 20L160 34" stroke-width="2" stroke-linecap="round"/><rect class="w" x="148" y="34" width="24" height="24" rx="4" stroke-width="2.5"/><path class="m" d="M160 58L160 72" stroke-width="2" stroke-linecap="round"/><text x="24" y="50" text-anchor="middle">220 V</text><text x="100" y="90" text-anchor="middle">cada uno recibe 220 V</text></svg><p>Todos reciben 220 V. Más artefactos enchufados a la vez → más corriente total por el circuito.</p></div>
+      <div class="tarjeta"><span class="onda">en serie</span><h4>Interruptor</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M20 20L70 20" stroke-width="2.5" stroke-linecap="round"/><circle class="fm" cx="70" cy="20" r="3"/><path class="r" d="M70 20L100 6" stroke-width="3" stroke-linecap="round"/><circle class="fm" cx="104" cy="20" r="3"/><path class="m" d="M104 20L180 20" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M180 20L180 72" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M20 72L180 72" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M20 20L20 72" stroke-width="2.5" stroke-linecap="round"/><circle class="fm" cx="130" cy="72" r="10"/><path class="m" d="M124 66L136 78" stroke-width="1.5" stroke-linecap="round"/><path class="m" d="M136 66L124 78" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="46" r="10" class="b" stroke-width="2.5" style="fill:var(--panel2)"/><text x="20" y="50" text-anchor="middle">~</text><text x="87" y="40" text-anchor="middle">abierto</text><text x="130" y="92" text-anchor="middle">apagada</text><text x="60" y="64" text-anchor="middle">en serie</text></svg><p>Va en serie con la ampolleta: al abrirlo, corta el único camino de esa ampolleta y se apaga.</p></div>
     </div>
     <div class="formula"><b>Cuenta rápida:</b> corriente total = suma de potencias / 220 V. Si supera la del automático, este corta. Ejemplo: 2200 W + 1100 W = 3300 W → 3300/220 = 15 A.</div>
     <div class="paso"><h3><span class="n">✓</span> Práctica</h3><div class="practica" data-temas="fis.ele.domiciliaria"></div></div>
@@ -720,17 +720,53 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   <section class="leccion" id="fis.mec.cosmos" data-tab="tie">
     <div class="lec-head"><h2>Sistema solar y origen del universo</h2><span class="chip C">C</span><span class="chip nuevo">nuevo 2027</span><span class="dom" data-tema="fis.mec.cosmos"></span></div>
     <div class="lec-body">
-    <p class="idea">Dos historias en tarjetas: cómo pasamos de la Tierra al centro (<b>geocéntrico</b>) al Sol al centro (<b>heliocéntrico</b>), y qué dice la ciencia del <b>origen del universo</b> y sus evidencias.</p>
-    <div class="tarjetas">
-      <div class="tarjeta"><span class="onda">geocéntrico</span><h4>Aristóteles y Ptolomeo</h4><p>La Tierra quieta al centro; el Sol, la Luna y los planetas giran a su alrededor. Ptolomeo agregó <b>epiciclos</b> (círculos sobre círculos) para explicar por qué los planetas a veces parecen retroceder.</p></div>
-      <div class="tarjeta"><span class="onda">heliocéntrico</span><h4>Copérnico</h4><p>El Sol al centro y la Tierra como un planeta más que gira a su alrededor y sobre sí misma. Explica el retroceso aparente de los planetas sin epiciclos.</p></div>
-      <div class="tarjeta"><span class="onda">evidencias con telescopio</span><h4>Galileo</h4><p>Vio que Venus muestra <b>todas sus fases</b>, incluso casi llena (solo posible si gira en torno al Sol), <b>lunas girando alrededor de Júpiter</b>, manchas en el Sol y montañas en la Luna: el cielo no era perfecto ni todo giraba en torno a la Tierra.</p></div>
-      <div class="tarjeta"><span class="onda">órbitas</span><h4>Kepler</h4><p>Las órbitas son <b>elipses</b> con el Sol en uno de sus focos; un planeta va <b>más rápido cuando está más cerca</b> del Sol; y los planetas más lejanos tardan más en dar la vuelta.</p></div>
-      <div class="tarjeta"><span class="onda">origen</span><h4>Big Bang</h4><p>Hace unos 13 800 millones de años el universo estaba concentrado, muy denso y caliente, y desde entonces se <b>expande</b> y se enfría.</p></div>
-      <div class="tarjeta"><span class="onda">evidencias</span><h4>¿Cómo lo sabemos?</h4><p>1) La luz de las galaxias lejanas llega <b>corrida al rojo</b>: se alejan, más rápido cuanto más lejos. 2) La <b>radiación de fondo de microondas</b>, el «eco» del universo caliente. 3) La abundancia de los elementos livianos (hidrógeno y helio).</p></div>
-      <div class="tarjeta"><span class="onda">futuro posible</span><h4>Big Crunch</h4><p>Si la expansión se detuviera y se invirtiera, el universo volvería a contraerse hasta colapsar. Las observaciones actuales indican que la expansión se está acelerando, así que hoy se considera poco probable.</p></div>
+    <p class="idea">Dos historias: cómo pasamos de la Tierra al centro (<b>geocéntrico</b>) al Sol al centro (<b>heliocéntrico</b>), con las pruebas de <b>Galileo</b> y las órbitas de <b>Kepler</b>; y qué dice la ciencia del <b>origen del universo</b> y sus evidencias.</p>
+    <div class="paso"><h3><span class="n">1</span> Ver: dos modelos para el mismo cielo</h3>
+      <div class="cv"><canvas id="cos-ver" role="img" aria-label="Modelo geocéntrico y heliocéntrico: el movimiento de Marte visto desde la Tierra, con su retroceso aparente"></canvas></div>
+      <div class="fila cap"><button class="btn sec mini" data-pausa="cos-ver">⏸ Pausa</button><label class="sl" style="margin:0"><span>Modelo <select id="cos-modelo"><option value="helio">Heliocéntrico (Copérnico)</option><option value="geo">Geocéntrico (Ptolomeo)</option></select></span></label><span id="cos-ver-txt"></span></div>
     </div>
-    <div class="paso"><h3><span class="n">✓</span> Práctica</h3><div class="practica" data-temas="fis.mec.cosmos"></div></div>
+    <div class="paso"><h3><span class="n">2</span> Manipular: las órbitas de Kepler</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="kep-man" role="img" aria-label="Órbita elíptica con el Sol en un foco; sectores de igual tiempo tienen igual área"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Excentricidad (qué tan alargada) <b id="kep-e-v"></b></span><input type="range" id="kep-e" min="0" max="0.8" step="0.05" value="0.5"></label>
+          <label class="sl"><span>Tamaño de la órbita (semieje mayor) <b id="kep-a-v"></b></span><input type="range" id="kep-a" min="0.5" max="3" step="0.1" value="1.5"></label>
+          <div class="formula" id="kep-form"></div>
+        </div>
+      </div>
+    </div>
+    <div class="paso"><h3><span class="n">2b</span> Galileo: las fases de Venus</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="ven-man" role="img" aria-label="Fases de Venus vistas desde la Tierra en el modelo de Copérnico y en el de Ptolomeo"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Modelo <select id="ven-modelo"><option value="helio">Copérnico: Venus gira en torno al Sol</option><option value="geo">Ptolomeo: Venus gira en torno a la Tierra</option></select></span></label>
+          <label class="sl"><span>Posición de Venus en su órbita <b id="ven-p-v"></b></span><input type="range" id="ven-p" min="0" max="360" step="5" value="200"></label>
+          <div class="formula" id="ven-form"></div>
+        </div>
+      </div>
+    </div>
+    <div class="paso"><h3><span class="n">2c</span> Big Bang: el universo se expande</h3>
+      <div class="manip">
+        <div class="cv"><canvas id="bb-man" role="img" aria-label="Expansión del universo desde el Big Bang: las galaxias se alejan entre sí; futuro con expansión o con Big Crunch"></canvas></div>
+        <div class="ctrl">
+          <label class="sl"><span>Tiempo desde el Big Bang <b id="bb-t-v"></b></span><input type="range" id="bb-t" min="0" max="100" step="1" value="70"></label>
+          <label class="sl"><span>Futuro <select id="bb-fut"><option value="exp">Expansión que se acelera (lo que se observa)</option><option value="crunch">Big Crunch (hipótesis)</option></select></span></label>
+          <div class="formula" id="bb-form"></div>
+        </div>
+      </div>
+    </div>
+    <div class="paso"><h3><span class="n">3</span> Tarjetas: lo que hay que recordar</h3>
+    <div class="tarjetas">
+      <div class="tarjeta"><span class="onda">geocéntrico</span><h4>Aristóteles y Ptolomeo</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="m" cx="52" cy="48" r="30" stroke-width="1.6" stroke-dasharray="4 3"/><circle class="r" cx="76.6" cy="30.8" r="12" stroke-width="2"/><circle class="fr" cx="87.9" cy="34.9" r="4"/><circle class="fb" cx="52" cy="48" r="7"/><text x="52" y="90" text-anchor="middle">Tierra al centro</text><text x="78.6" y="14.8" text-anchor="middle">epiciclo</text><path class="r" d="M188.0 46.0L187.8 43.1L187.3 40.3L186.5 37.5L185.4 34.9L184.0 32.4L182.3 30.2L180.5 28.3L178.4 26.6L176.3 25.1L174.0 24.1L171.7 23.3L169.5 22.8L167.2 22.6L165.1 22.7L163.1 23.1L161.3 23.7L159.7 24.5L158.4 25.4L157.2 26.5L156.4 27.6L155.8 28.8L155.5 29.9L155.4 31.0L155.6 32.0L156.0 32.9L156.5 33.5L157.3 34.0L158.1 34.2L159.0 34.2L159.9 34.0L160.9 33.5L161.7 32.7L162.5 31.7L163.1 30.4L163.6 29.0L163.8 27.4L163.7 25.6L163.5 23.8L162.9 21.9L162.0 20.0L160.8 18.1L159.4 16.4L157.6 14.7L155.6 13.3L153.4 12.0L151.0 11.0L148.4 10.3L145.7 9.9L142.9 9.8L140.1 10.0L137.2 10.5L134.5 11.4L131.8 12.6L129.4 14.1L127.1 15.9L125.0 17.9L123.2 20.1L121.7 22.5L120.5 25.0L119.6 27.6L119.1 30.2L118.8 32.8L118.9 35.4L119.3 37.8L119.9 40.0L120.8 42.1L121.9 44.0L123.1 45.6L124.5 47.0L126.0 48.1L127.5 48.9L129.0 49.4L130.4 49.6L131.8 49.6L133.0 49.4L134.0 49.0L134.9 48.4L135.5 47.7L135.9 46.9L136.0 46.0L135.9 45.1L135.5 44.3L134.9 43.6L134.0 43.0L133.0 42.6L131.8 42.4L130.4 42.4L129.0 42.6L127.5 43.1L126.0 43.9L124.5 45.0L123.1 46.4L121.9 48.0L120.8 49.9L119.9 52.0L119.3 54.2L118.9 56.6L118.8 59.2L119.1 61.8L119.6 64.4L120.5 67.0L121.7 69.5L123.2 71.9L125.0 74.1L127.1 76.1L129.4 77.9L131.8 79.4L134.5 80.6L137.2 81.5L140.1 82.0L142.9 82.2L145.7 82.1L148.4 81.7L151.0 81.0L153.4 80.0L155.6 78.7L157.6 77.3L159.4 75.6L160.8 73.9L162.0 72.0L162.9 70.1L163.5 68.2L163.7 66.4L163.8 64.6L163.6 63.0L163.1 61.6L162.5 60.3L161.7 59.3L160.9 58.5L159.9 58.0L159.0 57.8L158.1 57.8L157.3 58.0L156.5 58.5L156.0 59.1L155.6 60.0L155.4 61.0L155.5 62.1L155.8 63.2L156.4 64.4L157.2 65.5L158.4 66.6L159.7 67.5L161.3 68.3L163.1 68.9L165.1 69.3L167.2 69.4L169.5 69.2L171.7 68.7L174.0 67.9L176.3 66.9L178.4 65.4L180.5 63.7L182.3 61.8L184.0 59.6L185.4 57.1L186.5 54.5L187.3 51.7L187.8 48.9L188.0 46.0" stroke-width="2" fill="none" stroke-linecap="round"/><text x="150" y="90" text-anchor="middle">camino: rizos</text></svg><p>La Tierra quieta al centro; el Sol, la Luna y los planetas giran a su alrededor. Ptolomeo agregó <b>epiciclos</b> (círculos sobre círculos) para explicar por qué los planetas a veces parecen retroceder.</p></div>
+      <div class="tarjeta"><span class="onda">heliocéntrico</span><h4>Copérnico</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fw" cx="58" cy="46" r="8"/><circle class="m" cx="58" cy="46" r="14" stroke-width="1.6" stroke-dasharray="4 3"/><circle class="fm" cx="68.7" cy="37.0" r="4"/><circle class="b" cx="58" cy="46" r="26" stroke-width="1.6" stroke-dasharray="4 3"/><circle class="fb" cx="33.6" cy="54.9" r="4"/><circle class="r" cx="58" cy="46" r="39" stroke-width="1.6" stroke-dasharray="4 3"/><circle class="fr" cx="77.5" cy="79.8" r="4"/><text x="150" y="34" text-anchor="middle">Sol al centro</text><text x="150" y="54" text-anchor="middle">la Tierra (azul)</text><text x="150" y="70" text-anchor="middle">es un planeta más</text></svg><p>El Sol al centro y la Tierra como un planeta más que gira a su alrededor y sobre sí misma. Explica el retroceso aparente de los planetas sin epiciclos.</p></div>
+      <div class="tarjeta"><span class="onda">evidencias con telescopio</span><h4>Galileo</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="fw" cx="44" cy="34" r="11"/><circle class="fm" cx="10" cy="34" r="2.6"/><circle class="fm" cx="22" cy="34" r="2.6"/><circle class="fm" cx="66" cy="34" r="2.6"/><circle class="fm" cx="80" cy="34" r="2.6"/><text x="44" y="66" text-anchor="middle">lunas de</text><text x="44" y="80" text-anchor="middle">Júpiter</text><circle cx="112" cy="40" r="15" style="fill:var(--muted);fill-opacity:.35"/><path class="fw" d="M112 25A15 15 0 0 1 112 55A11.40 15 0 0 0 112 25Z"/><circle cx="142" cy="40" r="11" style="fill:var(--muted);fill-opacity:.35"/><path class="fw" d="M142 29A11 11 0 0 1 142 51A2.20 11 0 0 0 142 29Z"/><circle cx="166" cy="40" r="8" style="fill:var(--muted);fill-opacity:.35"/><path class="fw" d="M166 32A8 8 0 0 1 166 48A4.00 8 0 0 1 166 32Z"/><circle cx="186" cy="40" r="5.5" style="fill:var(--muted);fill-opacity:.35"/><path class="fw" d="M186 34.5A5.5 5.5 0 0 1 186 45.5A5.17 5.5 0 0 1 186 34.5Z"/><text x="148" y="72" text-anchor="middle">Venus: todas las fases</text><text x="148" y="87" text-anchor="middle">llena = pequeña</text></svg><p>Vio que Venus muestra <b>todas sus fases</b>, incluso casi llena (solo posible si gira en torno al Sol), <b>lunas girando alrededor de Júpiter</b>, manchas en el Sol y montañas en la Luna: el cielo no era perfecto ni todo giraba en torno a la Tierra.</p></div>
+      <div class="tarjeta"><span class="onda">órbitas</span><h4>Kepler</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="g" d="M151.3 46.0L126.2 78.0L130.4 76.7L134.4 75.3L138.3 73.7L141.8 71.9L145.2 70.0L148.3 68.0L151.1 65.9L153.6 63.6L155.8 61.3L157.7 58.9L159.2 56.4L160.4 53.8L161.3 51.2L161.8 48.6L162.0 46.0L161.8 43.4L161.3 40.8L160.4 38.2L159.2 35.6L157.7 33.1L155.8 30.7L153.6 28.4L151.1 26.1L148.3 24.0L145.2 22.0L141.8 20.1L138.3 18.3L134.4 16.7L130.4 15.3L126.2 14.0Z" stroke-width="2" style="fill:var(--ok);fill-opacity:0.35"/><path class="b" d="M151.3 46.0L31.2 39.2L31.0 39.6L30.9 40.1L30.8 40.5L30.6 41.0L30.5 41.4L30.4 41.9L30.3 42.3L30.3 42.8L30.2 43.3L30.1 43.7L30.1 44.2L30.0 44.6L30.0 45.1L30.0 45.5L30.0 46.0L30.0 46.5L30.0 46.9L30.0 47.4L30.1 47.8L30.1 48.3L30.2 48.7L30.3 49.2L30.3 49.7L30.4 50.1L30.5 50.6L30.6 51.0L30.8 51.5L30.9 51.9L31.0 52.4L31.2 52.8Z" stroke-width="2" style="fill:var(--acc2);fill-opacity:0.35"/><ellipse class="a" cx="96" cy="46" rx="66" ry="36" stroke-width="2.5" fill="none"/><circle class="fw" cx="151.3" cy="46" r="7"/><text x="147.3" y="68" text-anchor="middle">Sol</text><text x="184" y="22" text-anchor="middle">rápido</text><text x="22" y="22" text-anchor="middle">lento</text><text x="100" y="90" text-anchor="middle">mismo tiempo = misma área</text></svg><p>Las órbitas son <b>elipses</b> con el Sol en uno de sus focos; un planeta va <b>más rápido cuando está más cerca</b> del Sol; y los planetas más lejanos tardan más en dar la vuelta.</p></div>
+      <div class="tarjeta"><span class="onda">origen</span><h4>Big Bang</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M14.0 46.0L16.9 42.2L19.9 40.5L22.8 39.1L25.7 37.9L28.7 36.8L31.6 35.9L34.5 35.0L37.5 34.1L40.4 33.3L43.3 32.6L46.3 31.8L49.2 31.1L52.1 30.5L55.1 29.8L58.0 29.2L60.9 28.6L63.9 28.0L66.8 27.4L69.7 26.9L72.7 26.3L75.6 25.8L78.5 25.3L81.5 24.8L84.4 24.3L87.3 23.8L90.3 23.3L93.2 22.8L96.1 22.3L99.1 21.9L102.0 21.4L104.9 21.0L107.9 20.5L110.8 20.1L113.7 19.7L116.7 19.2L119.6 18.8L122.5 18.4L125.5 18.0L128.4 17.6L131.3 17.2L134.3 16.8L137.2 16.4L140.1 16.0L143.1 15.6L146.0 15.3L148.9 14.9L151.9 14.5L154.8 14.2L157.7 13.8L160.7 13.4L163.6 13.1L166.5 12.7L169.5 12.4L172.4 12.0L175.3 11.7L178.3 11.3L181.2 11.0L184.1 10.7L187.1 10.3L190.0 10.0" stroke-width="2" fill="none" stroke-linecap="round"/><path class="m" d="M14.0 46.0L16.9 49.8L19.9 51.5L22.8 52.9L25.7 54.1L28.7 55.2L31.6 56.1L34.5 57.0L37.5 57.9L40.4 58.7L43.3 59.4L46.3 60.2L49.2 60.9L52.1 61.5L55.1 62.2L58.0 62.8L60.9 63.4L63.9 64.0L66.8 64.6L69.7 65.1L72.7 65.7L75.6 66.2L78.5 66.7L81.5 67.2L84.4 67.7L87.3 68.2L90.3 68.7L93.2 69.2L96.1 69.7L99.1 70.1L102.0 70.6L104.9 71.0L107.9 71.5L110.8 71.9L113.7 72.3L116.7 72.8L119.6 73.2L122.5 73.6L125.5 74.0L128.4 74.4L131.3 74.8L134.3 75.2L137.2 75.6L140.1 76.0L143.1 76.4L146.0 76.7L148.9 77.1L151.9 77.5L154.8 77.8L157.7 78.2L160.7 78.6L163.6 78.9L166.5 79.3L169.5 79.6L172.4 80.0L175.3 80.3L178.3 80.7L181.2 81.0L184.1 81.3L187.1 81.7L190.0 82.0" stroke-width="2" fill="none" stroke-linecap="round"/><circle class="fw" cx="14" cy="46" r="5"/><circle class="fw" cx="40" cy="38.5" r="2.2"/><circle class="fw" cx="40" cy="46.0" r="2.2"/><circle class="fw" cx="40" cy="53.5" r="2.2"/><circle class="fw" cx="64" cy="35.2" r="2.6"/><circle class="fw" cx="64" cy="46.0" r="2.6"/><circle class="fw" cx="64" cy="56.8" r="2.6"/><circle class="fa" cx="92" cy="32.2" r="3.0"/><circle class="fa" cx="92" cy="46.0" r="3.0"/><circle class="fa" cx="92" cy="59.8" r="3.0"/><circle class="fa" cx="124" cy="29.3" r="3.4000000000000004"/><circle class="fa" cx="124" cy="46.0" r="3.4000000000000004"/><circle class="fa" cx="124" cy="62.7" r="3.4000000000000004"/><circle class="fa" cx="160" cy="26.5" r="3.8000000000000003"/><circle class="fa" cx="160" cy="46.0" r="3.8000000000000003"/><circle class="fa" cx="160" cy="65.5" r="3.8000000000000003"/><text x="14" y="88" text-anchor="start">Big Bang</text><text x="196" y="88" text-anchor="end">hoy</text><text x="196" y="12" text-anchor="end">se expande y se enfría</text></svg><p>Hace unos 13 800 millones de años el universo estaba concentrado, muy denso y caliente, y desde entonces se <b>expande</b> y se enfría.</p></div>
+      <div class="tarjeta"><span class="onda">evidencias</span><h4>¿Cómo lo sabemos?</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><rect class="m" x="4" y="14" width="64" height="14" rx="4" stroke-width="2.5"/><path class="a" d="M16 14L16 28" stroke-width="2.5" stroke-linecap="round"/><path class="a" d="M30 14L30 28" stroke-width="2.5" stroke-linecap="round"/><path class="a" d="M44 14L44 28" stroke-width="2.5" stroke-linecap="round"/><rect class="m" x="4" y="40" width="64" height="14" rx="4" stroke-width="2.5"/><path class="r" d="M26 40L26 54" stroke-width="2.5" stroke-linecap="round"/><path class="r" d="M40 40L40 54" stroke-width="2.5" stroke-linecap="round"/><path class="r" d="M54 40L54 54" stroke-width="2.5" stroke-linecap="round"/><path class="r" d="M18 62L44.0 62.0" stroke-width="2" stroke-linecap="round"/><path class="fr" d="M52 62L44.0 57.5L44.0 66.5Z"/><text x="36" y="78" text-anchor="middle">al rojo</text><path class="b" d="M80.0 36.0L80.5 34.6L81.0 33.2L81.5 31.9L82.0 30.7L82.5 29.6L83.0 28.7L83.5 28.0L84.0 27.4L84.5 27.1L85.0 27.0L85.5 27.1L86.0 27.4L86.5 28.0L87.0 28.7L87.5 29.6L88.0 30.7L88.5 31.9L89.0 33.2L89.5 34.6L90.0 36.0L90.5 37.4L91.0 38.8L91.5 40.1L92.0 41.3L92.5 42.4L93.0 43.3L93.5 44.0L94.0 44.6L94.5 44.9L95.0 45.0L95.5 44.9L96.0 44.6L96.5 44.0L97.0 43.3L97.5 42.4L98.0 41.3L98.5 40.1L99.0 38.8L99.5 37.4L100.0 36.0L100.5 34.6L101.0 33.2L101.5 31.9L102.0 30.7L102.5 29.6L103.0 28.7L103.5 28.0L104.0 27.4L104.5 27.1L105.0 27.0L105.5 27.1L106.0 27.4L106.5 28.0L107.0 28.7L107.5 29.6L108.0 30.7L108.5 31.9L109.0 33.2L109.5 34.6L110.0 36.0L110.5 37.4L111.0 38.8L111.5 40.1L112.0 41.3L112.5 42.4L113.0 43.3L113.5 44.0L114.0 44.6L114.5 44.9L115.0 45.0L115.5 44.9L116.0 44.6L116.5 44.0L117.0 43.3L117.5 42.4L118.0 41.3L118.5 40.1L119.0 38.8L119.5 37.4L120.0 36.0L120.5 34.6L121.0 33.2L121.5 31.9L122.0 30.7L122.5 29.6L123.0 28.7L123.5 28.0L124.0 27.4L124.5 27.1L125.0 27.0L125.5 27.1L126.0 27.4L126.5 28.0L127.0 28.7L127.5 29.6L128.0 30.7L128.5 31.9L129.0 33.2L129.5 34.6L130.0 36.0L130.5 37.4L131.0 38.8L131.5 40.1L132.0 41.3L132.5 42.4L133.0 43.3L133.5 44.0L134.0 44.6L134.5 44.9L135.0 45.0L135.5 44.9L136.0 44.6L136.5 44.0L137.0 43.3L137.5 42.4L138.0 41.3L138.5 40.1L139.0 38.8L139.5 37.4L140.0 36.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="110" y="66" text-anchor="middle">fondo de</text><text x="110" y="80" text-anchor="middle">microondas</text><path class="fb" d="M170 38L170.0 18.0A20 20 0 1 0 190.0 38.0Z"/><path class="fw" d="M170 38L190.0 38.0A20 20 0 0 0 170.0 18.0Z"/><text x="170" y="78" text-anchor="middle">H y He</text></svg><p>1) La luz de las galaxias lejanas llega <b>corrida al rojo</b>: se alejan, más rápido cuanto más lejos. 2) La <b>radiación de fondo de microondas</b>, el «eco» del universo caliente. 3) La abundancia de los elementos livianos (hidrógeno y helio).</p></div>
+      <div class="tarjeta"><span class="onda">futuro posible</span><h4>Big Crunch</h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M14 80L186.0 80.0" stroke-width="1.8" stroke-linecap="round"/><path class="fm" d="M194 80L186.0 75.5L186.0 84.5Z"/><path class="m" d="M14 80L14.0 16.0" stroke-width="1.8" stroke-linecap="round"/><path class="fm" d="M14 8L9.5 16.0L18.5 16.0Z"/><path class="g" d="M14.0 80.0L17.0 74.5L20.0 71.3L23.0 68.6L26.0 66.2L29.0 64.1L32.0 62.0L35.0 60.1L38.0 58.3L41.0 56.5L44.0 54.8L47.0 53.2L50.0 51.6L53.0 50.1L56.0 48.6L59.0 47.1L62.0 45.7L65.0 44.3L68.0 42.9L71.0 41.5L74.0 40.2L77.0 38.9L80.0 37.6L83.0 36.4L86.0 35.1L89.0 33.9L92.0 32.7L95.0 31.5L98.0 30.3L101.0 29.2L104.0 28.0L104.0 28.0L106.9 27.6L109.7 27.2L112.6 26.7L115.5 26.2L118.3 25.6L121.2 24.9L124.1 24.2L126.9 23.4L129.8 22.6L132.7 21.7L135.5 20.7L138.4 19.7L141.3 18.7L144.1 17.5L147.0 16.4L149.9 15.1L152.7 13.8L155.6 12.5L158.5 11.1L161.3 9.6L164.2 8.1L167.1 6.5L169.9 4.9L172.8 3.2L175.7 1.4L178.5 -0.4L181.4 -2.3L184.3 -4.2L187.1 -6.2L190.0 -8.2" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="r" d="M14.0 80.0L17.0 74.5L20.0 71.3L23.0 68.6L26.0 66.2L29.0 64.1L32.0 62.0L35.0 60.1L38.0 58.3L41.0 56.5L44.0 54.8L47.0 53.2L50.0 51.6L53.0 50.1L56.0 48.6L59.0 47.1L62.0 45.7L65.0 44.3L68.0 42.9L71.0 41.5L74.0 40.2L77.0 38.9L80.0 37.6L83.0 36.4L86.0 35.1L89.0 33.9L92.0 32.7L95.0 31.5L98.0 30.3L101.0 29.2L104.0 28.0L104.0 28.0L106.9 28.1L109.7 28.2L112.6 28.5L115.5 28.9L118.3 29.4L121.2 30.1L124.1 30.8L126.9 31.7L129.8 32.7L132.7 33.8L135.5 35.0L138.4 36.3L141.3 37.8L144.1 39.3L147.0 41.0L149.9 42.8L152.7 44.7L155.6 46.7L158.5 48.9L161.3 51.1L164.2 53.5L167.1 56.0L169.9 58.6L172.8 61.3L175.7 64.1L178.5 67.1L181.4 70.1L184.3 73.3L187.1 76.6L190.0 80.0" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="150" y="16" text-anchor="middle">se acelera</text><text x="122" y="68" text-anchor="middle">Big Crunch</text><text x="22" y="14" text-anchor="start">tamaño</text><text x="192" y="92" text-anchor="end">tiempo</text></svg><p>Si la expansión se detuviera y se invirtiera, el universo volvería a contraerse hasta colapsar. Las observaciones actuales indican que la expansión se está acelerando, así que hoy se considera poco probable.</p></div>
+    </div>
+    </div>
+    <div class="paso"><h3><span class="n">4</span> Práctica</h3><div class="practica" data-temas="fis.mec.cosmos"></div></div>
     </div>
   </section>
   </div>
@@ -8294,6 +8330,279 @@ function dibujarLimite(L, tipo, t) {
     $('#cap-form').innerHTML = `<div class="res">${p} km: <span class="hl">${capa[2]}</span></div><div>${capa[3]}.</div>
       <div class="small muted">Modelo físico (por comportamiento). Límites aproximados. El modelo químico la divide en corteza, manto y núcleo.</div>`;
   }, { 'cap-p': (x) => x + ' km' });
+}
+
+// =====================================================================
+// LECCIÓN · sistema solar y origen del universo
+// =====================================================================
+const vuelta = (a) => ((((a + Math.PI) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)) - Math.PI;
+let semilla = 11;
+const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+// disco de un planeta visto desde la Tierra: k = fracción iluminada; luzDer = el Sol está a la derecha
+function discoFase(c, x, y, r, k, luzDer) {
+  c.fillStyle = tono(COL.muted, .35); c.beginPath(); c.arc(x, y, r, 0, 7); c.fill();
+  const s = luzDer ? 1 : -1, off = s * (1 - 2 * k) * r;
+  c.fillStyle = COL.warn; c.beginPath(); c.moveTo(x, y - r);
+  c.arc(x, y, r, -Math.PI / 2, Math.PI / 2, !luzDer);
+  for (let i = 0; i <= 40; i++) { const f = Math.PI / 2 - (Math.PI * i) / 40; c.lineTo(x + off * Math.cos(f), y + r * Math.sin(f)); }
+  c.closePath(); c.fill();
+}
+function circPx(c, x, y, r, color, ancho = 1.5, dash) { c.strokeStyle = color; c.lineWidth = ancho; c.setLineDash(dash || []); c.beginPath(); c.arc(x, y, r, 0, 7); c.stroke(); c.setLineDash([]); }
+function bolaPx(c, x, y, r, color) { c.fillStyle = color; c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); }
+function textoPx(L, t, x, y, color, o = {}) { L.texto(t, x, y, color, { px: true, tam: 12, ...o }); }
+// lienzo más alto en pantallas angostas (los paneles se apilan)
+function altoMovil(L, normal, movil) { Object.defineProperty(L.o, 'aspecto', { get: () => (L.c.parentElement.clientWidth < 620 ? movil : normal) }); L.ajustar(true); }
+
+// --- 1 Ver: geocéntrico vs heliocéntrico, con el retroceso aparente de Marte ---
+{
+  const L = new Lienzo($('#cos-ver'), { aspecto: 0.72, maxH: 430 });
+  altoMovil(L, 0.72, 1.1);
+  const TM = 1.881, RM = 1.524, F0 = Math.PI * (1 - 0.5 / TM), VEL = 0.16; // oposición en t = 0,5 años; 0,16 años por segundo
+  const pos = (t) => {
+    const aE = 2 * Math.PI * t, aM = (2 * Math.PI * t) / TM + F0;
+    const E = [Math.cos(aE), Math.sin(aE)], M = [RM * Math.cos(aM), RM * Math.sin(aM)];
+    const dx = M[0] - E[0], dy = M[1] - E[1], z = 0.1 * Math.sin(aM - 1.2); // inclinación exagerada para ver el rizo
+    return { E, M, aM, rel: [dx, dy], lam: Math.atan2(dy, dx), bet: Math.atan2(z, Math.hypot(dx, dy)) };
+  };
+  semilla = 11;
+  const ESTRELLAS = Array.from({ length: 90 }, () => [azar() * 2 * Math.PI, (azar() - 0.5) * 0.5, 0.8 + azar() * 1.4]);
+  let txtPrev = '';
+  animar('cos-ver', L, (ta) => {
+    const t = ta * VEL, geo = $('#cos-modelo').value === 'geo', P = pos(t);
+    L.limpiar(); const c = L.ctx, W = L.w, H = L.h, lado = W >= 620;
+    const zm = lado ? { x: 0, y: 0, w: W * 0.52, h: H } : { x: 0, y: 0, w: W, h: H * 0.64 };
+    const zc = lado ? { x: W * 0.52, y: 0, w: W * 0.48, h: H } : { x: 0, y: H * 0.64, w: W, h: H * 0.36 };
+    // ---- modelo visto desde arriba ----
+    const cx = zm.x + zm.w / 2, cy = zm.y + zm.h / 2 + 8, sc = (Math.min(zm.w, zm.h - 34) / 2) / (geo ? 2.62 : 1.72);
+    const X = (p) => cx + p[0] * sc, Y = (p) => cy - p[1] * sc;
+    textoPx(L, geo ? 'Ptolomeo: la Tierra al centro' : 'Copérnico: el Sol al centro', zm.x + 10, zm.y + 22, COL.ink, { peso: 800, tam: 13 });
+    c.save(); c.beginPath(); c.rect(zm.x, zm.y + 26, zm.w, zm.h - 26); c.clip();
+    let T, Mp;
+    if (!geo) {
+      circPx(c, cx, cy, sc, tono(COL.acc2, .5), 1.5, [5, 4]); circPx(c, cx, cy, RM * sc, tono(COL.mal, .5), 1.5, [5, 4]);
+      bolaPx(c, cx, cy, 11, COL.warn); textoPx(L, 'Sol', cx, cy - 14, COL.warn, { align: 'center' });
+      T = [X(P.E), Y(P.E)]; Mp = [X(P.M), Y(P.M)];
+    } else {
+      const D = P.M, S = [-P.E[0], -P.E[1]];
+      // rastro de Marte visto desde la Tierra quieta: los rizos
+      c.strokeStyle = tono(COL.mal, .4); c.lineWidth = 1.6; c.beginPath();
+      for (let i = 0; i <= 160; i++) { const q = pos(t - 2.2 + (2.2 * i) / 160).rel; if (i) c.lineTo(X(q), Y(q)); else c.moveTo(X(q), Y(q)); }
+      c.stroke();
+      circPx(c, cx, cy, sc, tono(COL.warn, .5), 1.5, [5, 4]); circPx(c, cx, cy, RM * sc, tono(COL.muted, .7), 1.5, [5, 4]);
+      circPx(c, X(D), Y(D), sc, tono(COL.ink, .55), 2);
+      c.strokeStyle = tono(COL.muted, .8); c.lineWidth = 1.5; c.beginPath(); c.moveTo(cx, cy); c.lineTo(X(D), Y(D)); c.lineTo(X(P.rel), Y(P.rel)); c.stroke();
+      bolaPx(c, X(D), Y(D), 3, COL.muted);
+      const ue = [P.M[0] / RM, P.M[1] / RM];
+      textoPx(L, 'epiciclo', X([D[0] + ue[0] * 1.08, D[1] + ue[1] * 1.08]), Y([D[0] + ue[0] * 1.08, D[1] + ue[1] * 1.08]), COL.ink, { align: 'center', base: 'middle', tam: 11, fondo: true });
+      bolaPx(c, X(S), Y(S), 9, COL.warn); textoPx(L, 'Sol', X(S), Y(S) - 12, COL.warn, { align: 'center' });
+      T = [cx, cy]; Mp = [X(P.rel), Y(P.rel)];
+    }
+    // línea de visión de la Tierra hacia Marte
+    const dir = [Math.cos(P.lam), -Math.sin(P.lam)];
+    c.strokeStyle = tono(COL.ink, .35); c.lineWidth = 1.2; c.setLineDash([3, 5]); c.beginPath(); c.moveTo(T[0], T[1]); c.lineTo(T[0] + dir[0] * 900, T[1] + dir[1] * 900); c.stroke(); c.setLineDash([]);
+    bolaPx(c, T[0], T[1], 7, COL.acc2); textoPx(L, 'Tierra', T[0], T[1] + 22, COL.acc2, { align: 'center' });
+    bolaPx(c, Mp[0], Mp[1], 6, COL.mal); textoPx(L, 'Marte', Mp[0] + 9, Mp[1] - 4, COL.mal);
+    c.restore();
+    // ---- el cielo visto desde la Tierra ----
+    const banda = { x: zc.x + 8, y: zc.y + 30, w: zc.w - 16, h: zc.h - 44 };
+    textoPx(L, 'El cielo visto desde la Tierra', zc.x + 10, zc.y + 22, COL.ink, { peso: 800, tam: 13 });
+    c.fillStyle = tono(COL.acc, .07); c.fillRect(banda.x, banda.y, banda.w, banda.h);
+    const lc = P.aM, kx = banda.w / 2 / (1.25), ky = (banda.h * 0.36) / 0.2, bx = banda.x + banda.w / 2, by = banda.y + banda.h / 2;
+    const SX = (lam) => bx + vuelta(lam - lc) * kx, SY = (b) => by - b * ky;
+    c.save(); c.beginPath(); c.rect(banda.x, banda.y, banda.w, banda.h); c.clip();
+    for (const [l, b, r] of ESTRELLAS) bolaPx(c, SX(l), SY(b), r, tono(COL.ink, .55));
+    let prev = null;
+    for (let i = 0; i <= 140; i++) {
+      const q = pos(t - 1.3 + (1.3 * i) / 140);
+      const p = [SX(q.lam), SY(q.bet)];
+      if (prev && Math.abs(p[0] - prev[0]) < banda.w / 2) {
+        const retro = vuelta(q.lam - prev[2]) < 0;
+        c.strokeStyle = retro ? COL.mal : tono(COL.acc, .9); c.lineWidth = retro ? 3.5 : 2.5;
+        c.beginPath(); c.moveTo(prev[0], prev[1]); c.lineTo(p[0], p[1]); c.stroke();
+      }
+      prev = [p[0], p[1], q.lam];
+    }
+    const ahora = pos(t + 0.002), retro = vuelta(ahora.lam - P.lam) < 0;
+    bolaPx(c, SX(P.lam), SY(P.bet), 7, COL.mal);
+    textoPx(L, retro ? '← retrocede' : 'avanza →', SX(P.lam), SY(P.bet) - 12, retro ? COL.mal : COL.acc, { align: 'center', peso: 800, fondo: true });
+    c.restore();
+    textoPx(L, 'rojo: retroceso aparente · altura del rizo exagerada', banda.x + 4, banda.y + banda.h + 12, COL.muted, { tam: 10.5 });
+    const txt = geo
+      ? 'Ptolomeo: la Tierra quieta al centro. Marte gira en un <b>epiciclo</b> (círculo chico) cuyo centro recorre un círculo grande; su camino (en rojo) hace rizos, y así se explicaba el retroceso. El cielo se ve <b>igual</b> en los dos modelos.'
+      : 'Copérnico: el Sol al centro. La Tierra, más rápida, <b>adelanta</b> a Marte: mientras lo pasa, Marte parece retroceder contra las estrellas. Lo explica sin epiciclos.';
+    if (txt !== txtPrev) { $('#cos-ver-txt').innerHTML = txt; txtPrev = txt; }
+  });
+  $('#cos-modelo').addEventListener('change', () => L.redibujar());
+}
+
+// --- 2 Manipular: leyes de Kepler ---
+{
+  const L = new Lienzo($('#kep-man'), { aspecto: 0.62, maxH: 400 });
+  altoMovil(L, 0.62, 0.85);
+  let e = 0.5, a = 1.5;
+  const kepler = (M, e) => { let E = M; for (let i = 0; i < 30; i++) E -= (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E)); return E; };
+  const ANIO = 4; // segundos por año
+  const A = animar('kep-man', L, (ta) => {
+    L.limpiar(); const c = L.ctx, W = L.w, H = L.h;
+    const b = a * Math.sqrt(1 - e * e);
+    const xa = Math.min(-a * (1 + e), -1), xb = Math.max(a * (1 - e), 1), ym = Math.max(b, 1); // caja que contiene la órbita y la de la Tierra (Sol en el origen)
+    const sc = Math.min((W - 30) / (xb - xa), (H - 64) / (2 * ym));
+    const sx = W / 2 - ((xa + xb) / 2) * sc, cy = H / 2 + 4, cx = sx - a * e * sc; // el Sol en el foco
+    const P = (E) => [sx + a * (Math.cos(E) - e) * sc, cy - b * Math.sin(E) * sc];
+    const T = Math.pow(a, 1.5), M = (2 * Math.PI * ta) / (ANIO * T), E = kepler(M % (2 * Math.PI), e);
+    const sector = Math.floor(((M % (2 * Math.PI)) / (2 * Math.PI)) * 8);
+    for (let k = 0; k < 8; k++) {
+      const E1 = kepler((2 * Math.PI * k) / 8, e), E2 = kepler((2 * Math.PI * (k + 1)) / 8, e);
+      c.fillStyle = tono(k % 2 ? COL.acc2 : COL.acc, k === sector ? .5 : .16);
+      c.beginPath(); c.moveTo(sx, cy);
+      for (let i = 0; i <= 30; i++) { const q = P(E1 + ((E2 - E1) * i) / 30); c.lineTo(q[0], q[1]); }
+      c.closePath(); c.fill();
+    }
+    c.strokeStyle = COL.acc; c.lineWidth = 2.5; c.beginPath(); c.ellipse(cx, cy, a * sc, b * sc, 0, 0, 7); c.stroke();
+    circPx(c, sx, cy, sc, tono(COL.acc2, .6), 1.5, [5, 4]);
+    const aT = (2 * Math.PI * ta) / ANIO; bolaPx(c, sx + sc * Math.cos(aT), cy - sc * Math.sin(aT), 4.5, COL.acc2);
+    if (e > 0.02) { bolaPx(c, cx - a * e * sc, cy, 3, COL.muted); textoPx(L, 'otro foco', cx - a * e * sc, cy + 16, COL.muted, { align: 'center', tam: 11 }); }
+    bolaPx(c, sx, cy, 10, COL.warn); textoPx(L, 'Sol (foco)', sx, cy - 13, COL.warn, { align: 'center' });
+    const q = P(E), r = a * (1 - e * Math.cos(E)), v = Math.sqrt(2 / r - 1 / a);
+    const tg = [-a * Math.sin(E) * sc, -b * Math.cos(E) * sc], n = Math.hypot(...tg) || 1;
+    flechaPx(c, q[0], q[1], q[0] + (tg[0] / n) * v * 26, q[1] + (tg[1] / n) * v * 26, COL.ok);
+    c.strokeStyle = tono(COL.ink, .5); c.lineWidth = 1.2; c.beginPath(); c.moveTo(sx, cy); c.lineTo(q[0], q[1]); c.stroke();
+    bolaPx(c, q[0], q[1], 7, COL.mal);
+    textoPx(L, 'cada sector: el mismo tiempo (T/8) y la misma área', 10, H - 8, COL.ink, { tam: 12, fondo: true });
+    textoPx(L, '— — órbita de la Tierra (referencia)', W - 10, 18, COL.acc2, { align: 'right', tam: 11 });
+  });
+  sliders(['kep-e', 'kep-a'], (val) => {
+    e = val['kep-e']; a = val['kep-a']; A.lienzo.redibujar();
+    const rp = a * (1 - e), ra = a * (1 + e), T = Math.pow(a, 1.5);
+    $('#kep-form').innerHTML = `<div><b>1ª ley:</b> la órbita es una <span class="hl">elipse</span> y el Sol está en un <b>foco</b>, no en el centro.</div>
+      <div><b>2ª ley:</b> en tiempos iguales barre <b>áreas iguales</b>. Cerca del Sol (perihelio, ${fmt(rp, 2)} UA) va más rápido que lejos (afelio, ${fmt(ra, 2)} UA): <span class="hl">${fmt((1 + e) / (1 - e), 2)} veces</span> más rápido.</div>
+      <div class="res"><b>3ª ley:</b> más lejos, más tarda: T² = a³ → T = ${fmt(a, 1)}<sup>1,5</sup> = <span class="hl">${fmt(T, 2)} años</span></div>
+      <div class="small muted">UA = distancia media Tierra–Sol. Con excentricidad 0 la elipse es una circunferencia.</div>`;
+  }, { 'kep-e': (x) => fmt(x, 2), 'kep-a': (x) => fmt(x, 1) + ' UA' });
+}
+
+// --- 2b Galileo: fases de Venus en los dos modelos ---
+{
+  const L = new Lienzo($('#ven-man'), { aspecto: 0.62, maxH: 400 });
+  altoMovil(L, 0.62, 1.15);
+  let p = 150;
+  const estado = (geo, pg) => {
+    const th = ((pg - 90) * Math.PI) / 180, S = [0, 0], E = [0, -1];
+    const V = geo ? [0.25 * Math.cos(th), -0.45 + 0.25 * Math.sin(th)] : [0.723 * Math.cos(th), 0.723 * Math.sin(th)];
+    const aS = [S[0] - V[0], S[1] - V[1]], aE = [E[0] - V[0], E[1] - V[1]];
+    const cosA = (aS[0] * aE[0] + aS[1] * aE[1]) / (Math.hypot(...aS) * Math.hypot(...aE));
+    const cruz = (V[0] - E[0]) * (S[1] - E[1]) - (V[1] - E[1]) * (S[0] - E[0]);
+    return { S, E, V, k: (1 + cosA) / 2, d: Math.hypot(V[0] - E[0], V[1] - E[1]), luzDer: cruz < 0 };
+  };
+  const pintar = () => {
+    const geo = $('#ven-modelo').value === 'geo', st = estado(geo, p);
+    L.limpiar(); const c = L.ctx, W = L.w, H = L.h, lado = W >= 560;
+    const zm = lado ? { x: 0, y: 0, w: W * 0.5, h: H * 0.78 } : { x: 0, y: 0, w: W, h: H * 0.5 };
+    const zv = lado ? { x: W * 0.5, y: 0, w: W * 0.5, h: H * 0.78 } : { x: 0, y: H * 0.5, w: W, h: H * 0.28 };
+    const sc = Math.min(zm.w / 2.4, (zm.h - (geo ? 50 : 30)) / 2.25), cx = zm.x + zm.w / 2, cy = zm.y + (geo ? 46 : 28) + 1.12 * sc;
+    const dy = geo ? 1 : 0; // en el modelo de Ptolomeo la Tierra va al centro
+    const X = (q) => cx + q[0] * sc, Y = (q) => cy - (q[1] + dy) * sc;
+    textoPx(L, geo ? 'Ptolomeo (desde arriba)' : 'Copérnico (desde arriba)', zm.x + 10, zm.y + 20, COL.ink, { peso: 800, tam: 13 });
+    if (geo) { circPx(c, X(st.E), Y(st.E), sc, tono(COL.warn, .45), 1.5, [5, 4]); circPx(c, X(st.E), Y(st.E), 0.55 * sc, tono(COL.muted, .6), 1.5, [5, 4]); circPx(c, X([0, -0.45]), Y([0, -0.45]), 0.25 * sc, COL.mal, 2); }
+    else { circPx(c, X(st.S), Y(st.S), 0.723 * sc, COL.mal, 2); circPx(c, X(st.S), Y(st.S), sc, tono(COL.acc2, .45), 1.5, [5, 4]); }
+    bolaPx(c, X(st.S), Y(st.S), 11, COL.warn); textoPx(L, 'Sol', X(st.S), Y(st.S) - 14, COL.warn, { align: 'center' });
+    c.strokeStyle = tono(COL.ink, .35); c.lineWidth = 1.2; c.setLineDash([3, 5]); c.beginPath(); c.moveTo(X(st.E), Y(st.E)); c.lineTo(X(st.V), Y(st.V)); c.stroke(); c.setLineDash([]);
+    // Venus desde arriba: mitad iluminada hacia el Sol
+    const vx = X(st.V), vy = Y(st.V), ang = Math.atan2(-(st.S[1] - st.V[1]), st.S[0] - st.V[0]);
+    bolaPx(c, vx, vy, 7, tono(COL.muted, .6)); c.fillStyle = COL.warn; c.beginPath(); c.arc(vx, vy, 7, ang - Math.PI / 2, ang + Math.PI / 2); c.fill();
+    textoPx(L, 'Venus', vx + 10, vy - 6, COL.mal);
+    bolaPx(c, X(st.E), Y(st.E), 7, COL.acc2); textoPx(L, 'Tierra', X(st.E), Y(st.E) + 20, COL.acc2, { align: 'center' });
+    // lo que se ve con telescopio
+    textoPx(L, 'Con telescopio, desde la Tierra', zv.x + 10, zv.y + 20, COL.ink, { peso: 800, tam: 13 });
+    const rv = Math.max(5, zv.h * 0.4 * Math.min(1, 0.277 / st.d));
+    discoFase(c, zv.x + zv.w / 2, zv.y + zv.h / 2 + 10, rv, st.k, st.luzDer);
+    // todas las fases posibles en este modelo
+    const zf = { x: 10, y: H * 0.8, w: W - 20, h: H * 0.2 };
+    textoPx(L, 'Todas las fases en una vuelta:', zf.x, zf.y + 10, COL.muted, { tam: 11.5 });
+    const N = 12, paso = zf.w / N;
+    for (let i = 0; i < N; i++) {
+      const q = estado(geo, (i * 360) / N);
+      const r = Math.max(3.5, Math.min(paso * 0.45, zf.h * 0.4) * Math.min(1, 0.277 / q.d));
+      discoFase(c, zf.x + paso * (i + 0.5), zf.y + zf.h * 0.6, r, q.k, q.luzDer);
+    }
+    $('#ven-form').innerHTML = geo
+      ? `<div>Iluminada: <span class="hl">${Math.round(st.k * 100)} %</span></div><div>Venus está siempre <b>entre la Tierra y el Sol</b>: vemos sobre todo su lado oscuro. Solo habría fases <b>nueva y creciente</b>, nunca casi llena.</div><div class="res">Galileo vio a Venus casi llena: este modelo no lo explica.</div>`
+      : `<div>Iluminada: <span class="hl">${Math.round(st.k * 100)} %</span> · distancia a la Tierra: ${fmt(st.d, 2)} UA</div><div>Venus gira en torno al Sol: muestra <b>todas las fases</b>. Casi llena se ve <b>pequeña</b> (está lejos, al otro lado del Sol); creciente se ve <b>grande</b> (está cerca).</div><div class="res">Esto es lo que observó Galileo: apoya el modelo heliocéntrico.</div>`;
+  };
+  L.dibujar = pintar;
+  sliders(['ven-p'], (val) => { p = val['ven-p']; pintar(); }, { 'ven-p': (x) => x + '°' });
+  $('#ven-modelo').addEventListener('change', pintar);
+}
+
+// --- 2c Big Bang y Big Crunch ---
+{
+  const L = new Lienzo($('#bb-man'), { aspecto: 0.66, maxH: 420 });
+  altoMovil(L, 0.66, 0.95);
+  semilla = 5;
+  const GAL = [];
+  for (let i = -5; i <= 5; i++) for (let j = -4; j <= 4; j++) { const dx = (azar() - 0.5) * 0.6, dy = (azar() - 0.5) * 0.6, rot = azar() * Math.PI; GAL.push(j === 0 ? [i, 0, rot] : [i + dx, j + dy, rot]); }
+  const escala = (tau, crunch) => {
+    if (tau <= 70) return Math.pow(Math.max(tau, 0) / 70, 2 / 3);
+    const u = (tau - 70) / 30;
+    return crunch ? Math.max(0, 1 + 0.0909 * Math.sin(Math.PI * u) - u * u * u) : 1 + 0.00952 * (tau - 70) + 0.0006 * (tau - 70) ** 2;
+  };
+  let tau = 70;
+  const pintar = () => {
+    const crunch = $('#bb-fut').value === 'crunch', s = escala(tau, crunch);
+    const ds = (escala(tau + 0.5, crunch) - escala(tau - 0.5, crunch));
+    L.limpiar(); const c = L.ctx, W = L.w, H = L.h;
+    const zu = { x: 0, y: 0, w: W, h: H * 0.7 }, cx = W / 2, cy = zu.h / 2, sp = Math.min(W, zu.h * 1.3) / 8;
+    const calor = Math.max(0, Math.min(1, 1.1 - s * 3));
+    if (calor > 0) { const gr = c.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, zu.h) * 0.6); gr.addColorStop(0, tono('#FFF3C4', calor * 0.9)); gr.addColorStop(0.45, tono(COL.warn, calor * 0.55)); gr.addColorStop(1, tono(COL.mal, calor * 0.25)); c.fillStyle = gr; c.fillRect(0, 0, W, zu.h); }
+    c.save(); c.beginPath(); c.rect(0, 0, W, zu.h); c.clip();
+    const galaxias = tau >= 25 && s > 0.3;
+    if (!galaxias) {
+      semilla = 9;
+      for (let i = 0; i < 260; i++) { const a = azar() * 7, r = Math.sqrt(azar()) * Math.max(4, s * sp * 6); bolaPx(c, cx + r * Math.cos(a), cy + r * Math.sin(a), 1.6, tono(calor > 0.5 ? COL.mal : COL.ink, .8)); }
+    } else {
+      for (const [gx, gy, rot] of GAL) {
+        const x = cx + gx * s * sp, y = cy + gy * s * sp, nos = gx === 0 && gy === 0;
+        c.save(); c.translate(x, y); c.rotate(rot); c.fillStyle = nos ? COL.acc2 : tono(COL.ink, .8);
+        c.beginPath(); c.ellipse(0, 0, nos ? 8 : 6, nos ? 3.5 : 2.6, 0, 0, 7); c.fill(); c.restore();
+      }
+      textoPx(L, 'nosotros', cx, cy - 10, COL.acc2, { align: 'center', peso: 800, fondo: true });
+      const H0 = ds / Math.max(s, 0.05);
+      [1, 2, 3].forEach((d) => {
+        const x = cx + d * s * sp;
+        const largo = Math.max(-0.45 * s * sp, Math.min(1.3 * s * sp, H0 * d * s * sp * 45));
+        if (Math.abs(largo) > 4) flechaPx(c, x + Math.sign(largo) * 8, cy, x + Math.sign(largo) * 8 + largo, cy, largo > 0 ? COL.mal : COL.acc);
+      });
+      if (Math.abs(ds) > 0.001) textoPx(L, ds > 0 ? 'más lejos → se aleja más rápido (luz corrida al rojo)' : 'se acercan (luz corrida al azul)', 10, 22, ds > 0 ? COL.mal : COL.acc, { tam: 12, fondo: true });
+    }
+    c.restore();
+    // gráfico del tamaño del universo en el tiempo
+    const g = { x: 14, y: zu.h + 12, w: W - 28, h: H - zu.h - 34 };
+    c.strokeStyle = tono(COL.muted, .7); c.lineWidth = 1.3; c.beginPath(); c.moveTo(g.x, g.y); c.lineTo(g.x, g.y + g.h); c.lineTo(g.x + g.w, g.y + g.h); c.stroke();
+    const smax = 2, GX = (t) => g.x + (t / 100) * g.w, GY = (v) => g.y + g.h - (v / smax) * g.h;
+    c.strokeStyle = COL.acc; c.lineWidth = 2.5; c.beginPath();
+    for (let t = 0; t <= 100; t += 0.5) { const v = escala(t, crunch); if (t) c.lineTo(GX(t), GY(v)); else c.moveTo(GX(t), GY(v)); }
+    c.stroke();
+    c.strokeStyle = tono(COL.ink, .4); c.setLineDash([3, 4]); c.beginPath(); c.moveTo(GX(70), g.y); c.lineTo(GX(70), g.y + g.h); c.stroke(); c.setLineDash([]);
+    bolaPx(c, GX(tau), GY(s), 6, COL.warn);
+    textoPx(L, '↑ tamaño del universo', g.x + 6, g.y + 12, COL.muted, { tam: 10.5 });
+    textoPx(L, 'Big Bang', g.x, g.y + g.h + 14, COL.muted, { tam: 10.5 });
+    textoPx(L, 'hoy', GX(70), g.y + g.h + 14, COL.muted, { align: 'center', tam: 10.5 });
+    textoPx(L, W < 480 ? 'tiempo →' : 'tiempo (no a escala) →', g.x + g.w, g.y + g.h + 14, COL.muted, { align: 'right', tam: 10.5 });
+    let fase;
+    if (tau <= 2) fase = '<b>Big Bang</b> (hace unos 13 800 millones de años): todo concentrado, <b>muy denso y caliente</b>. Desde ahí se expande y se enfría.';
+    else if (tau <= 8) fase = '<b>Primeros minutos:</b> se forman los núcleos de <b>hidrógeno y helio</b>. Que hoy abunden tanto es una de las evidencias.';
+    else if (tau <= 22) fase = '<b>Unos 380 000 años:</b> se forman los átomos y la luz viaja libre por primera vez. Esa luz, estirada por la expansión, es la <b>radiación de fondo de microondas</b>.';
+    else if (tau < 62) fase = 'Se forman las primeras <b>estrellas y galaxias</b>. El universo sigue expandiéndose y enfriándose.';
+    else if (tau <= 72) fase = '<b>Hoy:</b> las galaxias se alejan unas de otras, y las más lejanas lo hacen más rápido: su luz llega <b>corrida al rojo</b>.';
+    else if (!crunch) fase = '<b>Futuro según lo observado:</b> la expansión <b>se acelera</b>. Las galaxias se alejan cada vez más y el universo se enfría.';
+    else fase = ds > 0 ? '<b>Big Crunch (hipótesis):</b> la expansión se frena…' : '<b>Big Crunch (hipótesis):</b> la expansión se invierte: las galaxias se acercan y todo colapsa, otra vez denso y caliente. Hoy se considera <b>poco probable</b>.';
+    $('#bb-form').innerHTML = `<div>${fase}</div><div class="res">Tamaño relativo (hoy = 1): <span class="hl">${fmt(s, 2)}</span> · temperatura: ${s < 0.15 ? 'altísima' : s < 0.5 ? 'alta' : s < 1.2 ? 'fría' : 'cada vez más fría'}</div>
+      <div class="small muted">Ojo: no hay un centro. Desde cualquier galaxia se ve a las demás alejarse; es el espacio el que se estira.</div>`;
+  };
+  L.dibujar = pintar;
+  const ETQ = (x) => (x <= 2 ? 'el inicio' : x <= 8 ? 'primeros minutos' : x <= 22 ? '≈ 380 000 años' : x < 62 ? 'miles de millones de años' : x <= 72 ? 'hoy' : 'futuro');
+  sliders(['bb-t'], (val) => { tau = val['bb-t']; pintar(); }, { 'bb-t': ETQ });
+  $('#bb-fut').addEventListener('change', pintar);
 }
 
 // @@LECCIONES@@

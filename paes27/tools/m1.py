@@ -7,8 +7,11 @@ Uso: python3 tools/m1.py
 """
 import pathlib
 import re
+import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from m1_dibujos import DIBUJOS, NUEVAS  # noqa: E402
 
 
 def trampa(no, si):
@@ -107,12 +110,50 @@ TEMAS = [
 ]
 
 
+ONDA = {'repaso': 'repaso rápido', 'trampa': 'trampa', 'dibujo': 'en un dibujo'}
+
+
+def sl(id_, texto, mn, mx, paso, val):
+    return (f'<label class="sl"><span>{texto} <b id="{id_}-v"></b></span>'
+            f'<input type="range" id="{id_}" min="{mn}" max="{mx}" step="{paso}" value="{val}"></label>')
+
+
+def mueve(titulo, canvas, aria, controles, formula):
+    return (f'    <div class="mueve"><h3><span class="n">↔</span> Muévelo tú: {titulo}</h3>\n'
+            f'      <div class="manip">\n        <div class="cv"><canvas id="{canvas}" role="img" aria-label="{aria}"></canvas></div>\n'
+            f'        <div class="ctrl">\n          {controles}\n          <div class="formula" id="{formula}"></div>\n        </div>\n      </div>\n    </div>\n')
+
+
+# Gráficos para mover (el código está en m1.html, entre // @@MUEVE@@ y // @@/MUEVE@@)
+MUEVE = {
+    'm1.alg.funciones': mueve('la parábola', 'pm-cv', 'Parábola y = ax² + bx + c con su vértice, ceros y corte con el eje Y',
+                              sl('pm-a', 'a', -3, 3, 0.5, 1) + sl('pm-b', 'b', -6, 6, 1, -4) + sl('pm-c', 'c', -6, 6, 1, 3), 'pm-form'),
+    'm1.geo.semejanza-pitagoras': mueve('la razón de semejanza', 'sk-cv', 'Triángulo 3-4-5 y su copia agrandada por la razón k',
+                                        sl('sk-k', 'Razón k', 0.5, 3, 0.5, 2), 'sk-form'),
+    'm1.geo.transformaciones': mueve('mover, reflejar y rotar', 'tr-cv', 'Triángulo y su imagen según la transformación elegida',
+                                     '<label class="sl"><span>Transformación <select id="tr-tipo"><option value="ex">Reflexión en el eje X</option><option value="ey">Reflexión en el eje Y</option>'
+                                     '<option value="r90">Rotación 90° antihoraria (centro en el origen)</option><option value="r270">Rotación 90° horaria (centro en el origen)</option>'
+                                     '<option value="r180">Rotación 180° (centro en el origen)</option><option value="tr">Traslación por (−5, 2)</option></select></span></label>'
+                                     + sl('tr-x', 'x del punto A', -4, 4, 1, 2) + sl('tr-y', 'y del punto A', -4, 4, 1, 1), 'tr-form'),
+}
+
+
+def tarjeta(tid, tipo, tit, html, dib=None):
+    dib = dib or DIBUJOS.get((tid, tit), '')
+    return f'      <div class="tarjeta {tipo}"><span class="onda">{ONDA[tipo]}</span><h4>{tit}</h4>{dib}<p>{html}</p></div>'
+
+
 def leccion(tid, tab, prio, titulo, idea, tarjetas):
-    cards = '\n'.join(f'      <div class="tarjeta {tipo}"><span class="onda">{"repaso rápido" if tipo == "repaso" else "trampa"}</span><h4>{tit}</h4><p>{html}</p></div>'
-                      for tipo, tit, html in tarjetas)
+    extra = NUEVAS.get(tid, [])
+    repaso = [x for x in tarjetas if x[0] == 'repaso']
+    resto = [x for x in tarjetas if x[0] != 'repaso']
+    cards = '\n'.join([tarjeta(tid, *x) for x in repaso] + [tarjeta(tid, *x) for x in extra] + [tarjeta(tid, *x) for x in resto])
+    usados = {k for k in DIBUJOS if k[0] == tid} - {(tid, x[1]) for x in tarjetas}
+    assert not usados, f'dibujos sin tarjeta: {usados}'
     return (f'  <section class="leccion" id="{tid}" data-tab="{tab}">\n'
             f'    <div class="lec-head"><h2>{titulo}</h2><span class="chip {prio}">{prio}</span><span class="dom" data-tema="{tid}"></span></div>\n'
             f'    <div class="lec-body">\n    <p class="idea">{idea}</p>\n    <div class="tarjetas">\n{cards}\n    </div>\n'
+            + MUEVE.get(tid, '') +
             f'    <div class="paso"><h3><span class="n">✓</span> Práctica: 5 preguntas</h3><div class="practica" data-temas="{tid}"></div></div>\n'
             '    </div>\n  </section>')
 
@@ -125,7 +166,7 @@ def aplicar():
         s, n = re.subn(rf'(<!-- @@{tab}@@ -->).*?(<!-- @@/{tab}@@ -->)', lambda m: f'{m.group(1)}\n{html}\n  {m.group(2)}', s, flags=re.S)
         assert n == 1, tab
     p.write_text(s, encoding='utf-8')
-    print(f'm1.html: {len(TEMAS)} temas, {sum(len(t[5]) for t in TEMAS)} tarjetas')
+    print(f'm1.html: {len(TEMAS)} temas, {sum(len(t[5]) for t in TEMAS) + sum(len(v) for v in NUEVAS.values())} tarjetas, {len(DIBUJOS) + sum(len(v) for v in NUEVAS.values())} con dibujo')
 
 
 if __name__ == '__main__':
