@@ -165,7 +165,9 @@ const SHOTS = process.env.SHOTS || '';
       const tarjetas = await sec.locator('.tarjetas').count();
       const pills = sec.locator('.pasos button');
       const np = await pills.count();
-      ok(tarjetas ? np === 0 : np === 5, `${id}: ${np} pasos en pestañas`);
+      const PASOS_ESPECIALES = { 'fis.mec.cosmos': 4 }; // tarjetas + simulaciones: Ver, Manipular, Tarjetas, Práctica
+      const npEsperado = PASOS_ESPECIALES[id] ?? (tarjetas ? 0 : 5);
+      ok(np === npEsperado, `${id}: ${np} pasos en pestañas`);
       // muestra la pestaña que contiene un elemento
       const verPanelDe = async (loc) => {
         const k = await loc.evaluate((x) => { const pn = x.closest('.paso-pane'); return pn ? [...pn.parentElement.querySelectorAll(':scope > .paso-pane')].indexOf(pn) : -1; });
@@ -179,7 +181,7 @@ const SHOTS = process.env.SHOTS || '';
           await s.focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('End'); await page.keyboard.press('Home');
         }
       }
-      if (np) {
+      if (np === 5) {
         await pills.nth(2).click();
         ok(await sec.locator('details.acc.porque ol').isVisible(), `${id}: «El porqué» visible en su pestaña`);
       }

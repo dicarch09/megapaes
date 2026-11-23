@@ -6,7 +6,7 @@
 <script>try{var t=localStorage.getItem("paes27:tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>PAES 2027 · Biología y Química</title>
 <style>
-/* == paes27-css v3 == */
+/* == paes27-css v4 == */
 /* Sistema de diseño PAES·27 · dicarch (prototipo C, «azulejos vivos»): degradados y sombras suaves.
    El tema oscuro usa el mismo estilo (degradados, sombras difusas) sobre fondo azul noche.
    Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
@@ -132,7 +132,7 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .leccion.cerrada{padding:13px 18px}
 .dom{margin-left:auto;font-size:.74rem;font-weight:900;padding:.2em .65em;border-radius:99px;background:var(--panel2)}
 .idea{background:var(--panel2);border-radius:var(--r-sm);padding:12px 14px;margin:12px 0;font-weight:600}
-.paso{margin:20px 0}
+.paso,.mueve{margin:20px 0}
 .pasos{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 2px}
 .pasos button{border:0;border-radius:99px;padding:.45em .85em;background:var(--panel2);color:var(--muted);font:800 .86rem/1.1 "Bricolage Grotesque","Nunito Sans",sans-serif;cursor:pointer;transition:background .12s,color .12s}
 .pasos button:hover{color:var(--ink)}
@@ -142,8 +142,8 @@ code{background:var(--panel2);padding:.1em .4em;border-radius:6px;font-size:.92e
 .con-pasos .paso-pane.multi .paso>h3{display:flex;margin-top:18px}.con-pasos .paso-pane.multi .paso>h3 .n{display:none}
 .con-pasos details.acc.porque{background:none;margin:14px 0 8px}.con-pasos details.acc.porque>summary{display:none}.con-pasos details.acc.porque>.in{padding:0}
 .paso-sig{display:flex;justify-content:flex-end;margin-top:14px}
-.paso>h3{display:flex;align-items:center;gap:9px}
-.paso>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
+.paso>h3,.mueve>h3{display:flex;align-items:center;gap:9px}
+.paso>h3 .n,.mueve>h3 .n,details.acc>summary .n{display:inline-grid;place-items:center;min-width:1.75em;height:1.75em;padding:0 .3em;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-size:.85rem}
 .cv,.formula,.sd-demo,.cv+.cap,.sd-demo+.cap{
   --ink:#DBDEE1;--muted:#9AA3B2;--line:#35406A;--panel:#1F2747;--panel2:#2A3359;--sobre:#0F1923;
   --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
@@ -217,7 +217,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
 .ens-ley{padding:0 6px;border-radius:5px}.ens-ley.r{background:color-mix(in srgb,var(--acc) 22%,var(--panel));color:var(--ink)}.ens-ley.m{border:2px solid var(--warn)}
 @media (max-width:600px){.wrap{padding:12px 12px 24px}.card,.leccion{padding:13px}.marca b{font-size:1.25rem}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-/* == fin paes27-css v3 == */
+/* == fin paes27-css v4 == */
 </style>
 </head>
 <body style="--pag:var(--cie-g);--pag-solo:var(--cie)">
