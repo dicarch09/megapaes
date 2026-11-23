@@ -7,7 +7,8 @@
 <title>PAES 2027 · Física</title>
 <style>
 /* == paes27-css v3 == */
-/* Sistema de diseño PAES·27 · dicarch (prototipo C). Claro: «azulejos vivos». Oscuro: «Riso noche» (Numeria).
+/* Sistema de diseño PAES·27 · dicarch (prototipo C, «azulejos vivos»): degradados y sombras suaves.
+   El tema oscuro usa el mismo estilo (degradados, sombras difusas) sobre fondo azul noche.
    Las pizarras, sus leyendas y las fórmulas son SIEMPRE oscuras (azul noche), en ambos temas.
    Se copia IDÉNTICO en cada página con tools/sync_core.py: edita tools/core.css. */
 @font-face{font-family:"Nunito Sans";src:url(lib/fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
@@ -25,23 +26,27 @@
   color-scheme:light
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
-  --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
-  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
-  --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
-  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
-  --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
-  --sobre:#0F1923;--btn:#5B8CFF;--btn-ink:#0F1923;
-  --borde:2px solid rgba(219,222,225,.12);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--sombra-btn:0 4px 0 0 #0C0C0E;
-  --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}}
+  --bg:#12142A;--panel:#1C1F3A;--panel2:#262A4A;--line:#323760;--ink:#E9EBF7;--muted:#A4AAC6;
+  --acc:#7C9DFF;--acc2:#3FD3E6;--ok:#2EE09A;--mal:#FF5C8A;--warn:#FFB547;--okf:#18D98B;--malf:#F2295F;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;
+  --m2:#22B8E0;--cie:#18D98B;--m1:#FFA53A;--len:#F2295F;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(255,255,255,.06);--sombra:0 12px 32px -14px rgba(0,0,0,.7);--sombra-sm:0 4px 14px -8px rgba(0,0,0,.65);--sombra-btn:0 6px 18px -8px rgba(229,21,122,.65);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.18),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.14),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.12),transparent 70%);
+  color-scheme:dark}}
 :root[data-theme=dark]{
-  --bg:#1E1F22;--panel:#2B2D31;--panel2:#35373C;--line:#3C3F45;--ink:#DBDEE1;--muted:#9AA0A8;
-  --acc:#7C9DFF;--acc2:#4FD1E8;--ok:#79E22B;--mal:#FF5C66;--warn:#FFCB33;--okf:#79E22B;--malf:#FF5C66;
-  --cv:#17181B;--cv-panel:#2B2D31;--cv-panel2:#3E4148;
-  --m2:#5B8CFF;--cie:#79E22B;--m1:#FF9E4D;--len:#FF5C66;
-  --m2-g:#5B8CFF;--cie-g:#79E22B;--m1-g:#FF9E4D;--len-g:#FF5C66;
-  --sobre:#0F1923;--btn:#5B8CFF;--btn-ink:#0F1923;
-  --borde:2px solid rgba(219,222,225,.12);--sombra:0 4px 0 0 #0C0C0E;--sombra-sm:0 2px 0 0 #0C0C0E;--sombra-btn:0 4px 0 0 #0C0C0E;
-  --r:16px;--r-sm:12px;--fondo:none;color-scheme:dark}
+  --bg:#12142A;--panel:#1C1F3A;--panel2:#262A4A;--line:#323760;--ink:#E9EBF7;--muted:#A4AAC6;
+  --acc:#7C9DFF;--acc2:#3FD3E6;--ok:#2EE09A;--mal:#FF5C8A;--warn:#FFB547;--okf:#18D98B;--malf:#F2295F;
+  --cv:#121830;--cv-panel:#1E2645;--cv-panel2:#333C60;
+  --m2:#22B8E0;--cie:#18D98B;--m1:#FFA53A;--len:#F2295F;
+  --m2-g:linear-gradient(135deg,#10B6C8,#0E8BD8);--cie-g:linear-gradient(135deg,#18D98B,#0BAE6A);--m1-g:linear-gradient(135deg,#FF8A1F,#FFC53A);--len-g:linear-gradient(135deg,#E5157A,#F2295F);
+  --sobre:#FFFFFF;--btn:linear-gradient(135deg,#E5157A,#FF8A1F);--btn-ink:#FFFFFF;
+  --borde:1px solid rgba(255,255,255,.06);--sombra:0 12px 32px -14px rgba(0,0,0,.7);--sombra-sm:0 4px 14px -8px rgba(0,0,0,.65);--sombra-btn:0 6px 18px -8px rgba(229,21,122,.65);
+  --r:20px;--r-sm:14px;
+  --fondo:radial-gradient(40% 30% at 8% 0%,rgba(16,182,200,.18),transparent 70%),radial-gradient(35% 30% at 95% 5%,rgba(229,21,122,.14),transparent 70%),radial-gradient(40% 35% at 85% 100%,rgba(255,138,31,.12),transparent 70%);
+  color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
