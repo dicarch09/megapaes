@@ -279,10 +279,10 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   <section class="leccion" id="m1.num.potencias-raices" data-tab="num">
     <div class="lec-head"><h2>Potencias y raíces</h2><span class="chip B">B</span><span class="dom" data-tema="m1.num.potencias-raices"></span></div>
     <div class="lec-body">
-    <p class="idea">Las propiedades se aplican solo con <b>igual base</b> (potencias) o con <b>multiplicación y división</b> (raíces). Con sumas no funcionan.</p>
+    <p class="idea">Las propiedades de potencias piden <b>igual base</b> (o igual exponente: aⁿ · bⁿ = (a · b)ⁿ). Las de raíces piden <b>multiplicación o división</b>. Con sumas no funcionan.</p>
     <div class="tarjetas">
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Potencias</h4><p>aᵐ · aⁿ = aᵐ⁺ⁿ · aᵐ / aⁿ = aᵐ⁻ⁿ · (aᵐ)ⁿ = aᵐⁿ · a⁰ = 1 · a⁻ⁿ = 1/aⁿ.</p></div>
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Raíces</h4><p>ⁿ√a = a<sup>1/n</sup> · a<sup>m/n</sup> = (ⁿ√a)ᵐ · √(a · b) = √a · √b · √50 = √(25 · 2) = 5√2.</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Potencias</h4><p>aᵐ · aⁿ = aᵐ⁺ⁿ<br>aᵐ / aⁿ = aᵐ⁻ⁿ<br>(aᵐ)ⁿ = aᵐⁿ<br>a⁰ = 1 (a ≠ 0)<br>a⁻ⁿ = 1/aⁿ</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Raíces</h4><p>ⁿ√a = a<sup>1/n</sup><br>a<sup>m/n</sup> = (ⁿ√a)ᵐ<br>√(a · b) = √a · √b<br>Ejemplo: √50 = √(25 · 2) = 5√2</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Exponente negativo</h4><p><span class="no">2⁻³ = −8</span><span class="si">2⁻³ = 1/2³ = 1/8</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Raíz de una suma</h4><p><span class="no">√9 + √16 = √25 = 5</span><span class="si">√9 + √16 = 3 + 4 = 7</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Paréntesis y signo</h4><p><span class="no">(−2)⁴ = −16</span><span class="si">(−2)⁴ = 16, pero −2⁴ = −16</span></p></div>
@@ -300,7 +300,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <div class="lec-body">
     <p class="idea">Tres productos notables resuelven la mayoría de las preguntas. Y una regla de oro: <b>no se simplifica lo que está sumando</b>.</p>
     <div class="tarjetas">
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Productos notables</h4><p>(a ± b)² = a² ± 2ab + b² · (a + b)(a − b) = a² − b² · (x + a)(x + b) = x² + (a + b)x + ab.</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Productos notables</h4><p>(a ± b)² = a² ± 2ab + b²<br>(a + b)(a − b) = a² − b²<br>(x + a)(x + b) = x² + (a + b)x + ab</p></div>
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Factorizar</h4><p>Factor común: 6x² + 9x = 3x(2x + 3). Trinomio x² + bx + c: dos números que sumen b y multipliquen c.</p></div>
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Truco útil</h4><p>a² + b² = (a + b)² − 2ab. Sirve cuando te dan la suma y el producto.</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>El cuadrado de una suma</h4><p><span class="no">(x + 3)² = x² + 9</span><span class="si">(x + 3)² = x² + 6x + 9</span></p></div>
@@ -331,7 +331,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <p class="idea">En la recta mira la <b>pendiente</b> y el <b>corte con Y</b>. En la parábola, el <b>vértice</b>, los <b>ceros</b> y hacia dónde abre.</p>
     <div class="tarjetas">
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Afín y lineal</h4><p>y = mx + n. m = Δy/Δx (pendiente); n = corte con el eje Y. Lineal: n = 0 (pasa por el origen).</p></div>
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Cuadrática</h4><p>y = ax² + bx + c. a &gt; 0 abre hacia arriba. Vértice: x = −b/(2a). Corte con Y: (0, c). Ceros: ax² + bx + c = 0. Discriminante b² − 4ac: &gt; 0 dos ceros, = 0 uno, &lt; 0 ninguno.</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Cuadrática</h4><p>y = ax² + bx + c. a &gt; 0 abre hacia arriba. Vértice: x = −b/(2a). Corte con Y: (0, c). Ceros: ax² + bx + c = 0. Discriminante b² − 4ac: &gt; 0 dos ceros reales (corta el eje X dos veces); = 0 uno (toca el eje X en el vértice); &lt; 0 ninguno (no corta el eje X).</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Pendiente al revés</h4><p><span class="no">m = Δx / Δy</span><span class="si">m = Δy / Δx</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Signo del vértice</h4><p><span class="no">y = x² − 6x + 5: vértice en x = −3</span><span class="si">x = −b/(2a) = −(−6)/2 = 3</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Reemplazar un negativo</h4><p><span class="no">f(x) = x², f(−4) = −4² = −16</span><span class="si">f(−4) = (−4)² = 16: usa paréntesis</span></p></div>
@@ -361,9 +361,9 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <div class="lec-body">
     <p class="idea">Anota la fórmula antes de reemplazar y revisa dos cosas: <b>radio o diámetro</b> y <b>unidades</b>.</p>
     <div class="tarjetas">
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Áreas</h4><p>Triángulo: b·h/2 · Paralelogramo: b·h · Trapecio: (B + b)·h/2 · Círculo: πr² · Perímetro del círculo: 2πr.</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Áreas</h4><p>Triángulo: b · h / 2<br>Paralelogramo: b · h<br>Trapecio: (B + b) · h / 2<br>Círculo: πr²; su perímetro: 2πr</p></div>
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Cuerpos</h4><p>Cubo: área 6a², volumen a³. Paralelepípedo: área 2(ab + bc + ac), volumen abc. Cilindro: área 2πr² + 2πrh, volumen πr²h.</p></div>
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Unidades</h4><p>1 m³ = 1.000 L · 1 L = 1.000 cm³ · 1 m² = 10.000 cm².</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Unidades</h4><p>1 m³ = 1.000 L<br>1 L = 1.000 cm³<br>1 m² = 10.000 cm²</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Radio o diámetro</h4><p><span class="no">Diámetro 10 → A = π · 10²</span><span class="si">r = 10/2 = 5 → A = 25π</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>El trapecio</h4><p><span class="no">A = (B + b) · h</span><span class="si">A = (B + b) · h / 2</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Pasar m² a cm²</h4><p><span class="no">1 m² = 100 cm²</span><span class="si">1 m² = 100 · 100 = 10.000 cm²</span></p></div>
@@ -391,7 +391,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <div class="lec-body">
     <p class="idea">Las isometrías mueven figuras <b>sin cambiar su forma ni su tamaño</b>. Basta con saber qué le pasa a un punto (x, y).</p>
     <div class="tarjetas">
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Reglas</h4><p>Traslación por (a, b): (x + a, y + b). Reflexión en el eje X: (x, −y). En el eje Y: (−x, y). Rotación 90° antihoraria: (−y, x). Rotación 180°: (−x, −y).</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Reglas</h4><p>Traslación por (a, b): (x + a, y + b). Reflexión en el eje X: (x, −y). En el eje Y: (−x, y). Rotación 90° antihoraria con centro en el origen: (−y, x). Rotación 180° con centro en el origen: (−x, −y).</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Eje X o eje Y</h4><p><span class="no">Reflejar (3, 5) en el eje Y → (3, −5)</span><span class="si">(−3, 5): reflejar en el eje Y cambia la x</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Sentido de giro</h4><p><span class="no">90° antihorario: (x, y) → (y, −x)</span><span class="si">(x, y) → (−y, x); (y, −x) es el horario</span></p></div>
     </div>
@@ -408,7 +408,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     <p class="idea">Primero <b>ordena</b> los datos. Después ubica la mediana y los cuartiles: dividen los datos en cuatro partes iguales.</p>
     <div class="tarjetas">
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Tablas y promedio</h4><p>Frecuencia relativa = absoluta / total (× 100 para %). Promedio = suma de los datos / cantidad de datos.</p></div>
-      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Cuartiles y cajón</h4><p>Q₂ = mediana. Q₁ deja el 25 % de los datos abajo; Q₃, el 75 %. El percentil k deja el k % abajo. Diagrama de cajón: mínimo, Q₁, mediana, Q₃ y máximo; la caja tiene el 50 % central.</p></div>
+      <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Cuartiles y cajón</h4><p>Q₂ = mediana. Q₁ deja el 25 % de los datos abajo; Q₃, el 75 %. El percentil k deja el k % abajo. Cómo hallar Q₁: ordena, toma la mitad de abajo (sin la mediana si n es impar) y busca su mediana; Q₃ igual con la mitad de arriba. Diagrama de cajón: mínimo, Q₁, mediana, Q₃ y máximo; la caja tiene el 50 % central.</p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Mediana sin ordenar</h4><p><span class="no">Mediana de 9, 2, 7: el dato del medio es 2</span><span class="si">Ordena: 2, 7, 9 → la mediana es 7</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>Leer el cajón</h4><p><span class="no">La línea de la caja es el promedio</span><span class="si">Es la mediana</span></p></div>
       <div class="tarjeta trampa"><span class="onda">trampa</span><h4>La nota que falta</h4><p><span class="no">Promedio 5,5 en 4 notas; para 5,8: (5,5 + x)/2 = 5,8</span><span class="si">(4 · 5,5 + x)/5 = 5,8 → x = 7,0</span></p></div>
@@ -419,7 +419,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   <section class="leccion" id="m1.pro.probabilidad" data-tab="pro">
     <div class="lec-head"><h2>Probabilidad (Laplace y reglas)</h2><span class="chip B">B</span><span class="dom" data-tema="m1.pro.probabilidad"></span></div>
     <div class="lec-body">
-    <p class="idea">Antes de contar, escribe <b>todos los casos posibles</b> y revisa si son igual de probables. «O» suma; «y» multiplica.</p>
+    <p class="idea">Antes de contar, escribe <b>todos los casos posibles</b> y revisa si son igual de probables. «O» suma (restando lo que se repite); «y» multiplica.</p>
     <div class="tarjetas">
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Laplace</h4><p>P = casos favorables / casos posibles (si todos son igual de probables). 0 ≤ P ≤ 1. P(no A) = 1 − P(A).</p></div>
       <div class="tarjeta repaso"><span class="onda">repaso rápido</span><h4>Reglas</h4><p>«O»: P(A ∪ B) = P(A) + P(B) − P(A ∩ B). «Y» (independientes): P(A) · P(B). Sin reposición la segunda cambia: 5/10 · 4/9.</p></div>
@@ -488,7 +488,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "0,6",
-    "trampa": "Comparaste solo la primera cifra decimal; 0,6 es el menor de los cuatro."
+    "trampa": "Creíste que 0,6 es mayor por tener menos cifras. Con tres decimales: 0,600 &lt; 0,625 &lt; 0,660 &lt; 0,667."
    }
   ],
   "correcta": 2,
@@ -768,7 +768,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "a⁴",
-    "trampa": "Restaste 3 − 5 + 2… revisa: arriba se suman (3 + 5 = 8) y luego se resta el de abajo (8 − 2)."
+    "trampa": "Dividiste los exponentes (8 / 2 = 4). Al dividir potencias de igual base se restan: 8 − 2 = 6."
    }
   ],
   "correcta": 0,
@@ -936,7 +936,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "4x² − 4x − 1",
-    "trampa": "Los términos del medio se anulan: −2x + 2x = 0."
+    "trampa": "Lo mezclaste con (2x − 1)², que sí tiene −4x. En suma por diferencia los términos del medio se anulan: −2x + 2x = 0."
    }
   ],
   "correcta": 0,
@@ -1064,7 +1064,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   "opciones": [
    {
     "texto": "24",
-    "trampa": "Usaste x = 6 e y = 4: tomaste números del enunciado sin resolver el sistema."
+    "trampa": "Hiciste x = 10 − 4 = 6 e y = 4 sin resolver el sistema; con esos valores x − y = 2, no 4."
    },
    {
     "texto": "40",
@@ -1103,8 +1103,8 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     "trampa": "Repartiste el grupo en partes iguales sin plantear el sistema."
    },
    {
-    "texto": "7",
-    "trampa": "Supusiste que todos eran adultos (34.000 / 5.000 ≈ 7)."
+    "texto": "6",
+    "trampa": "Llegaste a 2n = 6 y olvidaste dividir por 2."
    }
   ],
   "correcta": 1,
@@ -1236,7 +1236,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "(−3, −4)",
-    "trampa": "x del vértice = −b/(2a) = −(−6)/2 = 3: olvidaste el signo menos."
+    "trampa": "Escribiste y = (x − 3)² − 4 y tomaste el signo de dentro del paréntesis. El vértice es (3, −4)."
    },
    {
     "texto": "(3, 5)",
@@ -1368,27 +1368,27 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   "eje": "Álgebra y funciones",
   "tema": "m1.alg.proporcionalidad",
   "nivel": "dificil",
-  "enunciado": "Si 3 grifos iguales llenan un estanque en 8 horas, ¿en cuántas horas lo llenan 4 grifos iguales?",
+  "enunciado": "3 grifos iguales llenan un estanque en 8 horas. Después de 2 horas se abre un cuarto grifo igual. ¿Cuántas horas tarda en total en llenarse el estanque?",
   "opciones": [
    {
-    "texto": "10,7",
-    "trampa": "Usaste proporción directa (8 · 4/3); con más grifos se demora menos."
+    "texto": "6",
+    "trampa": "Supusiste los 4 grifos abiertos desde el comienzo; las primeras 2 horas trabajaron solo 3."
    },
    {
-    "texto": "6",
+    "texto": "6,5",
     "trampa": ""
    },
    {
-    "texto": "7",
-    "trampa": "Restaste una hora por el grifo extra; la relación es inversa."
+    "texto": "4,5",
+    "trampa": "Ese es solo el tramo final con 4 grifos; súmale las 2 horas iniciales."
    },
    {
-    "texto": "32",
-    "trampa": "Multiplicaste 8 · 4 sin dividir por 3."
+    "texto": "10,7",
+    "trampa": "Usaste proporción directa (8 · 4/3); con más grifos se demora menos."
    }
   ],
   "correcta": 1,
-  "explicacion": "Es inversa: 3 · 8 = 4 · t → t = 6 horas."
+  "explicacion": "El estanque necesita 3 · 8 = 24 «horas-grifo». En 2 horas, 3 grifos hacen 6; faltan 18, que 4 grifos hacen en 18/4 = 4,5 h. Total: 2 + 4,5 = 6,5 h."
  },
  {
   "id": "m1-pro-d2",
@@ -1408,7 +1408,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "Inversa, con x · y = 10",
-    "trampa": "Multiplicaste mal: 2 · 10 = 20."
+    "trampa": "Tomaste el primer valor de y (10) como la constante. La constante es el producto: 2 · 10 = 20."
    },
    {
     "texto": "No hay proporcionalidad",
@@ -1544,7 +1544,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
    },
    {
     "texto": "18.840 L",
-    "trampa": "Usaste el diámetro como radio: r = 1 m."
+    "trampa": "Usaste el diámetro (2 m) como radio. El radio es 1 m."
    },
    {
     "texto": "4,71 L",
@@ -1635,8 +1635,8 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     "trampa": "Dividiste de más: 400.000 cm son 4 km."
    },
    {
-    "texto": "6,25 km",
-    "trampa": "Dividiste 50.000 por 8; hay que multiplicar."
+    "texto": "400 km",
+    "trampa": "Dividiste 400.000 por 1.000 como si fueran metros. Son centímetros: 400.000 cm = 4.000 m = 4 km."
    }
   ],
   "correcta": 0,
@@ -1872,27 +1872,27 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
   "eje": "Probabilidad y estadística",
   "tema": "m1.pro.datos",
   "nivel": "paes",
-  "enunciado": "En una encuesta, 12 de 40 estudiantes eligieron fútbol. ¿Cuál es la frecuencia relativa porcentual de fútbol?",
+  "enunciado": "En una encuesta, 9 de 36 estudiantes eligieron fútbol. ¿Cuál es la frecuencia relativa porcentual de fútbol?",
   "opciones": [
    {
-    "texto": "12 %",
-    "trampa": "Esa es la frecuencia absoluta (12 estudiantes), no el porcentaje."
+    "texto": "9 %",
+    "trampa": "Esa es la frecuencia absoluta (9 estudiantes), no el porcentaje."
    },
    {
-    "texto": "30 %",
+    "texto": "25 %",
     "trampa": ""
    },
    {
-    "texto": "3,3 %",
-    "trampa": "Dividiste 40 por 12; es 12 / 40."
+    "texto": "4 %",
+    "trampa": "Dividiste 36 por 9; es 9 / 36."
    },
    {
-    "texto": "28 %",
-    "trampa": "Restaste 40 − 12."
+    "texto": "27 %",
+    "trampa": "Restaste 36 − 9."
    }
   ],
   "correcta": 1,
-  "explicacion": "12 / 40 = 0,3 = 30 %."
+  "explicacion": "9 / 36 = 0,25 = 25 %."
  },
  {
   "id": "m1-dat-p2",
@@ -1935,8 +1935,8 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
     "trampa": "El cajón muestra la mediana, no el promedio."
    },
    {
-    "texto": "La mitad de las notas está entre 2,0 y 6,0",
-    "trampa": "Entre el mínimo y Q₃ está cerca del 75 %; la mitad central está entre Q₁ y Q₃."
+    "texto": "El 50 % central de las notas está entre 2,0 y 6,0",
+    "trampa": "El 50 % central está en la caja, entre Q₁ = 4,0 y Q₃ = 6,0. Entre 2,0 y 6,0 hay cerca del 75 %."
    },
    {
     "texto": "Al menos la mitad del curso tiene nota 5,0 o más",

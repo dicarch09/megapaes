@@ -49,7 +49,7 @@
    },
    {
     "texto": "0,6",
-    "trampa": "Comparaste solo la primera cifra decimal; 0,6 es el menor de los cuatro."
+    "trampa": "Creíste que 0,6 es mayor por tener menos cifras. Con tres decimales: 0,600 &lt; 0,625 &lt; 0,660 &lt; 0,667."
    }
   ],
   "correcta": 2,
@@ -329,7 +329,7 @@
    },
    {
     "texto": "a⁴",
-    "trampa": "Restaste 3 − 5 + 2… revisa: arriba se suman (3 + 5 = 8) y luego se resta el de abajo (8 − 2)."
+    "trampa": "Dividiste los exponentes (8 / 2 = 4). Al dividir potencias de igual base se restan: 8 − 2 = 6."
    }
   ],
   "correcta": 0,
@@ -497,7 +497,7 @@
    },
    {
     "texto": "4x² − 4x − 1",
-    "trampa": "Los términos del medio se anulan: −2x + 2x = 0."
+    "trampa": "Lo mezclaste con (2x − 1)², que sí tiene −4x. En suma por diferencia los términos del medio se anulan: −2x + 2x = 0."
    }
   ],
   "correcta": 0,
@@ -625,7 +625,7 @@
   "opciones": [
    {
     "texto": "24",
-    "trampa": "Usaste x = 6 e y = 4: tomaste números del enunciado sin resolver el sistema."
+    "trampa": "Hiciste x = 10 − 4 = 6 e y = 4 sin resolver el sistema; con esos valores x − y = 2, no 4."
    },
    {
     "texto": "40",
@@ -664,8 +664,8 @@
     "trampa": "Repartiste el grupo en partes iguales sin plantear el sistema."
    },
    {
-    "texto": "7",
-    "trampa": "Supusiste que todos eran adultos (34.000 / 5.000 ≈ 7)."
+    "texto": "6",
+    "trampa": "Llegaste a 2n = 6 y olvidaste dividir por 2."
    }
   ],
   "correcta": 1,
@@ -797,7 +797,7 @@
    },
    {
     "texto": "(−3, −4)",
-    "trampa": "x del vértice = −b/(2a) = −(−6)/2 = 3: olvidaste el signo menos."
+    "trampa": "Escribiste y = (x − 3)² − 4 y tomaste el signo de dentro del paréntesis. El vértice es (3, −4)."
    },
    {
     "texto": "(3, 5)",
@@ -929,27 +929,27 @@
   "eje": "Álgebra y funciones",
   "tema": "m1.alg.proporcionalidad",
   "nivel": "dificil",
-  "enunciado": "Si 3 grifos iguales llenan un estanque en 8 horas, ¿en cuántas horas lo llenan 4 grifos iguales?",
+  "enunciado": "3 grifos iguales llenan un estanque en 8 horas. Después de 2 horas se abre un cuarto grifo igual. ¿Cuántas horas tarda en total en llenarse el estanque?",
   "opciones": [
    {
-    "texto": "10,7",
-    "trampa": "Usaste proporción directa (8 · 4/3); con más grifos se demora menos."
+    "texto": "6",
+    "trampa": "Supusiste los 4 grifos abiertos desde el comienzo; las primeras 2 horas trabajaron solo 3."
    },
    {
-    "texto": "6",
+    "texto": "6,5",
     "trampa": ""
    },
    {
-    "texto": "7",
-    "trampa": "Restaste una hora por el grifo extra; la relación es inversa."
+    "texto": "4,5",
+    "trampa": "Ese es solo el tramo final con 4 grifos; súmale las 2 horas iniciales."
    },
    {
-    "texto": "32",
-    "trampa": "Multiplicaste 8 · 4 sin dividir por 3."
+    "texto": "10,7",
+    "trampa": "Usaste proporción directa (8 · 4/3); con más grifos se demora menos."
    }
   ],
   "correcta": 1,
-  "explicacion": "Es inversa: 3 · 8 = 4 · t → t = 6 horas."
+  "explicacion": "El estanque necesita 3 · 8 = 24 «horas-grifo». En 2 horas, 3 grifos hacen 6; faltan 18, que 4 grifos hacen en 18/4 = 4,5 h. Total: 2 + 4,5 = 6,5 h."
  },
  {
   "id": "m1-pro-d2",
@@ -969,7 +969,7 @@
    },
    {
     "texto": "Inversa, con x · y = 10",
-    "trampa": "Multiplicaste mal: 2 · 10 = 20."
+    "trampa": "Tomaste el primer valor de y (10) como la constante. La constante es el producto: 2 · 10 = 20."
    },
    {
     "texto": "No hay proporcionalidad",
@@ -1105,7 +1105,7 @@
    },
    {
     "texto": "18.840 L",
-    "trampa": "Usaste el diámetro como radio: r = 1 m."
+    "trampa": "Usaste el diámetro (2 m) como radio. El radio es 1 m."
    },
    {
     "texto": "4,71 L",
@@ -1196,8 +1196,8 @@
     "trampa": "Dividiste de más: 400.000 cm son 4 km."
    },
    {
-    "texto": "6,25 km",
-    "trampa": "Dividiste 50.000 por 8; hay que multiplicar."
+    "texto": "400 km",
+    "trampa": "Dividiste 400.000 por 1.000 como si fueran metros. Son centímetros: 400.000 cm = 4.000 m = 4 km."
    }
   ],
   "correcta": 0,
@@ -1433,27 +1433,27 @@
   "eje": "Probabilidad y estadística",
   "tema": "m1.pro.datos",
   "nivel": "paes",
-  "enunciado": "En una encuesta, 12 de 40 estudiantes eligieron fútbol. ¿Cuál es la frecuencia relativa porcentual de fútbol?",
+  "enunciado": "En una encuesta, 9 de 36 estudiantes eligieron fútbol. ¿Cuál es la frecuencia relativa porcentual de fútbol?",
   "opciones": [
    {
-    "texto": "12 %",
-    "trampa": "Esa es la frecuencia absoluta (12 estudiantes), no el porcentaje."
+    "texto": "9 %",
+    "trampa": "Esa es la frecuencia absoluta (9 estudiantes), no el porcentaje."
    },
    {
-    "texto": "30 %",
+    "texto": "25 %",
     "trampa": ""
    },
    {
-    "texto": "3,3 %",
-    "trampa": "Dividiste 40 por 12; es 12 / 40."
+    "texto": "4 %",
+    "trampa": "Dividiste 36 por 9; es 9 / 36."
    },
    {
-    "texto": "28 %",
-    "trampa": "Restaste 40 − 12."
+    "texto": "27 %",
+    "trampa": "Restaste 36 − 9."
    }
   ],
   "correcta": 1,
-  "explicacion": "12 / 40 = 0,3 = 30 %."
+  "explicacion": "9 / 36 = 0,25 = 25 %."
  },
  {
   "id": "m1-dat-p2",
@@ -1496,8 +1496,8 @@
     "trampa": "El cajón muestra la mediana, no el promedio."
    },
    {
-    "texto": "La mitad de las notas está entre 2,0 y 6,0",
-    "trampa": "Entre el mínimo y Q₃ está cerca del 75 %; la mitad central está entre Q₁ y Q₃."
+    "texto": "El 50 % central de las notas está entre 2,0 y 6,0",
+    "trampa": "El 50 % central está en la caja, entre Q₁ = 4,0 y Q₃ = 6,0. Entre 2,0 y 6,0 hay cerca del 75 %."
    },
    {
     "texto": "Al menos la mitad del curso tiene nota 5,0 o más",

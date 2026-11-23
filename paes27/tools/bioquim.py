@@ -205,7 +205,7 @@ TEMAS = [
      'Los compuestos orgánicos son cadenas de carbono. Si solo hay C e H son <b>hidrocarburos</b>; si aparece otro grupo de átomos (–OH, –COOH…), ese <b>grupo funcional</b> define sus propiedades y su nombre.',
      [('§', 'Fórmula topológica', 'Cada vértice o extremo de la línea es un carbono; los H no se dibujan.'),
       ('hidrocarburos', 'Alcanos, alquenos, alquinos', '<b>Alcanos</b> (solo simples, -ano): CₙH₂ₙ₊₂. <b>Alquenos</b> (un doble, -eno): CₙH₂ₙ. <b>Alquinos</b> (un triple, -ino): CₙH₂ₙ₋₂. También cíclicos (anillos) y <b>aromáticos</b> (anillo de benceno).'),
-      ('prefijos', 'Cuántos carbonos', '1 met · 2 et · 3 prop · 4 but · 5 pent · 6 hex · 7 hept · 8 oct.'),
+      ('prefijos', 'Cuántos carbonos', '1 met, 2 et, 3 prop, 4 but, 5 pent, 6 hex, 7 hept, 8 oct.'),
       ('grupos con O', 'Los más preguntados', 'Alcohol R–OH (-ol). Fenol: –OH en un benceno. Éter R–O–R\'. Aldehído R–CHO (-al). Cetona R–CO–R\' (-ona). Ácido carboxílico R–COOH (ácido -oico). Éster R–COO–R\'. Anhídrido R–CO–O–CO–R\'.'),
       ('grupos con N, S y halógenos', 'El resto de la lista', 'Amina R–NH₂. Amida R–CONH₂. Nitrilo R–C≡N. Haluro R–X (cloro, bromo…). Sulfuro R–S–R\'.'),
       ('representaciones', 'Formas de escribir una molécula', '<b>Molecular</b> (C₂H₆O: cuenta átomos). <b>Empírica</b> (proporción mínima). <b>Desarrollada</b> (todos los enlaces). <b>Semidesarrollada</b> (CH₃–CH₂–OH). <b>Condensada</b> (CH₃CH₂OH o C₂H₅OH). <b>Topológica</b> (zigzag). Modelos de <b>esferas y varillas</b> y <b>compactos</b>.')]),

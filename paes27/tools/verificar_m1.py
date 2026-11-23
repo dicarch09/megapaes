@@ -96,7 +96,7 @@ chk("m1-fun-d2")(lambda q: idx_num(q, -5 * (20 / 10) ** 2 + 20 * (20 / 10)))
 chk("m1-pro-b1")(lambda q: idx_num(q, 6000 / 4 * 10))
 chk("m1-pro-p1")(lambda q: idx_num(q, 6 * 10 / 4))
 chk("m1-pro-p2")(lambda q: idx_num(q, 3 * 12 / 9))
-chk("m1-pro-d1")(lambda q: idx_num(q, 3 * 8 / 4))
+chk("m1-pro-d1")(lambda q: idx_num(q, 2 + (3 * 8 - 3 * 2) / 4))
 
 
 @chk("m1-pro-d2")
@@ -142,7 +142,7 @@ def _(q):
 
 # ===== Datos y medidas de posición
 chk("m1-dat-b1")(lambda q: idx_num(q, sum([5, 6, 6, 10, 13]) / 5))
-chk("m1-dat-p1")(lambda q: idx_num(q, 12 / 40 * 100))
+chk("m1-dat-p1")(lambda q: idx_num(q, 9 / 36 * 100))
 
 
 @chk("m1-dat-p2")
