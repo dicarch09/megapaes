@@ -284,6 +284,9 @@ CONCEPTUALES = {
     **{f"d-len-0{i}": "comprensión lectora" for i in range(1, 7)},
 }
 
+# Revisiones extra que no son por pregunta (p. ej. la evidencia de Lectora): funciones que devuelven errores.
+POST = []
+
 # Las lecciones (m2.html) registran sus cálculos en este archivo aparte, para no mezclar.
 for EXTRA in sorted((RAIZ / "tools").glob("verificar_*.py")):
     exec(compile(EXTRA.read_text(encoding="utf-8"), str(EXTRA), "exec"))  # noqa: S102 (archivo propio)
@@ -353,6 +356,10 @@ def main():
         for e in errs:
             print(f"FALLA {archivo} {qid}: {e}")
         fallas += bool(errs)
+    for fn in POST:
+        for e in fn():
+            print(f"FALLA {fn.__name__}: {e}")
+            fallas += 1
     sobrantes = (set(CHECKS) | set(CONCEPTUALES)) - vistos
     for s in sorted(sobrantes):
         print(f"AVISO cálculo registrado para una pregunta que no existe: {s}")

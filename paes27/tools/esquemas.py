@@ -128,7 +128,7 @@ ESQ.update({
   svg(tx(100, 26, 'M = bᵖ    N = b^q'), fl(100, 34, 100, 50, 'm', 2.5), tx(100, 66, 'M·N = b^(p+q)'), tx(100, 86, 'log(M·N) = p + q')),
   svg(tx(100, 30, 'M/N = b^(p−q)'), fl(100, 38, 100, 54, 'm', 2.5), tx(100, 72, 'log(M/N) = log M − log N')),
   svg(tx(100, 30, 'Mᵏ = b^(p·k)'), fl(100, 38, 100, 54, 'm', 2.5), tx(100, 72, 'log(Mᵏ) = k·log M'), tx(100, 90, '≠ (log M)ᵏ')),
-  svg(ln(30, 88, 120, 2, 'm', 1.5, '4 4'), curva(puntos(lambda x: 80 - 2 ** ((x - 40) / 14) * 10, 20, 105), 'a', 3), curva(puntos(lambda x: 80 - (14 * math.log2(max(x - 30, .5) / 10) + 40) + 30, 34, 180), 'b', 3), tx(60, 18, 'bˣ'), tx(170, 46, 'log_b x', 'end')),
+  svg(ln(30, 88, 120, 2, 'm', 1.5, '4 4'), curva(puntos(lambda x: 80 - 2 ** ((x - 40) / 14) * 10, 20, 80), 'a', 3), curva(puntos(lambda x: 80 - (14 * math.log2(max(x - 30, .5) / 10) + 40) + 30, 34, 180), 'b', 3), tx(60, 18, 'bˣ'), tx(170, 46, 'log<tspan baseline-shift="sub" font-size="75%">b</tspan> x', 'end')),
  ],
  ('m2.html', 'm2.pro.condicional'): [
   svg(caja(10, 10, 180, 72, 'm'), f'<rect class="b" x="20" y="18" width="80" height="56" rx="8" stroke-width="3" style="fill:var(--acc2);fill-opacity:.18"/>', tx(60, 50, 'B'), tx(150, 50, 'fuera de B'), ln(115, 30, 185, 70, 'r', 2), ln(185, 30, 115, 70, 'r', 2)),

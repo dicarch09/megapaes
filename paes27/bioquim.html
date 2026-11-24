@@ -230,7 +230,7 @@ table.t2 .hl{background:color-mix(in srgb,var(--warn) 22%,transparent)}table.t2 
       <a href="fisica.html" style="--c:var(--cie-g)">Física</a>
       <a href="bioquim.html" class="on" style="--c:var(--cie-g)">Bio/Quím</a>
       <a href="m1.html" style="--c:var(--m1-g)">M1</a>
-      <span title="Llega en la Fase 5">Lectora</span>
+      <a href="lenguaje.html" style="--c:var(--len-g)">Lectora</a>
     </nav>
     <button class="tema-btn" data-tema-btn></button>
   </header>
@@ -1824,9 +1824,9 @@ const P27 = (() => {
     ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
     ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
 
-    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
-    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
-    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', 'lenguaje.html#len.localizar'],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', 'lenguaje.html#len.interpretar'],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', 'lenguaje.html#len.evaluar'],
   ];
   const TEMAS = {};
   for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };

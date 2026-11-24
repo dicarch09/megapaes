@@ -265,6 +265,38 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .cuenta .dias{font:800 2rem/1 "Bricolage Grotesque",sans-serif;margin-top:16px}.cuenta .dias small{font-size:.9rem}
 .cuenta .f{font-size:.78rem;font-weight:700;opacity:.92}
 @media (max-width:720px){.cuenta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* fichas finales */
+.ficha{background:var(--panel);border:var(--borde);border-radius:var(--r);box-shadow:var(--sombra);margin:14px 0;overflow:hidden}
+.fi-cab{padding:16px 18px 12px;color:#fff;background:var(--m2-g)}
+.fi-cab.fi-CIE{background:var(--cie-g)}.fi-cab.fi-M1{background:var(--m1-g)}.fi-cab.fi-LEN{background:var(--len-g)}
+.fi-cab h2{margin:0;color:#fff}.fi-cab p{margin:4px 0 0;font-weight:700;opacity:.95}
+.fi-consejos{margin:12px 18px 0;padding:10px 14px 10px 32px;background:var(--panel2);border-radius:var(--r-sm);font-weight:600;font-size:.93rem}
+.fi-cols{columns:2 360px;column-gap:18px;padding:6px 18px 16px}
+.fi-eje{display:contents}
+.fi-eje>h3{break-after:avoid;margin:14px 0 6px;font-size:1.02rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.fi{break-inside:avoid;background:var(--panel2);border-radius:var(--r-sm);padding:10px 12px;margin:0 0 10px;font-size:.92rem}
+.fi h4{margin:0 0 4px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font:800 1rem/1.25 "Bricolage Grotesque",sans-serif}
+.fi ul{margin:0;padding-left:1.1em}.fi li{margin:2px 0}
+.fi .esq{max-height:96px;margin:2px 0 6px}
+.fi-tr .no,.fi-tr .si{font-size:.88rem;padding:3px 8px;margin-top:4px}
+.fi-tr .no{text-decoration:none}.fi li.t{list-style:none;margin-left:-1.1em}
+.fi-dom{margin-left:auto;font-size:.76rem;font-weight:900;padding:.1em .5em;border-radius:99px;background:var(--panel)}
+.fi-dom:empty{display:none}
+.fi.fi-flojo{box-shadow:inset 4px 0 0 var(--warn)}
+.fi-ojo{display:inline-block;font-size:.72rem;font-weight:900;padding:.1em .5em;border-radius:99px;background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.fi-tab{border-collapse:collapse;margin:4px 0;font-size:.86rem;background:var(--panel)}
+.fi-tab td,.fi-tab th{border:1px solid var(--line);padding:2px 7px;text-align:left}
+#fichas-sel .btn.on{background:var(--btn);color:var(--btn-ink)}
+@media print{
+  :root,:root[data-theme=dark]{--bg:#fff;--panel:#fff;--panel2:#f4f5f9;--line:#ccd;--ink:#111;--muted:#444;--fondo:none}
+  html,body{background:#fff!important;font-size:10.5pt}
+  .top,.hero,#avisoOrigen,.cuenta,.tabs,.pane:not(#p-fichas),.como-abrir,.firma,.no-print,.ficha[hidden]{display:none!important}
+  .wrap{padding:0;max-width:none}.ficha{box-shadow:none;border:0;margin:0}
+  .fi-cab{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .fi-cols{columns:3;column-gap:10px;padding:4px 0}.fi{padding:5px 7px;margin-bottom:5px;font-size:8.3pt;line-height:1.35}
+  .fi .esq{display:none}.fi-consejos{font-size:8.5pt;margin:6px 0 0}.fi-cab{padding:8px 12px}.fi-eje>h3{font-size:9pt;margin:6px 0 4px}
+  .fi-tr .no,.fi-tr .si{font-size:8pt;padding:2px 6px;margin-top:2px}.fi h4{font-size:9.5pt}
+}
 </style>
 </head>
 <body>
@@ -277,7 +309,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
       <a href="fisica.html" style="--c:var(--cie-g)">Física</a>
       <a href="bioquim.html" style="--c:var(--cie-g)">Bio/Quím</a>
       <a href="m1.html" style="--c:var(--m1-g)">M1</a>
-      <span title="Llega en la Fase 5">Lectora</span>
+      <a href="lenguaje.html" style="--c:var(--len-g)">Lectora</a>
     </nav>
     <button class="tema-btn" data-tema-btn></button>
   </header>
@@ -302,7 +334,15 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
   <section class="pane" id="p-dominio"></section>
   <section class="pane" id="p-repaso"></section>
   <section class="pane" id="p-ensayos"></section>
-  <section class="pane" id="p-fichas"></section>
+  <section class="pane" id="p-fichas">
+  <!-- @@fichas@@ -->
+<div class="card fichas-top no-print"><h2>Fichas finales</h2><p>Una página por prueba con fórmulas y trampas, para leer la mañana del examen. <b>Nada nuevo:</b> solo repasar lo que ya practicaste.</p><div class="fila" id="fichas-sel"><button class="btn sec" data-ficha="M2">M2 · lun 30</button><button class="btn sec" data-ficha="LEN">Lectora · mar 1, 09:00</button><button class="btn sec" data-ficha="CIE">Física · mar 1, 15:00</button><button class="btn sec" data-ficha="M1">M1 · mié 2</button><button class="btn mini" type="button" id="ficha-imprimir">Imprimir esta ficha</button></div><p class="small muted">Los temas con <span class="fi-ojo">repásalo</span> tienen tu dominio bajo 50 %: léelos primero. Al lado de cada tema ves tu dominio actual.</p></div>
+<article class="ficha" data-ficha="M2" hidden><header class="fi-cab fi-M2"><h2>Ficha final · Matemática 2</h2><p>Lunes 30 de noviembre, 15:00 · 55 preguntas (50 cuentan) en 2 h 20 min · unos 2½ min por pregunta</p></header><ul class="fi-consejos"><li>M2 también evalúa todo M1: si una pregunta parece de M1, no es una trampa, es parte de la prueba.</li><li>Las de suficiencia de datos vienen al final: guarda tiempo para ellas y no calcules de más.</li><li>No hay descuento por error: no dejes ninguna en blanco.</li></ul><div class="fi-cols"><section class="fi-eje"><h3>Álgebra y funciones</h3><div class="fi" data-tema="m2.alg.sistemas-rectas"><h4>Rectas y sistemas 2×2 <span class="chip A">A</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="a" d="M10 70L70 20" stroke-width="3" stroke-linecap="round"/><path class="b" d="M30 80L90 30" stroke-width="3" stroke-linecap="round"/><text x="50" y="92" text-anchor="middle">paralelas: 0</text><path class="a" d="M115 75L185 20" stroke-width="6" stroke-linecap="round"/><path class="b" d="M115 75L185 20" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 5"/><text x="150" y="92" text-anchor="middle">coinciden: ∞</text></svg><ul><li>Pendiente m = (y₂ − y₁)/(x₂ − x₁). Recta: y = mx + n (n = corte con el eje Y).</li><li>En ax + by = c (b ≠ 0): m = −a/b. Sin despejar: a₁/a₂ = b₁/b₂ ≠ c₁/c₂ → paralelas (0 soluciones); a₁/a₂ = b₁/b₂ = c₁/c₂ → misma recta (infinitas).</li><li>Se cortan (m₁ ≠ m₂): <b>1 solución</b>. Paralelas (m igual, n distinto): <b>0</b>. Misma recta: <b>infinitas</b>.</li><li>Perpendiculares: m₁ · m₂ = −1.</li></ul><div class="fi-tr"><span class="no">En 2x + 3y = 6 la pendiente es 2.</span><span class="si">Despejo: y = −(2/3)x + 2, así que m = −2/3.</span></div></div><div class="fi" data-tema="m2.alg.trig-funciones"><h4>Gráficos de seno y coseno <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>f(x) = A·sen(Bx) + C: amplitud |A|, período 2π/|B| (en grados, 360°/|B|), máximo C + |A|, mínimo C − |A|.</li><li>sen y cos van de −1 a 1 y se repiten cada 360° = 2π. sen(0) = 0; cos(0) = 1.</li></ul><div class="fi-tr"><span class="no">El período de sen(2x) es 2.</span><span class="si">Período = 2π/B = 2π/2 = π.</span></div></div><div class="fi" data-tema="m2.alg.potencia"><h4>Función potencia a·xⁿ <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>n par: simétrica respecto del eje Y (función par). n impar: simétrica respecto del origen.</li><li>Con a = 1 y n ≥ 1, todas pasan por (0, 0) y (1, 1). Con n negativo (xⁿ = 1/x<sup>|n|</sup>) no existe en x = 0, pero igual pasa por (1, 1). a &lt; 0 la refleja en el eje X.</li><li>Entre 0 y 1, más exponente da un número más chico: 0,5³ = 0,125 &lt; 0,5² = 0,25.</li></ul><div class="fi-tr"><span class="no">Para x entre 0 y 1, x³ &gt; x².</span><span class="si">Es al revés: x³ &lt; x² (y para x &gt; 1, x³ &gt; x²).</span></div></div><div class="fi" data-tema="m2.m1-dificil"><h4>Cuadrática, semejanza y cilindro <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>Vértice: x = −b/(2a). Δ = b² − 4ac: Δ &gt; 0 dos soluciones; Δ = 0 una; Δ &lt; 0 ninguna real.</li><li>a &gt; 0 abre hacia arriba (mínimo); a &lt; 0 hacia abajo (máximo).</li><li>Razón de semejanza k: longitudes ×k, áreas ×k², volúmenes ×k³.</li><li>Cilindro: V = πr²h; área total = 2πr² + 2πrh.</li></ul><div class="fi-tr"><span class="no">Si el radio del cilindro se duplica, el volumen se duplica.</span><span class="si">Se multiplica por 4, porque el radio está al cuadrado (πr²h).</span></div></div></section><section class="fi-eje"><h3>Números</h3><div class="fi" data-tema="m2.num.log-exp"><h4>Logaritmos, exponencial y logarítmica <span class="chip A">A</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M30 88L120 2" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/><path class="a" d="M20.0 76.3L21.0 76.1L22.0 75.9L23.0 75.7L24.0 75.5L25.0 75.2L26.0 75.0L27.0 74.7L28.0 74.5L29.0 74.2L30.0 73.9L31.0 73.6L32.0 73.3L33.0 72.9L34.0 72.6L35.0 72.2L36.0 71.8L37.0 71.4L38.0 70.9L39.0 70.5L40.0 70.0L41.0 69.5L42.0 69.0L43.0 68.4L44.0 67.8L45.0 67.2L46.0 66.5L47.0 65.9L48.0 65.1L49.0 64.4L50.0 63.6L51.0 62.8L52.0 61.9L53.0 61.0L54.0 60.0L55.0 59.0L56.0 57.9L57.0 56.8L58.0 55.6L59.0 54.4L60.0 53.1L61.0 51.7L62.0 50.3L63.0 48.8L64.0 47.2L65.0 45.5L66.0 43.8L67.0 41.9L68.0 40.0L69.0 38.0L70.0 35.8L71.0 33.6L72.0 31.2L73.0 28.8L74.0 26.2L75.0 23.4L76.0 20.6L77.0 17.5L78.0 14.4L79.0 11.0L80.0 7.5" stroke-width="3" fill="none" stroke-linecap="round"/><path class="b" d="M34.0 88.5L36.4 78.9L38.9 72.4L41.3 67.5L43.7 63.6L46.2 60.3L48.6 57.5L51.0 55.0L53.5 52.8L55.9 50.8L58.3 49.0L60.8 47.3L63.2 45.8L65.6 44.3L68.1 43.0L70.5 41.7L72.9 40.6L75.4 39.5L77.8 38.4L80.2 37.4L82.7 36.4L85.1 35.5L87.5 34.7L90.0 33.8L92.4 33.0L94.8 32.2L97.3 31.5L99.7 30.8L102.1 30.1L104.6 29.4L107.0 28.8L109.4 28.1L111.9 27.5L114.3 26.9L116.7 26.4L119.2 25.8L121.6 25.3L124.0 24.7L126.5 24.2L128.9 23.7L131.3 23.2L133.8 22.7L136.2 22.3L138.6 21.8L141.1 21.4L143.5 20.9L145.9 20.5L148.4 20.1L150.8 19.7L153.2 19.3L155.7 18.9L158.1 18.5L160.5 18.1L163.0 17.7L165.4 17.4L167.8 17.0L170.3 16.7L172.7 16.3L175.1 16.0L177.6 15.6L180.0 15.3" stroke-width="3" fill="none" stroke-linecap="round"/><text x="60" y="18" text-anchor="middle">bˣ</text><text x="170" y="46" text-anchor="end">log<tspan baseline-shift="sub" font-size="75%">b</tspan> x</text></svg><ul><li>log<sub>b</sub> N = k ⇔ bᵏ = N, con b &gt; 0, b ≠ 1 y N &gt; 0. log<sub>b</sub> 1 = 0; log<sub>b</sub> b = 1.</li><li>log(M·N) = log M + log N; log(M/N) = log M − log N; log(Mᵏ) = k·log M.</li><li>Cambio de base: log<sub>b</sub> N = log N / log b.</li><li>y = bˣ pasa por (0, 1); y = log<sub>b</sub> x pasa por (1, 0) y solo existe para x &gt; 0. Son reflejo una de otra en y = x. Crecen si b &gt; 1.</li></ul><div class="fi-tr"><span class="no">log(M + N) = log M + log N.</span><span class="si">No hay regla para la suma. Y ojo: (log M)² ≠ 2·log M.</span></div></div><div class="fi" data-tema="m2.num.reales"><h4>Operatoria en los reales <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>ⁿ√(aᵐ) = a<sup>m/n</sup>; √a · √b = √(ab).</li><li>Simplificar: √48 = √(16·3) = 4√3. Solo se suman raíces iguales: 2√3 + 3√3 = 5√3.</li><li>(√a + √b)(√a − √b) = a − b: sirve para racionalizar.</li></ul><div class="fi-tr"><span class="no">√(9 + 16) = √9 + √16 = 7.</span><span class="si">√(9 + 16) = √25 = 5.</span></div></div><div class="fi" data-tema="m2.num.financiera"><h4>Matemática financiera <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Monto final con interés simple: C·(1 + i·n) (el interés ganado es C·i·n). Compuesto: C·(1 + i)ⁿ (interés = monto − C).</li><li>i en decimal (5 % = 0,05) y en la misma unidad que n: tasa mensual con meses, tasa anual con años.</li><li>Crédito: cuotas pagadas = cuota × n.º de cuotas. Costo del crédito = cuotas pagadas − monto prestado. Con pie: (pie + cuotas) − precio al contado.</li><li>AFP: cada mes se descuenta el 10 % del sueldo imponible para tu cuenta, más la comisión de la AFP.</li></ul><div class="fi-tr"><span class="no">Subir 5 % y luego bajar 5 % deja el precio igual.</span><span class="si">1,05 · 0,95 = 0,9975: queda 0,25 % más bajo.</span></div></div></section><section class="fi-eje"><h3>Geometría</h3><div class="fi" data-tema="m2.geo.trig-razones"><h4>Razones trigonométricas <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>sen α = opuesto/hipotenusa; cos α = adyacente/hipotenusa; tan α = opuesto/adyacente = sen α/cos α.</li><li>sen²α + cos²α = 1. En la circunferencia de radio 1, el punto del ángulo θ es (cos θ, sen θ).</li><li class="t"><table class="fi-tab"><tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr><tr><td>sen</td><td>1/2</td><td>√2/2</td><td>√3/2</td></tr><tr><td>cos</td><td>√3/2</td><td>√2/2</td><td>1/2</td></tr><tr><td>tan</td><td>√3/3</td><td>1</td><td>√3</td></tr></table></li></ul><div class="fi-tr"><span class="no">Tomar el cateto que toca el ángulo como el opuesto.</span><span class="si">El opuesto es el que NO toca el ángulo; el adyacente sí lo toca (y no es la hipotenusa).</span></div></div><div class="fi" data-tema="m2.geo.circunferencia"><h4>Ángulos, arcos, cuerdas y secantes <span class="chip B">B</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><circle class="m" cx="70" cy="46" r="36" stroke-width="2"/><path class="b" d="M70.0 82.0L42.4 22.9" stroke-width="2.5" stroke-linecap="round"/><path class="b" d="M70.0 82.0L97.6 22.9" stroke-width="2.5" stroke-linecap="round"/><path class="a" d="M70 46L42.4 22.9" stroke-width="2.5" stroke-linecap="round"/><path class="a" d="M70 46L97.6 22.9" stroke-width="2.5" stroke-linecap="round"/><path class="b" d="M75.4 71.3A12 12 0 0 0 64.6 71.3" stroke-width="2" fill="none" stroke-linecap="round"/><path class="a" d="M76.9 40.2A9 9 0 0 0 63.1 40.2" stroke-width="2" fill="none" stroke-linecap="round"/><text x="70" y="64" text-anchor="middle" style="font-size:11px;fill:var(--acc2)">α</text><text x="70" y="33" text-anchor="middle" style="font-size:11px;fill:var(--acc)">2α</text><text x="152" y="30" text-anchor="middle" style="font-size:10.5px">del centro</text><text x="152" y="44" text-anchor="middle" style="font-size:10.5px">= 2 × inscrito</text><text x="152" y="66" text-anchor="middle" style="font-size:9.5px">en el diámetro: 90°</text></svg><ul><li>Ángulo del centro = arco. Ángulo inscrito = la mitad del arco que abarca.</li><li>Inscrito en una semicircunferencia = 90°. Cuadrilátero inscrito: ángulos opuestos suman 180°.</li><li>Cuerdas que se cortan en P: PA·PB = PC·PD (los dos trozos de cada cuerda). Dos secantes desde P exterior: PA·PB = PC·PD, con PA = tramo exterior y PB = secante completa (no la cuerda).</li><li>Largo de un arco de α°: 2πr·α/360.</li></ul><div class="fi-tr"><span class="no">El ángulo inscrito mide lo mismo que su arco.</span><span class="si">Mide la mitad: un arco de 100° da un inscrito de 50°.</span></div></div><div class="fi" data-tema="m2.geo.homotecia"><h4>Homotecia <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Con centro O y razón k: P' = O + k·(P − O). Con centro en el origen: P' = k·P.</li><li>Lados ×|k|, áreas ×k², volúmenes ×|k|³. k &lt; 0: la imagen queda al otro lado de O (rotada en 180°).</li><li>|k| &gt; 1 amplía; 0 &lt; |k| &lt; 1 reduce; k = −1 es una simetría central.</li></ul><div class="fi-tr"><span class="no">Con k = −2 el área se multiplica por −2.</span><span class="si">Se multiplica por k² = 4.</span></div></div><div class="fi" data-tema="m2.geo.esfera"><h4>Esfera <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Área = 4πr². Volumen = (4/3)πr³.</li><li>Semiesfera: volumen (2/3)πr³; área curva 2πr² (+ πr² de la base si es sólida = 3πr²).</li><li>Radio ×k → área ×k², volumen ×k³.</li></ul><div class="fi-tr"><span class="no">Usar el diámetro en la fórmula.</span><span class="si">Si te dan el diámetro d, usa r = d/2 antes de elevar.</span></div></div></section><section class="fi-eje"><h3>Probabilidad y estadística</h3><div class="fi" data-tema="m2.pro.condicional"><h4>Probabilidad condicional <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>P(A | B) = P(A ∩ B)/P(B). En una tabla: la fila o columna de B es el nuevo total.</li><li>Árbol: multiplica a lo largo de cada camino y suma los caminos que llegan al mismo resultado (probabilidad total).</li><li>A y B independientes ⇔ P(A | B) = P(A) ⇔ P(A ∩ B) = P(A)·P(B).</li></ul><div class="fi-tr"><span class="no">P(A | B) = P(B | A).</span><span class="si">Mismo numerador, distinto denominador: n(A ∩ B)/n(B) vs n(A ∩ B)/n(A).</span></div></div><div class="fi" data-tema="m2.pro.combinatoria"><h4>Permutaciones y combinatoria <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Ordenar n cosas: n!. Elegir k con orden y sin repetir: n!/(n − k)!. Con repetición: nᵏ.</li><li>Sin orden: C(n, k) = n!/(k!·(n − k)!). C(n, k) = C(n, n − k).</li><li>Lo que ocurre a la vez («y») se multiplica: «2 de 5 y 2 de 4» = C(5, 2)·C(4, 2) = 60. Casos que se excluyen («o») se suman.</li></ul><div class="fi-tr"><span class="no">Elegir presidente y tesorero con C(n, 2).</span><span class="si">Los cargos son distintos: el orden importa → n·(n − 1).</span></div></div><div class="fi" data-tema="m2.pro.dispersion"><h4>Medidas de dispersión <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Rango = máximo − mínimo. Varianza = Σ(xᵢ − x̄)²/n. Desviación estándar σ = √varianza.</li><li>Sumar c a todos: la media sube c y σ no cambia. Multiplicar por k: σ ×|k| y varianza ×k².</li></ul><div class="fi-tr"><span class="no">Si a todos les sumo 5 puntos, σ sube 5.</span><span class="si">σ no cambia: todos se mueven igual. Solo la media sube 5.</span></div></div><div class="fi" data-tema="m2.pro.binomial-normal"><h4>Binomial y normal <span class="chip B">B</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="b" d="M50.0 80.0L50.0 71.1L51.0 70.3L52.0 69.6L53.0 68.7L54.0 67.9L55.0 66.9L56.0 66.0L57.0 65.0L58.0 63.9L59.0 62.8L60.0 61.6L61.0 60.5L62.0 59.2L63.0 57.9L64.0 56.6L65.0 55.2L66.0 53.8L67.0 52.4L68.0 50.9L69.0 49.4L70.0 47.9L71.0 46.3L72.0 44.8L73.0 43.2L74.0 41.6L75.0 40.0L76.0 38.4L77.0 36.8L78.0 35.2L79.0 33.6L80.0 32.1L81.0 30.6L82.0 29.1L83.0 27.6L84.0 26.2L85.0 24.9L86.0 23.6L87.0 22.3L88.0 21.2L89.0 20.1L90.0 19.1L91.0 18.1L92.0 17.3L93.0 16.5L94.0 15.9L95.0 15.3L96.0 14.8L97.0 14.5L98.0 14.2L99.0 14.1L100.0 14.0L101.0 14.1L102.0 14.2L103.0 14.5L104.0 14.8L105.0 15.3L106.0 15.9L107.0 16.5L108.0 17.3L109.0 18.1L110.0 19.1L111.0 20.1L112.0 21.2L113.0 22.3L114.0 23.6L115.0 24.9L116.0 26.2L117.0 27.6L118.0 29.1L119.0 30.6L120.0 32.1L121.0 33.6L122.0 35.2L123.0 36.8L124.0 38.4L125.0 40.0L126.0 41.6L127.0 43.2L128.0 44.8L129.0 46.3L130.0 47.9L131.0 49.4L132.0 50.9L133.0 52.4L134.0 53.8L135.0 55.2L136.0 56.6L137.0 57.9L138.0 59.2L139.0 60.5L140.0 61.6L141.0 62.8L142.0 63.9L143.0 65.0L144.0 66.0L145.0 66.9L146.0 67.9L147.0 68.7L148.0 69.6L149.0 70.3L150.0 71.1L150.0 80.0Z" stroke-width="2" style="fill:var(--acc2);fill-opacity:0.2"/><path class="a" d="M75.0 80.0L75.0 40.0L75.5 39.2L76.0 38.4L76.5 37.6L77.0 36.8L77.5 36.0L78.0 35.2L78.5 34.4L79.0 33.6L79.5 32.8L80.0 32.1L80.5 31.3L81.0 30.6L81.5 29.8L82.0 29.1L82.5 28.3L83.0 27.6L83.5 26.9L84.0 26.2L84.5 25.5L85.0 24.9L85.5 24.2L86.0 23.6L86.5 23.0L87.0 22.3L87.5 21.8L88.0 21.2L88.5 20.6L89.0 20.1L89.5 19.6L90.0 19.1L90.5 18.6L91.0 18.1L91.5 17.7L92.0 17.3L92.5 16.9L93.0 16.5L93.5 16.2L94.0 15.9L94.5 15.6L95.0 15.3L95.5 15.1L96.0 14.8L96.5 14.6L97.0 14.5L97.5 14.3L98.0 14.2L98.5 14.1L99.0 14.1L99.5 14.0L100.0 14.0L100.5 14.0L101.0 14.1L101.5 14.1L102.0 14.2L102.5 14.3L103.0 14.5L103.5 14.6L104.0 14.8L104.5 15.1L105.0 15.3L105.5 15.6L106.0 15.9L106.5 16.2L107.0 16.5L107.5 16.9L108.0 17.3L108.5 17.7L109.0 18.1L109.5 18.6L110.0 19.1L110.5 19.6L111.0 20.1L111.5 20.6L112.0 21.2L112.5 21.8L113.0 22.3L113.5 23.0L114.0 23.6L114.5 24.2L115.0 24.9L115.5 25.5L116.0 26.2L116.5 26.9L117.0 27.6L117.5 28.3L118.0 29.1L118.5 29.8L119.0 30.6L119.5 31.3L120.0 32.1L120.5 32.8L121.0 33.6L121.5 34.4L122.0 35.2L122.5 36.0L123.0 36.8L123.5 37.6L124.0 38.4L124.5 39.2L125.0 40.0L125.0 80.0Z" stroke-width="2" style="fill:var(--acc);fill-opacity:0.35"/><path class="a" d="M10.0 79.9L11.8 79.9L13.6 79.8L15.4 79.8L17.2 79.7L19.0 79.7L20.8 79.6L22.6 79.5L24.4 79.3L26.2 79.2L28.0 79.0L29.8 78.7L31.6 78.4L33.4 78.1L35.2 77.7L37.0 77.2L38.8 76.7L40.6 76.1L42.4 75.4L44.2 74.5L46.0 73.6L47.8 72.5L49.6 71.4L51.4 70.0L53.2 68.6L55.0 66.9L56.8 65.2L58.6 63.2L60.4 61.2L62.2 59.0L64.0 56.6L65.8 54.1L67.6 51.5L69.4 48.8L71.2 46.0L73.0 43.2L74.8 40.3L76.6 37.4L78.4 34.6L80.2 31.8L82.0 29.1L83.8 26.5L85.6 24.1L87.4 21.9L89.2 19.9L91.0 18.1L92.8 16.7L94.6 15.5L96.4 14.7L98.2 14.2L100.0 14.0L101.8 14.2L103.6 14.7L105.4 15.5L107.2 16.7L109.0 18.1L110.8 19.9L112.6 21.9L114.4 24.1L116.2 26.5L118.0 29.1L119.8 31.8L121.6 34.6L123.4 37.4L125.2 40.3L127.0 43.2L128.8 46.0L130.6 48.8L132.4 51.5L134.2 54.1L136.0 56.6L137.8 59.0L139.6 61.2L141.4 63.2L143.2 65.2L145.0 66.9L146.8 68.6L148.6 70.0L150.4 71.4L152.2 72.5L154.0 73.6L155.8 74.5L157.6 75.4L159.4 76.1L161.2 76.7L163.0 77.2L164.8 77.7L166.6 78.1L168.4 78.4L170.2 78.7L172.0 79.0L173.8 79.2L175.6 79.3L177.4 79.5L179.2 79.6L181.0 79.7L182.8 79.7L184.6 79.8L186.4 79.8L188.2 79.9L190.0 79.9" stroke-width="3" fill="none" stroke-linecap="round"/><path class="m" d="M10 80L190 80" stroke-width="1.6" stroke-linecap="round"/><text x="100" y="60" text-anchor="middle" style="font-size:11px">68 %</text><text x="100" y="90" text-anchor="middle" style="font-size:10px">±2σ: 95 %</text><text x="176" y="30" text-anchor="middle" style="font-size:10px">±3σ:</text><text x="176" y="42" text-anchor="middle" style="font-size:10px">99,7 %</text></svg><ul><li>Binomial: P(X = k) = C(n, k)·pᵏ·(1 − p)ⁿ⁻ᵏ. μ = n·p; σ = √(n·p·(1 − p)).</li><li>Normal: z = (x − μ)/σ. Entre μ ± σ ≈ 68 %; μ ± 2σ ≈ 95 %; μ ± 3σ ≈ 99,7 %.</li><li>Simetría: P(Z ≤ 0) = 0,5; P(Z ≤ −a) = 1 − P(Z ≤ a).</li></ul><div class="fi-tr"><span class="no">Fuera de μ ± σ queda 32 % en cada cola.</span><span class="si">Queda ≈ 32 % entre las dos colas: ≈ 16 % en cada una.</span></div></div></section><section class="fi-eje"><h3>Suficiencia de datos (al final)</h3><div class="fi" data-tema="m2.sd"><h4>Método de descarte <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li><b>1.</b> Tapa la (2): ¿la (1) sola permite responder con un único resultado? Sí → quedan A o D. No → quedan B, C o E.</li><li><b>2.</b> Tapa la (1) y mira la (2) sola. Con eso decides.</li><li><b>3.</b> Solo si ninguna sirve sola, júntalas: alcanzan → C; no alcanzan → E.</li><li class="t"><table class="fi-tab"><tr><td>A</td><td>(1) por sí sola</td></tr><tr><td>B</td><td>(2) por sí sola</td></tr><tr><td>C</td><td>Ambas juntas, (1) y (2)</td></tr><tr><td>D</td><td>Cada una por sí sola, (1) ó (2)</td></tr><tr><td>E</td><td>Se requiere información adicional</td></tr></table></li></ul><div class="fi-tr"><span class="no">Calcular el valor completo antes de decidir.</span><span class="si">Basta saber si lo que PREGUNTAN queda con un solo valor. Ojo: x² = 9 deja x = 3 o −3 (no alcanza para x, pero sí para x²).</span></div></div></section></div></article>
+<article class="ficha" data-ficha="LEN" hidden><header class="fi-cab fi-LEN"><h2>Ficha final · Competencia Lectora</h2><p>Martes 1 de diciembre, 09:00 · 7 textos y 65 preguntas (60 cuentan) en 2 h 30 min · unos 20 min por texto</p></header><ul class="fi-consejos"><li>Lee cada texto entero una vez y anota al margen, en 2 o 3 palabras, de qué trata cada párrafo.</li><li>Vuelve siempre al texto: la respuesta correcta es la que el texto respalda, no la que suena mejor.</li><li>Si una pregunta te traba, márcala y sigue (no más de unos 20 min por texto). Deja 10 minutos para revisar las marcadas.</li></ul><div class="fi-cols"><section class="fi-eje"><h3>Las 3 habilidades</h3><div class="fi" data-tema="len.localizar"><h4>Localizar <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Pide un dato escrito: «Según el texto…», «De acuerdo con el párrafo…».</li><li>Palabra clave específica (nombre, cifra, fecha) → rastrea → lee la oración completa.</li><li>La correcta suele estar dicha con <b>otras palabras</b> (paráfrasis).</li></ul><div class="fi-tr"><span class="no">Elegir la alternativa que copia palabras del texto.</span><span class="si">Puede ser otro dato del texto: comprueba que responda ESTA pregunta.</span></div></div><div class="fi" data-tema="len.interpretar"><h4>Interpretar <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Idea principal, causa, función de un párrafo, significado de una expresión, inferencia.</li><li>Usa los conectores: causa (porque, se debe a), consecuencia (por eso), contraste (sin embargo, pero), ejemplo (por ejemplo).</li><li>La idea principal cubre TODO el texto: ni un detalle, ni el tema en general.</li></ul><div class="fi-tr"><span class="no">Leer al pie de la letra una comparación o frase hecha.</span><span class="si">Pregúntate qué idea ilustra.</span></div></div><div class="fi" data-tema="len.evaluar"><h4>Evaluar <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Propósito (informar, convencer, instruir), postura y tono, recursos (negritas, tablas, citas), suficiencia de la información, casos nuevos.</li><li>Hecho = se puede comprobar. Opinión = valora: creo, debería, lamentablemente, sin duda, lo mejor.</li><li>Tono con la intensidad justa: crítico ≠ indignado.</li><li>Caso nuevo: aplica paso a paso el criterio del texto al caso. Suficiencia: si preguntan qué información falta, la correcta es lo que el texto de verdad no responde (no lo rellenes con lo que sabes).</li></ul><div class="fi-tr"><span class="no">Tomar una ironía como un elogio.</span><span class="si">Si un elogio choca con un hecho negativo, es crítica.</span></div></div></section><section class="fi-eje"><h3>Las 9 trampas</h3><div class="fi"><h4>Cómo descartar <span class="fi-dom"></span></h4><ul><li><b>Otro dato del texto:</b> está en el texto, pero responde otra pregunta.</li><li><b>Fuera del texto:</b> suena razonable, pero el texto no lo dice ni lo permite deducir.</li><li><b>Al revés:</b> dice lo contrario o invierte causa y consecuencia.</li><li><b>Exagera:</b> siempre, nunca, todos, solo; tonos extremos.</li><li><b>Se queda corta:</b> un detalle como si fuera la idea principal.</li><li><b>Se pasa de amplia:</b> serviría para cualquier texto del tema.</li><li><b>Al pie de la letra:</b> lee literal una figura o una ironía.</li><li><b>Voz equivocada:</b> confunde quién dice, piensa o hace algo (el emisor, un personaje, una fuente, los que se oponen).</li><li><b>Opinión como hecho:</b> confunde una valoración con un dato comprobable.</li></ul></div><div class="fi"><h4>Textos literarios (cuentos) <span class="fi-dom"></span></h4><ul><li>Narrador: ¿primera persona (yo) o tercera? ¿Cuenta desde el presente lo que pasó antes?</li><li>Busca el conflicto, cómo cambia el personaje y qué representan los objetos que se repiten (símbolos).</li><li>Saltos temporales: «Seis años después», «treinta años atrás», «Hoy…».</li></ul></div></section></div></article>
+<article class="ficha" data-ficha="CIE" hidden><header class="fi-cab fi-CIE"><h2>Ficha final · Ciencias Física</h2><p>Martes 1 de diciembre, 15:00 · 80 preguntas (75 cuentan) en 2 h 40 min: 54 del módulo común (Biología, Química y Física) y 26 de Física</p></header><ul class="fi-consejos"><li>Unos 2 minutos por pregunta. Las de Biología y Química suelen ser más cortas: no te quedes pegado en una.</li><li>Lee las unidades: km/h → m/s: ÷ 3,6 (m/s → km/h: × 3,6); minutos → segundos: × 60; W → kW: ÷ 1000.</li><li>Si la pregunta da g, usa ese valor (a menudo 10 m/s²).</li></ul><div class="fi-cols"><section class="fi-eje"><h3>Mecánica</h3><div class="fi" data-tema="fis.mec.cinematica"><h4>Posición, velocidad y aceleración <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Desplazamiento Δx = x<sub>final</sub> − x<sub>inicial</sub> (con signo). Distancia recorrida: todos los tramos sin signo; nunca menor que |Δx|.</li><li>Rapidez media = distancia/Δt. Velocidad media = Δx/Δt. Aceleración media = Δv/Δt.</li><li>Hay aceleración si cambia la rapidez, la dirección o el sentido.</li></ul><div class="fi-tr"><span class="no">Si vuelve al punto de partida, su velocidad media es igual a su rapidez media.</span><span class="si">Su velocidad media es 0 (Δx = 0), aunque la rapidez media no.</span></div></div><div class="fi" data-tema="fis.mec.mru-mrua"><h4>MRU y MRUA <span class="chip A">A</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M20 78L177.0 78.0" stroke-width="1.8" stroke-linecap="round"/><path class="fm" d="M185 78L177.0 73.5L177.0 82.5Z"/><path class="m" d="M20 78L20.0 18.0" stroke-width="1.8" stroke-linecap="round"/><path class="fm" d="M20 10L15.5 18.0L24.5 18.0Z"/><text x="181" y="90" text-anchor="end">t</text><text x="28" y="16" text-anchor="start">v</text><path class="b" d="M20.0 78.0L20.0 60.0L150.0 26.0L150.0 78.0Z" stroke-width="2" style="fill:var(--acc2);fill-opacity:0.3"/><text x="85" y="66" text-anchor="middle">área = Δx</text></svg><ul><li>MRU: x = x₀ + v·t. En x–t es una recta; su pendiente es v.</li><li>MRUA: v = v₀ + a·t; x = x₀ + v₀·t + ½·a·t².</li><li>En v–t: la pendiente es a y el área bajo la curva (con signo: bajo el eje cuenta negativa) es el desplazamiento.</li><li>Frena si a y v tienen signos opuestos. Se detiene en t = −v₀/a.</li></ul><div class="fi-tr"><span class="no">En un gráfico x–t, la velocidad es la altura de la curva.</span><span class="si">En x–t la velocidad es la pendiente. La altura es la posición.</span></div></div><div class="fi" data-tema="fis.mec.galileo"><h4>Relatividad de Galileo <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Tren con velocidad V respecto del andén; x' y v' se miden en el tren. Desde el andén: x = x' + V·t y v = v' + V (con signo). Velocidad de A respecto de B = v<sub>A</sub> − v<sub>B</sub>.</li><li>El tiempo y la aceleración son iguales en ambos sistemas.</li><li>Dentro de un sistema a velocidad constante, todo pasa igual que en reposo.</li></ul><div class="fi-tr"><span class="no">En un bus a velocidad constante, una moneda que cae se va hacia atrás.</span><span class="si">Cae a tus pies: lleva la misma velocidad que el bus.</span></div></div><div class="fi" data-tema="fis.mec.newton"><h4>Leyes de Newton <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>1.ª: si ΣF = 0, la velocidad no cambia (reposo o línea recta a velocidad constante).</li><li>2.ª: ΣF = m·a (a en la dirección de ΣF).</li><li>3.ª: acción y reacción son iguales, opuestas y actúan sobre cuerpos distintos.</li><li>Diagrama de cuerpo libre: solo las fuerzas que actúan SOBRE el cuerpo.</li></ul><div class="fi-tr"><span class="no">Acción y reacción se anulan.</span><span class="si">No se anulan: actúan sobre cuerpos distintos.</span></div></div><div class="fi" data-tema="fis.mec.fuerzas"><h4>Peso, normal, tensión, Hooke y roce <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Peso P = m·g (N): la masa (kg) es la misma en todo lugar; el peso cambia con g.</li><li>Normal: perpendicular a la superficie. N = P solo en superficie horizontal, sin otras fuerzas verticales y sin aceleración vertical (en un ascensor que acelera hacia arriba, N &gt; P).</li><li>Hooke: F = k·x, con x = cuánto se estira o comprime (largo final − largo natural), en metros; no el largo total. Tensión: igual en toda la cuerda ideal.</li><li>Roce estático ≤ μ<sub>e</sub>·N (vale lo justo para que no se mueva). Roce cinético = μ<sub>c</sub>·N, con μ<sub>c</sub> &lt; μ<sub>e</sub>.</li></ul><div class="fi-tr"><span class="no">La normal es la reacción del peso.</span><span class="si">La reacción del peso es la fuerza con que el cuerpo atrae a la Tierra: actúa sobre la Tierra.</span></div></div></section><section class="fi-eje"><h3>Ondas</h3><div class="fi" data-tema="fis.ond.elementos"><h4>Elementos de una onda <span class="chip A">A</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M10 46L190 46" stroke-width="1.2" stroke-linecap="round"/><path class="a" d="M10.0 46.0L11.5 43.4L13.0 40.9L14.5 38.4L16.0 36.0L17.5 33.8L19.0 31.7L20.5 29.8L22.0 28.2L23.5 26.8L25.0 25.7L26.5 24.8L28.0 24.3L29.5 24.0L31.0 24.1L32.5 24.4L34.0 25.1L35.5 26.0L37.0 27.2L38.5 28.7L40.0 30.4L41.5 32.4L43.0 34.5L44.5 36.8L46.0 39.2L47.5 41.7L49.0 44.3L50.5 46.9L52.0 49.4L53.5 52.0L55.0 54.4L56.5 56.7L58.0 58.9L59.5 60.9L61.0 62.7L62.5 64.3L64.0 65.6L65.5 66.6L67.0 67.4L68.5 67.8L70.0 68.0L71.5 67.8L73.0 67.4L74.5 66.6L76.0 65.6L77.5 64.3L79.0 62.7L80.5 60.9L82.0 58.9L83.5 56.7L85.0 54.4L86.5 52.0L88.0 49.4L89.5 46.9L91.0 44.3L92.5 41.7L94.0 39.2L95.5 36.8L97.0 34.5L98.5 32.4L100.0 30.4L101.5 28.7L103.0 27.2L104.5 26.0L106.0 25.1L107.5 24.4L109.0 24.1L110.5 24.0L112.0 24.3L113.5 24.8L115.0 25.7L116.5 26.8L118.0 28.2L119.5 29.8L121.0 31.7L122.5 33.8L124.0 36.0L125.5 38.4L127.0 40.9L128.5 43.4L130.0 46.0L131.5 48.6L133.0 51.1L134.5 53.6L136.0 56.0L137.5 58.2L139.0 60.3L140.5 62.2L142.0 63.8L143.5 65.2L145.0 66.3L146.5 67.2L148.0 67.7L149.5 68.0L151.0 67.9L152.5 67.6L154.0 66.9L155.5 66.0L157.0 64.8L158.5 63.3L160.0 61.6L161.5 59.6L163.0 57.5L164.5 55.2L166.0 52.8L167.5 50.3L169.0 47.7L170.5 45.1L172.0 42.6L173.5 40.0L175.0 37.6L176.5 35.3L178.0 33.1L179.5 31.1L181.0 29.3L182.5 27.7L184.0 26.4L185.5 25.4L187.0 24.6L188.5 24.2L190.0 24.0" stroke-width="3" fill="none" stroke-linecap="round"/><path class="w" d="M30 16L110 16" stroke-width="2.5" stroke-linecap="round"/><text x="70" y="12" text-anchor="middle">λ</text><path class="g" d="M150 46L150.0 34.0" stroke-width="2.5" stroke-linecap="round"/><path class="fg" d="M150 26L145.5 34.0L154.5 34.0Z"/><text x="158" y="40" text-anchor="start">A</text></svg><ul><li>v = λ·f = λ/T; f = 1/T. Una onda transporta energía, no materia.</li><li>Al cambiar de medio cambian v y λ; la frecuencia NO cambia. Luz en el vacío: c = 3·10⁸ m/s.</li></ul><div class="fi-tr"><span class="no">Al pasar del aire al agua, la luz cambia su frecuencia.</span><span class="si">Cambian v y λ; f la fija la fuente.</span></div></div><div class="fi" data-tema="fis.ond.reflexion-refraccion"><h4>Reflexión y refracción <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Reflexión: ángulo de incidencia = ángulo de reflexión, medidos desde la normal.</li><li>n = c/v. Al pasar a un medio más lento (n mayor), el rayo se acerca a la normal; si entra perpendicular, no se desvía.</li></ul><div class="fi-tr"><span class="no">Medir los ángulos desde la superficie.</span><span class="si">Se miden desde la normal (la perpendicular a la superficie).</span></div></div><div class="fi" data-tema="fis.ond.espejos-lentes"><h4>Espejos y lentes <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>Real = invertida = se proyecta en una pantalla. Virtual = derecha = no se proyecta.</li><li class="t"><table class="fi-tab"><tr><th>Lente convergente / espejo cóncavo</th><th>Imagen</th></tr><tr><td>d &gt; 2f</td><td>real, invertida, menor</td></tr><tr><td>d = 2f</td><td>real, invertida, igual</td></tr><tr><td>f &lt; d &lt; 2f</td><td>real, invertida, mayor</td></tr><tr><td>d = f</td><td>no se forma imagen (los rayos salen paralelos)</td></tr><tr><td>d &lt; f</td><td>virtual, derecha, mayor (lupa)</td></tr></table></li><li>En el espejo cóncavo, 2f es el centro de curvatura. Lente divergente y espejo convexo: virtual, derecha y menor.</li><li>Espejo plano: virtual, derecha, igual y a la misma distancia detrás del espejo (izquierda y derecha se ven intercambiadas).</li></ul><div class="fi-tr"><span class="no">La imagen en un espejo plano es real.</span><span class="si">Es virtual: no se puede proyectar en una pantalla.</span></div></div><div class="fi" data-tema="fis.ond.espectro-color"><h4>Espectro electromagnético y color <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>De menor a mayor frecuencia: radio → microondas → infrarrojo → visible (rojo → violeta) → UV → rayos X → gamma.</li><li>Todas van a c en el vacío. Más frecuencia = menos λ y más energía.</li><li>Un objeto se ve del color que refleja. En el prisma, el violeta se desvía más.</li></ul><div class="fi-tr"><span class="no">Las ondas de radio viajan más rápido que la luz.</span><span class="si">Todas las ondas EM van a c en el vacío.</span></div></div><div class="fi" data-tema="fis.ond.doppler-interferencia"><h4>Doppler, interferencia y difracción <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Si fuente y observador se acercan: f percibida mayor (λ menor). Si se alejan: f menor. Galaxias corridas al rojo: se alejan.</li><li>Interferencia: cresta + cresta = constructiva; cresta + valle = destructiva.</li><li>Difracción: se nota cuando la abertura u obstáculo tiene un tamaño parecido a λ.</li></ul><div class="fi-tr"><span class="no">Con Doppler cambia la rapidez de la onda.</span><span class="si">Cambia la frecuencia que se percibe, no la rapidez.</span></div></div><div class="fi" data-tema="fis.ond.dispositivos"><h4>Dispositivos <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>Radar: microondas que rebotan (distancia por el tiempo, velocidad por Doppler). Láser: luz de una sola frecuencia, en fase.</li><li>Fibra óptica: la luz rebota por dentro (reflexión total interna). Telescopio refractor: lentes; reflector: espejo cóncavo; radiotelescopio: antena parabólica.</li></ul></div></section><section class="fi-eje"><h3>Electricidad</h3><div class="fi" data-tema="fis.ele.ohm"><h4>Ley de Ohm y circuitos <span class="chip A">A</span><span class="fi-dom"></span></h4><svg class="esq" viewBox="0 0 200 92" aria-hidden="true"><path class="m" d="M8 46L40 46" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M160 46L192 46" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M40 20L40 72" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M160 20L160 72" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M40 20L160 20" stroke-width="2.5" stroke-linecap="round"/><path class="m" d="M40 72L160 72" stroke-width="2.5" stroke-linecap="round"/><circle class="fr" cx="40" cy="46" r="4"/><circle class="fr" cx="160" cy="46" r="4"/><rect class="w" x="80" y="11" width="40" height="18" rx="4" stroke-width="2.5"/><rect class="b" x="80" y="63" width="40" height="18" rx="4" stroke-width="2.5"/><text x="100" y="24" text-anchor="middle">R₁</text><text x="100" y="76" text-anchor="middle">R₂</text><text x="100" y="50" text-anchor="middle">mismo V</text></svg><ul><li>V = I·R. Corriente I = q/t (1 A = 1 C/s).</li><li>Serie: misma corriente; R = R₁ + R₂. Paralelo: mismo voltaje; 1/R = 1/R₁ + 1/R₂ (dos iguales: R/2).</li><li>En paralelo, la R total es menor que la menor. Mixto: reduce por partes, desde adentro hacia afuera: junta lo que está claramente en serie o en paralelo dentro de cada rama, y repite.</li></ul><div class="fi-tr"><span class="no">En paralelo se suman las resistencias.</span><span class="si">En paralelo se suman las corrientes y la resistencia total baja.</span></div></div><div class="fi" data-tema="fis.ele.potencia"><h4>Potencia y energía eléctrica <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li>P = V·I = I²·R = V²/R (W). E = P·t.</li><li>Con P en kW y t en horas: E en kWh. Costo = kWh × precio del kWh. Ej.: 2000 W durante 30 min = 2 kW · 0,5 h = 1 kWh.</li><li>Eficiencia = energía útil/energía consumida.</li></ul><div class="fi-tr"><span class="no">El kWh es una unidad de potencia.</span><span class="si">El kWh es energía (potencia × tiempo).</span></div></div><div class="fi" data-tema="fis.ele.domiciliaria"><h4>Instalación de la casa <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>Enchufes en paralelo, todos a 220 V. Interruptor en serie con su ampolleta.</li><li>Disyuntor: corta por sobrecarga o cortocircuito (protege la instalación). Diferencial: corta si hay fuga de corriente (protege a las personas). Tierra: desvía la fuga de la carcasa.</li></ul><div class="fi-tr"><span class="no">El diferencial protege los cables de recalentarse.</span><span class="si">Eso lo hace el disyuntor; el diferencial protege a las personas.</span></div></div></section><section class="fi-eje"><h3>Tierra y Universo</h3><div class="fi" data-tema="fis.tie.tectonica"><h4>Tectónica de placas y sismos <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li>Wegener: deriva continental (encaje, fósiles y rocas iguales, huellas de glaciares; Pangea).</li><li>Placas de litosfera sobre la astenosfera. Límites: convergente (subducción, como en Chile), divergente (dorsales), transformante.</li><li>Hipocentro: donde se origina, en profundidad. Epicentro: el punto de la superficie justo encima.</li><li>Modelo físico: litosfera, astenosfera, mesosfera, núcleo externo (líquido), núcleo interno (sólido). Químico: corteza, manto, núcleo.</li></ul><div class="fi-tr"><span class="no">El epicentro es el punto donde se origina el sismo.</span><span class="si">Ese es el hipocentro; el epicentro está en la superficie, encima.</span></div></div><div class="fi" data-tema="fis.mec.cosmos"><h4>Sistema solar y origen del universo <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li>Geocéntrico: Aristóteles y Ptolomeo (epiciclos). Heliocéntrico: Copérnico.</li><li>Galileo (telescopio): fases completas de Venus, lunas de Júpiter. Kepler: órbitas elípticas con el Sol en un foco; más rápido cerca del Sol; más lejos del Sol, más tarda en dar la vuelta (T² ∝ a³).</li><li>Big Bang (hace ~13 800 millones de años). Evidencias: corrimiento al rojo de las galaxias, radiación de fondo de microondas, abundancia de H y He.</li><li>Big Crunch: hipótesis de que la expansión se frenaría y el universo volvería a contraerse; hoy se ve poco probable porque la expansión se acelera.</li></ul><div class="fi-tr"><span class="no">Copérnico confirmó el heliocentrismo con el telescopio.</span><span class="si">Las observaciones con telescopio fueron de Galileo.</span></div></div></section><section class="fi-eje"><h3>Biología y Química en 1 minuto (módulo común)</h3><div class="fi"><h4>Biología <span class="fi-dom"></span></h4><ul><li>Mitocondria: respiración celular (ATP). Cloroplasto: fotosíntesis. Ribosomas → RER → Golgi: proteínas para exportar.</li><li>Impulso nervioso: al despolarizarse entra Na⁺; luego sale K⁺. Sinapsis: neurotransmisores.</li><li>Fecundación: en la trompa (tuba uterina). Pico de LH → ovulación.</li><li>Mitosis: 2 células iguales a la madre. Meiosis: 4 células con la mitad de los cromosomas y distintas entre sí (variabilidad).</li><li>Fotosíntesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (el O₂ viene del agua). Selección natural: sobreviven y se reproducen más los mejor adaptados.</li></ul></div><div class="fi"><h4>Química <span class="fi-dom"></span></h4><ul><li>Z = protones; A = protones + neutrones. Neutro: electrones = Z.</li><li>Carbono: simple sp³, doble sp², triple sp.</li><li>n = masa/M (mol). Molaridad = mol de soluto/L de solución. %m/m = masa de soluto/masa de solución × 100.</li><li>Dilución: C₁·V₁ = C₂·V₂. Reactivo limitante: el que se acaba primero.</li></ul></div></section></div></article>
+<article class="ficha" data-ficha="M1" hidden><header class="fi-cab fi-M1"><h2>Ficha final · Matemática 1</h2><p>Miércoles 2 de diciembre, 09:00 · 65 preguntas (60 cuentan) en 2 h 20 min · poco más de 2 min por pregunta</p></header><ul class="fi-consejos"><li>M1 ya lo dominas: aquí pierdes puntos por apuro, no por no saber. Lee el enunciado entero y lo que pregunta al final.</li><li>Antes de marcar, revisa signos y unidades.</li><li>No hay descuento por error: no dejes ninguna en blanco.</li></ul><div class="fi-cols"><section class="fi-eje"><h3>Números</h3><div class="fi" data-tema="m1.num.enteros-racionales"><h4>Enteros y racionales <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Orden de operaciones:</b> Paréntesis → potencias → multiplicación y división (de izquierda a derecha) → suma y resta.</li><li><b>Signos:</b> (−) · (−) = + y (−) · (+) = −. Restar un negativo es sumar: 5 − (−3) = 8.</li><li><b>Fracciones:</b> Sumar: iguala denominadores. Multiplicar: arriba por arriba y abajo por abajo. Dividir: multiplica por el inverso. Comparar: pasa a decimal.</li></ul><div class="fi-tr"><b>Sumar antes de multiplicar:</b> <span class="no">−3 + 5 · (−2) = 2 · (−2) = −4</span><span class="si">−3 + 5 · (−2) = −3 − 10 = −13</span></div><div class="fi-tr"><b>Sumar fracciones «de a pares»:</b> <span class="no">1/2 + 1/3 = 2/5</span><span class="si">1/2 + 1/3 = 3/6 + 2/6 = 5/6</span></div><div class="fi-tr"><b>Fracción de lo que queda:</b> <span class="no">Tiene 3/4 y usa 1/3 de eso: 3/4 − 1/3</span><span class="si">Queda 3/4 · (1 − 1/3) = 1/2</span></div></div><div class="fi" data-tema="m1.num.porcentaje"><h4>Porcentaje <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Lo básico:</b> a % de b = a/100 · b. Subir p %: × (1 + p/100). Bajar p %: × (1 − p/100).</li><li><b>Cambios seguidos:</b> Se multiplican los factores: +10 % y luego −10 % = 1,1 · 0,9 = 0,99 (baja 1 %).</li></ul><div class="fi-tr"><b>Subir y bajar lo mismo:</b> <span class="no">+10 % y −10 %: queda igual</span><span class="si">1,1 · 0,9 = 0,99: queda 1 % más bajo</span></div><div class="fi-tr"><b>Volver al precio original:</b> <span class="no">Con 20 % de descuento cuesta $12.000 → original = 12.000 · 1,2</span><span class="si">original = 12.000 / 0,8 = $15.000</span></div><div class="fi-tr"><b>¿Porcentaje de qué?:</b> <span class="no">Subió de 50 a 60: subió 10 %</span><span class="si">Subió 10 sobre 50: 10/50 = 20 %</span></div></div><div class="fi" data-tema="m1.num.potencias-raices"><h4>Potencias y raíces <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Potencias:</b> aᵐ · aⁿ = aᵐ⁺ⁿ<br>aᵐ / aⁿ = aᵐ⁻ⁿ<br>(aᵐ)ⁿ = aᵐⁿ<br>a⁰ = 1 (a ≠ 0)<br>a⁻ⁿ = 1/aⁿ</li><li><b>Raíces:</b> ⁿ√a = a<sup>1/n</sup><br>a<sup>m/n</sup> = (ⁿ√a)ᵐ<br>√(a · b) = √a · √b<br>Ejemplo: √50 = √(25 · 2) = 5√2</li></ul><div class="fi-tr"><b>Exponente negativo:</b> <span class="no">2⁻³ = −8</span><span class="si">2⁻³ = 1/2³ = 1/8</span></div><div class="fi-tr"><b>Raíz de una suma:</b> <span class="no">√9 + √16 = √25 = 5</span><span class="si">√9 + √16 = 3 + 4 = 7</span></div><div class="fi-tr"><b>Paréntesis y signo:</b> <span class="no">(−2)⁴ = −16</span><span class="si">(−2)⁴ = 16, pero −2⁴ = −16</span></div><div class="fi-tr"><b>Multiplicar potencias:</b> <span class="no">a³ · a⁵ = a¹⁵</span><span class="si">a³ · a⁵ = a⁸ (los exponentes se suman)</span></div></div></section><section class="fi-eje"><h3>Álgebra y funciones</h3><div class="fi" data-tema="m1.alg.expresiones"><h4>Expresiones algebraicas <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Productos notables:</b> (a ± b)² = a² ± 2ab + b²<br>(a + b)(a − b) = a² − b²<br>(x + a)(x + b) = x² + (a + b)x + ab</li><li><b>Factorizar:</b> Factor común: 6x² + 9x = 3x(2x + 3). Trinomio x² + bx + c: dos números que sumen b y multipliquen c.</li><li><b>Truco útil:</b> a² + b² = (a + b)² − 2ab. Sirve cuando te dan la suma y el producto.</li></ul><div class="fi-tr"><b>El cuadrado de una suma:</b> <span class="no">(x + 3)² = x² + 9</span><span class="si">(x + 3)² = x² + 6x + 9</span></div><div class="fi-tr"><b>Simplificar una suma:</b> <span class="no">(x + 3)/3 = x</span><span class="si">(x + 3)/3 = x/3 + 1</span></div><div class="fi-tr"><b>Menos delante del paréntesis:</b> <span class="no">−(x − 4) = −x − 4</span><span class="si">−(x − 4) = −x + 4</span></div></div><div class="fi" data-tema="m1.alg.ecuaciones"><h4>Ecuaciones, inecuaciones y sistemas <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li><b>Ecuación lineal:</b> Lo que suma pasa restando; lo que multiplica pasa dividiendo. Verifica reemplazando el valor.</li><li><b>Inecuación:</b> Igual que una ecuación, pero si multiplicas o divides por un número negativo, la desigualdad se invierte.</li><li><b>Sistemas 2×2:</b> Reducción: suma o resta las ecuaciones para eliminar una incógnita. Sustitución: despeja una y reemplázala en la otra.</li></ul><div class="fi-tr"><b>Dividir por un negativo:</b> <span class="no">−2x &gt; 6 → x &gt; −3</span><span class="si">−2x &gt; 6 → x &lt; −3</span></div><div class="fi-tr"><b>Distribuir:</b> <span class="no">3(x − 2) = 3x − 2</span><span class="si">3(x − 2) = 3x − 6</span></div><div class="fi-tr"><b>Contestar lo que preguntan:</b> <span class="no">Resuelves x = 7, y = 3 y marcas 7</span><span class="si">Si piden x · y, la respuesta es 21</span></div></div><div class="fi" data-tema="m1.alg.funciones"><h4>Función lineal, afín y cuadrática <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li><b>Afín y lineal:</b> y = mx + n. m = Δy/Δx (pendiente); n = corte con el eje Y. Lineal: n = 0 (pasa por el origen).</li><li><b>Cuadrática:</b> y = ax² + bx + c. a &gt; 0 abre hacia arriba. Vértice: x = −b/(2a). Corte con Y: (0, c). Ceros: ax² + bx + c = 0. Discriminante b² − 4ac: &gt; 0 dos ceros reales (corta el eje X dos veces); = 0 uno (toca el eje X en el vértice); &lt; 0 ninguno (no corta el eje X).</li></ul><div class="fi-tr"><b>Pendiente al revés:</b> <span class="no">m = Δx / Δy</span><span class="si">m = Δy / Δx</span></div><div class="fi-tr"><b>Signo del vértice:</b> <span class="no">y = x² − 6x + 5: vértice en x = −3</span><span class="si">x = −b/(2a) = −(−6)/2 = 3</span></div><div class="fi-tr"><b>Reemplazar un negativo:</b> <span class="no">f(x) = x², f(−4) = −4² = −16</span><span class="si">f(−4) = (−4)² = 16: usa paréntesis</span></div></div><div class="fi" data-tema="m1.alg.proporcionalidad"><h4>Proporcionalidad <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li><b>Directa:</b> y / x es constante. Si x se duplica, y se duplica. Su gráfico es una recta que pasa por el origen.</li><li><b>Inversa:</b> x · y es constante. Si x se duplica, y se reduce a la mitad. Su gráfico es una hipérbola.</li></ul><div class="fi-tr"><b>Trabajadores y días:</b> <span class="no">6 trabajadores tardan 10 días; 4 tardan 10 · 4/6</span><span class="si">Menos trabajadores, más días: 6 · 10 = 4 · d → d = 15</span></div><div class="fi-tr"><b>Crecer no basta:</b> <span class="no">y crece cuando x crece: es directa</span><span class="si">Directa exige y/x constante (y = 2x + 1 crece, pero no es proporcional)</span></div></div></section><section class="fi-eje"><h3>Geometría</h3><div class="fi" data-tema="m1.geo.areas-volumenes"><h4>Áreas y volúmenes (incluye cilindro) <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li><b>Áreas:</b> Triángulo: b · h / 2<br>Paralelogramo: b · h<br>Trapecio: (B + b) · h / 2<br>Círculo: πr²; su perímetro: 2πr</li><li><b>Cuerpos:</b> Cubo: área 6a², volumen a³. Paralelepípedo: área 2(ab + bc + ac), volumen abc. Cilindro: área 2πr² + 2πrh, volumen πr²h.</li><li><b>Unidades:</b> 1 m³ = 1.000 L<br>1 L = 1.000 cm³<br>1 m² = 10.000 cm²</li></ul><div class="fi-tr"><b>Radio o diámetro:</b> <span class="no">Diámetro 10 → A = π · 10²</span><span class="si">r = 10/2 = 5 → A = 25π</span></div><div class="fi-tr"><b>El trapecio:</b> <span class="no">A = (B + b) · h</span><span class="si">A = (B + b) · h / 2</span></div><div class="fi-tr"><b>Pasar m² a cm²:</b> <span class="no">1 m² = 100 cm²</span><span class="si">1 m² = 100 · 100 = 10.000 cm²</span></div></div><div class="fi" data-tema="m1.geo.semejanza-pitagoras"><h4>Semejanza y Pitágoras <span class="chip A">A</span><span class="fi-dom"></span></h4><ul><li><b>Pitágoras:</b> a² + b² = c² (c es la hipotenusa, frente al ángulo recto). Tríos: 3-4-5, 5-12-13, 6-8-10, 8-15-17.</li><li><b>Semejanza:</b> Mismos ángulos y lados proporcionales (razón k). Perímetros × k, áreas × k², volúmenes × k³.</li><li><b>Escalas:</b> 1 : 50.000 significa que 1 cm del mapa son 50.000 cm reales (500 m).</li></ul><div class="fi-tr"><b>Buscar un cateto:</b> <span class="no">Hipotenusa 5 y cateto 3: √(25 + 9)</span><span class="si">Para un cateto se resta: √(25 − 9) = 4</span></div><div class="fi-tr"><b>Áreas semejantes:</b> <span class="no">Razón 1 : 3 → el área se triplica</span><span class="si">El área se multiplica por 3² = 9</span></div><div class="fi-tr"><b>Unidades de la escala:</b> <span class="no">400.000 cm = 40 km</span><span class="si">400.000 cm = 4.000 m = 4 km</span></div></div><div class="fi" data-tema="m1.geo.transformaciones"><h4>Transformaciones isométricas <span class="chip C">C</span><span class="fi-dom"></span></h4><ul><li><b>Reglas:</b> Traslación por (a, b): (x + a, y + b). Reflexión en el eje X: (x, −y). En el eje Y: (−x, y). Rotación 90° antihoraria con centro en el origen: (−y, x). Rotación 180° con centro en el origen: (−x, −y).</li></ul><div class="fi-tr"><b>Eje X o eje Y:</b> <span class="no">Reflejar (3, 5) en el eje Y → (3, −5)</span><span class="si">(−3, 5): reflejar en el eje Y cambia la x</span></div><div class="fi-tr"><b>Sentido de giro:</b> <span class="no">90° antihorario: (x, y) → (y, −x)</span><span class="si">(x, y) → (−y, x); (y, −x) es el horario</span></div></div></section><section class="fi-eje"><h3>Probabilidad y estadística</h3><div class="fi" data-tema="m1.pro.datos"><h4>Datos y medidas de posición <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Tablas y promedio:</b> Frecuencia relativa = absoluta / total (× 100 para %). Promedio = suma de los datos / cantidad de datos.</li><li><b>Cuartiles y cajón:</b> Q₂ = mediana. Q₁ deja el 25 % de los datos abajo; Q₃, el 75 %. El percentil k deja el k % abajo. Cómo hallar Q₁: ordena, toma la mitad de abajo (sin la mediana si n es impar) y busca su mediana; Q₃ igual con la mitad de arriba. Diagrama de cajón: mínimo, Q₁, mediana, Q₃ y máximo; la caja tiene el 50 % central.</li></ul><div class="fi-tr"><b>Mediana sin ordenar:</b> <span class="no">Mediana de 9, 2, 7: el dato del medio es 2</span><span class="si">Ordena: 2, 7, 9 → la mediana es 7</span></div><div class="fi-tr"><b>Leer el cajón:</b> <span class="no">La línea de la caja es el promedio</span><span class="si">Es la mediana</span></div><div class="fi-tr"><b>La nota que falta:</b> <span class="no">Promedio 5,5 en 4 notas; para 5,8: (5,5 + x)/2 = 5,8</span><span class="si">(4 · 5,5 + x)/5 = 5,8 → x = 7,0</span></div></div><div class="fi" data-tema="m1.pro.probabilidad"><h4>Probabilidad (Laplace y reglas) <span class="chip B">B</span><span class="fi-dom"></span></h4><ul><li><b>Laplace:</b> P = casos favorables / casos posibles (si todos son igual de probables). 0 ≤ P ≤ 1. P(no A) = 1 − P(A).</li><li><b>Reglas:</b> «O»: P(A ∪ B) = P(A) + P(B) − P(A ∩ B). «Y» (independientes): P(A) · P(B). Sin reposición la segunda cambia: 5/10 · 4/9.</li></ul><div class="fi-tr"><b>Casos que no son igual de probables:</b> <span class="no">Dos monedas: 0, 1 o 2 caras → P(una cara) = 1/3</span><span class="si">Casos: CC, CS, SC, SS → P = 2/4 = 1/2</span></div><div class="fi-tr"><b>Contar dos veces:</b> <span class="no">P(fútbol o básquetbol) = 18/30 + 12/30</span><span class="si">Resta a los que juegan ambos: (18 + 12 − 5)/30</span></div><div class="fi-tr"><b>Sin reposición:</b> <span class="no">Dos rojas sin devolver: 5/10 · 5/10</span><span class="si">5/10 · 4/9: queda una roja menos</span></div></div></section></div></article>
+<!-- @@/fichas@@ -->
+  </section>
   <section class="pane" id="p-progreso"></section>
   <p class="small muted como-abrir" id="comoAbrir"></p>
   <footer class="firma" data-firma></footer>
@@ -8274,11 +8314,13 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     "opciones": [
      {
       "texto": "Usó el teléfono durante un minuto de espera.",
-      "trampa": "Mezcla un dato del párrafo 3 con el experimento del párrafo 2."
+      "trampa": "Mezcla un dato del párrafo 3 con el experimento del párrafo 2.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Inventó usos para un vaso plástico.",
-      "trampa": "Esa ERA la tarea creativa, no lo que hizo antes."
+      "trampa": "Esa ERA la tarea creativa, no lo que hizo antes.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Copió números de una lista durante quince minutos.",
@@ -8286,11 +8328,17 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
      },
      {
       "texto": "Descansó sin hacer nada durante quince minutos.",
-      "trampa": "El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite."
+      "trampa": "El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite.",
+      "tipo": "fuera"
      }
     ],
     "correcta": 2,
-    "explicacion": "Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico»."
+    "explicacion": "Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico».",
+    "texto": "diag",
+    "tarea": "a",
+    "evidencia": [
+     "un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico"
+    ]
    },
    {
     "id": "d-len-02",
@@ -8306,19 +8354,27 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
      },
      {
       "texto": "Con la pereza y con un defecto del carácter.",
-      "trampa": "Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4."
+      "trampa": "Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Con una mayor creatividad.",
-      "trampa": "Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico."
+      "trampa": "Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Con el uso excesivo del teléfono.",
-      "trampa": "El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico."
+      "trampa": "El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico.",
+      "tipo": "otro-dato"
      }
     ],
     "correcta": 0,
-    "explicacion": "Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo»."
+    "explicacion": "Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo».",
+    "texto": "diag",
+    "tarea": "a",
+    "evidencia": [
+     "Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo"
+    ]
    },
    {
     "id": "d-len-03",
@@ -8330,23 +8386,32 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     "opciones": [
      {
       "texto": "Demostrar que el aburrimiento produce un malestar físico.",
-      "trampa": "Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas."
+      "trampa": "Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas.",
+      "tipo": "literal"
      },
      {
       "texto": "Mostrar que el aburrimiento es tan necesario como comer.",
-      "trampa": "Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es."
+      "trampa": "Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es.",
+      "tipo": "exagera"
      },
      {
       "texto": "Explicar que el aburrimiento es una señal que empuja a cambiar de actividad.",
       "trampa": ""
      },
      {
-      "texto": "Criticar la idea antigua de que el aburrimiento es pereza.",
-      "trampa": "Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua."
+      "texto": "Criticar la idea antigua de que el aburrimiento es pereza o un defecto del carácter.",
+      "trampa": "Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua.",
+      "tipo": "otro-dato"
      }
     ],
     "correcta": 2,
-    "explicacion": "El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal."
+    "explicacion": "El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal.",
+    "texto": "diag",
+    "tarea": "h",
+    "evidencia": [
+     "el aburrimiento funciona de un modo parecido al hambre",
+     "el aburrimiento avisaría que lo que estamos haciendo ya no nos aporta nada y que conviene buscar otra cosa"
+    ]
    },
    {
     "id": "d-len-04",
@@ -8358,43 +8423,56 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     "opciones": [
      {
       "texto": "El aburrimiento siempre es bueno para la creatividad.",
-      "trampa": "Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca»."
+      "trampa": "Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca».",
+      "tipo": "exagera"
      },
      {
       "texto": "El aburrimiento es una señal útil que hoy solemos tapar antes de escucharla.",
       "trampa": ""
      },
      {
-      "texto": "El teléfono celular es la causa del aburrimiento moderno.",
-      "trampa": "Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa."
+      "texto": "El teléfono celular es la causa principal del aburrimiento en la vida moderna.",
+      "trampa": "Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa.",
+      "tipo": "contrario"
      },
      {
       "texto": "Antes, el aburrimiento se consideraba pereza.",
-      "trampa": "Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal."
+      "trampa": "Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal.",
+      "tipo": "parcial"
      }
     ],
     "correcta": 1,
-    "explicacion": "La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4)."
+    "explicacion": "La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4).",
+    "texto": "diag",
+    "tarea": "f",
+    "evidencia": [
+     "no como una falla, sino como una señal",
+     "hoy casi nunca dejamos que esa señal haga su trabajo",
+     "La clave, dicen, no está en buscarlo ni en huir de él, sino en escucharlo"
+    ]
    },
    {
     "id": "d-len-05",
     "prueba": "LEN",
     "eje": "Habilidades",
-    "tema": "len.evaluar",
+    "tema": "len.interpretar",
     "nivel": "paes",
     "enunciado": "¿Qué propósito cumple el experimento mencionado en el párrafo 2?",
     "opciones": [
      {
       "texto": "Explicar cómo se realiza un experimento científico.",
-      "trampa": "Confunde el ejemplo con el tema. El texto no trata sobre el método científico."
+      "trampa": "Confunde el ejemplo con el tema. El texto no trata sobre el método científico.",
+      "tipo": "fuera"
      },
      {
-      "texto": "Contradecir la idea de que el aburrimiento es una señal.",
-      "trampa": "Invierte su función: el experimento apoya esa idea."
+      "texto": "Contradecir la idea de que el aburrimiento es una señal útil para cambiar de actividad.",
+      "trampa": "Invierte su función: el experimento apoya esa idea.",
+      "tipo": "contrario"
      },
      {
       "texto": "Entretener al lector con una anécdota curiosa.",
-      "trampa": "Puede ser curioso, pero en el argumento su función es dar evidencia."
+      "trampa": "Puede ser curioso, pero en el argumento su función es dar evidencia.",
+      "tipo": "fuera"
      },
      {
       "texto": "Respaldar con evidencia la idea de que el aburrimiento puede impulsar ideas nuevas.",
@@ -8402,7 +8480,12 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
      }
     ],
     "correcta": 3,
-    "explicacion": "El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis."
+    "explicacion": "El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis.",
+    "texto": "diag",
+    "tarea": "h",
+    "evidencia": [
+     "Ese grupo propuso más ideas, y más variadas, que otro grupo que pasó directo a la tarea creativa"
+    ]
    },
    {
     "id": "d-len-06",
@@ -8410,11 +8493,12 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     "eje": "Habilidades",
     "tema": "len.evaluar",
     "nivel": "dificil",
-    "enunciado": "¿Con cuál de las siguientes afirmaciones estaría de acuerdo el autor del texto?",
+    "enunciado": "¿Con cuál de las siguientes afirmaciones estarían de acuerdo los especialistas que cita el texto?",
     "opciones": [
      {
       "texto": "Hay que buscar el aburrimiento todos los días para ser más creativos.",
-      "trampa": "El párrafo 4 dice que la clave NO está en buscarlo."
+      "trampa": "El párrafo 4 dice que la clave NO está en buscarlo.",
+      "tipo": "contrario"
      },
      {
       "texto": "Antes de llenar un momento de espera, vale la pena preguntarse qué necesitamos.",
@@ -8422,15 +8506,22 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
      },
      {
       "texto": "El aburrimiento debe evitarse porque lleva a conductas de riesgo.",
-      "trampa": "Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él."
+      "trampa": "Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él.",
+      "tipo": "contrario"
      },
      {
       "texto": "Los teléfonos deberían prohibirse en las salas de espera.",
-      "trampa": "El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice."
+      "trampa": "El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice.",
+      "tipo": "fuera"
      }
     ],
     "correcta": 1,
-    "explicacion": "Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo»."
+    "explicacion": "Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo».",
+    "texto": "diag",
+    "tarea": "l",
+    "evidencia": [
+     "preguntarse qué nos está pidiendo antes de taparlo con lo primero que tengamos a mano"
+    ]
    }
   ]
  }
@@ -8517,9 +8608,9 @@ const P27 = (() => {
     ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
     ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
 
-    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
-    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
-    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', 'lenguaje.html#len.localizar'],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', 'lenguaje.html#len.interpretar'],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', 'lenguaje.html#len.evaluar'],
   ];
   const TEMAS = {};
   for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };
@@ -8740,14 +8831,16 @@ const fmtMin = (seg) => `${Math.floor(seg / 60)}:${String(Math.round(seg % 60)).
 // ---------------- pestañas ----------------
 const TABS = [...document.querySelectorAll('#tabs button')].map((b) => b.dataset.tab);
 function mostrarTab(t) {
+  const [t0, arg] = String(t || '').split('/');
+  t = t0;
   if (!TABS.includes(t)) t = 'hoy';
   document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === t));
   document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + t));
-  RENDER[t]();
+  RENDER[t](arg);
 }
 document.getElementById('tabs').addEventListener('click', (e) => {
   const b = e.target.closest('button'); if (!b) return;
-  if (location.hash !== '#' + b.dataset.tab) location.hash = b.dataset.tab; else mostrarTab(b.dataset.tab);
+  if (location.hash.split('/')[0] !== '#' + b.dataset.tab) location.hash = b.dataset.tab; else mostrarTab(location.hash.slice(1));
 });
 window.addEventListener('hashchange', () => mostrarTab(location.hash.slice(1)));
 const tabActual = () => (document.querySelector('#tabs button.on') || {}).dataset?.tab || 'hoy';
@@ -8930,12 +9023,12 @@ function describirBloque(b, diag) {
       return { tit: `${pref} · ${t ? t.nombre : '—'}`, det: `La lección de este tema llega en ${fase}. Mientras: estúdialo con tu material y practica preguntas reales de ese eje en los modelos DEMRE.`, link: null };
     }
     case 'len': return b.ficha
-      ? { tit: 'Lectora · trampas típicas (30 min)', det: 'Repasa los errores de tu diagnóstico de Lectora: absolutos, detalles convertidos en tesis, inferencias que el texto no permite.' }
-      : { tit: 'Lectora · estrategias (30 min)', det: 'Un texto corto cronometrado: primero la pregunta, luego el párrafo. Anota qué tipo de pregunta era (localizar, interpretar, evaluar).' };
+      ? { tit: 'Lectora · trampas típicas (30 min)', det: 'Repasa el catálogo de trampas, juega una ronda de «Caza la trampa» y mira «Tus trampas».', link: 'lenguaje.html#trampas' }
+      : { tit: 'Lectora · un texto cronometrado (30 min)', det: 'Si no has visto las 3 habilidades, parte por esas lecciones. Después, un texto de la práctica cronometrada al ritmo real y revisa cada trampa.', link: 'lenguaje.html#practica' };
     case 'ensayo': return { tit: 'ENSAYO M2 completo cronometrado', det: '55 preguntas en 2 h 20 min, como el día de la prueba (M2 → Ensayo). Si ya viste casi todas las preguntas de la app, haz además el modelo oficial DEMRE.', link: 'm2.html#ensayo' };
     case 'revision': return { tit: 'Revisión de errores del ensayo M2', det: 'Por cada error: ¿fue concepto, cálculo o trampa? Anótalo en la ficha.' };
     case 'parcial': return { tit: 'Ensayo parcial de Física', det: '40 preguntas en 80 min (Física → Ensayo de Ciencias → Parcial). Revisa los errores al final.', link: 'fisica.html#ensayo' };
-    case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas' };
+    case 'ficha': return { tit: `Ficha final de ${pr.corto}`, det: 'Fórmulas y trampas en una página. Nada nuevo.', link: '#fichas/' + b.prueba };
     case 'repaso': return { tit: 'Repaso espaciado', det: 'Temas fallados que vuelven hoy. Ve a la pestaña Repaso.', link: '#repaso' };
     default: return { tit: b.tipo, det: '' };
   }
@@ -8982,7 +9075,7 @@ function tarjetaEvento(fecha) {
   card.appendChild(el('h3', '', `<span>${fechaCorta(fecha)}${fecha === h ? ' · HOY' : ''}</span><span class="small muted">día de prueba</span>`));
   for (const [hora, dur, tit, tipo, pr] of EVENTOS[fecha]) {
     const tag = pr ? `<span class="tag" style="--c:${COLOR[pr]}">${esc(PRUEBAS[pr].corto)}</span>` : '';
-    card.appendChild(el('div', 'bloque', `<span></span><div class="hora">${hora}</div><div>${tag}<span class="tit" ${tipo === 'prueba' ? 'style="color:var(--warn)"' : ''}>${esc(tit)}</span><div class="det">${esc(dur)}</div></div>`));
+    card.appendChild(el('div', 'bloque', `<span></span><div class="hora">${hora}</div><div>${tag}${tipo === 'ficha' ? `<a href="#fichas/${pr}">` : ''}<span class="tit" ${tipo === 'prueba' ? 'style="color:var(--warn)"' : ''}>${esc(tit)}</span>${tipo === 'ficha' ? '</a>' : ''}<div class="det">${esc(dur)}</div></div>`));
   }
   return card;
 }
@@ -9367,7 +9460,7 @@ const DEMRE = [
 function tarjetaDemre() {
   return el('div', 'card', `<h3>Material oficial DEMRE</h3><p class="small muted">Para practicar con preguntas reales. Los modelos de prueba y las selecciones de preguntas están en demre.cl, sección Publicaciones. No pude abrir el sitio desde donde se construyó la app, así que no enlazo directo a los modelos: búscalos ahí.</p><ul>${DEMRE.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ul>`);
 }
-const PAGINA_ENSAYO = { M2: 'm2.html', CIE: 'fisica.html', M1: 'm1.html' };
+const PAGINA_ENSAYO = { M2: 'm2.html', CIE: 'fisica.html', M1: 'm1.html', LEN: 'lenguaje.html' };
 RENDER.ensayos = () => {
   const p = $('#p-ensayos'); p.innerHTML = '';
   const ens = cargar('ensayos', []);
@@ -9378,15 +9471,42 @@ RENDER.ensayos = () => {
     <p><a class="btn" style="text-decoration:none" href="m2.html#ensayo">Ensayo de M2</a> <span class="small muted">· completo (55 preguntas, 2 h 20 min) o corto (20 preguntas, 50 min)</span></p>
     <p><a class="btn sec" style="text-decoration:none" href="fisica.html#ensayo">Ensayo de Ciencias</a> <span class="small muted">· completo (80 preguntas, 2 h 40 min: 54 de Biología, Química y Física + 26 de Física), parcial de Física (40, 80 min) o corto (20, 40 min)</span></p>
     <p><a class="btn sec" style="text-decoration:none" href="m1.html#ensayo">Ensayo de M1</a> <span class="small muted">· completo (65 preguntas, 2 h 20 min) o corto (20 preguntas, 43 min)</span></p>
+    <p><a class="btn sec" style="text-decoration:none" href="lenguaje.html#practica">Práctica cronometrada de Lectora</a> <span class="small muted">· un texto, simulacro de 7 textos o corto de 3, al ritmo real (65 preguntas en 2 h 30 min)</span></p>
     ${hechos.length ? '<h3>Historial</h3>' + hechos.map((e) => `<p>${esc(PRUEBAS[e.prueba]?.corto || e.prueba)} · ${fechaCorta(e.fecha)} · ${esc(e.modo)} · <b>${e.correctas}/${e.total}</b> (${Math.round((e.correctas / e.total) * 100)} %)</p>`).join('') : '<p class="muted small">Aún no hay ensayos.</p>'}`);
   p.appendChild(c);
   p.appendChild(tarjetaDemre());
 };
 
 // ---------------- fichas ----------------
-RENDER.fichas = () => {
-  const p = $('#p-fichas'); p.innerHTML = '';
-  p.appendChild(el('div', 'card', '<h2>Fichas finales</h2><p>Una página por prueba con fórmulas y trampas, para la mañana del examen. Llegan en la <b>Fase 5</b>. Mientras, cada lección de M2 ya trae su resumen en «El porqué».</p>'));
+// La ficha que se muestra: la pedida (#fichas/M2), la última elegida o la de la próxima prueba.
+const FICHAS = ['M2', 'LEN', 'CIE', 'M1'];
+function proximaPrueba() {
+  const DUR = { M2: 140, LEN: 150, CIE: 160, M1: 140 };
+  const ahora = Date.now();
+  return FICHAS.find((pr) => new Date(`${PRUEBAS[pr].fecha}T${PRUEBAS[pr].hora}:00`).getTime() + DUR[pr] * 60000 > ahora) || 'M1';
+}
+RENDER.fichas = (arg) => {
+  let pr = FICHAS.includes(arg) ? arg : null;
+  if (!pr) { try { pr = sessionStorage.getItem('paes27:ficha'); } catch (e) { pr = null; } }
+  if (!FICHAS.includes(pr)) pr = proximaPrueba();
+  try { sessionStorage.setItem('paes27:ficha', pr); } catch (e) { /* sin almacenamiento: no pasa nada */ }
+  document.querySelectorAll('#p-fichas .ficha').forEach((f) => { f.hidden = f.dataset.ficha !== pr; });
+  document.querySelectorAll('#fichas-sel [data-ficha]').forEach((b) => {
+    b.classList.toggle('on', b.dataset.ficha === pr);
+    b.onclick = () => { location.hash = 'fichas/' + b.dataset.ficha; };
+  });
+  $('#ficha-imprimir').onclick = () => window.print();
+  document.querySelectorAll('#p-fichas .fi[data-tema]').forEach((f) => {
+    const v = P27.dominio(f.dataset.tema);
+    const s = f.querySelector('.fi-dom');
+    s.textContent = v === null ? 'sin datos' : v + ' %';
+    s.style.color = P27.colorDominio(v);
+    s.title = 'Tu dominio de este tema';
+    f.classList.toggle('fi-flojo', v !== null && v < 50);
+    let ojo = f.querySelector('h4 .fi-ojo');
+    if (v !== null && v < 50 && !ojo) { ojo = el('span', 'fi-ojo', 'repásalo'); f.querySelector('h4').insertBefore(ojo, s); }
+    if ((v === null || v >= 50) && ojo) ojo.remove();
+  });
 };
 
 // ---------------- progreso ----------------
