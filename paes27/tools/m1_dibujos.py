@@ -442,3 +442,115 @@ NUEVAS = {
     'm1.pro.probabilidad': [('dibujo', '«O» en un diagrama',
                              'P(A ∪ B) = P(A) + P(B) − P(A ∩ B): si no restas la parte común, la cuentas dos veces.', venn())],
 }
+
+
+# =====================================================================
+# Segunda pasada: tarjetas que quedaron sin dibujo
+# =====================================================================
+def orden_operaciones():
+    pasos = [('( )', 'a'), ('xⁿ', 'b'), ('× ÷', 'w'), ('+ −', 'g')]
+    s = ''.join(caja(6 + 48 * i, 52 - 14 * i, 42, 24, c) + t(27 + 48 * i, 68 - 14 * i, e, tam=12) + t(27 + 48 * i, 88 - 14 * i, f'{i + 1}.º', tam=10) for i, (e, c) in enumerate(pasos))
+    return svg(s, t(6, 12, 'empate: de izquierda a derecha', 'start', tam=8.5))
+
+
+def arbol_operacion():
+    return svg(circ(100, 14, 9, 'fg'), t(100, 18, '+', tam=12), ln(94, 20, 60, 44, 'm', 2), ln(106, 20, 140, 44, 'm', 2),
+               t(56, 54, '−3', tam=12), circ(140, 50, 9, 'fw'), t(140, 54, '×', tam=12), ln(134, 56, 112, 76, 'm', 2), ln(146, 56, 168, 76, 'm', 2),
+               t(110, 88, '5', tam=12), t(170, 88, '(−2)', tam=12), t(178, 46, '1.º', 'start', c='w', tam=10), t(116, 10, '2.º', 'start', c='g', tam=10))
+
+
+def multiplicar_fracciones():
+    X0, Y0, W, H = 20, 10, 96, 72
+    s = rel(X0, Y0, W * 3 / 4, H, 'a', .3) + rel(X0, Y0 + H / 3, W, H * 2 / 3, 'b', .3)
+    s += marco(X0, Y0, W, H, 'm', 2) + ''.join(ln(round(X0 + W * i / 4, 1), Y0, round(X0 + W * i / 4, 1), Y0 + H, 'm', 1) for i in range(1, 4))
+    s += ''.join(ln(X0, round(Y0 + H * j / 3, 1), X0 + W, round(Y0 + H * j / 3, 1), 'm', 1) for j in (1, 2))
+    return svg(s, t(158, 30, '2/3 · 3/4', tam=11), t(158, 50, '= 6/12', c='g', tam=11), t(158, 70, '= 1/2', c='g', tam=11), t(68, 92, 'las dos sombras juntas: 6 de 12', tam=9))
+
+
+def cien_cuadros():
+    s = ''.join(rel(14 + 7.2 * (k % 10), 12 + 7.2 * (k // 10), 6.4, 6.4, 'a' if k < 20 else 'm', .7 if k < 20 else .18) for k in range(100))
+    return svg(s, t(150, 34, '20 % =', tam=12), t(150, 52, '20 de cada 100', c='a', tam=11), t(150, 72, '× 0,20', tam=11))
+
+
+def factorizar():
+    return svg(rel(20, 26, 64, 36, 'a', .4), rel(84, 26, 40, 36, 'b', .45), marco(20, 26, 104, 36, 'm', 2), ln(84, 26, 84, 62, 'm', 1.6),
+               t(52, 48, '6x²', tam=11), t(104, 48, '9x', tam=11), t(52, 20, '2x', tam=10), t(104, 20, '3', tam=10), t(14, 48, '3x', 'end', tam=10),
+               t(160, 40, '3x(2x + 3)', c='g', tam=11), t(160, 58, 'factor común', tam=9.5), t(72, 82, 'el área no cambia', tam=9.5))
+
+
+def simplificar_suma():
+    return svg(t(40, 32, 'x + 3', tam=14), ln(14, 40, 66, 40, 'm', 2), t(40, 58, '3', tam=14), fl(76, 42, 98, 42, 'm', 2),
+               t(120, 32, 'x', tam=14), ln(108, 40, 132, 40, 'm', 2), t(120, 58, '3', tam=14), t(144, 46, '+', tam=14),
+               t(166, 32, '3', tam=14), ln(154, 40, 178, 40, 'm', 2), t(166, 58, '3', tam=14), t(100, 86, 'el 3 divide a todo el numerador', tam=9.5))
+
+
+def menos_parentesis():
+    return svg(t(24, 50, '−', c='r', tam=16), t(42, 50, '(', tam=16), t(60, 50, 'x', tam=14), t(80, 50, '−', tam=14), t(98, 50, '4', tam=14), t(114, 50, ')', tam=16),
+               '<path class="r" d="M26 34Q42 14 58 34" stroke-width="2" fill="none"/>', '<path class="r" d="M26 34Q58 0 92 34" stroke-width="2" fill="none"/>',
+               fl(124, 46, 140, 46, 'm', 2), t(170, 50, '−x + 4', c='g', tam=13), t(100, 82, 'el menos cambia el signo de cada término', tam=9))
+
+
+def distribuir():
+    return svg(t(30, 54, '3', c='a', tam=16), t(46, 54, '(', tam=16), t(64, 54, 'x', tam=14), t(84, 54, '−', tam=14), t(102, 54, '2', tam=14), t(118, 54, ')', tam=16),
+               '<path class="a" d="M32 36Q48 14 62 36" stroke-width="2" fill="none"/>', '<path class="a" d="M32 36Q68 2 100 36" stroke-width="2" fill="none"/>',
+               fl(128, 50, 144, 50, 'm', 2), t(172, 54, '3x − 6', c='g', tam=13), t(100, 84, 'multiplica a los dos términos', tam=9.5))
+
+
+def pendiente():
+    return svg(ln(30, 76, 170, 16, 'a', 3), ln(60, 63.1, 140, 63.1, 'w', 2, '4 3'), ln(140, 63.1, 140, 28.9, 'g', 2.5),
+               t(100, 78, 'Δx (avanza)', c='w', tam=10.5), t(146, 50, 'Δy (sube)', 'start', c='g', tam=10.5), t(44, 24, 'm = Δy / Δx', 'start', tam=12))
+
+
+def trabajadores():
+    a = ''.join(rel(10 + 6 * i, 14 + 6.4 * j, 5.2, 5.6, 'a', .55) for i in range(10) for j in range(6))
+    b = ''.join(rel(104 + 6 * i, 14 + 6.4 * j, 5.2, 5.6, 'b', .55) for i in range(15) for j in range(4))
+    return svg(a, b, t(40, 64, '6 · 10 = 60', tam=10.5), t(149, 50, '4 · 15 = 60', tam=10.5), t(40, 80, '6 trabajadores', tam=9), t(149, 66, '4 trabajadores', tam=9),
+               t(100, 92, 'el trabajo total no cambia', tam=9.5))
+
+
+def litro():
+    l = 44
+    d = l * 0.45
+    cubo_ = (poly([(30, 80), (30 + l, 80), (30 + l, 80 - l), (30, 80 - l)], 'b', 'acc2', .25) + poly([(30, 80 - l), (30 + d, 80 - l - d), (30 + l + d, 80 - l - d), (30 + l, 80 - l)], 'b', 'acc2', .15)
+             + poly([(30 + l, 80), (30 + l + d, 80 - d), (30 + l + d, 80 - l - d), (30 + l, 80 - l)], 'b', 'acc2', .1))
+    return svg(cubo_, t(52, 92, '10 cm', tam=10), t(52, 64, '1 L', c='b', tam=12), t(150, 34, '10·10·10', tam=11), t(150, 50, '= 1.000 cm³ = 1 L', tam=10.5), t(150, 72, '1 m³ = 1.000 L', c='g', tam=10.5))
+
+
+def areas_semejantes():
+    return svg(marco(16, 56, 22, 22, 'a', 2.5), t(27, 90, 'lado 1', tam=9.5), marco(70, 12, 66, 66, 'b', 2.5),
+               *[ln(70 + 22 * i, 12, 70 + 22 * i, 78, 'b', 1.2) + ln(70, 12 + 22 * i, 136, 12 + 22 * i, 'b', 1.2) for i in (1, 2)],
+               t(103, 90, 'lado 3', tam=9.5), t(170, 38, 'caben 9', c='g', tam=11), t(170, 56, 'área × 3²', tam=11))
+
+
+def nota_falta():
+    Y = lambda v: 84 - v * 8
+    s = ''.join(rel(14 + 28 * i, Y(5.5), 22, 84 - Y(5.5), 'a', .5) for i in range(4)) + rel(128, Y(7), 22, 84 - Y(7), 'g', .6)
+    return svg(ln(8, 84, 196, 84, 'm', 1.6), s, ln(8, Y(5.8), 196, Y(5.8), 'w', 1.8, '4 3'), t(196, Y(5.8) - 4, 'meta 5,8', 'end', c='w', tam=9.5),
+               t(56, Y(5.5) + 14, '4 notas de 5,5 = 22', tam=9), t(139, Y(7) - 4, '7,0', c='g', tam=11), t(100, 12, '5 · 5,8 = 29 → 29 − 22 = 7', tam=9.5))
+
+
+def laplace():
+    def cara(x, n, fav):
+        pos = {1: [(0, 0)], 2: [(-5, -5), (5, 5)], 3: [(-5, -5), (0, 0), (5, 5)], 4: [(-5, -5), (5, -5), (-5, 5), (5, 5)],
+               5: [(-5, -5), (5, -5), (0, 0), (-5, 5), (5, 5)], 6: [(-5, -6), (5, -6), (-5, 0), (5, 0), (-5, 6), (5, 6)]}[n]
+        return (f'<rect x="{x - 12}" y="20" width="24" height="24" rx="5" class="{"g" if fav else "m"}" stroke-width="2.2" style="fill:var(--{"ok" if fav else "muted"});fill-opacity:{.25 if fav else .08}"/>'
+                + ''.join(circ(x + dx, 32 + dy, 2.2, 'fg' if fav else 'fm') for dx, dy in pos))
+    return svg(*[cara(20 + 32 * (n - 1), n, n % 2 == 0) for n in range(1, 7)], t(100, 66, 'P(par) = 3 / 6 = 1/2', c='g', tam=11), t(100, 84, 'favorables / posibles', tam=10))
+
+
+DIBUJOS.update({
+    ('m1.num.enteros-racionales', 'Orden de operaciones'): orden_operaciones(),
+    ('m1.num.enteros-racionales', 'Sumar antes de multiplicar'): arbol_operacion(),
+    ('m1.num.enteros-racionales', 'Fracciones'): multiplicar_fracciones(),
+    ('m1.num.porcentaje', 'Lo básico'): cien_cuadros(),
+    ('m1.alg.expresiones', 'Factorizar'): factorizar(),
+    ('m1.alg.expresiones', 'Simplificar una suma'): simplificar_suma(),
+    ('m1.alg.expresiones', 'Menos delante del paréntesis'): menos_parentesis(),
+    ('m1.alg.ecuaciones', 'Distribuir'): distribuir(),
+    ('m1.alg.funciones', 'Pendiente al revés'): pendiente(),
+    ('m1.alg.proporcionalidad', 'Trabajadores y días'): trabajadores(),
+    ('m1.geo.areas-volumenes', 'Unidades'): litro(),
+    ('m1.geo.semejanza-pitagoras', 'Áreas semejantes'): areas_semejantes(),
+    ('m1.pro.datos', 'La nota que falta'): nota_falta(),
+    ('m1.pro.probabilidad', 'Laplace'): laplace(),
+})

@@ -12,6 +12,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from esquemas import aro, caja, circ, curva, fl, ln, poly, puntos, svg, tx  # noqa: E402
+from bioquim_dibujos import DIBUJOS  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
@@ -240,7 +241,9 @@ def leccion(tid, tab, titulo, extras, idea, tarjetas):
         if etq == '§':
             cards.append(f'      <div class="tarjeta"><span class="onda">en un dibujo</span><h4>{tit}</h4>{ESQUEMAS[tid]}<p>{html}</p></div>')
         else:
-            cards.append(f'      <div class="tarjeta"><span class="onda">{etq}</span><h4>{tit}</h4><p>{html}</p></div>')
+            cards.append(f'      <div class="tarjeta"><span class="onda">{etq}</span><h4>{tit}</h4>{DIBUJOS.get((tid, tit), "")}<p>{html}</p></div>')
+    sobran = {k for k in DIBUJOS if k[0] == tid} - {(tid, x[1]) for x in tarjetas}
+    assert not sobran, f'dibujos sin tarjeta: {sobran}'
     return (f'  <section class="leccion" id="{tid}" data-tab="{tab}">\n'
             f'    <div class="lec-head"><h2>{titulo}</h2>{chips}<span class="dom" data-tema="{tid}"></span></div>\n'
             f'    <div class="lec-body">\n    <p class="idea">{idea}</p>\n    <div class="tarjetas">\n' + '\n'.join(cards) + '\n    </div>\n'
