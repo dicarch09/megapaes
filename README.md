@@ -23,6 +23,8 @@ python3 tools/esquemas.py           # dibuja los esquemas de «El porqué» en c
 python3 tools/bioquim.py            # escribe las lecciones de Biología y Química (tarjetas) en bioquim.html (dibujos en tools/bioquim_dibujos.py)
 python3 tools/m1.py                 # escribe el repaso rápido y las trampas de M1 en m1.html (dibujos en tools/m1_dibujos.py)
 python3 tools/tarjetas.py           # dibuja los esquemas de las tarjetas de Física (sistema solar, dispositivos, instalación eléctrica)
+python3 tools/lenguaje_banco.py     # escribe los textos y preguntas de Lectora (tools/banco_len.json) y completa las del diagnóstico
+python3 tools/fichas.py             # escribe las fichas finales en la pestaña «Fichas» del hub
 python3 tools/sync_core.py          # copia el bloque compartido y los bancos a cada HTML
 python3 tools/verificar.py          # recalcula cada respuesta numérica
 node tools/probar.js                # consola limpia, sin internet, flujos principales (con el servidor arriba)

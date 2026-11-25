@@ -122,6 +122,19 @@ const SHOTS = process.env.SHOTS || '';
   const d3 = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:diag')));
   ok(d3 && d3.M2 && d3.M2.total === 15, 'respaldo importado');
   for (const t of ['hoy', 'ensayos', 'fichas']) { await tab(t); }
+  // fichas finales: 4 pruebas, enlace directo, dominio y aviso de temas flojos
+  await page.evaluate(() => { const d = JSON.parse(localStorage.getItem('paes27:dominio') || '{}'); d['m2.num.log-exp'] = 30; d['m2.pro.condicional'] = 80; localStorage.setItem('paes27:dominio', JSON.stringify(d)); });
+  await page.goto(BASE + '/index.html#fichas/M2'); await page.waitForTimeout(200);
+  ok((await page.locator('#p-fichas .ficha').count()) === 4, 'fichas: M2, Lectora, Física y M1');
+  ok((await page.locator('#p-fichas .ficha:not([hidden])').getAttribute('data-ficha')) === 'M2', 'enlace directo #fichas/M2 abre la ficha de M2');
+  ok(await page.locator('.fi[data-tema="m2.num.log-exp"] .fi-ojo').isVisible() && !(await page.locator('.fi[data-tema="m2.pro.condicional"] .fi-ojo').count()), 'ficha marca «repásalo» solo en los temas bajo 50 %');
+  await page.click('#fichas-sel [data-ficha="CIE"]'); await page.waitForTimeout(150);
+  ok((await page.locator('#p-fichas .ficha:not([hidden])').getAttribute('data-ficha')) === 'CIE', 'el selector cambia a la ficha de Física');
+  ok((await page.locator('.ficha[data-ficha="CIE"] svg.esq').count()) >= 3, 'la ficha de Física trae dibujos de las lecciones');
+  ok((await page.locator('.ficha[data-ficha="M1"] .fi-tr').count()) >= 30, 'la ficha de M1 trae todas las trampas de M1');
+  await page.emulateMedia({ media: 'print' });
+  ok(!(await page.locator('#tabs').isVisible()) && (await page.locator('.ficha[data-ficha="CIE"]').isVisible()), 'al imprimir solo sale la ficha elegida');
+  await page.emulateMedia({ media: 'screen' });
 
   // práctica rápida en Hoy (con los 4 diagnósticos hechos)
   await page.evaluate(() => { const d = JSON.parse(localStorage.getItem('paes27:diag')); d.CIE = d.CIE || d.M2; d.M1 = d.M1 || d.M2; localStorage.setItem('paes27:diag', JSON.stringify(d)); });
@@ -136,7 +149,7 @@ const SHOTS = process.env.SHOTS || '';
 
   // móvil: sin scroll horizontal
   await page.setViewportSize({ width: 380, height: 800 });
-  for (const t of ['hoy', 'ruta', 'dominio', 'diag']) {
+  for (const t of ['hoy', 'ruta', 'dominio', 'diag', 'fichas']) {
     await tab(t);
     const sw = await page.evaluate(() => document.documentElement.scrollWidth);
     ok(sw <= 380, `sin scroll horizontal en ${t} (${sw}px)`);
@@ -279,6 +292,111 @@ const SHOTS = process.env.SHOTS || '';
     await page.click('#p-ensayo button:has-text("Entregar")');
     await page.waitForSelector('text=correctas (');
     if (SHOTS) await page.screenshot({ path: SHOTS + '/m1-ensayo-resultado.png' });
+  }
+  {
+    // ---------- Lectora ----------
+    console.log('lenguaje.html');
+    await page.setViewportSize({ width: 1200, height: 900 });
+    await page.evaluate(() => localStorage.removeItem('paes27:ensayos'));
+    await page.goto(BASE + '/lenguaje.html');
+    await page.waitForTimeout(300);
+    ok((await page.locator('section.leccion').count()) === 3, 'Lectora: 3 lecciones (localizar, interpretar, evaluar)');
+    for (const id of ['len.localizar', 'len.interpretar', 'len.evaluar']) {
+      await page.goto(BASE + '/lenguaje.html#' + id); await page.waitForTimeout(400);
+      const sec = page.locator(`section.leccion[id="${id}"]`);
+      ok(await sec.isVisible(), `${id} visible por enlace directo`);
+      const pills = sec.locator('.pasos button');
+      ok((await pills.count()) === 5, `${id}: 5 pasos en pestañas`);
+      await page.waitForTimeout(3600);
+      ok((await sec.locator('.demo [data-s].on').count()) > 0, `${id}: la animación «Ver» avanza sola`);
+      await pills.nth(1).click(); await page.waitForTimeout(80);
+      if (id === 'len.localizar') {
+        await sec.locator('#kw-chips button', { hasText: 'fuera de servicio' }).click();
+        ok((await sec.locator('#kw-texto .kw-hit, #kw-texto .kw-par').count()) === 0, 'palabra clave sin paráfrasis: 0 apariciones');
+        await sec.locator('#kw-par').check();
+        ok((await sec.locator('#kw-texto .kw-par').count()) === 1, 'con paráfrasis: «estuvo cerrado» aparece 1 vez');
+        await sec.locator('#kw-chips button', { hasText: 'puente' }).click();
+        ok((await sec.locator('#kw-texto .kw-hit').count()) === 5, '«puente» aparece 5 veces');
+      } else if (id === 'len.interpretar') {
+        const R = ['Presenta el tema', 'Plantea un problema', 'Explica una causa', 'Da un ejemplo', 'Presenta una solución', 'Presenta una objeción'];
+        const ss = sec.locator('#mp-lista select');
+        for (let i = 0; i < 6; i++) await ss.nth(i).selectOption(R[i]);
+        await sec.locator('#mp-revisar').click();
+        ok(await sec.locator('#mp-msg.ok').isVisible(), 'mapa del texto correcto se reconoce');
+        ok((await sec.locator('#mp-flujo span.puesto').count()) === 6, 'el mapa se arma con las 6 funciones');
+      } else {
+        const clases = ['h', 'h', 'o', 'h', 'h', 'o', 'o', 'h'];
+        const bs = sec.locator('#ho-lista .ho');
+        for (let i = 0; i < 8; i++) { await bs.nth(i).click(); if (clases[i] === 'o') await bs.nth(i).click(); }
+        await sec.locator('#ho-revisar').click();
+        ok(await sec.locator('#ho-msg.ok').isVisible(), 'hecho u opinión: 8/8 se reconoce');
+      }
+      await pills.nth(2).click();
+      ok(await sec.locator('details.acc.porque ol').isVisible(), `${id}: «El porqué» visible en su pestaña`);
+      await pills.nth(3).click();
+      const pasos = sec.locator('button', { hasText: 'Siguiente paso' });
+      while (await pasos.isVisible()) await pasos.click();
+      ok(await sec.locator('.trampa-ej').isVisible(), `${id}: ejemplo resuelto completo`);
+      await pills.nth(4).click();
+      for (const nivel of ['Básico', 'PAES', 'Difícil']) {
+        await sec.locator('.practica-len .niveles button', { hasText: nivel }).click();
+        let vueltas = 0, marcas = 0;
+        while (vueltas++ < 10) {
+          const op = sec.locator('.practica-len .q-op:not([disabled])').first();
+          if (!(await op.count())) break;
+          await op.click();
+          marcas += (await sec.locator('.practica-len .texto-lec mark.ev').count()) > 0 ? 1 : 0;
+          const sig = sec.locator('.practica-len .q-acc .btn:not([hidden])').last();
+          if (await sig.isVisible()) await sig.click(); else break;
+        }
+        ok(await sec.locator('.practica-len .resumen-nivel').isVisible() && marcas === vueltas - 1, `${id}: nivel ${nivel} completo, con la evidencia marcada en el texto (${marcas})`);
+      }
+      if (SHOTS) await page.screenshot({ path: `${SHOTS}/lenguaje-${id}.png` });
+    }
+    // trampas
+    await page.goto(BASE + '/lenguaje.html#trampas'); await page.waitForTimeout(200);
+    ok((await page.locator('#tr-catalogo .tarjeta').count()) === 9, 'catálogo con 9 tipos de trampa');
+    await page.click('text=Empezar una ronda');
+    for (let i = 0; i < 10; i++) { await page.waitForSelector('#caza .q-op:not([disabled])'); await page.keyboard.press(String((i % 4) + 1)); await page.keyboard.press('Enter'); }
+    ok(await page.locator('#caza .resumen-nivel').isVisible(), '«Caza la trampa»: ronda de 10 completa con teclado');
+    // práctica cronometrada: un texto, recargar a la mitad, entregar
+    await page.goto(BASE + '/lenguaje.html#practica'); await page.waitForTimeout(200);
+    ok((await page.locator('.tx-card').count()) === 8, '8 textos para practicar de a uno (7 + el del diagnóstico)');
+    await page.locator('.tx-card').first().locator('button').click();
+    await page.waitForSelector('#len-reloj');
+    for (let i = 0; i < 3; i++) { await page.keyboard.press(String((i % 4) + 1)); await page.keyboard.press('Enter'); }
+    await page.reload(); await page.waitForSelector('#len-reloj');
+    const lc = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso' && e.prueba === 'LEN'));
+    ok(lc && Object.keys(lc.resp).length === 3 && lc.textos.length === 1, `práctica de Lectora sigue en curso tras recargar (${lc && Object.keys(lc.resp).length} respondidas)`);
+    ok(lc.limite === Math.ceil((lc.ids.length * 150 * 60) / 65 / 60) * 60, `tiempo al ritmo real: ${lc.ids.length} preguntas en ${lc.limite / 60} min`);
+    await page.click('#p-practica button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    await page.locator('#p-practica details.acc').first().click(); await page.waitForTimeout(200);
+    ok((await page.locator('#p-practica details.acc[open] mark.ev').count()) > 0, 'revisión: la evidencia se marca en el texto');
+    const le = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).filter((e) => e.prueba === 'LEN'));
+    ok(le.length === 1 && le[0].estado === 'hecho' && le[0].omitidas === le[0].total - 3, 'práctica de Lectora entregada y guardada');
+    if (SHOTS) await page.screenshot({ path: SHOTS + '/lenguaje-resultado.png', fullPage: true });
+    await page.goto(BASE + '/lenguaje.html#trampas'); await page.waitForTimeout(200);
+    ok((await page.locator('#mis-trampas .barras .b').count()) > 0, '«Tus trampas» cuenta los errores por tipo');
+    // simulacro completo: 7 textos distintos, preguntas sin repetir
+    await page.goto(BASE + '/lenguaje.html#practica'); await page.waitForTimeout(200);
+    await page.click('#p-practica button:has-text("Completo")');
+    await page.waitForSelector('#len-reloj');
+    const sc = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:ensayos')).find((e) => e.estado === 'en-curso' && e.prueba === 'LEN'));
+    ok(sc.textos.length === 7 && new Set(sc.textos).size === 7 && new Set(sc.ids).size === sc.ids.length, `simulacro: 7 textos, ${sc.ids.length} preguntas distintas en ${sc.limite / 60} min`);
+    await page.click('#p-practica button:has-text("Entregar")');
+    await page.waitForSelector('text=correctas (');
+    await page.goto(BASE + '/index.html#ensayos'); await page.waitForTimeout(300);
+    ok(await page.locator('#p-ensayos p', { hasText: /^Lectora · .* · Simulacro de 7 textos · / }).isVisible(), 'el hub muestra la práctica de Lectora en el historial');
+    await page.goto(BASE + '/index.html#dominio'); await page.waitForTimeout(300);
+    ok(await page.locator('#p-dominio a[href="lenguaje.html#len.evaluar"]').count() > 0, 'el panel de dominio enlaza a las lecciones de Lectora');
+    await page.setViewportSize({ width: 380, height: 800 });
+    for (const h of ['hab', 'trampas', 'practica', 'len.interpretar']) {
+      await page.goto(BASE + '/lenguaje.html#' + h); await page.waitForTimeout(250);
+      const sw = await page.evaluate(() => document.documentElement.scrollWidth);
+      ok(sw <= 380, `lenguaje.html#${h} sin scroll horizontal en móvil (${sw}px)`);
+    }
+    await page.setViewportSize({ width: 1200, height: 900 });
   }
   console.log('\nErrores/avisos de consola:', errores.length ? '\n' + errores.join('\n') : 0);
   console.log('Pedidos fuera de localhost:', externos.length ? '\n' + externos.join('\n') : 0);

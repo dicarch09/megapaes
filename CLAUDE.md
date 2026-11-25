@@ -30,9 +30,9 @@ No inventes temas fuera del temario. Si dudas de si un tema entra, abre el PDF.
 
 ### Hallazgos clave de los temarios
 - **M2:** 55 preguntas (50 cuentan para el puntaje), 2 h 20 min, 4 o 5 opciones. Incluye suficiencia de datos, con 5 opciones fijas: (1) por sí sola / (2) por sí sola / ambas juntas, (1) y (2) / cada una por sí sola, (1) o (2) / se requiere información adicional. M2 evalúa todo M1 más sus temas propios.
-- **M1:** 65 preguntas, 2 h 20 min, 4 opciones.
+- **M1:** 65 preguntas (60 cuentan), 2 h 20 min, 4 opciones.
 - **Ciencias:** 80 preguntas (75 cuentan), 2 h 40 min, 4 o 5 opciones. Las primeras 54 son del Módulo Común (los 3 ejes) y las 26 siguientes del Módulo Electivo de Física. El temario NO dice cuántas preguntas del Módulo Común son de cada eje, ni qué temas de Física son solo del electivo. Por eso Física se trata como un solo bloque.
-- **Competencia Lectora:** 65 preguntas, 2 h 30 min.
+- **Competencia Lectora:** 7 textos y 65 preguntas de 4 opciones (60 cuentan), 2 h 30 min. Habilidades: localizar (tareas a–b), interpretar (c–h) y evaluar (i–n). Textos no literarios (expositivos y argumentativos, continuos o discontinuos) y literarios (solo narraciones).
 - **Física 2027 NO incluye** sonido ni ondas mecánicas, trabajo, energía mecánica, momentum, gravitación, calor, presión, torque, ley de Coulomb ni magnetismo. Ondas cubre solo ondas electromagnéticas. No crees contenido de esos temas.
 - **Contenido nuevo en 2027** (súbelo de prioridad):
   - M2: rectas en el plano y esferas (área y volumen). M1 suma semejanza y cilindro, que también entran en M2.

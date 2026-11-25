@@ -78,9 +78,9 @@ const P27 = (() => {
     ['m1.pro.datos', 'M1', 'Probabilidad y estadística', 'B', 'Datos y medidas de posición', 'm1.html#m1.pro.datos'],
     ['m1.pro.probabilidad', 'M1', 'Probabilidad y estadística', 'B', 'Probabilidad (Laplace)', 'm1.html#m1.pro.probabilidad'],
 
-    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', null],
-    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', null],
-    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', null],
+    ['len.localizar', 'LEN', 'Habilidades', 'B', 'Localizar información', 'lenguaje.html#len.localizar'],
+    ['len.interpretar', 'LEN', 'Habilidades', 'A', 'Interpretar (idea principal, función)', 'lenguaje.html#len.interpretar'],
+    ['len.evaluar', 'LEN', 'Habilidades', 'A', 'Evaluar (propósito, postura)', 'lenguaje.html#len.evaluar'],
   ];
   const TEMAS = {};
   for (const [id, prueba, eje, prio, nombre, leccion] of LISTA) TEMAS[id] = { id, prueba, eje, prio, nombre, leccion };

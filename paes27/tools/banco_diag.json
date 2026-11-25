@@ -1143,11 +1143,13 @@
     "opciones": [
      {
       "texto": "Usó el teléfono durante un minuto de espera.",
-      "trampa": "Mezcla un dato del párrafo 3 con el experimento del párrafo 2."
+      "trampa": "Mezcla un dato del párrafo 3 con el experimento del párrafo 2.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Inventó usos para un vaso plástico.",
-      "trampa": "Esa ERA la tarea creativa, no lo que hizo antes."
+      "trampa": "Esa ERA la tarea creativa, no lo que hizo antes.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Copió números de una lista durante quince minutos.",
@@ -1155,11 +1157,17 @@
      },
      {
       "texto": "Descansó sin hacer nada durante quince minutos.",
-      "trampa": "El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite."
+      "trampa": "El texto no dice que descansaran: hicieron una tarea aburrida. Es una inferencia que el texto no permite.",
+      "tipo": "fuera"
      }
     ],
     "correcta": 2,
-    "explicacion": "Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico»."
+    "explicacion": "Párrafo 2: «un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico».",
+    "texto": "diag",
+    "tarea": "a",
+    "evidencia": [
+     "un grupo de personas pasó quince minutos copiando números de una lista antes de inventar usos para un vaso plástico"
+    ]
    },
    {
     "id": "d-len-02",
@@ -1175,19 +1183,27 @@
      },
      {
       "texto": "Con la pereza y con un defecto del carácter.",
-      "trampa": "Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4."
+      "trampa": "Esa es la visión antigua del párrafo 1, no lo que dice el párrafo 4.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Con una mayor creatividad.",
-      "trampa": "Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico."
+      "trampa": "Ese es el efecto del aburrimiento breve (párrafo 2), no del crónico.",
+      "tipo": "otro-dato"
      },
      {
       "texto": "Con el uso excesivo del teléfono.",
-      "trampa": "El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico."
+      "trampa": "El texto relaciona el teléfono con EVITAR el aburrimiento (párrafo 3), no con el aburrimiento crónico.",
+      "tipo": "otro-dato"
      }
     ],
     "correcta": 0,
-    "explicacion": "Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo»."
+    "explicacion": "Párrafo 4: «Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo».",
+    "texto": "diag",
+    "tarea": "a",
+    "evidencia": [
+     "Cuando se vuelve crónico, se relaciona con el desánimo y con conductas de riesgo"
+    ]
    },
    {
     "id": "d-len-03",
@@ -1199,23 +1215,32 @@
     "opciones": [
      {
       "texto": "Demostrar que el aburrimiento produce un malestar físico.",
-      "trampa": "Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas."
+      "trampa": "Lees la comparación de forma literal. Se comparan funciones (avisar), no sensaciones físicas.",
+      "tipo": "literal"
      },
      {
       "texto": "Mostrar que el aburrimiento es tan necesario como comer.",
-      "trampa": "Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es."
+      "trampa": "Exagera: la comparación es sobre cómo funciona la señal, no sobre cuán necesaria es.",
+      "tipo": "exagera"
      },
      {
       "texto": "Explicar que el aburrimiento es una señal que empuja a cambiar de actividad.",
       "trampa": ""
      },
      {
-      "texto": "Criticar la idea antigua de que el aburrimiento es pereza.",
-      "trampa": "Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua."
+      "texto": "Criticar la idea antigua de que el aburrimiento es pereza o un defecto del carácter.",
+      "trampa": "Eso lo hace el párrafo 1. La comparación explica la idea nueva, no ataca la antigua.",
+      "tipo": "otro-dato"
      }
     ],
     "correcta": 2,
-    "explicacion": "El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal."
+    "explicacion": "El hambre «avisa» una necesidad; el aburrimiento «avisaría» que conviene buscar otra cosa. La comparación aclara qué significa que sea una señal.",
+    "texto": "diag",
+    "tarea": "h",
+    "evidencia": [
+     "el aburrimiento funciona de un modo parecido al hambre",
+     "el aburrimiento avisaría que lo que estamos haciendo ya no nos aporta nada y que conviene buscar otra cosa"
+    ]
    },
    {
     "id": "d-len-04",
@@ -1227,43 +1252,56 @@
     "opciones": [
      {
       "texto": "El aburrimiento siempre es bueno para la creatividad.",
-      "trampa": "Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca»."
+      "trampa": "Absolutiza: el párrafo 4 dice que NO siempre es bueno. Desconfía de «siempre» y «nunca».",
+      "tipo": "exagera"
      },
      {
       "texto": "El aburrimiento es una señal útil que hoy solemos tapar antes de escucharla.",
       "trampa": ""
      },
      {
-      "texto": "El teléfono celular es la causa del aburrimiento moderno.",
-      "trampa": "Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa."
+      "texto": "El teléfono celular es la causa principal del aburrimiento en la vida moderna.",
+      "trampa": "Convierte un detalle en tesis y además invierte la relación: el teléfono sirve para tapar el aburrimiento, no lo causa.",
+      "tipo": "contrario"
      },
      {
       "texto": "Antes, el aburrimiento se consideraba pereza.",
-      "trampa": "Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal."
+      "trampa": "Es solo la idea del párrafo 1. Es demasiado parcial para ser la idea principal.",
+      "tipo": "parcial"
      }
     ],
     "correcta": 1,
-    "explicacion": "La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4)."
+    "explicacion": "La idea principal reúne todos los párrafos: el aburrimiento es una señal (1–2), hoy la tapamos (3) y conviene escucharla (4).",
+    "texto": "diag",
+    "tarea": "f",
+    "evidencia": [
+     "no como una falla, sino como una señal",
+     "hoy casi nunca dejamos que esa señal haga su trabajo",
+     "La clave, dicen, no está en buscarlo ni en huir de él, sino en escucharlo"
+    ]
    },
    {
     "id": "d-len-05",
     "prueba": "LEN",
     "eje": "Habilidades",
-    "tema": "len.evaluar",
+    "tema": "len.interpretar",
     "nivel": "paes",
     "enunciado": "¿Qué propósito cumple el experimento mencionado en el párrafo 2?",
     "opciones": [
      {
       "texto": "Explicar cómo se realiza un experimento científico.",
-      "trampa": "Confunde el ejemplo con el tema. El texto no trata sobre el método científico."
+      "trampa": "Confunde el ejemplo con el tema. El texto no trata sobre el método científico.",
+      "tipo": "fuera"
      },
      {
-      "texto": "Contradecir la idea de que el aburrimiento es una señal.",
-      "trampa": "Invierte su función: el experimento apoya esa idea."
+      "texto": "Contradecir la idea de que el aburrimiento es una señal útil para cambiar de actividad.",
+      "trampa": "Invierte su función: el experimento apoya esa idea.",
+      "tipo": "contrario"
      },
      {
       "texto": "Entretener al lector con una anécdota curiosa.",
-      "trampa": "Puede ser curioso, pero en el argumento su función es dar evidencia."
+      "trampa": "Puede ser curioso, pero en el argumento su función es dar evidencia.",
+      "tipo": "fuera"
      },
      {
       "texto": "Respaldar con evidencia la idea de que el aburrimiento puede impulsar ideas nuevas.",
@@ -1271,7 +1309,12 @@
      }
     ],
     "correcta": 3,
-    "explicacion": "El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis."
+    "explicacion": "El grupo que se aburrió primero propuso más ideas: el experimento funciona como evidencia de la tesis.",
+    "texto": "diag",
+    "tarea": "h",
+    "evidencia": [
+     "Ese grupo propuso más ideas, y más variadas, que otro grupo que pasó directo a la tarea creativa"
+    ]
    },
    {
     "id": "d-len-06",
@@ -1279,11 +1322,12 @@
     "eje": "Habilidades",
     "tema": "len.evaluar",
     "nivel": "dificil",
-    "enunciado": "¿Con cuál de las siguientes afirmaciones estaría de acuerdo el autor del texto?",
+    "enunciado": "¿Con cuál de las siguientes afirmaciones estarían de acuerdo los especialistas que cita el texto?",
     "opciones": [
      {
       "texto": "Hay que buscar el aburrimiento todos los días para ser más creativos.",
-      "trampa": "El párrafo 4 dice que la clave NO está en buscarlo."
+      "trampa": "El párrafo 4 dice que la clave NO está en buscarlo.",
+      "tipo": "contrario"
      },
      {
       "texto": "Antes de llenar un momento de espera, vale la pena preguntarse qué necesitamos.",
@@ -1291,15 +1335,22 @@
      },
      {
       "texto": "El aburrimiento debe evitarse porque lleva a conductas de riesgo.",
-      "trampa": "Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él."
+      "trampa": "Solo el aburrimiento crónico se relaciona con eso, y el texto dice que no hay que huir de él.",
+      "tipo": "contrario"
      },
      {
       "texto": "Los teléfonos deberían prohibirse en las salas de espera.",
-      "trampa": "El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice."
+      "trampa": "El texto no propone prohibir nada: es una conclusión que va más allá de lo que dice.",
+      "tipo": "fuera"
      }
     ],
     "correcta": 1,
-    "explicacion": "Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo»."
+    "explicacion": "Párrafo 4: la clave es «escucharlo: preguntarse qué nos está pidiendo antes de taparlo».",
+    "texto": "diag",
+    "tarea": "l",
+    "evidencia": [
+     "preguntarse qué nos está pidiendo antes de taparlo con lo primero que tengamos a mano"
+    ]
    }
   ]
  }
