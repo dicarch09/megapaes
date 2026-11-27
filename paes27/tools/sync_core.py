@@ -16,6 +16,7 @@ BLOQUES = [
 # Bloques opcionales: solo se sincronizan en las páginas que tienen sus marcadores.
 OPCIONALES = [
     (RAIZ / "tools" / "lecciones.js", r"// == paes27-lecciones v\d+ ==", r"// == fin paes27-lecciones v\d+ =="),
+    (RAIZ / "tools" / "generadores.js", r"// == paes27-gen v\d+ ==", r"// == fin paes27-gen v\d+ =="),
 ]
 
 

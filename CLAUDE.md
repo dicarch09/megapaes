@@ -118,6 +118,7 @@ paes27/
 ├─ bioquim.html    rescate de Biología y Química (Fase 4)
 ├─ m1.html         trampas + repaso rápido
 ├─ lenguaje.html   tipos de pregunta + práctica cronometrada
+├─ practica.html   práctica infinita: preguntas con números al azar (tools/generadores.js)
 ├─ lib/three.module.min.js
 └─ tools/          scripts de verificación (no los usa la app)
 ```

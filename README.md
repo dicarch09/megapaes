@@ -26,6 +26,6 @@ python3 tools/tarjetas.py           # dibuja los esquemas de las tarjetas de Fí
 python3 tools/lenguaje_banco.py     # escribe los textos y preguntas de Lectora (tools/banco_len.json) y completa las del diagnóstico
 python3 tools/fichas.py             # escribe las fichas finales en la pestaña «Fichas» del hub
 python3 tools/sync_core.py          # copia el bloque compartido y los bancos a cada HTML
-python3 tools/verificar.py          # recalcula cada respuesta numérica
+python3 tools/verificar.py          # recalcula cada respuesta numérica (y miles de muestras de la Práctica infinita, tools/generadores.js)
 node tools/probar.js                # consola limpia, sin internet, flujos principales (con el servidor arriba)
 ```

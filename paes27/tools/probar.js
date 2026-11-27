@@ -398,6 +398,66 @@ const SHOTS = process.env.SHOTS || '';
     }
     await page.setViewportSize({ width: 1200, height: 900 });
   }
+
+  // ---------- práctica infinita ----------
+  {
+    console.log('practica.html');
+    await page.goto(BASE + '/practica.html'); await page.evaluate(() => localStorage.removeItem('paes27:dominio'));
+    await page.reload(); await page.waitForTimeout(200);
+    const nTemas = await page.locator('#p-M2 .tema-c').count();
+    ok(nTemas === 16, `M2: los 16 temas tienen preguntas con números nuevos (${nTemas})`);
+    // cada tema y nivel genera una pregunta válida (4 alternativas, o 5 en suficiencia)
+    const malos = await page.evaluate(() => {
+      const out = [];
+      for (const t of GEN.temas()) for (const n of ['basico', 'paes', 'dificil']) {
+        for (let i = 0; i < 15; i++) {
+          const q = GEN.nuevo(t, n);
+          if (!q) { out.push(`${t}/${n}: sin familias`); break; }
+          const esperadas = t === 'm2.sd' ? 5 : 4;
+          if (q.opciones.length !== esperadas || q.opciones.filter((o) => !o.trampa).length !== 1 || q.opciones[q.correcta].trampa) out.push(q.id);
+        }
+      }
+      return out;
+    });
+    ok(malos.length === 0, `cada tema y nivel genera preguntas válidas (${malos.slice(0, 3).join(', ') || 'todas bien'})`);
+    await page.click('#p-M2 .tema-c[data-tema="m2.num.log-exp"]');
+    await page.waitForSelector('#zona:not([hidden]) #zQuiz .q-op');
+    ok((await page.evaluate(() => location.hash)) === '#m2.num.log-exp', 'elegir un tema abre la zona de práctica con enlace directo');
+    const vistos = new Set();
+    for (let i = 0; i < 6; i++) {
+      vistos.add(await page.locator('#zQuiz .q-enun').innerText());
+      await page.keyboard.press(String(1 + (i % 4)));
+      await page.waitForSelector('#zQuiz .q-fb:not([hidden])');
+      await page.keyboard.press('Enter'); await page.waitForTimeout(40);
+    }
+    ok(vistos.size >= 5, `números nuevos en cada pregunta (${vistos.size} enunciados distintos en 6)`);
+    ok(/Esta sesión: \d+ de 6 correctas/.test(await page.locator('#zSes').innerText()), 'contador de la sesión');
+    const domI = await page.evaluate(() => JSON.parse(localStorage.getItem('paes27:dominio') || '{}')['m2.num.log-exp']);
+    ok(typeof domI === 'number', `las respuestas cuentan para el dominio (${domI} %)`);
+    await page.goto(BASE + '/practica.html#m2.pro.combinatoria/dificil');
+    const conNivel = await page.waitForFunction(() => /^Difícil · Permutaciones/.test((document.querySelector('#zQuiz .q-meta') || {}).textContent || ''), null, { timeout: 3000 }).then(() => true, () => false);
+    ok(conNivel, 'enlace directo con nivel (#tema/dificil)');
+    await page.goto(BASE + '/practica.html#mezcla-M2');
+    await page.waitForFunction(() => document.querySelector('#zTit').textContent.startsWith('Mezcla'));
+    await page.waitForSelector('#zQuiz .q-op');
+    const temasMezcla = new Set();
+    for (let i = 0; i < 12; i++) {
+      temasMezcla.add((await page.locator('#zQuiz .q-meta').textContent()).split(' · ')[1]);
+      await page.keyboard.press('2'); await page.waitForSelector('#zQuiz .q-fb:not([hidden])'); await page.keyboard.press('Enter'); await page.waitForTimeout(30);
+    }
+    ok(temasMezcla.size >= 4, `la mezcla reparte temas (${temasMezcla.size} temas en 12 preguntas)`);
+    if (SHOTS) await page.screenshot({ path: SHOTS + '/practica.png', fullPage: true });
+    await page.goto(BASE + '/m2.html#m2.pro.condicional'); await page.waitForTimeout(250);
+    ok(await page.locator('#m2\\.pro\\.condicional .mas-num a[href="practica.html#m2.pro.condicional"]').count() === 1, 'la lección enlaza a su práctica infinita');
+    ok(await page.locator('.paginas a[href="practica.html"]').count() === 1, 'navegación con el enlace a Práctica ∞');
+    await page.setViewportSize({ width: 380, height: 800 });
+    for (const h of ['M2', 'm2.geo.trig-razones/paes', 'm2.pro.condicional/paes']) {
+      await page.goto(BASE + '/practica.html#' + h); await page.waitForTimeout(250);
+      const sw = await page.evaluate(() => document.documentElement.scrollWidth);
+      ok(sw <= 380, `practica.html#${h} sin scroll horizontal en móvil (${sw}px)`);
+    }
+    await page.setViewportSize({ width: 1200, height: 900 });
+  }
   console.log('\nErrores/avisos de consola:', errores.length ? '\n' + errores.join('\n') : 0);
   console.log('Pedidos fuera de localhost:', externos.length ? '\n' + externos.join('\n') : 0);
   console.log('Avisos del driver GL por software (ignorados):', avisosDriver);
