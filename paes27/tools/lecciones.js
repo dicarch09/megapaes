@@ -213,6 +213,8 @@ document.querySelectorAll('.ejemplo').forEach((box) => {
 // PRÁCTICA en 3 niveles
 // =====================================================================
 const NIVELES = [['basico', 'Básico'], ['paes', 'PAES'], ['dificil', 'Difícil']];
+// Temas con preguntas de números nuevos en practica.html (tools/verificar_gen.py exige que calce con generadores.js).
+const CON_NUMEROS = new Set(['m2.alg.sistemas-rectas', 'm2.num.log-exp', 'm2.pro.condicional', 'm2.pro.combinatoria', 'm2.geo.trig-razones', 'm2.pro.dispersion', 'm2.sd', 'm2.alg.trig-funciones', 'm2.pro.binomial-normal', 'm2.geo.circunferencia', 'm2.geo.homotecia', 'm2.num.financiera', 'm2.geo.esfera', 'm2.alg.potencia', 'm2.num.reales', 'm2.m1-dificil']);
 function montarPracticas(BANCO) {
 document.querySelectorAll('.practica').forEach((box) => {
   const temas = box.dataset.temas.split(',');
@@ -230,6 +232,8 @@ document.querySelectorAll('.practica').forEach((box) => {
     botones[n] = b; bar.appendChild(b);
   });
   box.append(bar, quiz);
+  const conNum = temas.filter((t) => CON_NUMEROS.has(t));
+  if (conNum.length) box.appendChild(el('p', 'mas-num small', `<a href="practica.html#${conNum[0]}">∞ Más práctica con números nuevos</a>: preguntas de este tema que cambian cada vez.`));
   function empezar(nivel) {
     Object.entries(botones).forEach(([n, b]) => b.classList.toggle('on', n === nivel));
     const qs = BANCO.filter((q) => temas.includes(q.tema) && q.nivel === nivel).sort(() => Math.random() - 0.5);
